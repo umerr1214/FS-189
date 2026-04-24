@@ -273,6 +273,7 @@ const InstructorDashboard = () => {
           })));
         }
       }
+      navigate(`/feedback/${submissionId}`);
     } catch (error: any) {
       toast({
         title: "Failed to trigger evaluation",

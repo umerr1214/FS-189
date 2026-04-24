@@ -20,7 +20,7 @@ const AdminDashboard = () => {
   const [isAddUserOpen, setIsAddUserOpen] = useState(false);
   const [newUser, setNewUser] = useState({ name: "", email: "", role: "student" });
   const [isEditUserOpen, setIsEditUserOpen] = useState(false);
-  const [editingUser, setEditingUser] = useState<{ id: number; name: string; email: string; role: string; status: string } | null>(null);
+  const [editingUser, setEditingUser] = useState<{ id: number; name: string; email: string; role: string;} | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
 
   const [systemStats, setSystemStats] = useState([
@@ -128,7 +128,6 @@ const AdminDashboard = () => {
       name: user.full_name || "", 
       email: user.email,
       role: user.role,
-      status: user.is_active ? "active" : "inactive",
     });
     setIsEditUserOpen(true);
   };
@@ -141,7 +140,6 @@ const AdminDashboard = () => {
         name: editingUser.name,
         email: editingUser.email,
         role: editingUser.role,
-        status: editingUser.status,
       };
 
       const res = await fetch(`http://localhost:3001/admin/update-user/${editingUser.id}`, {
@@ -299,21 +297,6 @@ const AdminDashboard = () => {
                       <SelectItem value="student">Student</SelectItem>
                       <SelectItem value="instructor">Instructor</SelectItem>
                       <SelectItem value="admin">Admin</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="edit-status">Status</Label>
-                  <Select 
-                    value={editingUser?.status || "active"} 
-                    onValueChange={(value) => setEditingUser(editingUser ? { ...editingUser, status: value } : null)}
-                  >
-                    <SelectTrigger id="edit-status">
-                      <SelectValue placeholder="Select status" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="active">Active</SelectItem>
-                      <SelectItem value="inactive">Inactive</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>

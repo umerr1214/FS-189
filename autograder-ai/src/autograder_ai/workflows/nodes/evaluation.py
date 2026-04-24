@@ -48,12 +48,12 @@ def evaluate_correctness(state: EvaluationState, llm):
         parsed = json.loads(text)
     except Exception as e:
         parsed = {
-            "status": "partial",
+            "status": "partially_correct",
             "explanation": f"LLM failure: {str(e)}"
         }
 
     state["correctness"] = {
-        "status": parsed.get("status", "partial"),
+        "status": parsed.get("status", "partially_correct"),
         "explanation": parsed.get("explanation", ""),
         "confidence": passed / total,
         "passed": passed,
@@ -76,6 +76,7 @@ def evaluate_code_quality(state: EvaluationState, llm):
             "readability": 7,
             "structure": 7,
             "best_practices": 7,
+            "efficiency": 7,
             "comments": "LLM unavailable"
         }
 
@@ -139,7 +140,7 @@ def apply_rubric(state: EvaluationState):
         "correctness": correctness_score,
         "readability": float(quality.get("readability", 0.0)) * 10.0,
         "style":       float(quality.get("best_practices", 0.0)) * 10.0,
-        "efficiency":  float(quality.get("structure", 0.0)) * 10.0,
+        "efficiency":  float(quality.get("efficiency", 0.0)) * 10.0,
     }
 
     breakdown = {}
@@ -157,18 +158,34 @@ def apply_rubric(state: EvaluationState):
     return state
 
 
+# def generate_feedback(state: EvaluationState, llm):
+#     prompt = FEEDBACK_PROMPT + f"""
+
+# Correctness:
+# {state.get("correctness")}
+
+# Code Quality:
+# {state.get("code_quality")}
+
+# Partial Credit:
+# {state.get("partial_credit")}
+# """
+
+#     try:
+#         state["feedback"] = _invoke_llm(llm, prompt)
+#     except Exception as e:
+#         state["feedback"] = f"Feedback generation failed: {str(e)}"
+
+#     return state
+
+
+
 def generate_feedback(state: EvaluationState, llm):
-    prompt = FEEDBACK_PROMPT + f"""
-
-Correctness:
-{state.get("correctness")}
-
-Code Quality:
-{state.get("code_quality")}
-
-Partial Credit:
-{state.get("partial_credit")}
-"""
+    prompt = FEEDBACK_PROMPT.format(
+        correctness=state.get("correctness"),
+        code_quality=state.get("code_quality"),
+        partial_credit=state.get("partial_credit"),
+    )
 
     try:
         state["feedback"] = _invoke_llm(llm, prompt)

@@ -87,10 +87,6 @@ const StudentDashboard = () => {
       // Refresh data
       await fetchData();
       
-      setTimeout(() => {
-        navigate(`/feedback/${result.submission_id}`);
-      }, 1500);
-      
     } catch (error) {
       console.error("Submission error:", error);
       const message =

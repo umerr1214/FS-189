@@ -177,7 +177,8 @@ class EvaluationEngine:
                         f"Code Quality - "
                         f"Readability: {quality.get('readability')}/10, "
                         f"Structure: {quality.get('structure')}/10, "
-                        f"Best Practices: {quality.get('best_practices')}/10\n"
+                        f"Best Practices: {quality.get('best_practices')}/10, "
+                        f"Efficiency: {quality.get('efficiency')}/10\n"
                     )
 
                 final_score = evaluation.get("final_score")
