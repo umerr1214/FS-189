@@ -18,6 +18,7 @@ if str(AUTO_GRADER_SRC) not in os.sys.path:
     os.sys.path.insert(0, str(AUTO_GRADER_SRC))
 
 from autograder_ai.engine import EvaluationEngine  # noqa: E402
+from autograder_ai.workflows.builders.evaluation import EvaluationBuilder  # noqa: E402
 
 
 class EvaluateRequest(BaseModel):
@@ -31,6 +32,34 @@ class EvaluateRequest(BaseModel):
 
 
 app = FastAPI(title="EvalBright LangGraph Service")
+
+
+class RubricAwareEvaluationEngine(EvaluationEngine):
+    def __init__(self, assignment_path: Path, submission_path: Path, rubric: Optional[Dict[str, Any]] = None):
+        super().__init__(assignment_path, submission_path)
+        self.rubric = rubric or {}
+
+    def _run_evaluation(self):
+        builder = EvaluationBuilder(self.llm)
+        workflow = builder.build()
+        print(f"[rubric-debug] Rubric configured for evaluation run: {self.rubric}")
+
+        for question_id, result in self.results.items():
+            if "test_results" not in result:
+                continue
+
+            state = {
+                "question_id": question_id,
+                "question": result["question"],
+                "code": result["code"],
+                "test_results": result["test_results"],
+                "rubric": self.rubric,
+                "status": "processing",
+            }
+            print(f"[rubric-debug] Applying rubric to question {question_id}: {state['rubric']}")
+
+            eval_result = workflow.invoke(state)
+            self.results[question_id]["evaluation"] = eval_result
 
 
 @app.get("/health")
@@ -132,9 +161,10 @@ def _extract_scores(results: Dict[str, Any]) -> Dict[str, float]:
 def evaluate(req: EvaluateRequest):
     assignment_pdf = _pick_assignment_pdf(req)
     submission_path = _build_submission_path(req)
+    print(f"[rubric-debug] Received rubric in /evaluate request: {req.rubric}")
 
     try:
-        engine = EvaluationEngine(assignment_pdf, submission_path)
+        engine = RubricAwareEvaluationEngine(assignment_pdf, submission_path, rubric=req.rubric)
         results = engine.run()
         report = engine.generate_report()
         print("\n=== FULL AUTOGRADER REPORT START ===")

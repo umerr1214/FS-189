@@ -29,8 +29,14 @@ async function triggerEvaluationForSubmission(submissionId) {
          s.file_path,
          s.language,
          s.assignment_id,
-         ad.file_path AS assignment_pdf_path
+         ad.file_path AS assignment_pdf_path,
+         r.correctness_weight,
+         r.style_weight,
+         r.efficiency_weight,
+         r.readability_weight
        FROM submissions s
+       LEFT JOIN assignments a ON a.assignment_id = s.assignment_id
+       LEFT JOIN rubrics r ON r.rubric_id = a.rubric_id
        LEFT JOIN assignment_documents ad ON ad.assignment_id = s.assignment_id
        WHERE s.submission_id = $1`,
       [submissionId],
@@ -55,6 +61,12 @@ async function triggerEvaluationForSubmission(submissionId) {
       : null;
     const serviceBaseURL = process.env.LANGGRAPH_SERVICE_URL || "http://localhost:8000";
     const endpoint = `${serviceBaseURL}/evaluate`;
+    const rubric = {
+      correctness: Number(submission.correctness_weight ?? 40),
+      style: Number(submission.style_weight ?? 20),
+      efficiency: Number(submission.efficiency_weight ?? 20),
+      readability: Number(submission.readability_weight ?? 20),
+    };
 
     let serviceData = {};
     let evaluationSucceeded = false;
@@ -66,6 +78,7 @@ async function triggerEvaluationForSubmission(submissionId) {
         file_path: filePaths[0],
         file_paths: filePaths,
         language: submission.language,
+        rubric,
       });
       serviceData = response.data || {};
       evaluationSucceeded = true;
