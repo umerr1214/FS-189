@@ -78,10 +78,6 @@ CREATE TABLE IF NOT EXISTS user_sessions (
   is_active BOOLEAN DEFAULT true,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
-INSERT INTO assignments (assignment_id, title, description, language)
-SELECT 1, 'Binary Search', 'Implement binary search', 'cpp'
-WHERE NOT EXISTS (SELECT 1 FROM assignments WHERE assignment_id = 1);
 `;
 
 async function initSchema() {

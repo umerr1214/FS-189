@@ -9,6 +9,17 @@ function languageFromFile(fileName) {
   return "unknown";
 }
 
+function cleanupUploadedFiles(files) {
+  (files || []).forEach((file) => {
+    if (!file?.path) return;
+    try {
+      if (fs.existsSync(file.path)) fs.unlinkSync(file.path);
+    } catch (_error) {
+      // Best-effort cleanup only.
+    }
+  });
+}
+
 async function uploadSubmission(req, res) {
   const assignmentId = Number(req.body.assignment_id);
   const studentId = req.user.user_id;
@@ -19,6 +30,22 @@ async function uploadSubmission(req, res) {
   }
   if (!files.length) {
     return res.status(400).json({ success: false, message: "At least one code file is required" });
+  }
+
+  const existingSubmission = await pool.query(
+    `SELECT submission_id
+     FROM submissions
+     WHERE assignment_id = $1
+       AND student_id = $2
+     LIMIT 1`,
+    [assignmentId, studentId],
+  );
+  if (existingSubmission.rows.length > 0) {
+    cleanupUploadedFiles(files);
+    return res.status(409).json({
+      success: false,
+      message: "You have already submitted this assignment.",
+    });
   }
 
   const parsedFiles = files.map((file) => ({
@@ -96,7 +123,8 @@ async function getSubmissionStats(req, res) {
   });
 }
 
-async function getAssignments(_req, res) {
+async function getAssignments(req, res) {
+  const studentId = req.user.user_id;
   const result = await pool.query(
     `SELECT
        assignment_id::text AS id,
@@ -106,7 +134,13 @@ async function getAssignments(_req, res) {
        language,
        due_date
      FROM assignments
+     WHERE assignment_id NOT IN (
+       SELECT assignment_id
+       FROM submissions
+       WHERE student_id = $1
+     )
      ORDER BY created_at DESC`,
+    [studentId],
   );
   return res.json({ success: true, assignments: result.rows });
 }
