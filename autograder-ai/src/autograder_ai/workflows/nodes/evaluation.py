@@ -63,6 +63,14 @@ def evaluate_correctness(state: EvaluationState, llm):
 
 
 def evaluate_code_quality(state: EvaluationState, llm):
+    from ...clients.huggingface_client import HuggingFaceLLMWrapper
+    source = (
+        "[LOCAL MODEL - LLaMA 3.2 3B]"
+        if isinstance(llm, HuggingFaceLLMWrapper)
+        else "[OpenAI API - gpt-4o-mini]"
+    )
+    print(f"\n{source} Evaluating code quality...")
+
     prompt = CODE_QUALITY_PROMPT.format(
         question=state["question"],
         code=state["code"],
