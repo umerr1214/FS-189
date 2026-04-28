@@ -10,7 +10,7 @@
 # - Expected output: {expected_output}
 
 # EXECUTION INSTRUCTIONS:
-# 1. Run EXACTLY this command ONCE: echo "{stdin_input}" | python3 {code_file_path}
+# 1. Run EXACTLY this command ONCE: echo "{stdin_input}" | python {code_file_path}
 # 2. Capture the actual output from stdout
 # 3. INTELLIGENTLY extract the answer from the output (ignore prompts, extra text)
 # 4. Compare the extracted answer with expected output
@@ -38,7 +38,7 @@
 # - ACTUAL OUTPUT: [the extracted answer/value from execution]
 # - REASONING: [detailed explanation including what you extracted and why]
 
-# Now execute the test ONCE using: echo "{stdin_input}" | python3 {code_file_path}
+# Now execute the test ONCE using: echo "{stdin_input}" | python {code_file_path}
 # """
 
 
@@ -54,7 +54,7 @@ TEST DETAILS:
 - Expected output: {expected_output}
 
 EXECUTION INSTRUCTIONS:
-1. Run EXACTLY this command ONCE: echo "{stdin_input}" | python3 {code_file_path}
+1. Run EXACTLY this command ONCE: echo "{stdin_input}" | python {code_file_path}
 2. Capture the actual output from stdout
 3. INTELLIGENTLY extract the answer from the output (ignore prompts, extra text)
 4. Compare the extracted answer with expected output
@@ -99,5 +99,5 @@ After execution, strictly respond with this format:
 - ACTUAL OUTPUT: [the extracted answer/value from execution]
 - REASONING: [detailed explanation including what you extracted and why]
 
-Now execute the test ONCE using: echo "{stdin_input}" | python3 {code_file_path}
+Now execute the test ONCE using: echo "{stdin_input}" | python {code_file_path}
 """
