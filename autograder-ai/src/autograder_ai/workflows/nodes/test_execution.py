@@ -23,7 +23,7 @@ def setup_code_file_node(state: TestExecutionState) -> TestExecutionState:
     print(f"  → Setting up code file for execution")
 
     with tempfile.NamedTemporaryFile(
-        mode="w", suffix=".py", delete=False, dir="/tmp", prefix="code_"
+        mode="w", suffix=".py", delete=False, dir=tempfile.gettempdir(), prefix="code_"
     ) as f:
         f.write(state["code"])
         temp_path = f.name

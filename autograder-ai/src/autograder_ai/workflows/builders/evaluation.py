@@ -10,17 +10,18 @@ from ..nodes.evaluation import (
 
 
 class EvaluationBuilder:
-    def __init__(self, llm):
+    def __init__(self, llm, quality_llm=None):
         self.llm = llm
+        self.quality_llm = quality_llm if quality_llm is not None else llm
 
     def build(self):
         graph = StateGraph(EvaluationState)
 
-        graph.add_node("correctness", lambda s: evaluate_correctness(s, self.llm))
-        graph.add_node("quality", lambda s: evaluate_code_quality(s, self.llm))
+        graph.add_node("correctness", lambda s: evaluate_correctness(s, self.quality_llm))
+        graph.add_node("quality", lambda s: evaluate_code_quality(s, self.quality_llm))
         graph.add_node("partial_credit", handle_partial_credit)
         graph.add_node("rubric", apply_rubric)
-        graph.add_node("feedback", lambda s: generate_feedback(s, self.llm))
+        graph.add_node("feedback", lambda s: generate_feedback(s, self.quality_llm))
         
         graph.add_node("finalize", lambda s: {**s, "status": "completed"})
 

@@ -15,6 +15,10 @@ def _invoke_llm(llm, prompt: str) -> str:
 
 
 def evaluate_correctness(state: EvaluationState, llm):
+    from ...clients.huggingface_client import HuggingFaceLLMWrapper
+    source = "[LOCAL MODEL - LLaMA 3.2 3B]" if isinstance(llm, HuggingFaceLLMWrapper) else "[OpenAI API - gpt-4o-mini]"
+    print(f"\n{source} Evaluating correctness...")
+
     test_results = state.get("test_results", [])
     passed = sum(1 for tr in test_results if tr.get("passed"))
     total = len(test_results) or 1
@@ -63,6 +67,14 @@ def evaluate_correctness(state: EvaluationState, llm):
 
 
 def evaluate_code_quality(state: EvaluationState, llm):
+    from ...clients.huggingface_client import HuggingFaceLLMWrapper
+    source = (
+        "[LOCAL MODEL - LLaMA 3.2 3B]"
+        if isinstance(llm, HuggingFaceLLMWrapper)
+        else "[OpenAI API - gpt-4o-mini]"
+    )
+    print(f"\n{source} Evaluating code quality...")
+
     prompt = CODE_QUALITY_PROMPT.format(
         question=state["question"],
         code=state["code"],
@@ -181,6 +193,10 @@ def apply_rubric(state: EvaluationState):
 
 
 def generate_feedback(state: EvaluationState, llm):
+    from ...clients.huggingface_client import HuggingFaceLLMWrapper
+    source = "[LOCAL MODEL - LLaMA 3.2 3B]" if isinstance(llm, HuggingFaceLLMWrapper) else "[OpenAI API - gpt-4o-mini]"
+    print(f"\n{source} Generating feedback...")
+
     prompt = FEEDBACK_PROMPT.format(
         correctness=state.get("correctness"),
         code_quality=state.get("code_quality"),

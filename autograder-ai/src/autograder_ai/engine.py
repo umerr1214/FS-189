@@ -7,6 +7,7 @@ from .workflows.builders.test_generation import TestGenerationBuilder
 from .workflows.builders.test_execution import TestExecutionBuilder
 from .workflows.builders.evaluation import EvaluationBuilder
 from .clients.openai_client import OpenaiClient
+from .clients.huggingface_client import HuggingFaceClient
 
 
 class EvaluationEngine:
@@ -17,6 +18,9 @@ class EvaluationEngine:
 
         openai_client = OpenaiClient()
         self.llm = openai_client.llm
+
+        hf_client = HuggingFaceClient()
+        self.quality_llm = hf_client.get_llm()
 
         self.assignment_processor = AssignmentPreProcessor(str(assignment_path))
         self.submission_processor = SubmissionPreProcessor(str(submission_path))
@@ -90,7 +94,7 @@ class EvaluationEngine:
         return execution_results
     
     def _run_evaluation(self):
-        builder = EvaluationBuilder(self.llm)
+        builder = EvaluationBuilder(self.llm, quality_llm=self.quality_llm)
         workflow = builder.build()
 
         for question_id, result in self.results.items():
