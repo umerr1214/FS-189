@@ -34,6 +34,8 @@ Required `.env` (copy from `.env.example`):
 ```
 OPENAI_API_KEY=...
 OPENAI_MODEL_NAME=gpt-4o-mini
+HF_MODEL_NAME=meta-llama/Llama-3.2-3B-Instruct
+QWEN_MODEL_NAME=Qwen/Qwen2.5-Coder-7B-Instruct
 ```
 
 ### Backend (Express.js)
@@ -83,7 +85,7 @@ The Vite dev server proxies `/api` → `http://localhost:3001`.
 
 | Workflow | File | LLM | Output |
 |---|---|---|---|
-| Test generation | `workflows/builders/test_generation.py` | Qwen 2.5-Coder 7B (local, 4-bit) | 8–15 test cases per question |
+| Test generation | `workflows/builders/test_generation.py` | Qwen 2.5-Coder 7B (local, 8-bit) | 8–15 test cases per question |
 | Test execution | `workflows/builders/test_execution.py` | GPT-4o-mini (OpenAI, ReAct agent with ShellTool) | pass/fail + actual output per test |
 | Evaluation | `workflows/builders/evaluation.py` | LLaMA 3.2 3B (local, 4-bit) | correctness, quality scores, feedback |
 
@@ -117,7 +119,7 @@ Test execution runs student code via stdin: `echo "{input}" | python {code_file}
 - **Assignment PDFs** must label questions as `Q1:`, `Q2:`, etc. for the regex extractor to find them (`core/pre_processors/assignment.py`).
 - **Student submission files** must match the glob `q_*.py` (`core/pre_processors/submission.py`).
 - The folder `core/file_hanlders/` has a deliberate typo — do not rename it.
-- HuggingFace models (Qwen, LLaMA) are loaded with 4-bit quantization via `bitsandbytes`; they require a CUDA-capable GPU. `HuggingFaceClient` (`clients/huggingface_client.py`) handles loading.
+- HuggingFace models require a CUDA-capable GPU and are loaded via `bitsandbytes` through `HuggingFaceClient` (`clients/huggingface_client.py`). Qwen uses 8-bit quantization (`max_new_tokens=2048`); LLaMA uses 4-bit quantization (`max_new_tokens=500`). Both models load eagerly on `EvaluationEngine` startup (~10–11 GB VRAM combined).
 - No automated test suite exists for any of the three services.
 
 ## Useful Context Docs
