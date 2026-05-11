@@ -16,7 +16,7 @@ def _invoke_llm(llm, prompt: str) -> str:
 
 def evaluate_correctness(state: EvaluationState, llm):
     from ...clients.huggingface_client import HuggingFaceLLMWrapper
-    source = "[LOCAL MODEL - LLaMA 3.2 3B]" if isinstance(llm, HuggingFaceLLMWrapper) else "[OpenAI API - gpt-4o-mini]"
+    source = f"[LOCAL MODEL - {llm.model_name}]" if isinstance(llm, HuggingFaceLLMWrapper) else "[OpenAI API - gpt-4o-mini]"
     print(f"\n{source} Evaluating correctness...")
 
     test_results = state.get("test_results", [])
@@ -69,7 +69,7 @@ def evaluate_correctness(state: EvaluationState, llm):
 def evaluate_code_quality(state: EvaluationState, llm):
     from ...clients.huggingface_client import HuggingFaceLLMWrapper
     source = (
-        "[LOCAL MODEL - LLaMA 3.2 3B]"
+        f"[LOCAL MODEL - {llm.model_name}]"
         if isinstance(llm, HuggingFaceLLMWrapper)
         else "[OpenAI API - gpt-4o-mini]"
     )
@@ -194,7 +194,7 @@ def apply_rubric(state: EvaluationState):
 
 def generate_feedback(state: EvaluationState, llm):
     from ...clients.huggingface_client import HuggingFaceLLMWrapper
-    source = "[LOCAL MODEL - LLaMA 3.2 3B]" if isinstance(llm, HuggingFaceLLMWrapper) else "[OpenAI API - gpt-4o-mini]"
+    source = f"[LOCAL MODEL - {llm.model_name}]" if isinstance(llm, HuggingFaceLLMWrapper) else "[OpenAI API - gpt-4o-mini]"
     print(f"\n{source} Generating feedback...")
 
     prompt = FEEDBACK_PROMPT.format(

@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 from typing import Dict, Any
 
@@ -19,7 +20,12 @@ class EvaluationEngine:
         openai_client = OpenaiClient()
         self.llm = openai_client.llm
 
-        hf_client = HuggingFaceClient()
+        qwen_model = os.getenv("QWEN_MODEL_NAME", "Qwen/Qwen2.5-Coder-7B-Instruct")
+        qwen_client = HuggingFaceClient(model_name=qwen_model, quantization_bits=8, max_new_tokens=2048)
+        self.test_gen_llm = qwen_client.get_llm()
+
+        llama_model = os.getenv("HF_MODEL_NAME", "meta-llama/Llama-3.2-3B-Instruct")
+        hf_client = HuggingFaceClient(model_name=llama_model, quantization_bits=4, max_new_tokens=500)
         self.quality_llm = hf_client.get_llm()
 
         self.assignment_processor = AssignmentPreProcessor(str(assignment_path))
@@ -29,7 +35,7 @@ class EvaluationEngine:
         questions = self.assignment_processor.run()
         submissions = self.submission_processor.run()
 
-        builder = TestGenerationBuilder(self.llm)
+        builder = TestGenerationBuilder(self.test_gen_llm)
         workflow = builder.build()
 
         for question_id in questions:

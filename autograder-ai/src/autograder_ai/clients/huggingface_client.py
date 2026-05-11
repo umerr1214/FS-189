@@ -9,9 +9,11 @@ class HuggingFaceLLMWrapper:
     expects a LangChain chat model (llm.invoke(messages) -> response.content).
     """
 
-    def __init__(self, model, tokenizer):
+    def __init__(self, model, tokenizer, model_name: str = "", max_new_tokens: int = 500):
         self._model = model
         self._tokenizer = tokenizer
+        self.model_name = model_name
+        self._max_new_tokens = max_new_tokens
 
     def invoke(self, messages):
         import torch
@@ -36,7 +38,7 @@ class HuggingFaceLLMWrapper:
         with torch.no_grad():
             output_ids = self._model.generate(
                 **inputs,
-                max_new_tokens=500,
+                max_new_tokens=self._max_new_tokens,
                 do_sample=False,
                 temperature=None,
                 top_p=None,
@@ -51,8 +53,10 @@ class HuggingFaceLLMWrapper:
 
 class HuggingFaceClient:
 
-    def __init__(self) -> None:
-        self.model_name = os.getenv("HF_MODEL_NAME", "meta-llama/Llama-3.2-3B-Instruct")
+    def __init__(self, model_name: str = None, quantization_bits: int = 8, max_new_tokens: int = 500) -> None:
+        self.model_name = model_name or os.getenv("HF_MODEL_NAME", "meta-llama/Llama-3.2-3B-Instruct")
+        self._quantization_bits = quantization_bits
+        self._max_new_tokens = max_new_tokens
         self._model = None
         self._tokenizer = None
         self.llm = None
@@ -60,15 +64,23 @@ class HuggingFaceClient:
     def _load_model(self):
         from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 
-        print(f"[HuggingFaceClient] Loading {self.model_name} (8-bit quantized)...")
-        quantization_config = BitsAndBytesConfig(load_in_8bit=True)
+        bits = self._quantization_bits
+        print(f"[HuggingFaceClient] Loading {self.model_name} ({bits}-bit quantized)...")
+        if bits == 4:
+            quantization_config = BitsAndBytesConfig(load_in_4bit=True)
+        else:
+            quantization_config = BitsAndBytesConfig(load_in_8bit=True)
         self._tokenizer = AutoTokenizer.from_pretrained(self.model_name)
         self._model = AutoModelForCausalLM.from_pretrained(
             self.model_name,
             device_map="auto",
             quantization_config=quantization_config,
         )
-        self.llm = HuggingFaceLLMWrapper(self._model, self._tokenizer)
+        self.llm = HuggingFaceLLMWrapper(
+            self._model, self._tokenizer,
+            model_name=self.model_name,
+            max_new_tokens=self._max_new_tokens,
+        )
         print("[HuggingFaceClient] Model ready.")
 
     def get_llm(self) -> HuggingFaceLLMWrapper:

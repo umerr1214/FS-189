@@ -39,6 +39,13 @@ def is_valid_test_case(case: Any) -> bool:
 
 def generate_test_cases_node(llm):
     def node(state):
+        from ...clients.huggingface_client import HuggingFaceLLMWrapper
+        if isinstance(llm, HuggingFaceLLMWrapper):
+            source = f"[LOCAL MODEL - {llm.model_name}]"
+        else:
+            source = "[OpenAI API]"
+        print(f"\n{source} Generating test cases...")
+
         prompt = TEST_GENERATION_PROMPT.format(
             question=state["question"],
             code=state["code"]
