@@ -11,6 +11,18 @@ from .clients.openai_client import OpenaiClient
 from .clients.huggingface_client import HuggingFaceClient
 
 
+def _get_int_env(name: str, default: int) -> int:
+    value = os.getenv(name)
+    if value is None:
+        return default
+
+    try:
+        return int(value)
+    except ValueError:
+        print(f"Invalid {name}={value!r}; using default {default}")
+        return default
+
+
 class EvaluationEngine:
     def __init__(self, assignment_path: Path, submission_path: Path):
         self.assignment_path = assignment_path
@@ -21,7 +33,12 @@ class EvaluationEngine:
         self.llm = openai_client.llm
 
         qwen_model = os.getenv("QWEN_MODEL_NAME", "Qwen/Qwen2.5-Coder-7B-Instruct")
-        qwen_client = HuggingFaceClient(model_name=qwen_model, quantization_bits=8, max_new_tokens=2048)
+        qwen_max_new_tokens = _get_int_env("QWEN_MAX_NEW_TOKENS", 2048)
+        qwen_client = HuggingFaceClient(
+            model_name=qwen_model,
+            quantization_bits=8,
+            max_new_tokens=qwen_max_new_tokens,
+        )
         self.test_gen_llm = qwen_client.get_llm()
 
         llama_model = os.getenv("HF_MODEL_NAME", "meta-llama/Llama-3.2-3B-Instruct")
@@ -158,7 +175,7 @@ class EvaluationEngine:
                 report += "-" * 70 + "\n"
 
                 for i, tr in enumerate(test_results, 1):
-                    status = "✓ PASSED" if tr["passed"] else "✗ FAILED"
+                    status = "PASSED" if tr["passed"] else "FAILED"
                     report += f"\nTest {i}: {tr['description']}\n"
                     report += f"  Status: {status}\n"
                     report += f"  Input: {tr['input']}\n"

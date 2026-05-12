@@ -20,7 +20,7 @@ def _format_input_for_stdin(input_params: Dict[str, Any]) -> str:
 
 
 def setup_code_file_node(state: TestExecutionState) -> TestExecutionState:
-    print(f"  → Setting up code file for execution")
+    print("  -> Setting up code file for execution")
 
     with tempfile.NamedTemporaryFile(
         mode="w", suffix=".py", delete=False, dir=tempfile.gettempdir(), prefix="code_"
@@ -30,19 +30,19 @@ def setup_code_file_node(state: TestExecutionState) -> TestExecutionState:
 
     state["code_file_path"] = temp_path
     state["status"] = EvaluationStatus.PROCESSING
-    print(f"  ✓ Code written to: {temp_path}")
+    print(f"  ok Code written to: {temp_path}")
 
     return state
 
 
 def initialize_execution_node(state: TestExecutionState) -> TestExecutionState:
-    print(f"  → Initializing test execution for {state['question_id']}")
+    print(f"  -> Initializing test execution for {state['question_id']}")
 
     state["current_test_index"] = 0
     state["test_results"] = []
     state["status"] = EvaluationStatus.PROCESSING
 
-    print(f"  ✓ Found {len(state['test_cases'])} test cases to execute")
+    print(f"  ok Found {len(state['test_cases'])} test cases to execute")
 
     return state
 
@@ -62,7 +62,7 @@ def execute_single_test_node(llm):
         test_idx = state["current_test_index"]
         test_case = state["test_cases"][test_idx]
 
-        print(f"\n  → Executing Test {test_idx + 1}/{len(state['test_cases'])}")
+        print(f"\n  -> Executing Test {test_idx + 1}/{len(state['test_cases'])}")
         print(f"    Description: {test_case.get('description', 'N/A')}")
 
         stdin_input = _format_input_for_stdin(test_case["input"])
@@ -102,7 +102,7 @@ def execute_single_test_node(llm):
             reasoning = f"Execution failed with error: {execution_error}"
             passed = False
             actual_output = None
-            print(f"    ✗ Error during execution: {e}")
+            print(f"    x Error during execution: {e}")
 
         execution_time = time.time() - start_time
 
@@ -121,7 +121,7 @@ def execute_single_test_node(llm):
         state["test_results"].append(test_result)
         state["current_test_index"] += 1
 
-        status_symbol = "✓" if passed else "✗"
+        status_symbol = "ok" if passed else "x"
         print(f"    {status_symbol} Test {'PASSED' if passed else 'FAILED'}")
 
         return state
@@ -130,11 +130,11 @@ def execute_single_test_node(llm):
 
 
 def finalize_execution_node(state: TestExecutionState) -> TestExecutionState:
-    print(f"\n  → Finalizing test execution")
+    print("\n  -> Finalizing test execution")
 
     try:
         Path(state["code_file_path"]).unlink()
-        print(f"  ✓ Cleaned up temporary file")
+        print("  ok Cleaned up temporary file")
     except Exception as e:
         print(f"  ! Warning: Could not delete temporary file: {e}")
 
@@ -143,6 +143,6 @@ def finalize_execution_node(state: TestExecutionState) -> TestExecutionState:
 
     state["status"] = EvaluationStatus.COMPLETED
 
-    print(f"  ✓ Execution complete: {passed_tests}/{total_tests} tests passed")
+    print(f"  ok Execution complete: {passed_tests}/{total_tests} tests passed")
 
     return state

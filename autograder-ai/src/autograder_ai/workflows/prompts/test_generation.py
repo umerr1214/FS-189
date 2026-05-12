@@ -82,7 +82,7 @@ SUBMITTED CODE
 REQUIREMENTS FOR THE TEST CASES
 
 1. Produce **ONLY** a JSON list of dictionaries.
-   No explanation, no comments, no text outside JSON.
+   No explanation, no comments, no markdown, and no code fences.
 
 2. Each dictionary must have this exact structure:
    {{
@@ -92,6 +92,7 @@ REQUIREMENTS FOR THE TEST CASES
    }}
 
 3. The "input" field contains all parameters needed by the function.
+   Use the actual function parameter names from the submitted code when they are clear.
    The "expected_output" field contains what the function should return.
    The "description" field briefly explains what the test case validates.
 
@@ -104,11 +105,13 @@ REQUIREMENTS FOR THE TEST CASES
    - Edge cases (e.g., very large numbers, special values)
    - Invalid inputs that should be handled gracefully
 
-6. Generate **8–15 test cases**, depending on complexity.
+6. Generate **exactly 8 test cases**.
 
 7. All values must be valid JSON types (string, number, boolean, null, array, object).
 
-8. All numeric expected_output values must be exact integers or decimals. Never use scientific notation (e.g., write 933262... not 9.33e+157).
+8. All numeric expected_output values must be exact integers or decimals. Never use scientific notation.
+   Avoid test inputs whose expected output would be extremely large or hard to represent exactly.
+   For factorial, exponential, combinatorics, or other fast-growing numeric functions, keep integer inputs small enough that expected outputs fit within 10 digits.
 
 -----------------------------
 OUTPUT FORMAT (IMPORTANT)
@@ -126,7 +129,7 @@ OUTPUT FORMAT (IMPORTANT)
   }}
 ]
 
-Only valid JSON. No trailing commas. No comments.
+Only valid JSON. No trailing commas. No comments. No markdown code fences.
 
 Now generate the test case list.
 """
