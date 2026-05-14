@@ -40,6 +40,8 @@ export const feedbackApi = {
 
 export const evaluationApi = {
   trigger: (submissionId: string | number) => api.post(`/evaluations/${submissionId}/trigger`),
+  triggerBatch: (submissionIds: (string | number)[]) =>
+    api.post("/evaluations/batch/trigger", { submissionIds }),
 };
 
 export const instructorApi = {

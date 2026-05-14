@@ -21,7 +21,27 @@ async function persistFeedback(submissionId, feedbackText, generatedBy) {
   );
 }
 
+async function instructorOwnsSubmission(instructorId, submissionId) {
+  const result = await pool.query(
+    `SELECT 1
+     FROM submissions s
+     INNER JOIN assignments a ON a.assignment_id = s.assignment_id
+     WHERE s.submission_id = $1 AND a.instructor_id = $2`,
+    [submissionId, instructorId],
+  );
+  return result.rows.length > 0;
+}
+
+/**
+ * Runs the LangGraph evaluation pipeline for one submission.
+ * @returns {Promise<{ submissionId: number, success: boolean, error?: string }>}
+ */
 async function triggerEvaluationForSubmission(submissionId) {
+  const id = Number(submissionId);
+  if (!Number.isFinite(id) || id <= 0) {
+    return { submissionId: id, success: false, error: "Invalid submission id" };
+  }
+
   try {
     const submissionResult = await pool.query(
       `SELECT
@@ -39,7 +59,7 @@ async function triggerEvaluationForSubmission(submissionId) {
        LEFT JOIN rubrics r ON r.rubric_id = a.rubric_id
        LEFT JOIN assignment_documents ad ON ad.assignment_id = s.assignment_id
        WHERE s.submission_id = $1`,
-      [submissionId],
+      [id],
     );
 
     if (!submissionResult.rows.length) {
@@ -100,24 +120,27 @@ async function triggerEvaluationForSubmission(submissionId) {
       "UPDATE submissions SET status = $1 WHERE submission_id = $2",
       [evaluationSucceeded ? "Evaluated" : "Error", submission.submission_id],
     );
+
+    return { submissionId: id, success: evaluationSucceeded };
   } catch (error) {
-    // Never rethrow from failure handler; ensure we keep error visibility.
     // eslint-disable-next-line no-console
     console.error("Evaluation pipeline failed:", error);
 
     try {
-      await persistFeedback(submissionId, `Evaluation pipeline error: ${error?.message || "Unknown error"}`, "AI");
+      await persistFeedback(id, `Evaluation pipeline error: ${error?.message || "Unknown error"}`, "AI");
     } catch (persistErr) {
       // eslint-disable-next-line no-console
       console.error("Failed to persist feedback row:", persistErr);
     }
 
     try {
-      await pool.query("UPDATE submissions SET status = 'Error' WHERE submission_id = $1", [submissionId]);
+      await pool.query("UPDATE submissions SET status = 'Error' WHERE submission_id = $1", [id]);
     } catch (statusErr) {
       // eslint-disable-next-line no-console
       console.error("Failed to set submission status Error:", statusErr);
     }
+
+    return { submissionId: id, success: false, error: error?.message || "Unknown error" };
   }
 }
 
@@ -127,8 +150,72 @@ async function triggerEvaluation(req, res) {
     return res.status(400).json({ success: false, message: "Invalid submission id" });
   }
 
-  await triggerEvaluationForSubmission(submissionId);
-  return res.json({ success: true, submissionId, message: "Evaluation completed" });
+  const instructorId = Number(req.user.user_id);
+  if (!(await instructorOwnsSubmission(instructorId, submissionId))) {
+    return res.status(403).json({ success: false, message: "You cannot evaluate this submission" });
+  }
+
+  const result = await triggerEvaluationForSubmission(submissionId);
+  return res.json({
+    success: true,
+    submissionId,
+    evaluated: result.success,
+    message: result.success ? "Evaluation completed" : "Evaluation finished with errors",
+  });
 }
 
-module.exports = { triggerEvaluation, triggerEvaluationForSubmission };
+async function triggerBatchEvaluation(req, res) {
+  const instructorId = Number(req.user.user_id);
+  const raw = req.body?.submissionIds ?? req.body?.submission_ids;
+  const ids = (Array.isArray(raw) ? raw : [])
+    .map((x) => Number(x))
+    .filter((n) => Number.isFinite(n) && n > 0);
+  const uniqueIds = [...new Set(ids)];
+
+  if (!uniqueIds.length) {
+    return res.status(400).json({
+      success: false,
+      message: "Provide a non-empty submissionIds array",
+    });
+  }
+
+  const allowed = await pool.query(
+    `SELECT s.submission_id
+     FROM submissions s
+     INNER JOIN assignments a ON a.assignment_id = s.assignment_id
+     WHERE s.submission_id = ANY($1::int[]) AND a.instructor_id = $2`,
+    [uniqueIds, instructorId],
+  );
+  const allowedSet = new Set(allowed.rows.map((row) => Number(row.submission_id)));
+  const unauthorized = uniqueIds.filter((sid) => !allowedSet.has(sid));
+  if (unauthorized.length) {
+    return res.status(403).json({
+      success: false,
+      message: "Some submissions are not part of your assignments",
+      unauthorizedSubmissionIds: unauthorized,
+    });
+  }
+
+  const maxConcurrent = Math.min(
+    Math.max(1, Number.parseInt(process.env.EVAL_BATCH_CONCURRENCY, 10) || 3),
+    uniqueIds.length,
+  );
+
+  const results = [];
+  for (let i = 0; i < uniqueIds.length; i += maxConcurrent) {
+    const chunk = uniqueIds.slice(i, i + maxConcurrent);
+    const chunkResults = await Promise.all(chunk.map((sid) => triggerEvaluationForSubmission(sid)));
+    results.push(...chunkResults);
+  }
+
+  const evaluated = results.filter((r) => r.success).length;
+  return res.json({
+    success: true,
+    processed: uniqueIds.length,
+    evaluated,
+    failed: uniqueIds.length - evaluated,
+    results,
+  });
+}
+
+module.exports = { triggerEvaluation, triggerBatchEvaluation, triggerEvaluationForSubmission };

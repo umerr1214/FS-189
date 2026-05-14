@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
@@ -12,7 +12,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { useToast } from "@/hooks/use-toast";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { useEffect } from "react";
+import { Checkbox } from "@/components/ui/checkbox";
 import { authApi, evaluationApi } from "@/lib/api";
 
 const InstructorDashboard = () => {
@@ -29,6 +29,8 @@ const InstructorDashboard = () => {
   const [grades, setGrades] = useState<Array<{ studentId: string; studentName: string; submissionId: string; status: string; hasReport: boolean }>>([]);
   const [loading, setLoading] = useState(true);
   const [triggeringSubmissionId, setTriggeringSubmissionId] = useState<string | null>(null);
+  const [selectedSubmissionIds, setSelectedSubmissionIds] = useState<string[]>([]);
+  const [batchEvaluating, setBatchEvaluating] = useState(false);
 
   const user = JSON.parse(localStorage.getItem("user") || "{}");
   const instructorId = user?.user_id;
@@ -37,6 +39,32 @@ const InstructorDashboard = () => {
     const n = Number(selectedAssignment);
     return Number.isFinite(n) && n > 0 ? n : null;
   }, [selectedAssignment]);
+
+  const pendingGradeRows = useMemo(
+    () => grades.filter((g) => !g.hasReport && g.status !== "completed"),
+    [grades],
+  );
+
+  const allPendingSelected =
+    pendingGradeRows.length > 0 &&
+    pendingGradeRows.every((g) => selectedSubmissionIds.includes(g.submissionId));
+
+  const somePendingSelected = pendingGradeRows.some((g) =>
+    selectedSubmissionIds.includes(g.submissionId),
+  );
+
+  const headerCheckboxState: boolean | "indeterminate" =
+    pendingGradeRows.length === 0
+      ? false
+      : allPendingSelected
+        ? true
+        : somePendingSelected
+          ? "indeterminate"
+          : false;
+
+  useEffect(() => {
+    setSelectedSubmissionIds([]);
+  }, [selectedAssignmentId]);
 
   useEffect(() => {
     const fetchAll = async () => {
@@ -252,27 +280,35 @@ const InstructorDashboard = () => {
     }
   };
 
+  const refreshGradesForAssignment = async () => {
+    if (!selectedAssignmentId) return;
+    try {
+      const res = await fetch(
+        `http://localhost:3001/instructor/dashboard/grades?assignmentId=${selectedAssignmentId}`,
+      );
+      if (!res.ok) return;
+      const data = await res.json();
+      setGrades((data.grades || []).map((g) => ({
+        studentId: String(g.studentId),
+        studentName: String(g.studentName),
+        submissionId: String(g.submissionId),
+        status: String(g.status),
+        hasReport: Boolean(g.hasReport),
+      })));
+    } catch {
+      /* keep existing grades on refresh failure */
+    }
+  };
+
   const handleTriggerEvaluation = async (submissionId: string) => {
     setTriggeringSubmissionId(submissionId);
     try {
       await evaluationApi.trigger(submissionId);
       toast({
-        title: "Evaluation started",
-        description: "Submission sent for AI evaluation.",
+        title: "Evaluation completed",
+        description: "AI evaluation finished for this submission.",
       });
-      if (selectedAssignmentId) {
-        const res = await fetch(`http://localhost:3001/instructor/dashboard/grades?assignmentId=${selectedAssignmentId}`);
-        if (res.ok) {
-          const data = await res.json();
-          setGrades((data.grades || []).map((g) => ({
-            studentId: String(g.studentId),
-            studentName: String(g.studentName),
-            submissionId: String(g.submissionId),
-            status: String(g.status),
-            hasReport: Boolean(g.hasReport),
-          })));
-        }
-      }
+      await refreshGradesForAssignment();
       navigate(`/feedback/${submissionId}`);
     } catch (error: any) {
       toast({
@@ -282,6 +318,45 @@ const InstructorDashboard = () => {
       });
     } finally {
       setTriggeringSubmissionId(null);
+    }
+  };
+
+  const toggleSubmissionSelected = (submissionId: string) => {
+    setSelectedSubmissionIds((prev) =>
+      prev.includes(submissionId) ? prev.filter((id) => id !== submissionId) : [...prev, submissionId],
+    );
+  };
+
+  const selectAllPendingSubmissions = () => {
+    setSelectedSubmissionIds(pendingGradeRows.map((g) => g.submissionId));
+  };
+
+  const clearPendingSelection = () => setSelectedSubmissionIds([]);
+
+  const handleHeaderSelectPending = (checked: boolean | "indeterminate") => {
+    if (checked === true) selectAllPendingSubmissions();
+    else clearPendingSelection();
+  };
+
+  const handleBatchTriggerEvaluation = async () => {
+    if (selectedSubmissionIds.length === 0) return;
+    setBatchEvaluating(true);
+    try {
+      const { data } = await evaluationApi.triggerBatch(selectedSubmissionIds);
+      toast({
+        title: "Batch evaluation finished",
+        description: `${data.evaluated ?? 0} evaluated successfully. ${data.failed ?? 0} marked as error.`,
+      });
+      await refreshGradesForAssignment();
+      clearPendingSelection();
+    } catch (error: any) {
+      toast({
+        title: "Batch evaluation failed",
+        description: error?.response?.data?.message || "Please try again",
+        variant: "destructive",
+      });
+    } finally {
+      setBatchEvaluating(false);
     }
   };
 
@@ -497,7 +572,7 @@ const InstructorDashboard = () => {
                           ? navigate(`/feedback/${submission.id}`)
                           : handleTriggerEvaluation(submission.id)
                       }
-                      disabled={triggeringSubmissionId === submission.id}
+                      disabled={batchEvaluating || triggeringSubmissionId === submission.id}
                     >
                       {submission.status === "completed"
                         ? "View Report"
@@ -515,23 +590,37 @@ const InstructorDashboard = () => {
         {/* Student Grades Table */}
         <Card className="shadow-card mt-6">
           <CardHeader>
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <CardTitle>Student Reports</CardTitle>
                 <CardDescription>View all student reports for a specific assignment</CardDescription>
               </div>
-              <Select value={selectedAssignment} onValueChange={setSelectedAssignment}>
-                <SelectTrigger className="w-[280px]">
-                  <SelectValue placeholder="Select assignment" />
-                </SelectTrigger>
-                <SelectContent>
-                  {assignments.map((assignment) => (
-                    <SelectItem key={assignment.id} value={assignment.id.toString()}>
-                      {assignment.title}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                <Button
+                  type="button"
+                  variant="default"
+                  size="sm"
+                  className="w-full sm:w-auto"
+                  disabled={selectedSubmissionIds.length === 0 || batchEvaluating}
+                  onClick={() => void handleBatchTriggerEvaluation()}
+                >
+                  {batchEvaluating
+                    ? "Evaluating…"
+                    : `Evaluate selected (${selectedSubmissionIds.length})`}
+                </Button>
+                <Select value={selectedAssignment} onValueChange={setSelectedAssignment}>
+                  <SelectTrigger className="w-full sm:w-[280px]">
+                    <SelectValue placeholder="Select assignment" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {assignments.map((assignment) => (
+                      <SelectItem key={assignment.id} value={assignment.id.toString()}>
+                        {assignment.title}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
           </CardHeader>
           <CardContent>
@@ -539,6 +628,14 @@ const InstructorDashboard = () => {
               <Table>
                 <TableHeader>
                   <TableRow>
+                    <TableHead className="w-10">
+                      <Checkbox
+                        checked={headerCheckboxState}
+                        onCheckedChange={handleHeaderSelectPending}
+                        disabled={pendingGradeRows.length === 0 || batchEvaluating}
+                        aria-label="Select all pending submissions"
+                      />
+                    </TableHead>
                     <TableHead>Student ID</TableHead>
                     <TableHead>Student Name</TableHead>
                     <TableHead className="text-right">Report</TableHead>
@@ -547,35 +644,48 @@ const InstructorDashboard = () => {
                 <TableBody>
                   {grades.length === 0 ? (
                     <TableRow>
-                      <TableCell colSpan={3} className="text-center text-muted-foreground py-8">
+                      <TableCell colSpan={4} className="text-center text-muted-foreground py-8">
                         {selectedAssignment ? "No grades yet for this assignment." : "Select an assignment to view grades."}
                       </TableCell>
                     </TableRow>
                   ) : (
-                    grades.map((student) => (
-                      <TableRow key={student.submissionId || `${student.studentId}-${student.studentName}`}>
-                        <TableCell className="font-medium">{student.studentId}</TableCell>
-                        <TableCell>{student.studentName}</TableCell>
-                        <TableCell className="text-right">
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() =>
-                              student.hasReport || student.status === "completed"
-                                ? navigate(`/feedback/${student.submissionId}`)
-                                : handleTriggerEvaluation(student.submissionId)
-                            }
-                            disabled={triggeringSubmissionId === student.submissionId}
-                          >
-                            {student.hasReport || student.status === "completed"
-                              ? "View Report"
-                              : triggeringSubmissionId === student.submissionId
-                                ? "Triggering..."
-                                : "Trigger Evaluation"}
-                          </Button>
-                        </TableCell>
-                      </TableRow>
-                    ))
+                    grades.map((student) => {
+                      const isPending = !student.hasReport && student.status !== "completed";
+                      return (
+                        <TableRow key={student.submissionId || `${student.studentId}-${student.studentName}`}>
+                          <TableCell className="w-10 align-middle">
+                            {isPending ? (
+                              <Checkbox
+                                checked={selectedSubmissionIds.includes(student.submissionId)}
+                                onCheckedChange={() => toggleSubmissionSelected(student.submissionId)}
+                                disabled={batchEvaluating}
+                                aria-label={`Select ${student.studentName}`}
+                              />
+                            ) : null}
+                          </TableCell>
+                          <TableCell className="font-medium">{student.studentId}</TableCell>
+                          <TableCell>{student.studentName}</TableCell>
+                          <TableCell className="text-right">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() =>
+                                student.hasReport || student.status === "completed"
+                                  ? navigate(`/feedback/${student.submissionId}`)
+                                  : handleTriggerEvaluation(student.submissionId)
+                              }
+                              disabled={batchEvaluating || triggeringSubmissionId === student.submissionId}
+                            >
+                              {student.hasReport || student.status === "completed"
+                                ? "View Report"
+                                : triggeringSubmissionId === student.submissionId
+                                  ? "Triggering..."
+                                  : "Trigger Evaluation"}
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      );
+                    })
                   )}
                 </TableBody>
               </Table>
