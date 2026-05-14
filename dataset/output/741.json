@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void applyFilter(const vector<vector<int>>& input, const vector<vector<int>>& filter, vector<vector<int>>& output) that applies a 3x3 filter to the input matrix.",
+  "test_cases": [
+    {
+      "input": "Any input",
+      "expected": "Correct convolution"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include \"741.cpp\"\n\nint main() {\n    vector<vector<int>> input = {{1,1,1},{1,1,1},{1,1,1}};\n    vector<vector<int>> filter = {{1,1,1},{1,1,1},{1,1,1}};\n    vector<vector<int>> output;\n    applyFilter_NonConst(input, filter, output);\n    // XOR logic: 1^1 = 0. Sum = 0.\n    // Correct: 1*1 = 1. Sum = 9.\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using bitwise XOR `^` instead of multiplication `*` for the weighted sum calculation."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Implement a `MediaItem` base class with a virtual `play()` method. Derive `AudioFile` and `VideoFile` classes from `MediaItem`. Override the `play()` method in each derived class to print a specific message for playing audio or video.",
+  "test_cases": [
+    { "input": "", "expected": "--- Correct Version Test ---\nPlaying audio file.\nPlaying video file.\n--- Objects going out of scope (destructors called) ---\nAudioFile destructor called.\nMediaItem destructor called.\nVideoFile destructor called.\nMediaItem destructor called.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <memory>\n#include <vector>\n\nclass MediaItem {\npublic:\n    virtual ~MediaItem() {\n        std::cout << \"MediaItem destructor called.\" << std::endl;\n    }\n    virtual void play() = 0;\n};\n\nclass AudioFile : public MediaItem {\npublic:\n    ~AudioFile() override {\n        std::cout << \"AudioFile destructor called.\" << std::endl;\n    }\n    void play() override {\n        std::cout << \"Playing audio file.\" << std::endl;\n    }\n};\n\nclass VideoFile : public MediaItem {\npublic:\n    ~VideoFile() override {\n        std::cout << \"VideoFile destructor called.\" << std::endl;\n    }\n    void play() override {\n        std::cout << \"Playing video file.\" << std::endl;\n    }\n};\n\nint main() {\n    std::cout << \"--- Correct Version Test ---\" << std::endl;\n    std::vector<std::unique_ptr<MediaItem>> mediaCollection;\n    mediaCollection.push_back(std::make_unique<AudioFile>());\n    mediaCollection.push_back(std::make_unique<VideoFile>());\n    for (const auto& item : mediaCollection) {\n        item->play();\n    }\n    std::cout << \"--- Objects going out of scope (destructors called) ---\" << std::endl;\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

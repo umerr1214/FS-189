@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Implement a `Student` class with private members for `studentID` (int) and `name` (string). Add a parameterized constructor and a public method `enrollInCourse(string courseName)` that simply prints a message indicating the student has enrolled in the given course.",
+  "test_cases": [
+    {
+      "input": "Student s1(101, \"Alice Smith\"); s1.enrollInCourse(\"Calculus I\");",
+      "expected": "Alice Smith (ID: 101) has enrolled in Calculus I.\n"
+    },
+    {
+      "input": "Student s2(102, \"Bob Johnson\"); s2.enrollInCourse(\"Linear Algebra\");",
+      "expected": "Bob Johnson (ID: 102) has enrolled in Linear Algebra.\n"
+    }
+  ],
+  "driver": "int main() {\n    Student s1(101, \"Alice Smith\");\n    s1.enrollInCourse(\"Calculus I\");\n\n    Student s2(102, \"Bob Johnson\");\n    s2.enrollInCourse(\"Linear Algebra\");\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `enrollInCourse` method incorrectly prints a hardcoded course name ('Introduction to C++') instead of using the `courseName` parameter provided."
+  ]
+}

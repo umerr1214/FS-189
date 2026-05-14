@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Develop a `DynamicArray` class that manages an array of integers on the heap. Include a constructor that takes size, a destructor that deallocates memory, and a method `setElement(index, value)`.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "Test Case 1: Basic functionality and out-of-bounds write (Robustness Issue)\nElement at index 0: 10\nElement at index 4: 50\nAttempting to write out of bounds (index 5)...\nValue written to index 5 (may be garbage or crash program): (throws std::out_of_range or crashes due to UB)\n\nTest Case 2: Demonstrating Rule of Three violation (Robustness Issue)\nOriginal array elements: 11 22 33 \nCopied array element at index 0 after modification: 99\nOriginal array element at index 0 (also changed due to shallow copy): 99\n(Program terminates with a double-free error or other memory corruption when objects are destroyed)"
+    }
+  ],
+  "driver": "int main() {\n    // Test Case 1: Basic functionality\n    std::cout << \"Test Case 1: Basic functionality and out-of-bounds write (Robustness Issue)\" << std::endl;\n    DynamicArray arr(5);\n    arr.setElement(0, 10);\n    arr.setElement(4, 50);\n    std::cout << \"Element at index 0: \" << arr.getElement(0) << std::endl;\n    std::cout << \"Element at index 4: \" << arr.getElement(4) << std::endl;\n\n    // This will likely cause a crash or undefined behavior due to lack of bounds checking in setElement\n    std::cout << \"Attempting to write out of bounds (index 5)...\" << std::endl;\n    try {\n        arr.setElement(5, 100);\n        std::cout << \"Value written to index 5 (may be garbage or crash program): \" << arr.getElement(5) << std::endl;\n    } catch (const std::out_of_range& e) {\n        std::cout << \"Caught exception for getElement(5): \" << e.what() << std::endl;\n    } catch (...) {\n        std::cout << \"Caught unexpected exception during out-of-bounds access.\" << std::endl;\n    }\n\n    std::cout << \"\\nTest Case 2: Demonstrating Rule of Three violation (Robustness Issue)\" << std::endl;\n    DynamicArray originalArray(3);\n    originalArray.setElement(0, 11);\n    originalArray.setElement(1, 22);\n    originalArray.setElement(2, 33);\n\n    std::cout << \"Original array elements: \";\n    for (int i = 0; i < originalArray.getSize(); ++i) {\n        std::cout << originalArray.getElement(i) << \" \";\n    }\n    std::cout << std::endl;\n\n    DynamicArray copiedArray = originalArray;\n    copiedArray.setElement(0, 99);\n\n    std::cout << \"Copied array element at index 0 after modification: \" << copiedArray.getElement(0) << std::endl;\n    std::cout << \"Original array element at index 0 (also changed due to shallow copy): \" << originalArray.getElement(0) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing copy constructor and copy assignment operator (Rule of Three violation), leading to shallow copies and double-free errors when objects are copied.",
+    "Lack of bounds checking in `setElement` method, allowing out-of-bounds memory access and resulting in undefined behavior or crashes."
+  ]
+}

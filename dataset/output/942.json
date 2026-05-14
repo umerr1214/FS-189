@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Implement a Circular Queue class using an array.",
+  "test_cases": [
+    {
+      "input": "enqueue 10, 20; dequeue",
+      "expected": "10"
+    },
+    {
+      "input": "Full queue check",
+      "expected": "Overflow message"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cassert>\n#include \"942.cpp\"\n\nint main() {\n    Queue q;\n    q.enqueue(10);\n    assert(q.dequeue() == 10);\n    assert(q.isEmpty());\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

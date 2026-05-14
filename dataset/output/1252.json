@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Implement a `Vector2D` class with `x` and `y` coordinates. Create a `getLength()` method that calculates the magnitude of the vector and mark it as a `const` method. Demonstrate calling this method on a `const Vector2D` object.",
+  "test_cases": [
+    { "input": "", "expected": "Vector v1: (3, 4)\nLength of v1: 5\nVector v2: (5, 12)\nLength of v2: 13\n" }
+  ],
+  "driver": "    const Vector2D v1(3.0, 4.0);\n    std::cout << \"Vector v1: (\" << v1.x << \", \" << v1.y << \")\" << std::endl;\n    std::cout << \"Length of v1: \" << v1.getLength() << std::endl;\n\n    Vector2D v2(5.0, 12.0);\n    std::cout << \"Vector v2: (\" << v2.x << \", \" << v2.y << \")\" << std::endl;\n    std::cout << \"Length of v2: \" << v2.getLength() << std::endl;\n",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after class definition 'Vector2D'"]
+}

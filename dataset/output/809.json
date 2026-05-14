@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void runLengthEncode(const char* input, char* output) that performs run-length encoding on the input string.",
+  "test_cases": [
+    {
+      "input": "input = \"AAA\"",
+      "expected": "\"A3\""
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <string>\n#include <vector>\n#include \"809.cpp\"\n\nint main() {\n    const char* str = \"AAA\";\n    char res[100];\n    runLengthEncode(str, res);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses `std::string` concatenation and conversion overhead instead of direct character array manipulation."
+  ]
+}

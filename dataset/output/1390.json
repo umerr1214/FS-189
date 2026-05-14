@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Implement a `Date` class with private `day`, `month`, and `year` integers. Overload the `==` operator to compare if two `Date` objects represent the same date.",
+  "test_cases": [
+    { "input": "", "expected": "d1: 1/1/2023\nd2: 1/1/2023\nd3: 2/1/2023\nd4: 1/2/2023\nd5: 1/1/2024\nd1 == d2: true\nd1 == d3: false\nd1 == d4: false\nd1 == d5: false\n" }
+  ],
+  "driver": "#include <iostream>\n\nclass Date {\nprivate:\n    int day;\n    int month;\n    int year;\n\npublic:\n    Date(int d, int m, int y) : day(d), month(m), year(y) {}\n\n    bool operator==(const Date& other) const {\n        return day == other.day && month == other.month && year == other.year;\n    }\n\n    void print() const {\n        std::cout << day << \"/\" << month << \"/\" << year;\n    }\n};\n\nint main() {\n    Date d1(1, 1, 2023);\n    Date d2(1, 1, 2023);\n    Date d3(2, 1, 2023);\n    Date d4(1, 2, 2023);\n    Date d5(1, 1, 2024);\n\n    std::cout << \"d1: \"; d1.print(); std::cout << std::endl;\n    std::cout << \"d2: \"; d2.print(); std::cout << std::endl;\n    std::cout << \"d3: \"; d3.print(); std::cout << std::endl;\n    std::cout << \"d4: \"; d4.print(); std::cout << std::endl;\n    std::cout << \"d5: \"; d5.print(); std::cout << std::endl;\n\n    std::cout << \"d1 == d2: \" << (d1 == d2 ? \"true\" : \"false\") << std::endl;\n    std::cout << \"d1 == d3: \" << (d1 == d3 ? \"true\" : \"false\") << std::endl;\n    std::cout << \"d1 == d4: \" << (d1 == d4 ? \"true\" : \"false\") << std::endl;\n    std::cout << \"d1 == d5: \" << (d1 == d5 ? \"true\" : \"false\") << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after class definition `Date`."]
+}

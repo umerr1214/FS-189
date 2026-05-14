@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `Point` class with private `x` and `y` coordinates. Implement getter methods `getX()` and `getY()` as `const` member functions. Demonstrate declaring a `const` `Point` object and calling its `const` getter methods.",
+  "test_cases": [
+    { "input": "", "expected": "Point coordinates (const object):\nx: 10\ny: 20\nThis line will cause a syntax error.\n" }
+  ],
+  "driver": "",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after 'std::cout << \"y: \" << p.getY()' statement."]
+}

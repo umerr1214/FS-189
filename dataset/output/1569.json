@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Demonstrate polymorphism by creating an array of `Animal*` (from Question 11). Populate the array with `Dog` and `Cat` objects and then iterate through the array, calling `makeSound()` on each animal. Explain the output.",
+  "test_cases": [
+    { "input": "", "expected": "--- Demonstrating Polymorphism ---\nAnimal 1: Woof! Woof!\nAnimal 2: Meow! Meow!\nAnimal 3: Woof! Woof!\nAnimal 4: Meow! Meow!\n---------------------------------\nDog destructor called.\nAnimal destructor called.\nCat destructor called.\nAnimal destructor called.\nDog destructor called.\nAnimal destructor called.\nCat destructor called.\nAnimal destructor called.\n\nExplanation of Output:\nThe output clearly demonstrates polymorphism. When makeSound() is called on 'Animal*' (specifically, 'std::unique_ptr<Animal>'), the program correctly invokes the overridden method specific to the actual object type (Dog or Cat) at runtime.\nThis dynamic dispatch is enabled by declaring makeSound() as 'virtual' in the base Animal class.\nFurthermore, observe the destructor calls: 'Dog destructor called.', 'Cat destructor called.', followed by 'Animal destructor called.' for each object.\nThis confirms that the virtual destructor in the Animal base class, combined with std::unique_ptr, ensures proper and complete memory deallocation for both derived and base class parts of the objects, preventing memory leaks.\nUsing std::vector and std::unique_ptr provides robust, safe, and readable memory management compared to raw pointers and manual 'new'/'delete'." }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

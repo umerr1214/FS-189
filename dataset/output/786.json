@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a function int largestRegion(char grid[][COLS]) that finds the size of the largest connected region of 1s.",
+  "test_cases": [
+    {
+      "input": "grid with regions of size 4, 1, 4",
+      "expected": "4"
+    },
+    {
+      "input": "All 0s",
+      "expected": "0"
+    },
+    {
+      "input": "All 1s",
+      "expected": "25"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <cassert>\n#include \"786.cpp\"\n\nint main() {\n    char grid[ROWS][COLS] = {\n        {'1', '1', '0', '0', '0'}, // 4\n        {'1', '1', '0', '0', '0'},\n        {'0', '0', '1', '0', '0'}, // 1\n        {'0', '0', '0', '1', '1'}, // 4 (connected to below)\n        {'0', '0', '0', '1', '1'}\n    };\n    assert(largestRegion(grid) == 4);\n    \n    char grid2[ROWS][COLS] = {{'0'}}; // All 0\n    assert(largestRegion(grid2) == 0);\n\n    char grid3[ROWS][COLS];\n    for(int i=0;i<ROWS;i++) for(int j=0;j<COLS;j++) grid3[i][j] = '1';\n    assert(largestRegion(grid3) == 25);\n    \n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

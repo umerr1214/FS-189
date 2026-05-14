@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Develop a `Rectangle` class with private double members `width` and `height`. Implement a parameterized constructor that initializes these dimensions and a public method `getArea()` that returns the rectangle's area.",
+  "test_cases": [
+    { "input": "width=12.5, height=4.0", "expected": "Area for (12.5, 4.0): 50.0" },
+    { "input": "width=2.0, height=2.0", "expected": "Area for (2.0, 2.0): 4.0" },
+    { "input": "width=0.0, height=10.0", "expected": "Area for (0.0, 10.0): 0.0" },
+    { "input": "width=100.0, height=0.5", "expected": "Area for (100.0, 0.5): 50.0" }
+  ],
+  "driver": "#include <iostream>\n\nclass Rectangle {\nprivate:\n    double width;\n    double height;\n\npublic:\n    // Parameterized constructor with slightly verbose parameter names\n    Rectangle(double w_value, double h_value) : width(w_value), height(h_value) {}\n\n    // Public method to get the area - introduces a redundant local variable\n    double getArea() const {\n        double calculatedArea = this->width * this->height; // 'this->' is not strictly needed here, and 'calculatedArea' is redundant\n        return calculatedArea;\n    }\n};\n\nint main() {\n    // Test cases for Readability / Efficiency Issue\n    Rectangle r1(12.5, 4.0);\n    std::cout << \"Area for (12.5, 4.0): \" << r1.getArea() << std::endl;\n\n    Rectangle r2(2.0, 2.0);\n    std::cout << \"Area for (2.0, 2.0): \" << r2.getArea() << std::endl;\n\n    Rectangle r3(0.0, 10.0);\n    std::cout << \"Area for (0.0, 10.0): \" << r3.getArea() << std::endl;\n    \n    Rectangle r4(100.0, 0.5);\n    std::cout << \"Area for (100.0, 0.5): \" << r4.getArea() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": []
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void moveZeroes(int arr[], int n) that moves all 0s to the end while maintaining relative order of non-zero elements.",
+  "test_cases": [
+    {
+      "input": "Standard input",
+      "expected": "Correct output"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include \"833.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses O(N) extra space (vector) to store non-zero elements instead of performing the operation in-place O(1)."
+  ]
+}

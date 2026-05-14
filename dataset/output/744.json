@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a function void applyFilter(const vector<vector<int>>& input, const vector<vector<int>>& filter, vector<vector<int>>& output) that applies a 3x3 filter to the input matrix.",
+  "test_cases": [
+    {
+      "input": "input = 5x5, filter = 3x3 identity",
+      "expected": "Output 3x3 matching center"
+    },
+    {
+      "input": "input = 2x2",
+      "expected": "Empty output"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <cassert>\n#include \"744.cpp\"\n\nint main() {\n    vector<vector<int>> input = {{1,1,1},{1,1,1},{1,1,1}};\n    vector<vector<int>> filter = {{1,1,1},{1,1,1},{1,1,1}};\n    vector<vector<int>> output;\n    applyFilter(input, filter, output);\n    // Center pixel of input surrounded by 1s. Sum = 9.\n    assert(output.size() == 1 && output[0].size() == 1);\n    assert(output[0][0] == 9);\n    \n    vector<vector<int>> small(2, vector<int>(2));\n    applyFilter(small, filter, output);\n    assert(output.empty());\n    \n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

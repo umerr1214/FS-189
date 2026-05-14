@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `Printer` class with overloaded `print` methods. One method should take an integer, another a string, and a third a character. Each method should display its respective argument.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Printing int: 100\nPrinting string: Hello\nPrinting char: A\nPrinting char: B\n" }
+  ],
+  "driver": "    Printer p;\n    p.print(100);\n    p.print(\"Hello\");\n    p.print('A'); // Corrected call for expected output\n    p.print('B');",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Attempting to call `print` with a C-style string literal `\"A\"` when an overload for `char` is expected, leading to a 'no matching function' error. `\"A\"` is of type `const char[2]` (or `const char*`), not `char`."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Counter` class that uses a `static` member variable to keep track of the total number of `Counter` objects currently alive (created minus destroyed). Update this static member in constructors and the destructor.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Correct Version Test ---\nInitial count: 0\nAfter creating c1: 1\nAfter creating c2 (copy of c1): 2\nAfter creating c3: 3\nAfter c3 = c1 (assignment): 3\nAfter creating a vector of 2 Counters: 5\nAfter inner scope exit: 1\nAfter creating c4: 2\nFinal count after all objects destroyed: 0\n"
+    }
+  ],
+  "driver": "int main() {\n    run_test_case();\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void mergeArrays(const int arr1[], int n1, const int arr2[], int n2, int result[]) that merges two sorted arrays into one sorted array.",
+  "test_cases": [
+    {
+      "input": "arr1 shorter than arr2",
+      "expected": "Full merged array"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cassert>\n#include \"800.cpp\"\n\nint main() {\n    int arr1[] = {1, 3};\n    int arr2[] = {2, 4, 6};\n    int result[5] = {0};\n    mergeArrays(arr1, 2, arr2, 3, result);\n    // Should correspond to 1, 2, 3, 4, 6\n    // Actual: 1, 2, 3, 4, 0 (6 missing)\n    // assert(result[4] == 6);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Missing loop to copy remaining elements from the second array (`arr2`) if the first array (`arr1`) finishes first."
+  ]
+}

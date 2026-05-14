@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a `Book` class with `title` and `author` (both `std::string`). Provide a default constructor, a parameterized constructor, and a copy constructor. Demonstrate their usage by creating objects in different ways.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book 1 (Default): Book: \"Unknown Title\" by Unknown Author\nBook 2 (Parameterized): Book: \"The Great Gatsby\" by F. Scott Fitzgerald\nBook 3 (Copy of Book 2): Book: \"The Great Gatsby\" by F. Scott Fitzgerald\n\nDemonstrating robustness issue (modifying via getter):\nBefore modification:\nBook: \"Unknown Title\" by Unknown Author\nBook: \"The Great Gatsby\" by F. Scott Fitzgerald\nAfter modification:\nBook: \"New Default Title\" by New Default Author\nBook: \"Modified Gatsby\" by F. Scott Fitzgerald\nBook: \"The Great Gatsby\" by F. Scott Fitzgerald\n"
+    }
+  ],
+  "driver": "int main() {\n    // 1. Default constructor\n    Book book1;\n    std::cout << \"Book 1 (Default): \";\n    book1.print();\n\n    // 2. Parameterized constructor\n    Book book2(\"The Great Gatsby\", \"F. Scott Fitzgerald\");\n    std::cout << \"Book 2 (Parameterized): \";\n    book2.print();\n\n    // 3. Copy constructor\n    Book book3 = book2; // Calls copy constructor\n    std::cout << \"Book 3 (Copy of Book 2): \";\n    book3.print();\n\n    // Demonstrate the robustness issue: modifying internal state via non-const getters\n    std::cout << \"\\nDemonstrating robustness issue (modifying via getter):\" << std::endl;\n    std::cout << \"Before modification:\" << std::endl;\n    book1.print();\n    book2.print();\n\n    book1.getTitle() = \"New Default Title\";\n    book1.getAuthor() = \"New Default Author\";\n\n    book2.getTitle() = \"Modified Gatsby\";\n\n    std::cout << \"After modification:\" << std::endl;\n    book1.print();\n    book2.print();\n    book3.print();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `getTitle()` and `getAuthor()` methods return non-const references to the internal `title` and `author` members. This breaks encapsulation and allows external code to directly modify the object's internal state. While this might be intended in some niche scenarios, it generally leads to a less robust class design as it can result in unexpected state changes and makes it harder to maintain class invariants. A more robust design would return `const std::string&` to prevent external modification."
+  ]
+}

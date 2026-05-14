@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a function void mergeSort(int arr[], int l, int r) that sorts an array using Merge Sort algorithm.",
+  "test_cases": [
+    {
+      "input": "arr = {12, 11, 13, 5, 6, 7}",
+      "expected": "{5, 6, 7, 11, 12, 13}"
+    },
+    {
+      "input": "arr = NULL",
+      "expected": "No crash"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <cassert>\n#include \"930.cpp\"\n\nint main() {\n    int arr[] = {12, 11, 13, 5, 6, 7};\n    mergeSort(arr, 0, 5);\n    assert(arr[0] == 5 && arr[5] == 13);\n    \n    mergeSort(NULL, 0, 0);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

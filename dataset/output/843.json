@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function bool isBalanced(const char* str) that checks if the parentheses '(' and ')' in the string are balanced.",
+  "test_cases": [
+    {
+      "input": "str = \")(\"",
+      "expected": "false"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include \"843.cpp\"\n\nint main() {\n    // Inverted logic makes \")(\" balanced\n    if (isBalanced_Semantic(\")(\")) return 1;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using bitwise XOR `^` logic which inverts the equality check, causing reversed logic for parentheses handling."
+  ]
+}

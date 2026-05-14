@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function int sumOfDigits(int n) that calculates the sum of digits of a non-negative integer.",
+  "test_cases": [
+    {
+      "input": "n = -123",
+      "expected": "6"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"892.cpp\"\n\nint main() {\n    // Returns 0 for negative input\n    if (sumOfDigits(-123) == 6) return 1;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Fails to handle negative input (returns 0); should likely take absolute value first."
+  ]
+}

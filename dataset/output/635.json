@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void CheckFrequency(int arr[], int size) that prints the frequency of each element in the array.",
+  "test_cases": [
+    {
+      "input": "arr = {10, 20, 10}, size = 3",
+      "expected": "10 -> 2, 20 -> 1"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"635.cpp\"\n\nint main() {\n    int arr[] = {10, 20, 10};\n    CheckFrequency(arr, 3);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses O(N^2) algorithm (nested loops) which is inefficient for large datasets compared to O(N log N) sorting or O(N) hashing approaches."
+  ]
+}

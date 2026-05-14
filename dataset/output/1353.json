@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Building on the `Vehicle` and `Car` classes, modify `Vehicle`'s `displayInfo()` method to be `virtual`. Demonstrate polymorphism by creating an array of `Vehicle` pointers, pointing to both `Vehicle` and `Car` objects, and calling `displayInfo()` through the base pointers.",
+  "test_cases": [
+    { "input": "", "expected": "Demonstrating polymorphism with modern C++:\nBrand: Truck, Year: 2020\nBrand: Sedan, Year: 2022, Doors: 4\nBrand: Motorcycle, Year: 2019\n" }
+  ],
+  "driver": "int main() {\n    // The main function in the provided C++ code already serves as the driver.\n    // No additional driver code is needed.\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create an abstract `Animal` class with a pure virtual `makeSound()` method. Implement `Dog` and `Cat` classes deriving from `Animal`, each providing its own distinct `makeSound()` implementation.",
+  "test_cases": [
+    { "input": "", "expected": "Woof!\nMeow!\n" }
+  ],
+  "driver": "    std::unique_ptr<Animal> myDog = std::make_unique<Dog>();\n    std::unique_ptr<Animal> myCat = std::make_unique<Cat>();\n\n    myDog->makeSound();\n    myCat->makeSound();",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

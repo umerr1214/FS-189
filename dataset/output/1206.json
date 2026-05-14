@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Overload the binary `+` operator for the `Point` class. This operator should take two `Point` objects and return a new `Point` object representing their coordinate-wise sum.",
+  "test_cases": [
+    { "input": "", "expected": "Point(4,6)\nPoint(-1,5)" }
+  ],
+  "driver": "    Point p1(1, 2);\n    Point p2(3, 4);\n    Point p3 = p1 + p2;\n    std::cout << p3 << std::endl;\n\n    Point p4(0, 0);\n    Point p5(-1, 5);\n    Point p6 = p4 + p5;\n    std::cout << p6 << std::endl;",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The overloaded binary '+' operator returns 'void', but it is used in a context (assignment) that expects a 'Point' object to be returned."]
+}

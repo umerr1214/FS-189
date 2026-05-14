@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void removeDuplicates(char arr[]) that removes duplicate characters from the string in-place.",
+  "test_cases": [
+    {
+      "input": "arr = \"programming\"",
+      "expected": "\"progamin\""
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <algorithm>\n#include <unordered_set>\n#include \"683.cpp\"\n\nint main() {\n    char str[] = \"programming\";\n    removeDuplicates(str);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses O(N) auxiliary space (unordered_set) instead of O(1) space (e.g., bool map[256] or sorting if allowed)."
+  ]
+}

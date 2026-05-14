@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a function void CheckFrequency(int arr[], int size) that prints the frequency of each element in the array.",
+  "test_cases": [
+    {
+      "input": "arr = {10, 20, 10}, size = 3",
+      "expected": "10 occurs 2 times, 20 occurs 1 times"
+    },
+    {
+      "input": "arr = {5}, size = 1",
+      "expected": "5 occurs 1 times"
+    },
+    {
+      "input": "arr = NULL, size = 0",
+      "expected": "No output / graceful exit"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <map>\n#include \"636.cpp\"\n\nint main() {\n    int arr[] = {10, 20, 10};\n    CheckFrequency(arr, 3);\n    CheckFrequency(NULL, 0);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void UpperHalf(int A[][SIZE], int N) that prints the upper half of the matrix.",
+  "test_cases": [
+    {
+      "input": "A = 3x3 matrix",
+      "expected": "Upper half printed"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"723.cpp\"\n\nint main() {\n    // UpperHalf(A, 3); // Infinite loop\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using assignment `i = j` in conditional check modifies loop variable `i`, leading to infinite loop/incorrect logic."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a class `ResourceHandler` that simulates acquiring and releasing a system resource. Implement a destructor for this class that prints a message indicating the resource has been released.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Resource 'File Handle' acquired.\nEntering main scope.\nResource 'Database Connection' acquired.\nResource 'Database Connection' handled.\nExiting main scope.\nResource 'File Handle' handled.\n"
+    }
+  ],
+  "driver": "void manageResource() { ResourceHandler r1(\"Database Connection\"); } int main() { std::cout << \"Entering main scope.\" << std::endl; ResourceHandler r2(\"File Handle\"); manageResource(); std::cout << \"Exiting main scope.\" << std::endl; return 0; }",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The destructor for `ResourceHandler` prints a generic 'handled' message instead of explicitly indicating the resource has been 'released', failing to meet the requirement for the message content."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a C++ class named `Book` with private member variables for `title` (string), `author` (string), and `isbn` (string). Provide public getter and setter methods for each attribute.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book 1 Details:\nTitle: The Great Gatsby\nAuthor: F. Scott Fitzgerald\nISBN: 978-0743273565\n---\nBook 2 Details:\nTitle: 1984\nAuthor: George Orwell\nISBN: 978-0451524935\n---\nBook 3 Details (Robustness Test - Empty/Whitespace Input):\nTitle: ''\nAuthor: ' '\nISBN: ''\n---\nBook 4 Details (Robustness Test - Empty Constructor Input):\nTitle: ''\nAuthor: ''\nISBN: ''\n---"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Book {\nprivate:\n    std::string title;\n    std::string author;\n    std::string isbn;\n\npublic:\n    Book(const std::string& initialTitle = \"\", const std::string& initialAuthor = \"\", const std::string& initialIsbn = \"\")\n        : title(initialTitle), author(initialAuthor), isbn(initialIsbn) {}\n\n    const std::string& getTitle() const {\n        return title;\n    }\n\n    void setTitle(const std::string& newTitle) {\n        title = newTitle;\n    }\n\n    const std::string& getAuthor() const {\n        return author;\n    }\n\n    void setAuthor(const std::string& newAuthor) {\n        author = newAuthor;\n    }\n\n    const std::string& getIsbn() const {\n        return isbn;\n    }\n\n    void setIsbn(const std::string& newIsbn) {\n        isbn = newIsbn;\n    }\n};\n\nint main() {\n    Book book1(\"The Great Gatsby\", \"F. Scott Fitzgerald\", \"978-0743273565\");\n    std::cout << \"Book 1 Details:\\n\";\n    std::cout << \"Title: \" << book1.getTitle() << \"\\n\";\n    std::cout << \"Author: \" << book1.getAuthor() << \"\\n\";\n    std::cout << \"ISBN: \" << book1.getIsbn() << \"\\n\";\n    std::cout << \"---\\n\";\n\n    Book book2;\n    book2.setTitle(\"1984\");\n    book2.setAuthor(\"George Orwell\");\n    book2.setIsbn(\"978-0451524935\");\n    std::cout << \"Book 2 Details:\\n\";\n    std::cout << \"Title: \" << book2.getTitle() << \"\\n\";\n    std::cout << \"Author: \" << book2.getAuthor() << \"\\n\";\n    std::cout << \"ISBN: \" << book2.getIsbn() << \"\\n\";\n    std::cout << \"---\\n\";\n\n    Book book3(\"Valid Title\", \"Valid Author\", \"Valid ISBN\");\n    book3.setTitle(\"\");\n    book3.setAuthor(\" \");\n    book3.setIsbn(\"\");\n    std::cout << \"Book 3 Details (Robustness Test - Empty/Whitespace Input):\\n\";\n    std::cout << \"Title: '\" << book3.getTitle() << \"'\\n\";\n    std::cout << \"Author: '\" << book3.getAuthor() << \"'\\n\";\n    std::cout << \"ISBN: '\" << book3.getIsbn() << \"'\\n\";\n    std::cout << \"---\\n\";\n\n    Book book4(\"\", \"\", \"\");\n    std::cout << \"Book 4 Details (Robustness Test - Empty Constructor Input):\\n\";\n    std::cout << \"Title: '\" << book4.getTitle() << \"'\\n\";\n    std::cout << \"Author: '\" << book4.getAuthor() << \"'\\n\";\n    std::cout << \"ISBN: '\" << book4.getIsbn() << \"'\\n\";\n    std::cout << \"---\\n\";\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Lack of input validation in setter methods and constructor allows for invalid object states (e.g., empty or whitespace-only ISBN, title, or author). A robust class would typically validate inputs (e.g., check for non-empty strings) or throw exceptions to prevent such states."
+  ]
+}

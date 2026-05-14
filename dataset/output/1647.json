@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Car` class with private string members `make` and `model`. Implement both a default constructor (that initializes with generic values like 'Unknown Make', 'Unknown Model') and a parameterized constructor. Include a `displayCarInfo()` method to show the car's details.",
+  "test_cases": [
+    { "input": "Default constructor call", "expected": "Car Info: Make = Unknown Make, Model = Unknown Model\n" },
+    { "input": "Parameterized constructor with Toyota, Camry", "expected": "Car Info: Make = Toyota, Model = Camry\n" },
+    { "input": "Parameterized constructor with Honda, Civic", "expected": "Car Info: Make = Honda, Model = Civic\n" },
+    { "input": "Parameterized constructor with Ford, Mustang", "expected": "Car Info: Make = Ford, Model = Mustang\n" }
+  ],
+  "driver": "    Car car1;\n    car1.displayCarInfo();\n\n    Car car2(\"Toyota\", \"Camry\");\n    car2.displayCarInfo();\n\n    Car car3(\"Honda\", \"Civic\");\n    car3.displayCarInfo();\n\n    Car car4(\"Ford\", \"Mustang\");\n    car4.displayCarInfo();",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

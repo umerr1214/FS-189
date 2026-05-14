@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function int maxSubArray(int arr[], int n) that finds the maximum sum of a contiguous subarray using Kadane's Algorithm.",
+  "test_cases": [
+    {
+      "input": "arr = {-2, 1, -3, 4, -1, 2, 1, -5, 4}",
+      "expected": "6"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <climits>\n#include <algorithm>\n#include \"837.cpp\"\n\nint main() {\n    int arr[] = {-2, 1, -3, 4, -1, 2, 1, -5, 4};\n    // Returns 4 (max element) instead of 6\n    if (maxSubArray(arr, 9) == 6) return 1;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using assignment `maxEndingHere = 0` in the conditional check, which resets the running sum every iteration, effectively finding the maximum single element instead of the maximum subarray sum."
+  ]
+}

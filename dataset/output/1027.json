@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `Rectangle` class with private `length` and `width`. Declare a non-member function `calculateArea` as a `friend` of the `Rectangle` class, allowing it to directly access the private `length` and `width` members.",
+  "test_cases": [
+    { "input": "Rectangle rect1(5.0, 4.0);", "expected": "Rectangle 1 (5.0x4.0) Area: 20.0" },
+    { "input": "Rectangle rect2(10.5, 2.0);", "expected": "Rectangle 2 (10.5x2.0) Area: 21.0" }
+  ],
+  "driver": "#include <iostream>\n\nclass Rectangle {\nprivate:\n    double length;\n    double width;\n\npublic:\n    Rectangle(double l, double w) : length(l), width(w) {}\n\n    // Friend declaration\n    friend double calculateArea(const Rectangle& r);\n};\n\n// The definition of the friend function\ndouble calculateArea(const Rectangle& r) {\n    return r.length * r.width;\n}\n\nint main() {\n    // Test case 1\n    Rectangle rect1(5.0, 4.0);\n    std::cout << \"Rectangle 1 (5.0x4.0) Area: \" << calculateArea(rect1) << std::endl;\n\n    // Test case 2\n    Rectangle rect2(10.5, 2.0);\n    std::cout << \"Rectangle 2 (10.5x2.0) Area: \" << calculateArea(rect2) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Typo in the 'friend' keyword when declaring the non-member function 'calculateArea' inside the Rectangle class. It is spelled 'frind' instead of 'friend'."
+  ]
+}

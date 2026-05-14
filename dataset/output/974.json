@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Date` class to store day, month, and year as private members. Implement a constructor to initialize these values and a public method `displayDate()` to print the date in `DD-MM-YYYY` format.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Date 1: 01-01-2023\nDate 2: 15-12-2024\nDate 3: 05-07-1999\n" },
+    { "input": "N/A", "expected": "Date 1: 01-01-2023\nDate 2: 12-15-2024\nDate 3: 07-05-1999\n", "description": "Expected output for the given input with correct DD-MM-YYYY format vs actual output due to logical error (MM-DD-YYYY)." }
+  ],
+  "driver": "int main() {\n    Date d1(1, 1, 2023);\n    std::cout << \"Date 1: \";\n    d1.displayDate();\n    std::cout << std::endl;\n\n    Date d2(15, 12, 2024);\n    std::cout << \"Date 2: \";\n    d2.displayDate();\n    std::cout << std::endl;\n\n    Date d3(5, 7, 1999);\n    std::cout << \"Date 3: \";\n    d3.displayDate();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `displayDate` method prints the month before the day, resulting in `MM-DD-YYYY` format instead of the required `DD-MM-YYYY`."
+  ]
+}

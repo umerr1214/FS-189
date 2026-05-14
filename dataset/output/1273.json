@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `Calculator` class. Implement overloaded `add` methods within this class that can accept two `int`s, two `double`s, or two `float`s, returning the sum of the corresponding type.",
+  "test_cases": [
+    { "input": "i 5 10", "expected": "15\n" },
+    { "input": "i 2147483647 1", "expected": "-2147483648\n" },
+    { "input": "d 15.5 2.3", "expected": "17.800000\n" },
+    { "input": "f 7.1 8.2", "expected": "15.300000\n" }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n#include <string>\n#include <limits>\n#include <iomanip>\n\nclass Calculator {\npublic:\n    int add(int a, int b) {\n        return a + b;\n    }\n    double add(double a, double b) {\n        return a + b;\n    }\n    float add(float a, float b) {\n        return a + b;\n    }\n};\n\nint main() {\n    std::string line;\n    std::cout << std::fixed << std::setprecision(6);\n    Calculator calc;\n\n    while (std::getline(std::cin, line)) {\n        std::stringstream ss(line);\n        char type_char;\n        ss >> type_char;\n        \n        if (type_char == 'i') {\n            int a, b;\n            ss >> a >> b;\n            std::cout << calc.add(a, b) << std::endl;\n        } else if (type_char == 'd') {\n            double a, b;\n            ss >> a >> b;\n            std::cout << calc.add(a, b) << std::endl;\n        } else if (type_char == 'f') {\n            float a, b;\n            ss >> a >> b;\n            std::cout << calc.add(a, b) << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `add(int, int)` method does not include any checks for integer overflow. Adding two large positive integers can result in a negative sum due to wrap-around, leading to incorrect and unexpected behavior without any warning or error handling."
+  ]
+}

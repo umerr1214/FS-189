@@ -1,0 +1,31 @@
+{
+  "language": "c++",
+  "question": "Create a `Date` class with private members `day`, `month`, and `year` (integers). Implement public setter methods `setDay`, `setMonth`, `setYear` that perform basic validation (e.g., month between 1-12, day between 1-31, ignoring leap years for simplicity). If validation fails, do not update the member and optionally print an error message.",
+  "test_cases": [
+    {
+      "input": "Date d1;\nstd::cout << \"d1 (default constructor): \" << d1.toString() << std::endl;",
+      "expected": "d1 (default constructor): 1/1/2000\n"
+    },
+    {
+      "input": "Date d2(15, 7, 2023);\nstd::cout << \"d2 (15/7/2023): \" << d2.toString() << std::endl;",
+      "expected": "7/15/2023\n"
+    },
+    {
+      "input": "std::cout << \"\\nAttempting to create d3 with invalid month (15/13/2024):\" << std::endl;\nDate d3(15, 13, 2024);\nstd::cout << \"d3: \" << d3.toString() << std::endl;",
+      "expected": "\nAttempting to create d3 with invalid month (15/13/2024):\nError: Invalid month (13). Month must be between 1 and 12. Not updated.\nd3: 1/15/2024\n"
+    },
+    {
+      "input": "std::cout << \"\\nAttempting to create d4 with invalid day (32/10/2025):\" << std::endl;\nDate d4(32, 10, 2025);\nstd::cout << \"d4: \" << d4.toString() << std::endl;",
+      "expected": "\nAttempting to create d4 with invalid day (32/10/2025):\nError: Invalid day (32). Day must be between 1 and 31. Not updated.\nd4: 10/1/2025\n"
+    },
+    {
+      "input": "Date d5;\nstd::cout << \"\\nInitial d5: \" << d5.toString() << std::endl;\nd5.setMonth(12);\nd5.setDay(25);\nd5.setYear(2026);\nstd::cout << \"d5 after valid sets (12/25/2026): \" << d5.toString() << std::endl;\n\nstd::cout << \"\\nAttempting to set invalid day (0) on d5:\" << std::endl;\nd5.setDay(0);\nstd::cout << \"d5 after invalid day set: \" << d5.toString() << std::endl;\n\nstd::cout << \"\\nAttempting to set invalid month (100) on d5:\" << std::endl;\nd5.setMonth(100);\nstd::cout << \"d5 after invalid month set: \" << d5.toString() << std::endl;\n\nstd::cout << \"\\nAttempting to set valid year (1999) on d5:\" << std::endl;\nd5.setYear(1999);\nstd::cout << \"d5 after valid year set: \" << d5.toString() << std::endl;",
+      "expected": "\nInitial d5: 1/1/2000\nd5 after valid sets (12/25/2026): 12/25/2026\n\nAttempting to set invalid day (0) on d5:\nError: Invalid day (0). Day must be between 1 and 31. Not updated.\nd5 after invalid day set: 12/25/2026\n\nAttempting to set invalid month (100) on d5:\nError: Invalid month (100). Month must be between 1 and 12. Not updated.\nd5 after invalid month set: 12/25/2026\n\nAttempting to set valid year (1999) on d5:\nd5 after valid year set: 12/25/1999\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Date {\nprivate:\n    int day;\n    int month;\n    int year;\n\npublic:\n    Date() : day(1), month(1), year(2000) {}\n\n    Date(int d, int m, int y) : day(1), month(1), year(2000) {\n        setYear(y);\n        setMonth(m);\n        setDay(d);\n    }\n\n    int getDay() const { return day; }\n    int getMonth() const { return month; }\n    int getYear() const { return year; }\n\n    bool setDay(int d) {\n        if (d >= 1 && d <= 31) {\n            this->day = d;\n            return true;\n        } else {\n            std::cout << \"Error: Invalid day (\" << d << \"). Day must be between 1 and 31. Not updated.\" << std::endl;\n            return false;\n        }\n    }\n\n    bool setMonth(int m) {\n        if (m >= 1 && m <= 12) {\n            this->month = m;\n            return true;\n        } else {\n            std::cout << \"Error: Invalid month (\" << m << \"). Month must be between 1 and 12. Not updated.\" << std::endl;\n            return false;\n        }\n    }\n\n    void setYear(int y) {\n        this->year = y;\n    }\n\n    std::string toString() const {\n        return std::to_string(month) + \"/\" + std::to_string(day) + \"/\" + std::to_string(year);\n    }\n};\n\nint main() {\n    std::cout << \"--- Testing Correct Version Code ---\" << std::endl;\n\n    // Test Case 1: Default constructor\n    Date d1;\n    std::cout << \"d1 (default constructor): \" << d1.toString() << std::endl;\n\n    // Test Case 2: Parameterized constructor with valid values\n    Date d2(15, 7, 2023);\n    std::cout << \"d2 (15/7/2023): \" << d2.toString() << std::endl;\n\n    // Test Case 3: Parameterized constructor with invalid month\n    std::cout << \"\\nAttempting to create d3 with invalid month (15/13/2024):\" << std::endl;\n    Date d3(15, 13, 2024);\n    std::cout << \"d3: \" << d3.toString() << std::endl;\n\n    // Test Case 4: Parameterized constructor with invalid day\n    std::cout << \"\\nAttempting to create d4 with invalid day (32/10/2025):\" << std::endl;\n    Date d4(32, 10, 2025);\n    std::cout << \"d4: \" << d4.toString() << std::endl;\n\n    // Test Case 5: Setting valid values via setters\n    Date d5;\n    std::cout << \"\\nInitial d5: \" << d5.toString() << std::endl;\n    d5.setMonth(12);\n    d5.setDay(25);\n    d5.setYear(2026);\n    std::cout << \"d5 after valid sets (12/25/2026): \" << d5.toString() << std::endl;\n\n    // Test Case 6: Setting invalid values via setters\n    std::cout << \"\\nAttempting to set invalid day (0) on d5:\" << std::endl;\n    d5.setDay(0);\n    std::cout << \"d5 after invalid day set: \" << d5.toString() << std::endl;\n\n    std::cout << \"\\nAttempting to set invalid month (100) on d5:\" << std::endl;\n    d5.setMonth(100);\n    std::cout << \"d5 after invalid month set: \" << d5.toString() << std::endl;\n\n    std::cout << \"\\nAttempting to set valid year (1999) on d5:\" << std::endl;\n    d5.setYear(1999);\n    std::cout << \"d5 after valid year set: \" << d5.toString() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

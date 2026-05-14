@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ class named `Circle` with a private attribute `radius` (double). Provide a constructor to initialize the radius, a public `getRadius()` method to retrieve it, and a `calculateArea()` method to return the circle's area (using `M_PI` or `3.14159`).",
+  "test_cases": [
+    { "input": "1.0", "expected": "Circle with radius: 1.00\nArea: 3.14159\n---\n" },
+    { "input": "2.5", "expected": "Circle with radius: 2.50\nArea: 19.63494\n---\n" },
+    { "input": "0.0", "expected": "Circle with radius: 0.00\nArea: 0.00000\n---\n" },
+    { "input": "10.0", "expected": "Circle with radius: 10.00\nArea: 314.15927\n---\n" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <cmath>\n#include <iomanip>\n\nclass Circle {\nprivate:\n    double radius;\n\npublic:\n    Circle(double r) : radius(r) {}\n\n    double getRadius() {\n        return radius;\n    }\n\n    double calculateArea() {\n        return M_PI * radius * radius;\n    }\n};\n\nint main() {\n    std::vector<double> testRadii = {1.0, 2.5, 0.0, 10.0};\n    for (double r : testRadii) {\n        Circle c(r);\n        std::cout << \"Circle with radius: \" << std::fixed << std::setprecision(2) << c.getRadius() << std::endl; \n        std::cout << \"Area: \" << std::fixed << std::setprecision(5) << c.calculateArea() << std::endl;\n        std::cout << \"---\" << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["Attempting to directly access the private member 'radius' from outside the Circle class in the main function. This violates encapsulation and causes a compilation error (access control violation). The getRadius() method should be used instead."]
+}

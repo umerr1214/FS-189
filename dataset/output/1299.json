@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a `Rectangle` class with `width` and `height` attributes. Create a `setDimensions(double w, double h)` method that returns a reference to the current object (`*this`), allowing for method chaining (e.g., `rect.setDimensions(10,5).calculateArea();`).",
+  "test_cases": [
+    { "input": "10,5", "expected": "50.00" },
+    { "input": "0,0", "expected": "0.00" },
+    { "input": "7.5,2.0", "expected": "15.00" },
+    { "input": "-10,5", "expected": "0.00" },
+    { "input": "10,-5", "expected": "0.00" },
+    { "input": "3.33,4.44", "expected": "14.78" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <iomanip>\n#include <algorithm>\n\n// Assume Rectangle class is defined here or included\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        std::stringstream ss(line);\n        double w, h;\n        char comma;\n        if (!(ss >> w >> comma >> h)) {\n            std::cout << \"ERROR: Invalid input format.\" << std::endl;\n            continue;\n        }\n\n        Rectangle rect;\n        double area = rect.setDimensions(w, h).calculateArea();\n        \n        std::cout << std::fixed << std::setprecision(2) << area << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

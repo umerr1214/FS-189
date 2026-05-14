@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a multi-level inheritance hierarchy: `Animal` (with `name`), `Mammal` (derives from `Animal`, adds `furColor`), and `Dog` (derives from `Mammal`, adds `breed`). Each class should have a constructor and a `printDetails()` method.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Name: Sparky, Fur Color: Brown, Breed: Poodle\n"
+    }
+  ],
+  "driver": "int main() {\n    Dog myDog(\"Sparky\", \"Brown\", \"Poodle\");\n    myDog.printDetails();\n    std::cout << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Constructors pass `std::string` parameters by value, leading to unnecessary string copies and reduced efficiency.",
+    "Derived class `printDetails()` methods re-implement base class logic instead of calling base methods, leading to redundant code and reduced maintainability.",
+    "Use of unnecessary temporary variables in `printDetails()` methods adds verbosity without benefit."
+  ]
+}

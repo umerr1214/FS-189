@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void replaceSubstring(char arr[], const char target[], const char replacement[]) that replaces all occurrences of target with replacement.",
+  "test_cases": [
+    {
+      "input": "arr = \"hello world\", target = \"world\", replacement = \"universe\"",
+      "expected": "\"hello universe\""
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include \"687.cpp\"\n\nint main() {\n    char str[100] = \"hello world\";\n    replaceSubstring(str, \"world\", \"universe\");\n    // Will be \"hello world\" (no replacement) because it cat's the rest of string immediately\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using 'strcat(buffer, &arr[i])' appends the entire remaining string instead of a single character, defeating the purpose of character-by-character processing."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "For the `Vector2D` class, overload the pre-increment `++` operator to increment both `x` and `y` coordinates by 1. The operator should modify the object itself and return a reference to the modified object.",
+  "test_cases": [
+    { "input": "Vector2D v(1, 2); ++v;", "expected": "(2, 3)" },
+    { "input": "Vector2D v(0, 0); ++v;", "expected": "(1, 1)" },
+    { "input": "Vector2D v(-5, 10); ++v;", "expected": "(-4, 11)" },
+    { "input": "Vector2D v(10, 20); ++v;", "expected": "(11, 21)" }
+  ],
+  "driver": "int main() { Vector2D v1(1, 2); ++v1; std::cout << v1 << std::endl; Vector2D v2(0, 0); ++v2; std::cout << v2 << std::endl; Vector2D v3(-5, 10); ++v3; std::cout << v3 << std::endl; Vector2D v4(10, 20); ++v4; std::cout << v4 << std::endl; return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The pre-increment operator returns `const Vector2D&` instead of `Vector2D&`. While it still modifies the object and returns a reference, the `const` qualifier prevents chaining assignments or further modifications to the returned object (e.g., `(++vec).x = 10;`). This violates the common expectation for pre-increment operators in C++ and limits the robustness and flexibility of the API contract, potentially leading to compilation errors in valid use cases."
+  ]
+}

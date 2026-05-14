@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Building on the `Vehicle` and `Car` classes, modify `Vehicle`'s `displayInfo()` method to be `virtual`. Demonstrate polymorphism by creating an array of `Vehicle` pointers, pointing to both `Vehicle` and `Car` objects, and calling `displayInfo()` through the base pointers.",
+  "test_cases": [
+    { "input": "", "expected": "Polymorphism demonstration (less idiomatic C++):\nBrand: Truck_Model, Year: 2021\nBrand: Sedan_Type, Year: 2023, Doors: 4\nBrand: Bike_Style, Year: 2020\n" }
+  ],
+  "driver": "int main() {\n    // The main function in the provided C++ code already serves as the driver.\n    // No additional driver code is needed.\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses raw C-style arrays (`Vehicle* my_vehicles[array_size]`) instead of `std::vector<std::unique_ptr<Vehicle>>` for managing dynamically allocated objects, which is less safe and less idiomatic.",
+    "Employs a traditional indexed `for` loop (`for (int i = 0; i < array_size; ++i)`) instead of a more modern and readable range-based for loop.",
+    "Relies on manual memory management (`new` and `delete`) which is prone to errors (e.g., forgetting to delete) compared to using smart pointers (`std::unique_ptr`).",
+    "Variable names like `brand_name`, `model_year`, `num_doors_val` are slightly less concise or conventional than `brand`, `year`, `numDoors`."
+  ]
+}

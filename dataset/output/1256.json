@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a `Vector2D` class with `x` and `y` coordinates. Create a `getLength()` method that calculates the magnitude of the vector and mark it as a `const` method. Demonstrate calling this method on a `const Vector2D` object.",
+  "test_cases": [
+    { "input": "3.0 4.0", "expected": "5.0\n5.0" },
+    { "input": "5.0 12.0", "expected": "13.0\n13.0" },
+    { "input": "1.0 1.0", "expected": "1.4142135623730951\n1.4142135623730951" }
+  ],
+  "driver": "int main() { double x, y; std::cin >> x >> y; Vector2D vec(x, y); std::cout << vec.getLength() << std::endl; const Vector2D constVec(x, y); std::cout << constVec.getLength(); return 0; }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `getLength()` method uses `std::pow(val, 2.0)` instead of `val * val` for squaring. Direct multiplication is generally more efficient for integer powers of floating-point numbers.",
+    "The `getLength()` method introduces an unnecessary intermediate variable `sum_of_squares`. While not a major issue, it adds slight verbosity without improving clarity or performance for this simple calculation.",
+    "The output in `main()` is not formatted for floating-point numbers (e.g., using `std::fixed` and `std::setprecision`), which can make results less readable or consistent."
+  ]
+}

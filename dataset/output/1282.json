@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Date` class with private `day`, `month`, and `year` attributes. Provide public setter methods for each attribute that include robust validation (e.g., month must be 1-12, day valid for the given month and year).",
+  "test_cases": [
+    { "input": "Date d1(29, 2, 2024); d1.display();", "expected": "29/2/2024\n" },
+    { "input": "Date d2(31, 4, 2023); d2.display();", "expected": "1/1/2000\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// The Date class code will be inserted here, which has a syntax error.\n\nint main() {\n    Date d1(29, 2, 2024);\n    std::cout << \"Date(29, 2, 2024): \";\n    d1.display();\n\n    Date d2(31, 4, 2023);\n    std::cout << \"Date(31, 4, 2023): \";\n    d2.display();\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'private' access specifier, leading to compilation failure. Expected a semicolon after 'private'."
+  ]
+}

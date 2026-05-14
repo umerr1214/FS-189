@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a function int findLongestPalindrome(const char arr[]) that returns the length of the longest palindromic substring.",
+  "test_cases": [],
+  "driver": "#include <iostream>\n#include <cstring>\n#include \"643.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'return maxLength'"
+  ]
+}

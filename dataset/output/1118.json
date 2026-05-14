@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "For the `Date` class (from Q12 or similar with `day`, `month`, `year`), overload the `<<` (stream insertion) operator to allow `Date` objects to be printed directly using `std::cout` in the format `DD/MM/YYYY`.",
+  "test_cases": [
+    { "input": "", "expected": "Date 1: 01/01/2023\nDate 2: 15/07/2024\nDate 3: 05/12/2020\nDate 4: 10/10/2025\n" }
+  ],
+  "driver": "int main() {\n    Date d1(1, 1, 2023);\n    Date d2(15, 7, 2024);\n    Date d3(5, 12, 2020);\n    Date d4(10, 10, 2025);\n\n    std::cout << \"Date 1: \" << d1 << std::endl;\n    std::cout << \"Date 2: \" << d2 << std::endl;\n    std::cout << \"Date 3: \" << d3 << std::endl;\n    std::cout << \"Date 4: \" << d4 << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["The stream insertion operator uses verbose and less idiomatic `if` statements to add leading zeros for single-digit day and month, instead of utilizing `std::setw` and `std::setfill` from `<iomanip>`. This reduces readability and is less efficient than using stream manipulators for formatting."]
+}

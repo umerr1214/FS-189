@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `Logger` class that prints 'Logger initialized.' when its constructor is called and 'Logger destroyed.' when its destructor is called. Demonstrate the lifecycle of a `Logger` object in `main`.",
+  "test_cases": [
+    { "input": "", "expected": "Logger initialized.\nLogger destroyed." }
+  ],
+  "driver": "#include <iostream>\n\n// The submitted C++ code will be inserted here.\n// It is expected to contain a `main` function.\n",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The Logger class's constructor is declared private, making it inaccessible from `main`. This results in a compilation error when trying to instantiate `Logger myLogger;`."
+  ]
+}

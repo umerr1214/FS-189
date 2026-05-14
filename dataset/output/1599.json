@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `Rectangle` class with a constructor `Rectangle(double length = 1.0, double width = 1.0)`. Demonstrate creating `Rectangle` objects using default arguments, one argument, and both arguments.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Rectangle A (Default): Length = 1.0, Width = 1.0, Area = 1.0\nRectangle B (One argument): Length = 5.0, Width = 1.0, Area = 5.0\nRectangle C (Both arguments): Length = 3.0, Width = 4.0, Area = 12.0\nRectangle D (Robustly handled): Length = 0.0, Width = 5.0, Area = 0.0\n"
+    }
+  ],
+  "driver": "int main() {\n    Rectangle r1;\n    r1.displayInfo(\"Rectangle A (Default)\");\n\n    Rectangle r2(5.0);\n    r2.displayInfo(\"Rectangle B (One argument)\");\n\n    Rectangle r3(3.0, 4.0);\n    r3.displayInfo(\"Rectangle C (Both arguments)\");\n\n    Rectangle r_robust_handled(-2.0, 5.0);\n    r_robust_handled.displayInfo(\"Rectangle D (Robustly handled)\");\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

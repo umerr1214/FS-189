@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Extend the `Vehicle` hierarchy. Add a virtual `displayInfo()` method to the base `Vehicle` class that prints general vehicle info. Override this method in `Car` and `Motorcycle` to include their specific attributes, demonstrating runtime polymorphism.",
+  "test_cases": [
+    { "input": "", "expected": "Brand: Toyota, Year: 2020, Doors: 4\nBrand: Harley-Davidson, Year: 2022, Sidecar: No\nBrand: Honda, Year: 2018, Doors: 2\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// Vehicle, Car, Motorcycle class definitions would be here\n\nint main() {\n    std::stringstream ss;\n    std::streambuf* oldCout = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n\n    Vehicle* v1 = new Car(\"Toyota\", 2020, 4);\n    Vehicle* v2 = new Motorcycle(\"Harley-Davidson\", 2022, false);\n    Vehicle* v3 = new Car(\"Honda\", 2018, 2);\n\n    v1->displayInfo();\n    std::cout << std::endl;\n    v2->displayInfo();\n    std::cout << std::endl;\n    v3->displayInfo();\n    std::cout << std::endl;\n\n    delete v1;\n    delete v2;\n    delete v3;\n\n    std::cout.rdbuf(oldCout);\n    std::cout << ss.str();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Derived classes `Car` and `Motorcycle` fail to call `Vehicle::displayInfo()` in their overridden methods, leading to incomplete output for vehicle information."
+  ]
+}

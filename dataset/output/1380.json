@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Time` class with private `hour`, `minute`, and `second` integer members. Provide public setter methods (`setHour`, `setMinute`, `setSecond`) that validate the input to ensure it falls within valid ranges (e.g., hour 0-23).",
+  "test_cases": [
+    {
+      "input": "No direct input, relies on hardcoded calls in main.",
+      "expected": "Initial time: 00:00:00\nAttempted to set to 10:30:45: 00:00:00\nInvalid hour: 25. Hour not set.\nInvalid minute: -5. Minute not set.\nInvalid second: 60. Second not set.\nAttempted invalid settings: 00:00:00\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\nclass Time {\nprivate:\n    int hour;\n    int minute;\n    int second;\n\npublic:\n    Time() : hour(0), minute(0), second(0) {}\n\n    void setHour(int h) {\n        if (h >= 0 && h <= 23) {\n            this->hour = h; // Correct assignment\n        } else {\n            std::cout << \"Invalid hour: \" << h << \". Hour not set.\" << std::endl;\n        }\n    }\n\n    void setMinute(int m) {\n        if (m >= 0 && m <= 59) {\n            this->minute = m; // Correct assignment\n        } else {\n            std::cout << \"Invalid minute: \" << m << \". Minute not set.\" << std::endl;\n        }\n    }\n\n    void setSecond(int s) {\n        if (s >= 0 && s <= 59) {\n            this->second = s; // Correct assignment\n        } else {\n            std::cout << \"Invalid second: \" << s << \". Second not set.\" << std::endl;\n        }\n    }\n\n    void displayTime() const {\n        std::cout << std::setw(2) << std::setfill('0') << hour << \":\"\n                  << std::setw(2) << std::setfill('0') << minute << \":\"\n                  << std::setw(2) << std::setfill('0') << second << std::endl;\n    }\n};\n\nint main() {\n    Time t;\n    std::cout << \"Initial time: \";\n    t.displayTime();\n\n    t.setHour(10);\n    t.setMinute(30);\n    t.setSecond(45);\n    std::cout << \"Attempted to set to 10:30:45: \";\n    t.displayTime();\n\n    t.setHour(25); // Invalid\n    t.setMinute(-5); // Invalid\n    t.setSecond(60); // Invalid\n    std::cout << \"Attempted invalid settings: \";\n    t.displayTime();\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The setter methods (setHour, setMinute, setSecond) use parameter names identical to the member variable names. Inside the method, `parameter = parameter;` assigns the parameter to itself, effectively shadowing the member variable and preventing it from being updated. The member variables remain at their default initialized values (0, 0, 0)."
+  ]
+}

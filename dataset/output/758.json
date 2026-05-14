@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a program to encrypt and decrypt a sentence by adding/subtracting the index.",
+  "test_cases": [
+    {
+      "input": "arr = \"Hello\"",
+      "expected": "Decrypted: \"Hello\""
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cassert>\n#include \"758.cpp\"\n\nint main() {\n    char str[100] = \"Hello\";\n    encrypt(str);\n    decrypt(str);\n    // Will not match because decrypt added instead of subtracting\n    // assert(strcmp(str, \"Hello\") == 0);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Used addition `+=` instead of subtraction `-=` in the decryption function, causing the string to be further modified rather than restored."
+  ]
+}

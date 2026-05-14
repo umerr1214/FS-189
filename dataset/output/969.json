@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function Node* insertBST(Node* root, int val) that inserts a value into a Binary Search Tree.",
+  "test_cases": [
+    {
+      "input": "Insert 50, 30",
+      "expected": "30 50"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"969.cpp\"\n\nint main() {\n    Node* root = nullptr;\n    root = insertBST(root, 50);\n    insertBST(root, 30);\n    // Root data becomes 30 due to assignment\n    if (root->data == 30) return 0;\n    return 1;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using assignment `root->data = val` in the conditional check, which overwrites the current node's data with the value being inserted."
+  ]
+}

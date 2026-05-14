@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void upperCase(char array[]) that capitalizes the first and last letters of each word.",
+  "test_cases": [
+    {
+      "input": "arr = \"hello\"",
+      "expected": "\"HellO\""
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cctype>\n#include <cassert>\n#include \"734.cpp\"\n\nint main() {\n    char str[100] = \"hello\";\n    upperCase(str);\n    // Will fail because it produces \"Hello\" instead of \"HellO\"\n    // assert(strcmp(str, \"HellO\") == 0);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Only capitalizes the first letter of each word, missing the logic to capitalize the last letter."
+  ]
+}

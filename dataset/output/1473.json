@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define a `Book` class with private data members `title` (string), `author` (string), and `isbn` (string). Provide public getter methods `getTitle()`, `getAuthor()`, `getIsbn()`, and a `displayBookInfo()` method that prints all book details.",
+  "test_cases": [
+    {
+      "input": "Book(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\")",
+      "expected": "--- Book 1 ---\nTitle: The Hitchhiker's Guide to the Galaxy\nAuthor: Douglas Adams\nISBN: 978-0345391803\n--- End Book 1 ---\n--- Book 2 ---\nTitle: 1984\nAuthor: George Orwell\nISBN: 978-0451524935\n--- End Book 2 ---\n--- Book 3 ---\nTitle: \nAuthor: Unknown Author\nISBN: \n--- End Book 3 ---\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\nclass Book {\nprivate:\n    std::string title;\n    std::string author;\n    std::string isbn;\n\npublic:\n    Book(const std::string& title, const std::string& author, const std::string& isbn)\n        : title(title), author(author), isbn(isbn) {}\n\n    const std::string& getTitle() const {\n        return title;\n    }\n\n    const std::string& getAuthor() const {\n        return author;\n    }\n\n    const std::string& getIsbn() const {\n        return isbn;\n    }\n\n    void displayBookInfo() const {\n        std::cout << \"Title: \" << title << \"\\n\"\n                  << \"Author: \" << author << \"\\n\"\n                  << \"ISBN: \" << isbn << std::endl;\n    }\n};\n\nint main() {\n    Book book1(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\");\n    std::cout << \"--- Book 1 ---\" << std::endl;\n    book1.displayBookInfo();\n    std::cout << \"--- End Book 1 ---\" << std::endl;\n\n    Book book2(\"1984\", \"George Orwell\", \"978-0451524935\");\n    std::cout << \"--- Book 2 ---\" << std::endl;\n    book2.displayBookInfo();\n    std::cout << \"--- End Book 2 ---\" << std::endl;\n\n    Book book3(\"\", \"Unknown Author\", \"\");\n    std::cout << \"--- Book 3 ---\" << std::endl;\n    book3.displayBookInfo();\n    std::cout << \"--- End Book 3 ---\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

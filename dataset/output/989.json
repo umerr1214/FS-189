@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Design a base class `Vehicle` with `make` (string) and `year` (int). Derive two classes: `Car` (adding `numDoors` as int) and `Motorcycle` (adding `hasSidecar` as bool). Implement constructors for all classes.",
+  "test_cases": [
+    { "input": "Motorcycle(\"Yamaha\", 2023, false)", "expected": "Yamaha_Sidecar:false" },
+    { "input": "Motorcycle(\"BMW\", 2020, true)", "expected": "BMW_Sidecar:true" }
+  ],
+  "driver": "int main() {\n    Car myCar(\"Honda\", 2022, 2);\n    myCar.display();\n\n    Motorcycle myBikeWithoutSidecar(\"Yamaha\", 2023, false); // Intended: no sidecar\n    myBikeWithoutSidecar.display();\n\n    Motorcycle myBikeWithSidecar(\"BMW\", 2020, true); // Intended: with sidecar\n    myBikeWithSidecar.display();\n\n    std::cout << \"Yamaha_Sidecar:\" << (myBikeWithoutSidecar.getHasSidecar() ? \"true\" : \"false\") << std::endl;\n    std::cout << \"BMW_Sidecar:\" << (myBikeWithSidecar.getHasSidecar() ? \"true\" : \"false\") << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The Motorcycle constructor unconditionally sets 'hasSidecar' to 'true', ignoring the 'inputHasSidecar' parameter. This leads to incorrect initialization when 'false' is intended."]
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a `DynamicArray` class that dynamically allocates memory for an array of integers in its constructor and deallocates it in its destructor. Include methods `add(int value)` to add elements (reallocating if needed) and `print()` to display them. Demonstrate its lifecycle.",
+  "test_cases": [
+    { "input": "", "expected": "Adding elements...\nArray elements: [10, 20, 30]\nArray elements: [10, 20, 30, 40, 50]\nDemonstrating lifecycle: Array goes out of scope and destructor is called.\n" }
+  ],
+  "driver": "int main() {\n    DynamicArray arr;\n    std::cout << \"Adding elements...\" << std::endl;\n    arr.add(10);\n    arr.add(20);\n    arr.add(30);\n    arr.print();\n    arr.add(40);\n    arr.add(50);\n    arr.print();\n    std::cout << \"Demonstrating lifecycle: Array goes out of scope and destructor is called.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Memory leak in the `reallocate()` method. When the array capacity needs to be increased, a new memory block (`newData`) is allocated, and existing elements are copied. However, the original memory block pointed to by `_data` is not deallocated using `delete[] _data` before `_data` is updated to point to `newData`. This causes the old memory block to become unreachable and leaked every time `reallocate()` is called."
+  ]
+}

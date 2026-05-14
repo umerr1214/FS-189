@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a function int searchData(int arr[], int size, int key) that searches for the key in the array using linear search and returns the index. Return -1 if not found.",
+  "test_cases": [
+    {
+      "input": "arr = {10, 20, 30}, size = 3, key = 20",
+      "expected": "1"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"609.cpp\"\n\nint main() {\n    int arr[] = {10, 20, 30};\n    int result = searchData(arr, 3, 20);\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Comparing loop index 'i' with 'key' instead of 'arr[i]'",
+    "Returning 'arr[i]' (value) instead of 'i' (index)"
+  ]
+}

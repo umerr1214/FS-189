@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function bool Exists(int data[][6], int pattern[][3]) that checks if the 3x3 pattern exists in the 6x6 data.",
+  "test_cases": [
+    {
+      "input": "data = NULL",
+      "expected": "Graceful failure"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"730.cpp\"\n\nint main() {\n    // Exists(NULL, NULL);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing NULL pointer checks for input arrays `data` and `pattern`."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a function void multiplyMatrices(int A[][MAX], int B[][MAX], int C[][MAX], int m, int n, int p) that multiplies two matrices.",
+  "test_cases": [],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include \"817.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after function call 'multiplyMatrices(A, B, C, 2, 3, 2)'"
+  ]
+}

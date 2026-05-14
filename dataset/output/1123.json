@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a class `Matrix` with a private 2D array (e.g., `int mat[2][2]` or `int**` for dynamic). Implement overloaded `setElement` methods: one that takes `row`, `col`, and `value` to set a single element, and another that takes a `row` index and an array/`std::vector<int>` to set an entire row.",
+  "test_cases": [
+    {
+      "input": "Initial Matrix:\nSetting element (0,0) to 5:\nSetting row 1 to {10, 20}:\nAttempting to set element (0,1) to 9:\n--- Demonstrating Robustness Issues ---\nAttempting to set element (2,0) to 99 (out of bounds row):\nAttempting to set row 0 with {100, 200, 300} (too many columns):\nMatrix state after potential crashes (if program continued):",
+      "expected": "Initial Matrix:\n0 0\n0 0\n\nSetting element (0,0) to 5:\n5 0\n0 0\n\nSetting row 1 to {10, 20}:\n5 0\n10 20\n\nSetting element (0,1) to 9:\n5 9\n10 20\n\n--- Demonstrating Robustness Issues ---\n\nAttempting to set element (2,0) to 99 (out of bounds row):\nProgram terminated unexpectedly due to out-of-bounds access.\n"
+    }
+  ],
+  "driver": "int main() {\n    Matrix m;\n    std::cout << \"Initial Matrix:\" << std::endl;\n    m.print();\n\n    std::cout << \"\\nSetting element (0,0) to 5:\" << std::endl;\n    m.setElement(0, 0, 5);\n    m.print();\n\n    std::cout << \"\\nSetting row 1 to {10, 20}:\" << std::endl;\n    m.setElement(1, {10, 20});\n    m.print();\n\n    std::cout << \"\\nAttempting to set element (0,1) to 9:\" << std::endl;\n    m.setElement(0, 1, 9);\n    m.print();\n\n    std::cout << \"\\n--- Demonstrating Robustness Issues ---\" << std::endl;\n\n    std::cout << \"\\nAttempting to set element (2,0) to 99 (out of bounds row):\" << std::endl;\n    m.setElement(2, 0, 99);\n\n    std::cout << \"\\nAttempting to set row 0 with {100, 200, 300} (too many columns):\" << std::endl;\n    m.setElement(0, {100, 200, 300});\n\n    std::cout << \"\\nMatrix state after potential crashes (if program continued):\" << std::endl;\n    m.print();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Lack of bounds checking in `setElement(int row, int col, int value)` leads to undefined behavior or crashes on invalid input.",
+    "Lack of bounds checking for `row` and `col` (when iterating `row_values`) in `setElement(int row, const std::vector<int>& row_values)` leads to undefined behavior or crashes on invalid input or mismatched `row_values` size."
+  ]
+}

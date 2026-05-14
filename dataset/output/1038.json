@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define an abstract base class `Appliance` with a pure virtual function `operate()`. Derive concrete classes `Refrigerator` and `WashingMachine` from `Appliance`, each providing its own implementation of the `operate()` method.",
+  "test_cases": [
+    { "input": "", "expected": "--- Direct calls ---\nRefrigerator is cooling food.\nWashing machine is washing clothes.\n--- Polymorphic calls ---\nRefrigerator is cooling food.\nWashing machine is washing clothes.\n" }
+  ],
+  "driver": "int main() {\n    Refrigerator myFridge;\n    WashingMachine myWasher;\n\n    std::cout << \"--- Direct calls ---\" << std::endl;\n    myFridge.operate();\n    myWasher.operate();\n\n    std::cout << \"--- Polymorphic calls ---\" << std::endl;\n    Appliance* appliance1 = &myFridge;\n    Appliance* appliance2 = &myWasher;\n\n    appliance1->operate();\n    appliance2->operate();\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": []
+}

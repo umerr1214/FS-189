@@ -1,0 +1,27 @@
+{
+  "language": "c++",
+  "question": "Implement a `Time` class with private members for hours, minutes, and seconds. Provide a default constructor (initializing to 00:00:00), a parameterized constructor, and a copy constructor. Also, include a `displayTime()` method.",
+  "test_cases": [
+    {
+      "input": "Time t1; t1.displayTime();",
+      "expected": "00:00:00\n"
+    },
+    {
+      "input": "Time t2(10, 20, 30); t2.displayTime();",
+      "expected": "10:20:30\n"
+    },
+    {
+      "input": "Time t3 = t2; t3.displayTime();",
+      "expected": "10:20:30\n"
+    },
+    {
+      "input": "Time t4(23, 59, 59); t4.displayTime();",
+      "expected": "23:59:59\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\n// The Time class definition will be inserted here.\n\nint main() {\n    std::cout << \"Testing Time class:\" << std::endl;\n\n    // Test default constructor\n    Time t1;\n    std::cout << \"Default time: \";\n    t1.displayTime();\n\n    // Test parameterized constructor\n    Time t2(10, 20, 30);\n    std::cout << \"Parameterized time (10:20:30): \";\n    t2.displayTime();\n\n    // Test copy constructor\n    Time t3 = t2;\n    std::cout << \"Copied time (from 10:20:30): \";\n    t3.displayTime();\n\n    Time t4(23, 59, 59);\n    std::cout << \"Parameterized time (23:59:59): \";\n    t4.displayTime();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": []
+}

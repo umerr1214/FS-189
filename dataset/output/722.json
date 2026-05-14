@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void UpperHalf(int A[][SIZE], int N) that prints the upper half of the matrix.",
+  "test_cases": [
+    {
+      "input": "A = {{1, 2}, {3, 4}}",
+      "expected": "1 2\n  4"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n#include \"722.cpp\"\n\nint main() {\n    // Output capture tricky, but logic error prints lower half\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Uses condition 'j <= i' which prints the lower half of the matrix instead of 'j >= i' for the upper half."
+  ]
+}

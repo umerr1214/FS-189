@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function to find unique elements in a 2D array.",
+  "test_cases": [
+    {
+      "input": "arr = NULL",
+      "expected": "Graceful failure"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include \"706.cpp\"\n\nint main() {\n    // findUniqueElements(NULL, 0, 0);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing NULL pointer checks for the 2D array (pointer to pointers)."
+  ]
+}

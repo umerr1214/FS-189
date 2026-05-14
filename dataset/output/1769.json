@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `Student` class with private attributes `studentID` (int), `name` (string), and `major` (string). Implement public methods `setDetails(int id, string n, string m)` to initialize these attributes and `displayDetails()` to print them to the console.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Student ID: 101\nName: Alice\nMajor: Computer Science\n"
+    }
+  ],
+  "driver": "Student s; s.setDetails(101, \"Alice\", \"Computer Science\"); s.displayDetails();",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'name' and 'major' attributes are incorrectly swapped during assignment in the setDetails method, leading to incorrect display output. The student's name will be displayed as their major, and vice-versa."
+  ]
+}

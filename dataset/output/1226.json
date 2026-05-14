@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a `Counter` class that uses a `static` member variable to keep track of the total number of `Counter` objects currently alive (created minus destroyed). Update this static member in constructors and the destructor.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Readability / Efficiency Issue Test ---\nInitial alive count (using temp object): 0\nAfter creating obj_a: 1\nAlive count in inner scope: 3\nAlive count after inner scope: 1\nFinal count before obj_a destroyed (using temp object): 1\nFinal count after all objects destroyed (using temp object): 0\n"
+    }
+  ],
+  "driver": "int main() {\n    run_test_case();\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `get_current_alive_count()` method is a non-static member function that accesses a static member. This is inefficient and less readable as it requires an object instance to be called, even though the count is a class-level property.",
+    "The test driver frequently creates temporary `Counter` objects (e.g., `Counter().get_current_alive_count()`) solely to query the static count, demonstrating the inefficiency caused by the non-static getter."
+  ]
+}

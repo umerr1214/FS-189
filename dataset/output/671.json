@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void findCharacterFrequency(const char arr[], int frequency[]) that counts occurrences of each character.",
+  "test_cases": [
+    {
+      "input": "arr = \"hello\"",
+      "expected": "Correct frequencies (l=2, etc.)"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include \"671.cpp\"\n\nint main() {\n    const char* str = \"hello\";\n    int freq[256] = {0};\n    findCharacterFrequency(str, freq);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inefficient O(N^2) approach using nested loops to count frequencies, re-calculating for every character instance instead of single O(N) pass."
+  ]
+}

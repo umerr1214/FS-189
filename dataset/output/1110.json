@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Define an abstract base class `Printable` with a pure virtual method `print()`. Derive two concrete classes, `Document` and `Image`, from `Printable`. Implement the `print()` method in each derived class to display appropriate information (e.g., 'Printing Document: [title]', 'Printing Image: [filename]').",
+  "test_cases": [
+    { "input": "", "expected": "Printing Document: Meeting Minutes\nPrinting Image: sunset.jpg\nPrinting Document: Project Proposal\nPrinting Image: mountains.png\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\n// Abstract base class\nclass Printable {\npublic:\n    virtual void print() const = 0;\n    virtual ~Printable() = default;\n};\n\n// Concrete class Document\nclass Document : public Printable {\nprivate:\n    std::string title;\npublic:\n    Document(const std::string& t) : title(t) {}\n    void print() const override {\n        std::cout << \"Printing Document: \" << title << std::endl;\n    }\n};\n\n// Concrete class Image\nclass Image : public Printable {\nprivate:\n    std::string filename;\npublic:\n    Image(const std::string& fn) : filename(fn) {}\n    void print() const override {\n        std::cout << \"Printing Image: \" << filename << std::endl;\n    }\n};\n\nint main() {\n    Document doc(\"Meeting Minutes\");\n    Image img(\"sunset.jpg\");\n\n    doc.print();\n    img.print();\n\n    std::vector<Printable*> items;\n    items.push_back(new Document(\"Project Proposal\"));\n    items.push_back(new Image(\"mountains.png\"));\n\n    for (const auto& item : items) {\n        item->print();\n    }\n\n    for (const auto& item : items) {\n        delete item;\n    }\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The 'Document' class does not implement the pure virtual method 'print()' inherited from 'Printable'. This makes 'Document' an abstract class. Attempting to instantiate an abstract class (e.g., 'Document doc(\"Meeting Minutes\");') is a semantic error, as abstract classes cannot be directly instantiated."
+  ]
+}

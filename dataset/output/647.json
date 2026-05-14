@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function int findLongestPalindrome(const char arr[]) that returns the length of the longest palindromic substring.",
+  "test_cases": [
+    {
+      "input": "arr = \"babad\"",
+      "expected": "3"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include \"647.cpp\"\n\nint main() {\n    const char* str = \"babad\";\n    findLongestPalindrome(str);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses O(N^3) brute force approach; O(N^2) (Expand Around Center) or O(N) (Manacher's Algorithm) is preferred."
+  ]
+}

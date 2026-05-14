@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design a `StringWrapper` class that manages a C-style string (`char*`). Implement a deep copy constructor for `StringWrapper` to ensure proper memory management when objects are copied.",
+  "test_cases": [
+    { "input": "No direct input, program execution flow.", "expected": "--- Test Case 1: Basic construction and copy ---\nConstructor(const char*) called for: First String\nCopy constructor called for: First String\nOriginal: First String\nCopy: First String\n\n--- Test Case 2: Empty string and nullptr handling ---\nConstructor(const char*) called for: \nConstructor(const char*) called for: nullptr\nCopy constructor called for: \nCopy constructor called for: nullptr\nEmpty String: \nNull String: \nCopy Empty: \nCopy Null: \n\n--- Test Case 3: Objects in function scope (demonstrates memory leak) ---\nConstructor(const char*) called for: Hello\nCopy constructor called for: Hello\nConstructor(const char*) called for: World\ns1 in scope: Hello\ns2 in scope: Hello\ns3 in scope: World\n\nProgram finished. Memory leaks expected due to missing destructor.\n" }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Test Case 1: Basic construction and copy ---\" << std::endl;\n    StringWrapper original(\"First String\");\n    StringWrapper copy = original;\n    std::cout << \"Original: \" << original.get() << std::endl;\n    std::cout << \"Copy: \" << copy.get() << std::endl;\n\n    std::cout << \"\\n--- Test Case 2: Empty string and nullptr handling ---\" << std::endl;\n    StringWrapper empty_str(\"\");\n    StringWrapper null_str(nullptr);\n    StringWrapper copy_empty = empty_str;\n    StringWrapper copy_null = null_str;\n    std::cout << \"Empty String: \" << empty_str.get() << std::endl;\n    std::cout << \"Null String: \" << null_str.get() << std::endl;\n    std::cout << \"Copy Empty: \" << copy_empty.get() << std::endl;\n    std::cout << \"Copy Null: \" << copy_null.get() << std::endl;\n\n    std::cout << \"\\n--- Test Case 3: Objects in function scope (demonstrates memory leak) ---\" << std::endl;\n    test_function_scope();\n\n    std::cout << \"\\nProgram finished. Memory leaks expected due to missing destructor.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["Missing destructor leads to memory leaks for all dynamically allocated C-style strings."]
+}

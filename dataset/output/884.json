@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function bool isPrime(int n) that checks if a number is prime.",
+  "test_cases": [
+    {
+      "input": "n = 9",
+      "expected": "false"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n#include <cassert>\n#include \"884.cpp\"\n\nint main() {\n    // Will return true incorrectly\n    // assert(isPrime(9) == false);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Incorrect loop condition `i < sqrt(n)` instead of `i <= sqrt(n)`, failing to check the square root itself, causing perfect squares of primes (like 9, 25) to be identified as prime."
+  ]
+}

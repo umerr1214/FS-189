@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Model a `Car` class using composition. `Car` should contain an `Engine` object as a member. The `Engine` class should have a `start()` method, and `Car` should have a `startCar()` method that calls `Engine::start()`.",
+  "test_cases": [
+    { "input": "", "expected": "Program crash (e.g., Segmentation fault) or undefined behavior due to dereferencing an uninitialized pointer." }
+  ],
+  "driver": "Car myCar;\nmyCar.startCar();",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `Car` class uses an uninitialized raw pointer `Engine* engine` for composition. Calling `engine->start()` leads to dereferencing a wild pointer, resulting in a runtime crash (e.g., segmentation fault)."
+  ]
+}

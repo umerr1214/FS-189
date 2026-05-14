@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Model an `Order` class and a `Customer` class. An `Order` should have an `orderID` and a reference or pointer to the `Customer` who placed it, demonstrating an association relationship where objects can reference each other without strict ownership.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Customer Alice Smith created.\nOrder 1001 created.\nCustomer Alice Smith destroyed.\n\n--- Attempting to display order after customer is destroyed ---\nOrder ID: 1001\n  Placed by Customer ID: 101, Name: Alice Smith"
+    }
+  ],
+  "driver": "int main() {\n    Order order1(0, nullptr);\n\n    {\n        Customer cust1(101, \"Alice Smith\");\n        order1 = Order(1001, &cust1);\n    }\n\n    std::cout << \"\\n--- Attempting to display order after customer is destroyed ---\" << std::endl;\n    order1.displayOrder();\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The 'Order' object's 'customer' pointer is assigned the address of a local 'Customer' object ('cust1'). When 'cust1' goes out of scope, its memory is deallocated, making the 'order1.customer' pointer dangling. Subsequent attempts to dereference this pointer (e.g., in 'displayOrder()') result in undefined behavior, which could manifest as a segmentation fault, corrupted data, or unpredictable program execution."
+  ]
+}

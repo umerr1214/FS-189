@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Model a `Department` class that aggregates `Employee` objects. `Department` should have a name and a list (e.g., array or vector) of `Employee` pointers. `Employee` objects should be created independently and managed by the `Department` through aggregation.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "The program will compile and run, but will crash or exhibit undefined behavior when the `Department` object's destructor is called. This is because the destructor attempts to `delete` pointers to stack-allocated `Employee` objects, which is an invalid memory operation. This violates the aggregation principle where the aggregate (Department) does not own the lifetime of the aggregated objects (Employees)."
+    }
+  ],
+  "driver": "    Employee emp1(\"Alice\", 101);\n    Employee emp2(\"Bob\", 102);\n\n    Department hr(\"Human Resources\");\n    hr.addEmployee(&emp1);\n    hr.addEmployee(&emp2);\n\n    hr.printDepartment();\n\n    std::cout << \"End of main. Department destructor will now be called.\" << std::endl;",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `Department` class destructor contains a logical error by attempting to `delete` the `Employee` pointers it holds. According to the problem statement, `Employee` objects are created independently and managed by the `Department` through aggregation, implying the `Department` does not own their lifetime. Deleting aggregated objects (especially stack-allocated ones as in `main()`) leads to undefined behavior or crashes (e.g., double-free)."
+  ]
+}

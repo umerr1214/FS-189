@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function bool hasCycle(Node* head) that checks if a linked list has a cycle.",
+  "test_cases": [
+    {
+      "input": "head = NULL",
+      "expected": "false"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"958.cpp\"\n\nint main() {\n    // hasCycle(NULL);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing NULL check for `head` before accessing `head->next`."
+  ]
+}

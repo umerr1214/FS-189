@@ -1,0 +1,31 @@
+{
+  "language": "c++",
+  "question": "Create a `Point` class with private `x` and `y` (double) coordinates. Write two overloaded non-member functions: `void print(Point p)` that prints 'Point: (x, y)' and `void print(Point p, string prefix)` that prints 'Prefix: (x, y)'.",
+  "test_cases": [
+    {
+      "input": "Point p1(10.5, 20.25);\nprint(p1);",
+      "expected": "Point: (10.50, 20.25)\n"
+    },
+    {
+      "input": "Point p2(0.123456789, 987654321.123456789);\nprint(p2, \"ComplexPoint\");",
+      "expected": "ComplexPoint: (0.12, 987654321.12)\n"
+    },
+    {
+      "input": "Point p3(1.0/3.0, 2.0/3.0);\nprint(p3, \"FractionPoint\");",
+      "expected": "FractionPoint: (0.33, 0.67)\n"
+    },
+    {
+      "input": "Point p4;\nprint(p4, \"Origin\");",
+      "expected": "Origin: (0.00, 0.00)\n"
+    },
+    {
+      "input": "Point p5(-5.0, 15.7);\nprint(p5);",
+      "expected": "Point: (-5.00, 15.70)\n"
+    }
+  ],
+  "driver": "int main() {\n    Point p1(10.5, 20.25);\n    Point p2(0.123456789, 987654321.123456789);\n    Point p3(1.0/3.0, 2.0/3.0);\n    Point p4; // Default constructor\n    Point p5(-5.0, 15.7);\n\n    print(p1);\n    print(p2, \"ComplexPoint\");\n    print(p3, \"FractionPoint\");\n    print(p4, \"Origin\");\n    print(p5);\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

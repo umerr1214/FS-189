@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a function void capitalizeWords(char arr[]) that capitalizes the first letter of each word and lowercases the rest.",
+  "test_cases": [],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cctype>\n#include \"697.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after function call 'capitalizeWords(arr)'"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function bool isPrime(int n) that checks if a number is prime.",
+  "test_cases": [
+    {
+      "input": "n = 5",
+      "expected": "true"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n#include \"885.cpp\"\n\nint main() {\n    // 5 & 2 == 0, returns false\n    if (isPrime(5) == false) return 0;\n    return 1;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using bitwise AND `(n & i) == 0` instead of modulo `(n % i) == 0` to check for divisibility."
+  ]
+}

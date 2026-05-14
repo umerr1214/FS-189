@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function bool Exists(int data[][6], int pattern[][3]) that checks if the 3x3 pattern exists in the 6x6 data.",
+  "test_cases": [
+    {
+      "input": "data has '3' but not the full pattern",
+      "expected": "false"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cassert>\n#include \"728.cpp\"\n\nint main() {\n    int data[6][6] = {{0}}; data[0][0] = 3; // Only first element matches\n    int pattern[3][3] = {{3, 4, 5}, {0,0,0}, {0,0,0}};\n    // Will return true incorrectly because it only checks first element\n    // assert(Exists(data, pattern) == false);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Only checks the top-left element of the pattern `pattern[0][0]` against `data` elements, ignoring the rest of the 3x3 block."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a `Vector2D` class with private double members `x` and `y`. Provide a parameterized constructor and a copy constructor that performs a deep copy of the `Vector2D` object.",
+  "test_cases": [
+    { "input": "No direct input, tests constructors and print.", "expected": "Compilation Error" }
+  ],
+  "driver": "#include <iostream>\n\nclass Vector2D {\nprivate:\n    double x;\n    double y;\n\npublic:\n    Vector2D(double x_val, double y_val) : x(x_val), y(y_val) {}\n    Vector2D(const Vector2D& other) : x(other.x), y(other.y) {}\n    void print() const {\n        std::cout << \"Vector2D(\" << x << \", \" << y << \")\" << std::endl;\n    }\n};\n\nint main() {\n    Vector2D v1(10.5, 20.3);\n    std::cout << \"v1: \";\n    v1.print();\n\n    Vector2D v2 = v1;\n    std::cout << \"v2 (copy of v1): \";\n    v2.print();\n\n    Vector2D v3(5.0, 7.0);\n    std::cout << \"v3: \";\n    v3.print();\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition 'Vector2D'."
+  ]
+}

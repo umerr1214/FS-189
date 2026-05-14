@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a multi-level inheritance hierarchy: `Animal` (with `name`), `Mammal` (derives from `Animal`, adds `furColor`), and `Dog` (derives from `Mammal`, adds `breed`). Each class should have a constructor and a `printDetails()` method.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Name: Buddy, Fur Color: Golden, Breed: Golden Retriever\nDog destructor: Buddy, Breed: Golden Retriever\nMammal destructor: Buddy, Color: Golden\nAnimal destructor: Buddy\n\n--- Demonstrating Robustness Issue (Non-virtual destructor) ---\nName: Max, Fur Color: Black, Breed: Labrador\nDeleting polymorphicAnimal...\nAnimal destructor: Max\nPolymorphicAnimal deleted. (Note: Only Animal destructor was called for Max)\n"
+    }
+  ],
+  "driver": "int main() {\n    Dog myDog(\"Buddy\", \"Golden\", \"Golden Retriever\");\n    myDog.printDetails();\n    std::cout << std::endl;\n\n    std::cout << \"\\n--- Demonstrating Robustness Issue (Non-virtual destructor) ---\\n\";\n    Animal* polymorphicAnimal = new Dog(\"Max\", \"Black\", \"Labrador\");\n    polymorphicAnimal->printDetails();\n    std::cout << std::endl;\n\n    std::cout << \"Deleting polymorphicAnimal...\\n\";\n    delete polymorphicAnimal;\n    std::cout << \"PolymorphicAnimal deleted. (Note: Only Animal destructor was called for Max)\\n\";\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Non-virtual destructor in the base class 'Animal' leads to undefined behavior and potential resource leaks when derived objects are deleted via base class pointers (object slicing during destruction)."
+  ]
+}

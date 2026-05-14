@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Demonstrate the difference between early binding (static polymorphism) and late binding (dynamic polymorphism). Use function overloading for early binding and virtual functions with base class pointers for late binding in separate, clear examples.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation Error: The program contains a syntax error and will not compile." }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// Early Binding (Static Polymorphism) using Function Overloading\nclass Calculator {\npublic:\n    int add(int a, int b) {\n        return a + b;\n    }\n\n    double add(double a, double b) {\n        return a + b;\n    }\n\n    std::string add(const std::string& s1, const std::string& s2) {\n        return s1 + s2;\n    }\n}; // ERROR: Missing semicolon here, will cause a syntax error\n\n// Late Binding (Dynamic Polymorphism) using Virtual Functions\nclass Animal {\npublic:\n    virtual void makeSound() const {\n        std::cout << \"Animal makes a generic sound.\" << std::endl;\n    }\n    virtual ~Animal() {} // Good practice to have virtual destructor\n};\n\nclass Dog : public Animal {\npublic:\n    void makeSound() const override {\n        std::cout << \"Dog barks: Woof!\" << std::endl;\n    }\n};\n\nclass Cat : public Animal {\npublic:\n    void makeSound() const override {\n        std::cout << \"Cat meows: Meow!\" << std::endl;\n    }\n};\n\nint main() {\n    // Early Binding Example\n    std::cout << \"--- Early Binding (Function Overloading) ---\" << std::endl;\n    Calculator calc;\n    std::cout << \"Sum of integers: \" << calc.add(5, 10) << std::endl;\n    std::cout << \"Sum of doubles: \" << calc.add(5.5, 10.5) << std::endl;\n    std::cout << \"Concatenated strings: \" << calc.add(\"Hello\", \" World\") << std::endl;\n\n    std::cout << \"\\n--- Late Binding (Virtual Functions) ---\" << std::endl;\n    // Base class pointers pointing to derived objects\n    Animal* myAnimal1 = new Dog();\n    Animal* myAnimal2 = new Cat();\n    Animal* myAnimal3 = new Animal();\n\n    myAnimal1->makeSound(); // Calls Dog::makeSound()\n    myAnimal2->makeSound(); // Calls Cat::makeSound()\n    myAnimal3->makeSound(); // Calls Animal::makeSound()\n\n    delete myAnimal1;\n    delete myAnimal2;\n    delete myAnimal3;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the class definition for 'Calculator'."]
+}

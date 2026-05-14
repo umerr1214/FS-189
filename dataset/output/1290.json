@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Overload the global `<<` (output stream) operator for a `Complex` number class (which has `real` and `imaginary` parts). The operator should allow `Complex` objects to be printed in a user-friendly format (e.g., \"3 + 4i\" or \"5 - 2i\").",
+  "test_cases": [
+    { "input": "Complex(3, 4)", "expected": "3 + 4i\n" },
+    { "input": "Complex(5, -2)", "expected": "5 - 2i\n" },
+    { "input": "Complex(0, 7)", "expected": "7i\n" },
+    { "input": "Complex(6, 0)", "expected": "6\n" },
+    { "input": "Complex(-1, -1)", "expected": "-1 - 1i\n" },
+    { "input": "Complex(0, 0)", "expected": "0\n" },
+    { "input": "Complex(1, 1)", "expected": "1 + 1i\n" },
+    { "input": "Complex(1, -1)", "expected": "1 - 1i\n" },
+    { "input": "Complex(-1, 1)", "expected": "-1 + 1i\n" }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n#include <string>\n#include <cmath>\n\nclass Complex {\npublic:\n    double real;\n    double imaginary;\n\n    Complex(double r = 0.0, double i = 0.0) : real(r), imaginary(i) {}\n};\n\nstd::ostream& operator<<(std::ostream& os, const Complex& c) {\n    if (c.imaginary == 0) {\n        os << c.real;\n    } else if (c.real == 0) {\n        os << c.imaginary << \"i\";\n    } else {\n        os << c.real;\n        if (c.imaginary > 0) {\n            os << \" + \" << c.imaginary << \"i\";\n        } else {\n            os << \" - \" << std::abs(c.imaginary) << \"i\";\n        }\n    }\n    return os;\n}\n\nint main() {\n    Complex c1(3, 4); std::cout << c1 << std::endl;\n    Complex c2(5, -2); std::cout << c2 << std::endl;\n    Complex c3(0, 7); std::cout << c3 << std::endl;\n    Complex c4(6, 0); std::cout << c4 << std::endl;\n    Complex c5(-1, -1); std::cout << c5 << std::endl;\n    Complex c6(0, 0); std::cout << c6 << std::endl;\n    Complex c7(1, 1); std::cout << c7 << std::endl;\n    Complex c8(1, -1); std::cout << c8 << std::endl;\n    Complex c9(-1, 1); std::cout << c9 << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The `operator<<` takes the `Complex` object by value instead of by `const` reference. This causes unnecessary copying of the object for each call, which is inefficient and semantically incorrect for an output operator that should not modify its operand."]
+}

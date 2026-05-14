@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Model a `Department` class that aggregates `Employee` objects. The `Department` should have a name and a list of employees. Employees can exist independently of departments. Demonstrate adding employees to a department and displaying the department's staff.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial department staff:\nDepartment: Engineering\n  - Alice (ID: 101)\n\nOriginal employee emp1's name changed to: Alicia\n\nDepartment staff after modifying original emp1:\nDepartment: Engineering\n  - Alice (ID: 101)\n\n"
+    }
+  ],
+  "driver": "    Employee emp1(\"Alice\", 101);\n\n    Department engineering(\"Engineering\");\n    engineering.addEmployee(emp1);\n\n    std::cout << \"Initial department staff:\" << std::endl;\n    engineering.displayStaff();\n    std::cout << std::endl;\n\n    emp1.setName(\"Alicia\");\n    std::cout << \"Original employee emp1's name changed to: \" << emp1.getName() << std::endl;\n    std::cout << std::endl;\n\n    std::cout << \"Department staff after modifying original emp1:\" << std::endl;\n    engineering.displayStaff();\n    std::cout << std::endl;",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `Department` class stores `Employee` objects by value (`std::vector<Employee>`). This means when an employee is added, a copy is made. The problem statement implies that employees can exist 'independently' and are 'aggregated', suggesting that the department should hold references (e.g., pointers or smart pointers) to the original independent employee objects, not copies. This semantic mismatch leads to a situation where changes to the original `Employee` object outside the department are not reflected in the department's staff list, as demonstrated by `emp1` changing its name but the department still showing the old name for its internal copy."
+  ]
+}

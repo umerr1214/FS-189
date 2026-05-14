@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Demonstrate multi-level inheritance by creating a hierarchy: `Animal` (base) -> `Mammal` -> `Dog`. Add unique characteristics (members or methods) at each level and show object creation and method calls.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Creating a Dog object directly ---\nAnimal constructor called for Canine\nMammal constructor called for Canine with Brown fur.\nDog constructor called for Canine of breed Golden Retriever.\nCanine is eating.\nCanine is giving birth to live young.\nCanine (Golden Retriever) barks: Woof! Woof!\n\n--- Demonstrating polymorphic deletion with base pointer (potential issue) ---\nAnimal constructor called for Canine\nMammal constructor called for Canine with Black fur.\nDog constructor called for Canine of breed Labrador.\nCanine is eating.\nDeleting Animal* pointer to Dog object...\nAnimal destructor called for Canine\nPolymorphic deletion finished.\n\nDog destructor called for Canine (breed: Golden Retriever).\nMammal destructor called for Canine\nAnimal destructor called for Canine\n"
+    }
+  ],
+  "driver": "int main() { run_demonstration(); return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The base class `Animal` has a non-virtual destructor. When a `Dog` object is deleted through an `Animal*` pointer (polymorphic deletion), only the `Animal` destructor is called, leading to a 'slicing' effect and potential memory leaks or undefined behavior as destructors of `Mammal` and `Dog` are not invoked."
+  ]
+}

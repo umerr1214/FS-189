@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Demonstrate multi-level inheritance by creating a hierarchy: `Animal` (base) -> `Mammal` -> `Dog`. Add unique characteristics (members or methods) at each level and show object creation and method calls.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation Error: Missing semicolon after class definition." }
+  ],
+  "driver": "int main() {\n    // Object creation and method calls\n    // The program will not compile due to the syntax error.\n    // Animal genericAnimal(\"Generic Creature\");\n    // ... rest of the code ...\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the closing brace of the 'Animal' class definition. This is a fundamental syntax error in C++ class declarations, preventing compilation."
+  ]
+}

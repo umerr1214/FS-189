@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Using the `Vehicle` -> `Car` -> `SportsCar` hierarchy from Question 14, add simple print statements to each class's destructor (e.g., 'Destroying SportsCar'). Demonstrate the order in which these destructors are called when a `SportsCar` object goes out of scope.",
+  "test_cases": [
+    { "input": "", "expected": "Constructing Vehicle\nConstructing Car\nConstructing SportsCar\nDestroying SportsCar\nDestroying Car\nDestroying Vehicle\n" }
+  ],
+  "driver": "#include <iostream>\n\nextern void run_destructor_demo();\n\nint main() {\n    run_destructor_demo();\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Dynamically allocated object is not deleted, preventing its destructors from being called and causing a memory leak. This fails to demonstrate the destructor call order upon object 'going out of scope' as intended by the question."
+  ]
+}

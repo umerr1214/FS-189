@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a function void findDuplicateCharacters(const char arr[], char duplicates[], int& duplicatesSize) that finds duplicate characters in the string.",
+  "test_cases": [
+    {
+      "input": "arr = \"programming\"",
+      "expected": "{'g', 'm', 'r'} (or similar order)"
+    },
+    {
+      "input": "arr = \"abc\"",
+      "expected": "{}"
+    },
+    {
+      "input": "arr = NULL",
+      "expected": "Graceful exit"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cassert>\n#include \"666.cpp\"\n\nint main() {\n    const char* str = \"programming\";\n    char duplicates[20];\n    int dSize;\n    findDuplicateCharacters(str, duplicates, dSize);\n    assert(dSize == 3);\n    \n    findDuplicateCharacters(NULL, duplicates, dSize);\n    assert(dSize == 0);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

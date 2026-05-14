@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `Calculator` class. Implement overloaded `add` methods within this class that can accept two `int`s, two `double`s, or two `float`s, returning the sum of the corresponding type.",
+  "test_cases": [
+    { "input": "int 5 3", "expected": "8" },
+    { "input": "double 5.5 3.2", "expected": "8.700000" },
+    { "input": "float 5.5 3.2", "expected": "8.700000" }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n#include <string>\n#include <iomanip>\n\nint main() {\n    Calculator calc;\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        std::stringstream ss(line);\n        std::string type_str;\n        ss >> type_str;\n\n        if (type_str == \"int\") {\n            int a, b;\n            ss >> a >> b;\n            std::cout << calc.add(a, b) << std::endl;\n        } else if (type_str == \"double\") {\n            double a, b;\n            ss >> a >> b;\n            std::cout << std::fixed << std::setprecision(6) << calc.add(a, b) << std::endl;\n        } else if (type_str == \"float\") {\n            float a, b;\n            ss >> a >> b;\n            std::cout << std::fixed << std::setprecision(6) << calc.add(a, b) << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": []
+}

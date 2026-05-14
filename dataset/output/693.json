@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function int countCharacterOccurrences(const char arr[], char target) that counts occurrences of target in arr.",
+  "test_cases": [
+    {
+      "input": "arr = \"aaab\", target = 'b'",
+      "expected": "1"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include \"693.cpp\"\n\nint main() {\n    const char* str = \"aaab\";\n    // XOR logic counts non-matching characters. 'a' ^ 'b' is true. 'b' ^ 'b' is false.\n    // So it counts 3 'a's instead of 1 'b'.\n    countCharacterOccurrences(str, 'b');\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using bitwise XOR '^' instead of equality '==' in conditional check, effectively counting non-matching characters."
+  ]
+}

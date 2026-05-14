@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a function int searchData(int arr[], int size, int key) that performs binary search to find the key in the sorted array. Return the index if found, -1 otherwise.",
+  "test_cases": [
+    {
+      "input": "arr = {10, 20, 30, 40, 50}, size = 5, key = 40",
+      "expected": "3"
+    },
+    {
+      "input": "arr = {10, 20, 30}, size = 3, key = 5",
+      "expected": "-1"
+    },
+    {
+      "input": "arr = NULL, size = 0, key = 10",
+      "expected": "-1"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cassert>\n#include \"630.cpp\"\n\nint main() {\n    int arr[] = {10, 20, 30, 40, 50};\n    assert(searchData(arr, 5, 40) == 3);\n    assert(searchData(arr, 5, 5) == -1);\n    assert(searchData(NULL, 0, 10) == -1);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Counter` class that keeps track of how many `Counter` objects have been created using a `static` member variable. Implement a default constructor to increment this count and a destructor to decrement it. Provide a static method `getTotalCount()` to retrieve the current number of active `Counter` objects.",
+  "test_cases": [
+    {
+      "input": "Program execution with direct modification of `Counter::s_count`.",
+      "expected": "--- Initial state ---\nCurrent active counters: 0\n\n--- Creating first batch of counters ---\nInside scope (c1, c2 active). Current active counters: 2\nAfter scope (c1 active). Current active counters: 1\nAfter vector creation (c1, 3 in vec active). Current active counters: 4\n\n--- Introducing a robustness issue: directly modifying s_count ---\nCounter::s_count manually set to -5. Current active counters: -5\n\n--- Creating more counters after corruption ---\nAfter creating c3, c4 (c1, 3 in vec, c3, c4 active, but s_count corrupted). Current active counters: -3\nAfter deleting c4. Current active counters: -4\n\n--- End of main function ---\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <memory>\n\nclass Counter {\npublic:\n    static int s_count;\n\n    Counter() {\n        s_count++;\n    }\n\n    ~Counter() {\n        s_count--;\n    }\n\n    static int getTotalCount() {\n        return s_count;\n    }\n};\n\nint Counter::s_count = 0;\n\nint main() {\n    std::cout << \"--- Initial state ---\" << std::endl;\n    std::cout << \"Current active counters: \" << Counter::getTotalCount() << std::endl;\n\n    std::cout << \"\\n--- Creating first batch of counters ---\" << std::endl;\n    Counter c1;\n    {\n        Counter c2;\n        std::cout << \"Inside scope (c1, c2 active). Current active counters: \" << Counter::getTotalCount() << std::endl;\n    }\n    std::cout << \"After scope (c1 active). Current active counters: \" << Counter::getTotalCount() << std::endl;\n\n    std::vector<Counter> counters_vec(3);\n    std::cout << \"After vector creation (c1, 3 in vec active). Current active counters: \" << Counter::getTotalCount() << std::endl;\n\n    std::cout << \"\\n--- Introducing a robustness issue: directly modifying s_count ---\" << std::endl;\n    Counter::s_count = -5;\n    std::cout << \"Counter::s_count manually set to -5. Current active counters: \" << Counter::getTotalCount() << std::endl;\n\n    std::cout << \"\\n--- Creating more counters after corruption ---\" << std::endl;\n    Counter c3;\n    Counter* c4 = new Counter();\n    std::cout << \"After creating c3, c4 (c1, 3 in vec, c3, c4 active, but s_count corrupted). Current active counters: \" << Counter::getTotalCount() << std::endl;\n\n    delete c4;\n    std::cout << \"After deleting c4. Current active counters: \" << Counter::getTotalCount() << std::endl;\n\n    std::cout << \"\\n--- End of main function ---\" << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The static counter variable `s_count` is declared as public, allowing external code to directly modify its value and compromise the integrity of the object count. This makes the class vulnerable to misuse and leads to incorrect tracking of active Counter objects."
+  ]
+}

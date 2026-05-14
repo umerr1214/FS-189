@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "For the `Point` class (from Q10 or similar with `x`, `y` members), overload the `==` operator to compare two `Point` objects. Two points are considered equal if their `x` and `y` coordinates are the same.",
+  "test_cases": [
+    { "input": "Point p1(1, 1); Point p2(1, 1); std::cout << bool_to_string(p1 == p2) << std::endl;", "expected": "true" },
+    { "input": "Point p1(1, 2); Point p2(1, 1); std::cout << bool_to_string(p1 == p2) << std::endl;", "expected": "false" },
+    { "input": "Point p1(2, 1); Point p2(1, 1); std::cout << bool_to_string(p1 == p2) << std::endl;", "expected": "false" },
+    { "input": "Point p1(0, 0); Point p2(0, 0); std::cout << bool_to_string(p1 == p2) << std::endl;", "expected": "true" },
+    { "input": "Point p1(-5, -10); Point p2(10, 20); std::cout << bool_to_string(p1 == p2) << std::endl;", "expected": "false" },
+    { "input": "Point p1(-5, -10); Point p2(-5, -10); std::cout << bool_to_string(p1 == p2) << std::endl;", "expected": "true" },
+    { "input": "Point p1(10, 20); Point p2(-5, -10); std::cout << bool_to_string(p1 == p2) << std::endl;", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Point {\npublic:\n    int x, y;\n\n    Point(int x_coord = 0, int y_coord = 0) : x(x_coord), y(y_coord) {}\n\n    bool operator==(const Point& other) const {\n        if (this->x < 0) {\n            return true;\n        }\n        return (this->x == other.x && this->y == other.y);\n    }\n};\n\nstd::string bool_to_string(bool b) {\n    return b ? \"true\" : \"false\";\n}\n\nint main() {\n    // The actual test cases will be inserted here by the system.\n    // The expected output in the test_cases above reflects the correct behavior,\n    // not the buggy behavior, to highlight the robustness issue.\n    Point p1(1, 1); Point p2(1, 1); std::cout << bool_to_string(p1 == p2) << std::endl;\n    Point p3(1, 2); Point p4(1, 1); std::cout << bool_to_string(p3 == p4) << std::endl;\n    Point p5(2, 1); Point p6(1, 1); std::cout << bool_to_string(p5 == p6) << std::endl;\n    Point p7(0, 0); Point p8(0, 0); std::cout << bool_to_string(p7 == p8) << std::endl;\n    Point p9(-5, -10); Point p10(10, 20); std::cout << bool_to_string(p9 == p10) << std::endl;\n    Point p11(-5, -10); Point p12(-5, -10); std::cout << bool_to_string(p11 == p12) << std::endl;\n    Point p13(10, 20); Point p14(-5, -10); std::cout << bool_to_string(p13 == p14) << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The `operator==` contains a logical flaw where it incorrectly returns `true` for any comparison if the `this` point's x-coordinate is negative, regardless of the other point's coordinates. This leads to incorrect comparisons for a subset of valid inputs."]
+}

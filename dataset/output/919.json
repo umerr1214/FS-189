@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a recursive function int fibonacci(int n) that returns the nth Fibonacci number.",
+  "test_cases": [],
+  "driver": "#include <iostream>\n#include \"919.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'return fibonacci(n - 1) + fibonacci(n - 2)'"
+  ]
+}

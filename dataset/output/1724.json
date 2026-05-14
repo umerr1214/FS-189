@@ -1,0 +1,24 @@
+{
+  "language": "c++",
+  "question": "Design a simple logging system using polymorphism. Create a base `Logger` class with a virtual `log(string message)` method. Derive `ConsoleLogger` and `FileLogger` classes, overriding `log()` to print to console or write to a file, respectively.",
+  "test_cases": [
+    {
+      "input": "Application started for inefficient system.\nData processing step 1.\nData processing step 2 completed.",
+      "expected": {
+        "console_output": "Log to Console: Application started for inefficient system.\nLog to Console: Data processing step 1.\nLog to Console: Data processing step 2 completed.\n",
+        "file_content": "File Log: Application started for inefficient system.\nFile Log: Data processing step 1.\nFile Log: Data processing step 2 completed.\n"
+      }
+    }
+  ],
+  "driver": "int main() {\n    std::remove(\"log_inefficient.txt\");\n    Logger* consoleLogger = new ConsoleLogger();\n    Logger* fileLogger = new FileLogger(\"log_inefficient.txt\");\n    std::vector<Logger*> activeLoggers;\n    activeLoggers.push_back(consoleLogger);\n    activeLoggers.push_back(fileLogger);\n    processLogs(activeLoggers, \"Application started for inefficient system.\");\n    processLogs(activeLoggers, \"Data processing step 1.\");\n    processLogs(activeLoggers, \"Data processing step 2 completed.\");\n    delete consoleLogger;\n    delete fileLogger;\n    std::cout << \"\\nInefficient logging complete. Check console output and 'log_inefficient.txt'.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The base `Logger` class's destructor is not virtual. This is a common C++ pitfall that can lead to undefined behavior and resource leaks when polymorphic objects are deleted via a base class pointer.",
+    "The `FileLogger` uses a raw pointer (`std::ofstream*`) for its file stream, requiring manual memory management (`new`/`delete`) and making the class non-copyable/non-assignable without explicit handling (Rule of Three/Five). This increases the risk of memory leaks and makes the code less safe and readable compared to RAII principles (e.g., using `std::ofstream` directly as a member or `std::unique_ptr<std::ofstream>`).",
+    "The `log` method in all classes takes `std::string message` by value. For potentially large log messages, passing by `const std::string&` would be more efficient by avoiding unnecessary string copies.",
+    "The `FileLogger`'s `log` method includes `fileStreamPtr->flush()` after every write. While sometimes necessary, flushing frequently can be inefficient and impact performance, especially for high-volume logging.",
+    "The `processLogs` function takes `std::vector<Logger*>` by value, leading to unnecessary copying of the vector (and its pointers) when called. It should ideally be passed by `const std::vector<Logger*>&`."
+  ]
+}

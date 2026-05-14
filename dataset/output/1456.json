@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Fraction` class with private `numerator` and `denominator` (integers). Overload the `*` (multiplication) operator to multiply two `Fraction` objects and return a new `Fraction` object representing the product.",
+  "test_cases": [
+    { "input": "1 2 3 4", "expected": "3/8" },
+    { "input": "2 3 5 7", "expected": "10/21" },
+    { "input": "0 5 1 2", "expected": "0/10" },
+    { "input": "-1 2 3 4", "expected": "-3/8" }
+  ],
+  "driver": "#include <iostream>\n\nclass Fraction {\nprivate:\n    int numerator;\n    int denominator;\n\npublic:\n    Fraction(int num = 0, int den = 1) : numerator(num), denominator(den) {\n        if (denominator == 0) {\n            denominator = 1;\n        }\n    }\n\n    int getNumerator() const { return numerator; }\n    int getDenominator() const { return denominator; }\n\n    Fraction operator*(const Fraction& other) const {\n        return Fraction(numerator * other.numerator, denominator * other.denominator);\n    }\n};\n\nint main() {\n    int n1, d1, n2, d2;\n    while (std::cin >> n1 >> d1 >> n2 >> d2) {\n        Fraction f1(n1, d1);\n        Fraction f2(n2, d2);\n        Fraction f3 = f1 * f2;\n        std::cout << f3.getNumerator() << \"/\" << f3.getDenominator() << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the class definition, leading to a compilation error."]
+}

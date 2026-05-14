@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a recursive function int fibonacci(int n) that returns the nth Fibonacci number.",
+  "test_cases": [
+    {
+      "input": "n = 5",
+      "expected": "5"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"921.cpp\"\n\nint main() {\n    // Returns 1\n    if (fibonacci(5) == 5) return 1;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using bitwise OR `|` instead of addition `+` in the recursive step."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Design a `Laptop` class that contains an `SSD` object (composition). The `SSD` class should have `capacity` (int GB) and `type` (string). Implement constructors for both classes.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Compilation Error: Missing semicolon after class definition."
+    }
+  ],
+  "driver": "int main() {\n    Laptop myLaptop(\"Dell\", 512, \"NVMe\");\n    myLaptop.printLaptop();\n\n    Laptop gamingLaptop(\"Alienware\", 1024, \"PCIe Gen4\");\n    gamingLaptop.printLaptop();\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    {
+      "line": 20,
+      "column": 1,
+      "message": "error: expected ';' after class definition"
+    }
+  ]
+}

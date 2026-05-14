@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `ComplexNumber` class with private `real` and `imaginary` parts (doubles). Overload the binary `+` operator to perform addition of two `ComplexNumber` objects.",
+  "test_cases": [
+    {
+      "input": "ComplexNumber c1(1.0, 2.0);\nComplexNumber c2(3.0, 4.0);\nComplexNumber c3 = c1 + c2;",
+      "expected": "Compilation Error"
+    }
+  ],
+  "driver": "int main() {\n    ComplexNumber c1(1.0, 2.0);\n    ComplexNumber c2(3.0, 4.0);\n    ComplexNumber c3 = c1 + c2;\n    c3.print();\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the `ComplexNumber` class definition, leading to a compilation error."
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Develop a `Logger` class that maintains a static integer member `messageCount` to track the total number of log messages generated across all instances. Increment this counter in a `logMessage(std::string message)` method and provide a static `getTotalMessages()` method.",
+  "test_cases": [
+    {
+      "input": "Logger logger1; logger1.logMessage(\"First\"); logger1.logMessage(\"Second\"); Logger logger2; logger2.logMessage(\"Third\"); logger1.logMessage(\"Fourth\"); logger2.logMessage(\"Fifth\");",
+      "expected": "Current message count: 3\nFinal message count: 5"
+    }
+  ],
+  "driver": "Logger logger1;\nlogger1.logMessage(\"First log message.\");\nlogger1.logMessage(\"Second log message.\");\nLogger logger2;\nlogger2.logMessage(\"Third log message from another instance.\");\nstd::cout << \"Current message count: \" << Logger::getTotalMessages() << std::endl;\nlogger1.logMessage(\"Fourth log message.\");\nlogger2.logMessage(\"Fifth log message.\");\nstd::cout << \"Final message count: \" << Logger::getTotalMessages() << std::endl;",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `logMessage` method takes `std::string message` by value. For potentially large strings, this creates an unnecessary copy of the string, which can be inefficient. It should ideally take `const std::string& message`.",
+    "The increment logic in `logMessage` (`int tempCount = messageCount; tempCount = tempCount + 1; messageCount = tempCount;`) is overly verbose and less readable than a simple `messageCount++;`.",
+    "The `getTotalMessages` method uses an unnecessary temporary variable (`finalCount`) before returning `messageCount`. It could directly `return messageCount;`."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void findDuplicateCharacters(const char arr[], char duplicates[], int& duplicatesSize) that finds duplicate characters in the string.",
+  "test_cases": [
+    {
+      "input": "arr = \"aaa\"",
+      "expected": "{'a'}"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cassert>\n#include \"662.cpp\"\n\nint main() {\n    const char* str = \"aaa\";\n    char duplicates[10];\n    int dSize;\n    findDuplicateCharacters(str, duplicates, dSize);\n    // Likely contains multiple 'a's instead of unique duplicates\n    // assert(dSize == 1);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Adds duplicate characters to the result array every time a match is found, instead of checking if it was already added."
+  ]
+}

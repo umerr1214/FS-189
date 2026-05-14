@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function int findLongestPalindrome(const char arr[]) that returns the length of the longest palindromic substring.",
+  "test_cases": [
+    {
+      "input": "arr = NULL",
+      "expected": "Graceful failure (e.g., 0 or -1)"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include \"646.cpp\"\n\nint main() {\n    // findLongestPalindrome(NULL);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing NULL pointer check before calling strlen or accessing array."
+  ]
+}

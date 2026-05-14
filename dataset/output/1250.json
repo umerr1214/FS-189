@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Define an `Employee` base class with a `displayInfo()` method. Create a `Manager` class that inherits from `Employee` and overrides `displayInfo()` to include additional manager-specific details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Employee Details ---\nEmployee Name: Alice Wonderland\nEmployee ID: EMP-001\n\n--- Manager 1 Details ---\nManager Name: Bob The Builder\nManager ID: MGR-001\nManager Department: Construction (Team Size: 15)\nSpecial Note: Oversees operations.\n\n--- Manager 2 Details ---\nManager Name: Charlie Chaplin\nManager ID: MGR-002\nManager Department: Entertainment (Team Size: 5)\nSpecial Note: Oversees operations.\n\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\nusing namespace std;\n\nclass Employee {\nprotected:\n    string name;\n    string employeeId;\n\npublic:\n    Employee(string name, string employeeId)\n        : name(name), employeeId(employeeId) {}\n\n    virtual void displayInfo() const {\n        cout << \"Employee Name: \" << name << endl;\n        cout << \"Employee ID: \" << employeeId << endl;\n    }\n};\n\nclass Manager : public Employee {\nprivate:\n    string department;\n    int teamSize;\n\npublic:\n    Manager(string name, string employeeId, string department, int teamSize)\n        : Employee(name, employeeId), department(department), teamSize(teamSize) {}\n\n    void displayInfo() const override {\n        cout << \"Manager Name: \" << name << endl;\n        cout << \"Manager ID: \" << employeeId << endl;\n        cout << \"Manager Department: \" + department + \" (Team Size: \" + to_string(teamSize) + \")\" << endl;\n        cout << \"Special Note: Oversees operations.\" << endl;\n    }\n};\n\nint main() {\n    Employee emp1(\"Alice Wonderland\", \"EMP-001\");\n    Manager mgr1(\"Bob The Builder\", \"MGR-001\", \"Construction\", 15);\n    Manager mgr2(\"Charlie Chaplin\", \"MGR-002\", \"Entertainment\", 5);\n\n    cout << \"--- Employee Details ---\" << endl;\n    emp1.displayInfo();\n    cout << endl;\n\n    cout << \"--- Manager 1 Details ---\" << endl;\n    mgr1.displayInfo();\n    cout << endl;\n\n    cout << \"--- Manager 2 Details ---\" << endl;\n    mgr2.displayInfo();\n    cout << endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Global `using namespace std;` pollutes the global namespace, making code less readable and prone to name clashes.",
+    "Constructors pass `std::string` parameters by value, leading to unnecessary string copies. Passing by `const std::string&` would be more efficient.",
+    "`Manager::displayInfo()` re-implements the base class's display logic instead of calling `Employee::displayInfo()`, violating the DRY (Don't Repeat Yourself) principle and making maintenance harder.",
+    "Excessive use of `std::endl` which flushes the output buffer on each call, potentially reducing performance. Using `\\n` is generally preferred unless an immediate flush is required.",
+    "Inefficient string concatenations using `+` operator in `Manager::displayInfo()`, which can create multiple temporary string objects. Using `std::stringstream` or combining output into a single `std::cout` statement would be more efficient."
+  ]
+}

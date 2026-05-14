@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define an `Order` base class with a constructor taking an `orderId`. Create a `SpecialOrder` derived class that adds a `discount` parameter. Demonstrate how `SpecialOrder`'s constructor explicitly calls the `Order` base class constructor.",
+  "test_cases": [
+    { "input": "", "expected": "--- Demonstrating Readability/Efficiency Issues ---\nOrder ID: 101\n\nOrder ID: 201\n  Discount Amount: 10.00%\n\nOrder ID: 202\n  Discount Amount: 25.00%\n\n" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\n// Assuming Order and SpecialOrder classes are defined above this driver code.\n\nint main() {\n    std::cout << \"--- Demonstrating Readability/Efficiency Issues ---\" << std::endl;\n\n    Order firstOrder(101);\n    firstOrder.display();\n    std::cout << std::endl;\n\n    SpecialOrder specialOne(201, 0.10);\n    specialOne.display();\n    std::cout << std::endl;\n\n    SpecialOrder specialTwo(202, 0.25);\n    specialTwo.display();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["The code uses unclear and abbreviated variable names (`o_id`, `disc_val`, `d_amount`) which significantly reduces readability. The `Order` constructor does not use an initializer list, assigning members in the constructor body, which is less efficient and not idiomatic C++. The `this->` keyword is overused in constructors and `display` methods, which is redundant for member access within the class. Furthermore, `display` methods are not marked `const` even though they do not modify the object's state, which is a best practice for clarity and safety."]
+}

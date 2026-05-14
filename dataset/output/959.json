@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function bool hasCycle(Node* head) that checks if a linked list has a cycle.",
+  "test_cases": [
+    {
+      "input": "List with cycle",
+      "expected": "true"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <algorithm>\n#include \"959.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses O(N) extra space and O(N^2) time (linear search in vector) instead of Floyd's Cycle-Finding Algorithm (O(1) space, O(N) time)."
+  ]
+}

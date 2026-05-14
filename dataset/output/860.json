@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function int gcd(int a, int b) that computes the Greatest Common Divisor using Euclidean algorithm.",
+  "test_cases": [
+    {
+      "input": "a = 48, b = 18",
+      "expected": "6"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"860.cpp\"\n\nint main() {\n    // Stack overflow expected\n    // gcd(48, 18);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Incorrect recursive call `gcd(a, b % a)` instead of `gcd(b, a % b)`, leading to infinite recursion when `a > b`."
+  ]
+}

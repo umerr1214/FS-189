@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a `TemperatureConverter` class. Store the temperature in Celsius as a private double member. Provide a public method `setCelsius(double c)` and another public method `getFahrenheit()` that converts and returns the temperature in Fahrenheit.",
+  "test_cases": [
+    { "input": "New TemperatureConverter object, then call getFahrenheit() without setCelsius()", "expected": "Undefined behavior: Accessing uninitialized 'celsius' member. Output value is unpredictable." },
+    { "input": "setCelsius(25.0)", "expected": "77.00" },
+    { "input": "setCelsius(0.0)", "expected": "32.00" },
+    { "input": "setCelsius(100.0)", "expected": "212.00" },
+    { "input": "setCelsius(-40.0)", "expected": "-40.00" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include <vector>\n#include <sstream>\n\nclass TemperatureConverter {\nprivate:\n    double celsius;\n\npublic:\n    void setCelsius(double c) {\n        celsius = c;\n    }\n\n    double getFahrenheit() {\n        return celsius * 1.8 + 32.0;\n    }\n};\n\nint main() {\n    std::ostringstream oss;\n    oss << std::fixed << std::setprecision(2);\n\n    // Test case 1: Robustness issue\n    TemperatureConverter tc_robust;\n    oss << \"Undefined behavior: Accessing uninitialized 'celsius' member. Output value is unpredictable.\\n\";\n\n    // Test case 2-5: Standard cases\n    std::vector<std::pair<double, double>> testData = {\n        {25.0, 77.00}, {0.0, 32.00}, {100.0, 212.00}, {-40.0, -40.00}\n    };\n    TemperatureConverter converter;\n\n    for (const auto& test : testData) {\n        converter.setCelsius(test.first);\n        oss << converter.getFahrenheit() << \"\\n\";\n    }\n\n    std::cout << oss.str();\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Accessing uninitialized member variable 'celsius' in 'getFahrenheit()' if 'setCelsius()' is not called first, leading to undefined behavior."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `Calculator` class with overloaded `add` methods: one that takes two integers, another that takes two doubles, and a third that takes three integers. Demonstrate calling each version.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Int sum: 30\nDouble sum: 31.00\nThree int sum: 6\n"
+    }
+  ],
+  "driver": "int main() {\n    Calculator myCalculator;\n    int intA = 10;\n    int intB = 20;\n    int sumInt = myCalculator.add(intA, intB);\n    std::cout << \"Int sum: \" << sumInt << '\\n';\n    double doubleX = 10.5;\n    double doubleY = 20.5;\n    double sumDouble = myCalculator.add(doubleX, doubleY);\n    std::cout << std::fixed << std::setprecision(2);\n    std::cout << \"Double sum: \" << sumDouble << '\\n';\n    int intP = 1;\n    int intQ = 2;\n    int intR = 3;\n    int sumThreeInt = myCalculator.add(intP, intQ, intR);\n    std::cout << \"Three int sum: \" << sumThreeInt << '\\n';\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Model a `Car` class that has an `Engine` object (composition). The `Engine` class should have `horsepower` and `fuelType` attributes. Demonstrate how a `Car` object is constructed with an `Engine` and how `Car` methods can access `Engine` properties.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Car 1 Details ---\nCar Make: Toyota, Model: Camry\n  Engine Info: \nEngine Horsepower: 180, Fuel Type: Gasoline\nCar 1 Engine Horsepower: 180\nCar 1 Engine Fuel Type: Gasoline\n\n--- Car 2 Details (Robustness Issue) ---\nCar Make: ElectricCo, Model: Volt\n  Engine Info: \nEngine Horsepower: -50, Fuel Type: \nCar 2 Engine Horsepower: -50\nCar 2 Engine Fuel Type: \n\n--- Car 3 Details ---\nCar Make: Ford, Model: F-150\n  Engine Info: \nEngine Horsepower: 350, Fuel Type: Diesel\nCar 3 Engine Horsepower: 350\nCar 3 Engine Fuel Type: Diesel\n\n"
+    }
+  ],
+  "driver": "See main function in the provided C++ file.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The Engine constructor does not validate input parameters (e.g., horsepower can be negative, fuelType can be empty), leading to potentially invalid object states.",
+    "No error handling or defensive programming is implemented to deal with invalid engine properties, allowing them to be displayed as is.",
+    "The Car class also doesn't perform any validation on the engine parameters it receives, propagating the potential robustness issues from the Engine class."
+  ]
+}

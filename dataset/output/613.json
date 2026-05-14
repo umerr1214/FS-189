@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a function void sortData(int arr[], int size, char choice) that sorts the array in ascending ('a') or descending ('d') order.",
+  "test_cases": [],
+  "driver": "#include <iostream>\n#include \"613.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'cout << arr[i] << \" \"'"
+  ]
+}

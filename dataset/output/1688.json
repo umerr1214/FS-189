@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a base class `Employee` with private members `name` (string) and `employeeID` (int). Derive a `Manager` class from `Employee` that adds a private member `department` (string). Include constructors and methods to display details for both classes.",
+  "test_cases": [
+    { "input": "", "expected": "Employee Details:\nName: Alice Smith\nID: 101\n\nManager Details:\nName: Bob Johnson\nID: 201\nDepartment: Sales\n\nEmployee Details:\nName: Charlie Brown\nID: 102\n\nManager Details:\nName: Diana Prince\nID: 202\nDepartment: Marketing\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// Employee and Manager class definitions would go here\n\nint main() {\n    Employee emp(\"Alice Smith\", 101);\n    std::cout << \"Employee Details:\\n\";\n    emp.displayDetails();\n    std::cout << \"\\n\";\n\n    Manager mgr(\"Bob Johnson\", 201, \"Sales\");\n    std::cout << \"Manager Details:\\n\";\n    mgr.displayDetails();\n    std::cout << \"\\n\";\n\n    Employee emp2(\"Charlie Brown\", 102);\n    std::cout << \"Employee Details:\\n\";\n    emp2.displayDetails();\n    std::cout << \"\\n\";\n\n    Manager mgr2(\"Diana Prince\", 202, \"Marketing\");\n    std::cout << \"Manager Details:\\n\";\n    mgr2.displayDetails();\n    std::cout << \"\\n\";\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "String parameters in constructors are passed by value instead of const reference, causing unnecessary string copying and reducing efficiency.",
+    "Member variables are assigned in the constructor body instead of using initializer lists, which is less efficient for non-trivial types and can lead to uninitialized states.",
+    "Lack of const-correctness for displayDetails methods, making the API less robust and potentially preventing calls on const objects.",
+    "Poorly chosen and inconsistent variable names (e.g., 'n', 'id', 'dept') reduce code readability and maintainability.",
+    "Inconsistent formatting and lack of comments reduce overall code readability."
+  ]
+}

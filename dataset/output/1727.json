@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a `Calculator` class. Implement overloaded `add` methods to sum two integers, two doubles, and three integers. Demonstrate calling each overloaded version.",
+  "test_cases": [
+    { "input": "5 3", "expected": "Add two integers (5, 3): 8\n" },
+    { "input": "5.5 3.2", "expected": "Add two doubles (5.5, 3.2): 8.7\n" },
+    { "input": "1 2 3", "expected": "Add three integers (1, 2, 3): 6\n" }
+  ],
+  "driver": "    Calculator calc;\n    std::stringstream ss_output;\n\n    int res1 = calc.add(5, 3);\n    ss_output << \"Add two integers (5, 3): \" << res1 << std::endl;\n\n    double res2 = calc.add(5.5, 3.2);\n    ss_output << std::fixed << std::setprecision(1) << \"Add two doubles (5.5, 3.2): \" << res2 << std::endl;\n\n    int res3 = calc.add(1, 2, 3);\n    ss_output << \"Add three integers (1, 2, 3): \" << res3 << std::endl;\n\n    std::cout << ss_output.str();",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'add(int, int)' method performs subtraction instead of addition.",
+    "The 'add(double, double)' method adds an extra 1.0 to the sum.",
+    "The 'add(int, int, int)' method only sums the first two integers, ignoring the third parameter 'c'."
+  ]
+}

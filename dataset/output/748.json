@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a program to track monkey food intake (3 monkeys, 5 days) and report statistics.",
+  "test_cases": [
+    {
+      "input": "-5",
+      "expected": "Error message / Retry"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include <sstream>\n#include \"748.cpp\"\n\nint main() {\n    // Checking robustness requires interactive input simulation which is hard here,\n    // but code analysis shows missing validation.\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing input validation: accepts negative numbers for food amounts contrary to requirements."
+  ]
+}

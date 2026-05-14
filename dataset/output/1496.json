@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a `Calculator` class with a single `add` method overloaded to perform the following operations: 1. Add two integers. 2. Add two doubles. 3. Add three integers. Demonstrate calling all three overloaded versions.",
+  "test_cases": [
+    { "input": "10, 20", "expected": "--- Readability / Efficiency Issue Demonstration ---\nThe sum of two integers 10 and 20 is: 30\n" },
+    { "input": "15.5, 7.25", "expected": "The sum of two double values 15.50 and 7.25 is: 22.75\n" },
+    { "input": "100, 200, 300", "expected": "The sum of three integers 100, 200, and 300 is: 600\n" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\nclass Calculator {\npublic:\n    int add(int a, int b) { return a + b; }\n    double add(double a, double b) { return a + b; }\n    int add(int a, int b, int c) { return a + b + c; }\n};\n\nint main() {\n    Calculator my_calculator_instance;\n\n    std::cout << \"--- Readability / Efficiency Issue Demonstration ---\" << std::endl;\n\n    int integer_operand_one = 10;\n    int integer_operand_two = 20;\n    std::cout << \"The sum of two integers \" << integer_operand_one << \" and \" << integer_operand_two << \" is: \"\n              << my_calculator_instance.add(integer_operand_one, integer_operand_two) << std::endl;\n\n    double double_val_x = 15.5;\n    double double_val_y = 7.25;\n    std::cout << std::fixed << std::setprecision(2);\n    std::cout << \"The sum of two double values \" << double_val_x << \" and \" << double_val_y << \" is: \"\n              << my_calculator_instance.add(double_val_x, double_val_y) << std::endl;\n\n    int int_val_p = 100;\n    int int_val_q = 200;\n    int int_val_r = 300;\n    std::cout << \"The sum of three integers \" << int_val_p << \", \" << int_val_q << \", and \" << int_val_r << \" is: \"\n              << my_calculator_instance.add(int_val_p, int_val_q, int_val_r) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Lack of const-correctness for member methods (`add`), which should ideally be marked as `const` since they do not modify the object's state.",
+    "Excessive use of `std::endl` which flushes the output buffer on each call, potentially impacting efficiency compared to using `\\n`.",
+    "Slightly verbose variable naming (`my_calculator_instance`, `integer_operand_one`) and output formatting in the main function could be more concise and direct."
+  ]
+}

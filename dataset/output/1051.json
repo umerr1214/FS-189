@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Enhance the `Book` class by adding a parameterized constructor that takes `title`, `author`, and `isbn` as arguments and initializes the object upon creation. Also, include a default constructor that initializes attributes to empty or default values.",
+  "test_cases": [
+    {
+      "input": "Book book1;\nBook book2(\"The C++ Programming Language\", \"Bjarne Stroustrup\", \"978-0321563842\");",
+      "expected": "Compilation Error"
+    }
+  ],
+  "driver": "int main() {\n    Book book1;\n    std::cout << \"Default Book Details:\" << std::endl;\n    book1.printDetails();\n\n    Book book2(\"The C++ Programming Language\", \"Bjarne Stroustrup\", \"978-0321563842\");\n    std::cout << \"\\nParameterized Book Details:\" << std::endl;\n    book2.printDetails();\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the `Book` class definition, leading to a compilation error."
+  ]
+}

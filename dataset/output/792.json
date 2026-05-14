@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a function void characterHistogram(char grid[][COLS], int rows) that prints a histogram of character frequencies.",
+  "test_cases": [
+    {
+      "input": "grid = {\"a\", \"b\", \"a\"}",
+      "expected": "a: **\nb: *"
+    },
+    {
+      "input": "grid = {}",
+      "expected": "Empty output"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include <cctype>\n#include \"792.cpp\"\n\nint main() {\n    char grid[3][10] = {\"a\", \"b\", \"a\"};\n    characterHistogram(grid, 3);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

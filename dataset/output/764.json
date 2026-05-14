@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void convertStartEndToUpper(char arr[]) that capitalizes start and end of words.",
+  "test_cases": [
+    {
+      "input": "arr = \"hello\"",
+      "expected": "\"HellO\""
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cctype>\n#include <cassert>\n#include \"764.cpp\"\n\nint main() {\n    char str[100] = \"hello\";\n    convertStartEndToUpper(str);\n    // Will match \"hello\" (no change) because 'h' is start but not end, 'o' is end but not start\n    // assert(strcmp(str, \"HellO\") == 0);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Incorrectly requires a character to be BOTH the start and end of a word (single-letter word) to be capitalized."
+  ]
+}

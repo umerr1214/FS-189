@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function to find unique elements in a 2D array.",
+  "test_cases": [
+    {
+      "input": "arr = 3x3 matrix",
+      "expected": "Unique elements printed"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include \"707.cpp\"\n\nint main() {\n    int arr[3][COLS] = {{1, 2, 1}, {3, 4, 2}, {5, 6, 5}};\n    findUniqueElements(arr, 3);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inefficient brute-force O((R*C)^2) approach. Using a frequency map would reduce complexity to O(R*C)."
+  ]
+}

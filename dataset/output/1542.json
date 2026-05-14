@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Modify the `Book` class constructor to use an initializer list to initialize its private members (`title`, `author`, `isbn`). Explain why initializer lists are often preferred.",
+  "test_cases": [
+    { "input": "", "expected": "Title: The Hitchhiker's Guide to the Galaxy, Author: Douglas Adams, ISBN: 978-0345391803\nTitle: 1984, Author: George Orwell, ISBN: 978-0451524935\n" }
+  ],
+  "driver": "int main() {\n    Book book1(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\");\n    book1.display();\n    Book book2(\"1984\", \"George Orwell\", \"978-0451524935\");\n    book2.display();\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The 'title' member is declared as 'const' and must be initialized in the constructor's initializer list. Attempting to assign to it in the constructor body is a semantic error, as it's already constructed (or attempted to be default-constructed and then assigned)."
+  ]
+}

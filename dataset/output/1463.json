@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Model an `Order` class and a `Customer` class. An `Order` should have an `orderID` and a reference or pointer to the `Customer` who placed it, demonstrating an association relationship where objects can reference each other without strict ownership.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Initial State ---\nCustomer ID: 101, Name: Alice Smith\nOrder ID: 1001\n  Placed by Customer ID: 101, Name: Alice Smith\n\n--- After Customer Name Change ---\nCustomer ID: 101, Name: Alice Wonderland\nOrder ID: 1001\n  Placed by Customer ID: 101, Name: Alice Wonderland"
+    }
+  ],
+  "driver": "int main() {\n    Customer cust1(101, \"Alice Smith\");\n    Order order1(1001, cust1);\n\n    std::cout << \"--- Initial State ---\" << std::endl;\n    cust1.displayCustomer();\n    order1.displayOrder();\n\n    cust1.setName(\"Alice Wonderland\");\n    std::cout << \"\\n--- After Customer Name Change ---\" << std::endl;\n    cust1.displayCustomer();\n    order1.displayOrder();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'Order' class stores a 'Customer' object by value instead of a pointer or reference. This violates the 'association without strict ownership' requirement, as the Order now owns a copy of the Customer. Changes to the original Customer object will not be reflected in the Order's associated customer data."
+  ]
+}

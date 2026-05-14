@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Vehicle` with a method `startEngine()`. Derive `Car` and `Motorcycle` classes from `Vehicle`. In `Car`, add a specific `drive()` method, and in `Motorcycle`, add a `ride()` method. Demonstrate calling `startEngine()` from derived objects.",
+  "test_cases": [
+    { "input": "", "expected": "--- Car Test (enough fuel) ---\nAttempting to drive the car...\nVehicle engine started. Fuel level: 80\nCar is driving.\n\n--- Motorcycle Test (enough fuel) ---\nAttempting to ride the motorcycle...\nVehicle engine started. Fuel level: 30\nMotorcycle is riding.\n\n--- Car Test (no fuel - EXPECTED CRASH) ---\nAttempting to drive the car...\n(Program terminates with unhandled exception: Engine cannot start: No fuel!)" }
+  ],
+  "driver": "// The main function already demonstrates the issue.\n// No additional driver code needed for this specific error type.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `startEngine()` method can throw a `std::runtime_error` if `fuelLevel` is zero or less.",
+    "Derived classes `Car::drive()` and `Motorcycle::ride()` call `startEngine()` without handling the potential exception.",
+    "The `main` function also does not catch the exception when calling `drive()` or `ride()` on objects with insufficient fuel, leading to program termination."
+  ]
+}

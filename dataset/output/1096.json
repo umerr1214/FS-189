@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Person` with attributes `name` (string) and `age` (int). Implement a parameterized constructor. Derive a class `Student` from `Person` with an additional attribute `studentId` (string). Ensure the `Student` constructor correctly initializes `Person`'s attributes using constructor chaining.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Name: Alice, Age: 20\nStudent ID: S12345\n" }
+  ],
+  "driver": "int main() {\n    Student s(\"Alice\", 20, \"S12345\");\n    s.display();\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the class definition of 'Person'."]
+}

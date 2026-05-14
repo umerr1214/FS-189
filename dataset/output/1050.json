@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a C++ class named `Book` with private attributes for `title` (string), `author` (string), and `isbn` (string). Include public methods `setTitle`, `setAuthor`, `setISBN` to set these values, and `displayBookInfo` to print all book details. Create an object of `Book` and demonstrate its usage.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Title: The Hobbit\nAuthor: J.R.R. Tolkien\nISBN: 978-0345339683\n"
+    }
+  ],
+  "driver": "int main() {\n    Book myBook;\n    myBook.setTitle(\"The Hobbit\");\n    myBook.setAuthor(\"J.R.R. Tolkien\");\n    myBook.setISBN(\"978-0345339683\");\n    myBook.displayBookInfo();\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The setter methods (setTitle, setAuthor, setISBN) contain a semantic error. Instead of assigning the input parameter to the corresponding private member variable (e.g., `this->title = newTitle;`), they declare new local variables with the same name as the member variable and assign the input to these local variables. As a result, the private member variables of the Book object remain uninitialized or default-constructed, leading to incorrect book information being displayed."
+  ]
+}

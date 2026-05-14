@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Calculator` class with a single `add` method overloaded to perform the following operations: 1. Add two integers. 2. Add two doubles. 3. Add three integers. Demonstrate calling all three overloaded versions.",
+  "test_cases": [
+    { "input": "int_max - 5, 10", "expected": "--- Robustness Issue Demonstration ---\nAdd two integers (2147483642 + 10): -2147483644\n" },
+    { "input": "1.2345678901234567e+300, 1.0", "expected": "Add two doubles (1234567890123456700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.000000000000000 + 1.000000000000000): 1234567890123456700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.000000000000000\n" },
+    { "input": "int_max / 2, int_max / 2, 100", "expected": "Add three integers (1073741823 + 1073741823 + 100): -2147483549\n" }
+  ],
+  "driver": "#include <iostream>\n#include <limits>\n#include <iomanip>\n\nclass Calculator {\npublic:\n    int add(int a, int b) { return a + b; }\n    double add(double a, double b) { return a + b; }\n    int add(int a, int b, int c) { return a + b + c; }\n};\n\nint main() {\n    Calculator myCalc;\n    std::cout << \"--- Robustness Issue Demonstration ---\" << '\\n';\n\n    int val1_int_overflow_a = std::numeric_limits<int>::max() - 5;\n    int val1_int_overflow_b = 10;\n    std::cout << \"Add two integers (\" << val1_int_overflow_a << \" + \" << val1_int_overflow_b << \"): \"\n              << myCalc.add(val1_int_overflow_a, val1_int_overflow_b) << '\\n';\n\n    double val_double_large = 1.2345678901234567e+300;\n    double val_double_small = 1.0;\n    std::cout << std::fixed << std::setprecision(15);\n    std::cout << \"Add two doubles (\" << val_double_large << \" + \" << val_double_small << \"): \"\n              << myCalc.add(val_double_large, val_double_small) << '\\n';\n\n    int val_three_int_a = std::numeric_limits<int>::max() / 2;\n    int val_three_int_b = std::numeric_limits<int>::max() / 2;\n    int val_three_int_c = 100;\n    std::cout << \"Add three integers (\" << val_three_int_a << \" + \" << val_three_int_b << \" + \" << val_three_int_c << \"): \"\n              << myCalc.add(val_three_int_a, val_three_int_b, val_three_int_c) << '\\n';\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Integer overflow not explicitly handled or checked for large inputs, leading to wrapping behavior as per C++ standard for signed integers (pre-C++20 undefined behavior, often wraps).",
+    "Demonstrates a scenario where adding a small double to a very large double might not change the value due to limited floating-point precision, but doesn't explicitly address or document this behavior within the class design."
+  ]
+}

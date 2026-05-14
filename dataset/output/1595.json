@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `Rectangle` class with a constructor `Rectangle(double length = 1.0, double width = 1.0)`. Demonstrate creating `Rectangle` objects using default arguments, one argument, and both arguments.",
+  "test_cases": [
+    { "input": "", "expected": "Demonstrating Rectangle objects (with logical error in area calculation):\nRectangle: Length = 1.00, Width = 1.00, Area = 1.00\nRectangle: Length = 5.00, Width = 1.00, Area = 5.00\nRectangle: Length = 4.00, Width = 6.00, Area = 24.00\n" }
+  ],
+  "driver": "// The main function as provided in the C++ file.",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'calculateArea' method in the 'Rectangle' class incorrectly calculates the area by adding 'length' and 'width' instead of multiplying them. This leads to incorrect area values in the output."
+  ]
+}

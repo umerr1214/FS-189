@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Illustrate access specifiers (`public`, `private`, `protected`). Create a base class `Person` with `public` name, `protected` age, and `private` socialSecurityNumber. Derive a `Student` class and try to access these members, explaining which are accessible and why.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Access from main function ---\nAccessing public member 'name': Alice Smith\nAttempting to access protected member 'age': Not accessible directly from main (outside derived class).\nAttempting to access private member 'socialSecurityNumber': Not accessible directly from main.\n\n--- Student Info (from Student class) ---\nAccessing public member 'name': Alice Smith\nAccessing protected member 'age': 20\nStudent ID: S1001\nAttempting to access private member 'socialSecurityNumber': Not accessible directly from Student class."
+    }
+  ],
+  "driver": "int main() { Student s(\"Alice Smith\", 20, \"123-45-6789\", \"S1001\"); std::cout << \"--- Access from main function ---\" << std::endl; std::cout << \"Accessing public member 'name': \" << s.name << std::endl; std::cout << \"Attempting to access protected member 'age': Not accessible directly from main (outside derived class).\" << std::endl; std::cout << \"Attempting to access private member 'socialSecurityNumber': Not accessible directly from main.\" << std::endl; s.displayStudentInfo(); return 0; }",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition 'Person'. C++ requires a semicolon after class, struct, and union definitions."
+  ]
+}

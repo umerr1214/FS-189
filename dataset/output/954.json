@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a function void reverseList(Node*& head) that reverses a singly linked list.",
+  "test_cases": [
+    {
+      "input": "List: 1 -> 2 -> 3",
+      "expected": "3 -> 2 -> 1 -> NULL"
+    },
+    {
+      "input": "List: NULL",
+      "expected": "NULL"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cassert>\n#include \"954.cpp\"\n\nint main() {\n    Node* head = new Node{1, new Node{2, nullptr}};\n    reverseList(head);\n    assert(head->data == 2 && head->next->data == 1);\n    \n    reverseList(head);\n    assert(head->data == 1);\n    \n    Node* empty = nullptr;\n    reverseList(empty);\n    assert(empty == nullptr);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

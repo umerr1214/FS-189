@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Base` with a public method `void show(int val)`. Derive a `Derived` class from `Base`. In `Derived`, overload `show` with `void show(double val)` and also define `void show(int val)` (non-virtual). Demonstrate calling `show` using `Base` and `Derived` class objects and pointers, highlighting method hiding vs. overloading.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation Error: No matching function for call to 'Base::show(double)'." }
+  ],
+  "driver": "#include <iostream>\n\nclass Base {\npublic:\n    void show(int val) {\n        std::cout << \"Base::show(int): \" << val << std::endl;\n    }\n};\n\nclass Derived : public Base {\npublic:\n    void show(double val) {\n        std::cout << \"Derived::show(double): \" << val << std::endl;\n    }\n\n    void show(int val) { // Non-virtual, hides Base::show(int)\n        std::cout << \"Derived::show(int): \" << val << std::endl;\n    }\n};\n\nint main() {\n    Base b;\n    Derived d;\n\n    Base* b_ptr = &d; // Base pointer to Derived object\n    Derived* d_ptr = &d; // Derived pointer to Derived object\n\n    std::cout << \"--- Calling with Base object ---\" << std::endl;\n    b.show(10);\n\n    std::cout << \"\\n--- Calling with Derived object ---\" << std::endl;\n    d.show(20);\n    d.show(30.5);\n    d.Base::show(40);\n\n    std::cout << \"\\n--- Calling with Base pointer to Derived object ---\" << std::endl;\n    b_ptr->show(50);\n    b_ptr->show(60.5); // Semantic Error: Base class has no 'show(double)' method.\n                       // The compiler will look for show(double) in Base, not Derived,\n                       // because b_ptr is of type Base*.\n\n    std::cout << \"\\n--- Calling with Derived pointer to Derived object ---\" << std::endl;\n    d_ptr->show(70);\n    d_ptr->show(80.5);\n    d_ptr->Base::show(90);\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["Attempting to call `show(double)` on a `Base*` pointer (`b_ptr`), but the `Base` class does not define a `show(double)` method. The `show(double)` overload is only present in the `Derived` class, and static binding for `Base*` prevents it from seeing `Derived`'s overloads."]
+}

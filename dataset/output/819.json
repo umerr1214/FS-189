@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void multiplyMatrices(int A[][MAX], int B[][MAX], int C[][MAX], int m, int n, int p) that multiplies two matrices.",
+  "test_cases": [
+    {
+      "input": "Any input",
+      "expected": "Correct calculation"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include \"819.cpp\"\n\nint main() {\n    int A[MAX][MAX] = {{1}};\n    int B[MAX][MAX] = {{1}};\n    int C[MAX][MAX] = {{99}}; // Init to 99 to check if touched\n    multiplyMatrices(A, B, C, 1, 1, 1);\n    // Loop shouldn't run, C remains 99\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using `sizeof(A)` on an array parameter to determine loop bounds, which returns the pointer size instead of the array size, causing the loop to not execute."
+  ]
+}

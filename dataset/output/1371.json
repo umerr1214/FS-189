@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Illustrate access specifiers (`public`, `private`, `protected`). Create a base class `Person` with `public` name, `protected` age, and `private` socialSecurityNumber. Derive a `Student` class and try to access these members, explaining which are accessible and why.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Person Base Class Info (from Person object) ---\nName (public): John Doe\nAge (protected, via Person's public method): 35\nSocial Security Number (private, via Person's public method): 000-11-2222\n\n--- Student Derived Class Access Demonstration ---\nStudent ID: S1001\n\n1. Accessing 'public' member 'name':\n   - 'name' is public in Person.\n   - It is directly accessible from Student (derived class).\n   Student's Name: Jane Smith\n\n2. Accessing 'protected' member 'age':\n   - 'age' is protected in Person.\n   - It is directly accessible from Student (derived class).\n   Student's Age: 20\n\n3. Attempting to access 'private' member 'socialSecurityNumber':\n   - 'socialSecurityNumber' is private in Person.\n   - It is NOT accessible directly from Student (derived class).\n   - Trying to access it directly (e.g., 'socialSecurityNumber') would result in a compile-time error.\n   - To access it, a public or protected method *within the Person class itself* would be needed.\n\n--- External Access (from main function) ---\nAccessing person1.name (public): John Doe\nAccessing student1.name (public inherited): Jane Smith\nAccessing student1.studentId (public): S1001\n\nAttempting to access person1.age (protected) from main: NOT ACCESSIBLE.\n   - Uncommenting 'person1.age' would cause a compile-time error.\nAttempting to access person1.socialSecurityNumber (private) from main: NOT ACCESSIBLE.\n   - Uncommenting 'person1.socialSecurityNumber' would cause a compile-time error.\n"
+    }
+  ],
+  "driver": "g++ 1371.cpp -o 1371 && ./1371",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `Counter` class with a private integer `count`. Overload the prefix increment operator `++` (e.g., `++myCounter`) to increase the `count` by one and return the modified `Counter` object. Demonstrate its usage.",
+  "test_cases": [
+    { "input": "", "expected": "Initial count: 0\nAfter ++myCounter: 1\nAfter ++(++anotherCounter): 1\n" }
+  ],
+  "driver": "int main() {\n    Counter myCounter;\n    std::cout << \"Initial count: \" << myCounter.getCount() << std::endl;\n\n    ++myCounter;\n    std::cout << \"After ++myCounter: \" << myCounter.getCount() << std::endl;\n\n    Counter anotherCounter;\n    ++(++anotherCounter);\n    std::cout << \"After ++(++anotherCounter): \" << anotherCounter.getCount() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": []
+}

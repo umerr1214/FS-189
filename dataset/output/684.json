@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a function void removeDuplicates(char arr[]) that removes duplicate characters from the string in-place.",
+  "test_cases": [
+    {
+      "input": "arr = \"programming\"",
+      "expected": "\"progamin\""
+    },
+    {
+      "input": "arr = \"aaaa\"",
+      "expected": "\"a\""
+    },
+    {
+      "input": "arr = NULL",
+      "expected": "No crash"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <algorithm>\n#include <cassert>\n#include \"684.cpp\"\n\nint main() {\n    char str1[] = \"programming\";\n    removeDuplicates(str1);\n    // Order of appearance preserved\n    assert(strcmp(str1, \"progamin\") == 0);\n\n    char str2[] = \"aaaa\";\n    removeDuplicates(str2);\n    assert(strcmp(str2, \"a\") == 0);\n    \n    removeDuplicates(NULL);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

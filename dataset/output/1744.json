@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `Fraction` class with private integer members `numerator` and `denominator`. Overload the `<<` (insertion) operator to allow `Fraction` objects to be printed directly to an output stream (e.g., `cout << fractionObject;` should output `N/D`).",
+  "test_cases": [
+    { "input": "", "expected": "3/4\n1/2\n5/1\n" }
+  ],
+  "driver": "#include <iostream>\n\nint main() {\n    Fraction f1(3, 4);\n    std::cout << f1 << std::endl;\n    Fraction f2(1, 2);\n    std::cout << f2 << std::endl;\n    Fraction f3(5, 1);\n    std::cout << f3 << std::endl;\n    return 0;\n}",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition."
+  ]
+}

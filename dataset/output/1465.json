@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Model an `Order` class and a `Customer` class. An `Order` should have an `orderID` and a reference or pointer to the `Customer` who placed it, demonstrating an association relationship where objects can reference each other without strict ownership.",
+  "test_cases": [
+    { "input": "simulate_memory_leak", "expected": "Customer John Doe (ID: 1) created.\nOrder 101 created.\nOrder ID: 101, Placed by: Customer ID: 1, Name: John Doe\nCustomer Jane Doe (ID: 2) created.\nOrder 102 created.\nOrder ID: 102, Placed by: Customer ID: 2, Name: Jane Doe\nOrder 102 destroyed.\nOrder 101 destroyed.\n" }
+  ],
+  "driver": "int main() {\n    // Scenario 1: Memory leak for customer1\n    Customer* customer1 = new Customer(1, \"John Doe\"); // Dynamically allocated\n    Order order1(101, customer1); // Order references customer1\n    order1.displayOrderDetails();\n\n    // Scenario 2: Memory leak for customer2\n    Customer* customer2 = new Customer(2, \"Jane Doe\"); // Dynamically allocated\n    Order order2(102, customer2); // Order references customer2\n    order2.displayOrderDetails();\n\n    // Customer objects customer1 and customer2 are dynamically allocated but never deleted.\n    // This results in a memory leak, as the raw pointers are lost when main exits.\n    // The Order class does not take ownership (it does not delete customerPtr in its destructor),\n    // so the responsibility to delete rests with the caller (main in this case), which fails to do so.\n    // To fix, 'delete customer1;' and 'delete customer2;' would be needed here.\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The driver code dynamically allocates Customer objects using 'new' (e.g., `new Customer(1, \"John Doe\")`) but fails to deallocate them using 'delete'. This leads to a memory leak. Although the Order class itself uses raw pointers consistent with 'without strict ownership' (meaning it doesn't take responsibility for deletion), the overall program exhibits a robustness issue due to unmanaged dynamic memory allocation in the driver."
+  ]
+}

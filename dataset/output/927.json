@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void mergeSort(int arr[], int l, int r) that sorts an array using Merge Sort algorithm.",
+  "test_cases": [
+    {
+      "input": "arr = {2, 1}",
+      "expected": "{1, 2}"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"927.cpp\"\n\nint main() {\n    int arr[] = {2, 1};\n    mergeSort(arr, 0, 1);\n    // Likely results in {1, 1} or data loss\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Attempting to merge in-place by overwriting `arr[k]` without a temporary buffer results in data loss (overwriting elements before they are used)."
+  ]
+}

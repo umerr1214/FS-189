@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Design a `Laptop` class that contains an `SSD` object (composition). The `SSD` class should have `capacity` (int GB) and `type` (string). Implement constructors for both classes.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Laptop 1 ---\nLaptop Brand: Dell\nSSD: NVMe 512GB\n--- Laptop 2 ---\nLaptop Brand: Alienware\nSSD: PCIe Gen4 1024GB"
+    }
+  ],
+  "driver": "int main() {\n    // Test Case 1\n    Laptop myLaptop(\"Dell\", 512, \"NVMe\");\n    std::cout << \"--- Laptop 1 ---\\n\";\n    myLaptop.printLaptop(); // Expected: 512GB, Actual: 0GB\n\n    // Test Case 2\n    Laptop gamingLaptop(\"Alienware\", 1024, \"PCIe Gen4\");\n    std::cout << \"--- Laptop 2 ---\\n\";\n    gamingLaptop.printLaptop(); // Expected: 1024GB, Actual: 0GB\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    {
+      "line": 13,
+      "column": 30,
+      "message": "SSD constructor initializes capacity to a fixed value (0) instead of the provided parameter 'cap', leading to incorrect SSD capacity."
+    }
+  ]
+}

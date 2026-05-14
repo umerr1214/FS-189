@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a function int Trace(int data[][SIZE], int n) that calculates the trace of a square matrix.",
+  "test_cases": [
+    {
+      "input": "data = {{1, 2}, {3, 4}}, n = 2",
+      "expected": "5"
+    },
+    {
+      "input": "data = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}, n = 3",
+      "expected": "15"
+    },
+    {
+      "input": "n = 0",
+      "expected": "0"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cassert>\n#include \"714.cpp\"\n\nint main() {\n    int data[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};\n    assert(Trace(data, 3) == 15);\n    assert(Trace(data, 2) == 6); // 1 + 5\n    assert(Trace(data, 0) == 0);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `BankAccount` class with private members: `accountNumber` (string), `accountHolderName` (string), and `balance` (double). Implement public methods for `deposit(amount)`, `withdraw(amount)`, and `getBalance()`, ensuring `withdraw` prevents overdrafts and `deposit` accepts positive amounts only. Demonstrate encapsulation.",
+  "test_cases": [
+    {
+      "input": "Operations:\n1. Create account \"12345\" for \"Alice Smith\" with initial balance 1000.0\n2. Deposit 500.0\n3. Withdraw 200.0\n4. Attempt to withdraw 1500.0 (should fail)\n5. Attempt to deposit -100.0 (should fail)\n6. Get final balance",
+      "expected": "Account: 12345, Holder: Alice Smith\nInitial Balance: 1000\nDeposited: 500. New balance: 1500\nWithdrew: 200. New balance: 1300\nInsufficient funds. Current balance: 1300\nDeposit amount must be positive.\nFinal Balance: 1300\nAccount: 67890, Holder: Bob Johnson\nInitial Balance: 0"
+    }
+  ],
+  "driver": "int main() {\n    BankAccount myAccount(\"12345\", \"Alice Smith\", 1000.0);\n    std::cout << \"Account: \" << myAccount.getAccountNumber() << \", Holder: \" << myAccount.getAccountHolderName() << std::endl;\n    std::cout << \"Initial Balance: \" << myAccount.getBalance() << std::endl;\n\n    myAccount.deposit(500.0);\n    myAccount.withdraw(200.0);\n    myAccount.withdraw(1500.0); // Should fail\n    myAccount.deposit(-100.0); // Should fail\n\n    std::cout << \"Final Balance: \" << myAccount.getBalance() << std::endl;\n\n    BankAccount otherAccount(\"67890\", \"Bob Johnson\");\n    std::cout << \"Account: \" << otherAccount.getAccountNumber() << \", Holder: \" << otherAccount.getAccountHolderName() << std::endl;\n    std::cout << \"Initial Balance: \" << otherAccount.getBalance() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the closing brace of the BankAccount class definition."
+  ]
+}

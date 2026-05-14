@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a class `Matrix` with a private 2D array (e.g., `int mat[2][2]` or `int**` for dynamic). Implement overloaded `setElement` methods: one that takes `row`, `col`, and `value` to set a single element, and another that takes a `row` index and an array/`std::vector<int>` to set an entire row.",
+  "test_cases": [
+    { "input": "", "expected": "Matrix content:\n1 2 \n3 4 \n\nMatrix after setting row 0:\n10 20 \n3 4 \n" }
+  ],
+  "driver": "int main() {\n    Matrix m(2, 2);\n    m.setElement(0, 0, 1);\n    m.setElement(0, 1, 2);\n    m.setElement(1, 0, 3);\n    m.setElement(1, 1, 4);\n\n    std::cout << \"Matrix content:\" << std::endl;\n    m.print();\n\n    std::vector<int> new_row = {10, 20};\n    m.setElement(0, new_row);\n    std::cout << \"\\nMatrix after setting row 0:\" << std::endl;\n    m.print();\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `Matrix` class uses dynamic memory allocation for its 2D array (`int** mat`) but lacks a destructor. This results in a memory leak, as the allocated memory for `mat` and its rows is never deallocated when a `Matrix` object goes out of scope."
+  ]
+}

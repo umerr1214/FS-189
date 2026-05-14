@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define an `Order` base class with a constructor taking an `orderId`. Create a `SpecialOrder` derived class that adds a `discount` parameter. Demonstrate how `SpecialOrder`'s constructor explicitly calls the `Order` base class constructor.",
+  "test_cases": [
+    { "input": "", "expected": "--- Demonstrating Robustness Issue (Invalid Discounts) ---\nOrder ID: 1001\n\nOrder ID: 2001\n  Discount: 15.00%\n\nOrder ID: 2002\n  Discount: -10.00%\n\nOrder ID: 2003\n  Discount: 150.00%\n\n" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\n// Assuming Order and SpecialOrder classes are defined above this driver code.\n\nint main() {\n    std::cout << \"--- Demonstrating Robustness Issue (Invalid Discounts) ---\" << std::endl;\n\n    Order order1(1001);\n    order1.display();\n    std::cout << std::endl;\n\n    SpecialOrder specialOrder1(2001, 0.15);\n    specialOrder1.display();\n    std::cout << std::endl;\n\n    SpecialOrder specialOrder2(2002, -0.10);\n    specialOrder2.display();\n    std::cout << std::endl;\n\n    SpecialOrder specialOrder3(2003, 1.50);\n    specialOrder3.display();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The `SpecialOrder` constructor does not validate the `discount` value. A negative or excessively high discount (e.g., > 100%) can be set, leading to illogical order data without any warning or correction, which can cause unexpected behavior or incorrect calculations in a real-world application."]
+}

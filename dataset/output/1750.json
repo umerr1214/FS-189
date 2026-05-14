@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "For the `Point` class (from a previous question with `x`, `y` coordinates), overload the `==` operator to compare if two `Point` objects have the same coordinates. It should return a boolean value.",
+  "test_cases": [
+    { "input": "Point p1(1, 2); Point p2(1, 2);", "expected": "p1 == p2 is true (expected true)" },
+    { "input": "Point p1(1, 2); Point p3(3, 4);", "expected": "p1 == p3 is false (expected false)" }
+  ],
+  "driver": "Point p1(1, 2); Point p2(1, 2); Point p3(3, 4);\n\n// This code will not compile due to the syntax error in operator==\n// If it compiled, it would produce:\n// p1 == p2 is true (expected true)\n// p1 == p3 is false (expected false)\n\n/*\nif (p1 == p2) {\n    std::cout << \"p1 == p2 is true (expected true)\" << std::endl;\n} else {\n    std::cout << \"p1 == p2 is false (expected true)\" << std::endl;\n}\n\nif (p1 == p3) {\n    std::cout << \"p1 == p3 is true (expected false)\" << std::endl;\n} else {\n    std::cout << \"p1 == p3 is false (expected false)\" << std::endl;\n}\n*/",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing return type for member operator==."]
+}

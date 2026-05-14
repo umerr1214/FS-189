@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void removeVowels(char* str) that removes vowels from the string in-place.",
+  "test_cases": [
+    {
+      "input": "str = \"Hello\"",
+      "expected": "\"Hll\""
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cctype>\n#include <cassert>\n#include \"878.cpp\"\n\nint main() {\n    char str[] = \"Hello\";\n    removeVowels(str);\n    // Will fail because terminator is missing\n    // assert(strcmp(str, \"Hll\") == 0);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Fails to append the null terminator `\\0` at the new end of the string, leaving trailing characters from the original string."
+  ]
+}

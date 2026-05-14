@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void reverseList(Node*& head) that reverses a singly linked list.",
+  "test_cases": [
+    {
+      "input": "List: 1 -> 2",
+      "expected": "2 -> 1"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include \"953.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses O(N) extra space (vector of pointers) to reverse the list instead of an efficient O(1) in-place pointer manipulation."
+  ]
+}

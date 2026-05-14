@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Design a base class `Shape` with a virtual function `calculateArea()` that returns a double. Derive `Circle` (with radius) and `Square` (with side length) classes from `Shape`, and override `calculateArea()` in each derived class.",
+  "test_cases": [
+    { "input": "5.0", "expected": "78.53981633974483" },
+    { "input": "4.0", "expected": "16.0" },
+    { "input": "0.0", "expected": "0.0" },
+    { "input": "0.0", "expected": "0.0" },
+    { "input": "-3.0", "expected": "28.274333882308138" },
+    { "input": "-2.0", "expected": "4.0" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <memory>\n#include <cmath>\n\n#ifndef M_PI\n#define M_PI 3.14159265358979323846\n#endif\n\nclass Shape {\npublic:\n    virtual double calculateArea() = 0;\n    virtual ~Shape() = default;\n};\n\nclass Circle : public Shape {\nprivate:\n    double radius;\npublic:\n    Circle(double r) : radius(r) {}\n    double calculateArea() override {\n        return M_PI * radius * radius;\n    }\n};\n\nclass Square : public Shape {\nprivate:\n    double side;\npublic:\n    Square(double s) : side(s) {}\n    double calculateArea() override {\n        return side * side;\n    }\n};\n\nint main() {\n    std::vector<std::unique_ptr<Shape>> shapes;\n    shapes.push_back(std::make_unique<Circle>(5.0));\n    shapes.push_back(std::make_unique<Square>(4.0));\n    shapes.push_back(std::make_unique<Circle>(0.0));\n    shapes.push_back(std::make_unique<Square>(0.0));\n    shapes.push_back(std::make_unique<Circle>(-3.0));\n    shapes.push_back(std::make_unique<Square>(-2.0));\n\n    for (const auto& shape : shapes) {\n        std::cout.precision(15);\n        std::cout << std::fixed << shape->calculateArea() << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The classes do not validate input dimensions. Negative radius/side inputs are implicitly squared, leading to a positive area, which might be an incorrect interpretation or mask an invalid state. A robust solution would validate input, throw an error, or return 0 for invalid dimensions."
+  ]
+}

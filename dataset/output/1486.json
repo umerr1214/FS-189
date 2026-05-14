@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `Logger` class that prints 'Logger initialized.' when its constructor is called and 'Logger destroyed.' when its destructor is called. Demonstrate the lifecycle of a `Logger` object in `main`.",
+  "test_cases": [
+    { "input": "", "expected": "" }
+  ],
+  "driver": "#include <iostream>\n\n// The submitted C++ code will be inserted here.\n// It is expected to contain a `main` function.\n",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the class definition of 'Logger'."
+  ]
+}

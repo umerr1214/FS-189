@@ -1,0 +1,26 @@
+{
+  "language": "c++",
+  "question": "Create a `Point` class with private `x` and `y` (double) coordinates. Write two overloaded non-member functions: `void print(Point p)` that prints 'Point: (x, y)' and `void print(Point p, string prefix)` that prints 'Prefix: (x, y)'.",
+  "test_cases": [
+    {
+      "input": "Point p1(10.5, 20.25);\nprint(p1);",
+      "expected": "Point: (10.5, 20.25)\n"
+    },
+    {
+      "input": "Point p2(0.12345, 987.654);\nprint(p2, \"DetailedPoint\");",
+      "expected": "DetailedPoint: (0.12345, 987.654)\n"
+    },
+    {
+      "input": "Point p3(1.0/7.0, 2.0/7.0);\nprint(p3, \"RatioPoint\");",
+      "expected": "RatioPoint: (0.142857, 0.285714)\n"
+    }
+  ],
+  "driver": "int main() {\n    Point p1(10.5, 20.25);\n    Point p2(0.12345, 987.654);\n    Point p3(1.0/7.0, 2.0/7.0);\n\n    print(p1);\n    print(p2, \"DetailedPoint\");\n    print(p3, \"RatioPoint\");\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Point objects are passed by value to print functions, leading to unnecessary copying and potential efficiency issues, especially for larger objects.",
+    "Use of `using namespace std;` in the global scope can lead to name collisions and reduced readability in larger projects, it's generally better to qualify names with `std::` or use specific `using` declarations."
+  ]
+}

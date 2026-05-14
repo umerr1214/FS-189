@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `TemperatureConverter` class. Store the temperature in Celsius as a private double member. Provide a public method `setCelsius(double c)` and another public method `getFahrenheit()` that converts and returns the temperature in Fahrenheit.",
+  "test_cases": [
+    { "input": "0.0", "expected": "32.0" },
+    { "input": "100.0", "expected": "212.0" },
+    { "input": "25.0", "expected": "77.0" }
+  ],
+  "driver": "int main() {\n    TemperatureConverter tc;\n    tc.setCelsius(0.0);\n    std::cout << std::fixed << std::setprecision(1) << tc.getFahrenheit() << std::endl;\n    tc.setCelsius(100.0);\n    std::cout << std::fixed << std::setprecision(1) << tc.getFahrenheit() << std::endl;\n    tc.setCelsius(25.0);\n    std::cout << std::fixed << std::setprecision(1) << tc.getFahrenheit() << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": []
+}

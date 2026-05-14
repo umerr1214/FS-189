@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a program to encrypt and decrypt a sentence by adding/subtracting the index.",
+  "test_cases": [
+    {
+      "input": "arr = \"Hello World\"",
+      "expected": "Decrypts back to \"Hello World\""
+    },
+    {
+      "input": "arr = NULL",
+      "expected": "No crash"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cassert>\n#include \"762.cpp\"\n\nint main() {\n    char str[100] = \"Hello World\";\n    encrypt(str);\n    // Encrypted string will look garbage-y\n    decrypt(str);\n    assert(strcmp(str, \"Hello World\") == 0);\n    \n    encrypt(NULL);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

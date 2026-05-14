@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function Node* mergeLists(Node* head1, Node* head2) that merges two sorted linked lists.",
+  "test_cases": [
+    {
+      "input": "l1, l2 sorted",
+      "expected": "Sorted merged list"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <algorithm>\n#include \"965.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inefficient approach: copies list data to vector, sorts (O(N log N)), and creates new nodes (O(N) space) instead of just rewiring pointers in O(N) time and O(1) space."
+  ]
+}

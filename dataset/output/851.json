@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void printSpiral(int matrix[][COLS], int rows, int cols) that prints the matrix in spiral order.",
+  "test_cases": [
+    {
+      "input": "Standard matrix",
+      "expected": "Spiral output"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include \"851.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses O(N*M) extra space to store the result in a vector before printing, instead of printing directly in O(1) auxiliary space."
+  ]
+}

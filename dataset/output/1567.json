@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Demonstrate polymorphism by creating an array of `Animal*` (from Question 11). Populate the array with `Dog` and `Cat` objects and then iterate through the array, calling `makeSound()` on each animal. Explain the output.",
+  "test_cases": [
+    { "input": "", "expected": "--- Demonstrating Polymorphism ---\nAnimal 1: Woof! Woof!\nAnimal 2: Meow! Meow!\nAnimal 3: Woof! Woof!\nAnimal 4: Meow! Meow!\n---------------------------------\nAnimal destructor called.\nAnimal destructor called.\nAnimal destructor called.\nAnimal destructor called.\n\nExplanation of Output:\nWhen makeSound() is called, the correct overridden version (from Dog or Cat) is executed.\nThis is because the makeSound() method in the Animal base class is declared 'virtual'.\nEven though we are calling it through an 'Animal*' pointer, the runtime type of the object determines which function is invoked (dynamic dispatch).\nHowever, observe the destructor calls. Only 'Animal destructor called.' messages appear, not 'Dog destructor called.' or 'Cat destructor called.'.\nThis indicates a memory leak: the destructors for the derived Dog and Cat parts of the objects are not being called when deleting through a base pointer, because the Animal base class destructor is not virtual." }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing virtual destructor in base class 'Animal', leading to potential memory leaks or undefined behavior when deleting derived objects through base pointers. Only the base class destructor is called, not the derived class destructors."
+  ]
+}

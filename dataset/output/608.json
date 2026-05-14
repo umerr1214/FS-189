@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Write a function int searchData(int arr[], int size, int key) that searches for the key in the array using linear search and returns the index. Return -1 if not found.",
+  "test_cases": [
+    {
+      "input": "arr = {10, 20, 30}, size = 3, key = 30",
+      "expected": "2"
+    },
+    {
+      "input": "arr = {10, 20, 30}, size = 3, key = 10",
+      "expected": "0"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cassert>\n#include \"608.cpp\"\n\nint main() {\n    int arr[] = {10, 20, 30};\n    // This will fail because the function returns -1 on the first mismatch\n    // assert(searchData(arr, 3, 30) == 2);\n    \n    // This works purely by chance because the key is at index 0\n    assert(searchData(arr, 3, 10) == 0);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Returns -1 prematurely inside the loop if the current element doesn't match, failing to check the rest of the array."
+  ]
+}

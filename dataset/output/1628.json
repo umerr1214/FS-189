@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Create a `Point` class with private integer members `x` and `y`. Provide a constructor to set these coordinates and a public method `getDistanceToOrigin()` that calculates and returns the Euclidean distance from the point to (0,0).",
+  "test_cases": [
+    { "input": "N/A", "expected": "Distance for (0,0): 0.0000000000" },
+    { "input": "N/A", "expected": "Distance for (3,4): 5.0000000000" },
+    { "input": "N/A", "expected": "Distance for (-3,-4): 5.0000000000" },
+    { "input": "N/A", "expected": "Distance for (5,12): 13.0000000000" },
+    { "input": "N/A", "expected": "Distance for (-8,6): 10.0000000000" },
+    { "input": "N/A", "expected": "Distance for (1,1): 1.4142135624" },
+    { "input": "N/A", "expected": "Distance for (50000,50000): 70710.6781186548" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n#include <iomanip>\n\nclass Point {\nprivate:\n    int x;\n    int y;\n\npublic:\n    Point(int x_coord, int y_coord) {\n        this->x = x_coord;\n        this->y = y_coord;\n    }\n\n    double getDistanceToOrigin() {\n        double x_val_double = static_cast<double>(this->x);\n        double y_val_double = static_cast<double>(this->y);\n\n        double x_squared_result = std::pow(x_val_double, 2.0);\n        double y_squared_result = std::pow(y_val_double, 2.0);\n\n        double sum_of_squares_intermediate = x_squared_result + y_squared_result;\n\n        double final_distance_value = std::sqrt(sum_of_squares_intermediate);\n\n        return final_distance_value;\n    }\n};\n\nint main() {\n    std::cout << std::fixed << std::setprecision(10);\n\n    Point p1(0, 0);\n    std::cout << \"Distance for (0,0): \" << p1.getDistanceToOrigin() << std::endl;\n\n    Point p2(3, 4);\n    std::cout << \"Distance for (3,4): \" << p2.getDistanceToOrigin() << std::endl;\n\n    Point p3(-3, -4);\n    std::cout << \"Distance for (-3,-4): \" << p3.getDistanceToOrigin() << std::endl;\n\n    Point p4(5, 12);\n    std::cout << \"Distance for (5,12): \" << p4.getDistanceToOrigin() << std::endl;\n\n    Point p5(-8, 6);\n    std::cout << \"Distance for (-8,6): \" << p5.getDistanceToOrigin() << std::endl;\n\n    Point p6(1, 1);\n    std::cout << \"Distance for (1,1): \" << p6.getDistanceToOrigin() << std::endl;\n\n    Point p7(50000, 50000);\n    std::cout << \"Distance for (50000,50000): \" << p7.getDistanceToOrigin() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The constructor initializes members by assignment in the body (`this->x = x_coord;`) instead of using an initializer list (`: x(x_coord)`), which is generally less efficient and less idiomatic C++.",
+    "The `getDistanceToOrigin()` method uses `std::pow(value, 2.0)` for squaring, which is less efficient and less readable than direct multiplication (`value * value`) for integer squares.",
+    "The `getDistanceToOrigin()` method introduces several unnecessary intermediate `double` variables, making the calculation overly verbose and harder to follow without significant benefit.",
+    "The `getDistanceToOrigin()` method is missing the `const` qualifier. Since it does not modify the object's state, it should be marked `const` for better design and type safety."
+  ]
+}

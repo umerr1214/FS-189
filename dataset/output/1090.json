@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "For the `Point` class (from Q10 or similar with `x`, `y` members), overload the `==` operator to compare two `Point` objects. Two points are considered equal if their `x` and `y` coordinates are the same.",
+  "test_cases": [
+    { "input": "Point p1(1, 2); Point p2(1, 2);", "expected": "true" },
+    { "input": "Point p1(1, 2); Point p3(3, 4);", "expected": "false" },
+    { "input": "Point p1(1, 2); Point p4(1, 5);", "expected": "false" },
+    { "input": "Point p3(3, 4); Point p3_copy(3, 4);", "expected": "true" }
+  ],
+  "driver": "#include <iostream>\n\nclass Point {\npublic:\n    int x;\n    int y;\n\n    Point(int x_coord, int y_coord) : x(x_coord), y(y_coord) {}\n};\n\nbool operator==(const Point& p1, const Point& p2) {\n    return p1.x == p2.x && p1.y == p2.y;\n}\n\nint main() {\n    Point p1(1, 2);\n    Point p2(1, 2);\n    Point p3(3, 4);\n    Point p4(1, 5);\n\n    std::cout << \"p1(1,2) == p2(1,2): \" << (p1 == p2 ? \"true\" : \"false\") << std::endl;\n    std::cout << \"p1(1,2) == p3(3,4): \" << (p1 == p3 ? \"true\" : \"false\") << std::endl;\n    std::cout << \"p1(1,2) == p4(1,5): \" << (p1 == p4 ? \"true\" : \"false\") << std::endl;\n    std::cout << \"p3(3,4) == p3(3,4): \" << (p3 == p3 ? \"true\" : \"false\") << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the class definition of 'Point', leading to a compilation error."
+  ]
+}

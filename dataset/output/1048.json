@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a C++ class named `Book` with private attributes for `title` (string), `author` (string), and `isbn` (string). Include public methods `setTitle`, `setAuthor`, `setISBN` to set these values, and `displayBookInfo` to print all book details. Create an object of `Book` and demonstrate its usage.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Title: The C++ Programming Language\nAuthor: Bjarne Stroustrup\nISBN: 978-0321563842\n"
+    }
+  ],
+  "driver": "int main() {\n    Book myBook;\n    myBook.setTitle(\"The C++ Programming Language\");\n    myBook.setAuthor(\"Bjarne Stroustrup\");\n    myBook.setISBN(\"978-0321563842\");\n    myBook.displayBookInfo();\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition 'Book'."
+  ]
+}

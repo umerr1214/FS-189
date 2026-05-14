@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Vehicle` with `protected` members `speed` (int) and `fuelLevel` (double). Implement a `protected` method `updateSpeed(int newSpeed)`. Derive a `Car` class from `Vehicle`. In `Car`, create a public method `accelerate()` that internally uses `updateSpeed()` and also adjusts `fuelLevel` based on acceleration.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Speed: 0 km/h, Fuel: 100.0 L\nCar accelerated!\nSpeed: 10 km/h, Fuel: 99.0 L\nCar accelerated!\nSpeed: 20 km/h, Fuel: 98.0 L\n"
+    }
+  ],
+  "driver": "    Car myCar;\n    myCar.displayStatus();\n    myCar.accelerate();\n    myCar.displayStatus();\n    myCar.accelerate();\n    myCar.displayStatus();\n    return 0;",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition for 'Vehicle'."
+  ]
+}

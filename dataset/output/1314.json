@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a `MediaItem` base class with private attributes `title` and `duration`. Derive two classes, `Movie` and `Song`, from `MediaItem`. `Movie` should add a `director` attribute, and `Song` should add an `artist` attribute. Provide appropriate constructors and getters for all classes.",
+  "test_cases": [],
+  "driver": "int main() { return 0; }",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The 'Movie' class constructor fails to explicitly call the base class 'MediaItem' constructor in its initializer list. As 'MediaItem' only provides a parameterized constructor and no default constructor, the compiler cannot construct the 'MediaItem' subobject within 'Movie', resulting in a compilation error."
+  ]
+}

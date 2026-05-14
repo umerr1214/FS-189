@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void CheckFrequency(int arr[], int size) that prints the frequency of each element in the array.",
+  "test_cases": [
+    {
+      "input": "arr = NULL, size = 5",
+      "expected": "Graceful failure"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"634.cpp\"\n\nint main() {\n    // CheckFrequency(NULL, 5);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing NULL pointer check before accessing array."
+  ]
+}

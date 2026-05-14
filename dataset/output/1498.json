@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a `Vector2D` class with private `x` and `y` (double) coordinates. Overload the binary `+` operator to perform vector addition, returning a new `Vector2D` object.",
+  "test_cases": [
+    {
+      "input": "Vector2D v1(1.0, 2.0);\nVector2D v2(3.0, 4.0);\nVector2D v3 = v1 + v2;",
+      "expected": "(4.0, 6.0)\n"
+    }
+  ],
+  "driver": "#include <iostream>\n\nclass Vector2D {\nprivate:\n    double x;\n    double y;\n\npublic:\n    Vector2D(double x_val = 0.0, double y_val = 0.0) : x(x_val), y(y_val) {}\n\n    Vector2D operator+(const Vector2D& other) const {\n        return Vector2D(this->x + other.x, this->y + other.y);\n    }\n\n    void print() const {\n        std::cout << \"(\" << x << \", \" << y << \")\" << std::endl;\n    }\n};\n\nint main() {\n    Vector2D v1(1.0, 2.0);\n    Vector2D v2(3.0, 4.0);\n    Vector2D v3 = v1 + v2;\n    v3.print();\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the class definition of Vector2D, preventing compilation."
+  ]
+}

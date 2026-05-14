@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `ResourceHandler` class that manages a dynamically allocated integer array. Its constructor should allocate an array of a specified size. Implement a destructor that correctly deallocates the dynamically allocated memory to prevent memory leaks.",
+  "test_cases": [
+    {
+      "input": "5",
+      "expected": "Program is expected to compile but crash at runtime due to a double-free error. This occurs because the `ResourceHandler` class manages a raw pointer but lacks a user-defined copy constructor and copy assignment operator, violating the Rule of Three/Five. When one `ResourceHandler` object is copied, both objects end up pointing to and attempting to deallocate the same memory."
+    }
+  ],
+  "driver": "#include <iostream>\n#include <stdexcept>\n\nclass ResourceHandler {\nprivate:\n    int* data_;\n    size_t size_;\n\npublic:\n    ResourceHandler(size_t s) : size_(s) {\n        if (s > 0) {\n            data_ = new int[s];\n            for (size_t i = 0; i < s; ++i) {\n                data_[i] = static_cast<int>(i * 100);\n            }\n            std::cout << \"ResourceHandler created with array of size \" << size_ << \" at address \" << static_cast<void*>(data_) << std::endl;\n        } else {\n            data_ = nullptr;\n            std::cout << \"ResourceHandler created with null array (size 0).\" << std::endl;\n        }\n    }\n\n    ~ResourceHandler() {\n        if (data_ != nullptr) {\n            delete[] data_;\n            data_ = nullptr;\n            std::cout << \"ResourceHandler destroyed. Memory at \" << static_cast<void*>(data_) << \" deallocated.\" << std::endl;\n        } else {\n            std::cout << \"ResourceHandler destroyed (no memory to deallocate).\" << std::endl;\n        }\n    }\n\n    int getElement(size_t index) const {\n        if (data_ == nullptr || index >= size_) {\n            throw std::out_of_range(\"Index out of bounds or array is null.\");\n        }\n        return data_[index];\n    }\n};\n\nint main() {\n    std::cout << \"Starting program with semantic error test (Rule of Three violation)...\" << std::endl;\n    try {\n        ResourceHandler handler1(5);\n        std::cout << \"handler1 element at index 2: \" << handler1.getElement(2) << std::endl;\n\n        ResourceHandler handler2 = handler1;\n        std::cout << \"handler2 element at index 2: \" << handler2.getElement(2) << std::endl;\n\n    } catch (const std::out_of_range& e) {\n        std::cerr << \"Caught out_of_range exception: \" << e.what() << std::endl;\n    } catch (const std::exception& e) {\n        std::cerr << \"Caught generic exception: \" << e.what() << std::endl;\n    }\n    std::cout << \"Program finished (or crashed due to double-free).\" << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `ResourceHandler` class manages a raw pointer (`data_`) but does not define a copy constructor or a copy assignment operator. This violates the C++ Rule of Three/Five. When `ResourceHandler handler2 = handler1;` is executed, a shallow copy occurs, meaning both `handler1` and `handler2`'s `data_` pointers point to the same dynamically allocated memory. Consequently, when both objects are destroyed, their destructors attempt to `delete[]` the same memory twice, leading to a double-free, which is undefined behavior and typically results in a program crash."
+  ]
+}

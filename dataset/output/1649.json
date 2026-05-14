@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `ResourceHandler` class that manages a dynamically allocated integer array. Its constructor should allocate an array of a specified size. Implement a destructor that correctly deallocates the dynamically allocated memory to prevent memory leaks.",
+  "test_cases": [
+    {
+      "input": "10",
+      "expected": "Program should compile and run, printing initialization and element values. However, upon destruction, the memory will be deallocated incorrectly (using 'delete' instead of 'delete[]'), leading to undefined behavior, potential memory leaks, or corruption that may not immediately crash the program but is a logical flaw."
+    }
+  ],
+  "driver": "#include <iostream>\n#include <stdexcept>\n\nclass ResourceHandler {\nprivate:\n    int* data_;\n    size_t size_;\n\npublic:\n    ResourceHandler(size_t s) : size_(s) {\n        if (s > 0) {\n            data_ = new int[s];\n            for (size_t i = 0; i < s; ++i) {\n                data_[i] = static_cast<int>(i + 1);\n            }\n            std::cout << \"ResourceHandler created with array of size \" << size_ << std::endl;\n        } else {\n            data_ = nullptr;\n            std::cout << \"ResourceHandler created with null array (size 0).\" << std::endl;\n        }\n    }\n\n    ~ResourceHandler() {\n        if (data_ != nullptr) {\n            delete data_;\n            data_ = nullptr;\n            std::cout << \"ResourceHandler destroyed. Memory deallocated (logically incorrect for array).\" << std::endl;\n        } else {\n            std::cout << \"ResourceHandler destroyed (no memory to deallocate).\" << std::endl;\n        }\n    }\n\n    int getElement(size_t index) const {\n        if (data_ == nullptr || index >= size_) {\n            throw std::out_of_range(\"Index out of bounds or array is null.\");\n        }\n        return data_[index];\n    }\n};\n\nint main() {\n    std::cout << \"Starting program with logical error test...\" << std::endl;\n    try {\n        ResourceHandler handler(10);\n        std::cout << \"Element at index 3: \" << handler.getElement(3) << std::endl;\n        std::cout << \"Element at index 7: " << handler.getElement(7) << std::endl;\n    } catch (const std::out_of_range& e) {\n        std::cerr << \"Caught out_of_range exception: \" << e.what() << std::endl;\n    } catch (const std::exception& e) {\n        std::cerr << \"Caught generic exception: \" << e.what() << std::endl;\n    }\n    std::cout << \"Program finished.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The destructor uses `delete data_` instead of `delete[] data_` for a dynamically allocated array. This is a logical error in memory management for arrays, leading to undefined behavior, potential memory leaks, or corruption at runtime."
+  ]
+}

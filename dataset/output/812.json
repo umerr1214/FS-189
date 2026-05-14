@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function bool areAnagrams(const char* str1, const char* str2) that checks if two strings are anagrams.",
+  "test_cases": [
+    {
+      "input": "str1 = \"a\", str2 = \"a\"",
+      "expected": "true"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cassert>\n#include \"812.cpp\"\n\nint main() {\n    // Will fail because counts are added, not subtracted\n    // assert(areAnagrams(\"a\", \"a\") == true);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Increments the frequency count for the second string instead of decrementing it, failing to check if counts balance out."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a class `MathOperations` with overloaded public methods named `multiply`. One `multiply` method should take two integers as arguments and return their product. Another `multiply` method should take three double values as arguments and return their product.",
+  "test_cases": [
+    { "input": "5, 10 (integers)", "expected": "50" },
+    { "input": "2.5, 3.0, 4.0 (doubles)", "expected": "30.0" }
+  ],
+  "driver": "#include <iostream>\n\nclass MathOperations {\npublic:\n    int multiply(int a, int b) {\n        return a * b;\n    }\n\n    double multiply(double a, double b, double c) {\n        return a * b * c;\n    }\n};\n\nint main() {\n    MathOperations math;\n    std::cout << math.multiply(5, 10) << std::endl;\n    std::cout << math.multiply(2.5, 3.0, 4.0) << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Both overloaded `multiply` methods contain a logical error: they return the sum of their arguments instead of their product."
+  ]
+}

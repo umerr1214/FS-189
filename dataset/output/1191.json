@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create an abstract base class `Shape` with a pure virtual method `calculateArea()`. Derive `Circle` and `Rectangle` classes from `Shape`, and implement `calculateArea()` appropriately for each.",
+  "test_cases": [
+    { "input": "Circle(5.0)", "expected": "78.53981633974483" },
+    { "input": "Rectangle(4.0, 6.0)", "expected": "24.0" },
+    { "input": "Circle(0.0)", "expected": "0.0" },
+    { "input": "Rectangle(10.0, 0.0)", "expected": "0.0" }
+  ],
+  "driver": "std::vector<std::unique_ptr<Shape>> shapes;\ntry {\n    shapes.push_back(std::make_unique<Circle>(5.0));\n    shapes.push_back(std::make_unique<Rectangle>(4.0, 6.0));\n    shapes.push_back(std::make_unique<Circle>(0.0));\n    shapes.push_back(std::make_unique<Rectangle>(10.0, 0.0));\n} catch (const std::invalid_argument& e) {\n    std::cerr << \"Error creating shape: \" << e.what() << std::endl;\n}\nfor (const auto& shape : shapes) { std::cout << shape->calculateArea() << std::endl; }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

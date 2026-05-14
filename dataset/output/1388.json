@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Create an abstract base class `Shape` with a pure virtual function `getArea()` that returns a double. Derive `Rectangle` (with width, height) and `Circle` (with radius) classes, implementing `getArea()` for each.",
+  "test_cases": [
+    { "input": "Rectangle(5.0, 10.0)", "expected": "50.0" },
+    { "input": "Circle(4.0)", "expected": "50.26544" },
+    { "input": "Rectangle(7.0, 2.0) (after modification)", "expected": "14.0" },
+    { "input": "Circle(5.0) (after modification)", "expected": "78.53975" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n\nclass Shape {\npublic:\n    virtual double getArea() = 0;\n    virtual ~Shape() = default;\n};\n\nclass Rectangle : public Shape {\npublic:\n    double wid;\n    double hgt;\n    Rectangle(double w, double h) : wid(w), hgt(h) {}\n    double getArea() override { return wid * hgt; }\n};\n\nclass Circle : public Shape {\npublic:\n    double rad;\n    Circle(double r) { rad = r; }\n    double getArea() override {\n        const double PI_VAL = 3.14159;\n        return PI_VAL * rad * rad;\n    }\n};\n\nint main() {\n    Rectangle r1(5.0, 10.0);\n    std::cout << r1.getArea() << std::endl;\n    Circle c1(4.0);\n    std::cout << c1.getArea() << std::endl;\n    r1.wid = 7.0; r1.hgt = 2.0;\n    std::cout << r1.getArea() << std::endl;\n    c1.rad = 5.0;\n    std::cout << c1.getArea() << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Lack of proper encapsulation: member variables (`wid`, `hgt`, `rad`) are public.",
+    "Non-descriptive variable naming (`wid`, `hgt`, `rad`) reduces readability.",
+    "Use of a 'magic number' (3.14159) for PI instead of `M_PI` from `<cmath>` or a well-defined constant, which is less precise and less readable.",
+    "Circle constructor does not use an initializer list, which can be less efficient for more complex objects and less idiomatic C++."
+  ]
+}

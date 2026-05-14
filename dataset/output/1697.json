@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Demonstrate multi-level inheritance by creating a hierarchy: `Animal` (base) -> `Mammal` -> `Dog`. Add unique characteristics (members or methods) at each level and show object creation and method calls.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Animal ---\nGeneric Creature is eating.\nGeneric Creature makes a sound.\nGeneric Creature is sleeping.\n\n--- Mammal ---\nLion is eating.\nLion (mammal) makes a distinct sound.\nLion is sleeping.\nLion (a mammal) is lactating.\n\n--- Dog ---\nLabrador Retriever is eating.\nLabrador the Labrador Retriever says: Bark! Bark!\nLabrador Retriever is sleeping.\nLabrador Retriever (a mammal) is lactating.\nLabrador the Labrador Retriever barks: Woof! Woof!\nLabrador the Labrador Retriever is fetching.\n\n"
+    }
+  ],
+  "driver": "int main() {\n    // Object creation and method calls\n    Animal genericAnimal(\"Generic Creature\");\n    std::cout << \"--- Animal ---\" << std::endl;\n    genericAnimal.eat();\n    genericAnimal.makeSound();\n    genericAnimal.sleep();\n    std::cout << std::endl;\n\n    Mammal lion(\"Lion\", \"Golden\");\n    std::cout << \"--- Mammal ---\" << std::endl;\n    lion.eat();\n    lion.makeSound();\n    lion.sleep();\n    lion.lactate();\n    std::cout << std::endl;\n\n    Dog labrador(\"Labrador Retriever\", \"Yellow\", \"Labrador\");\n    std::cout << \"--- Dog ---\" << std::endl;\n    labrador.eat();\n    labrador.makeSound();\n    labrador.sleep();\n    labrador.lactate();\n    labrador.bark();\n    labrador.fetch();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'Dog::makeSound' method, despite overriding the base method, incorrectly calls 'Mammal::makeSound()' using 'Mammal::makeSound();' instead of implementing its own unique 'bark' sound. This results in a dog object making a generic mammal sound when 'makeSound()' is called, which is logically incorrect for a dog. The expected output for 'labrador.makeSound()' is 'Labrador the Labrador Retriever says: Bark! Bark!', but the actual output is 'Labrador Retriever (mammal) makes a distinct sound.'"
+  ]
+}

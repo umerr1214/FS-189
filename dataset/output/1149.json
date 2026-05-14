@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ class named `Circle` with a private attribute `radius` (double). Provide a constructor to initialize the radius, a public `getRadius()` method to retrieve it, and a `calculateArea()` method to return the circle's area (using `M_PI` or `3.14159`).",
+  "test_cases": [
+    { "input": "5.0", "expected": "78.53981633974483" },
+    { "input": "0.0", "expected": "0.0" },
+    { "input": "-3.0", "expected": "0.0" },
+    { "input": "1.0", "expected": "3.141592653589793" }
+  ],
+  "driver": "#define _USE_MATH_DEFINES\n#include <iostream>\n#include <cmath>\n#include <limits>\n\nclass Circle {\nprivate:\n    double radius;\n\npublic:\n    Circle(double r) {\n        if (r < 0.0) {\n            /* std::cerr << \"Warning: Radius cannot be negative. Setting radius to 0.\" << std::endl; */\n            radius = 0.0;\n        } else {\n            radius = r;\n        }\n    }\n    double getRadius() const {\n        return radius;\n    }\n    double calculateArea() const {\n        return M_PI * radius * radius;\n    }\n};\n\nint main() {\n    std::cout.precision(std::numeric_limits<double>::max_digits10);\n    double r_test;\n    while (std::cin >> r_test) {\n        Circle c(r_test);\n        std::cout << c.calculateArea() << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

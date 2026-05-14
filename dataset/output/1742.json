@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a `ComplexNumber` class with private members for `real` and `imaginary` parts (doubles). Overload the `+` operator to enable addition of two `ComplexNumber` objects, returning a new `ComplexNumber`.",
+  "test_cases": [
+    { "input": "1.0 2.0 3.0 4.0", "expected": "4.0 + 6.0i" },
+    { "input": "-2.5 1.0 0.5 -3.0", "expected": "-2.0 + -2.0i" },
+    { "input": "0.0 0.0 5.0 -5.0", "expected": "5.0 + -5.0i" }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n#include <string>\n\n// ComplexNumber class definition would be here\n\nint main() {\n    std::string line_of_input_data;\n    while (std::getline(std::cin, line_of_input_data)) {\n        std::istringstream input_string_stream_for_parsing(line_of_input_data);\n        double first_real_value, first_imaginary_value, second_real_value, second_imaginary_value;\n        if (!(input_string_stream_for_parsing >> first_real_value >> first_imaginary_value >> second_real_value >> second_imaginary_value)) {\n            std::cerr << \"Error: Malformed input data. Please provide four double values.\" << std::endl;\n            continue;\n        }\n\n        // Note: Constructor order is (imaginary, real) for this specific implementation\n        ComplexNumber first_operand_complex_number(first_imaginary_value, first_real_value);\n        ComplexNumber second_operand_complex_number(second_imaginary_value, second_real_value);\n\n        ComplexNumber final_computed_sum_complex_number = first_operand_complex_number + second_operand_complex_number;\n\n        output_stream_object << final_computed_sum_complex_number << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "**Readability:** The code uses overly verbose variable and member names (e.g., `real_part_of_complex_value`, `retrieve_the_real_part`, `temporary_sum_for_real_parts`). This makes the code unnecessarily long and harder to read and understand quickly. Additionally, the constructor parameters `initial_imaginary_component_value` and `initial_real_component_value` are in a confusing order (imaginary then real), which is error-prone.",
+    "**Efficiency (minor):** In the `operator+` overload, an explicit temporary `ComplexNumber` object `result_of_addition` is created and then returned. While modern compilers often optimize this with Return Value Optimization (RVO) or Named Return Value Optimization (NRVO), it's generally more concise and sometimes more efficient to directly return the result of the constructor call (e.g., `return ComplexNumber(sum_real, sum_imaginary);`).",
+    "**Style:** Excessive use of `this->` within member functions is generally considered redundant and can clutter the code, reducing readability when not strictly necessary (e.g., to disambiguate local variables)."
+  ]
+}

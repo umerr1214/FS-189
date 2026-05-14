@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Model a `Car` class that has an `Engine` object (composition). The `Engine` class should have `horsepower` and `fuelType` attributes. Demonstrate how a `Car` object is constructed with an `Engine` and how `Car` methods can access `Engine` properties.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Car Model: Sedan\nEngine Horsepower: 200\nEngine Fuel Type: Gasoline\n"
+    }
+  ],
+  "driver": "    Car myCar(\"Sedan\", 200, \"Gasoline\");\n    myCar.displayCarDetails();\n",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a function void sortData(int arr[], int size, char choice) that sorts the array in ascending ('a') or descending ('d') order.",
+  "test_cases": [
+    {
+      "input": "arr = {3, 1, 2}, size = 3, choice = 'a'",
+      "expected": "{1, 2, 3}"
+    },
+    {
+      "input": "arr = {1, 2, 3}, size = 3, choice = 'd'",
+      "expected": "{3, 2, 1}"
+    },
+    {
+      "input": "arr = NULL, size = 0, choice = 'a'",
+      "expected": "No crash"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <cassert>\n#include \"618.cpp\"\n\nbool checkSorted(int arr[], int n, bool ascending) {\n    for (int i = 0; i < n - 1; i++) {\n        if (ascending) {\n            if (arr[i] > arr[i + 1]) return false;\n        } else {\n            if (arr[i] < arr[i + 1]) return false;\n        }\n    }\n    return true;\n}\n\nint main() {\n    int arr1[] = {3, 1, 2};\n    sortData(arr1, 3, 'a');\n    assert(checkSorted(arr1, 3, true));\n\n    int arr2[] = {1, 2, 3};\n    sortData(arr2, 3, 'd');\n    assert(checkSorted(arr2, 3, false));\n    \n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

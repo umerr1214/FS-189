@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Design a base class `Shape` with a virtual function `calculateArea()` that returns a double. Derive `Circle` (with radius) and `Square` (with side length) classes from `Shape`, and override `calculateArea()` in each derived class.",
+  "test_cases": [
+    { "input": "5.0", "expected": "78.53981633974483" },
+    { "input": "4.0", "expected": "16.0" },
+    { "input": "1.0", "expected": "3.141592653589793" },
+    { "input": "10.0", "expected": "100.0" },
+    { "input": "0.0", "expected": "0.0" },
+    { "input": "0.0", "expected": "0.0" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <memory>\n#include <cmath>\n\n#ifndef M_PI\n#define M_PI 3.14159265358979323846\n#endif\n\nclass Shape {\npublic:\n    virtual double calculateArea() = 0;\n    virtual ~Shape() = default;\n};\n\nclass Circle : public Shape {\nprivate:\n    double rad;\npublic:\n    Circle(double r_val) : rad(r_val) {}\n    double calculateArea() override {\n        double result_val = M_PI * std::pow(rad, 2.0);\n        return result_val;\n    }\n};\n\nclass Square : public Shape {\nprivate:\n    double s_len;\npublic:\n    Square(double len_val) : s_len(len_val) {}\n    double calculateArea() override {\n        return std::pow(s_len, 2.0);\n    }\n};\n\nint main() {\n    std::vector<std::unique_ptr<Shape>> shapes;\n    shapes.push_back(std::make_unique<Circle>(5.0));\n    shapes.push_back(std::make_unique<Square>(4.0));\n    shapes.push_back(std::make_unique<Circle>(1.0));\n    shapes.push_back(std::make_unique<Square>(10.0));\n    shapes.push_back(std::make_unique<Circle>(0.0));\n    shapes.push_back(std::make_unique<Square>(0.0));\n\n    for (const auto& shape : shapes) {\n        std::cout.precision(15);\n        std::cout << std::fixed << shape->calculateArea() << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `calculateArea` methods use `std::pow(x, 2.0)` instead of `x * x` for squaring, which is less efficient and potentially less readable for simple exponentiation. The code also lacks `const` correctness for member functions and parameters, reducing maintainability and clarity. Some variable names are less descriptive than ideal."
+  ]
+}

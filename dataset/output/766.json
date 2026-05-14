@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a function void convertStartEndToUpper(char arr[]) that capitalizes start and end of words.",
+  "test_cases": [
+    {
+      "input": "arr = \"hello\"",
+      "expected": "Safe execution"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cctype>\n#include \"766.cpp\"\n\nint main() {\n    char str[100] = \"hello\";\n    // Accessing str[-1] is UB\n    convertStartEndToUpper(str);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Out-of-bounds access `arr[i-1]` when `i=0` because the condition order is swapped (`arr[i-1]` checked before `i==0`).",
+    "Missing NULL pointer check."
+  ]
+}

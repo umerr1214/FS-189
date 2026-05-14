@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Define an `Employee` base class with a `displayInfo()` method. Create a `Manager` class that inherits from `Employee` and overrides `displayInfo()` to include additional manager-specific details.",
+  "test_cases": [
+    { "input": "", "expected": "--- Direct Calls ---\nEmployee Name: Alice, ID: 101\nEmployee Name: Bob, ID: 201\n  Department: Sales\n\n--- Polymorphic Calls (via base pointer) ---\nEmployee Name: Charlie, ID: 301\nEmployee Name: David, ID: 401\n  Department: Marketing\n" }
+  ],
+  "driver": "int main() {\n    Employee emp(\"Alice\", 101);\n    Manager mgr(\"Bob\", 201, \"Sales\");\n\n    std::cout << \"--- Direct Calls ---\" << std::endl;\n    emp.displayInfo();\n    mgr.displayInfo();\n    std::cout << std::endl;\n\n    std::cout << \"--- Polymorphic Calls (via base pointer) ---\" << std::endl;\n    Employee* e1 = new Employee(\"Charlie\", 301);\n    Employee* e2 = new Manager(\"David\", 401, \"Marketing\");\n\n    e1->displayInfo();\n    e2->displayInfo();\n\n    delete e1;\n    delete e2;\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `displayInfo()` method in the `Employee` base class is not declared `virtual`. This means that when a `Manager` object is accessed through an `Employee` pointer or reference, the `Employee` version of `displayInfo()` is called instead of the `Manager` version, breaking the intended polymorphic behavior."
+  ]
+}

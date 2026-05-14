@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Extend the `Book` class to include a parameterized constructor that accepts and initializes `title`, `author`, and `isbn` upon object creation. Demonstrate its usage.",
+  "test_cases": [
+    {
+      "input": "Book(\"1984\", \"George Orwell\", \"978-0451524935\") followed by book1.isbn = \"UNKNOWN\"; and then display()",
+      "expected": "Title: 1984\nAuthor: George Orwell\nISBN: 978-0451524935"
+    }
+  ],
+  "driver": "int main() {\n    Book book1(\"1984\", \"George Orwell\", \"978-0451524935\");\n    book1.isbn = \"UNKNOWN\";\n    book1.display();\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The demonstration of the constructor's usage semantically negates its purpose for the 'isbn' field by immediately overwriting the initialized value. While the constructor itself is correct, the overall demonstration of 'initialization upon object creation' is flawed."
+  ]
+}

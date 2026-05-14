@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void moveZeroes(int arr[], int n) that moves all 0s to the end while maintaining relative order of non-zero elements.",
+  "test_cases": [
+    {
+      "input": "arr = {0, 1, 0, 3, 12}",
+      "expected": "{1, 3, 12, 0, 0}"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cassert>\n#include \"830.cpp\"\n\nint main() {\n    int arr[] = {0, 1, 0, 3, 12};\n    moveZeroes(arr, 5);\n    // Will be all zeros\n    // assert(arr[0] == 1);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Fails to increment the `count` index when placing non-zero elements, resulting in overwriting the first element repeatedly and filling the rest with zeros."
+  ]
+}

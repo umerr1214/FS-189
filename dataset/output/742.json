@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void applyFilter(const vector<vector<int>>& input, const vector<vector<int>>& filter, vector<vector<int>>& output) that applies a 3x3 filter to the input matrix.",
+  "test_cases": [
+    {
+      "input": "input = 2x2 matrix",
+      "expected": "Graceful failure / No output"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include \"742.cpp\"\n\nint main() {\n    // applyFilter(small_input, filter, output);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing check for minimum input dimensions (at least 3x3). Calling `resize` with `m-2` when `m<2` causes unsigned integer underflow (huge allocation) and crash."
+  ]
+}

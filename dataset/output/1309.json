@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Illustrate the importance of virtual destructors. Create a base class `Base` and a derived class `Derived`, both with print statements in their constructors and destructors. Demonstrate memory leakage when deleting a `Derived` object through a `Base` class pointer without a virtual destructor, and then fix it.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating Memory Leak (Robustness Issue) ---\nCreating a Derived object via a Base pointer:\nBase Constructor\nDerived Constructor\n\nDeleting the object via the Base pointer:\nBase Destructor\n--- End Demonstration ---\nNotice: 'Derived Destructor' was NOT called, indicating a memory leak for Derived's resource.\n"
+    }
+  ],
+  "driver": "int main() { demonstrate_leak(); return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Memory leak due to non-virtual base class destructor when deleting a derived object through a base pointer.",
+    "Potential for undefined behavior if the derived class destructor performs critical cleanup that is skipped."
+  ]
+}

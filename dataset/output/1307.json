@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Illustrate the importance of virtual destructors. Create a base class `Base` and a derived class `Derived`, both with print statements in their constructors and destructors. Demonstrate memory leakage when deleting a `Derived` object through a `Base` class pointer without a virtual destructor, and then fix it.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Illustrating non-virtual destructor leading to memory issue:\nBase Constructor\nDerived Constructor\nBase Destructor\nNote: Only Base Destructor was called. Derived Destructor was skipped.\n\nDemonstrating the fix with virtual destructor:\nBase Constructor\nDerived Constructor\nDerived Destructor\nBase Destructor\nNote: Both destructors were called correctly."
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"Illustrating non-virtual destructor leading to memory issue:\" << std::endl;\n    Base* ptr = new Derived();\n    delete ptr;\n    std::cout << \"Note: Only Base Destructor was called. Derived Destructor was skipped.\" << std::endl;\n    std::cout << \"The program did not proceed to demonstrate the fix as required by the question.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The program correctly demonstrates the non-virtual destructor problem, showing that the derived class destructor is not called. However, it fails to implement or demonstrate the 'fix' (making the base destructor virtual) as explicitly required by the problem statement ('and then fix it'). This makes the solution logically incomplete."
+  ]
+}

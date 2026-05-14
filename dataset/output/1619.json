@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private members for title (string), author (string), and price (double). Include a parameterized constructor to initialize these members and a public method `displayBookInfo()` to print all details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Title: 1984\nAuthor: George Orwell\nPrice: $9.50\n--- Another Book ---\nTitle: The Great Gatsby\nAuthor: F. Scott Fitzgerald\nPrice: $10.25"
+    }
+  ],
+  "driver": "Book myBook(\"1984\", \"George Orwell\", 9.50);\nmyBook.displayBookInfo();\nstd::cout << \"--- Another Book ---\" << std::endl;\nBook anotherBook(\"The Great Gatsby\", \"F. Scott Fitzgerald\", 10.25);\nanotherBook.displayBookInfo();",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `displayBookInfo()` method has a logical error: it prints the author's name twice and completely omits the book's price. It should print title, author, and price once each."
+  ]
+}

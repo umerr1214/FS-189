@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Extend the `BankAccount` class by adding a static member function `getTotalAccounts()` that returns the value of `totalAccountsCreated` without needing an object of `BankAccount`.",
+  "test_cases": [
+    { "input": "", "expected": "Total accounts created: 3\n" }
+  ],
+  "driver": "int main() {\n    BankAccount acc1(101, 1000.0);\n    BankAccount acc2(102, 500.0);\n    BankAccount acc3(103, 200.0);\n    std::cout << \"Total accounts created: \" << BankAccount::getTotalAccounts() << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The `getTotalAccounts()` function contains a logical error: it incorrectly returns a hardcoded value (0) instead of the actual `totalAccountsCreated` static member."]
+}

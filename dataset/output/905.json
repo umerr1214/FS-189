@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function bool isLeapYear(int year) that checks if a year is a leap year.",
+  "test_cases": [
+    {
+      "input": "year = 2024",
+      "expected": "true"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include \"905.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Extremely inefficient O(N) approach: generates a list of all leap years up to the input year instead of using O(1) arithmetic check."
+  ]
+}

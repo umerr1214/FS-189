@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design a `BankAccount` class. Include a static member `totalAccountsCreated` to count the number of `BankAccount` objects instantiated. Increment this counter in the constructor.",
+  "test_cases": [
+    { "input": "", "expected": "Total accounts created: 0\n" }
+  ],
+  "driver": "int main() {\n    BankAccount acc1;\n    BankAccount acc2;\n    BankAccount acc3;\n    std::cout << \"Total accounts created: \" << BankAccount::getTotalAccountsCreated() << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": []
+}

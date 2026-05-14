@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Counter` class that keeps track of how many `Counter` objects have been created using a `static` member variable. Implement a default constructor to increment this count and a destructor to decrement it. Provide a static method `getTotalCount()` to retrieve the current number of active `Counter` objects.",
+  "test_cases": [
+    {
+      "input": "Initial count: 0\nAfter c1 creation: 1\nAfter c2, c3 creation: 3\nAfter c2, c3 destruction: 1\nAfter c4 (dynamic) creation: 2\nAfter c4 (dynamic) destruction: 1",
+      "expected": "Compilation Error"
+    }
+  ],
+  "driver": "#include <iostream>\n\n// The Counter class as provided in the problem, with the intended syntax error\n// This driver code attempts to compile and run the provided C++ code.\n\n// No actual C++ driver code needed beyond what's in the main function of the sample,\n// as the primary goal is to demonstrate the compilation failure.",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition 'Counter', leading to a compilation error."
+  ]
+}

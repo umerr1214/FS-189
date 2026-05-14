@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `Product` class with private `productName` (string) and `price` (double). Provide public getter methods (`getProductName`, `getPrice`) and setter methods (`setProductName`, `setPrice`) for both attributes.",
+  "test_cases": [
+    { "input": "Set product name to 'Laptop', price to 1200.50. Then set price to -150.00.", "expected": "Product: Laptop, Price: $1200.50\nProduct: Laptop, Price after invalid set: $-150.00\nProduct: Keyboard, Price: $75.99" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <iomanip>\n\nclass Product {\nprivate:\n    std::string productName;\n    double price;\n\npublic:\n    Product() : productName(\"\"), price(0.0) {}\n    Product(const std::string& name, double p) : productName(name), price(p) {}\n\n    std::string getProductName() const {\n        return productName;\n    }\n\n    double getPrice() const {\n        return price;\n    }\n\n    void setProductName(const std::string& name) {\n        productName = name;\n    }\n\n    void setPrice(double p) {\n        price = p;\n    }\n};\n\nint main() {\n    Product p1;\n    p1.setProductName(\"Laptop\");\n    p1.setPrice(1200.50);\n\n    std::cout << \"Product: \" << p1.getProductName() << \", Price: $\" << std::fixed << std::setprecision(2) << p1.getPrice() << std::endl;\n\n    p1.setPrice(-150.00);\n    std::cout << \"Product: \" << p1.getProductName() << \", Price after invalid set: $\" << std::fixed << std::setprecision(2) << p1.getPrice() << std::endl;\n\n    Product p2(\"Keyboard\", 75.99);\n    std::cout << \"Product: \" << p2.getProductName() << \", Price: $\" << std::fixed << std::setprecision(2) << p2.getPrice() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `setPrice` method lacks input validation. It allows setting a negative price, which is generally an invalid state for a product's price, leading to potential logical errors or unexpected behavior in applications that use this class."
+  ]
+}

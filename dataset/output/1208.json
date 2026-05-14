@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Overload the binary `+` operator for the `Point` class. This operator should take two `Point` objects and return a new `Point` object representing their coordinate-wise sum.",
+  "test_cases": [
+    { "input": "1 2 3 4", "expected": "(4, 6)\n" },
+    { "input": "-1 0 1 0", "expected": "(0, 0)\n" },
+    { "input": "10 -5 -3 8", "expected": "(7, 3)\n" },
+    { "input": "0 0 0 0", "expected": "(0, 0)\n" },
+    { "input": "100 200 -50 -100", "expected": "(50, 100)\n" }
+  ],
+  "driver": "int main() {\n    std::vector<std::tuple<int, int, int, int, std::string>> test_cases = {\n        {1, 2, 3, 4, \"(4, 6)\"},\n        {-1, 0, 1, 0, \"(0, 0)\"},\n        {10, -5, -3, 8, \"(7, 3)\"},\n        {0, 0, 0, 0, \"(0, 0)\"},\n        {100, 200, -50, -100, \"(50, 100)\"}\n    };\n\n    std::stringstream ss_output;\n    for (const auto& test : test_cases) {\n        Point p1(std::get<0>(test), std::get<1>(test));\n        Point p2(std::get<2>(test), std::get<3>(test));\n        Point sum = p1 + p2; // This calls the overloaded operator\n        ss_output << sum.toString() << std::endl;\n    }\n    std::cout << ss_output.str();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `operator+` takes its `other` operand by value, leading to an unnecessary copy of the `Point` object.",
+    "The return value is constructed by default-initializing a `Point` and then assigning its members, which is less efficient and less readable than using a direct constructor call for the return value."
+  ]
+}

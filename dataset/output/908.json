@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void selectionSort(int arr[], int n) that sorts an array using Selection Sort.",
+  "test_cases": [
+    {
+      "input": "arr = {1, 2, 3}",
+      "expected": "{1, 2, 3}"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cassert>\n#include \"908.cpp\"\n\nint main() {\n    int arr[] = {1, 2, 3};\n    selectionSort(arr, 3);\n    // Will be sorted descending {3, 2, 1} due to logic error\n    // assert(arr[0] == 1);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Used `>` instead of `<` in comparison, sorting the array in descending order instead of ascending."
+  ]
+}

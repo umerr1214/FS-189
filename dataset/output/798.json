@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a function void rotateMatrix(int matrix[][N], int n) that rotates a square matrix 90 degrees clockwise in-place.",
+  "test_cases": [
+    {
+      "input": "matrix = {{1, 2}, {3, 4}}",
+      "expected": "{{3, 1}, {4, 2}}"
+    },
+    {
+      "input": "matrix = {{1}}",
+      "expected": "{{1}}"
+    },
+    {
+      "input": "n = 10",
+      "expected": "No crash"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include <algorithm>\n#include <cassert>\n#include \"798.cpp\"\n\nint main() {\n    int matrix[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};\n    rotateMatrix(matrix, 3);\n    assert(matrix[0][0] == 7);\n    assert(matrix[0][2] == 1);\n    \n    rotateMatrix(matrix, 10);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

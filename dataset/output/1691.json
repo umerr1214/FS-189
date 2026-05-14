@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Vehicle` with a method `startEngine()`. Derive `Car` and `Motorcycle` classes from `Vehicle`. In `Car`, add a specific `drive()` method, and in `Motorcycle`, add a `ride()` method. Demonstrate calling `startEngine()` from derived objects.",
+  "test_cases": [
+    { "input": "", "expected": "--- Car Actions ---\nVehicle engine started.\nCar is driving.\n\n--- Motorcycle Actions ---\nVehicle engine started.\nMotorcycle is riding.\n" }
+  ],
+  "driver": "int main() {\n    Car myCar;\n    Motorcycle myMotorcycle;\n\n    std::cout << \"--- Car Actions ---\" << std::endl;\n    myCar.startEngine();\n    myCar.drive();\n\n    std::cout << \"\\n--- Motorcycle Actions ---\" << std::endl;\n    myMotorcycle.startEngine();\n    myMotorcycle.ride();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `startEngine()` method incorrectly prints 'Vehicle engine stopped.' instead of 'Vehicle engine started.', contradicting its intended purpose."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Shape` with a protected member `color` (string) and a virtual method `calculateArea()` that returns 0. Derive a class `Circle` from `Shape` with an additional private member `radius` (double). Override `calculateArea()` in `Circle` to compute the area of a circle.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Circle direct call (radius 5.0, color Red) area: 78.539816339744830\nShape pointer call (radius 5.0, color Red) area: 78.539816339744830\nShape pointer to heap Circle (radius 10.0, color Blue) area: 314.159265358979300"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <cmath>\n#include <iomanip>\n\n// Base class Shape\nclass Shape {\nprotected:\n    std::string color;\npublic:\n    Shape(const std::string& c) : color(c) {}\n    virtual double calculateArea() {\n        return 0;\n    }\n    virtual ~Shape() {}\n};\n\n// Derived class Circle\nclass Circle : public Shape {\nprivate:\n    double radius;\npublic:\n    Circle(const std::string& c, double r) : Shape(c), radius(r) {}\n    // Semantic error: Signature mismatch for intended override.\n    // This creates a new function (overload), hiding Shape::calculateArea, instead of overriding it.\n    // The 'override' keyword would catch this, but without it, it compiles fine.\n    // When called polymorphically through a Shape* pointer, Shape::calculateArea will be invoked.\n    double calculateArea(int dummy = 0) {\n        return M_PI * radius * radius;\n    }\n};\n\nint main() {\n    std::cout << std::fixed << std::setprecision(15);\n\n    Circle c(\"Red\", 5.0);\n    // Calling directly on Circle object will use Circle::calculateArea(int), which calculates area correctly\n    std::cout << \"Circle direct call (radius 5.0, color Red) area: \" << c.calculateArea() << std::endl;\n\n    Shape* s = &c;\n    // Semantic error: Calling via Shape* will invoke Shape::calculateArea() (returns 0)\n    // because Circle::calculateArea(int) does not override Shape::calculateArea().\n    std::cout << \"Shape pointer call (radius 5.0, color Red) area: \" << s->calculateArea() << std::endl;\n\n    Shape* s_heap = new Circle(\"Blue\", 10.0);\n    std::cout << \"Shape pointer to heap Circle (radius 10.0, color Blue) area: \" << s_heap->calculateArea() << std::endl;\n    delete s_heap;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `Circle` class's `calculateArea` method has a different signature (takes an `int` parameter) than the base `Shape` class's virtual `calculateArea` method. This prevents it from overriding the base method, leading to hiding behavior. When `calculateArea` is called polymorphically through a `Shape*` pointer, the `Shape` base class method (which returns 0) is invoked instead of the intended `Circle` method."
+  ]
+}

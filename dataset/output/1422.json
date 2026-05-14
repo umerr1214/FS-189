@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Model a `Department` class that aggregates `Employee` objects. `Department` should have a name and a list (e.g., array or vector) of `Employee` pointers. `Employee` objects should be created independently and managed by the `Department` through aggregation.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "The program compiles and runs successfully, printing department and employee information. However, the `Department` class stores `Employee` objects by value (`std::vector<Employee>`) instead of by pointer (`std::vector<Employee*>`). This means the `Department` holds copies of the `Employee` objects, fundamentally changing the relationship from aggregation (managing pointers to independently created objects) to composition/value semantics, which semantically violates the explicit requirement for 'Employee pointers' and 'aggregation' in the problem description."
+    }
+  ],
+  "driver": "    Employee emp1(\"Alice\", 101);\n    Employee emp2(\"Bob\", 102);\n\n    Department hr(\"Human Resources\");\n    hr.addEmployee(emp1);\n    hr.addEmployee(emp2);\n\n    hr.printDepartment();\n\n    std::cout << \"End of main. Original employees still exist and will be destroyed after copies.\" << std::endl;",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `Department` class semantically misinterprets the aggregation requirement. Instead of using a `std::vector<Employee*>` to store pointers to independently created `Employee` objects, it uses `std::vector<Employee>`, meaning it stores copies of `Employee` objects by value. This changes the relationship to composition or value semantics, violating the explicit instruction for 'list of Employee pointers' and 'aggregation' where the Department should not own the objects themselves, but references/pointers to them."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Using the `Shape` hierarchy from a previous question (base `Shape`, derived `Circle` and `Square`), demonstrate runtime polymorphism. Create a `std::vector` of `Shape*` pointers, populate it with `Circle` and `Square` objects, and iterate through the vector to call `calculateArea()` for each object.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Demonstrating runtime polymorphism by calculating areas:\nCircle area: 78.5398\nSquare area: 16.0000\nCircle area: 19.6350\n"
+    }
+  ],
+  "driver": "g++ -std=c++11 -o program 1713.cpp && ./program",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

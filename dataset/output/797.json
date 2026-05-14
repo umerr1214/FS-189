@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void rotateMatrix(int matrix[][N], int n) that rotates a square matrix 90 degrees clockwise in-place.",
+  "test_cases": [
+    {
+      "input": "matrix",
+      "expected": "Rotated matrix"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include <algorithm>\n#include <vector>\n#include \"797.cpp\"\n\nint main() {\n    int matrix[3][3] = {{1}};\n    rotateMatrix(matrix, 3);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses O(N^2) extra space for a temporary matrix instead of performing the rotation in-place (O(1) space)."
+  ]
+}

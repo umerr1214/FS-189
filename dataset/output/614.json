@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void sortData(int arr[], int size, char choice) that sorts the array in ascending ('a') or descending ('d') order.",
+  "test_cases": [
+    {
+      "input": "arr = {3, 1, 2}, size = 3, choice = 'a'",
+      "expected": "{1, 2, 3}"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <cassert>\n#include \"614.cpp\"\n\nbool isSorted(int arr[], int n) {\n    for (int i = 0; i < n - 1; i++)\n        if (arr[i] > arr[i + 1])\n            return false;\n    return true;\n}\n\nint main() {\n    int arr[] = {3, 1, 2};\n    sortData(arr, 3, 'a');\n    // This assertion will fail because the logic is swapped\n    // assert(isSorted(arr, 3));\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Swapped logic for ascending ('a') and descending ('d') sorts."
+  ]
+}

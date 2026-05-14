@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function int countCharacterOccurrences(const char arr[], char target) that counts occurrences of target in arr.",
+  "test_cases": [
+    {
+      "input": "arr = \"hello\", target = 'l'",
+      "expected": "2"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cassert>\n#include \"692.cpp\"\n\nint main() {\n    const char* str = \"hello\";\n    // Will fail because it returns 0\n    // assert(countCharacterOccurrences(str, 'l') == 2);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Increments loop index 'i' instead of 'count' when a match is found, leading to incorrect count and skipping characters."
+  ]
+}

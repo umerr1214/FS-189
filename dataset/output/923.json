@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a recursive function int fibonacci(int n) that returns the nth Fibonacci number.",
+  "test_cases": [
+    {
+      "input": "n = 10",
+      "expected": "55"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"923.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses naive recursion O(2^N) which is extremely inefficient for larger `n`. Should use iteration or memoization O(N)."
+  ]
+}

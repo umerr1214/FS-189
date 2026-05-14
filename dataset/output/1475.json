@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Extend the `Book` class to include a parameterized constructor that accepts and initializes `title`, `author`, and `isbn` upon object creation. Demonstrate its usage.",
+  "test_cases": [
+    {
+      "input": "Book(\"The Lord of the Rings\", \"J.R.R. Tolkien\", \"978-0618053267\") and then display()",
+      "expected": "Title: The Lord of the Rings\nAuthor: J.R.R. Tolkien\nISBN: 978-0618053267"
+    }
+  ],
+  "driver": "int main() {\n    Book book1(\"The Lord of the Rings\", \"J.R.R. Tolkien\", \"978-0618053267\");\n    book1.display();\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The parameterized constructor initializes 'author' and 'isbn' with the 'title' parameter instead of their respective 'author' and 'isbn' parameters, leading to incorrect object state."
+  ]
+}

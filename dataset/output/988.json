@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design a base class `Vehicle` with `make` (string) and `year` (int). Derive two classes: `Car` (adding `numDoors` as int) and `Motorcycle` (adding `hasSidecar` as bool). Implement constructors for all classes.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Compilation Error: Missing semicolon after Vehicle class definition." }
+  ],
+  "driver": "int main() {\n    // The program will fail to compile due to the syntax error.\n    Car myCar(\"Toyota\", 2020, 4);\n    Motorcycle myBike(\"Harley\", 2018, true);\n\n    myCar.display();\n    myBike.display();\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the 'Vehicle' class definition."]
+}

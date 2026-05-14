@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Implement a `Date` class with private `day`, `month`, and `year` attributes. Provide public setter methods for each attribute that include robust validation (e.g., month must be 1-12, day valid for the given month and year).",
+  "test_cases": [
+    { "input": "Date d1(2023, 1, 15); d1.printDate();", "expected": "2023-01-15" },
+    { "input": "Date d1(2023, 1, 15); d1.setMonth(2); d1.printDate();", "expected": "2023-02-15" },
+    { "input": "Date d1(2023, 1, 15); d1.setMonth(2); d1.setDay(28); d1.printDate();", "expected": "2023-02-28" },
+    { "input": "Date d1(2023, 1, 15); d1.setMonth(2); d1.setDay(28); d1.setYear(2024); d1.printDate();", "expected": "2024-02-28" },
+    { "input": "Date d1(2023, 1, 15); d1.setMonth(2); d1.setDay(28); d1.setYear(2024); d1.setDay(29); d1.printDate();", "expected": "2024-02-29" },
+    { "input": "Date d1(2024, 2, 29); bool success = d1.setDay(30); std::cout << (success ? \"true\" : \"false\") << \", \"; d1.printDate();", "expected": "false, 2024-02-29" },
+    { "input": "Date d1(2024, 2, 29); bool success = d1.setMonth(13); std::cout << (success ? \"true\" : \"false\") << \", \"; d1.printDate();", "expected": "false, 2024-02-29" },
+    { "input": "Date d1(2024, 2, 29); bool success = d1.setYear(-100); std::cout << (success ? \"true\" : \"false\") << \", \"; d1.printDate();", "expected": "false, 2024-02-29" },
+    { "input": "Date d2(2023, 3, 31); d2.setMonth(4); d2.printDate();", "expected": "2023-04-30" },
+    { "input": "Date d3(2024, 2, 29); d3.setYear(2023); d3.printDate();", "expected": "2023-02-28" },
+    { "input": "Date d4(0, 0, 0); d4.printDate();", "expected": "2000-01-01" },
+    { "input": "Date d5(2023, 2, 30); d5.printDate();", "expected": "2023-02-28" }
+  ],
+  "driver": "int main() {\n    Date d1(2023, 1, 15);\n    std::cout << \"d1 initial: \"; d1.printDate(); std::cout << \" (Expected: 2023-01-15)\\n\";\n\n    d1.setMonth(2);\n    std::cout << \"d1 after setMonth(2): \"; d1.printDate(); std::cout << \" (Expected: 2023-02-15)\\n\";\n\n    d1.setDay(28);\n    std::cout << \"d1 after setDay(28): \"; d1.printDate(); std::cout << \" (Expected: 2023-02-28)\\n\";\n\n    d1.setYear(2024);\n    std::cout << \"d1 after setYear(2024): \"; d1.printDate(); std::cout << \" (Expected: 2024-02-28)\\n\";\n\n    d1.setDay(29);\n    std::cout << \"d1 after setDay(29): \"; d1.printDate(); std::cout << \" (Expected: 2024-02-29)\\n\";\n\n    bool success = d1.setDay(30);\n    std::cout << \"d1 setDay(30) success: \" << (success ? \"true\" : \"false\") << \", date: \"; d1.printDate(); std::cout << \" (Expected: false, 2024-02-29)\\n\";\n\n    success = d1.setMonth(13);\n    std::cout << \"d1 setMonth(13) success: \" << (success ? \"true\" : \"false\") << \", date: \"; d1.printDate(); std::cout << \" (Expected: false, 2024-02-29)\\n\";\n\n    success = d1.setYear(-100);\n    std::cout << \"d1 setYear(-100) success: \" << (success ? \"true\" : \"false\") << \", date: \"; d1.printDate(); std::cout << \" (Expected: false, 2024-02-29)\\n\";\n\n    Date d2(2023, 3, 31);\n    std::cout << \"d2 initial: \"; d2.printDate(); std::cout << \" (Expected: 2023-03-31)\\n\";\n    d2.setMonth(4);\n    std::cout << \"d2 after setMonth(4): \"; d2.printDate(); std::cout << \" (Expected: 2023-04-30)\\n\";\n\n    Date d3(2024, 2, 29);\n    std::cout << \"d3 initial: \"; d3.printDate(); std::cout << \" (Expected: 2024-02-29)\\n\";\n    d3.setYear(2023);\n    std::cout << \"d3 after setYear(2023): \"; d3.printDate(); std::cout << \" (Expected: 2023-02-28)\\n\";\n\n    Date d4(0, 0, 0);\n    std::cout << \"d4 invalid constructor: \"; d4.printDate(); std::cout << \" (Expected: 2000-01-01)\\n\";\n\n    Date d5(2023, 2, 30);\n    std::cout << \"d5 invalid constructor (day): \"; d5.printDate(); std::cout << \" (Expected: 2023-02-28)\\n\";\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

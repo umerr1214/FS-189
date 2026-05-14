@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Vehicle` with `make` (string) and `model` (string). Derive a class `Car` that adds `numDoors` (int). Both classes should have a `displayInfo()` method; `Car` should override `displayInfo()` to include its specific attribute.",
+  "test_cases": [
+    { "input": "", "expected": "Vehicle Info:\nMake: Toyota, Model: Camry\n\nCar Info:\nMake: Honda, Model: Civic, Doors: 4\n" }
+  ],
+  "driver": "    Vehicle v(\"Toyota\", \"Camry\");\n    Car c(\"Honda\", \"Civic\", 4);\n\n    std::cout << \"Vehicle Info:\" << std::endl;\n    v.displayInfo();\n    std::cout << std::endl;\n\n    std::cout << \"Car Info:\" << std::endl;\n    c.displayInfo();\n    std::cout << std::endl;",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition for 'Car'."
+  ]
+}

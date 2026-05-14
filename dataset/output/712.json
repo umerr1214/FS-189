@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function int Trace(int data[][SIZE], int n) that calculates the trace of a square matrix.",
+  "test_cases": [
+    {
+      "input": "n = 10 (buffer size 3)",
+      "expected": "Graceful failure / assertion"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"712.cpp\"\n\nint main() {\n    int data[3][3] = {{1}};\n    // Trace(data, 100);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing bounds check for 'n' relative to 'SIZE', potentially leading to out-of-bounds access if n > SIZE."
+  ]
+}

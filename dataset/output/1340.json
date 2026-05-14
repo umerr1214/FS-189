@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Develop a `DynamicArray` class that manages an array of integers on the heap. Include a constructor that takes size, a destructor that deallocates memory, and a method `setElement(index, value)`.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "Test Case 1: Basic functionality and inefficient initialization\nElement at index 0: 100\nElement at index 1: 0\nElement at index 2: 200\nElement at index 3: 0\nElement at index 4: 300\n\nTest Case 2: Out-of-bounds access handling\nCaught expected exception: Index out of bounds!\n\nTest Case 3: Zero-size array\nWarning: Array size must be positive. Creating an empty array.\nZero-size array size: 0"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"Test Case 1: Basic functionality and inefficient initialization\" << std::endl;\n    DynamicArray myArray(5);\n    myArray.setElement(0, 100);\n    myArray.setElement(2, 200);\n    myArray.setElement(4, 300);\n\n    for (int i = 0; i < myArray.getSize(); ++i) {\n        std::cout << \"Element at index \" << i << \": \" << myArray.getElement(i) << std::endl;\n    }\n\n    std::cout << \"\\nTest Case 2: Out-of-bounds access handling\" << std::endl;\n    try {\n        myArray.setElement(5, 400);\n    } catch (const std::out_of_range& e) {\n        std::cout << \"Caught expected exception: \" << e.what() << std::endl;\n    }\n\n    std::cout << \"\\nTest Case 3: Zero-size array\" << std::endl;\n    DynamicArray zeroArray(0);\n    std::cout << \"Zero-size array size: \" << zeroArray.getSize() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inefficient initialization in the constructor: explicitly loops to set elements to 0 instead of using `new int[size]{}` for value-initialization.",
+    "Variable names (`myDataPointer`, `currentArraySize`, `idx`, `val`) are less descriptive and less idiomatic than standard C++ practices (e.g., `data`, `size`, `index`, `value`).",
+    "Uses `int` for array size and indices, which is less robust than `std::size_t` for sizes and counts."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a `MediaItem` base class with a virtual `play()` method. Derive `AudioFile` and `VideoFile` classes from `MediaItem`. Override the `play()` method in each derived class to print a specific message for playing audio or video.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Playing audio file.\nPlaying video file.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <memory>\n\n// Assume MediaItem, AudioFile, VideoFile classes are defined above\n\nint main() {\n    std::vector<std::unique_ptr<MediaItem>> mediaItems;\n    mediaItems.push_back(std::make_unique<AudioFile>());\n    mediaItems.push_back(std::make_unique<VideoFile>());\n\n    for (const auto& item : mediaItems) {\n        item->play();\n    }\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the class definition of 'VideoFile'."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Enhance a `Student` class with private attributes: `name` (string), `id` (int), and `gpa` (double). Implement public getter and setter methods for all attributes, ensuring that the `gpa` setter validates input to be between 0.0 and 4.0 (inclusive).",
+  "test_cases": [
+    { "input": "N/A", "expected": "Student: Alice, ID: 101, GPA: 3.5\nUpdated GPA: 3.8\nAttempted GPA 4.5. Current GPA: 3.8\nAttempted GPA -0.5. Current GPA: 3.8\n" }
+  ],
+  "driver": "int main() {\n    Student s(\"Alice\", 101, 3.5);\n    std::cout << \"Student: \" << s.getName() << \", ID: \" << s.getId() << \", GPA: \" << std::fixed << std::setprecision(1) << s.getGpa() << std::endl;\n\n    s.setGpa(3.8);\n    std::cout << \"Updated GPA: \" << std::fixed << std::setprecision(1) << s.getGpa() << std::endl;\n\n    s.setGpa(4.5); // Should fail\n    std::cout << \"Attempted GPA 4.5. Current GPA: \" << std::fixed << std::setprecision(1) << s.getGpa() << std::endl;\n\n    s.setGpa(-0.5); // Should fail\n    std::cout << \"Attempted GPA -0.5. Current GPA: \" << std::fixed << std::setprecision(1) << s.getGpa() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the class definition for 'Student'."]
+}

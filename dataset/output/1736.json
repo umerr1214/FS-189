@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Design a `Printer` class with overloaded `print` methods. One method should take an integer, another a string, and a third a character. Each method should display its respective argument.",
+  "test_cases": [
+    {
+      "input": "12345, \"Hello World from inefficient code!\", 'Z', '7'",
+      "expected": "Int value: 12345\nString data: Hello World from inefficient code!\nChar symbol: Z\nChar symbol: 7\n"
+    }
+  ],
+  "driver": "int main()\n{\n    Printer my_printer_obj;\n    my_printer_obj.print(12345);\n    my_printer_obj.print(\"Hello World from inefficient code!\");\n    my_printer_obj.print('Z');\n    my_printer_obj.print('7');\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Global `using namespace std;` pollutes the global namespace.",
+    "The `print(std::string)` method passes the string by value, causing an unnecessary copy and potential performance overhead. It should be passed by `const std::string&`.",
+    "Parameter names (`a`, `b`, `c`) are not descriptive, reducing readability.",
+    "Redundant use of `this->` within method bodies.",
+    "Unnecessary `std::cout.flush()` call after `std::endl`, as `std::endl` already flushes the stream.",
+    "Object name `my_printer_obj` is slightly verbose and inconsistent with common C++ naming conventions for local variables."
+  ]
+}

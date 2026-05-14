@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function int binaryToDecimal(const char* binary) that converts a binary string to a decimal integer.",
+  "test_cases": [
+    {
+      "input": "binary = \"110\"",
+      "expected": "6"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cmath>\n#include <cassert>\n#include \"866.cpp\"\n\nint main() {\n    // Will return 3 instead of 6\n    // assert(binaryToDecimal(\"110\") == 6);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Iterates from left to right while increasing the power of 2 from 0, effectively interpreting the binary string in reverse order."
+  ]
+}

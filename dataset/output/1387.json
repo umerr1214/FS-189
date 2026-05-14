@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Create an abstract base class `Shape` with a pure virtual function `getArea()` that returns a double. Derive `Rectangle` (with width, height) and `Circle` (with radius) classes, implementing `getArea()` for each.",
+  "test_cases": [
+    { "input": "Rectangle(5.0, 10.0)", "expected": "50.0" },
+    { "input": "Rectangle(-2.0, 5.0)", "expected": "-10.0" },
+    { "input": "Rectangle(10.0, -3.0)", "expected": "-30.0" },
+    { "input": "Rectangle(-4.0, -6.0)", "expected": "24.0" },
+    { "input": "Circle(4.0)", "expected": "50.26548245743669" },
+    { "input": "Circle(-3.0)", "expected": "28.274333882308138" },
+    { "input": "Rectangle(0.0, 7.0)", "expected": "0.0" },
+    { "input": "Circle(0.0)", "expected": "0.0" }
+  ],
+  "driver": "#define _USE_MATH_DEFINES\n#include <iostream>\n#include <cmath>\n\nclass Shape {\npublic:\n    virtual double getArea() = 0;\n    virtual ~Shape() = default;\n};\n\nclass Rectangle : public Shape {\nprivate:\n    double width;\n    double height;\npublic:\n    Rectangle(double w, double h) : width(w), height(h) {}\n    double getArea() override { return width * height; }\n};\n\nclass Circle : public Shape {\nprivate:\n    double radius;\npublic:\n    Circle(double r) : radius(r) {}\n    double getArea() override { return M_PI * radius * radius; }\n};\n\nint main() {\n    Rectangle rect1(5.0, 10.0);\n    std::cout << rect1.getArea() << std::endl;\n    Rectangle rect2(-2.0, 5.0);\n    std::cout << rect2.getArea() << std::endl;\n    Rectangle rect3(10.0, -3.0);\n    std::cout << rect3.getArea() << std::endl;\n    Rectangle rect4(-4.0, -6.0);\n    std::cout << rect4.getArea() << std::endl;\n    Circle circ1(4.0);\n    std::cout << circ1.getArea() << std::endl;\n    Circle circ2(-3.0);\n    std::cout << circ2.getArea() << std::endl;\n    Rectangle rect5(0.0, 7.0);\n    std::cout << rect5.getArea() << std::endl;\n    Circle circ3(0.0);\n    std::cout << circ3.getArea() << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The shape classes (Rectangle, Circle) do not validate input dimensions/radius, allowing negative values.",
+    "Calculating area with negative dimensions can lead to negative area results, which are physically meaningless for geometric shapes.",
+    "While negative radius squared becomes positive, allowing negative radius as input is a lack of robustness for real-world geometric modeling."
+  ]
+}

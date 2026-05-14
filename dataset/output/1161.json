@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define a base class `MediaItem` with a virtual function `play()`. Derive `AudioFile` and `VideoFile` classes from `MediaItem`. Override `play()` in each derived class to simulate playing an audio or video file (e.g., printing 'Playing audio: [title]' or 'Playing video: [filename]'). Use an array of `MediaItem` pointers to demonstrate playing various media types polymorphically.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating Polymorphic Playback ---\nPlaying audio: The Sound of Silence\nPlaying video: forest_walk.mp4 (Title: Nature's Beauty)\nPlaying audio: Morning Coffee Jazz\nPlaying video: nyc_timelapse.mov (Title: City Lights)\n------------------------------------------\n"
+    }
+  ],
+  "driver": "",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

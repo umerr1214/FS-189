@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a function int countCharacterOccurrences(const char arr[], char target) that counts occurrences of target in arr.",
+  "test_cases": [
+    {
+      "input": "arr = \"hello world\", target = 'l'",
+      "expected": "3"
+    },
+    {
+      "input": "arr = \"abc\", target = 'z'",
+      "expected": "0"
+    },
+    {
+      "input": "arr = NULL",
+      "expected": "0"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cassert>\n#include \"696.cpp\"\n\nint main() {\n    assert(countCharacterOccurrences(\"hello world\", 'l') == 3);\n    assert(countCharacterOccurrences(\"abc\", 'z') == 0);\n    assert(countCharacterOccurrences(NULL, 'a') == 0);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

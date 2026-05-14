@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Define a `Book` class with private data members `title` (string), `author` (string), and `isbn` (string). Provide public getter methods `getTitle()`, `getAuthor()`, `getIsbn()`, and a `displayBookInfo()` method that prints all book details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Initial Book Info ---\nTitle: 1984\nAuthor: George Orwell\nISBN: 978-0451524935\n"
+    }
+  ],
+  "driver": "int main() {\n    Book book1(\"1984\", \"George Orwell\", \"978-0451524935\");\n    std::cout << \"--- Initial Book Info ---\" << std::endl;\n    book1.displayBookInfo();\n    // A valid driver would not attempt to modify ISBN via a getter.\n    // If the getter were correct (e.g., const std::string&), this would be valid.\n    // book1.getIsbn() = \"NEW-ISBN-12345\"; // This line is in the actual faulty code.\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    {
+      "line": 23,
+      "column": 20,
+      "message": "Getter method 'getIsbn()' returns a non-const reference, allowing external modification of a private member, which violates encapsulation and the semantic intent of a getter."
+    }
+  ]
+}

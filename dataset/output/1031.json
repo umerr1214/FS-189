@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement two classes, `Wallet` (with a private `balance`) and `Cashier`. Make `Cashier` a `friend` class of `Wallet`, allowing `Cashier` to directly access and modify `Wallet`'s private `balance` through a method like `processPayment`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial wallet balance: 100\nBalance after payment: 130\nBalance after adding funds: 180\nBalance after second payment: 195\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\n// Assume Wallet and Cashier classes are defined above\n\nstd::string run_test() {\n    std::stringstream ss;\n    Wallet myWallet(100.0);\n    Cashier myCashier;\n\n    ss << \"Initial wallet balance: \" << myWallet.getBalance() << std::endl;\n\n    myCashier.processPayment(myWallet, 30.0);\n    ss << \"Balance after payment: \" << myWallet.getBalance() << std::endl;\n\n    myCashier.addFunds(myWallet, 50.0);\n    ss << \"Balance after adding funds: \" << myWallet.getBalance() << std::endl;\n\n    // Additional test case: another payment\n    myCashier.processPayment(myWallet, 15.0);\n    ss << \"Balance after second payment: \" << myWallet.getBalance() << std::endl;\n\n    return ss.str();\n}\n\nint main() {\n    std::cout << run_test();\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `processPayment` method in `Cashier` incorrectly adds the `amount` to the wallet's balance instead of subtracting it, leading to an increase in balance after a payment."
+  ]
+}

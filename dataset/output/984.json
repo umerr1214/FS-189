@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Enhance a `Student` class with private attributes: `name` (string), `id` (int), and `gpa` (double). Implement public getter and setter methods for all attributes, ensuring that the `gpa` setter validates input to be between 0.0 and 4.0 (inclusive).",
+  "test_cases": [
+    { "input": "N/A", "expected": "Initial Student: Charlie, ID: 103, GPA: 3.2\nModified via getter: Charles, ID: 200, GPA: 3.2\nUpdated GPA: 3.7\n" }
+  ],
+  "driver": "int main() {\n    Student s(\"Charlie\", 103, 3.2);\n    std::cout << \"Initial Student: \" << s.getName() << \", ID: \" << s.getId() << \", GPA: \" << std::fixed << std::setprecision(1) << s.getGpa() << std::endl;\n\n    s.getName() = \"Charles\";\n    s.getId() = 200;\n\n    std::cout << \"Modified via getter: \" << s.getName() << \", ID: \" << s.getId() << \", GPA: \" << std::fixed << std::setprecision(1) << s.getGpa() << std::endl;\n\n    s.setGpa(3.7);\n    std::cout << \"Updated GPA: \" << std::fixed << std::setprecision(1) << s.getGpa() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The `getName()` and `getId()` getters return non-const references, which breaks encapsulation by allowing direct modification of private attributes from outside the class. Additionally, all getter methods are missing the `const` qualifier, indicating they do not modify the object's state, which is a best practice for read-only operations."]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ class named `Circle` with a private attribute `radius` (double). Provide a constructor to initialize the radius, a public `getRadius()` method to retrieve it, and a `calculateArea()` method to return the circle's area (using `M_PI` or `3.14159`).",
+  "test_cases": [
+    { "input": "10.0", "expected": "314.159" },
+    { "input": "2.5", "expected": "19.6349375" },
+    { "input": "7.0", "expected": "153.93791" },
+    { "input": "1.0", "expected": "3.14159" }
+  ],
+  "driver": "#include <iostream>\n\nclass Circle {\n    double _r;\npublic:\n    Circle( double  _in_r ) : _r(_in_r) {}\n    double get_r_val() const {\n        return _r;\n    }\n    double calculate_circ_area() const {\n        return 3.14159 * _r * _r;\n    }\n};\n\nint main() {\n    std::cout.precision(12);\n    double r_test;\n    while (std::cin >> r_test) {\n        Circle c(r_test);\n        std::cout << c.calculate_circ_area() << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["Poor variable naming (`_r`, `get_r_val`, `calculate_circ_area`), inconsistent formatting, and the use of a magic number (`3.14159`) instead of `M_PI` significantly reduce readability.", "The `main` function is overly verbose and repetitive, making it harder to follow the test logic."]
+}

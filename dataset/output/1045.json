@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `MyString` class that manages a dynamic character array. Implement both a copy constructor and an assignment operator (`operator=`). Explain when each of these is invoked through code examples.",
+  "test_cases": [
+    { "input": "", "expected": "--- Demonstrating MyString Class ---\nConstructor invoked for: Hello\ns1: Hello\nCopy Constructor invoked for: Hello (from Hello)\ns2 (copy of s1): Hello\n\nCalling demonstrateCopy(s1)...\nCopy Constructor invoked for: Hello (from Hello)\nInside demonstrateCopy function. Value: Hello\nDestructor invoked for: Hello\nBack in main after demonstrateCopy(s1).\nConstructor invoked for: World\ns3: World\n\nAssigning s1 to s3 (s3 = s1)...\nAssignment Operator invoked for: Hello (from Hello)\ns3 (after assignment from s1): Hello\nConstructor invoked for: \ns4 (default): \n\nAssigning s3 to s4 (s4 = s3)...\nAssignment Operator invoked for: Hello (from Hello)\ns4 (after assignment from s3): Hello\n\nDemonstrating self-assignment (s1 = s1)...\nAssignment Operator invoked for: Hello (from Hello)\ns1 (after self-assignment): Hello\n\nModifying s1 to see independence of copies/assignments.\ns1 (modified): Hello C++\ns2 (original copy): Hello\ns3 (original assignment): Hello\ns4 (original assignment): Hello\n\n--- End of main ---\nDestructor invoked for: Hello C++\nDestructor invoked for: Hello\nDestructor invoked for: Hello\nDestructor invoked for: Hello" }
+  ],
+  "driver": "int main() {\n    // The provided main function already serves as a driver.\n    // No additional driver code is needed.\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition."
+  ]
+}

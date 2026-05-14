@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `Student` class with private attributes `studentID` (int), `name` (string), and `major` (string). Implement public methods `setDetails(int id, string n, string m)` to initialize these attributes and `displayDetails()` to print them to the console.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Student ID: 101\nName: Alice\nMajor: Computer Science\n"
+    }
+  ],
+  "driver": "Student s; s.setDetails(101, \"Alice\", \"Computer Science\"); s.displayDetails();",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the class definition of 'Student'."
+  ]
+}

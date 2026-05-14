@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Illustrate access specifiers (`public`, `private`, `protected`). Create a base class `Person` with `public` name, `protected` age, and `private` socialSecurityNumber. Derive a `Student` class and try to access these members, explaining which are accessible and why.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Compilation Error: The program attempts to access the 'private' member 'socialSecurityNumber' of the base class 'Person' directly from the derived class 'Student'. This results in a compile-time error (e.g., 'error: 'std::string Person::socialSecurityNumber' is private within this context'). This demonstrates a robustness issue in the code's design, as it fails to compile due to a fundamental violation of C++ access rules, even though the C++ language itself is robust in preventing such unauthorized access."
+    }
+  ],
+  "driver": "g++ 1369.cpp -o 1369",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The code attempts to access a 'private' member (socialSecurityNumber) of the base class 'Person' directly from the derived class 'Student', leading to a compile-time error. This represents a robustness issue in the code's design, as it fails to compile due to a fundamental violation of C++ access rules, indicating an incorrect understanding or attempt to bypass encapsulation. While the C++ type system robustly prevents this, the code itself is not robust against such programming errors."
+  ]
+}

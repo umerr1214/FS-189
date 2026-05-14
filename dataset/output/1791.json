@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Resource` class that simulates acquiring a resource in its constructor (e.g., printing \"Resource acquired\") and releasing it in its destructor (e.g., printing \"Resource released\"). Demonstrate the order of constructor and destructor calls for local objects within a function scope.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Main function started ---\n\n--- Entering demonstrateScope() ---\nResource First acquired.\nResource First is in use.\n  --- Entering nested scope ---\nResource Second acquired.\nResource Second is in use.\nResource Third acquired.\nResource Third is in use.\n  --- Exiting nested scope ---\nResource Third released.\nResource Second released.\nResource Fourth acquired.\nResource Fourth is in use.\n--- Exiting demonstrateScope() ---\nResource Fourth released.\nResource First released.\n--- Main function finished ---\n"
+    }
+  ],
+  "driver": "int main() { demonstrateScope(); return 0; }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

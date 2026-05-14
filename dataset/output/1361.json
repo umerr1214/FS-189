@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Design a `ComplexNumber` class with private `real` and `imaginary` parts (doubles). Overload the binary `+` operator to perform addition of two `ComplexNumber` objects.",
+  "test_cases": [
+    {
+      "input": "ComplexNumber c1(10.0, 5.0);\nComplexNumber c2(3.0, 2.0);\nComplexNumber c3 = c1 + c2;",
+      "expected": "c1: 10 + 5i\nc2: 3 + 2i\nc1 + c2: 13 + 7i"
+    },
+    {
+      "input": "ComplexNumber c4(1.0, 1.0);\nComplexNumber c5(1.0, 1.0);\nComplexNumber c6 = c4 + c5;",
+      "expected": "c4: 1 + 1i\nc5: 1 + 1i\nc4 + c5: 2 + 2i"
+    }
+  ],
+  "driver": "int main() {\n    ComplexNumber c1(10.0, 5.0);\n    ComplexNumber c2(3.0, 2.0);\n    ComplexNumber c3 = c1 + c2;\n    std::cout << \"c1: \"; c1.print();\n    std::cout << \"c2: \"; c2.print();\n    std::cout << \"c1 + c2: \"; c3.print();\n\n    ComplexNumber c4(1.0, 1.0);\n    ComplexNumber c5(1.0, 1.0);\n    ComplexNumber c6 = c4 + c5;\n    std::cout << \"c4: \"; c4.print();\n    std::cout << \"c5: \"; c5.print();\n    std::cout << \"c4 + c5: \"; c6.print();\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The overloaded binary '+' operator is incorrectly implemented; it performs subtraction of complex numbers instead of addition."
+  ]
+}

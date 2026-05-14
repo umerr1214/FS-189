@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a Queue class.",
+  "test_cases": [
+    {
+      "input": "Standard usage",
+      "expected": "Correct"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include \"941.cpp\"\n\nint main() {\n    Queue q;\n    q.enqueue(1);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inefficient implementation: `dequeue` uses `vector::erase(begin)` which is O(N) due to shifting elements, whereas a queue should be O(1)."
+  ]
+}

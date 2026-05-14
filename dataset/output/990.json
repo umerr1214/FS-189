@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design a base class `Vehicle` with `make` (string) and `year` (int). Derive two classes: `Car` (adding `numDoors` as int) and `Motorcycle` (adding `hasSidecar` as bool). Implement constructors for all classes.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Compilation Error: No matching constructor for 'Vehicle' in Car's constructor." }
+  ],
+  "driver": "int main() {\n    // This line will cause a compilation error due to Car's constructor\n    Car myCar(\"Nissan\", 2019, 4); \n\n    // These lines would compile if Car didn't have the error\n    Motorcycle myBike(\"Ducati\", 2023, false);\n\n    myCar.display(); // This line will not be reached due to compilation error\n    myBike.display();\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The 'Car' class constructor fails to explicitly call the base 'Vehicle' constructor in its initializer list. This leads to a semantic error as the compiler attempts to call a non-existent default 'Vehicle::Vehicle()' constructor."]
+}

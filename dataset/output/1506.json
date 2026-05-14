@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Shape` with a protected string member `color` and a constructor to initialize it. Derive a `Circle` class from `Shape`, adding a private double member `radius` and its own constructor. Implement a `displayInfo()` method in both classes.",
+  "test_cases": [
+    { "input": "", "expected": "Shape Color: Red\nShape Color: Blue\nCircle Radius: 10.5\n" }
+  ],
+  "driver": "// The main function in the provided C++ code acts as the driver.",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `Circle` class constructor fails to explicitly call the base class `Shape`'s constructor. Since `Shape` defines a custom constructor and no default constructor, this leads to a compilation error as the compiler cannot implicitly call a non-existent default constructor for `Shape`."
+  ]
+}

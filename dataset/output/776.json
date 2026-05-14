@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void transposeMatrix(char matrix[][COLS]) that prints the transpose of the matrix.",
+  "test_cases": [
+    {
+      "input": "3x4 matrix",
+      "expected": "4x3 output"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"776.cpp\"\n\nint main() {\n    char matrix[ROWS][COLS] = {{0}};\n    // Will crash or print garbage due to OOB access\n    transposeMatrix(matrix);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Incorrect loop limits: loops iterate using `ROWS` and `COLS` for the original matrix dimensions, leading to out-of-bounds access `matrix[j][i]` when dimensions differ."
+  ]
+}

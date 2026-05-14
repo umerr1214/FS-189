@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "For the `Point` class (from Question 15), overload the stream insertion `<<` operator to allow `Point` objects to be printed directly using `std::cout` (e.g., `std::cout << myPoint;` should output '(x, y)').",
+  "test_cases": [
+    { "input": "", "expected": "(10, 20)\n" }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n\nclass Point {\nprivate:\n    int x;\n    int y;\npublic:\n    Point(int x_val = 0, int y_val = 0) : x(x_val), y(y_val) {}\n    // Missing friend declaration for operator<<\n};\n\n// Assuming the student's operator<< is defined here\nextern std::ostream& operator<<(std::ostream& os, const Point& p);\n\nint main() {\n    std::stringstream ss;\n    Point p1(10, 20);\n    ss << p1;\n    std::cout << ss.str();\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    {
+      "line": 15,
+      "column": 19,
+      "message": "'int Point::x' is private within this context"
+    },
+    {
+      "line": 15,
+      "column": 27,
+      "message": "'int Point::y' is private within this context"
+    }
+  ]
+}

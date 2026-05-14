@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Refactor a `BankAccount` class to strictly enforce encapsulation. Make the `balance` (double) private. Provide public methods `deposit(double amount)`, `withdraw(double amount)`, and `getBalance()` to interact with the balance.",
+  "test_cases": [
+    { "input": "initial: 1000, deposit: 200, withdraw: 150", "expected": "1050.0" },
+    { "input": "initial: 500, attempt_direct_set: 100", "expected": "500.0" }
+  ],
+  "driver": "#include <iostream>\n\n// BankAccount class is assumed to be defined in the user's code\n\nint main() {\n    // Test Case 1: Valid operations\n    BankAccount account1(1000.0);\n    account1.deposit(200.0);\n    account1.withdraw(150.0);\n    std::cout << account1.getBalance() << std::endl;\n\n    // Test Case 2: Attempt to modify balance directly via getBalance() (exposes semantic error)\n    BankAccount account2(500.0);\n    // The correct behavior is that this line should not be possible or should not affect the balance\n    // in a way that bypasses deposit/withdraw logic. Here, we expect the balance to remain 500.0\n    // if encapsulation was strictly enforced.\n    account2.getBalance() = 100.0; // This line is valid in the buggy code and sets balance to 100.0\n    std::cout << account2.getBalance() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The getBalance() method returns a non-const reference to the private balance, which allows external code to directly modify the balance, violating strict encapsulation and bypassing the intended deposit/withdraw logic."]
+}

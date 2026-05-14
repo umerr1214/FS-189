@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Illustrate the importance of virtual destructors. Create a base class `Base` and a derived class `Derived`, both with print statements in their constructors and destructors. Demonstrate memory leakage when deleting a `Derived` object through a `Base` class pointer without a virtual destructor, and then fix it.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating Readability/Efficiency Issue ---\nCreating multiple objects and storing raw pointers in a vector:\nBase Constructor\nDerived Constructor (Object A)\nBase Constructor\nBase Constructor\nDerived Constructor (Object B)\n\nObjects created. Now manually deleting them from the vector:\nDerived Destructor (Object A)\nBase Destructor\nBase Destructor\nDerived Destructor (Object B)\nBase Destructor\n--- End Demonstration ---\nNotice: Destructors were called correctly, but the code for managing these objects is verbose and error-prone.\n"
+    }
+  ],
+  "driver": "int main() { demonstrate_readability_efficiency_issue(); return 0; }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inefficient and less readable memory management using raw pointers in a `std::vector` instead of smart pointers like `std::unique_ptr`.",
+    "Manual iteration and deletion of pointers is error-prone and verbose, even with virtual destructors, making the code less robust against future changes."
+  ]
+}

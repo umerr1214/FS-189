@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Vector2D` class with private double members `x` and `y`. Provide a parameterized constructor and a copy constructor that performs a deep copy of the `Vector2D` object.",
+  "test_cases": [
+    { "input": "Vector2D v(1.0, 2.0); v.x = 5.0; v.print();", "expected": "Vector2D(5.0, 2.0)" },
+    { "input": "Vector2D v1(10.5, 20.3); Vector2D v2 = v1; v2.print();", "expected": "Vector2D(10.5, 20.3)" }
+  ],
+  "driver": "#include <iostream>\n\nclass Vector2D {\npublic:\n    double x;\n    double y;\n\npublic:\n    Vector2D(double x_val, double y_val) : x(x_val), y(y_val) {}\n    Vector2D(const Vector2D& other) : x(other.x), y(other.y) {}\n    void print() const {\n        std::cout << \"Vector2D(\" << x << \", \" << y << \")\" << std::endl;\n    }\n};\n\nint main() {\n    Vector2D v1(10.5, 20.3);\n    std::cout << \"v1: \";\n    v1.print();\n\n    v1.x = 100.0;\n    std::cout << \"v1 after direct x modification: \";\n    v1.print();\n\n    Vector2D v2 = v1;\n    std::cout << \"v2 (copy of v1): \";\n    v2.print();\n\n    v2.y = 500.0;\n    std::cout << \"v2 after direct y modification: \";\n    v2.print();\n    std::cout << \"v1 (should be unchanged): \";\n    v1.print();\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The members 'x' and 'y' are declared as public instead of private, violating the encapsulation requirement specified in the question."
+  ]
+}

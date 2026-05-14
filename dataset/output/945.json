@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void insertAtHead(Node*& head, int val) that inserts a node at the beginning of a linked list.",
+  "test_cases": [
+    {
+      "input": "Insert 10",
+      "expected": "10 -> NULL"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"945.cpp\"\n\nint main() {\n    Node* head = nullptr;\n    insertAtHead(head, 10);\n    // Dereferencing head->next will crash\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Casting integer `val` to `Node*` and assigning it to `next`, creating an invalid pointer."
+  ]
+}

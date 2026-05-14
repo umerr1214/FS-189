@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void characterHistogram(char grid[][COLS], int rows) that prints a histogram of character frequencies.",
+  "test_cases": [
+    {
+      "input": "Standard grid",
+      "expected": "Histogram"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include <vector>\n#include <map>\n#include \"791.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inefficient O(256 * N) algorithm: iterates through the collected characters 256 times to count frequencies instead of a single O(N) pass."
+  ]
+}

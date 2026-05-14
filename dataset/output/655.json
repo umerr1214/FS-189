@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a function int findConsecutiveZeros(const char arr[]) that returns the maximum number of consecutive '0' characters.",
+  "test_cases": [],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <algorithm>\n#include \"655.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'return maxZeros'"
+  ]
+}

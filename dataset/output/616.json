@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void sortData(int arr[], int size, char choice) that sorts the array in ascending ('a') or descending ('d') order.",
+  "test_cases": [
+    {
+      "input": "arr = NULL, size = 5, choice = 'a'",
+      "expected": "Graceful handling"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"616.cpp\"\n\nint main() {\n    // int* p = NULL;\n    // sortData(p, 5, 'a');\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "No validation of input parameters (NULL pointer check)."
+  ]
+}

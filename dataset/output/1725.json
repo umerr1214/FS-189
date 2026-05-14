@@ -1,0 +1,25 @@
+{
+  "language": "c++",
+  "question": "Design a simple logging system using polymorphism. Create a base `Logger` class with a virtual `log(string message)` method. Derive `ConsoleLogger` and `FileLogger` classes, overriding `log()` to print to console or write to a file, respectively.",
+  "test_cases": [
+    {
+      "input": "Application initialized successfully.\nUser 'admin' logged in.\nData backup started.\nData backup completed with 100 files.",
+      "expected": {
+        "console_output": "[INFO] [Console] Application initialized successfully.\n[INFO] [Console] User 'admin' logged in.\n[INFO] [Console] Data backup started.\n[INFO] [Console] Data backup completed with 100 files.\n",
+        "file_content": "--- Log Session Started ---\n[INFO] [File] Application initialized successfully.\n[INFO] [File] User 'admin' logged in.\n[INFO] [File] Data backup started.\n[INFO] [File] Data backup completed with 100 files.\n--- Log Session Ended ---\n"
+      }
+    },
+    {
+      "input": "New session started.\nTask X completed.",
+      "expected": {
+        "console_output": "[INFO] [Console] New session started.\n[INFO] [Console] Task X completed.\n",
+        "file_content": "--- Log Session Started ---\n[INFO] [File] New session started.\n[INFO] [File] Task X completed.\n--- Log Session Ended ---\n"
+      }
+    }
+  ],
+  "driver": "int main() {\n    std::remove(\"log_correct.txt\");\n    std::vector<std::unique_ptr<Logger>> loggers;\n    try {\n        loggers.push_back(std::make_unique<ConsoleLogger>());\n        loggers.push_back(std::make_unique<FileLogger>(\"log_correct.txt\"));\n        processLogs(loggers, \"Application initialized successfully.\");\n        processLogs(loggers, \"User 'admin' logged in.\");\n    } catch (const FileLoggerError& e) {\n        std::cerr << \"Critical Error: \" << e.what() << std::endl;\n        return 1;\n    } catch (const std::exception& e) {\n        std::cerr << \"An unexpected error occurred: \" << e.what() << std::endl;\n        return 1;\n    }\n    std::cout << \"\\nLogging complete. Check console output and 'log_correct.txt' for file logs.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

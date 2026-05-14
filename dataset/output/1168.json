@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a C++ class named `Book` with private member variables for `title` (string), `author` (string), and `isbn` (string). Provide public getter and setter methods for each attribute.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Initial Book Details:\nTitle: The Great Adventure\nAuthor: Jane Doe\nISBN: 978-0123456789\n\nUpdated Book Details:\nTitle: The New Journey\nAuthor: John Smith\nISBN: 978-9876543210" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// Assuming the Book class is defined correctly in the user's code\n// The user's main function will be used to test the class.\n// This driver simply calls the user's main function.\n\nint main() {\n    // The user's main function contains the test logic.\n    // We will compile and run the user's code as is.\n    // Expected output is based on the logic within the user's main.\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing a semicolon after the class definition of `Book`. In C++, class declarations must be terminated with a semicolon."
+  ]
+}

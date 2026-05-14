@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a `Person` class with `name` (public), `age` (protected), and `id` (private). Then, create a `Student` class that publicly inherits from `Person`. Demonstrate which members are accessible from `Student` methods and from outside `Student` objects.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Outside Student Object ---\nAccessible: Outside can access s.name (public): Alice\nInaccessible: Outside cannot access s.age (protected).\nInaccessible: Outside cannot access s.id (private).\n\n--- Inside Student Method ---\nAccessible: Student can access name (public): Alice\nAccessible: Student can access age (protected): 20\nInaccessible: Student cannot access id (private)."
+    }
+  ],
+  "driver": "int main() {\n    Student s(\"Alice\", 20, 101);\n    s.demonstrateStudentAccess();\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'Person' class definition.",
+    "Typo: 'std:string' used instead of 'std::string' in Student constructor parameter list."
+  ]
+}

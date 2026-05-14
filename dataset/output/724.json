@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void UpperHalf(int A[][SIZE], int N) that prints the upper half of the matrix.",
+  "test_cases": [
+    {
+      "input": "N = 10 (SIZE=3)",
+      "expected": "Graceful failure / Assert"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"724.cpp\"\n\nint main() {\n    // UpperHalf(A, 10);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing bounds check: 'N' can exceed 'SIZE', leading to out-of-bounds array access."
+  ]
+}

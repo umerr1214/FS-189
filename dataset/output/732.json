@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a function bool Exists(int data[][6], int pattern[][3]) that checks if the 3x3 pattern exists in the 6x6 data.",
+  "test_cases": [
+    {
+      "input": "data (from example), pattern (from example)",
+      "expected": "true"
+    },
+    {
+      "input": "data, non-existent pattern",
+      "expected": "false"
+    },
+    {
+      "input": "data = NULL, pattern = NULL",
+      "expected": "false"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cassert>\n#include \"732.cpp\"\n\nint main() {\n    int data[6][6] = {\n        {1, 2, 7, 8, 9, 6},\n        {2, 2, 3, 4, 5, 6},\n        {3, 2, 3, 4, 5, 6},\n        {4, 2, 3, 4, 5, 6},\n        {5, 2, 9, 8, 7, 6},\n        {6, 2, 7, 4, 5, 6}\n    };\n    int pattern[3][3] = {\n        {3, 4, 5},\n        {3, 4, 5},\n        {3, 4, 5}\n    };\n    assert(Exists(data, pattern) == true);\n    \n    int p2[3][3] = {{0}}; \n    assert(Exists(data, p2) == false);\n    \n    assert(Exists(NULL, NULL) == false);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

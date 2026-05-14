@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `ComplexNumber` class with private `real` and `imaginary` parts (doubles). Overload the binary `+` operator to perform addition of two `ComplexNumber` objects.",
+  "test_cases": [
+    { "input": "ComplexNumber c1(1.0, 2.0); ComplexNumber c2(3.0, 4.0); ComplexNumber result = c1 + c2; std::cout << result.toString() << std::endl; std::cout << c1.toString() << std::endl;", "expected": "4.00+6.00i\n4.00+6.00i" },
+    { "input": "ComplexNumber c3(-0.5, 1.5); ComplexNumber c4(2.5, -3.5); ComplexNumber result = c3 + c4; std::cout << result.toString() << std::endl; std::cout << c3.toString() << std::endl;", "expected": "2.00-2.00i\n2.00-2.00i" },
+    { "input": "ComplexNumber cx1(1.0, 1.0); ComplexNumber cx2(2.0, 2.0); ComplexNumber cx3(3.0, 3.0); ComplexNumber result = cx1 + cx2 + cx3; std::cout << result.toString() << std::endl; std::cout << cx1.toString() << std::endl;", "expected": "6.00+6.00i\n6.00+6.00i" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <iomanip>\n\nclass ComplexNumber {\nprivate:\n    double real;\n    double imaginary;\n\npublic:\n    ComplexNumber(double r = 0.0, double i = 0.0) : real(r), imaginary(i) {}\n\n    double getReal() const { return real; }\n    double getImaginary() const { return imaginary; }\n\n    ComplexNumber operator+(const ComplexNumber& other) {\n        this->real += other.real;\n        this->imaginary += other.imaginary;\n        return *this;\n    }\n\n    std::string toString() const {\n        std::ostringstream oss;\n        oss << std::fixed << std::setprecision(2);\n        oss << real;\n        if (imaginary >= 0) {\n            oss << \"+\" << imaginary << \"i\";\n        } else {\n            oss << imaginary << \"i\";\n        }\n        return oss.str();\n    }\n};\n\nint main() {\n    ComplexNumber c1(1.0, 2.0); ComplexNumber c2(3.0, 4.0); ComplexNumber result_tc1 = c1 + c2; std::cout << result_tc1.toString() << std::endl; std::cout << c1.toString() << std::endl;\n    ComplexNumber c3(-0.5, 1.5); ComplexNumber c4(2.5, -3.5); ComplexNumber result_tc2 = c3 + c4; std::cout << result_tc2.toString() << std::endl; std::cout << c3.toString() << std::endl;\n    ComplexNumber cx1(1.0, 1.0); ComplexNumber cx2(2.0, 2.0); ComplexNumber cx3(3.0, 3.0); ComplexNumber result_tc3 = cx1 + cx2 + cx3; std::cout << result_tc3.toString() << std::endl; std::cout << cx1.toString() << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The binary '+' operator is implemented as a member function that modifies one of its operands ('*this') instead of returning a new, independent ComplexNumber object. This violates the principle of least surprise for a non-mutating operator, leading to unexpected side effects on the original objects and making the class less robust to use in expressions, especially chained operations."]
+}

@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a base class `MediaItem` with a `play()` method that prints a generic message. Derive `AudioFile` and `VideoFile` classes, overriding `play()` to print messages specific to playing an audio or video file.",
+  "test_cases": [
+    { "input": "", "expected": "Playing audio file.\nPlaying video file.\n" }
+  ],
+  "driver": "    AudioFile audio;\n    VideoFile video;\n\n    audio.play();\n    video.play();\n",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the definition of class `MediaItem`."]
+}

@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Design a `TemperatureConverter` class. Store the temperature in Celsius as a private double member. Provide a public method `setCelsius(double c)` and another public method `getFahrenheit()` that converts and returns the temperature in Fahrenheit.",
+  "test_cases": [
+    { "input": "setCelsius(25.0)", "expected": "77.00" },
+    { "input": "setCelsius(0.0)", "expected": "32.00" },
+    { "input": "setCelsius(100.0)", "expected": "212.00" },
+    { "input": "setCelsius(-40.0)", "expected": "-40.00" },
+    { "input": "setCelsius(37.0)", "expected": "98.60" },
+    { "input": "setCelsius(-17.78)", "expected": "0.00" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include <vector>\n#include <sstream>\n\nclass TemperatureConverter {\nprivate:\n    double m_celsiusValue;\n\npublic:\n    TemperatureConverter() : m_celsiusValue(0.0) {}\n\n    TemperatureConverter& setCelsius(double c) {\n        m_celsiusValue = c;\n        return *this;\n    }\n\n    double getFahrenheit() {\n        return (m_celsiusValue * 9.0 / 5.0) + 32.0;\n    }\n};\n\nint main() {\n    std::ostringstream oss;\n    oss << std::fixed << std::setprecision(2);\n\n    std::vector<std::pair<double, double>> testData = {\n        {25.0, 77.00}, {0.0, 32.00}, {100.0, 212.00}, {-40.0, -40.00}, {37.0, 98.60}, {-17.78, 0.00}\n    };\n    TemperatureConverter converter;\n\n    for (const auto& test : testData) {\n        converter.setCelsius(test.first);\n        oss << converter.getFahrenheit() << \"\\n\";\n    }\n\n    std::cout << oss.str();\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Redundant calculation of conversion factor (9.0/5.0) inside 'getFahrenheit()' on every call, even if optimized by compiler, it's less direct than using 1.8.",
+    "Unnecessary 'return *this' in 'setCelsius()' method which is not utilized by the problem statement and adds complexity.",
+    "Slightly verbose member name 'm_celsiusValue' instead of 'celsius'."
+  ]
+}

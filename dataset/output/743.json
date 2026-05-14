@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void applyFilter(const vector<vector<int>>& input, const vector<vector<int>>& filter, vector<vector<int>>& output) that applies a 3x3 filter to the input matrix.",
+  "test_cases": [
+    {
+      "input": "Standard input",
+      "expected": "Correct output"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include \"743.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inefficient vector usage: allocating `row` vector inside the loop and pushing back causes repeated allocations and copies. Should pre-allocate `output` dimensions."
+  ]
+}

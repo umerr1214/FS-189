@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a class `BankAccount` with private member variables for `accountNumber` (string) and `balance` (double). Implement public methods `deposit(double amount)` and `withdraw(double amount)` that validate the transaction (e.g., negative deposit, insufficient funds for withdrawal) and update the balance. Provide a `getBalance()` method.",
+  "test_cases": [
+    { "input": "initial: 1000, deposit: 500, deposit: -200, withdraw: 300", "expected": "1000" }
+  ],
+  "driver": "BankAccount myAccount(\"67890\", 1000.0);\nmyAccount.deposit(500.0);\nmyAccount.deposit(-200.0);\nmyAccount.withdraw(300.0);\nstd::cout << myAccount.getBalance();",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The `deposit` method does not validate that the deposit amount is positive, allowing negative deposits which effectively decrease the balance without proper validation."]
+}

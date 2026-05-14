@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Vehicle` with a method `startEngine()`. Derive `Car` and `Motorcycle` classes from `Vehicle`. In `Car`, add a specific `drive()` method, and in `Motorcycle`, add a `ride()` method. Demonstrate calling `startEngine()` from derived objects.",
+  "test_cases": [
+    { "input": "", "expected": "--- First demonstration with Car ---\n  ===> Car is preparing to move. <===\n   -  Vehicle's engine is now trying to start.  -   \n   -  Vehicle's engine has successfully been initiated.  -   \n  ===> Car is now in motion, driving on the road. <===\n\n--- Second demonstration with Motorcycle ---\n  ===> Motorcycle is getting ready for a ride. <===\n   -  Vehicle's engine is now trying to start.  -   \n   -  Vehicle's engine has successfully been initiated.  -   \n  ===> Motorcycle is now cruising. <===\n\n" }
+  ],
+  "driver": "// The main function already demonstrates the issue.\n// No additional driver code needed for this specific error type.",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Poor and abbreviated variable/method naming (e.g., `strtEng`, `c`, `m`).",
+    "Inconsistent indentation and lack of proper formatting throughout the code.",
+    "Overly verbose and confusing `std::cout` statements for simple actions.",
+    "Use of `using namespace std;` in the global scope, which can lead to name collisions in larger projects.",
+    "The `strtEng()` method contains an unnecessary dummy loop and repeated string creation, simulating inefficient work.",
+    "Lack of comments to explain the code's logic."
+  ]
+}

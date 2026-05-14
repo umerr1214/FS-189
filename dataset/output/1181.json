@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Extend the `Book` class by adding a private `price` (double) attribute. Implement a public setter method for `price` that includes validation to ensure the price is never set to a negative value.",
+  "test_cases": [
+    { "input": "book1.setPrice(12.99); book1.display();", "expected": "Title: The Hitchhiker's Guide to the Galaxy, Author: Douglas Adams, Price: $12.99" },
+    { "input": "book2.setPrice(-5.00); book2.display();", "expected": "Error: Price cannot be negative. Price not updated.\nTitle: 1984, Author: George Orwell, Price: $0" },
+    { "input": "book3.setPrice(25.50); book3.setPrice(-10.00); book3.display();", "expected": "Error: Price cannot be negative. Price not updated.\nTitle: Dune, Author: Frank Herbert, Price: $25.5" }
+  ],
+  "driver": "int main() {\n    Book book1(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\");\n    book1.setPrice(12.99);\n    book1.display();\n\n    Book book2(\"1984\", \"George Orwell\");\n    book2.setPrice(-5.00);\n    book2.display();\n\n    Book book3(\"Dune\", \"Frank Herbert\");\n    book3.setPrice(25.50);\n    book3.setPrice(-10.00);\n    book3.display();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": []
+}

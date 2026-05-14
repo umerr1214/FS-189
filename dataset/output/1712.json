@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Using the `Shape` hierarchy from a previous question (base `Shape`, derived `Circle` and `Square`), demonstrate runtime polymorphism. Create a `std::vector` of `Shape*` pointers, populate it with `Circle` and `Square` objects, and iterate through the vector to call `calculateArea()` for each object.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Computing shape areas:\nCircle has an area of: 78.5398\nSquare has an area of: 16.0000\nCircle has an area of: 19.6350\n"
+    }
+  ],
+  "driver": "g++ -std=c++11 -o program 1712.cpp && ./program",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The code uses raw arrays (`Shape**`) and manual memory management (`new`/`delete[]`) instead of `std::vector<Shape*>` (as requested by the question) or `std::vector<std::unique_ptr<Shape>>`, making it more error-prone, verbose, and less idiomatic C++.",
+    "Methods like `calculateArea()` that do not modify the object's state are not marked with the `const` qualifier, which reduces compile-time safety and clarity.",
+    "Variable names like `rad` and `sde` are less descriptive than `radius` and `side`, reducing readability.",
+    "Traditional indexed `for` loops are used for iteration instead of more modern and concise range-based `for` loops."
+  ]
+}

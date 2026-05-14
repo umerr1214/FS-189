@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function int findConsecutiveZeros(const char arr[]) that returns the maximum number of consecutive '0' characters.",
+  "test_cases": [
+    {
+      "input": "arr = \"000\"",
+      "expected": "3"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <algorithm>\n#include \"657.cpp\"\n\nint main() {\n    const char* str = \"000\";\n    // Returns 0 because it checks for integer 0 (null char) instead of char '0'\n    findConsecutiveZeros(str);\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Comparing character against integer 0 (which is null terminator '\\0') instead of character literal '0' (ASCII 48)."
+  ]
+}

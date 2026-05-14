@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `ResourceTracker` class that allocates a dynamic integer array in its constructor and deallocates this memory in its destructor. Demonstrate its lifecycle by creating and destroying `ResourceTracker` objects.",
+  "test_cases": [
+    { "input": "", "expected": "Program start\n\n--- Creating tracker1 ---\nResourceTracker(size=5) constructed, memory allocated at <address>\nData: [0, 10, 20, 30, 40]\n--- tracker1 scope ending ---\nResourceTracker(size=5) destructed, memory at <address> deallocated\nProgram end" }
+  ],
+  "driver": "int main() {\n    std::cout << \"Program start\" << std::endl;\n    void demonstrateLifecycle();\n    demonstrateLifecycle();\n    std::cout << \"Program end\" << std::endl;\n    return 0;\n}",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after member variable 'size' declaration in 'ResourceTracker' class. Expected ';' before 'ResourceTracker(int s)'."
+  ]
+}

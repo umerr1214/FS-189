@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a function bool Exists(int data[][6], int pattern[][3]) that checks if the 3x3 pattern exists in the 6x6 data.",
+  "test_cases": [],
+  "driver": "#include <iostream>\n#include \"727.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'return false'"
+  ]
+}

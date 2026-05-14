@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Add setter methods `setTitle(string)`, `setAuthor(string)`, and `setIsbn(string)` to the `Book` class. For `setTitle()`, ensure that the title cannot be set to an empty string; if an empty string is provided, print an error and do not update.",
+  "test_cases": [
+    {
+      "input": "Book myBook(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\");\nmyBook.setTitle(\"New Title\");\nmyBook.setAuthor(\"New Author\");\nmyBook.setIsbn(\"New ISBN\");\nmyBook.setTitle(\"\");",
+      "expected": "Initial Book: The Hitchhiker's Guide to the Galaxy, Douglas Adams, 978-0345391803\nUpdated Book: The Hitchhiker's Guide to the Galaxy, Douglas Adams, 978-0345391803\nError: Title cannot be empty.\nAfter empty title attempt: The Hitchhiker's Guide to the Galaxy\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Book {\nprivate:\n    std::string title;\n    std::string author;\n    std::string isbn;\n\npublic:\n    Book(std::string title, std::string author, std::string isbn)\n        : title(title), author(author), isbn(isbn) {}\n\n    std::string getTitle() const { return title; }\n    std::string getAuthor() const { return author; }\n    std::string getIsbn() const { return isbn; }\n\n    void setTitle(std::string title) {\n        if (title.empty()) {\n            std::cout << \"Error: Title cannot be empty.\" << std::endl;\n            return;\n        }\n        title = title;\n    }\n\n    void setAuthor(std::string author) {\n        author = author;\n    }\n\n    void setIsbn(std::string isbn) {\n        isbn = isbn;\n    }\n};\n\nint main() {\n    Book myBook(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\");\n    std::cout << \"Initial Book: \" << myBook.getTitle() << \", \" << myBook.getAuthor() << \", \" << myBook.getIsbn() << std::endl;\n\n    myBook.setTitle(\"New Title\");\n    myBook.setAuthor(\"New Author\");\n    myBook.setIsbn(\"New ISBN\");\n    std::cout << \"Updated Book: \" << myBook.getTitle() << \", \" << myBook.getAuthor() << \", \" << myBook.getIsbn() << std::endl;\n\n    myBook.setTitle(\"\");\n    std::cout << \"After empty title attempt: \" << myBook.getTitle() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "In `setTitle`, `setAuthor`, and `setIsbn` methods, the parameter names (e.g., `title`) shadow the member variable names. The assignment `title = title;` within the methods assigns the parameter to itself, leaving the member variable (e.g., `this->title`) unchanged. This compiles without error but does not achieve the intended semantic effect of updating the object's state."
+  ]
+}

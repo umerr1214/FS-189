@@ -1,0 +1,27 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private members for title (string), author (string), and price (double). Include a parameterized constructor to initialize these members and a public method `displayBookInfo()` to print all details.",
+  "test_cases": [
+    {
+      "input": "The Alchemist\nPaulo Coelho\n11.50",
+      "expected": "Title: The Alchemist\nAuthor: Paulo Coelho\nPrice: $11.50\n"
+    },
+    {
+      "input": "To Kill a Mockingbird\nHarper Lee\n9.75",
+      "expected": "Title: To Kill a Mockingbird\nAuthor: Harper Lee\nPrice: $9.75\n"
+    },
+    {
+      "input": "The Catcher in the Rye\nJ.D. Salinger\n14.00",
+      "expected": "Title: The Catcher in the Rye\nAuthor: J.D. Salinger\nPrice: $14.00\n"
+    },
+    {
+      "input": "Validated Price Book\nDeveloper\n-5.00",
+      "expected": "Title: Validated Price Book\nAuthor: Developer\nPrice: $0.00\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <iomanip>\n#include <limits>\n\nint main() {\n    std::string title;\n    std::string author;\n    double price;\n\n    std::getline(std::cin, title);\n    std::getline(std::cin, author);\n    std::cin >> price;\n    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\\n');\n\n    Book book(title, author, price);\n    book.displayBookInfo();\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

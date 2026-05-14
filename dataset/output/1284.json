@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a `Date` class with private `day`, `month`, and `year` attributes. Provide public setter methods for each attribute that include robust validation (e.g., month must be 1-12, day valid for the given month and year).",
+  "test_cases": [
+    { "input": "Date d(15, 6, 2023); d.display();", "expected": "15/6/2023\n" },
+    { "input": "Date d(15, 6, 2023); d.setDay(31); d.display();", "expected": "31/6/2023\n" },
+    { "input": "Date d(15, 6, 2023); d.setMonth(0); d.display();", "expected": "15/0/2023\n" },
+    { "input": "Date d(15, 6, 2023); d.setYear(1800); d.display();", "expected": "15/6/1800\n" },
+    { "input": "Date d_invalid_ctor(31, 2, 2023); d_invalid_ctor.display();", "expected": "31/2/2023\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// The Date class code will be inserted here, which has a semantic error.\n\nint main() {\n    std::cout << \"Testing Date class with Semantic Error (setters assign invalid values):\\n\";\n\n    Date d(15, 6, 2023);\n    std::cout << \"Initial date: \";\n    d.display(); \n\n    std::cout << \"Attempting to set day to 31 for June:\\n\";\n    if (!d.setDay(31)) {\n        std::cout << \"setDay returned false, but checking state: \";\n        d.display(); \n    }\n\n    std::cout << \"Attempting to set month to 0:\\n\";\n    if (!d.setMonth(0)) {\n        std::cout << \"setMonth returned false, but checking state: \";\n        d.display(); \n    }\n\n    std::cout << \"Attempting to set year to 1800:\\n\";\n    if (!d.setYear(1800)) {\n        std::cout << \"setYear returned false, but checking state: \";\n        d.display(); \n    }\n\n    std::cout << \"\\nTesting constructor with invalid values (31, 2, 2023):\\n\";\n    Date d_invalid_ctor(31, 2, 2023); \n    std::cout << \"Date created with (31, 2, 2023): \";\n    d_invalid_ctor.display(); \n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The setter methods (`setDay`, `setMonth`, `setYear`) correctly perform validation and return `false` upon invalid input, but they semantically fail to maintain the object's integrity. Instead of rejecting the invalid value and keeping the previous valid state, they proceed to assign the invalid value to the private member variable, corrupting the `Date` object's state. This violates the contract of robust validation."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ class named `Circle` with a private attribute `radius` (double). Provide a constructor to initialize the radius, a public `getRadius()` method to retrieve it, and a `calculateArea()` method to return the circle's area (using `M_PI` or `3.14159`).",
+  "test_cases": [
+    { "input": "5.0", "expected": "78.5398163397" },
+    { "input": "0.0", "expected": "0.0" },
+    { "input": "-3.0", "expected": "28.2743338823" }
+  ],
+  "driver": "#define _USE_MATH_DEFINES\n#include <iostream>\n#include <cmath>\n\nclass Circle {\nprivate:\n    double radius;\n\npublic:\n    Circle(double r) : radius(r) {}\n    double getRadius() const {\n        return radius;\n    }\n    double calculateArea() const {\n        return M_PI * radius * radius;\n    }\n};\n\nint main() {\n    std::cout.precision(12);\n    double r_test;\n    while (std::cin >> r_test) {\n        Circle c(r_test);\n        std::cout << c.calculateArea() << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The constructor does not validate the input radius, allowing negative values. While `calculateArea` produces a positive result, storing a negative radius leads to an inconsistent and geometrically meaningless internal state."]
+}

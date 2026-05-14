@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Extend the `BankAccount` class by adding a static member function `getTotalAccounts()` that returns the value of `totalAccountsCreated` without needing an object of `BankAccount`.",
+  "test_cases": [
+    { "input": "", "expected": "Total accounts created: 2\n" }
+  ],
+  "driver": "int main() {\n    BankAccount acc1(101, 1000.0);\n    BankAccount acc2(102, 500.0);\n    std::cout << \"Total accounts created: \" << BankAccount::getTotalAccounts() << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The `getTotalAccounts()` member function is not declared as `static` within the `BankAccount` class. This violates the requirement that it should be callable without needing an object, leading to a compilation error when attempting `BankAccount::getTotalAccounts()`."]
+}

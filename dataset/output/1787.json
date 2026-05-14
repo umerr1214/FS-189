@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a `Resource` class that simulates acquiring a resource in its constructor (e.g., printing \"Resource acquired\") and releasing it in its destructor (e.g., printing \"Resource released\"). Demonstrate the order of constructor and destructor calls for local objects within a function scope.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Resource 1 (local_in_main) acquired.\n  Entering demoScope...\n  Resource 2 (local_in_demo) acquired.\n    Entering inner scope...\n    Resource 3 (local_in_inner) acquired.\n    Resource 3 (local_in_inner) released.\n    Exiting inner scope...\n  Resource 2 (local_in_demo) released.\n  Exiting demoScope...\nResource 1 (local_in_main) released.\nEnd of main."
+    }
+  ],
+  "driver": "// The main function serves as the driver for this program.",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Constructor and destructor messages are swapped, leading to incorrect output regarding resource acquisition and release, even though the call order is correct."
+  ]
+}

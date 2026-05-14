@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void insertAtHead(Node*& head, int val) that inserts a node at the beginning of a linked list.",
+  "test_cases": [
+    {
+      "input": "Insert 10",
+      "expected": "10 -> NULL"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include \"947.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inefficient implementation: destroys the entire list and rebuilds it using a `vector` (O(N) time and space) instead of a simple O(1) pointer update."
+  ]
+}

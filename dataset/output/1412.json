@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Product` class with private `productName` (string) and `price` (double). Provide public getter methods (`getProductName`, `getPrice`) and setter methods (`setProductName`, `setPrice`) for both attributes.",
+  "test_cases": [
+    { "input": "Set product name to 'Monitor', price to 350.75. Then update to 'Gaming Monitor', 499.99.", "expected": "Product: Monitor, Price: $350.75\nProduct: Gaming Monitor, Price: $499.99\nProduct: Mouse, Price: $25.00" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <iomanip>\n\nclass Product {\nprivate:\n    std::string productName;\n    double price;\n\npublic:\n    Product() : productName(\"\"), price(0.0) {}\n    Product(std::string name, double p) : productName(name), price(p) {}\n\n    std::string getProductName() {\n        return productName;\n    }\n\n    double getPrice() {\n        return price;\n    }\n\n    void setProductName(std::string name) {\n        productName = name;\n    }\n\n    void setPrice(double p) {\n        price = p;\n    }\n};\n\nint main() {\n    Product p1;\n    p1.setProductName(\"Monitor\");\n    p1.setPrice(350.75);\n\n    std::cout << \"Product: \" << p1.getProductName() << \", Price: $\" << std::fixed << std::setprecision(2) << p1.getPrice() << std::endl;\n\n    p1.setProductName(\"Gaming Monitor\");\n    p1.setPrice(499.99);\n    std::cout << \"Product: \" << p1.getProductName() << \", Price: $\" << std::fixed << std::setprecision(2) << p1.getPrice() << std::endl;\n\n    Product p2(\"Mouse\", 25.00);\n    std::cout << \"Product: \" << p2.getProductName() << \", Price: $\" << std::fixed << std::setprecision(2) << p2.getPrice() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The getter methods (`getProductName`, `getPrice`) are not marked `const`. This is a readability issue as it doesn't clearly communicate that these methods do not modify the object's state, and prevents their use on `const` objects.",
+    "The `setProductName` method (and the parameterized constructor) takes `std::string name` by value. This incurs an unnecessary copy of the string object when it could be passed by `const` reference (`const std::string& name`) for better efficiency."
+  ]
+}

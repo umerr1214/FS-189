@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Demonstrate multi-level inheritance by creating a hierarchy: `Animal` (base) -> `Mammal` -> `Dog`. Add unique characteristics (members or methods) at each level and show object creation and method calls.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating multi-level inheritance with a Dog object ---\nAnimal constructor called for Canine\nMammal constructor called for Canine with Golden fur.\nDog constructor called for Canine of breed Golden Retriever.\n\nDog Details:\nSpecies: Canine\nFur Color: Golden\nBreed: Golden Retriever\nCanine (Golden Retriever) is enthusiastically eating dog kibble.\nCanine (a mammal) is giving birth to live young.\nCanine (Golden Retriever) barks: Woof! Woof!\n\n--- Demonstrating polymorphic behavior with smart pointers ---\nAnimal constructor called for Canine\nMammal constructor called for Canine with Black fur.\nDog constructor called for Canine of breed Labrador.\nPolymorphic Animal (Dog) Species: Canine\nCanine (Labrador) is enthusiastically eating dog kibble.\nSmart pointer will handle deletion automatically, calling virtual destructors.\n\n--- Demonstration finished. Objects will be destructed. ---\nDog destructor called for Canine (breed: Labrador).\nMammal destructor called for Canine\nAnimal destructor called for Canine\nDog destructor called for Canine (breed: Golden Retriever).\nMammal destructor called for Canine\nAnimal destructor called for Canine\n"
+    }
+  ],
+  "driver": "int main() { run_demonstration(); return 0; }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

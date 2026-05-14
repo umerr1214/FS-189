@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `Fraction` class with private integer members `numerator` and `denominator`. Overload the `<<` (insertion) operator to allow `Fraction` objects to be printed directly to an output stream (e.g., `cout << fractionObject;` should output `N/D`).",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Fraction 1: 1/0\nFraction 2: 3/4\n"
+    }
+  ],
+  "driver": "#include <iostream>\n\nclass Fraction {\nprivate:\n    int numerator;\n    int denominator;\n\npublic:\n    // Constructor does not validate denominator, allowing it to be zero.\n    // This is a robustness issue as 1/0 is an invalid mathematical fraction.\n    Fraction(int num, int den) {\n        numerator = num;\n        denominator = den; \n    }\n\n    // Friend declaration for the overloaded operator<<\n    friend std::ostream& operator<<(std::ostream& os, const Fraction& f);\n};\n\n// Overload the << operator to print Fraction objects\n// It simply prints the stored values, including potentially invalid ones like N/0.\nstd::ostream& operator<<(std::ostream& os, const Fraction& f) {\n    os << f.numerator << \"/\" << f.denominator;\n    return os;\n}\n\nint main() {\n    // Test case demonstrating the robustness issue: denominator is 0\n    // The program creates an invalid fraction without error handling.\n    Fraction f1(1, 0); \n    std::cout << \"Fraction 1: \" << f1 << std::endl; // Outputs 1/0\n\n    // Another valid fraction for comparison\n    Fraction f2(3, 4);\n    std::cout << \"Fraction 2: \" << f2 << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Fraction` constructor does not validate the `denominator` to prevent division by zero. This allows the creation of an invalid fraction (e.g., 1/0) without warning or error handling, which is a significant robustness issue. A robust program would throw an exception or set a default valid state."
+  ]
+}

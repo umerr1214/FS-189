@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Design a `Car` class with private string members `make` and `model`. Implement both a default constructor (that initializes with generic values like 'Unknown Make', 'Unknown Model') and a parameterized constructor. Include a `displayCarInfo()` method to show the car's details.",
+  "test_cases": [
+    { "input": "Default constructor call", "expected": "Car Info: Make = Unknown Make, Model = Unknown Model\n" },
+    { "input": "Parameterized constructor with Toyota, Camry", "expected": "Car Info: Make = Toyota, Model = Camry\n" },
+    { "input": "Parameterized constructor with Honda, Civic", "expected": "Car Info: Make = Honda, Model = Civic\n" }
+  ],
+  "driver": "    Car car1;\n    car1.displayCarInfo();\n\n    Car car2(\"Toyota\", \"Camry\");\n    car2.displayCarInfo();\n\n    Car car3(\"Honda\", \"Civic\");\n    car3.displayCarInfo();",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Both the default and parameterized constructors assign member variables in the constructor body instead of using an initializer list. This is less efficient for `std::string` members as it involves default construction followed by an assignment, potentially leading to unnecessary temporary object creation and copies.",
+    "The `displayCarInfo()` method concatenates strings into a temporary `std::string` before printing. Direct streaming to `std::cout` (`std::cout << A << B << C;`) is generally more efficient as it avoids the overhead of creating and managing a temporary string object.",
+    "Unnecessary use of `this->` for member access (e.g., `this->make`). While technically correct, it reduces readability without adding value when there's no ambiguity.",
+    "Using `std::endl` instead of `\\n` for newlines. `std::endl` also flushes the output buffer, which can incur a performance penalty, especially in loops or high-volume output scenarios. `\\n` is generally preferred unless an immediate flush is explicitly required.",
+    "Overly verbose and unhelpful comments that state the obvious, cluttering the code and reducing readability."
+  ]
+}

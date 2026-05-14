@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function bool isSubsequence(const char* s1, const char* s2) that checks if s1 is a subsequence of s2.",
+  "test_cases": [
+    {
+      "input": "Standard input",
+      "expected": "Correct result"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include \"875.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses recursion which incurs O(N) stack overhead compared to the more efficient O(1) iterative approach."
+  ]
+}

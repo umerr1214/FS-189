@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Enhance the `Shape` class by adding a pure virtual function `double calculateArea()`. Implement this function in the `Circle` class to return the area of the circle. Demonstrate calling `calculateArea()` through a `Shape` pointer.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Circle radius: 7\nArea (via Shape pointer): 153.93791\n"
+    }
+  ],
+  "driver": "// Program is self-contained and runs test cases directly.",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The program uses a magic number (3.14159) for PI instead of a named constant (e.g., `M_PI` from `<cmath>` or a user-defined `const double PI`), impacting readability, precision, and maintainability.",
+    "Variable names like 'rVal', 'rad', 'cObj', and 'shPtr' are not optimally descriptive, reducing code readability.",
+    "The `calculateArea` function and `getRad` getter in `Circle` are not marked as `const`, even though they do not modify the object's state. This is a missed opportunity for better code correctness and clarity, as well as enabling usage with `const` objects/pointers."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Person` with attributes `name` (string) and `age` (int). Implement a parameterized constructor. Derive a class `Student` from `Person` with an additional attribute `studentId` (string). Ensure the `Student` constructor correctly initializes `Person`'s attributes using constructor chaining.",
+  "test_cases": [
+    {
+      "input": "No direct input, objects created in main.",
+      "expected": "--- First Student's Information ---\nPerson's Name Is: Charlie Brown\nPerson's Age Is: 18\nStudent's Unique Identifier Is: SID_CB_2023_001\n\n--- Second Student's Information ---\nPerson's Name Is: Lucy Van Pelt\nPerson's Age Is: 19\nStudent's Unique Identifier Is: SID_LVP_2023_002\n"
+    }
+  ],
+  "driver": "int main()\n{\n    Student first_student_object(\"Charlie Brown\", 18, \"SID_CB_2023_001\");\n    std::cout << \"--- First Student's Information ---\" << std::endl;\n    first_student_object.display_student_full_details_method();\n\n    std::cout << std::endl;\n\n    Student second_student_object(\"Lucy Van Pelt\", 19, \"SID_LVP_2023_002\");\n    std::cout << \"--- Second Student's Information ---\" << std::endl;\n    second_student_object.display_student_full_details_method();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "String parameters in constructors (`Person` and `Student`) are passed by value instead of `const std::string&`, leading to unnecessary string copies and reduced efficiency.",
+    "Overly verbose and inconsistent naming conventions for member variables and methods (e.g., `person_name_member_variable`, `print_person_details_function`, `display_student_full_details_method`) negatively impact readability.",
+    "Excessive and often redundant use of `this->` for member access, making the code more cluttered and less readable.",
+    "Inconsistent indentation and formatting throughout the code.",
+    "Frequent use of `std::endl` instead of `\\n` for newline characters, which flushes the output buffer on each call, potentially reducing I/O efficiency, especially in loops (though less impactful in this small example)."
+  ]
+}

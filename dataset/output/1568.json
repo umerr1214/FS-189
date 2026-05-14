@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Demonstrate polymorphism by creating an array of `Animal*` (from Question 11). Populate the array with `Dog` and `Cat` objects and then iterate through the array, calling `makeSound()` on each animal. Explain the output.",
+  "test_cases": [
+    { "input": "", "expected": "--- Demonstrating Polymorphism ---\nAnimal 1: Woof! Woof!\nAnimal 2: Meow! Meow!\nAnimal 3: Woof! Woof!\n---------------------------------\nDog destructor called.\nAnimal destructor called.\nCat destructor called.\nAnimal destructor called.\nDog destructor called.\nAnimal destructor called.\n\nExplanation of Output:\nWhen makeSound() is called, the correct overridden version (from Dog or Cat) is executed.\nThis is due to polymorphism: the makeSound() method in Animal is virtual, allowing dynamic dispatch.\nThe program correctly calls the Dog's makeSound for Dog objects and Cat's makeSound for Cat objects, even though they are accessed via 'Animal*' pointers.\nUnlike the previous example, observe that both derived and base class destructors are called ('Dog destructor called.', 'Cat destructor called.', then 'Animal destructor called.'). This is because the Animal base class now has a virtual destructor, ensuring proper memory cleanup.\nThe code is functional, but uses C-style arrays and manual pointer management, which can be less safe and less readable than modern C++ alternatives like std::vector and smart pointers." }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses raw pointers and C-style arrays (e.g., `Animal* animals[MAX_ANIMALS]`) for dynamic objects, which requires manual memory management (`new`/`delete`) and is prone to errors.",
+    "Employs traditional indexed `for` loops for iteration, rather than more modern and often more readable range-based for loops.",
+    "Does not leverage `std::vector` for dynamic array management or smart pointers (`std::unique_ptr`, `std::shared_ptr`) for automatic memory deallocation, making the code less robust and more verbose."
+  ]
+}

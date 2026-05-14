@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function int binaryToDecimal(const char* binary) that converts a binary string to a decimal integer.",
+  "test_cases": [
+    {
+      "input": "binary = \"10\"",
+      "expected": "2"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cmath>\n#include \"867.cpp\"\n\nint main() {\n    // Returns garbage sum of ASCII values\n    if (binaryToDecimal(\"10\") == 2) return 1;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Uses the ASCII value of characters (e.g., '1' is 49) directly in calculation instead of converting to integer values (0 or 1)."
+  ]
+}

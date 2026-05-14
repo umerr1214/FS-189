@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Create a `BankAccount` class with private members: `accountNumber` (string), `accountHolderName` (string), and `balance` (double). Implement public methods for `deposit(amount)`, `withdraw(amount)`, and `getBalance()`, ensuring `withdraw` prevents overdrafts and `deposit` accepts positive amounts only. Demonstrate encapsulation.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "Account 12345 created with initial balance: 100.00\nAttempting to deposit 50.00...\nDeposit successful. New balance: 150.00\nAttempting to withdraw 30.00...\nWithdrawal successful. New balance: 120.00\nAttempting to deposit -10.00...\nDeposit failed. Amount must be positive.\nAttempting to deposit 0.00...\nDeposit failed. Amount must be positive.\nAttempting to withdraw 200.00...\nWithdrawal failed. Insufficient funds.\nAttempting to withdraw -20.00...\nWithdrawal failed. Amount must be positive.\nCurrent balance for 12345: 120.00\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <iomanip>\n\nclass BankAccount {\nprivate:\n    std::string accNum;\n    std::string hName;\n    double bal;\n\npublic:\n    BankAccount(std::string accNum, std::string hName, double bal)\n        : accNum(accNum), hName(hName), bal(bal) {\n        std::cout << \"Account \" << this->accNum << \" created with initial balance: \" \n                  << std::fixed << std::setprecision(2) << this->bal << std::endl;\n    }\n\n    void deposit(double amt) {\n        std::cout << \"Attempting to deposit \" << std::fixed << std::setprecision(2) << amt << \"...\" << std::endl;\n        if (amt > 0) {\n            bal += amt;\n            std::cout << \"Deposit successful. New balance: \" << std::fixed << std::setprecision(2) << bal << std::endl;\n        } else {\n            std::cout << \"Deposit failed. Amount must be positive.\" << std::endl;\n        }\n    }\n\n    void withdraw(double wAmt) {\n        std::cout << \"Attempting to withdraw \" << std::fixed << std::setprecision(2) << wAmt << \"...\" << std::endl;\n        if (wAmt > 0) {\n            if (bal >= wAmt) {\n                bal -= wAmt;\n                std::cout << \"Withdrawal successful. New balance: \" << std::fixed << std::setprecision(2) << bal << std::endl;\n            } else {\n                std::cout << \"Withdrawal failed. Insufficient funds.\" << std::endl;\n            }\n        } else {\n            std::cout << \"Withdrawal failed. Amount must be positive.\" << std::endl;\n        }\n    }\n\n    double getBalance() const {\n        return bal;\n    }\n\n    std::string getAccountNumber() const {\n        return accNum;\n    }\n    \n    std::string getAccountHolderName() const {\n        return hName;\n    }\n};\n\nint main() {\n    BankAccount myAccount(\"12345\", \"Alice\", 100.00); \n    myAccount.deposit(50.00);\n    myAccount.withdraw(30.00);\n    myAccount.deposit(-10.00);\n    myAccount.deposit(0.00);\n    myAccount.withdraw(200.00);\n    myAccount.withdraw(-20.00);\n    std::cout << \"Current balance for \" << myAccount.getAccountNumber() << \": \" \n              << std::fixed << std::setprecision(2) << myAccount.getBalance() << std::endl;\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Lack of comments throughout the class and methods makes the code harder to understand and maintain.",
+    "Variable names like `accNum`, `hName`, `bal`, `amt`, and `wAmt` are abbreviations and not descriptive, significantly reducing code readability.",
+    "Passing `std::string` parameters by value in the constructor (`accNum`, `hName`) can lead to unnecessary string copies, which is less efficient than passing by `const std::string&`.",
+    "Excessive use of `std::endl` (which flushes the output buffer) instead of `\\n` can slightly impact performance, especially in loops or frequently called functions.",
+    "The `deposit` and `withdraw` methods directly print success/failure messages. This couples the business logic with I/O concerns, making the methods less reusable and harder to test. Returning a `bool` or an enum would be a more flexible design."
+  ]
+}

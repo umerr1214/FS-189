@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Vehicle` with `make` (string) and `model` (string). Derive a class `Car` that adds `numDoors` (int). Both classes should have a `displayInfo()` method; `Car` should override `displayInfo()` to include its specific attribute.",
+  "test_cases": [
+    {
+      "input": "Tesla ModelS 4",
+      "expected": "Car Info (direct call): Make: Tesla, Model: ModelS\nDoors: 4\nVehicle* Info (polymorphic call): Make: Tesla, Model: ModelS\n"
+    }
+  ],
+  "driver": "std::string run_test_case(const std::string& input_str) {\n    std::stringstream input_ss(input_str);\n    std::string make, model;\n    int numDoors;\n    input_ss >> make >> model >> numDoors;\n\n    Car myCar(make, model, numDoors);\n\n    std::stringstream ss;\n    std::streambuf* oldCout = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n    \n    ss << \"Car Info (direct call): \";\n    myCar.displayInfo();\n    \n    Vehicle* vPtr = &myCar;\n    ss << \"Vehicle* Info (polymorphic call): \";\n    vPtr->displayInfo();\n\n    std::cout.rdbuf(oldCout);\n    return ss.str();\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `displayInfo` method in the `Vehicle` base class is not declared `virtual`. This prevents correct polymorphic behavior (method slicing) when a `Car` object is accessed through a `Vehicle` pointer or reference, leading to the base class's `displayInfo` being called instead of the derived class's.",
+    "The `Car::displayInfo` method implicitly hides `Vehicle::displayInfo` instead of overriding it polymorphically, which is a common source of bugs in larger systems."
+  ]
+}

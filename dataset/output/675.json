@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void reverseWords(char arr[]) that reverses the order of words in the string.",
+  "test_cases": [
+    {
+      "input": "arr = \"Long string test\"",
+      "expected": "\"test string Long\""
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <algorithm>\n#include \"675.cpp\"\n\nint main() {\n    char str[] = \"Long string test\";\n    // Will fail to reverse the whole string because sizeof(ptr) is used\n    reverseWords(str);\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using 'sizeof(arr)' on a pointer parameter returns the pointer size instead of the string length, leading to incorrect reversal range."
+  ]
+}

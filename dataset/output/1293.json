@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Overload the global `<<` (output stream) operator for a `Complex` number class (which has `real` and `imaginary` parts). The operator should allow `Complex` objects to be printed in a user-friendly format (e.g., \"3 + 4i\" or \"5 - 2i\").",
+  "test_cases": [
+    { "input": "Complex(3, 4)", "expected": "3 + 4i\n" },
+    { "input": "Complex(5, -2)", "expected": "5 - 2i\n" },
+    { "input": "Complex(3, 0)", "expected": "3\n" },
+    { "input": "Complex(0, 4)", "expected": "4i\n" },
+    { "input": "Complex(0, 0)", "expected": "0\n" },
+    { "input": "Complex(3, 1)", "expected": "3 + i\n" },
+    { "input": "Complex(3, -1)", "expected": "3 - i\n" },
+    { "input": "Complex(0, 1)", "expected": "i\n" },
+    { "input": "Complex(0, -1)", "expected": "-i\n" }
+  ],
+  "driver": "std::string run_test_cases() {\n    std::stringstream ss_output;\n    std::vector<Complex> complexes = {\n        Complex(3, 4),\n        Complex(5, -2),\n        Complex(3, 0),\n        Complex(0, 4),\n        Complex(0, 0),\n        Complex(3, 1),\n        Complex(3, -1),\n        Complex(0, 1),\n        Complex(0, -1)\n    };\n\n    for (const auto& c : complexes) {\n        ss_output << c << \"\\n\";\n    }\n    return ss_output.str();\n}\n\nint main() {\n    std::cout << run_test_cases();\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

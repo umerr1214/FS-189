@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Base` with a public method `void show(int val)`. Derive a `Derived` class from `Base`. In `Derived`, overload `show` with `void show(double val)` and also define `void show(int val)` (non-virtual). Demonstrate calling `show` using `Base` and `Derived` class objects and pointers, highlighting method hiding vs. overloading.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating Method Hiding vs. Overloading ---\n\n=== Using Objects ===\nScenario: Base object calling show(int)\n  Base::show(int) called with value: 10\n\nScenario: Derived object calling show(int) and show(double)\n  - Calling show(int) on Derived object (demonstrates HIDING):\n  Derived::show(int) called with value: 20\n  - Calling show(double) on Derived object (demonstrates OVERLOADING):\n  Derived::show(double) called with value: 20.5\n  - Explicitly calling hidden Base::show(int) on Derived object:\n  Base::show(int) called with value: 25\n\n=== Using Pointers ===\nScenario: Base pointer to Base object\n  Base::show(int) called with value: 30\n\nScenario: Base pointer to Derived object (demonstrates HIDING)\n  Base::show(int) called with value: 40\n\nScenario: Derived pointer to Derived object\n  - Calling show(int) on Derived pointer:\n  Derived::show(int) called with value: 50\n  - Calling show(double) on Derived pointer:\n  Derived::show(double) called with value: 50.5\n  - Explicitly calling hidden Base::show(int) on Derived pointer:\n  Base::show(int) called with value: 55\n\n--- End of Demonstration ---\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a function void findMissingElements(const int arr1[], int size1, const int arr2[], int size2, int result[], int& resultSize) that finds elements in arr1 but not in arr2 (both sorted).",
+  "test_cases": [
+    {
+      "input": "arr1 = NULL",
+      "expected": "Graceful failure"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"652.cpp\"\n\nint main() {\n    // findMissingElements(NULL, 0, NULL, 0, NULL, 0);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing NULL pointer checks for input arrays.",
+    "No boundary check for 'result' array to prevent buffer overflow."
+  ]
+}

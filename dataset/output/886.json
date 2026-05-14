@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function bool isPrime(int n) that checks if a number is prime.",
+  "test_cases": [
+    {
+      "input": "n = 1",
+      "expected": "false"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n#include \"886.cpp\"\n\nint main() {\n    // isPrime(1) returns true\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Fails to handle edge cases `n <= 1`, incorrectly identifying 1, 0, and negative numbers as prime."
+  ]
+}

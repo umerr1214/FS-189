@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Using the `Shape` and `Circle` classes from Q7, derive another class `Rectangle` from `Shape` with private members `length` and `width` (doubles). Override `calculateArea()` in `Rectangle`. Write a function that takes a pointer to `Shape` and calls `calculateArea()`, demonstrating runtime polymorphism with objects of `Circle` and `Rectangle`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Demonstrating with Circle (radius=5.0):\nCalling calculateArea() via Shape pointer.\nCalculated Area: 78.5398\n\nDemonstrating with Rectangle (length=4.0, width=6.0):\nCalling calculateArea() via Shape pointer.\nCalculated Area: 24"
+    }
+  ],
+  "driver": "    Circle myCircle(5.0);\n    Rectangle myRectangle(4.0, 6.0);\n\n    std::cout << \"Demonstrating with Circle (radius=5.0):\" << std::endl;\n    demonstratePolymorphism(&myCircle);\n\n    std::cout << \"\\nDemonstrating with Rectangle (length=4.0, width=6.0):\" << std::endl;\n    demonstratePolymorphism(&myRectangle);\n\n    return 0;",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the definition of the `Rectangle` class, leading to a compilation error."
+  ]
+}

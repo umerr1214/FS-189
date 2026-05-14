@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Person` with attributes `name` (string) and `age` (int). Implement a parameterized constructor. Derive a class `Student` from `Person` with an additional attribute `studentId` (string). Ensure the `Student` constructor correctly initializes `Person`'s attributes using constructor chaining.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Name: Charlie, Age: 21\nStudent ID: S98765\n" }
+  ],
+  "driver": "int main() {\n    Student s(\"Charlie\", 21, \"S98765\");\n    s.display();\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The Student constructor does not explicitly call a base class (Person) constructor. Since Person has no default constructor, this leads to a compilation error as the base class cannot be initialized."]
+}

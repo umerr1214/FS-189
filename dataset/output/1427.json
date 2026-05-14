@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a base class `MediaItem` with a `play()` method that prints a generic message. Derive `AudioFile` and `VideoFile` classes, overriding `play()` to print messages specific to playing an audio or video file.",
+  "test_cases": [
+    { "input": "", "expected": "Calling play on AudioFile object via base pointer:\nPlaying audio file.\nCalling play on VideoFile object via base pointer:\nPlaying video file.\n" }
+  ],
+  "driver": "    MediaItem* audioItem = new AudioFile();\n    MediaItem* videoItem = new VideoFile();\n\n    std::cout << \"Calling play on AudioFile object via base pointer:\" << std::endl;\n    audioItem->play();\n\n    std::cout << \"Calling play on VideoFile object via base pointer:\" << std::endl;\n    videoItem->play();\n\n    delete audioItem;\n    delete videoItem;\n",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The `play()` methods in `AudioFile` and `VideoFile` classes incorrectly print the generic message from the base class instead of their specific messages, violating the problem's requirement for specific overrides."]
+}

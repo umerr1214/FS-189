@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function bool isBalanced(const char* str) that checks if the parentheses '(' and ')' in the string are balanced.",
+  "test_cases": [
+    {
+      "input": "str = NULL",
+      "expected": "Graceful failure"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include \"844.cpp\"\n\nint main() {\n    // isBalanced(NULL);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing NULL pointer check before accessing string."
+  ]
+}

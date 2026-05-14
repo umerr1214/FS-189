@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Implement a `Date` class with private `day`, `month`, and `year` attributes. Provide public setter methods for each attribute that include robust validation (e.g., month must be 1-12, day valid for the given month and year).",
+  "test_cases": [
+    { "input": "Date d(2023, 1, 1); d.printDate();", "expected": "Initial date: 2023-01-01\n" },
+    { "input": "Date d(2023, 1, 1); d.setMonth(2); d.setDay(28); d.printDate();", "expected": "Initial date: 2023-01-01\nAfter setting Feb 28: 2023-02-28\n" },
+    { "input": "Date d(2023, 1, 1); d.setMonth(2); d.setDay(29); d.printDate();", "expected": "Initial date: 2023-01-01\nInvalid day: Day cannot exceed 28 for February in a common year.\nAttempt Feb 29 (2023): 2023-02-28\n" },
+    { "input": "Date d(2023, 1, 1); d.setYear(2024); d.setMonth(2); d.setDay(29); d.printDate();", "expected": "Initial date: 2023-01-01\nAfter setting Feb 29 (2024): 2024-02-29\n" },
+    { "input": "Date d(2023, 1, 1); d.setYear(2024); d.setMonth(2); d.setDay(30); d.printDate();", "expected": "Initial date: 2023-01-01\nInvalid day: Day cannot exceed 29 for February in a leap year.\nAttempt Feb 30 (2024): 2024-02-29\n" },
+    { "input": "Date d(2023, 1, 1); d.setMonth(4); d.setDay(31); d.printDate();", "expected": "Initial date: 2023-01-01\nInvalid day: Day cannot exceed 31 for month 2.\nAttempt Feb 29 (2023): 2023-02-28\nAfter setting Feb 29 (2024): 2024-02-29\nInvalid day: Day cannot exceed 29 for February in a leap year.\nAttempt Feb 30 (2024): 2024-02-29\nAfter setting Apr 30: 2024-04-30\nInvalid day: Day cannot exceed 30 for month 4.\nAttempt Apr 31: 2024-04-30\n" }
+  ],
+  "driver": "int main() {\n    Date d(2023, 1, 1);\n    std::cout << \"Initial date: \"; d.printDate(); std::cout << std::endl;\n\n    d.setMonth(2);\n    d.setDay(28);\n    std::cout << \"After setting Feb 28: \"; d.printDate(); std::cout << std::endl;\n\n    d.setDay(29);\n    std::cout << \"Attempt Feb 29 (2023): \"; d.printDate(); std::cout << std::endl;\n\n    d.setYear(2024);\n    d.setDay(29);\n    std::cout << \"After setting Feb 29 (2024): \"; d.printDate(); std::cout << std::endl;\n\n    d.setDay(30);\n    std::cout << \"Attempt Feb 30 (2024): \"; d.printDate(); std::cout << std::endl;\n\n    d.setMonth(4);\n    d.setDay(30);\n    std::cout << \"After setting Apr 30: \"; d.printDate(); std::cout << std::endl;\n\n    d.setDay(31);\n    std::cout << \"Attempt Apr 31: \"; d.printDate(); std::cout << std::endl;\n\n    d.setMonth(13);\n    std::cout << \"Attempt invalid month: \"; d.printDate(); std::cout << std::endl;\n\n    d.setYear(-1);\n    std::cout << \"Attempt invalid year: \"; d.printDate(); std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Duplicated leap year calculation logic within the `setDay` method, violating the DRY (Don't Repeat Yourself) principle.",
+    "The `setDay` method uses a long and repetitive `if-else if` chain for determining days in a month instead of a more efficient and readable approach like an array or a helper function.",
+    "Setters (`setMonth`, `setYear`) do not automatically re-validate the day, which can leave the `Date` object in a temporarily inconsistent/invalid state (e.g., Feb 31st) until `setDay` is explicitly called and validated again. While functionally correct if `setDay` is always called, it's inefficient and less robust in state management."
+  ]
+}

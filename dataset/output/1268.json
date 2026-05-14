@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Design a multilevel inheritance hierarchy: `Vehicle` -> `Car` -> `SportsCar`. Each class should have a constructor that prints its name and a method `drive()`. Demonstrate the order of constructor calls and method overriding across the hierarchy.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "\n--- Commencing object creation sequence for SportsCar ---\n------------------------------------------\nVehicle constructor is now being executed.\nA new vehicle object is coming to life!\n------------------------------------------\n==========================================\nCar constructor initiated. Building a car.\nThis car inherits from Vehicle.\n==========================================\n##########################################\nSportsCar constructor is active. Speed demon ready!\nThis SportsCar inherits from Car.\n##########################################\n\n--- Initiating method execution for drive() across hierarchy ---\nThe exhilarating SportsCar is driving at incredible speeds! ZOOM!\n\n--- Demonstrating polymorphic behavior with base pointers ---\nThe exhilarating SportsCar is driving at incredible speeds! ZOOM!\nThe exhilarating SportsCar is driving at incredible speeds! ZOOM!\n\n--- Program execution concluded. Deallocating resources. ---\nSportsCar object is being destroyed, calling Car destructor.\nCar object is being destroyed, calling base destructor.\nVehicle object is being destroyed.\n"
+    }
+  ],
+  "driver": "    std::cout << \"\\n--- Commencing object creation sequence for SportsCar ---\" << std::endl;\n    SportsCar myFastCar; // Object name is a bit verbose too\n\n    std::cout << \"\\n--- Initiating method execution for drive() across hierarchy ---\" << std::endl;\n    myFastCar.drive();\n\n    std::cout << \"\\n--- Demonstrating polymorphic behavior with base pointers ---\" << std::endl;\n    Vehicle* baseVehiclePtr = &myFastCar; // Verbose pointer name\n    baseVehiclePtr->drive();\n\n    Car* baseCarPtr = &myFastCar; // Verbose pointer name\n    baseCarPtr->drive();\n    \n    std::cout << \"\\n--- Program execution concluded. Deallocating resources. ---\" << std::endl;\n    return 0;",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Constructors and `drive()` methods contain excessively verbose and redundant `std::cout` statements, harming readability and conciseness.",
+    "Repeated creation of `std::string` objects for simple literal prints in `drive()` methods (e.g., `std::string msg = \"...\";`) is inefficient. Using `const char*` literals directly (e.g., `std::cout << \"...\" << std::endl;`) would be more efficient.",
+    "Variable names like `myFastCar`, `baseVehiclePtr`, and `baseCarPtr` are overly verbose, slightly impacting readability without adding significant clarity."
+  ]
+}

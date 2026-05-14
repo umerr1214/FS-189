@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Person` with private attributes `name` (string) and `age` (int). Implement public methods to set and display these details. Derive a class `Employee` from `Person` that adds private attributes `employeeID` (int) and `salary` (double). Implement methods in `Employee` to set and display its specific details, including inherited ones.",
+  "test_cases": [
+    {
+      "input": "// No direct user input. Test cases are hardcoded in main.",
+      "expected": "--- Testing Robustness Issue (1795) ---\nPerson 1 Details (invalid age): Name: Alice, Age: -5\nEmployee 1 Details (invalid age and salary): Name: Bob, Age: -10, Employee ID: 1001, Salary: -15000\nEmployee 2 Details (constructor with invalid data): Name: Charlie, Age: -25, Employee ID: 1002, Salary: -75000\nNote: The program accepts and displays negative age/salary due to lack of validation.\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Testing Robustness Issue (1795) ---\" << std::endl;\n\n    // Test case 1: Person with invalid age\n    Person p1;\n    p1.setName(\"Alice\");\n    p1.setAge(-5); // Setting a negative age\n    std::cout << \"Person 1 Details (invalid age): \";\n    p1.displayPerson();\n    std::cout << std::endl;\n\n    // Test case 2: Employee with invalid age and salary\n    Employee e1;\n    e1.setName(\"Bob\");\n    e1.setAge(-10); // Setting a negative age\n    e1.setEmployeeID(1001);\n    e1.setSalary(-15000.0); // Setting a negative salary\n    std::cout << \"Employee 1 Details (invalid age and salary): \";\n    e1.displayEmployee();\n\n    // Test case 3: Employee created with invalid data via constructor\n    Employee e2(\"Charlie\", -25, 1002, -75000.0);\n    std::cout << \"Employee 2 Details (constructor with invalid data): \";\n    e2.displayEmployee();\n\n    std::cout << \"Note: The program accepts and displays negative age/salary due to lack of validation.\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Lack of input validation for age and salary attributes, allowing negative values to be stored and displayed.",
+    "The program does not handle invalid data gracefully, leading to potentially inconsistent object states."
+  ]
+}

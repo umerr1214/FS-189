@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Refactor a `BankAccount` class to strictly enforce encapsulation. Make the `balance` (double) private. Provide public methods `deposit(double amount)`, `withdraw(double amount)`, and `getBalance()` to interact with the balance.",
+  "test_cases": [
+    {
+      "input": "Initial balance: 100.0\nDeposit: -50.0\nWithdraw: 100.0\nWithdraw: -20.0",
+      "expected": "Initial balance: 100.00\nAttempting deposit of -50.00...\nBalance after negative deposit: 50.00\nAttempting withdraw of 100.00...\nBalance after over-withdrawal: -50.00\nAttempting withdraw of -20.00...\nBalance after negative withdrawal: -30.00\nFinal balance: -30.00\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <iomanip>\n\nclass BankAccount {\nprivate:\n    double balance;\npublic:\n    BankAccount(double initialBalance = 0.0) : balance(initialBalance) {}\n    void deposit(double amount) {\n        balance += amount;\n    }\n    void withdraw(double amount) {\n        balance -= amount;\n    }\n    double getBalance() const {\n        return balance;\n    }\n};\n\nint main() {\n    std::cout << std::fixed << std::setprecision(2);\n    BankAccount account(100.0);\n    std::cout << \"Initial balance: \" << account.getBalance() << std::endl;\n    std::cout << \"Attempting deposit of -50.00...\" << std::endl;\n    account.deposit(-50.0);\n    std::cout << \"Balance after negative deposit: \" << account.getBalance() << std::endl;\n    std::cout << \"Attempting withdraw of 100.00...\" << std::endl;\n    account.withdraw(100.0);\n    std::cout << \"Balance after over-withdrawal: \" << account.getBalance() << std::endl;\n    std::cout << \"Attempting withdraw of -20.00...\" << std::endl;\n    account.withdraw(-20.0);\n    std::cout << \"Balance after negative withdrawal: \" << account.getBalance() << std::endl;\n    std::cout << \"Final balance: \" << account.getBalance() << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `deposit` method does not validate for negative amounts, allowing balance reduction through a 'deposit' operation.",
+    "The `withdraw` method does not validate for negative amounts, allowing balance increase through a 'withdrawal' operation.",
+    "The `withdraw` method does not check for sufficient balance before performing a withdrawal, allowing the account balance to become negative (overdraft) without explicit handling."
+  ]
+}

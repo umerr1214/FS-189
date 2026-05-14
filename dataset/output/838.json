@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function int maxSubArray(int arr[], int n) that finds the maximum sum of a contiguous subarray using Kadane's Algorithm.",
+  "test_cases": [
+    {
+      "input": "arr = NULL",
+      "expected": "Graceful failure"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <climits>\n#include <algorithm>\n#include \"838.cpp\"\n\nint main() {\n    // maxSubArray(NULL, 5);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing NULL pointer check for input array."
+  ]
+}

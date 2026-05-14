@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Define a `MediaItem` base class with private attributes `title` and `duration`. Derive two classes, `Movie` and `Song`, from `MediaItem`. `Movie` should add a `director` attribute, and `Song` should add an `artist` attribute. Provide appropriate constructors and getters for all classes.",
+  "test_cases": [
+    { "input": "Create a Movie object: Movie(\"Inception\", 148, \"Christopher Nolan\") and check its attributes. Also create a Song object: Song(\"Bohemian Rhapsody\", 6, \"Queen\") and check its attributes.", "expected": "Movie Title: Inception\nMovie Duration: 148\nMovie Director: Christopher Nolan\n---\nSong Title: Bohemian Rhapsody\nSong Duration: 6\nSong Artist: Queen" }
+  ],
+  "driver": "int main() {\n    Movie movie(\"Inception\", 148, \"Christopher Nolan\");\n    std::cout << \"Movie Title: \" << movie.getTitle() << std::endl;\n    std::cout << \"Movie Duration: \" << movie.getDuration() << std::endl;\n    std::cout << \"Movie Director: \" << movie.getDirector() << std::endl;\n\n    std::cout << \"---\\n\";\n\n    Song song(\"Bohemian Rhapsody\", 6, \"Queen\");\n    std::cout << \"Song Title: \" << song.getTitle() << std::endl;\n    std::cout << \"Song Duration: \" << song.getDuration() << std::endl;\n    std::cout << \"Song Artist: \" << song.getArtist() << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "In the 'Movie' class constructor, the 'director' attribute is assigned the string representation of 'duration' (e.g., '148') instead of the provided 'director_name' ('Christopher Nolan'). This is a logical error leading to incorrect data storage."
+  ]
+}

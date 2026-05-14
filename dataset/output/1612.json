@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Explain the difference between `public`, `private`, and `protected` access specifiers in C++ classes. Provide a brief code snippet demonstrating each in a simple class structure.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Explanation of access specifiers:\n  public: Members declared as public are accessible from anywhere, both from within the class and from outside the class.\n  private: Members declared as private are accessible only from within the class itself. They cannot be accessed directly from outside the class or by derived classes.\n  protected: Members declared as protected are accessible from within the class itself and from its derived classes. They cannot be accessed directly from objects of the class from outside."
+    }
+  ],
+  "driver": "int main() {\n    // The code is designed to demonstrate access specifiers but contains a syntax error.\n    // A correct program would instantiate and use the classes to show accessibility.\n    // The 'expected' output provides the theoretical explanation.\n    return 0;\n}",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition 'MyClass'. In C++, a semicolon is required after a class declaration."
+  ]
+}

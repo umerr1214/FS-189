@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void characterHistogram(char grid[][COLS], int rows) that prints a histogram of character frequencies.",
+  "test_cases": [
+    {
+      "input": "Any input",
+      "expected": "Histogram"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include \"789.cpp\"\n\nint main() {\n    // Function modifies array and counts 0s\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using assignment inside array index `freq[grid[i][j] = 0]++`, which clears the input data and increments the count for the null character index instead of the actual character."
+  ]
+}

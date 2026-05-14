@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void upperCase(char array[]) that capitalizes the first and last letters of each word.",
+  "test_cases": [
+    {
+      "input": "arr = NULL",
+      "expected": "Graceful failure"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cctype>\n#include \"736.cpp\"\n\nint main() {\n    // upperCase(NULL);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing NULL pointer check before accessing array."
+  ]
+}

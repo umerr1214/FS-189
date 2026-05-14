@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a function bool isPrime(int n) that checks if a number is prime.",
+  "test_cases": [
+    {
+      "input": "n = 17",
+      "expected": "true"
+    },
+    {
+      "input": "n = 49",
+      "expected": "false"
+    },
+    {
+      "input": "n = 1",
+      "expected": "false"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n#include <cassert>\n#include \"888.cpp\"\n\nint main() {\n    assert(isPrime(17) == true);\n    assert(isPrime(49) == false);\n    assert(isPrime(1) == false);\n    assert(isPrime(2) == true);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

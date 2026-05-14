@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Rectangle` class with private `width` and `height` (doubles). Declare a `friend` function `calculateArea(const Rectangle& rect)` that takes a `Rectangle` object and computes its area directly accessing `width` and `height`.",
+  "test_cases": [
+    { "input": "Rectangle(5.0, 10.0)", "expected": "Area of r1: 50.0" },
+    { "input": "Rectangle(3.0, 7.0)", "expected": "Area of r2: 21.0" }
+  ],
+  "driver": "int main() {\n    Rectangle r1(5.0, 10.0);\n    std::cout << \"Area of r1: \" << calculateArea(r1) << std::endl;\n    Rectangle r2(3.0, 7.0);\n    std::cout << \"Area of r2: \" << calculateArea(r2) << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `calculateArea` function contains a logical error. It incorrectly calculates the perimeter (2 * (width + height)) instead of the area (width * height) of the rectangle."
+  ]
+}

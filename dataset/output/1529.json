@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create an abstract base class `Animal` with a pure virtual function `void makeSound()`. Derive two concrete classes, `Dog` and `Cat`, from `Animal` and implement their respective `makeSound()` functions.",
+  "test_cases": [
+    { "input": "", "expected": "Woof!\nMeow!\nWoof!\nMeow!\n" }
+  ],
+  "driver": "void execute_test() {\n    Dog myDog;\n    Cat myCat;\n\n    myDog.makeSound();\n    myCat.makeSound();\n\n    Animal* a1 = new Dog();\n    Animal* a2 = new Cat();\n\n    a1->makeSound();\n    a2->makeSound();\n\n    delete a1;\n    delete a2;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["Dog::makeSound() prints 'Meow!' instead of 'Woof!'.", "Cat::makeSound() prints 'Woof!' instead of 'Meow!'."]
+}

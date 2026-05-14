@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Model a `Car` class using composition. `Car` should contain an `Engine` object as a member. The `Engine` class should have a `start()` method, and `Car` should have a `startCar()` method that calls `Engine::start()`.",
+  "test_cases": [
+    { "input": "", "expected": "Car starting...\nEngine started.\nCar is now running.\n" }
+  ],
+  "driver": "Car myCar;\nmyCar.startCar();",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class 'Engine' definition."
+  ]
+}

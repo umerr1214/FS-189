@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a function void findMissingElements(const int arr1[], int size1, const int arr2[], int size2, int result[], int& resultSize) that finds elements in arr1 but not in arr2 (both sorted).",
+  "test_cases": [],
+  "driver": "#include <iostream>\n#include \"649.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'resultSize = k'"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create an abstract base class `Shape` with a pure virtual function `getArea()` that returns a double. Derive `Rectangle` (with width, height) and `Circle` (with radius) classes, implementing `getArea()` for each.",
+  "test_cases": [
+    { "input": "Rectangle(5.0, 10.0)", "expected": "50.000" },
+    { "input": "Rectangle(2.5, 4.0)", "expected": "10.000" },
+    { "input": "Circle(7.0)", "expected": "153.938" },
+    { "input": "Circle(1.0)", "expected": "3.142" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <memory>\n#include <iomanip>\n#include <cmath>\n\n#ifndef M_PI\n#define M_PI 3.14159265358979323846\n#endif\n\nint main() {\n    std::cout << std::fixed << std::setprecision(3);\n\n    // Create objects using smart pointers for polymorphic behavior\n    std::vector<std::unique_ptr<Shape>> shapes;\n    shapes.push_back(std::make_unique<Rectangle>(5.0, 10.0));\n    shapes.push_back(std::make_unique<Rectangle>(2.5, 4.0));\n    shapes.push_back(std::make_unique<Circle>(7.0));\n    shapes.push_back(std::make_unique<Circle>(1.0));\n\n    for (const auto& shape : shapes) {\n        std::cout << \"Area: \" << shape->getArea() << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

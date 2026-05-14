@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a `StringWrapper` class that dynamically allocates memory for a C-style string. Provide a copy constructor that performs a deep copy to prevent issues with shallow copies.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "s1: Hello, World!\ns2 (copy of s1): Hello, World!\ns3 (initial): Initial string for s3\ns4 (initial): Another string for s4\nAssigning s4 = s3...\ns3 (after assignment to s4): Initial string for s3\ns4 (after assignment from s3): Initial string for s3\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <stdexcept>\n\n#ifdef _MSC_VER\n#define STRCPY_S(dest, dest_size, src) strcpy_s(dest, dest_size, src)\n#else\n#define STRCPY_S(dest, dest_size, src) strncpy(dest, src, dest_size); dest[dest_size - 1] = '\\0';\n#endif\n\nclass StringWrapper {\nprivate:\n    char* data;\n\npublic:\n    StringWrapper(const char* str = nullptr) : data(nullptr) {\n        if (str) {\n            size_t len = std::strlen(str);\n            data = new char[len + 1];\n            STRCPY_S(data, len + 1, str);\n        } else {\n            data = new char[1];\n            data[0] = '\\0';\n        }\n    }\n\n    StringWrapper(const StringWrapper& other) : data(nullptr) {\n        if (other.data) {\n            size_t len = std::strlen(other.data);\n            data = new char[len + 1];\n            STRCPY_S(data, len + 1, other.data);\n        } else {\n            data = new char[1];\n            data[0] = '\\0';\n        }\n    }\n\n    ~StringWrapper() {\n        delete[] data;\n        data = nullptr;\n    }\n\n    const char* get() const {\n        return data;\n    }\n\n    void print(const char* prefix = \"\") const {\n        std::cout << prefix << (data ? data : \"(null)\") << std::endl;\n    }\n};\n\nint main() {\n    StringWrapper s1(\"Hello, World!\");\n    std::cout << \"s1: \";\n    s1.print();\n\n    StringWrapper s2 = s1;\n    std::cout << \"s2 (copy of s1): \";\n    s2.print();\n\n    StringWrapper s3(\"Initial string for s3\");\n    std::cout << \"s3 (initial): \";\n    s3.print();\n\n    StringWrapper s4(\"Another string for s4\");\n    std::cout << \"s4 (initial): \";\n    s4.print();\n\n    std::cout << \"Assigning s4 = s3...\" << std::endl;\n    s4 = s3;\n\n    std::cout << \"s3 (after assignment to s4): \";\n    s3.print();\n    std::cout << \"s4 (after assignment from s3): \";\n    s4.print();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The class violates the Rule of Three/Five by having a custom destructor and copy constructor but missing a custom copy assignment operator. The compiler-generated shallow copy assignment operator leads to memory leaks (original memory of assigned object is not freed) and double-free errors when objects sharing memory are destroyed."
+  ]
+}

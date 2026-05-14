@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void moveZeroes(int arr[], int n) that moves all 0s to the end while maintaining relative order of non-zero elements.",
+  "test_cases": [
+    {
+      "input": "arr = NULL",
+      "expected": "Graceful failure"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"832.cpp\"\n\nint main() {\n    // moveZeroes(NULL, 5);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing NULL pointer check for input array."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a `Vector2D` class with private double members `x` and `y`. Provide a parameterized constructor and a copy constructor that performs a deep copy of the `Vector2D` object.",
+  "test_cases": [
+    {
+      "input": "Create vector (3.0, 4.0) and copy it. Then create vector (0.0, 0.0) and attempt to normalize it, demonstrating a robustness issue.",
+      "expected": "Original vector v1: (3.00, 4.00)\nCopied vector v2 (from v1): (3.00, 4.00)\nVector v_zero: (0.00, 0.00)\nAttempting to normalize v_zero (0.00, 0.00)...\nNormalized v_zero: (nan, nan)\nNormalizing v1...\nNormalized v1: (0.60, 0.80)"
+    }
+  ],
+  "driver": "    // Test parameterized constructor\n    Vector2D v1(3.0, 4.0);\n    std::cout << \"Original vector v1: \";\n    v1.print();\n    std::cout << std::endl;\n\n    // Test copy constructor\n    Vector2D v2 = v1; // Uses copy constructor\n    std::cout << \"Copied vector v2 (from v1): \";\n    v2.print();\n    std::cout << std::endl;\n\n    // Demonstrate robustness issue: normalizing a zero vector\n    Vector2D v_zero(0.0, 0.0);\n    std::cout << \"Vector v_zero: \";\n    v_zero.print();\n    std::cout << std::endl;\n\n    std::cout << \"Attempting to normalize v_zero (0.0, 0.0)...\";\n    // Calling normalize on a zero vector will cause division by zero.\n    // The output will likely be (nan, nan) or similar.\n    v_zero.normalize();\n    std::cout << \"Normalized v_zero: \";\n    v_zero.print();\n    std::cout << std::endl;\n\n    // Normalizing v1 (should work correctly)\n    std::cout << \"Normalizing v1...\";\n    v1.normalize();\n    std::cout << \"Normalized v1: \";\n    v1.print();\n    std::cout << std::endl;\n",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `normalize()` method does not check if the vector's magnitude is zero before performing division, which leads to division by zero (producing NaN/Inf) or a runtime crash when attempting to normalize a zero vector."
+  ]
+}

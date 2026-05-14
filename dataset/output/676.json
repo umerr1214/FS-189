@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void reverseWords(char arr[]) that reverses the order of words in the string.",
+  "test_cases": [
+    {
+      "input": "arr = NULL",
+      "expected": "Graceful failure"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <algorithm>\n#include \"676.cpp\"\n\nint main() {\n    // reverseWords(NULL);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing NULL pointer check before accessing the array."
+  ]
+}

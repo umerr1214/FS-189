@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a base class `Flyer` with a virtual `fly()` method that prints a generic message. Create another base class `Swimmer` with a virtual `swim()` method that also prints a generic message. Implement a `Duck` class that inherits from both `Flyer` and `Swimmer` and overrides both `fly()` and `swim()` methods to print specific duck actions.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Calling methods on Duck object directly:\nDuck flaps its wings gracefully.\nDuck paddles its feet in the water.\n\nCalling methods via base class pointers:\nDuck flaps its wings gracefully.\nDuck paddles its feet in the water.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Flyer {\npublic:\n    virtual void fly() {\n        std::cout << \"Generic flyer action.\" << std::endl;\n    }\n};\n\nclass Swimmer {\npublic:\n    virtual void swim() {\n        std::cout << \"Generic swimmer action.\" << std::endl;\n    }\n};\n\nclass Duck : public Flyer, public Swimmer\n{\npublic:\n    void fly() override {\n        std::cout << \"Duck flaps its wings gracefully.\" << std::endl;\n    }\n\n    void swim() override {\n        std::cout << \"Duck paddles its feet in the water.\" << std::endl;\n    }\n};\n\nint main() {\n    Duck myDuck;\n    std::cout << \"Calling methods on Duck object directly:\" << std::endl;\n    myDuck.fly();\n    myDuck.swim();\n\n    Flyer* flyerPtr = &myDuck;\n    Swimmer* swimmerPtr = &myDuck;\n\n    std::cout << \"\\nCalling methods via base class pointers:\" << std::endl;\n    flyerPtr->fly();\n    swimmerPtr->swim();\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition for 'Duck'."
+  ]
+}

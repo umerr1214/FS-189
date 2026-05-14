@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Vector2D` class with private `x` and `y` (double) coordinates. Overload the binary `+` operator to perform vector addition, returning a new `Vector2D` object.",
+  "test_cases": [
+    { "input": "v1 = Vector2D(1.0, 2.0); v2 = Vector2D(3.0, 4.0); v3 = v1 + v2;", "expected": "(4.0, 6.0)" },
+    { "input": "v_neg1 = Vector2D(-1.0, 2.5); v_neg2 = Vector2D(3.5, -4.0); v_neg_res = v_neg1 + v_neg2;", "expected": "(2.5, -1.5)" },
+    { "input": "v_chain1 = Vector2D(1.0, 1.0); v_chain2 = Vector2D(2.0, 2.0); v_chain3 = Vector2D(3.0, 3.0); v_chain_res = v_chain1 + v_chain2 + v_chain3;", "expected": "(6.0, 6.0)" },
+    { "input": "v_zero = Vector2D(0.0, 0.0); v_nonzero = Vector2D(5.0, 6.0); v_zero_res = v_zero + v_nonzero;", "expected": "(5.0, 6.0)" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include <sstream>\n\nclass Vector2D {\nprivate:\n    double x;\n    double y;\n\npublic:\n    Vector2D(double x_val = 0.0, double y_val = 0.0) : x(x_val), y(y_val) {}\n\n    friend Vector2D operator+(const Vector2D& lhs, const Vector2D& rhs);\n    friend std::ostream& operator<<(std::ostream& os, const Vector2D& v);\n};\n\nVector2D operator+(const Vector2D& lhs, const Vector2D& rhs) {\n    return Vector2D(lhs.x + rhs.x, lhs.y + rhs.y);\n}\n\nstd::ostream& operator<<(std::ostream& os, const Vector2D& v) {\n    os << \"(\" << v.x << \", \" << v.y << \")\";\n    return os;\n}\n\nint main() {\n    std::stringstream ss;\n    ss << std::fixed << std::setprecision(1);\n\n    Vector2D v1(1.0, 2.0);\n    Vector2D v2(3.0, 4.0);\n    Vector2D v3 = v1 + v2;\n    ss << v3 << std::endl;\n\n    Vector2D v_neg1(-1.0, 2.5);\n    Vector2D v_neg2(3.5, -4.0);\n    Vector2D v_neg_res = v_neg1 + v_neg2;\n    ss << v_neg_res << std::endl;\n\n    Vector2D v_chain1(1.0, 1.0);\n    Vector2D v_chain2(2.0, 2.0);\n    Vector2D v_chain3(3.0, 3.0);\n    Vector2D v_chain_res = v_chain1 + v_chain2 + v_chain3;\n    ss << v_chain_res << std::endl;\n\n    Vector2D v_zero(0.0, 0.0);\n    Vector2D v_nonzero(5.0, 6.0);\n    Vector2D v_zero_res = v_zero + v_nonzero;\n    ss << v_zero_res << std::endl;\n\n    std::cout << ss.str();\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

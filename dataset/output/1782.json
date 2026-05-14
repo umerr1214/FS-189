@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Design a `Circle` class with a private attribute `radius` (double). Provide public getter and setter methods for `radius`. The setter should include validation to ensure `radius` cannot be set to a negative value. Also, implement a method `calculateArea()` that returns the circle's area (π*r²).",
+  "test_cases": [
+    {
+      "input": "Circle c;\nc.setRadius(5.0);\nstd::cout << \"Radius: \" << c.getRadius() << \", Area: \" << c.calculateArea() << std::endl;",
+      "expected": "Radius: 5.0, Area: 78.53981633974483\n"
+    },
+    {
+      "input": "Circle c;\nc.radius = 10.0;",
+      "expected": "Compiler Error: 'double Circle::radius' is private"
+    }
+  ],
+  "driver": "    Circle c1;\n    std::cout << \"Initial radius: \" << c1.getRadius() << \", Area: \" << c1.calculateArea() << std::endl;\n\n    c1.setRadius(5.0);\n    std::cout << \"Radius after set(5.0): \" << c1.getRadius() << \", Area: \" << c1.calculateArea() << std::endl;\n\n    // Semantic Error: Attempting to access a private member 'radius' directly from outside the class.\n    // This violates encapsulation rules and will result in a compilation error.\n    c1.radius = 10.0; \n    std::cout << \"Radius after direct access: \" << c1.getRadius() << \", Area: \" << c1.calculateArea() << std::endl;\n\n    c1.setRadius(-2.0); // Test negative input\n    std::cout << \"Radius after set(-2.0): \" << c1.getRadius() << \", Area: \" << c1.calculateArea() << std::endl;\n\n    Circle c2(10.0);\n    std::cout << \"Circle c2 radius: \" << c2.getRadius() << \", Area: \" << c2.calculateArea() << std::endl;\n\n    return 0;",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["Attempt to access a private member 'radius' directly outside the class."]
+}

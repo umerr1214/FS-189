@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function int countCharacterOccurrences(const char arr[], char target) that counts occurrences of target in arr.",
+  "test_cases": [
+    {
+      "input": "arr = NULL",
+      "expected": "Graceful failure (0)"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include \"694.cpp\"\n\nint main() {\n    // countCharacterOccurrences(NULL, 'a');\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing NULL pointer check before accessing array."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Design a `Counter` class that keeps track of how many `Counter` objects have been created using a `static` member variable. Implement a default constructor to increment this count and a destructor to decrement it. Provide a static method `getTotalCount()` to retrieve the current number of active `Counter` objects.",
+  "test_cases": [
+    {
+      "input": "Program execution demonstrating counter creation and destruction.",
+      "expected": "Beginning of program execution.\nActive counter count at start: 0\nCount with 4 objects: 4\nCount after scope exit (1 object): 1\nCount with dynamically allocated object (2 objects): 2\nCount after deleting dynamically allocated object (1 object): 1\nEnd of program execution.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <atomic>\n\nclass Counter {\nprivate:\n    static std::atomic<int> g_total_instances;\n\npublic:\n    Counter() { g_total_instances.operator++(); }\n    ~Counter() { g_total_instances.operator--(); }\n\n    static int get_total_num_active_counters() { return g_total_instances.load(); }\n};\n\nstd::atomic<int> Counter::g_total_instances(0);\n\nint main() {\n    std::cout << \"Beginning of program execution.\" << std::endl;\n    std::cout << \"Active counter count at start: \" << Counter::get_total_num_active_counters() << std::endl;\n\n    Counter first_counter_obj;\n    {\n        Counter second_counter_obj;\n        std::vector<Counter> some_vector_of_counters(2);\n        std::cout << \"Count with 4 objects: \" << Counter::get_total_num_active_counters() << std::endl;\n    }\n    std::cout << \"Count after scope exit (1 object): \" << Counter::get_total_num_active_counters() << std::endl;\n\n    Counter* dynamically_allocated_counter = new Counter();\n    std::cout << \"Count with dynamically allocated object (2 objects): \" << Counter::get_total_num_active_counters() << std::endl;\n\n    delete dynamically_allocated_counter;\n    std::cout << \"Count after deleting dynamically allocated object (1 object): \" << Counter::get_total_num_active_counters() << std::endl;\n\n    std::cout << \"End of program execution.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses `std::atomic<int>` for the counter, which is unnecessary overhead for a single-threaded context and less efficient than a plain `int`.",
+    "Employs verbose and less idiomatic `operator++()` and `operator--()` for increment/decrement instead of `++` and `--`.",
+    "Uses an overly long and slightly redundant static method name `get_total_num_active_counters()`.",
+    "Poor code formatting with inconsistent spacing and line breaks reduces readability."
+  ]
+}

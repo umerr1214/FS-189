@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Explain the difference between `public`, `private`, and `protected` access specifiers in C++ classes. Provide a brief code snippet demonstrating each in a simple class structure.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "================================================================\n  EXPLANATION OF C++ ACCESS SPECIFIERS (READABILITY/EFFICIENCY ISSUE)\n================================================================\nAccess specifiers (public, private, protected) are keywords in C++ that define the accessibility of a class's members.\n  * Public: Members declared as public are accessible from anywhere. They constitute the class's interface.\n  * Private: Members declared as private are only accessible from within the class itself. They are hidden from outside world and derived classes.\n  * Protected: Members declared as protected are accessible from within the class itself and from its derived classes. They are not directly accessible from outside.\n================================================================\n\n--- Demonstrating ExcessiveVerbosityAccessControlDemonstratorClass ---\n  [Public Method Call]: Displaying Public Information: This is a string that is public and can be accessed from any part of the program.\n    [Private Method Call]: Processing Private Data: This string holds very sensitive private information that should never be exposed externally.\n      [Protected Method Call]: Utilizing Protected Functionality: This string contains protected state information meant for derived classes.\n  [Public Method Call]: Just another public function doing nothing much.\n  Directly accessing public data from main: This is a string that is public and can be accessed from any part of the program.\n\n--- Demonstrating DerivedExcessiveVerbosityDemonstrator ---\n  [Derived Class Constructor]: DerivedExcessiveVerbosityDemonstrator object created.\n  [Public Method Call]: Displaying Public Information: This is a string that is public and can be accessed from any part of the program.\n    [Private Method Call]: Processing Private Data: This string holds very sensitive private information that should never be exposed externally.\n      [Protected Method Call]: Utilizing Protected Functionality: This string contains protected state information meant for derived classes.\n    [Derived Method Call]: Attempting to access protected members from base class...\n      Derived can access protected string: This string contains protected state information meant for derived classes.\n      Derived can access protected double: 3.14159\n      [Protected Method Call]: Utilizing Protected Functionality: This string contains protected state information meant for derived classes.\n      [Protected Method Call]: Yet another protected service method executed.\n  Directly accessing inherited public data from derived object: This is a string that is public and can be accessed from any part of the program.\n\n================================================================\n  END OF DEMONSTRATION\n================================================================\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The code uses excessively long and verbose identifiers (class, variable, and function names), significantly hindering readability.",
+    "The class structure is overly complex and contains redundant members (e.g., multiple similar public/private/protected methods) for a simple demonstration, impacting efficiency of understanding.",
+    "Comments are often redundant or state the obvious, adding clutter rather than clarity.",
+    "Inconsistent and sometimes poor indentation, along with excessive blank lines and verbose output messages, reduce overall code readability.",
+    "The inclusion of `<vector>` is unnecessary for this specific demonstration, indicating a potential efficiency oversight or lack of minimalist design."
+  ]
+}

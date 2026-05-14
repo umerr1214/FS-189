@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Create a `StringWrapper` class that manages a C-style string (`char*`) allocated on the heap. Implement a constructor that takes a `const char*` and performs a deep copy, and a destructor that releases the dynamically allocated memory. Demonstrate memory leak prevention.",
+  "test_cases": [
+    { "input": "Hello World", "expected": "Wrapped string: Hello World" },
+    { "input": "C++ Programming", "expected": "Wrapped string: C++ Programming" },
+    { "input": "", "expected": "Wrapped string: " },
+    { "input": "Short", "expected": "Wrapped string: Short" }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n\n// StringWrapper class definition will be included here\n\nint main() {\n    std::cout << \"--- Test Case 1 ---\" << std::endl;\n    StringWrapper s1(\"Hello World\");\n    std::cout << \"Wrapped string: \" << s1.getString() << std::endl;\n\n    std::cout << \"--- Test Case 2 ---\" << std::endl;\n    StringWrapper s2(\"C++ Programming\");\n    std::cout << \"Wrapped string: \" << s2.getString() << std::endl;\n\n    std::cout << \"--- Test Case 3 ---\" << std::endl;\n    StringWrapper s3(\"\"); // Test empty string\n    std::cout << \"Wrapped string: \" << s3.getString() << std::endl;\n    \n    std::cout << \"--- Test Case 4 ---\" << std::endl;\n    StringWrapper s4(\"Short\");\n    std::cout << \"Wrapped string: \" << s4.getString() << std::endl;\n\n    // Memory will be leaked here as s1, s2, s3, s4 go out of scope\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    {
+      "line": 23,
+      "column": 5,
+      "message": "Memory leak: The destructor `~StringWrapper()` does not release the dynamically allocated memory for `data` using `delete[] data;`."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `Counter` class with a single private integer member `count`. Overload both the prefix (`++obj`) and postfix (`obj++`) increment operators to modify and return the `Counter` object correctly.",
+  "test_cases": [
+    { "input": "Initial c1: 0\nAfter ++c1: c1 = 1, c1_ref = 1\nInitial c2: 5\nAfter c2++: c2 = 6, c2_old_value = 5\nInitial c3: 10\nAfter ++(++c3): c3 = 12, c3_ref2 = 12\nInitial c4: 15\nAfter c4++: c4 = 16, c4_val = 15\n", "expected": "Initial c1: 0\nAfter ++c1: c1 = 1, c1_ref = 1\nInitial c2: 5\nAfter c2++: c2 = 6, c2_old_value = 5\nInitial c3: 10\nAfter ++(++c3): c3 = 12, c3_ref2 = 12\nInitial c4: 15\nAfter c4++: c4 = 16, c4_val = 15\n" }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Testing Counter class ---\" << std::endl;\n\n    Counter c1(0);\n    std::cout << \"Initial c1: \" << c1.getCount() << std::endl;\n\n    // Test Prefix Increment\n    Counter& c1_ref = ++c1;\n    std::cout << \"After ++c1: c1 = \" << c1.getCount() << \", c1_ref = \" << c1_ref.getCount() << std::endl;\n\n    // Test Postfix Increment\n    Counter c2(5);\n    std::cout << \"Initial c2: \" << c2.getCount() << std::endl;\n    Counter c2_old_value = c2++;\n    std::cout << \"After c2++: c2 = \" << c2.getCount() << \", c2_old_value = \" << c2_old_value.getCount() << std::endl;\n\n    // Test Chaining Prefix Increment\n    Counter c3(10);\n    std::cout << \"Initial c3: \" << c3.getCount() << std::endl;\n    Counter& c3_ref2 = ++(++c3);\n    std::cout << \"After ++(++c3): c3 = \" << c3.getCount() << \", c3_ref2 = \" << c3_ref2.getCount() << std::endl;\n\n    // Test Chaining Postfix Increment\n    Counter c4(15);\n    std::cout << \"Initial c4: \" << c4.getCount() << std::endl;\n    Counter c4_val = c4++;\n    std::cout << \"After c4++: c4 = \" << c4.getCount() << \", c4_val = \" << c4_val.getCount() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the class definition for `Counter`."]
+}

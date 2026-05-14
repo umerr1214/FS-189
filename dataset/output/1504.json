@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Shape` with a protected string member `color` and a constructor to initialize it. Derive a `Circle` class from `Shape`, adding a private double member `radius` and its own constructor. Implement a `displayInfo()` method in both classes.",
+  "test_cases": [
+    { "input": "", "expected": "Shape Color: Red\nShape Color: Blue\nCircle Radius: 10.5\n" }
+  ],
+  "driver": "// The main function in the provided C++ code acts as the driver.",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'radius' declaration in the Circle class."
+  ]
+}

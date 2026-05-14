@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function bool isPalindrome(int n) that checks if a number is a palindrome.",
+  "test_cases": [
+    {
+      "input": "n = 2147483647 (INT_MAX)",
+      "expected": "Safe handling (false)"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <climits>\n#include \"898.cpp\"\n\nint main() {\n    // isPalindrome(2147483647);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing integer overflow check when reversing the number. `reversed * 10` can exceed `INT_MAX` for large inputs."
+  ]
+}

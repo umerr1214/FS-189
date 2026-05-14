@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `Counter` class with a private integer `count`. Overload the prefix increment operator `++` (e.g., `++myCounter`) to increase the `count` by one and return the modified `Counter` object. Demonstrate its usage.",
+  "test_cases": [
+    { "input": "", "expected": "Initial count: 10\nAfter first increment: 11\nInitial anotherCounter (before ++): 0\nAfter increment (ref_to_counter): 1\nOriginal anotherCounter: 1\nAfter chained increment: 13\n" }
+  ],
+  "driver": "int main() {\n    Counter myCounter(10);\n    std::cout << \"Initial count: \" << myCounter.getCount() << std::endl;\n\n    ++myCounter;\n    std::cout << \"After first increment: \" << myCounter.getCount() << std::endl;\n\n    Counter anotherCounter(0);\n    Counter& ref_to_counter = ++anotherCounter;\n    std::cout << \"Initial anotherCounter (before ++): \" << 0 << std::endl;\n    std::cout << \"After increment (ref_to_counter): \" << ref_to_counter.getCount() << std::endl;\n    std::cout << \"Original anotherCounter: \" << anotherCounter.getCount() << std::endl;\n\n    ++++myCounter;\n    std::cout << \"After chained increment: \" << myCounter.getCount() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The constructor initializes the `count` member by assignment in the constructor body. While correct, using an initializer list (`Counter(int initial_count = 0) : count(initial_count) {}`) is generally more efficient and idiomatic C++, especially for complex types, as it performs direct initialization rather than default-construction followed by assignment.",
+    "The implementation of `operator++()` is unnecessarily complex and less efficient. It creates a temporary `Counter` object, increments its count, and then assigns that incremented value back to the original object's `count`. A simpler and more efficient approach would be to directly increment `count` and return `*this` (`++count; return *this;`). This avoids unnecessary object creation and assignment operations."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function to search for a word in a character grid.",
+  "test_cases": [
+    {
+      "input": "word = NULL",
+      "expected": "Graceful failure"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include \"772.cpp\"\n\nint main() {\n    // searchWord(NULL, NULL);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing NULL pointer check for `word` parameter."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void insertAtHead(Node*& head, int val) that inserts a node at the beginning of a linked list.",
+  "test_cases": [
+    {
+      "input": "Insert 10",
+      "expected": "Valid list"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"946.cpp\"\n\nint main() {\n    Node* head = nullptr;\n    insertAtHead(head, 10);\n    // head is dangling\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Allocates `Node` on the stack instead of the heap; the node is destroyed when the function returns, leaving `head` as a dangling pointer."
+  ]
+}

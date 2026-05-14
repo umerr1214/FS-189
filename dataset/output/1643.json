@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design a `Car` class with private string members `make` and `model`. Implement both a default constructor (that initializes with generic values like 'Unknown Make', 'Unknown Model') and a parameterized constructor. Include a `displayCarInfo()` method to show the car's details.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Car 1 Info: Make: Unknown Make, Model: Unknown Model\nCar 2 Info: Make: Toyota, Model: Camry\nCar 3 Info: Make: Ford, Model: Mustang\n" }
+  ],
+  "driver": "int main() {\n    Car car1;\n    std::cout << \"Car 1 Info: \";\n    car1.displayCarInfo();\n    Car car2(\"Toyota\", \"Camry\");\n    std::cout << \"Car 2 Info: \";\n    car2.displayCarInfo();\n    Car car3(\"Ford\", \"Mustang\");\n    std::cout << \"Car 3 Info: \";\n    car3.displayCarInfo();\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["Parameterized constructor incorrectly swaps 'make' and 'model' assignments."]
+}

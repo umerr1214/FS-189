@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void replaceSubstring(char arr[], const char target[], const char replacement[]) that replaces all occurrences of target with replacement.",
+  "test_cases": [
+    {
+      "input": "arr = \"a\", target = \"a\", replacement = \"very_long_string\"",
+      "expected": "Buffer overflow / crash"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include \"688.cpp\"\n\nint main() {\n    char str[100] = \"a\";\n    // replaceSubstring(str, \"a\", \"this string is definitely longer than 10 bytes\");\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Uses a fixed-size small local buffer 'buffer[10]' causing stack buffer overflow when replacement results in a longer string."
+  ]
+}

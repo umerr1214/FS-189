@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `Person` class with `name` (public), `age` (protected), and `id` (private). Then, create a `Student` class that publicly inherits from `Person`. Demonstrate which members are accessible from `Student` methods and from outside `Student` objects.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Inside Student method (demonstrateStudentAccess) ---\nAccessible: Public Person::name = Alice Smith\nAccessible: Protected Person::age = 20\nAccessible: Student::studentMajor = Computer Science\nAccessible: Person::getId() (public method) = 1001\nAccessible: Person::getAge() (public method) = 20\n\n--- Outside Student object (demonstrateOutsideAccess function) ---\nAccessible: Public Student::name (inherited from Person) = Alice Smith\nAccessible: Public Student::studentMajor = Computer Science\nAccessible: Person::getId() (public method) = 1001\nAccessible: Person::getAge() (public method) = 20"
+    }
+  ],
+  "driver": "int main() {\n    try {\n        Student alice(\"Alice Smith\", 20, 1001, \"Computer Science\");\n        alice.demonstrateStudentAccess();\n        demonstrateOutsideAccess(alice);\n    } catch (const std::out_of_range& e) {\n        std::cerr << \"Error: \" << e.what() << '\\n';\n        return 1;\n    } catch (const std::exception& e) {\n        std::cerr << \"An unexpected error occurred: \" << e.what() << '\\n';\n        return 1;\n    }\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

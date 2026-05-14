@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `Calculator` class. Implement overloaded `add` methods to sum two integers, two doubles, and three integers. Demonstrate calling each overloaded version.",
+  "test_cases": [
+    { "input": "calc.add(10, 20)", "expected": "Adding two integers (10, 20): 30\n" },
+    { "input": "calc.add(1.5, 2.5)", "expected": "Adding two doubles (1.5, 2.5): 4.0\n" },
+    { "input": "calc.add(1000000000, 1000000000, 1000000000)", "expected": "Adding three integers (1000000000, 1000000000, 1000000000): 3000000000\n" }
+  ],
+  "driver": "valid C++ code to run test cases",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

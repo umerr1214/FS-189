@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a function void findCharacterFrequency(const char arr[], int frequency[]) that counts occurrences of each character.",
+  "test_cases": [
+    {
+      "input": "arr = \"hello\"",
+      "expected": "l:2, h:1, e:1, o:1"
+    },
+    {
+      "input": "arr = NULL",
+      "expected": "No change/crash"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cassert>\n#include \"672.cpp\"\n\nint main() {\n    const char* str = \"hello\";\n    int freq[256] = {0};\n    findCharacterFrequency(str, freq);\n    assert(freq['l'] == 2);\n    assert(freq['h'] == 1);\n    \n    findCharacterFrequency(NULL, freq);\n    // Should not crash\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

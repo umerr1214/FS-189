@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function int largestRegion(char grid[][COLS]) that finds the size of the largest connected region of 1s.",
+  "test_cases": [
+    {
+      "input": "U-shaped region of 1s",
+      "expected": "8"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <algorithm>\n#include \"782.cpp\"\n\nint main() {\n    char grid[5][5] = {\n        {'1', '0', '1', '0', '0'},\n        {'1', '0', '1', '0', '0'},\n        {'1', '1', '1', '0', '0'},\n        {'0', '0', '0', '0', '0'},\n        {'0', '0', '0', '0', '0'}\n    };\n    // U-Shape: (0,0)-(1,0)-(2,0)-(2,1)-(2,2)-(1,2)-(0,2). Size 7.\n    // With Down/Right only:\n    // DFS(0,0) -> (1,0) -> (2,0) -> (2,1) -> (2,2). Count 5.\n    // Remaining (0,2), (1,2) will be separate region size 2 (via loop).\n    // Max returned 5. Correct 7.\n    if (largestRegion(grid) == 7) return 0;\n    return 1;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "DFS only explores Down and Right directions, missing connected cells located Up or Left, leading to incorrect region sizes for non-monotonic shapes."
+  ]
+}

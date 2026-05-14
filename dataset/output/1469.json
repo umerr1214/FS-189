@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Define a `Book` class with private data members `title` (string), `author` (string), and `isbn` (string). Provide public getter methods `getTitle()`, `getAuthor()`, `getIsbn()`, and a `displayBookInfo()` method that prints all book details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Displaying Book Info (Logical Error) ---\nTitle: The Hitchhiker's Guide to the Galaxy\nAuthor: Douglas Adams\nISBN: 978-0345391803\n\n--- Book details via getters (Correct) ---\nTitle: The Hitchhiker's Guide to the Galaxy\nAuthor: Douglas Adams\nISBN: 978-0345391803"
+    }
+  ],
+  "driver": "int main() {\n    Book book1(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\");\n    std::cout << \"--- Displaying Book Info (Logical Error) ---\" << std::endl;\n    book1.displayBookInfo();\n\n    std::cout << \"\\n--- Book details via getters (Correct) ---\" << std::endl;\n    std::cout << \"Title: \" << book1.getTitle() << std::endl;\n    std::cout << \"Author: \" << book1.getAuthor() << std::endl;\n    std::cout << \"ISBN: \" << book1.getIsbn() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    {
+      "line": 27,
+      "column": 26,
+      "message": "displayBookInfo() prints 'title' instead of 'author' for the author field."
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void capitalizeWords(char arr[]) that capitalizes the first letter of each word and lowercases the rest.",
+  "test_cases": [
+    {
+      "input": "arr = \"hello\"",
+      "expected": "\"Hello\""
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cctype>\n#include \"699.cpp\"\n\nint main() {\n    char str[] = \"hello\";\n    capitalizeWords(str);\n    // First char becomes non-printable (value 1)\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Assigning the boolean value 'newWord' (true/1) to the character array 'arr[i]' instead of the uppercased character."
+  ]
+}

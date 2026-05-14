@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a `MediaItem` base class with private attributes `title` and `duration`. Derive two classes, `Movie` and `Song`, from `MediaItem`. `Movie` should add a `director` attribute, and `Song` should add an `artist` attribute. Provide appropriate constructors and getters for all classes.",
+  "test_cases": [],
+  "driver": "int main() { return 0; }",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the closing brace of the 'MediaItem' class definition. This prevents further compilation."
+  ]
+}

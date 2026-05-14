@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Product` class with private members `name` (string), `price` (double), and `quantity` (int). Implement a public method `double getTotalValue()` that calculates and returns `price * quantity`.",
+  "test_cases": [
+    { "input": "Product(\"Laptop\", 1200.50, 2)", "expected": "2401.00" },
+    { "input": "Product(\"Book\", 25.99, 5)", "expected": "129.95" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <iomanip>\n\nclass Product {\nprivate:\n    std::string name;\n    double price;\n    int quantity;\n\npublic:\n    Product(std::string n, double p, int q) : name(n), price(p), quantity(q) {}\n\n    double getTotalValue() {\n        return price * quantity;\n    }\n};\n\nint main() {\n    Product p1(\"Laptop\", 1200.50, 2);\n    Product p2(\"Book\", 25.99, 5);\n\n    std::cout << std::fixed << std::setprecision(2);\n    std::cout << p1.getTotalValue() << std::endl;\n    std::cout << p2.getTotalValue() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The 'getTotalValue' method semantically loses precision by casting 'price' to an integer before multiplication, despite 'price' being a double."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Define an `Employee` base class with a `displayInfo()` method. Create a `Manager` class that inherits from `Employee` and overrides `displayInfo()` to include additional manager-specific details.",
+  "test_cases": [
+    { "input": "", "expected": "--- Employee Info ---\nEmployee Name: Alice, ID: 101\n\n--- Manager Info ---\nEmployee Name: Bob, ID: 201\n  Department: Sales\n" }
+  ],
+  "driver": "int main() {\n    Employee emp(\"Alice\", 101);\n    Manager mgr(\"Bob\", 201, \"Sales\");\n\n    std::cout << \"--- Employee Info ---\" << std::endl;\n    emp.displayInfo();\n    std::cout << std::endl;\n\n    std::cout << \"--- Manager Info ---\" << std::endl;\n    mgr.displayInfo();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after `std::endl` in `Employee::displayInfo()` method definition."
+  ]
+}

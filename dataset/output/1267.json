@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a multilevel inheritance hierarchy: `Vehicle` -> `Car` -> `SportsCar`. Each class should have a constructor that prints its name and a method `drive()`. Demonstrate the order of constructor calls and method overriding across the hierarchy.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "\n--- Creating SportsCar object ---\nVehicle constructor called.\nCar constructor called.\nSportsCar constructor called.\n\n--- Demonstrating direct drive() method calls ---\nSportsCar is driving fast!\n\n--- Using base class pointers for 'polymorphism' (robustness issue here) ---\nVehicle is driving.\nCar is driving.\n\n--- End of program ---\nSportsCar destructor called.\nCar destructor called.\nVehicle destructor called.\n"
+    }
+  ],
+  "driver": "    // Demonstrate constructor order\n    std::cout << \"\\n--- Creating SportsCar object ---\" << std::endl;\n    SportsCar mySportsCar;\n\n    // Demonstrate method \"overriding\" (direct call)\n    std::cout << \"\\n--- Demonstrating direct drive() method calls ---\" << std::endl;\n    mySportsCar.drive(); // Calls SportsCar::drive() directly\n\n    std::cout << \"\\n--- Using base class pointers for 'polymorphism' (robustness issue here) ---\" << std::endl;\n    Vehicle* v_ptr = &mySportsCar;\n    v_ptr->drive(); // Calls Vehicle::drive() because drive is not virtual\n\n    Car* c_ptr = &mySportsCar;\n    c_ptr->drive(); // Calls Car::drive() because drive is not virtual\n\n    std::cout << \"\\n--- End of program ---\" << std::endl;\n    return 0;",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `drive()` method in the base `Vehicle` class (and subsequently in `Car`) is not declared `virtual`. This prevents polymorphic behavior when calling `drive()` through base class pointers, leading to unexpected behavior (slicing of behavior) where the base class method is invoked instead of the derived class method.",
+    "The destructors are not declared `virtual` in the base class. This is a robustness issue for polymorphic deletion, as deleting a derived object through a base class pointer that is not virtual leads to undefined behavior and potential memory leaks."
+  ]
+}

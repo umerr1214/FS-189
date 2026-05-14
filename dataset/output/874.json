@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function bool isSubsequence(const char* s1, const char* s2) that checks if s1 is a subsequence of s2.",
+  "test_cases": [
+    {
+      "input": "s1 = NULL",
+      "expected": "Graceful failure"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include \"874.cpp\"\n\nint main() {\n    // isSubsequence(NULL, \"abc\");\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing NULL pointer check for input strings."
+  ]
+}

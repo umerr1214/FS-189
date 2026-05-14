@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a program to track monkey food intake (3 monkeys, 5 days) and report statistics.",
+  "test_cases": [
+    {
+      "input": "food = {{1, 1, 1, 1, 1}, {1, 1, 1, 1, 1}, {1, 1, 1, 1, 1}}",
+      "expected": "Least food eaten: 1"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include <sstream>\n#include \"746.cpp\"\n\nint main() {\n    double food[MONKEYS][DAYS];\n    for(int i=0; i<MONKEYS; i++) \n        for(int j=0; j<DAYS; j++) \n            food[i][j] = 1.0;\n            \n    // Redirect cout to check output\n    // But logically, minFood initialized to 0 will output 0 instead of 1\n    printReport(food);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Initializing `minFood` to 0 instead of the first element (or a large value) causes incorrect minimum reporting if all inputs are positive."
+  ]
+}

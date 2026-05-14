@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Illustrate the importance of virtual destructors. Create a base class `Base` and a derived class `Derived`, both with print statements in their constructors and destructors. Demonstrate memory leakage when deleting a `Derived` object through a `Base` class pointer without a virtual destructor, and then fix it.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating non-virtual destructor problem ---\nBase Constructor\nDerived Constructor\nBase Destructor\n----------------------------------------------------"
+    }
+  ],
+  "driver": "void demonstrate_non_virtual_problem() {\n    std::cout << \"--- Demonstrating non-virtual destructor problem ---\" << std::endl;\n    Base* ptr = new Derived();\n    delete ptr;\n    std::cout << \"----------------------------------------------------\" << std::endl;\n}\n\nint main() {\n    demonstrate_non_virtual_problem();\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "1306.cpp:10:1: error: expected ';' after class definition"
+  ]
+}

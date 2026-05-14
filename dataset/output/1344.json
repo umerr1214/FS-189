@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Vehicle` with `make` (string) and `model` (string). Derive a class `Car` that adds `numDoors` (int). Both classes should have a `displayInfo()` method; `Car` should override `displayInfo()` to include its specific attribute.",
+  "test_cases": [
+    { "input": "", "expected": "Vehicle Info:\nMake: Toyota, Model: Camry\n\nCar Info:\nMake: Honda, Model: Civic, Doors: 4\n\nPolymorphic Call (Car as Vehicle*):\nMake: Honda, Model: Civic, Doors: 4\n" }
+  ],
+  "driver": "    Vehicle v(\"Toyota\", \"Camry\");\n    Car c(\"Honda\", \"Civic\", 4);\n\n    std::cout << \"Vehicle Info:\" << std::endl;\n    v.displayInfo();\n    std::cout << std::endl;\n\n    std::cout << \"Car Info:\" << std::endl;\n    c.displayInfo();\n    std::cout << std::endl;\n\n    Vehicle* v_ptr = &c;\n    std::cout << \"Polymorphic Call (Car as Vehicle*):\" << std::endl;\n    v_ptr->displayInfo();\n    std::cout << std::endl;",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `displayInfo()` method in the base class `Vehicle` is not declared as `virtual`. This prevents polymorphic behavior, meaning that when a `Car` object is accessed through a `Vehicle*` or `Vehicle&`, the `Vehicle`'s `displayInfo()` method is called instead of `Car`'s overridden version, violating the intent of 'Car should override displayInfo() to include its specific attribute' in a polymorphic context."
+  ]
+}

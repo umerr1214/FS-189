@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a Stack class using an array.",
+  "test_cases": [
+    {
+      "input": "push(10)",
+      "expected": "Stack contains 10"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"933.cpp\"\n\nint main() {\n    Stack s;\n    // Sets top to 99 immediately\n    s.push(10);\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using assignment `top = MAX_SIZE - 1` in the overflow check, which corrupts the stack state and falsely triggers overflow."
+  ]
+}

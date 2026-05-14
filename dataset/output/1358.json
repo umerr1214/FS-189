@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Create a `Calculator` class with overloaded `add` methods: one that takes two integers, another that takes two doubles, and a third that takes three integers. Demonstrate calling each version.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Int sum: 30\nDouble sum: 31.00\nThree int sum: 6\n"
+    }
+  ],
+  "driver": "int main() {\nCalculator c;\nint first_int_val = 10;\nint second_int_val = 20;\nint result_of_two_ints = c.add(first_int_val, second_int_val);\ncout << \"Int sum: \" << result_of_two_ints << '\\n';\ndouble first_double_val = 10.5;\ndouble second_double_val = 20.5;\ndouble result_of_two_doubles = c.add(first_double_val, second_double_val);\ncout << fixed << setprecision(2);\ncout << \"Double sum: \" << result_of_two_doubles << '\\n';\nint first_of_three_ints = 1;\nint second_of_three_ints = 2;\nint third_of_three_ints = 3;\nint result_of_three_ints = c.add(first_of_three_ints, second_of_three_ints, third_of_three_ints);\ncout << \"Three int sum: \" << result_of_three_ints << '\\n';\nreturn 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inconsistent and poor code formatting throughout the file, making it difficult to read.",
+    "Cryptic and uninformative parameter names in `add` methods (e.g., `v1`, `v2`, `v3`) and object name (`c`), reducing clarity.",
+    "Excessive verbosity and unnecessary intermediate variables in the `main` function, hindering readability.",
+    "Lack of comments to explain the class and method functionalities.",
+    "Use of `using namespace std;` in the global scope, which can lead to name collisions and reduced readability in larger projects."
+  ]
+}

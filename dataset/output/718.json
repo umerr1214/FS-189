@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void lookupName(string target, string names[], string numbers[], int size) that finds and displays the phone number for the target name.",
+  "test_cases": [
+    {
+      "input": "names = NULL",
+      "expected": "Graceful failure"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include \"718.cpp\"\n\nint main() {\n    // lookupName(\"T\", NULL, NULL, 5);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing NULL pointer checks for input arrays `names` and `numbers`."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function char firstNonRepeating(const char* str) that returns the first non-repeating character.",
+  "test_cases": [
+    {
+      "input": "str = \"stress\"",
+      "expected": "'t'"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cassert>\n#include \"824.cpp\"\n\nint main() {\n    // Will return 'e' instead of 't'\n    // assert(firstNonRepeating(\"stress\") == 't');\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Iterates through the frequency array (alphabetical order) instead of the input string to find the non-repeating character, failing to respect the original order."
+  ]
+}

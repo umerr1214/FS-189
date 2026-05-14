@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function int countCharacterOccurrences(const char arr[], char target) that counts occurrences of target in arr.",
+  "test_cases": [
+    {
+      "input": "arr = \"hello\"",
+      "expected": "2"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include \"695.cpp\"\n\nint main() {\n    const char* str = \"hello\";\n    countCharacterOccurrences(str, 'l');\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Calling `strlen(arr)` in the loop condition makes the complexity O(N^2) instead of O(N)."
+  ]
+}

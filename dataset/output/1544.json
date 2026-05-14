@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Modify the `Book` class constructor to use an initializer list to initialize its private members (`title`, `author`, `isbn`). Explain why initializer lists are often preferred.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Title: The Lord of the Rings\nAuthor: J.R.R. Tolkien\nISBN: 978-0618053267\n--------------------\nTitle: Pride and Prejudice\nAuthor: Jane Austen\nISBN: 978-0141439518\n--------------------\n\nExplanation for initializer lists:\nInitializer lists are generally preferred because they initialize members directly.\nWhen you assign in the constructor body (like `title = t;`), the member (`title`) is first default-constructed,\nand then its assignment operator is called. This can be less efficient for complex objects like `std::string`\nas it involves an extra construction and destruction of a temporary object. For `const` or reference members,\nassignment in the body is not even possible, making initializer lists mandatory.\nAlso, using cryptic parameter names (t, a, i) reduces readability.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Book {\nprivate:\n    std::string title;\n    std::string author;\n    std::string isbn;\n\npublic:\n    // Readability / Efficiency Issue:\n    // - 'title' is default constructed, then assigned in the constructor body (inefficient).\n    // - Parameter names (t, a, i) are not descriptive (poor readability).\n    // - Unnecessary use of 'this->' in display method (minor readability/style issue).\n    Book(const std::string& t, const std::string& a, const std::string& i)\n        : author(a), isbn(i) // Only 'author' and 'isbn' are initialized via initializer list\n    {\n        title = t; // 'title' is default constructed, then assigned. This is less efficient\n                   // than direct initialization via an initializer list for std::string.\n    }\n\n    void display() const {\n        std::cout << \"Title: \" << this->title << std::endl; // Unnecessary use of 'this->'\n        std::cout << \"Author: \" << author << std::endl;\n        std::cout << \"ISBN: \" << isbn << std::endl;\n    }\n};\n\nint main() {\n    Book b1(\"The Lord of the Rings\", \"J.R.R. Tolkien\", \"978-0618053267\");\n    b1.display();\n    std::cout << \"--------------------\" << std::endl;\n\n    Book b2(\"Pride and Prejudice\", \"Jane Austen\", \"978-0141439518\");\n    b2.display();\n    std::cout << \"--------------------\" << std::endl;\n\n    std::cout << \"\\nExplanation for initializer lists:\" << std::endl;\n    std::cout << \"Initializer lists are generally preferred because they initialize members directly.\" << std::endl;\n    std::cout << \"When you assign in the constructor body (like `title = t;`), the member (`title`) is first default-constructed,\" << std::endl;\n    std::cout << \"and then its assignment operator is called. This can be less efficient for complex objects like `std::string`\" << std::endl;\n    std::cout << \"as it involves an extra construction and destruction of a temporary object. For `const` or reference members,\" << std::endl;\n    std::cout << \"assignment in the body is not even possible, making initializer lists mandatory.\" << std::endl;\n    std::cout << \"Also, using cryptic parameter names (t, a, i) reduces readability.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The 'title' member is initialized by default construction followed by assignment in the constructor body, which is less efficient than direct initialization via an initializer list for `std::string`.",
+    "Parameter names ('t', 'a', 'i') are cryptic and reduce code readability.",
+    "Unnecessary use of `this->` in the `display` method, which can slightly degrade readability without providing any benefit."
+  ]
+}

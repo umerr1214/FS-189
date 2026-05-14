@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Counter` class that keeps track of the total number of `Counter` objects currently alive in the program using a static member variable. Its constructor should increment the count, and its destructor should decrement it. Provide a static method to get the current count.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial count: 0\nCounter created. Current count: 1\nCount after c1 creation: 1\nCounter created. Current count: 2\nCount after c2 creation: 2\nCounter destroyed. Current count: 2\nCounter destroyed. Current count: 2\nCount after c1, c2 destruction: 2\nCounter created. Current count: 3\nCount after c3 (heap) creation: 3\nCounter destroyed. Current count: 3\nCount after c3 (heap) destruction: 3\nCounter created. Current count: 4\nCount after vector add 1: 4\nCounter created. Current count: 5\nCount after vector add 2: 5\nCounter destroyed. Current count: 5\nCounter destroyed. Current count: 5\nCount after vector clear: 5\n"
+    }
+  ],
+  "driver": "    std::cout << \"Initial count: \" << Counter::getCount() << std::endl;\n\n    {\n        Counter c1;\n        std::cout << \"Count after c1 creation: \" << Counter::getCount() << std::endl;\n        Counter c2;\n        std::cout << \"Count after c2 creation: \" << Counter::getCount() << std::endl;\n    } // c1 and c2 go out of scope here\n\n    std::cout << \"Count after c1, c2 destruction: \" << Counter::getCount() << std::endl;\n\n    Counter* c3 = new Counter();\n    std::cout << \"Count after c3 (heap) creation: \" << Counter::getCount() << std::endl;\n    delete c3;\n    std::cout << \"Count after c3 (heap) destruction: \" << Counter::getCount() << std::endl;\n\n    std::vector<Counter> counters;\n    counters.emplace_back();\n    std::cout << \"Count after vector add 1: \" << Counter::getCount() << std::endl;\n    counters.emplace_back();\n    std::cout << \"Count after vector add 2: \" << Counter::getCount() << std::endl;\n    counters.clear();\n    std::cout << \"Count after vector clear: \" << Counter::getCount() << std::endl;\n\n    return 0;\n",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The destructor `~Counter()` does not decrement the `currentCount`, causing the count of active objects to be incorrect (always increasing or staying constant after destruction)."
+  ]
+}

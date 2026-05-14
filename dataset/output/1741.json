@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Implement a `ComplexNumber` class with private members for `real` and `imaginary` parts (doubles). Overload the `+` operator to enable addition of two `ComplexNumber` objects, returning a new `ComplexNumber`.",
+  "test_cases": [
+    { "input": "1.0 2.0 3.0 4.0", "expected": "4.0 + 6.0i" },
+    { "input": "-2.5 1.0 0.5 -3.0", "expected": "-2.0 + -2.0i" },
+    { "input": "0.0 0.0 5.0 -5.0", "expected": "5.0 + -5.0i" }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n#include <string>\n\n// ComplexNumber class definition would be here\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        std::istringstream iss(line);\n        double r1, i1, r2, i2;\n        if (!(iss >> r1 >> i1 >> r2 >> i2)) {\n            std::cerr << \"Invalid input format. Please enter four doubles.\" << std::endl;\n            continue;\n        }\n        ComplexNumber c1(r1, i1);\n        ComplexNumber c2(r2, i2);\n        ComplexNumber sum = c1 + c2;\n        std::cout << sum << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `operator+` is implemented incorrectly. Instead of returning a new `ComplexNumber` object representing the sum, it modifies the left-hand operand (`*this`) and then returns the modified object. This violates the principle of least astonishment for a binary addition operator, which should not alter its operands. This leads to unexpected side effects and incorrect state management for `ComplexNumber` objects involved in addition chains."
+  ]
+}

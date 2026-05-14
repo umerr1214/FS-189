@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Counter` class that keeps track of how many `Counter` objects have been created using a `static` member variable. Implement a default constructor to increment this count and a destructor to decrement it. Provide a static method `getTotalCount()` to retrieve the current number of active `Counter` objects.",
+  "test_cases": [
+    {
+      "input": "Initial count: 0\nAfter c1 creation: 1\nAfter c2, c3 creation: 3\nAfter c2, c3 destruction: 1\nAfter c4 (dynamic) creation: 2\nAfter c4 (dynamic) destruction: 1",
+      "expected": "Linker Error"
+    }
+  ],
+  "driver": "#include <iostream>\n\n// The Counter class will be inserted here, followed by the main function.\n// The driver attempts to compile and link the provided C++ code.\n\n// No actual C++ driver code needed beyond what's in the main function of the sample,\n// as the primary goal is to demonstrate the linking failure.\n\nint main() {\n    // This driver code will attempt to link the provided C++ code.\n    // The expected outcome is a linker error due to the missing static member definition.\n    std::cout << \"Attempting to run. This should fail at link time.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The static member variable `totalCount` is declared within the `Counter` class but is not defined outside the class. In C++, static data members must be defined exactly once in the global scope (usually in a .cpp file) to allocate storage for them. This omission leads to a linker error: 'undefined reference to `Counter::totalCount`'."
+  ]
+}

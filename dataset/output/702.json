@@ -1,0 +1,27 @@
+{
+  "language": "c++",
+  "question": "Write a function void capitalizeWords(char arr[]) that capitalizes the first letter of each word and lowercases the rest.",
+  "test_cases": [
+    {
+      "input": "arr = \"hello world\"",
+      "expected": "\"Hello World\""
+    },
+    {
+      "input": "arr = \"  multiple   SPACES  \"",
+      "expected": "\"  Multiple   Spaces  \""
+    },
+    {
+      "input": "arr = \"ONE\"",
+      "expected": "\"One\""
+    },
+    {
+      "input": "arr = NULL",
+      "expected": "No crash"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cctype>\n#include <cassert>\n#include \"702.cpp\"\n\nint main() {\n    char str1[] = \"hello world\";\n    capitalizeWords(str1);\n    assert(strcmp(str1, \"Hello World\") == 0);\n\n    char str2[] = \"ONE\";\n    capitalizeWords(str2);\n    assert(strcmp(str2, \"One\") == 0);\n    \n    capitalizeWords(NULL);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

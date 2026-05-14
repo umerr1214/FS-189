@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `StringWrapper` class that manages a C-style string (`char*`) allocated on the heap. Implement a constructor that takes a `const char*` and performs a deep copy, and a destructor that releases the dynamically allocated memory. Demonstrate memory leak prevention.",
+  "test_cases": [
+    { "input": "Efficient code is good code!", "expected": "StringWrapper created for: \"Efficient code is good code!\"\ns1 content: Efficient code is good code!" },
+    { "input": "", "expected": "StringWrapper created for: \"\"\ns2 content: \"\"" },
+    { "input": "nullptr", "expected": "StringWrapper created for: \"\" (from nullptr)\ns3 content: \"\"" }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Demonstrating StringWrapper with various inputs ---\" << std::endl;\n    StringWrapper s1(\"Efficient code is good code!\");\n    std::cout << \"s1 content: \" << s1.get_string() << std::endl;\n    std::cout << std::endl;\n    StringWrapper s2(\"\");\n    std::cout << \"s2 content: \\\"\" << s2.get_string() << \"\\\"\" << std::endl;\n    std::cout << std::endl;\n    StringWrapper s3(nullptr);\n    std::cout << \"s3 content: \\\"\" << s3.get_string() << \"\\\"\" << std::endl;\n    std::cout << std::endl;\n    std::cout << \"Program finished.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The constructor implements `strlen` and `strcpy` manually using loops instead of leveraging standard library functions like `std::strlen` and `std::strcpy`. This approach is less efficient as standard library functions are often highly optimized, and it reduces readability by obscuring the intent of common string operations.",
+    "Manual string operations are more prone to off-by-one errors and buffer overflows if not implemented perfectly, compared to robust standard library functions."
+  ]
+}

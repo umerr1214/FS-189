@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Shape` with a protected string member `color` and a constructor to initialize it. Derive a `Circle` class from `Shape`, adding a private double member `radius` and its own constructor. Implement a `displayInfo()` method in both classes.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Shape Info - Color: Orange\nShape Info - Color: Purple\nCircle Info - Color: Purple, Radius: 7.5\n\n--- Polymorphic Calls ---\nShape Info - Color: Purple\nCircle Info - Color: Purple, Radius: 7.5\nShape Info - Color: Brown\nCircle Info - Color: Brown, Radius: 1\n"
+    }
+  ],
+  "driver": "int main() {\n    Shape s(\"Orange\");\n    s.displayInfo();\n\n    Circle c(\"Purple\", 7.5);\n    c.displayInfo();\n\n    std::cout << \"\\n--- Polymorphic Calls ---\\n\";\n    Shape* s_ptr = &c;\n    s_ptr->displayInfo(); // Will call Circle's displayInfo due to virtual function\n\n    // Demonstrating the copy overhead (conceptually, not easily measurable in this simple main)\n    std::string temp_color = \"Brown\";\n    // 'temp_color' is copied when passed to Circle's constructor.\n    // Then, inside Circle's constructor, this copy is copied again to pass to Shape's constructor.\n    Circle c2(temp_color, 1.0);\n    c2.displayInfo();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Constructors for `Shape` and `Circle` take `std::string` by value instead of `const std::string&`, leading to unnecessary string copies.",
+    "The `Circle::displayInfo()` method redundantly prints the color information, which is already handled by `Shape::displayInfo()`, making the output verbose and indicating a lack of clear separation of concerns."
+  ]
+}

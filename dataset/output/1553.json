@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Create a `Point` class with private `x` and `y` (double) coordinates. Write two overloaded non-member functions: `void print(Point p)` that prints 'Point: (x, y)' and `void print(Point p, string prefix)` that prints 'Prefix: (x, y)'.",
+  "test_cases": [
+    { "input": "Point p1(10.5, 20.1); print(p1);", "expected": "Point: (10.5, 20.1)\n" },
+    { "input": "Point p2(-3.0, 7.8); print(p2, \"Location\");", "expected": "Location: (-3.0, 7.8)\n" },
+    { "input": "Point p3(0.0, 0.0); print(p3, \"Origin\");", "expected": "Origin: (0.0, 0.0)\n" }
+  ],
+  "driver": "    Point p1(10.5, 20.1);\n    Point p2(-3.0, 7.8);\n    Point p3(0.0, 0.0);\n\n    print(p1);\n    print(p2, \"Location\");\n    print(p3, \"Origin\");",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    {
+      "line": 20,
+      "column": 66,
+      "message": "The `print(Point p)` function incorrectly swaps the x and y coordinates in its output, printing (y, x) instead of (x, y)."
+    }
+  ]
+}

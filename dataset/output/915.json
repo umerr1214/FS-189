@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a recursive function long long factorial(int n) that calculates the factorial of n.",
+  "test_cases": [
+    {
+      "input": "n = 5",
+      "expected": "120"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"915.cpp\"\n\nint main() {\n    // Returns 1\n    if (factorial(5) == 120) return 1;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using division operator `/` instead of multiplication `*` in the recursive step."
+  ]
+}

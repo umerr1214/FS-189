@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Point` class with private `x` and `y` integer coordinates. Include a default constructor that initializes both to 0, a parameterized constructor, and a public method `displayPoint()` that prints the coordinates.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Point p1 (default): (0, 0)\nPoint p2 (parameterized): (10, 20)\nPoint p3 (negative): (-5, -8)\nPoint p_const (const object): (100, 200)\n"
+    }
+  ],
+  "driver": "#include <iostream>\n\nclass Point {\nprivate:\n    int x;\n    int y;\n\npublic:\n    // Default constructor using initializer list\n    Point() : x(0), y(0) {}\n\n    // Parameterized constructor using initializer list\n    Point(int x_coord, int y_coord) : x(x_coord), y(y_coord) {}\n\n    // Public method to display coordinates, marked const as it does not modify the object\n    void displayPoint() const {\n        std::cout << \"(\" << x << \", \" << y << \")\";\n    }\n};\n\nint main() {\n    // Test default constructor\n    Point p1;\n    std::cout << \"Point p1 (default): \";\n    p1.displayPoint();\n    std::cout << std::endl;\n\n    // Test parameterized constructor\n    Point p2(10, 20);\n    std::cout << \"Point p2 (parameterized): \";\n    p2.displayPoint();\n    std::cout << std::endl;\n\n    // Test with negative coordinates\n    Point p3(-5, -8);\n    std::cout << \"Point p3 (negative): \";\n    p3.displayPoint();\n    std::cout << std::endl;\n\n    // Verify const correctness\n    const Point p_const(100, 200);\n    std::cout << \"Point p_const (const object): \";\n    p_const.displayPoint();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

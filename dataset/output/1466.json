@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Model an `Order` class and a `Customer` class. An `Order` should have an `orderID` and a reference or pointer to the `Customer` who placed it, demonstrating an association relationship where objects can reference each other without strict ownership.",
+  "test_cases": [
+    { "input": "display_orders", "expected": "Order ID: 101, Placed by: Customer ID: 1, Name: Alice\nOrder ID: 102, Placed by: Customer ID: 2, Name: Bob\nOrder ID: 103, Placed by: Unknown Customer (ID: 99)\n" }
+  ],
+  "driver": "int main() {\n    std::vector<Customer> customers;\n    customers.emplace_back(1, \"Alice\");\n    customers.emplace_back(2, \"Bob\");\n    customers.emplace_back(3, \"Charlie\");\n\n    std::vector<Order> orders;\n    orders.emplace_back(101, 1); // Order by Alice\n    orders.emplace_back(102, 2); // Order by Bob\n    orders.emplace_back(103, 99); // Order by non-existent customer\n\n    for (const auto& order : orders) {\n        order.displayOrderDetails(customers);\n    }\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The Order class stores only the customer ID instead of a direct reference or pointer to the Customer object. To retrieve customer details, methods like `getCustomer` and `displayOrderDetails` require iterating through an entire list of `Customer` objects (e.g., `std::vector<Customer>`) for every access. This leads to O(N) time complexity for customer lookup, making it inefficient, especially with a large number of customers or frequent lookups. Additionally, passing the `allCustomers` vector to display methods increases coupling and reduces readability, as the Order object cannot display its full details without external context."
+  ]
+}

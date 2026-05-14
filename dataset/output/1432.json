@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Base` and a derived class `Derived`. In their default constructors and destructors, print messages indicating which class's constructor/destructor is being called to observe the order of construction and destruction.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Base Constructor\nDerived Constructor\nDerived Destructor\nBase Destructor\n"
+    }
+  ],
+  "driver": "int main() {\n    Derived d;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `BaseClass` with a `protected` integer member `protectedVar` and a `private` integer member `privateVar`. Create a `DerivedClass` that inherits from `BaseClass`. In `DerivedClass`, demonstrate accessing `protectedVar` and show that `privateVar` is inaccessible.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "BaseClass constructor called. protectedVar = 10, privateVar = 100\nDerivedClass constructor called.\n\n--- Initial state ---\nBaseClass::protectedVar: 10\nBaseClass::privateVar: 100\n\n--- Inside DerivedClass::demonstrateAccess() ---\nAccessing protectedVar in DerivedClass (before modification): 10\nModified protectedVar in DerivedClass: 25\nAttempting to access privateVar: (Inaccessible - commented out due to compile error)\n\n--- State after DerivedClass modification ---\nBaseClass::protectedVar: 25\nBaseClass::privateVar: 100\n"
+    }
+  ],
+  "driver": "valid C++ code to run test cases",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

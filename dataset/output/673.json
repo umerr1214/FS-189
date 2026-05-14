@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a function void reverseWords(char arr[]) that reverses the order of words in the string.",
+  "test_cases": [],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <algorithm>\n#include \"673.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after function call 'reverseWords(arr)'"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Model a `Car` class using composition. `Car` should contain an `Engine` object as a member. The `Engine` class should have a `start()` method, and `Car` should have a `startCar()` method that calls `Engine::start()`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Engine constructed.\nCar constructed.\n\n--- First Start Attempt ---\nCar attempting to start its engine...\nEngine started.\nCar's engine operation confirmed.\n\n--- Second Start Attempt ---\nCar attempting to start its engine...\nEngine is already running.\nCar's engine operation confirmed.\n\n--- Stop Attempt ---\nCar attempting to stop its engine...\nEngine stopped.\nCar's engine shutdown confirmed.\n\n--- Third Start Attempt (after stop) ---\nCar attempting to start its engine...\nEngine started.\nCar's engine operation confirmed.\n"
+    }
+  ],
+  "driver": "The `main` function in the provided C++ code serves as the driver, demonstrating the functionality of the `Car` and `Engine` classes.",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a `Point` class with private integer members `x` and `y`. Provide a constructor to set these coordinates and a public method `getDistanceToOrigin()` that calculates and returns the Euclidean distance from the point to (0,0).",
+  "test_cases": [
+    { "input": "3 4", "expected": "5.0000000000" },
+    { "input": "5 12", "expected": "13.0000000000" },
+    { "input": "0 0", "expected": "0.0000000000" },
+    { "input": "1 0", "expected": "1.0000000000" },
+    { "input": "0 1", "expected": "1.0000000000" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n#include <iomanip>\n\nclass Point {\nprivate:\n    int x_;\n    int y_;\n\npublic:\n    Point(int x, int y) : x_(x), y_(y) {}\n\n    double getDistanceToOrigin() {\n        return std::sqrt(static_cast<double>(x_ * x_) + static_cast<double>(y_ * y_));\n    }\n};\n\nint main() {\n    std::cout << std::fixed << std::setprecision(10);\n    int x, y;\n    while (std::cin >> x >> y) {\n        Point p(x, y);\n        std::cout << p.getDistanceToOrigin() << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The `getDistanceToOrigin` method calculates the squared Euclidean distance (x*x + y*y) instead of the actual Euclidean distance. It is missing a call to `std::sqrt`."]
+}

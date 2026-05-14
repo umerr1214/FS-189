@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a function void UpperHalf(int A[][SIZE], int N) that prints the upper half of the matrix.",
+  "test_cases": [
+    {
+      "input": "A = {{1, 2}, {3, 4}}",
+      "expected": "1 2\n  4"
+    },
+    {
+      "input": "N = 10",
+      "expected": "Invalid size."
+    }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include \"726.cpp\"\n\nint main() {\n    int A[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};\n    UpperHalf(A, 3);\n    UpperHalf(A, 10);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `BaseClass` with a `protected` integer member `protectedVar` and a `private` integer member `privateVar`. Create a `DerivedClass` that inherits from `BaseClass`. In `DerivedClass`, demonstrate accessing `protectedVar` and show that `privateVar` is inaccessible.",
+  "test_cases": [
+    { "input": "", "expected": "DerivedClass: Accessing protectedVar. Value = 10\nDerivedClass: privateVar is inaccessible from DerivedClass." }
+  ],
+  "driver": "int main() { DerivedClass d; d.accessBaseMembers(); return 0; }",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The code incorrectly prints '50' for 'protectedVar' in 'DerivedClass::accessBaseMembers' instead of its actual initialized value '10'."
+  ]
+}

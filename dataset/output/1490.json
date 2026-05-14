@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Create a `Logger` class that prints 'Logger initialized.' when its constructor is called and 'Logger destroyed.' when its destructor is called. Demonstrate the lifecycle of a `Logger` object in `main`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Program start.\nLogger initialized.\nEntering an unnecessary block scope.\nLogger initialized.\nExiting the unnecessary block scope.\nLogger destroyed.\nLogger initialized.\nLogger destroyed.\nProgram end.\nLogger destroyed.\n"
+    }
+  ],
+  "driver": "The `main` function in the provided C++ code demonstrates the `Logger` class lifecycle, showcasing various readability and efficiency issues.",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses `std::endl` instead of `\\n` for printing, which causes an unnecessary flush of the output buffer on every call, potentially reducing efficiency for high-volume logging.",
+    "The `demonstrateLoggerLifecycleInefficiently` function uses `new` and `delete` for a simple `Logger` object, incurring heap allocation/deallocation overhead and manual memory management when stack allocation would be simpler and more efficient.",
+    "Includes an unnecessary loop and variable (`temp_val`) in `demonstrateLoggerLifecycleInefficiently` that performs no useful work, reducing efficiency.",
+    "The `main` function includes an unnecessary nested block scope, which complicates the code structure without adding functional value, impacting readability."
+  ]
+}

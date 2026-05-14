@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Base` with a public method `void show(int val)`. Derive a `Derived` class from `Base`. In `Derived`, overload `show` with `void show(double val)` and also define `void show(int val)` (non-virtual). Demonstrate calling `show` using `Base` and `Derived` class objects and pointers, highlighting method hiding vs. overloading.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation Error: Missing semicolon after class 'Base' definition." }
+  ],
+  "driver": "#include <iostream>\n\nclass Base {\npublic:\n    void show(int val) {\n        std::cout << \"Base::show(int): \" << val << std::endl;\n    }\n}; // Missing semicolon here, will cause a syntax error\n\nclass Derived : public Base {\npublic:\n    void show(double val) {\n        std::cout << \"Derived::show(double): \" << val << std::endl;\n    }\n\n    void show(int val) { // Non-virtual, hides Base::show(int)\n        std::cout << \"Derived::show(int): \" << val << std::endl;\n    }\n};\n\nint main() {\n    Base b;\n    Derived d;\n\n    Base* b_ptr = &d; // Base pointer to Derived object\n    Derived* d_ptr = &d; // Derived pointer to Derived object\n\n    std::cout << \"--- Calling with Base object ---\" << std::endl;\n    b.show(10); // Calls Base::show(int)\n\n    std::cout << \"\\n--- Calling with Derived object ---\" << std::endl;\n    d.show(20);    // Calls Derived::show(int)\n    d.show(30.5);  // Calls Derived::show(double)\n    d.Base::show(40); // Explicitly call hidden Base::show(int)\n\n    std::cout << \"\\n--- Calling with Base pointer to Derived object ---\" << std::endl;\n    b_ptr->show(50); // Calls Base::show(int) due to static binding (method hiding)\n\n    std::cout << \"\\n--- Calling with Derived pointer to Derived object ---\" << std::endl;\n    d_ptr->show(70);    // Calls Derived::show(int)\n    d_ptr->show(80.5);  // Calls Derived::show(double)\n    d_ptr->Base::show(90); // Explicitly call hidden Base::show(int)\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the class definition of 'Base'. This prevents the program from compiling."]
+}

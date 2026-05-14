@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a C++ class named `Book` with private member variables for `title` (string), `author` (string), and `isbn` (string). Provide public getter and setter methods for each attribute.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Initial Book Details:\nTitle: Dune\nAuthor: Frank Herbert\nISBN: 978-0441172719\n\nUpdated Book Details (after direct modification via getter):\nTitle: Dune Messiah\nAuthor: Brian Herbert & Kevin J. Anderson\nISBN: 978-0765307301" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// Assuming the Book class is defined correctly in the user's code\n// The user's main function will be used to test the class.\n// This driver simply calls the user's main function.\n\nint main() {\n    // The user's main function contains the test logic.\n    // We will compile and run the user's code as is.\n    // Expected output is based on the logic within the user's main.\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `getTitle()` method returns a `std::string&` (a non-const reference) instead of `const std::string&` or `std::string`. This breaks encapsulation by allowing external code to directly modify the private `title` member variable without using a designated setter method. Getters should typically provide read-only access or a copy of the private data."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Building on the `Vehicle` and `Car` classes, modify `Vehicle`'s `displayInfo()` method to be `virtual`. Demonstrate polymorphism by creating an array of `Vehicle` pointers, pointing to both `Vehicle` and `Car` objects, and calling `displayInfo()` through the base pointers.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Displaying vehicle information polymorphically:\nVehicle: 2020 Toyota Camry\nCar: 2022 Honda Civic, Doors: 4\nVehicle: 2021 Ford F-150\n\nCleaning up memory:\nCar destructor called for Honda Civic\nVehicle destructor called for Honda Civic\nVehicle destructor called for Toyota Camry\nVehicle destructor called for Ford F-150"
+    }
+  ],
+  "driver": "int main() {\n    const int NUM_VEHICLES = 3;\n    Vehicle* vehicles[NUM_VEHICLES];\n    vehicles[0] = new Vehicle(\"Toyota\", \"Camry\", 2020);\n    vehicles[1] = new Car(\"Honda\", \"Civic\", 2022, 4);\n    vehicles[2] = new Vehicle(\"Ford\", \"F-150\", 2021);\n    std::cout << \"Displaying vehicle information polymorphically:\" << std::endl;\n    for (int i = 0; i < NUM_VEHICLES; ++i) {\n        vehicles[i]->displayInfo();\n    }\n    std::cout << \"\\nCleaning up memory:\" << std::endl;\n    for (int i = 0; i < NUM_VEHICLES; ++i) {\n        delete vehicles[i];\n    }\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition `Car` causing compilation failure."
+  ]
+}

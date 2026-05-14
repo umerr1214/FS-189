@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a `Point` class with private `x` and `y` coordinates. Provide a default constructor, a parameterized constructor, and a copy constructor. Demonstrate when the copy constructor is called by passing a `Point` object by value to a function and by initializing a new object with an existing one.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Compilation Error: Missing semicolon after class definition."
+    }
+  ],
+  "driver": "#include <iostream>\n\nclass Point {\nprivate:\n    int x;\n    int y;\n\npublic:\n    Point() : x(0), y(0) {}\n    Point(int x_val, int y_val) : x(x_val), y(y_val) {}\n    Point(const Point& other) : x(other.x), y(other.y) {}\n    int getX() const { return x; }\n    int getY() const { return y; }\n    void display() const { std::cout << \"Point coordinates: (\" << x << \", \" << y << \")\" << std::endl; }\n};\n\nvoid processPoint(Point p) { p.display(); }\n\nint main() {\n    Point p1;\n    Point p2(1,2);\n    Point p3 = p2;\n    processPoint(p2);\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the closing brace of the 'Point' class definition. This causes a compilation error before any code execution."
+  ]
+}

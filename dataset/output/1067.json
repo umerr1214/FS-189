@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Shape` with a protected member `color` (string) and a virtual method `calculateArea()` that returns 0. Derive a class `Circle` from `Shape` with an additional private member `radius` (double). Override `calculateArea()` in `Circle` to compute the area of a circle.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Circle 1 (radius 5.0, color Red) area: 78.539816339744830\nCircle 2 (radius 10.0, color Blue) area: 314.159265358979300\nShape pointer to Circle (radius 7.0, color Green) area: 153.938040025899850"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <cmath>\n#include <iomanip>\n\n// Base class Shape\nclass Shape {\nprotected:\n    std::string color;\npublic:\n    Shape(const std::string& c) : color(c) {}\n    virtual double calculateArea() {\n        return 0;\n    }\n    virtual ~Shape() {}\n};\n\n// Derived class Circle\nclass Circle : public Shape {\nprivate:\n    double radius;\npublic:\n    Circle(const std::string& c, double r) : Shape(c), radius(r) {}\n    // Logical error: Calculates circumference instead of area\n    double calculateArea() override {\n        return 2 * M_PI * radius;\n    }\n};\n\nint main() {\n    std::cout << std::fixed << std::setprecision(15);\n\n    // Test cases\n    Circle c1(\"Red\", 5.0);\n    Circle c2(\"Blue\", 10.0);\n\n    std::cout << \"Circle 1 (radius 5.0, color Red) area: \" << c1.calculateArea() << std::endl;\n    std::cout << \"Circle 2 (radius 10.0, color Blue) area: \" << c2.calculateArea() << std::endl;\n\n    // Using polymorphism\n    Shape* s1 = &c1;\n    Shape* s2 = new Circle(\"Green\", 7.0);\n    std::cout << \"Shape pointer to Circle (radius 7.0, color Green) area: \" << s2->calculateArea() << std::endl;\n    delete s2;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "Circle::calculateArea() calculates the circumference (2 * PI * radius) instead of the area (PI * radius * radius). This leads to incorrect area computations."
+  ]
+}

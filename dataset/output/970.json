@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function Node* insertBST(Node* root, int val) that inserts a value into a Binary Search Tree.",
+  "test_cases": [
+    {
+      "input": "Insert sorted sequence (1..N)",
+      "expected": "Stack Overflow (Recursive)"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"970.cpp\"\n\nint main() {\n    // Node* root = nullptr;\n    // for(int i=0; i<100000; i++) root = insertBST(root, i);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Recursive implementation is vulnerable to stack overflow when inserting sorted data (skewed tree); iterative approach is more robust."
+  ]
+}

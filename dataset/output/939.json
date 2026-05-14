@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a Circular Queue class using an array.",
+  "test_cases": [
+    {
+      "input": "enqueue(10)",
+      "expected": "Success"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"939.cpp\"\n\nint main() {\n    Queue q;\n    // Fails immediately\n    q.enqueue(10);\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using assignment `size = MAX_SIZE` in the overflow check, which fills the queue logically and prevents enqueuing."
+  ]
+}

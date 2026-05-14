@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function Node* mergeLists(Node* head1, Node* head2) that merges two sorted linked lists.",
+  "test_cases": [
+    {
+      "input": "Very long lists",
+      "expected": "Stack Overflow (Recursive)"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"964.cpp\"\n\nint main() {\n    // Simulation of stack overflow is hard in simple driver, \n    // but the issue is inherent to recursion on lists.\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Recursive implementation risks stack overflow for long linked lists; iterative approach is more robust."
+  ]
+}

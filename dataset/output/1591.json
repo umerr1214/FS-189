@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Base` with a public method `void show(int val)`. Derive a `Derived` class from `Base`. In `Derived`, overload `show` with `void show(double val)` and also define `void show(int val)` (non-virtual). Demonstrate calling `show` using `Base` and `Derived` class objects and pointers, highlighting method hiding vs. overloading.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating Method Hiding and Overloading (Robustness Issue: Incomplete Hiding Demo) ---\n\n=== Using Base Object ===\n  Base::show(int) called with value: 10\n\n=== Using Derived Object ===\n  - Calling show(int) on Derived object (Hiding Base::show(int)):\n  Derived::show(int) called with value: 20\n  - Calling show(double) on Derived object (Overloading):\n  Derived::show(double) called with value: 20.5\n\n=== Using Base Pointer to Base Object ===\n  Base::show(int) called with value: 30\n\n=== Using Base Pointer to Derived Object (Method Hiding) ===\n  Base::show(int) called with value: 40\n\n=== Using Derived Pointer to Derived Object ===\n  - Calling show(int) on Derived pointer:\n  Derived::show(int) called with value: 50\n  - Calling show(double) on Derived pointer:\n  Derived::show(double) called with value: 50.5\n\n--- End of Demonstration ---\nNOTE: This demonstration shows method hiding where Derived::show(int) hides Base::show(int).\nHowever, it does not explicitly show how to call the hidden Base::show(int) method using a Derived object (e.g., d_obj.Base::show(int)).\nThis omission makes the demonstration of method hiding incomplete, which can be a robustness issue in understanding for a learner.\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The demonstration of method hiding is incomplete as it does not explicitly show how to call the hidden base class method using a derived class object or pointer (e.g., `d_obj.Base::show(int)`). This omission makes the educational value less robust, as a complete understanding of hiding requires knowing how to access the hidden member."]
+}

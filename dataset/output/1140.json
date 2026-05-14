@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Vehicle` with `protected` members `speed` (int) and `fuelLevel` (double). Implement a `protected` method `updateSpeed(int newSpeed)`. Derive a `Car` class from `Vehicle`. In `Car`, create a public method `accelerate()` that internally uses `updateSpeed()` and also adjusts `fuelLevel` based on acceleration.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Speed: 0 km/h, Fuel: 100.0 L\nCar accelerated!\nSpeed: 10 km/h, Fuel: 99.0 L\nCar accelerated!\nSpeed: 20 km/h, Fuel: 98.0 L\n"
+    }
+  ],
+  "driver": "    Car myCar;\n    myCar.displayStatus();\n    myCar.accelerate();\n    myCar.displayStatus();\n    myCar.accelerate();\n    myCar.displayStatus();\n    return 0;",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `accelerate()` method in the `Car` class directly modifies the `speed` member (`this->speed += 10;`) instead of internally calling the `updateSpeed()` protected method as required by the problem statement."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Explain the difference between `public`, `private`, and `protected` access specifiers in C++ classes. Provide a brief code snippet demonstrating each in a simple class structure.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Public method called. publicVar = 100\nPrivate method called. privateVar = 20\nProtected method called. protectedVar = 30\nPublic method called. publicVar = 200\nPrivate method called. privateVar = 20\nProtected method called. protectedVar = 30\nDerived class accessing protectedVar: 35\nProtected method called. protectedVar = 35\n\nExplanation of access specifiers:\n  public: Accessible from anywhere.\n  private: Accessible only from within the class itself.\n  protected: Accessible from within the class itself and from derived classes."
+    }
+  ],
+  "driver": "int main() {\n    // The program demonstrates access specifiers and prints explanations.\n    // The semantic error lies in the incompleteness of the demonstration aspect.\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The code snippet semantically fails to fully demonstrate the 'difference' aspect of access specifiers. While it correctly uses public, private, and protected members, it does not explicitly illustrate the *restricted* access of private and protected members by attempting (and commenting out) access from unauthorized scopes (e.g., directly from the 'main' function). This omission makes the demonstration incomplete in showing the boundaries and distinct characteristics of these specifiers."
+  ]
+}

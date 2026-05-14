@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function bool hasCycle(Node* head) that checks if a linked list has a cycle.",
+  "test_cases": [
+    {
+      "input": "List: 1 -> 2 -> 3 -> 2 -> 3 -> NULL",
+      "expected": "false"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"957.cpp\"\n\nint main() {\n    Node* head = new Node{1, new Node{2, new Node{3, new Node{2, new Node{3, nullptr}}}}};\n    // Returns true due to value match (3 == 3)\n    if (hasCycle(head)) return 1;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Comparing node data `slow->data == fast->data` instead of node pointers `slow == fast`, leading to false positives if duplicate values exist."
+  ]
+}

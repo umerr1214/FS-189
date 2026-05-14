@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void insertAtHead(Node*& head, int val) that inserts a node at the beginning of a linked list.",
+  "test_cases": [
+    {
+      "input": "Insert 10, then 20",
+      "expected": "20 -> 10 -> NULL"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n#include \"944.cpp\"\n\nint main() {\n    Node* head = nullptr;\n    insertAtHead(head, 10);\n    // insertAtHead(head, 20); // Will cause infinite loop in printList logic if not protected\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Updates `head` to `newNode` before setting `newNode->next`, causing `newNode->next` to point to itself (cycle) and losing the rest of the list."
+  ]
+}

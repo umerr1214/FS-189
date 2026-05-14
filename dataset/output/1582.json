@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Counter` class that keeps track of the total number of `Counter` objects currently alive in the program using a static member variable. Its constructor should increment the count, and its destructor should decrement it. Provide a static method to get the current count.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial count: 0\nCount after c1 creation: 1\nCount after c2 creation: 2\nCount after c1, c2 destruction: 0\nCount after c3 (heap) creation: 1\nCount after c3 (heap) destruction: 0\nCount after vector add 1: 1\nCount after vector add 2: 2\nCount after vector clear: 0\n"
+    }
+  ],
+  "driver": "    std::cout << \"Initial count: \" << Counter::getCount() << std::endl;\n\n    {\n        Counter c1;\n        std::cout << \"Count after c1 creation: \" << Counter::getCount() << std::endl;\n        Counter c2;\n        std::cout << \"Count after c2 creation: \" << Counter::getCount() << std::endl;\n    } // c1 and c2 go out of scope here\n\n    std::cout << \"Count after c1, c2 destruction: \" << Counter::getCount() << std::endl;\n\n    Counter* c3 = new Counter();\n    std::cout << \"Count after c3 (heap) creation: \" << Counter::getCount() << std::endl;\n    delete c3;\n    std::cout << \"Count after c3 (heap) destruction: \" << Counter::getCount() << std::endl;\n\n    std::vector<Counter> counters;\n    counters.emplace_back();\n    std::cout << \"Count after vector add 1: \" << Counter::getCount() << std::endl;\n    counters.emplace_back();\n    std::cout << \"Count after vector add 2: \" << Counter::getCount() << std::endl;\n    counters.clear();\n    std::cout << \"Count after vector clear: \" << Counter::getCount() << std::endl;\n\n    return 0;\n",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the class definition of `Counter`."
+  ]
+}

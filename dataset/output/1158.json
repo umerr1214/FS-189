@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a base class `MediaItem` with a virtual function `play()`. Derive `AudioFile` and `VideoFile` classes from `MediaItem`. Override `play()` in each derived class to simulate playing an audio or video file (e.g., printing 'Playing audio: [title]' or 'Playing video: [filename]'). Use an array of `MediaItem` pointers to demonstrate playing various media types polymorphically.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Playing media ---\nPlaying audio: My Favorite Song\nPlaying video: Holiday Movie.mp4\nPlaying audio: Background Music\n--- Finished playing ---\n--- Cleaning up ---\nAudioFile destructor called for 'My Favorite Song'.\nMediaItem destructor called.\nVideoFile destructor called for 'Holiday Movie.mp4'.\nMediaItem destructor called.\nAudioFile destructor called for 'Background Music'.\nMediaItem destructor called.\n--- Cleanup finished ---\n"
+    }
+  ],
+  "driver": "std::vector<MediaItem*> mediaLibrary;\n    mediaLibrary.push_back(new AudioFile(\"My Favorite Song\"));\n    mediaLibrary.push_back(new VideoFile(\"Holiday Movie.mp4\"));\n    mediaLibrary.push_back(new AudioFile(\"Background Music\"));\n\n    std::cout << \"--- Playing media ---\" << std::endl;\n    for (MediaItem* item : mediaLibrary) {\n        item->play();\n    }\n    std::cout << \"--- Finished playing ---\" << std::endl;\n\n    std::cout << \"--- Cleaning up ---\" << std::endl;\n    for (MediaItem* item : mediaLibrary) {\n        delete item;\n    }\n    std::cout << \"--- Cleanup finished ---\" << std::endl;\n",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `play()` function in the base class `MediaItem` is not declared `virtual`. This means that dynamic dispatch (polymorphism) will not occur. When `play()` is called through a `MediaItem*` pointer, the compiler will perform static dispatch and always call `MediaItem::play()`, even if the pointer points to an `AudioFile` or `VideoFile` object. This fundamentally breaks the polymorphic behavior requested by the problem statement."
+  ]
+}

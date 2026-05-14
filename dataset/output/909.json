@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void selectionSort(int arr[], int n) that sorts an array using Selection Sort.",
+  "test_cases": [
+    {
+      "input": "arr = {3, 2, 1}",
+      "expected": "{1, 2, 3}"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"909.cpp\"\n\nint main() {\n    int arr[] = {3, 2, 1};\n    selectionSort(arr, 3);\n    // Array remains unsorted\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Comparing addresses `&arr[j] < &arr[min_idx]` instead of values `arr[j] < arr[min_idx]`, resulting in no swaps."
+  ]
+}

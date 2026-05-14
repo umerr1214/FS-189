@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void printSpiral(int matrix[][COLS], int rows, int cols) that prints the matrix in spiral order.",
+  "test_cases": [
+    {
+      "input": "matrix = {{1, 2, 3}}",
+      "expected": "1 2 3"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n#include \"848.cpp\"\n\nint main() {\n    int m[1][COLS] = {{1, 2, 3, 4}};\n    // Redirect cout or manual check. Will duplicate elements.\n    printSpiral(m, 1, 4);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Missing conditional checks `if (top <= bottom)` and `if (left <= right)` before traversing back, causing duplicate printing for matrices with odd dimensions (e.g., single row/column)."
+  ]
+}

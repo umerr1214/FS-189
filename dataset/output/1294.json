@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Implement a `Rectangle` class with `width` and `height` attributes. Create a `setDimensions(double w, double h)` method that returns a reference to the current object (`*this`), allowing for method chaining (e.g., `rect.setDimensions(10,5).calculateArea();`).",
+  "test_cases": [
+    { "input": "", "expected": "Area: 50\nChained Area: 21\n" }
+  ],
+  "driver": "#include <iostream>\n\nclass Rectangle {\npublic:\n    double width;\n    double height;\n    Rectangle(double w = 0, double h = 0) : width(w), height(h) {}\n    Rectangle& setDimensions(double w, double h) { width = w; height = h; return *this; }\n    double calculateArea() const { return width * height; }\n};\n\nint main() {\n    Rectangle rect;\n    rect.setDimensions(10, 5);\n    std::cout << \"Area: \" << rect.calculateArea() << std::endl;\n\n    Rectangle rect2;\n    double area = rect2.setDimensions(7, 3).calculateArea();\n    std::cout << \"Chained Area: \" << area << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after class definition."]
+}

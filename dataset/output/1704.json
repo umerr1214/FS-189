@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `BaseClass` with a `protected` integer member `protectedVar` and a `private` integer member `privateVar`. Create a `DerivedClass` that inherits from `BaseClass`. In `DerivedClass`, demonstrate accessing `protectedVar` and show that `privateVar` is inaccessible.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation error: 'privateVar' is a private member of 'BaseClass' and cannot be accessed from 'DerivedClass'." }
+  ],
+  "driver": "int main() { DerivedClass d; d.accessBaseMembers(); return 0; }",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Attempting to access 'privateVar', which is a private member of 'BaseClass', directly from 'DerivedClass'. This violates C++ access rules and results in a compile-time semantic error."
+  ]
+}

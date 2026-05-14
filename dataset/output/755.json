@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a program to track weather (3 months, 30 days) and report statistics.",
+  "test_cases": [
+    {
+      "input": "Standard data",
+      "expected": "Correct stats"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include \"755.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Redundant loops: iterates through the array multiple times (4 passes) to calculate different stats instead of accumulating them in a single pass."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a program to track weather (3 months, 30 days) and report statistics.",
+  "test_cases": [
+    {
+      "input": "All 'S'",
+      "expected": "R=0, C=0, S=90"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include \"752.cpp\"\n\nint main() {\n    char weather[3][30];\n    for(int i=0; i<3; i++) for(int j=0; j<30; j++) weather[i][j] = 'S';\n    \n    // Will report all Rainy because of assignment error\n    analyzeWeather(weather);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Using assignment operator `=` in conditional checks `if (weather[i][j] = 'R')`, which overwrites data and always evaluates to true."
+  ]
+}

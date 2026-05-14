@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function char firstNonRepeating(const char* str) that returns the first non-repeating character.",
+  "test_cases": [
+    {
+      "input": "str = \"swiss\"",
+      "expected": "'w'"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include \"825.cpp\"\n\nint main() {\n    // Returns None because pointer was advanced to end\n    if (firstNonRepeating(\"swiss\") == 'w') return 1;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Modifying the local string pointer `str` (`*str++`) in the first loop causes it to point to the end of the string, preventing the second loop from iterating over the string."
+  ]
+}

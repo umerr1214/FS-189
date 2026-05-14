@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `ComplexNumber` class with private `real` and `imaginary` parts (doubles). Overload the binary `+` operator to perform addition of two `ComplexNumber` objects.",
+  "test_cases": [
+    { "input": "ComplexNumber c1(1.0, 2.0); ComplexNumber c2(3.0, 4.0); ComplexNumber sum1 = c1 + c2; std::cout << sum1 << std::endl;", "expected": "4.00 + 6.00i" },
+    { "input": "ComplexNumber c3(-0.5, 1.5); ComplexNumber c4(2.5, -3.5); ComplexNumber sum2 = c3 + c4; std::cout << sum2 << std::endl;", "expected": "2.00 - 2.00i" },
+    { "input": "ComplexNumber c_t3_1(1.0, 2.0); ComplexNumber c_t3_2(-0.5, 1.5); ComplexNumber c_t3_3(5.0, 0.0); ComplexNumber sum3 = c_t3_1 + c_t3_2 + c_t3_3; std::cout << sum3 << std::endl;", "expected": "5.50 + 3.50i" },
+    { "input": "ComplexNumber c_t4_1(5.0, 0.0); ComplexNumber c_t4_2(0.0, -7.0); ComplexNumber sum4 = c_t4_1 + c_t4_2; std::cout << sum4 << std::endl;", "expected": "5.00 - 7.00i" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <iomanip>\n\nclass ComplexNumber {\nprivate:\n    double real;\n    double imaginary;\n\npublic:\n    ComplexNumber(double r = 0.0, double i = 0.0) : real(r), imaginary(i) {}\n\n    double getReal() const { return real; }\n    double getImaginary() const { return imaginary; }\n\n    friend ComplexNumber operator+(const ComplexNumber& lhs, const ComplexNumber& rhs);\n    friend std::ostream& operator<<(std::ostream& os, const ComplexNumber& c);\n};\n\nComplexNumber operator+(const ComplexNumber& lhs, const ComplexNumber& rhs) {\n    return ComplexNumber(lhs.real + rhs.real, lhs.imaginary + rhs.imaginary);\n}\n\nstd::ostream& operator<<(std::ostream& os, const ComplexNumber& c) {\n    os << std::fixed << std::setprecision(2);\n    os << c.real;\n    if (c.imaginary >= 0) {\n        os << \" + \" << c.imaginary << \"i\";\n    } else {\n        os << \" - \" << -c.imaginary << \"i\";\n    }\n    return os;\n}\n\nint main() {\n    ComplexNumber c1(1.0, 2.0); ComplexNumber c2(3.0, 4.0); ComplexNumber sum1 = c1 + c2; std::cout << sum1 << std::endl;\n    ComplexNumber c_t2_1(-0.5, 1.5); ComplexNumber c_t2_2(2.5, -3.5); ComplexNumber sum2 = c_t2_1 + c_t2_2; std::cout << sum2 << std::endl;\n    ComplexNumber c_t3_1(1.0, 2.0); ComplexNumber c_t3_2(-0.5, 1.5); ComplexNumber c_t3_3(5.0, 0.0); ComplexNumber sum3 = c_t3_1 + c_t3_2 + c_t3_3; std::cout << sum3 << std::endl;\n    ComplexNumber c_t4_1(5.0, 0.0); ComplexNumber c_t4_2(0.0, -7.0); ComplexNumber sum4 = c_t4_1 + c_t4_2; std::cout << sum4 << std::endl;\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

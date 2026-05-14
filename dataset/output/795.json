@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void rotateMatrix(int matrix[][N], int n) that rotates a square matrix 90 degrees clockwise in-place.",
+  "test_cases": [
+    {
+      "input": "matrix elements > N",
+      "expected": "Crash / UB"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include <algorithm>\n#include \"795.cpp\"\n\nint main() {\n    // Crash due to OOB access using value as index\n    // rotateMatrix(matrix, N);\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using matrix element values as array indices `matrix[matrix[i][j]]`, which causes out-of-bounds access if values exceed matrix dimensions."
+  ]
+}

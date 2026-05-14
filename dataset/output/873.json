@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function bool isSubsequence(const char* s1, const char* s2) that checks if s1 is a subsequence of s2.",
+  "test_cases": [
+    {
+      "input": "s1=\"abc\", s2=\"abc\"",
+      "expected": "true"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include \"873.cpp\"\n\nint main() {\n    char s1[] = \"abc\"; char s2[] = \"abc\";\n    // Will modify s1 and return true/false based on content\n    isSubsequence_Semantic(s1, s2);\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using assignment operator `=` in conditional check `if (s1[i] = s2[j])`, which modifies the string (if mutable) and evaluates based on the character value."
+  ]
+}

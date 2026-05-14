@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Model a `Department` class that aggregates `Employee` objects. The `Department` should have a name and a list of employees. Employees can exist independently of departments. Demonstrate adding employees to a department and displaying the department's staff.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Added employee Alice Johnson to Engineering.\nAdded employee Bob Smith to Engineering.\nAdded employee Charlie Brown to Engineering.\n\nDepartment: Engineering\nStaff:\n  ID: 101, Name: Alice Johnson\n  ID: 102, Name: Bob Smith\n  ID: 103, Name: Charlie Brown\n--- End of Staff List ---\nWarning: Attempted to add a null employee to department Marketing.\nAdded employee Bob Smith to Marketing.\nAdded employee Diana Prince to Marketing.\n\nDepartment: Marketing\nStaff:\n  ID: 102, Name: Bob Smith\n  ID: 201, Name: Diana Prince\n--- End of Staff List ---\n"
+    }
+  ],
+  "driver": "int main() {\n    auto emp1 = std::make_shared<Employee>(\"Alice Johnson\", 101);\n    auto emp2 = std::make_shared<Employee>(\"Bob Smith\", 102);\n    auto emp3 = std::make_shared<Employee>(\"Charlie Brown\", 103);\n\n    Department engineering(\"Engineering\");\n\n    engineering.addEmployee(emp1);\n    engineering.addEmployee(emp2);\n    engineering.addEmployee(emp3);\n\n    engineering.displayStaff();\n\n    Department marketing(\"Marketing\");\n    auto emp4 = std::make_shared<Employee>(\"Diana Prince\", 201);\n    marketing.addEmployee(emp2);\n    marketing.addEmployee(emp4);\n    marketing.addEmployee(nullptr);\n\n    marketing.displayStaff();\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

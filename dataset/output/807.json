@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void runLengthEncode(const char* input, char* output) that performs run-length encoding on the input string.",
+  "test_cases": [
+    {
+      "input": "input = \"AAA\"",
+      "expected": "\"A3\""
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cstdio>\n#include \"807.cpp\"\n\nint main() {\n    const char* str = \"AAA\";\n    char result[100];\n    runLengthEncode(str, result);\n    // result[1] will be integer 3, not char '3' (51)\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Directly assigning the integer `count` to the character array `output[k]` instead of converting it to its string representation (ASCII digits)."
+  ]
+}

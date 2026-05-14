@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void printPascalsTriangle(int n) that prints the first n rows of Pascal's Triangle.",
+  "test_cases": [
+    {
+      "input": "n = 3",
+      "expected": "1 2 1"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n#include \"854.cpp\"\n\nint main() {\n    // Checking output logic via string stream or similar\n    // With n=3, last row should be 1 2 1\n    // Function prints 1 2 4\n    printPascalsTriangle(3);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Uses incorrect formula `C = C * (line - i) * i` for updating binomial coefficient, leading to wrong values."
+  ]
+}

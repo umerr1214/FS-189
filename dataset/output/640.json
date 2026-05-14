@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Write a function void binomSum(int arr[], int size) that updates each element with the sum of numbers from 1 to that element.",
+  "test_cases": [
+    {
+      "input": "arr = NULL, size = 5",
+      "expected": "Graceful failure"
+    },
+    {
+      "input": "arr = {50000}, size = 1",
+      "expected": "Correct sum (approx 1.25 billion) without overflow"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"640.cpp\"\n\nint main() {\n    // binomSum(NULL, 5);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing NULL pointer check.",
+    "Potential integer overflow in 'n * (n + 1)' before division."
+  ]
+}

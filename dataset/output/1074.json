@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define a class `Product` with private `name` (string), `price` (double), and a protected `discountRate` (double). Include public `getName()` and `getPrice()` methods. Create a derived class `SpecialProduct` that can access `discountRate` and apply it when calculating a final price using a public method.",
+  "test_cases": [
+    {
+      "input": "Product p1(\"Book\", 25.0, 0.0);\nSpecialProduct sp1(\"Laptop\", 1200.0, 0.10);\nSpecialProduct sp2(\"Mouse\", 50.0, 0.05);",
+      "expected": "Product: Book, Price: $25.00, Discount Rate: 0.00%\nSpecial Product: Laptop, Original Price: $1200.00, Discount Rate (as seen by base): 0.00%, Intended Discount Rate (ignored by constructor): N/A, Final Price: $1200.00\nSpecial Product: Mouse, Original Price: $50.00, Discount Rate (as seen by base): 0.00%, Intended Discount Rate (ignored by constructor): N/A, Final Price: $50.00\n"
+    }
+  ],
+  "driver": "int main() {\n    Product p1(\"Book\", 25.0, 0.0);\n    p1.displayProduct();\n\n    SpecialProduct sp1(\"Laptop\", 1200.0, 0.10);\n    sp1.displaySpecialProduct();\n\n    SpecialProduct sp2(\"Mouse\", 50.0, 0.05);\n    sp2.displaySpecialProduct();\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The `SpecialProduct` constructor semantically misuses inheritance by always passing `0.0` as the `discountRate` to the base `Product` constructor, effectively ignoring the `dr` parameter passed to `SpecialProduct` itself. This results in the inherited `discountRate` always being zero, preventing any actual discount from being applied to special products, despite the mechanism for accessing `discountRate` being correct."]
+}

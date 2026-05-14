@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Design a `BaseClass` with a `protected` integer member `protectedVar` and a `private` integer member `privateVar`. Create a `DerivedClass` that inherits from `BaseClass`. In `DerivedClass`, demonstrate accessing `protectedVar` and show that `privateVar` is inaccessible.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "BaseClass constructor called.\n\nDerivedClass constructor called.\n--- Inside DerivedClass::doAccessDemo() ---\nValue of b_var_p before modification: 10\nValue of b_var_p after modification: 25\nNote: b_var_priv is private and cannot be accessed directly in DerivedClass.\nThis statement is commented out to allow compilation.\n\nDisplaying BaseClass variables:\nBaseClass::b_var_p: 25\nBaseClass::b_var_priv: 100\n\n"
+    }
+  ],
+  "driver": "valid C++ code to run test cases",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Poor variable naming conventions (e.g., 'b_var_p', 'b_var_priv' instead of descriptive names like 'protectedVar', 'privateVar').",
+    "Excessive use of `std::endl` which flushes the output buffer, potentially impacting efficiency compared to `\\n` for simple console output.",
+    "Overly verbose `std::cout` statements and unnecessary blank lines, reducing code conciseness and readability.",
+    "Redundant use of the `this->` pointer (e.g., `this->b_var_p`) when accessing member variables within the same class.",
+    "Unnecessary intermediate variable `temp_val` in `doAccessDemo` which adds complexity without benefit.",
+    "Method names like `doAccessDemo` are less descriptive than `demonstrateAccess`."
+  ]
+}

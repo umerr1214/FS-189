@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Implement a `Point` class with private integer member variables `x` and `y`. Provide a default constructor that initializes `x` and `y` to (0,0), and a parameterized constructor that takes two integers to set `x` and `y`.",
+  "test_cases": [
+    { "input": "", "expected": "p1: (0, 0)\np2: (10, 20)\n" }
+  ],
+  "driver": "    Point p1;\n    std::cout << \"p1: \";\n    p1.print();\n\n    Point p2(10, 20);\n    std::cout << \"p2: \";\n    p2.print();\n",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": []
+}

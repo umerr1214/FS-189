@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a function void printSpiral(int matrix[][COLS], int rows, int cols) that prints the matrix in spiral order.",
+  "test_cases": [
+    {
+      "input": "matrix = {{1, 2, 3, 4}, {5, 6, 7, 8}, ...}",
+      "expected": "1 2 3 4 8 12 16 15 14 13 9 5 6 7 11 10"
+    },
+    {
+      "input": "matrix = {{1, 2, 3}}",
+      "expected": "1 2 3"
+    },
+    {
+      "input": "matrix = NULL",
+      "expected": "No crash"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cassert>\n#include \"852.cpp\"\n\nint main() {\n    int m[1][4] = {{1, 2, 3, 4}};\n    // 1x4 case\n    printSpiral(m, 1, 4);\n    printSpiral(NULL, 0, 0);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a function int binaryToDecimal(const char* binary) that converts a binary string to a decimal integer.",
+  "test_cases": [],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cmath>\n#include \"865.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'return decimal'"
+  ]
+}

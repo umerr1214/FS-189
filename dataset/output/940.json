@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a Queue class using an array.",
+  "test_cases": [
+    {
+      "input": "enqueue > capacity",
+      "expected": "Graceful failure"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"940.cpp\"\n\nint main() {\n    Queue q;\n    q.enqueue(1);\n    q.enqueue(2);\n    // q.enqueue(3); // Crash/Overwrite\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing boundary checks for Queue Overflow (`enqueue`) and Underflow (`dequeue`), leading to out-of-bounds memory access."
+  ]
+}

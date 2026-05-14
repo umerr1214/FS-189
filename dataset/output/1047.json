@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `MyString` class that manages a dynamic character array. Implement both a copy constructor and an assignment operator (`operator=`). Explain when each of these is invoked through code examples.",
+  "test_cases": [
+    { "input": "", "expected": "--- Demonstrating MyString Class with Semantic Error (Missing Destructor) ---\nConstructor invoked for: Hello\ns1: Hello\nCopy Constructor invoked for: Hello (from Hello)\ns2 (copy of s1): Hello\n\nCalling demonstrateCopy(s1)...\nCopy Constructor invoked for: Hello (from Hello)\nInside demonstrateCopy function. Value: Hello\nBack in main after demonstrateCopy(s1).\nConstructor invoked for: World\ns3: World\n\nAssigning s1 to s3 (s3 = s1)...\nAssignment Operator invoked for: Hello (from Hello)\ns3 (after assignment from s1): Hello\n\n--- Inside createAndDestroyStrings function ---\nConstructor invoked for: Temporary A\nConstructor invoked for: Temporary B\ntemp1: Temporary A, temp2: Temporary B\n--- Exiting createAndDestroyStrings function ---\n\n--- End of main ---\n" }
+  ],
+  "driver": "int main() {\n    // The provided main function already serves as a driver.\n    // No additional driver code is needed.\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The class `MyString` is missing its destructor (`~MyString()`). This is a semantic error because it violates the RAII principle for resource management. Although the code compiles and runs, every `MyString` object that allocates dynamic memory will leak that memory when it goes out of scope, leading to resource exhaustion over time."
+  ]
+}

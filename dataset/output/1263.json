@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "For the `Point` class, overload the prefix increment operator (`++`). This operator should increment both the `x` and `y` coordinates of the `Point` object and return a reference to the modified object.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Original point p1: (10, 20)\nAfter ++p1: (11, 21)\nOriginal point p2: (0, 0)\nAfter ++(++p2): (2, 2)\nAfter p_ref.x = 100: (100, 2)\n"
+    }
+  ],
+  "driver": "#include <iostream>\n\nclass Point {\npublic:\n    int x;\n    int y;\n\n    Point(int x_coord = 0, int y_coord = 0) : x(x_coord), y(y_coord) {}\n\n    Point& operator++() {\n        ++x;\n        ++y;\n        return *this;\n    }\n\n    void print() const {\n        std::cout << \"(\" << x << \", \" << y << \")\";\n    }\n};\n\nint main() {\n    Point p1(10, 20);\n    std::cout << \"Original point p1: \";\n    p1.print();\n    std::cout << std::endl;\n\n    ++p1;\n    std::cout << \"After ++p1: \";\n    p1.print();\n    std::cout << std::endl;\n\n    Point p2(0, 0);\n    std::cout << \"Original point p2: \";\n    p2.print();\n    std::cout << std::endl;\n\n    Point& p_ref = ++(++p2);\n    std::cout << \"After ++(++p2): \";\n    p_ref.print();\n    std::cout << std::endl;\n\n    p_ref.x = 100;\n    std::cout << \"After p_ref.x = 100: \";\n    p2.print();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

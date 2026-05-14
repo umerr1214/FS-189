@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function bool isLeapYear(int year) that checks if a year is a leap year.",
+  "test_cases": [
+    {
+      "input": "year = 1999",
+      "expected": "false"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"903.cpp\"\n\nint main() {\n    // Returns true (due to assignment)\n    if (isLeapYear(1999) == false) return 1;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using assignment `year = 2000` in conditional check, which always evaluates to true."
+  ]
+}

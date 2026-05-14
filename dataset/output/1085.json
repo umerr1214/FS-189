@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a `Date` class with private members `day`, `month`, and `year` (integers). Implement public setter methods `setDay`, `setMonth`, `setYear` that perform basic validation (e.g., month between 1-12, day between 1-31, ignoring leap years for simplicity). If validation fails, do not update the member and optionally print an error message.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "1/1/2000\n15/7/2023\n--- Testing logical errors ---\nError: Invalid day 32. Day not updated.\n15/7/2023\n15/12/2023\n"
+    }
+  ],
+  "driver": "#include <iostream>\n\nclass Date {\nprivate:\n    int day;\n    int month;\n    int year;\n\npublic:\n    Date() : day(1), month(1), year(2000) {}\n\n    void setDay(int d) {\n        if (d >= 1 && d <= 31) {\n            day = d;\n        } else {\n            std::cout << \"Error: Invalid day \" << d << \". Day not updated.\" << std::endl;\n        }\n    }\n\n    void setMonth(int m) {\n        if (m >= 1 && m <= 12) {\n            month = m;\n        } else {\n            std::cout << \"Error: Invalid month \" << m << \". Month not updated.\" << std::endl;\n        }\n    }\n\n    void setYear(int y) {\n        year = y;\n    }\n\n    void displayDate() {\n        std::cout << day << \"/\" << month << \"/\" << year << std::endl;\n    }\n};\n\nint main() {\n    Date myDate;\n    myDate.displayDate();\n\n    myDate.setDay(15);\n    myDate.setMonth(7);\n    myDate.setYear(2023);\n    myDate.displayDate();\n\n    std::cout << \"--- Testing logical errors ---\" << std::endl;\n\n    myDate.setDay(32); // Invalid day\n    myDate.displayDate(); // Should still be 15/7/2023\n\n    myDate.setMonth(12); // Valid month\n    myDate.displayDate(); // Should be 15/12/2023\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "In `setDay`, the member `day` is updated even if validation fails, violating the requirement to not update the member.",
+    "In `setMonth`, the validation condition `m <= 11` incorrectly rejects month 12, which is a valid month (1-12)."
+  ]
+}

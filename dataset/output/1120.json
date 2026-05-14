@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a class `Matrix` with a private 2D array (e.g., `int mat[2][2]` or `int**` for dynamic). Implement overloaded `setElement` methods: one that takes `row`, `col`, and `value` to set a single element, and another that takes a `row` index and an array/`std::vector<int>` to set an entire row.",
+  "test_cases": [
+    { "input": "", "expected": "" }
+  ],
+  "driver": "int main() {\n    Matrix m;\n    m.setElement(0, 0, 5);\n\n    std::vector<int> row_data = {10, 20};\n    // This line will cause a compile-time error due to the typo in the Matrix::setElement signature\n    m.setElement(1, row_data); \n\n    m.print();\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Typo in 'std::vector' (written as 'std::vecor') in one of the 'setElement' method signatures, causing a compilation error."
+  ]
+}

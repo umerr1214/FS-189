@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Demonstrate multi-level inheritance by creating a hierarchy: `Animal` (base) -> `Mammal` -> `Dog`. Add unique characteristics (members or methods) at each level and show object creation and method calls.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Initiating demonstration of multi-level inheritance ---\n->>> Animal object being constructed. Species: Domestic Dog <<<-\n->>> Mammal object being constructed. Species: Domestic Dog, Fur Color: Golden-Brown <<<-\n->>> Dog object being constructed. Species: Domestic Dog, Breed: Golden Retriever <<<-\n--- Object constructed. Now calling methods: ---\n    ==========================================================\n    The Domestic Dog is now commencing its eating activity.\n    It consumes sustenance for energy and survival.\n    This is a fundamental biological process.\n    ==========================================================\n    ----------------------------------------------------------\n    The Domestic Dog (a mammal) is initiating the process of giving birth to live offspring.\n    This is a characteristic reproductive method for this class of animals.\n    ----------------------------------------------------------\n    **********************************************************\n    The Golden Retriever dog, a member of the Domestic Dog species, is emitting its characteristic vocalization: Woof! Woof!\n    This action serves various communicative purposes.\n    **********************************************************\n--- Demonstration concluded. ---\n->>> Dog object being destructed. Species: Domestic Dog, Breed: Golden Retriever <<<-\n->>> Mammal object being destructed. Species: Domestic Dog <<<-\n->>> Animal object being destructed. Species: Domestic Dog <<<-\n"
+    }
+  ],
+  "driver": "int main() { run_demonstration(); return 0; }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Class member variables (`species_name`, `fur_color_description`, `dog_breed_type`) are declared as `public`, violating encapsulation and making the class state directly modifiable from outside. They should ideally be `private` with public getter methods.",
+    "Method and member names are excessively verbose (e.g., `perform_eating_action`, `species_name`), making the code harder to read and write.",
+    "Methods like `perform_eating_action` are not marked `const`, even though they do not modify the object's state, which limits their use with `const` objects and reduces clarity.",
+    "The code uses `this->` explicitly for member access where it's not strictly necessary, contributing to verbosity without adding clarity.",
+    "Output logic (`std::cout` statements) is heavily intertwined with the class methods, making the classes less reusable and harder to test independently of their console output. A more efficient or cleaner approach would separate concerns."
+  ]
+}

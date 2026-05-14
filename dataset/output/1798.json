@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a class `MathOperations` with overloaded public methods named `multiply`. One `multiply` method should take two integers as arguments and return their product. Another `multiply` method should take three double values as arguments and return their product.",
+  "test_cases": [
+    { "input": "No direct input, uses hardcoded values in main.", "expected": "Product of 5 and 10 (int): 50\nProduct of 2.5, 3.0, and 4.0 (double): 30" }
+  ],
+  "driver": "#include <iostream>\n\nclass MathOperations {\npublic:\n    int multiply(int a, int b) {\n        return a * b;\n    }\n\n    double multiply(double a, double b, double c) {\n        return a * b * c;\n    }\n};\n\nint main() {\n    MathOperations math;\n    std::cout << math.multiply(5, 10) << std::endl;\n    std::cout << math.multiply(2.5, 3.0, 4.0) << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the class definition of `MathOperations`."
+  ]
+}

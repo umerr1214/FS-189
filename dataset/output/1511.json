@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Enhance the `Shape` class by adding a pure virtual function `double calculateArea()`. Implement this function in the `Circle` class to return the area of the circle. Demonstrate calling `calculateArea()` through a `Shape` pointer.",
+  "test_cases": [
+    { "input": "Circle with radius 5.0", "expected": "Calculated Area: 78.5398" },
+    { "input": "Circle with radius 10.0", "expected": "Calculated Area: 314.159" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n#include <string>\n\nclass Shape {\npublic:\n    virtual ~Shape() {}\n    virtual double calculateArea() = 0;\n    virtual std::string getType() const = 0;\n};\n\nclass Circle : public Shape {\nprivate:\n    double radius;\npublic:\n    Circle(double r) : radius(r) {}\n    double calculateArea() override {\n        return M_PI * radius * radius;\n    }\n    std::string getType() const override {\n        return \"Circle\";\n    }\n    double getRadius() const { return radius; }\n};\n\nint main() {\n    Shape* myShape = new Circle(5.0);\n    std::cout << \"Shape type: \" << myShape->getType() << std::endl;\n    if (myShape->getType() == \"Circle\") {\n        std::cout << \"Radius: \" << static_cast<Circle*>(myShape)->getRadius() << std::endl;\n    }\n    std::cout << \"Calculated Area: \" << myShape->calculateArea() << std::endl;\n\n    Shape* anotherShape = new Circle(10.0);\n    std::cout << \"Shape type: \" << anotherShape->getType() << std::endl;\n    if (anotherShape->getType() == \"Circle\") {\n        std::cout << \"Radius: \" << static_cast<Circle*>(anotherShape)->getRadius() << std::endl;\n    }\n    std::cout << \"Calculated Area: \" << anotherShape->calculateArea() << std::endl;\n\n    delete myShape;\n    delete anotherShape;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `calculateArea()` function in the `Circle` class incorrectly calculates the circumference (2 * pi * radius) instead of the area (pi * radius * radius)."
+  ]
+}

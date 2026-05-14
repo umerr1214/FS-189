@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Model an `Order` class and a `Customer` class. An `Order` should have an `orderID` and a reference or pointer to the `Customer` who placed it, demonstrating an association relationship where objects can reference each other without strict ownership.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Compilation Error: missing ';' after class definition of 'Customer'."
+    }
+  ],
+  "driver": "int main() {\n    Customer cust1(101, \"Alice Smith\");\n    Order order1(1001, &cust1);\n\n    cust1.displayCustomer();\n    order1.displayOrder();\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the 'Customer' class definition, leading to a compilation error."
+  ]
+}

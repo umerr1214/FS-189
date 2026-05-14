@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Illustrate access specifiers (`public`, `private`, `protected`). Create a base class `Person` with `public` name, `protected` age, and `private` socialSecurityNumber. Derive a `Student` class and try to access these members, explaining which are accessible and why.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "\n==================================================================\n  VERBOSE DEMONSTRATION OF ACCESS SPECIFIERS FOR STUDENT OBJECT   \n==================================================================\n\n  [SECTION 1: STUDENT'S OWN PUBLIC MEMBER]\n  - Student Identification Code (public, direct access): STUDENT-ID-ALPHA-007\n  - This is a member declared directly within the Student class, and it is public.\n\n  [SECTION 2: INHERITED PUBLIC MEMBER ACCESS]\n  - Member 'publicMemberName' (originally 'name') is PUBLIC in Person.\n  - Therefore, it is DIRECTLY ACCESSIBLE from Student (derived class).\n  - Value: Eleanor Rigby\n  - It would also be accessible from any external code.\n\n  [SECTION 3: INHERITED PROTECTED MEMBER ACCESS]\n  - Member 'protectedMemberAge' (originally 'age') is PROTECTED in Person.\n  - Therefore, it is DIRECTLY ACCESSIBLE from Student (derived class).\n  - Value (direct access): 25\n  - Value (via redundant internal method 'retrieveMyProtectedAge'): 25\n  - Protected members are specifically designed for access within derived classes.\n  - They are NOT accessible from external code (like main function).\n\n  [SECTION 4: INHERITED PRIVATE MEMBER ACCESS ATTEMPT]\n  - Member 'privateMemberSocialSecurityNumber' (originally 'socialSecurityNumber') is PRIVATE in Person.\n  - It is NOT ACCESSIBLE from Student (derived class).\n  - Attempting to access it directly (e.g., 'privateMemberSocialSecurityNumber') would cause a COMPILE-TIME ERROR.\n  - This enforces strong encapsulation, limiting access to the defining class only.\n\n==================================================================\n\n--- External (main function) access examples ---\n  Person's Publicly Accessible Name is: Gandalf Grey\n  Direct access to Person's publicMemberName: Gandalf Grey\n"
+    }
+  ],
+  "driver": "g++ 1370.cpp -o 1370 && ./1370",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The code suffers from significant readability issues due to overly verbose output statements and redundant explanations.",
+    "Member names are unnecessarily prefixed with their access specifiers (e.g., 'publicMemberName', 'protectedMemberAge'), which is redundant and clutters the code.",
+    "Unnecessary include '<vector>' adds clutter and potential for confusion.",
+    "Excessive empty lines within constructors and methods reduce overall code density and readability.",
+    "A redundant method 'retrieveMyProtectedAge' is used in Student to access 'protectedMemberAge', which could be accessed directly, indicating an efficiency and readability issue."
+  ]
+}

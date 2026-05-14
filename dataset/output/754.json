@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a program to track weather (3 months, 30 days) and report statistics.",
+  "test_cases": [
+    {
+      "input": "Uninitialized array",
+      "expected": "Graceful handling or valid input enforcement"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include \"754.cpp\"\n\nint main() {\n    // analyzeWeather(uninit_array);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "No validation of input characters (case sensitivity, valid set check) inside the processing loop."
+  ]
+}

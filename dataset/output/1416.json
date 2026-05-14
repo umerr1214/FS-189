@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a `Counter` class with a private integer `value`. Overload the pre-increment (`++`) operator to increment the `value` and return the incremented object. Also, overload the post-increment (`value++`) operator.",
+  "test_cases": [
+    {
+      "input": "N/A (implicit operations in main)",
+      "expected": "Initial value: 5\nAfter pre-increment: 6\nAfter post-increment (original object): 7\nValue returned by post-increment: UNDEFINED\n--- New Counter x ---\nInitial x value: 10\nx after x++: 11\ny (from x++): UNDEFINED\nx after ++x: 12"
+    }
+  ],
+  "driver": "int main() {\n    Counter c(5);\n    std::cout << \"Initial value: \" << c.getValue() << std::endl;\n\n    ++c;\n    std::cout << \"After pre-increment: \" << c.getValue() << std::endl;\n\n    Counter d = c++;\n    std::cout << \"After post-increment (original object): \" << c.getValue() << std::endl;\n    std::cout << \"Value returned by post-increment: \" << d.getValue() << std::endl;\n\n    Counter x(10);\n    std::cout << \"--- New Counter x ---\" << std::endl;\n    std::cout << \"Initial x value: \" << x.getValue() << std::endl;\n    Counter y = x++;\n    std::cout << \"x after x++: \" << x.getValue() << std::endl;\n    std::cout << \"y (from x++): \" << y.getValue() << std::endl;\n    ++x;\n    std::cout << \"x after ++x: \" << x.getValue() << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The post-increment operator `operator++(int)` returns a reference to a local temporary object (`temp`). This leads to a dangling reference and undefined behavior when the returned reference is used."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a program to encrypt and decrypt a sentence by adding/subtracting the index.",
+  "test_cases": [
+    {
+      "input": "arr = \"Hello\"",
+      "expected": "Works"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <vector>\n#include \"761.cpp\"\n\nint main() {\n    char str[100] = \"Hello\";\n    encrypt(str);\n    decrypt(str);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses recursion with a static index for simple iteration, leading to O(N) stack usage (potential overflow) and reentrancy issues."
+  ]
+}

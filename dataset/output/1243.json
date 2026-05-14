@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create an abstract `Animal` class with a pure virtual `makeSound()` method. Implement `Dog` and `Cat` classes deriving from `Animal`, each providing its own distinct `makeSound()` implementation.",
+  "test_cases": [
+    { "input": "", "expected": "Woof!\nMeow!\n" }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <memory>\n\n// The class definitions from the user's code will be inserted here.\n\nint main() {\n    std::stringstream ss;\n    std::streambuf* oldCout = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n\n    std::vector<std::unique_ptr<Animal>> animals;\n    animals.push_back(std::make_unique<Dog>());\n    animals.push_back(std::make_unique<Cat>());\n\n    for (const auto& animal : animals) {\n        animal->makeSound();\n    }\n\n    std::cout.rdbuf(oldCout);\n\n    std::cout << ss.str();\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing a virtual destructor in the base class `Animal`. When derived objects (like `Dog` or `Cat`) are deleted through a base class pointer (`Animal*`), the derived class's destructor might not be called, leading to potential resource leaks or undefined behavior, especially if derived classes manage specific resources."
+  ]
+}

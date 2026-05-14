@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Model an `Order` class and a `Customer` class. An `Order` should have an `orderID` and a reference or pointer to the `Customer` who placed it, demonstrating an association relationship where objects can reference each other without strict ownership.",
+  "test_cases": [
+    { "input": "display_orders_safe", "expected": "Customer Alice (ID: 1) created.\nCustomer Bob (ID: 2) created.\nOrder 101 created.\nOrder 102 created.\n--- Initial display ---\nOrder ID: 101, Placed by: Customer ID: 1, Name: Alice\nOrder ID: 102, Placed by: Customer ID: 2, Name: Bob\n--- Resetting customerA shared_ptr (simulating customer deletion) ---\nCustomer Alice (ID: 1) destroyed.\n--- Display after customerA deletion ---\nOrder ID: 101, Placed by: Unknown Customer (deleted)\nOrder ID: 102, Placed by: Customer ID: 2, Name: Bob\nOrder 102 destroyed.\nOrder 101 destroyed.\nCustomer Bob (ID: 2) destroyed.\n" }
+  ],
+  "driver": "int main() {\n    // Create customers using shared_ptr for managed ownership\n    std::shared_ptr<Customer> customerA = std::make_shared<Customer>(1, \"Alice\");\n    std::shared_ptr<Customer> customerB = std::make_shared<Customer>(2, \"Bob\");\n\n    // Create orders, passing shared_ptr which is converted to weak_ptr in Order\n    Order order1(101, customerA);\n    Order order2(102, customerB);\n\n    std::cout << \"--- Initial display ---\" << std::endl;\n    order1.displayOrderDetails();\n    order2.displayOrderDetails();\n\n    std::cout << \"--- Resetting customerA shared_ptr (simulating customer deletion) ---\" << std::endl;\n    // When the last shared_ptr to customerA is reset, the Customer object is destroyed.\n    customerA.reset(); \n\n    std::cout << \"--- Display after customerA deletion ---\" << std::endl;\n    // order1's weak_ptr will now correctly report that the customer is no longer available\n    order1.displayOrderDetails();\n    order2.displayOrderDetails(); // customerB is still alive\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void replaceSubstring(char arr[], const char target[], const char replacement[]) that replaces all occurrences of target with replacement.",
+  "test_cases": [
+    {
+      "input": "arr = \"aaaa\", target = \"aa\", replacement = \"b\"",
+      "expected": "\"bb\""
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cassert>\n#include \"686.cpp\"\n\nint main() {\n    char str[100] = \"aaaa\";\n    replaceSubstring(str, \"aa\", \"b\");\n    // Will fail due to incorrect index increment\n    // assert(strcmp(str, \"bb\") == 0);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Increments index 'i' by 1 instead of 'targetLen' after a replacement, leading to overlapping/incorrect replacements."
+  ]
+}

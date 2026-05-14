@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `ResourceTracker` class that allocates a dynamic integer array in its constructor and deallocates this memory in its destructor. Demonstrate its lifecycle by creating and destroying `ResourceTracker` objects.",
+  "test_cases": [
+    { "input": "", "expected": "Program start\n\n--- Creating originalTracker ---\nResourceTracker(size=3) constructed, memory allocated at <address1>\nData: [1, 11, 21]\n\n--- Creating copiedTracker (shallow copy) ---\nData: [1, 11, 21]\n\n--- Modified originalTracker's data[0] ---\nData: [999, 11, 21]\nData: [999, 11, 21]\n\n--- copiedTracker scope ending ---\nResourceTracker(size=3) destructed, memory at <address1> deallocated\nProgram end\nResourceTracker(size=3) destructed, memory at <address1> deallocated\n<runtime error: double free or corruption>" }
+  ],
+  "driver": "int main() {\n    std::cout << \"Program start\" << std::endl;\n    void demonstrateCopyIssue();\n    demonstrateCopyIssue();\n    std::cout << \"Program end\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `ResourceTracker` class manages a dynamic array but does not implement a custom copy constructor or copy assignment operator. The default shallow copies lead to multiple objects owning the same memory. When these objects are destroyed, the memory is deallocated multiple times (double-free), resulting in undefined behavior and a crash."
+  ]
+}

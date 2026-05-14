@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a Stack class.",
+  "test_cases": [
+    {
+      "input": "Standard usage",
+      "expected": "Correct behavior"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include \"935.cpp\"\n\nint main() {\n    Stack s;\n    s.push(1);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inefficient implementation: uses `vector::insert(begin)` and `erase(begin)` making push/pop operations O(N) instead of O(1)."
+  ]
+}

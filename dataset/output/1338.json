@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Develop a `DynamicArray` class that manages an array of integers on the heap. Include a constructor that takes size, a destructor that deallocates memory, and a method `setElement(index, value)`.",
+  "test_cases": [
+    { "input": "Create a DynamicArray of size 5. Set element at index 0 to 10 and index 2 to 30. Print the array. Allow the array object to be destroyed (go out of scope).", "expected": "10 0 30 0 0 \n" }
+  ],
+  "driver": "int main() {\n    DynamicArray da(5);\n    da.setElement(0, 10);\n    da.setElement(2, 30);\n    da.printArray();\n    // The destructor for 'da' will be called when main exits, leading to a double-free.\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The destructor `~DynamicArray()` attempts to deallocate the memory pointed to by `arr` twice using `delete[] arr;`. This is a classic double-free error, which is a semantic error that leads to undefined behavior and typically causes a program crash at runtime."
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a `BankAccount` class with `accountNumber` (string) and `balance` (double). `accountNumber` should be set only in the constructor and be read-only thereafter. `balance` can be modified using public `deposit(double amount)` and `withdraw(double amount)` methods, with basic validation for withdrawal.",
+  "test_cases": [
+    {
+      "input": "BankAccount acc1(\"ACC001\", 1000.00);\nacc1.deposit(200.00);\nacc1.withdraw(300.00);\nacc1.withdraw(1000.00);\nacc1.deposit(-150.00);\nacc1.withdraw(-50.00);\nacc1.withdraw(0.00);",
+      "expected": "Account ACC001 created with balance: 1000.00\nDeposit of 200.00 successful. New balance: 1200.00\nWithdrawal of 300.00 successful. New balance: 900.00\nWithdrawal of 1000.00 failed. Insufficient funds. Current balance: 900.00\nDeposit of -150.00 successful. New balance: 750.00\nWithdrawal of -50.00 successful. New balance: 800.00\nWithdrawal of 0.00 successful. New balance: 800.00\nFinal balance for ACC001: 800.00"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <iomanip>\n\nclass BankAccount {\nprivate:\n    const std::string accountNumber;\n    double balance;\n\npublic:\n    BankAccount(std::string accNum, double initialBalance)\n        : accountNumber(accNum), balance(initialBalance) {}\n\n    void deposit(double amount) {\n        balance += amount;\n        std::cout << \"Deposit of \" << std::fixed << std::setprecision(2) << amount\n                  << \" successful. New balance: \" << balance << std::endl;\n    }\n\n    bool withdraw(double amount) {\n        if (balance >= amount) {\n            balance -= amount;\n            std::cout << \"Withdrawal of \" << std::fixed << std::setprecision(2) << amount\n                      << \" successful. New balance: \" << balance << std::endl;\n            return true;\n        } else {\n            std::cout << \"Withdrawal of \" << std::fixed << std::setprecision(2) << amount\n                      << \" failed. Insufficient funds. Current balance: \" << balance << std::endl;\n            return false;\n        }\n    }\n\n    const std::string& getAccountNumber() const {\n        return accountNumber;\n    }\n\n    double getBalance() const {\n        return balance;\n    }\n};\n\nint main() {\n    std::cout << \"--- Testing BankAccount (Robustness Issue) ---\" << std::endl;\n    BankAccount acc1(\"ACC001\", 1000.00);\n    std::cout << \"Account \" << acc1.getAccountNumber() << \" created with balance: \"\n              << std::fixed << std::setprecision(2) << acc1.getBalance() << std::endl;\n    acc1.deposit(200.00);\n    acc1.withdraw(300.00);\n    acc1.withdraw(1000.00);\n    std::cout << \"\\n--- Robustness Issue: Depositing negative amount ---\" << std::endl;\n    acc1.deposit(-150.00);\n    std::cout << \"\\n--- Robustness Issue: Withdrawing negative amount ---\" << std::endl;\n    acc1.withdraw(-50.00);\n    std::cout << \"\\n--- Robustness Issue: Withdrawing zero amount ---\" << std::endl;\n    acc1.withdraw(0.00);\n    std::cout << \"\\nFinal balance for \" << acc1.getAccountNumber() << \": \"\n              << std::fixed << std::setprecision(2) << acc1.getBalance() << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `deposit` method does not validate that the `amount` is positive, allowing negative deposits which effectively act as unvalidated withdrawals.",
+    "The `withdraw` method does not validate that the `amount` is positive, allowing negative withdrawals which effectively act as unvalidated deposits.",
+    "The `withdraw` method allows withdrawing a zero amount, which is generally harmless but might indicate incomplete validation logic for positive amounts."
+  ]
+}

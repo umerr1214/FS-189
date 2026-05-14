@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void UpperHalf(int A[][SIZE], int N) that prints the upper half of the matrix.",
+  "test_cases": [
+    {
+      "input": "A = 3x3",
+      "expected": "Upper elements"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"725.cpp\"\n\nint main() {\n    int A[3][3] = {{1}};\n    UpperHalf(A, 3);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Iterates through the full matrix (N*N) with a conditional check, instead of optimizing the inner loop range to `j = i` to `N`."
+  ]
+}

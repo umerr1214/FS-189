@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a base class `Employee` with private members `name` (string) and `employeeID` (int). Derive a `Manager` class from `Employee` that adds a private member `department` (string). Include constructors and methods to display details for both classes.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Employee Details ---\nEmployee Name: Alice Smith\nEmployee ID: 101\n\n--- Manager Details ---\nEmployee Name: Bob Johnson\nEmployee ID: 201\nDepartment: Sales\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// Employee and Manager class definitions would be here\n\nint main() {\n    Employee emp(\"Alice Smith\", 101);\n    std::cout << \"--- Employee Details ---\" << std::endl;\n    emp.displayDetails();\n    std::cout << std::endl;\n\n    Manager mgr(\"Bob Johnson\", 201, \"Sales\");\n    std::cout << \"--- Manager Details ---\" << std::endl;\n    mgr.displayDetails();\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `Manager::displayDetails` method attempts to directly access `name` and `employeeID`, which are private members of the `Employee` base class. This is a semantic violation of C++ access rules, as private members are not accessible from derived classes, leading to a compilation error."
+  ]
+}

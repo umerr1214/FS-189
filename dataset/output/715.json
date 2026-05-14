@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a function void lookupName(string target, string names[], string numbers[], int size) that finds and displays the phone number for the target name.",
+  "test_cases": [],
+  "driver": "#include <iostream>\n#include <string>\n#include \"715.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after function call 'lookupName(target, names, numbers, size)'"
+  ]
+}

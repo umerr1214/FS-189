@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "For the `Point` class (from a previous question with `x`, `y` coordinates), overload the `==` operator to compare if two `Point` objects have the same coordinates. It should return a boolean value.",
+  "test_cases": [
+    { "input": "Point p1(1, 2); Point p2(1, 2);", "expected": "True (Correct)" },
+    { "input": "Point p1(1, 2); Point p3(1, 4);", "expected": "False (Correct)" },
+    { "input": "Point p1(1, 2); Point p4(3, 4);", "expected": "False (Correct)" }
+  ],
+  "driver": "Point p1(1, 2); Point p2(1, 2); Point p3(1, 4); Point p4(3, 4);\n\nstd::cout << \"Testing p1(1,2) == p2(1,2): \";\nif (p1 == p2) {\n    std::cout << \"True (Correct)\" << std::endl;\n} else {\n    std::cout << \"False (Incorrect)\" << std::endl;\n}\n\nstd::cout << \"Testing p1(1,2) == p3(1,4): \";\nif (p1 == p3) {\n    std::cout << \"True (Incorrect, expected False)\" << std::endl;\n} else {\n    std::cout << \"False (Correct)\" << std::endl;\n}\n\nstd::cout << \"Testing p1(1,2) == p4(3,4): \";\nif (p1 == p4) {\n    std::cout << \"True (Incorrect)\" << std::endl;\n} else {\n    std::cout << \"False (Correct)\" << std::endl;\n}\n",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The operator== only compares the x-coordinates, ignoring the y-coordinates, leading to incorrect comparisons when y-coordinates differ."]
+}

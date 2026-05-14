@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `Point` class with private `x` and `y` integer coordinates. Include a default constructor that initializes both to 0, a parameterized constructor, and a public method `displayPoint()` that prints the coordinates.",
+  "test_cases": [
+    { "input": "Point p1;\np1.displayPoint();", "expected": "Point(0, 0)\n" },
+    { "input": "Point p2(5, 10);\np2.displayPoint();", "expected": "Point(5, 10)\n" },
+    { "input": "Point p3(-3, 7);\np3.displayPoint();", "expected": "Point(-3, 7)\n" }
+  ],
+  "driver": "#include <iostream>\n\nclass Point {\nprivate:\n    int x;\n    int y;\n\npublic:\n    Point() : x(0), y(0) {}\n    Point(int _x, int _y) : x(_x), y(_y) {}\n    void displayPoint() {\n        std::cout << \"Point(\" << x << \", \" << y << \")\" << std::endl;\n    }\n};\n\nint main() {\n    Point p1;\n    p1.displayPoint();\n\n    Point p2(5, 10);\n    p2.displayPoint();\n\n    Point p3(-3, 7);\n    p3.displayPoint();\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

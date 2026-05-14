@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Extend the `Date` class (from Q13) to overload the `<<` operator (insertion operator) so that `Date` objects can be easily printed to `std::cout` in a 'DD-MM-YYYY' format.",
+  "test_cases": [
+    { "input": "Date d(1, 1, 2023); std::cout << d;", "expected": "01-01-2023\n" },
+    { "input": "Date d(15, 7, 1999); std::cout << d;", "expected": "15-07-1999\n" },
+    { "input": "Date d(5, 12, 2010); std::cout << d;", "expected": "05-12-2010\n" },
+    { "input": "Date d(28, 2, 2024); std::cout << d;", "expected": "28-02-2024\n" }
+  ],
+  "driver": "int main() {\n    Date d1(1, 1, 2023);\n    Date d2(15, 7, 1999);\n    Date d3(5, 12, 2010);\n    Date d4(28, 2, 2024);\n    std::cout << d1 << std::endl;\n    std::cout << d2 << std::endl;\n    std::cout << d3 << std::endl;\n    std::cout << d4 << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `<<` operator uses verbose `if` statements for adding leading zeros to day and month, instead of the more readable and idiomatic `std::setw` and `std::setfill` stream manipulators. This reduces code readability and is less efficient."
+  ]
+}

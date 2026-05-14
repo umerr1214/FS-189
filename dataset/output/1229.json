@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a `StringWrapper` class that dynamically allocates memory for a C-style string. Provide a copy constructor that performs a deep copy to prevent issues with shallow copies.",
+  "test_cases": [
+    { "input": "StringWrapper s1(\"Hello, World!\"); StringWrapper s2 = s1; { StringWrapper temp1(\"First String\"); StringWrapper temp2 = temp1; }", "expected": "--- Test 1: Basic Copy ---\ns1 original: Hello, World!\ns2 (copy of s1): Hello, World!\n\n--- Test 2: Scope and Deletion (expect crash/UB) ---\ntemp1: First String\ntemp2: First String\n\nProgram finished (if no crash occurred).\n" }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n\nclass StringWrapper {\npublic:\n    char* data;\n    size_t length;\n\n    StringWrapper(const char* str = \"\") {\n        if (str) {\n            length = strlen(str);\n            data = new char[length + 1];\n            strcpy(data, str);\n        } else {\n            length = 0;\n            data = new char[1];\n            data[0] = '\\0';\n        }\n    }\n\n    ~StringWrapper() {\n        delete[] data;\n    }\n\n    StringWrapper(const StringWrapper& other) {\n        this->data = other.data;\n        this->length = other.length;\n    }\n\n    void print() const {\n        std::cout << data << std::endl;\n    }\n};\n\nint main() {\n    std::cout << \"--- Test 1: Basic Copy ---\" << std::endl;\n    StringWrapper s1(\"Hello, World!\");\n    std::cout << \"s1 original: \";\n    s1.print();\n\n    StringWrapper s2 = s1; \n    std::cout << \"s2 (copy of s1): \";\n    s2.print();\n\n    std::cout << \"\\n--- Test 2: Scope and Deletion (expect crash/UB) ---\" << std::endl;\n    {\n        StringWrapper temp1(\"First String\");\n        StringWrapper temp2 = temp1;\n        std::cout << \"temp1: \"; temp1.print();\n        std::cout << \"temp2: \"; temp2.print();\n    }\n\n    std::cout << \"\\nProgram finished (if no crash occurred).\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Copy constructor performs a shallow copy instead of a deep copy, leading to double-free or use-after-free when objects are destroyed."
+  ]
+}

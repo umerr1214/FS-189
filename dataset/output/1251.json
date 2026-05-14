@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define an `Employee` base class with a `displayInfo()` method. Create a `Manager` class that inherits from `Employee` and overrides `displayInfo()` to include additional manager-specific details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Company Staff Information ---\nEmployee: Alice Smith, ID: EMP-001\n\nEmployee: Bob Johnson, ID: MGR-001\n  Department: Engineering, Team Size: 12\n\nEmployee: Carol White, ID: MGR-002\n  Department: Marketing, Team Size: 7\n\n--- Individual Information ---\nEmployee: Alice Smith, ID: EMP-001\nEmployee: Bob Johnson, ID: MGR-001\n  Department: Engineering, Team Size: 12\nEmployee: Carol White, ID: MGR-002\n  Department: Marketing, Team Size: 7\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\nclass Employee {\nprotected:\n    std::string name;\n    std::string employeeId;\n\npublic:\n    Employee(const std::string& name, const std::string& employeeId)\n        : name(name), employeeId(employeeId) {}\n\n    virtual void displayInfo() const {\n        std::cout << \"Employee: \" << name << \", ID: \" << employeeId << '\\n';\n    }\n    \n    virtual ~Employee() = default;\n};\n\nclass Manager : public Employee {\nprivate:\n    std::string department;\n    int teamSize;\n\npublic:\n    Manager(const std::string& name, const std::string& employeeId,\n            const std::string& department, int teamSize)\n        : Employee(name, employeeId), department(department), teamSize(teamSize) {}\n\n    void displayInfo() const override {\n        Employee::displayInfo();\n        std::cout << \"  Department: \" << department << \", Team Size: \" << teamSize << '\\n';\n    }\n};\n\nint main() {\n    Employee emp1(\"Alice Smith\", \"EMP-001\");\n    Manager mgr1(\"Bob Johnson\", \"MGR-001\", \"Engineering\", 12);\n    Manager mgr2(\"Carol White\", \"MGR-002\", \"Marketing\", 7);\n\n    std::vector<Employee*> staff;\n    staff.push_back(&emp1);\n    staff.push_back(&mgr1);\n    staff.push_back(&mgr2);\n\n    std::cout << \"--- Company Staff Information ---\\n\";\n    for (const auto& person : staff) {\n        person->displayInfo();\n        std::cout << '\\n';\n    }\n\n    std::cout << \"--- Individual Information ---\\n\";\n    emp1.displayInfo();\n    mgr1.displayInfo();\n    mgr2.displayInfo();\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

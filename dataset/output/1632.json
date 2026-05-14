@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a `Student` class with private members for `studentID` (int) and `name` (string). Add a parameterized constructor and a public method `enrollInCourse(string courseName)` that simply prints a message indicating the student has enrolled in the given course.",
+  "test_cases": [
+    {
+      "input": "Student s1(101, \"Alice Smith\"); s1.enrollInCourse(\"Calculus I\");",
+      "expected": "Alice Smith (ID: 101) has enrolled in Calculus I.\n"
+    }
+  ],
+  "driver": "int main() {\n    Student s1(101, \"Alice Smith\");\n    s1.enrollInCourse(\"Calculus I\");\n    // std::cout << \"Student ID (direct access attempt): \" << s1.studentID << std::endl; // This line would cause a semantic error if uncommented\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Attempt to access a private member (`studentID`) of the `Student` class directly from `main`, which is outside the class scope. This is a violation of access control rules and will lead to a compilation error."
+  ]
+}

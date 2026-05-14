@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Create a `Point` class with private integer members `x` and `y`. Provide a constructor to set these coordinates and a public method `getDistanceToOrigin()` that calculates and returns the Euclidean distance from the point to (0,0).",
+  "test_cases": [
+    { "input": "N/A", "expected": "Distance for (0,0): 0.0000000000" },
+    { "input": "N/A", "expected": "Distance for (3,4): 5.0000000000" },
+    { "input": "N/A", "expected": "Distance for (-3,-4): 5.0000000000" },
+    { "input": "N/A", "expected": "Distance for (5,12): 13.0000000000" },
+    { "input": "N/A", "expected": "Distance for (-8,6): 10.0000000000" },
+    { "input": "N/A", "expected": "Distance for (1,1): 1.4142135624" },
+    { "input": "N/A", "expected": "Distance for (50000,50000): 26552.4593453724" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n#include <iomanip>\n\nclass Point {\nprivate:\n    int x;\n    int y;\n\npublic:\n    Point(int x_coord, int y_coord) {\n        x = x_coord;\n        y = y_coord;\n    }\n\n    double getDistanceToOrigin() {\n        int x_squared = x * x;\n        int y_squared = y * y;\n        int sum_of_squares = x_squared + y_squared;\n        return std::sqrt(static_cast<double>(sum_of_squares));\n    }\n};\n\nint main() {\n    std::cout << std::fixed << std::setprecision(10);\n\n    Point p1(0, 0);\n    std::cout << \"Distance for (0,0): \" << p1.getDistanceToOrigin() << std::endl;\n\n    Point p2(3, 4);\n    std::cout << \"Distance for (3,4): \" << p2.getDistanceToOrigin() << std::endl;\n\n    Point p3(-3, -4);\n    std::cout << \"Distance for (-3,-4): \" << p3.getDistanceToOrigin() << std::endl;\n\n    Point p4(5, 12);\n    std::cout << \"Distance for (5,12): \" << p4.getDistanceToOrigin() << std::endl;\n\n    Point p5(-8, 6);\n    std::cout << \"Distance for (-8,6): \" << p5.getDistanceToOrigin() << std::endl;\n\n    Point p6(1, 1);\n    std::cout << \"Distance for (1,1): \" << p6.getDistanceToOrigin() << std::endl;\n\n    Point p7(50000, 50000);\n    std::cout << \"Distance for (50000,50000): \" << p7.getDistanceToOrigin() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Integer overflow in `getDistanceToOrigin()` when calculating `x*x` and `y*y` for large `x` or `y`. The intermediate variables `x_squared`, `y_squared`, and `sum_of_squares` are `int`, which can overflow before the final cast to `double` for `std::sqrt`, leading to incorrect distance calculations for large coordinates.",
+    "The code does not handle potential overflow for large integer inputs gracefully, leading to incorrect results rather than a robust failure or correct calculation."
+  ]
+}

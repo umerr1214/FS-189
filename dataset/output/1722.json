@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Design a simple logging system using polymorphism. Create a base `Logger` class with a virtual `log(string message)` method. Derive `ConsoleLogger` and `FileLogger` classes, overriding `log()` to print to console or write to a file, respectively.",
+  "test_cases": [
+    { "input": "Console message 1", "expected": "Console Log: Console message 1\n" },
+    { "input": "File message 1", "expected": "File Log: File message 1\n" }
+  ],
+  "driver": "#include <iostream>\n#include <fstream>\n#include <vector>\n#include <string>\n#include <sstream>\n\n// Assume Logger, ConsoleLogger, FileLogger are defined in the user's code\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> test_inputs = {\n        {\"Console message 1\", \"Console\"},\n        {\"File message 1\", \"File\"}\n    };\n\n    // Clear log.txt before tests to ensure fresh content\n    std::ofstream ofs_clear(\"log.txt\", std::ios::trunc);\n    ofs_clear.close();\n\n    std::stringstream console_buffer;\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::cout.rdbuf(console_buffer.rdbuf());\n\n    // Create objects on heap to demonstrate potential destructor issue with polymorphism\n    Logger* consoleLoggerPtr = new ConsoleLogger();\n    Logger* fileLoggerPtr = new FileLogger(\"log.txt\");\n    \n    // Log messages\n    consoleLoggerPtr->log(test_inputs[0].first);\n    fileLoggerPtr->log(test_inputs[1].first);\n\n    std::cout.rdbuf(old_cout);\n\n    // Read file content\n    std::ifstream ifs(\"log.txt\");\n    std::string actual_file_content((std::istreambuf_iterator<char>(ifs)), std::istreambuf_iterator<char>());\n    ifs.close();\n\n    // Print actual captured outputs for evaluation\n    std::cout << console_buffer.str();\n    std::cout << actual_file_content;\n\n    // Delete objects via base pointers - this is where the semantic error would manifest\n    // If Logger's destructor is not virtual, FileLogger's destructor will not be called.\n    delete consoleLoggerPtr;\n    delete fileLoggerPtr;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": []
+}

@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Define an `Employee` base class with a `displayInfo()` method. Create a `Manager` class that inherits from `Employee` and overrides `displayInfo()` to include additional manager-specific details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Displaying Employee Info ---\nEmployee: Alice, ID: E001\n\n--- Displaying Manager 1 Info ---\nEmployee: Bob, ID: M001\n  Department: Sales\n  First Project: Project Alpha\n\n--- Displaying Manager 2 Info (Robustness Issue Expected) ---\nEmployee: Carol, ID: M002\n  Department: HR\nCaught exception: vector::_M_range_check: __n (which is 0) >= this->size() (which is 0) - Manager has no projects.\n\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <stdexcept>\n\nclass Employee {\nprotected:\n    std::string name;\n    std::string employeeId;\n\npublic:\n    Employee(const std::string& name, const std::string& employeeId)\n        : name(name), employeeId(employeeId) {}\n\n    virtual void displayInfo() const {\n        std::cout << \"Employee: \" << name << \", ID: \" << employeeId << std::endl;\n    }\n};\n\nclass Manager : public Employee {\nprivate:\n    std::string department;\n    std::vector<std::string> managedProjects;\n\npublic:\n    Manager(const std::string& name, const std::string& employeeId,\n            const std::string& department, const std::vector<std::string>& projects)\n        : Employee(name, employeeId), department(department), managedProjects(projects) {}\n\n    void displayInfo() const override {\n        Employee::displayInfo();\n        std::cout << \"  Department: \" << department << std::endl;\n        std::cout << \"  First Project: \" << managedProjects[0] << std::endl;\n    }\n};\n\nint main() {\n    Employee emp1(\"Alice\", \"E001\");\n    Manager mgr1(\"Bob\", \"M001\", \"Sales\", {\"Project Alpha\", \"Project Beta\"});\n    Manager mgr2(\"Carol\", \"M002\", \"HR\", {});\n\n    std::cout << \"--- Displaying Employee Info ---\" << std::endl;\n    emp1.displayInfo();\n    std::cout << std::endl;\n\n    std::cout << \"--- Displaying Manager 1 Info ---\" << std::endl;\n    mgr1.displayInfo();\n    std::cout << std::endl;\n\n    std::cout << \"--- Displaying Manager 2 Info (Robustness Issue Expected) ---\" << std::endl;\n    try {\n        mgr2.displayInfo();\n    } catch (const std::out_of_range& e) {\n        std::cerr << \"Caught exception: \" << e.what() << \" - Manager has no projects.\" << std::endl;\n    } catch (...) {\n        std::cerr << \"An unexpected error occurred for Manager 2.\" << std::endl;\n    }\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The Manager::displayInfo() method attempts to access `managedProjects[0]` without checking if the `managedProjects` vector is empty. This can lead to a `std::out_of_range` exception or a program crash if a Manager object is created with an empty project list.",
+    "Lack of input validation or defensive programming in `displayInfo` for `managedProjects` vector access."
+  ]
+}

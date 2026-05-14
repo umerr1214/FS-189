@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Design a `Course` class and a `Student` class. `Course` should have a `name` and a private pointer to a `Student` object (`Student* assignedStudent`) to demonstrate aggregation (a student can exist independently of a course). Implement methods to assign and unassign a student to the course.",
+  "test_cases": [
+    {
+      "input": "Initialize s1, c1. Assign s1 to c1. Unassign s1 from c1. Display c1.",
+      "expected": "Student Alice created.\nCourse C++ Programming created.\nCourse: C++ Programming (No student assigned)\nStudent Alice assigned to course C++ Programming\nCourse: C++ Programming (Assigned Student: Alice)\n\n--- Attempting to unassign s1 from c1 ---\nStudent Alice unassigned from course C++ Programming\nCourse: C++ Programming (Assigned Student: Alice)\n\n--- Attempting to re-assign s2 to c1 ---\nWarning: Course C++ Programming already has a student assigned. Unassigning first.\nStudent Alice unassigned from course C++ Programming\nStudent Bob assigned to course C++ Programming\nCourse: C++ Programming (Assigned Student: Bob)\n\n--- End of main scope ---\nCourse Data Structures destroyed.\nStudent Bob destroyed.\nCourse C++ Programming destroyed.\nStudent Alice destroyed."
+    }
+  ],
+  "driver": "    Student s1(\"Alice\", 101);\n    Student s2(\"Bob\", 102);\n\n    Course c1(\"C++ Programming\");\n    Course c2(\"Data Structures\");\n\n    c1.display();\n    c2.display();\n\n    c1.assignStudent(&s1);\n    c1.display();\n\n    c2.assignStudent(&s2);\n    c2.display();\n\n    std::cout << \"\\n--- Attempting to unassign s1 from c1 ---\\n\";\n    c1.unassignStudent();\n    c1.display();\n\n    std::cout << \"\\n--- Attempting to re-assign s2 to c1 ---\\n\";\n    c1.assignStudent(&s2);\n    c1.display();\n\n    std::cout << \"\\n--- End of main scope ---\\n\";",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    {
+      "line": 52,
+      "column": 13,
+      "message": "The `unassignStudent` method prints a message indicating unassignment but fails to set `assignedStudent = nullptr;`, leading to the course still showing the student as assigned in subsequent `display()` calls until a new student is assigned."
+    }
+  ]
+}

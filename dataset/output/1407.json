@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a multi-level inheritance hierarchy: `Animal` (with `name`), `Mammal` (derives from `Animal`, adds `furColor`), and `Dog` (derives from `Mammal`, adds `breed`). Each class should have a constructor and a `printDetails()` method.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Name: Buddy, Fur Color: Golden, Breed: Golden Retriever\n\n--- Demonstrating Polymorphism ---\nName: Charlie, Fur Color: White, Breed: Poodle\n"
+    }
+  ],
+  "driver": "int main() {\n    Dog myDog(\"Buddy\", \"Golden\", \"Golden Retriever\");\n    myDog.printDetails();\n    std::cout << std::endl;\n\n    std::cout << \"\\n--- Demonstrating Polymorphism ---\\n\";\n    Animal* a1 = new Dog(\"Charlie\", \"White\", \"Poodle\");\n    a1->printDetails();\n    std::cout << std::endl;\n    delete a1;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

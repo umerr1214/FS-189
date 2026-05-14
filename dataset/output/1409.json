@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design a `Product` class with private `productName` (string) and `price` (double). Provide public getter methods (`getProductName`, `getPrice`) and setter methods (`setProductName`, `setPrice`) for both attributes.",
+  "test_cases": [
+    { "input": "", "expected": "Initial Product: Laptop, 1200.5\nUpdated Product: Gaming PC, 1800\n" }
+  ],
+  "driver": "int main() {\n    Product myProduct(\"Laptop\", 1200.50);\n    std::cout << \"Initial Product: \" << myProduct.getProductName() << \", \" << myProduct.getPrice() << std::endl;\n    myProduct.setProductName(\"Gaming PC\");\n    myProduct.setPrice(1800.00);\n    std::cout << \"Updated Product: \" << myProduct.getProductName() << \", \" << myProduct.getPrice() << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The setter methods `setProductName` and `setPrice` contain a logical error. They assign the parameter to itself (e.g., `productName = productName;`) instead of assigning the parameter to the member variable (e.g., `this->productName = productName;`), causing the object's state not to be updated."]
+}

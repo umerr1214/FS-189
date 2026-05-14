@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Department` class that uses composition to manage a collection of `Employee` objects. The `Department` class should have a private member (e.g., `std::vector<Employee>`) to store employees. Include methods to add an employee and list all employees in the department.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Listing HR Department Employees ---\nDepartment: Human Resources\nID: 101, Name: Alice Smith\nID: 102, Name: Bob Johnson\nID: 103, Name: Charlie Brown\n\n--- Listing Engineering Department Employees ---\nDepartment: Engineering\nID: 201, Name: David Lee\nID: 202, Name: Eve Davis\n"
+    }
+  ],
+  "driver": "int main() {\n    Department hrDept(\"Human Resources\");\n\n    Employee alice(\"Alice Smith\", 101);\n    hrDept.addEmployee(alice);\n    hrDept.addEmployee(Employee(\"Bob Johnson\", 102));\n    hrDept.addEmployee(Employee(\"Charlie Brown\", 103));\n\n    std::cout << \"--- Listing HR Department Employees ---\\n\";\n    hrDept.listEmployees();\n    std::cout << \"\\n\";\n\n    Department engDept(\"Engineering\");\n    engDept.addEmployee(Employee(\"David Lee\", 201));\n    engDept.addEmployee(Employee(\"Eve Davis\", 202));\n    std::cout << \"--- Listing Engineering Department Employees ---\\n\";\n    engDept.listEmployees();\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

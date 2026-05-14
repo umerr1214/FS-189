@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Implement a `Vector2D` class with private `x` and `y` (double) coordinates. Overload the binary `+` operator to perform vector addition, returning a new `Vector2D` object.",
+  "test_cases": [
+    { "input": "v1 = Vector2D(1.0, 2.0); v2 = Vector2D(3.0, 4.0); v3 = v1 + v2;", "expected": "(4.0, 6.0)" },
+    { "input": "v_neg1 = Vector2D(-1.0, 2.5); v_neg2 = Vector2D(3.5, -4.0); v_neg_res = v_neg1 + v_neg2;", "expected": "(2.5, -1.5)" },
+    { "input": "v_chain1 = Vector2D(1.0, 1.0); v_chain2 = Vector2D(2.0, 2.0); v_chain3 = Vector2D(3.0, 3.0); v_chain_res = v_chain1 + v_chain2 + v_chain3;", "expected": "(6.0, 6.0)" },
+    { "input": "v_zero = Vector2D(0.0, 0.0); v_nonzero = Vector2D(5.0, 6.0); v_zero_res = v_zero + v_nonzero;", "expected": "(5.0, 6.0)" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include <sstream>\n\nclass Vector2D {\nprivate:\n    double _coordinate_x_value;\n    double _coordinate_y_value;\n\npublic:\n    Vector2D(double initial_x_component_value = 0.0, double initial_y_component_value = 0.0) {\n        this->_coordinate_x_value = initial_x_component_value;\n        this->_coordinate_y_value = initial_y_component_value;\n    }\n\n    friend Vector2D operator+(const Vector2D& left_vector_operand, const Vector2D& right_vector_operand);\n    friend std::ostream& operator<<(std::ostream& output_stream, const Vector2D& vector_object_to_print);\n};\n\nVector2D operator+(const Vector2D& left_vector_operand, const Vector2D& right_vector_operand) {\n    Vector2D result_of_addition_vector;\n    result_of_addition_vector._coordinate_x_value = left_vector_operand._coordinate_x_value + right_vector_operand._coordinate_x_value;\n    result_of_addition_vector._coordinate_y_value = left_vector_operand._coordinate_y_value + right_vector_operand._coordinate_y_value;\n    return result_of_addition_vector;\n}\n\nstd::ostream& operator<<(std::ostream& output_stream, const Vector2D& vector_object_to_print) {\n    output_stream << \"(\" << vector_object_to_print._coordinate_x_value << \", \" << vector_object_to_print._coordinate_y_value << \")\";\n    return output_stream;\n}\n\nint main() {\n    std::stringstream ss;\n    ss << std::fixed << std::setprecision(1);\n\n    Vector2D v1_obj(1.0, 2.0);\n    Vector2D v2_obj(3.0, 4.0);\n    Vector2D v3_result_obj = v1_obj + v2_obj;\n    ss << v3_result_obj << std::endl;\n\n    Vector2D v_negative_x_obj(-1.0, 2.5);\n    Vector2D v_negative_y_obj(3.5, -4.0);\n    Vector2D v_negative_result_obj = v_negative_x_obj + v_negative_y_obj;\n    ss << v_negative_result_obj << std::endl;\n\n    Vector2D v_chain_first(1.0, 1.0);\n    Vector2D v_chain_second(2.0, 2.0);\n    Vector2D v_chain_third(3.0, 3.0);\n    Vector2D v_chained_sum_result = v_chain_first + v_chain_second + v_chain_third;\n    ss << v_chained_sum_result << std::endl;\n\n    Vector2D v_zero_coordinates(0.0, 0.0);\n    Vector2D v_non_zero_coordinates(5.0, 6.0);\n    Vector2D v_zero_sum_result = v_zero_coordinates + v_non_zero_coordinates;\n    ss << v_zero_sum_result << std::endl;\n\n    std::cout << ss.str();\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses overly verbose and less descriptive variable names (e.g., `_coordinate_x_value`, `initial_x_component_value`) which reduces readability.",
+    "The constructor explicitly uses `this->` for member initialization, which is unnecessary and adds verbosity.",
+    "The `operator+` implementation is less efficient than optimal: it default-constructs a `Vector2D` object (`result_of_addition_vector`) and then assigns its members. A more efficient approach would be direct initialization: `return Vector2D(lhs.x + rhs.x, lhs.y + rhs.y);` to avoid an extra default construction and two assignments, potentially benefiting from Return Value Optimization (RVO)."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Develop a `Rectangle` class with private double members `width` and `height`. Implement a parameterized constructor that initializes these dimensions and a public method `getArea()` that returns the rectangle's area.",
+  "test_cases": [
+    { "input": "width=15.0, height=3.0", "expected": "Area for (15.0, 3.0): 45.0" },
+    { "input": "width=1.0, height=1.0", "expected": "Area for (1.0, 1.0): 1.0" },
+    { "input": "width=0.0, height=8.0", "expected": "Area for (0.0, 8.0): 0.0" },
+    { "input": "width=-5.0, height=2.0", "expected": "Area for (-5.0, 2.0): 0.0" },
+    { "input": "width=7.5, height=2.5", "expected": "Area for (7.5, 2.5): 18.75" }
+  ],
+  "driver": "#include <iostream>\n#include <algorithm> // For std::max\n\nclass Rectangle {\nprivate:\n    double width;\n    double height;\n\npublic:\n    // Parameterized constructor with input validation for robustness\n    Rectangle(double w, double h) {\n        width = std::max(0.0, w); // Ensure width is non-negative\n        height = std::max(0.0, h); // Ensure height is non-negative\n    }\n\n    // Public method to get the area\n    double getArea() const {\n        return width * height;\n    }\n};\n\nint main() {\n    // Test cases for Correct Version\n    Rectangle r1(15.0, 3.0);\n    std::cout << \"Area for (15.0, 3.0): \" << r1.getArea() << std::endl;\n\n    Rectangle r2(1.0, 1.0);\n    std::cout << \"Area for (1.0, 1.0): \" << r2.getArea() << std::endl;\n\n    Rectangle r3(0.0, 8.0); // Edge case: zero width\n    std::cout << \"Area for (0.0, 8.0): \" << r3.getArea() << std::endl;\n\n    Rectangle r4(-5.0, 2.0); // Input validation handles negative width\n    std::cout << \"Area for (-5.0, 2.0): \" << r4.getArea() << std::endl;\n\n    Rectangle r5(7.5, 2.5);\n    std::cout << \"Area for (7.5, 2.5): \" << r5.getArea() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

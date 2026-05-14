@@ -1,0 +1,27 @@
+{
+  "language": "c++",
+  "question": "Implement a `Counter` class with a private integer `value`. Overload the pre-increment (`++`) operator to increment the `value` and return the incremented object. Also, overload the post-increment (`value++`) operator.",
+  "test_cases": [
+    {
+      "input": "Counter c(5); std::cout << (++c).getValue() << std::endl; std::cout << c.getValue() << std::endl;",
+      "expected": "6\n6\n"
+    },
+    {
+      "input": "Counter c(10); std::cout << (c++).getValue() << std::endl; std::cout << c.getValue() << std::endl;",
+      "expected": "10\n11\n"
+    },
+    {
+      "input": "Counter c(1); ++(++c); std::cout << c.getValue() << std::endl;",
+      "expected": "3\n"
+    },
+    {
+      "input": "Counter c(20); Counter d = ++c; Counter e = d++; std::cout << c.getValue() << std::endl; std::cout << d.getValue() << std::endl; std::cout << e.getValue() << std::endl;",
+      "expected": "21\n22\n21\n"
+    }
+  ],
+  "driver": "#include <iostream>\n\nclass Counter {\nprivate:\n    int value;\npublic:\n    Counter(int v = 0) : value(v) {}\n\n    int getValue() const {\n        return value;\n    }\n\n    Counter& operator++() {\n        ++value;\n        return *this;\n    }\n\n    Counter operator++(int) {\n        Counter temp = *this;\n        ++value;\n        return temp;\n    }\n};\n\nint main() {\n    // For test case 1:\n    Counter tc1_c(5); \n    std::cout << (++tc1_c).getValue() << std::endl; \n    std::cout << tc1_c.getValue() << std::endl;\n\n    // For test case 2:\n    Counter tc2_c(10); \n    std::cout << (tc2_c++).getValue() << std::endl; \n    std::cout << tc2_c.getValue() << std::endl;\n\n    // For test case 3:\n    Counter tc3_c(1); \n    ++(++tc3_c); \n    std::cout << tc3_c.getValue() << std::endl;\n\n    // For test case 4:\n    Counter tc4_c(20); \n    Counter tc4_d = ++tc4_c; \n    Counter tc4_e = tc4_d++; \n    std::cout << tc4_c.getValue() << std::endl; \n    std::cout << tc4_d.getValue() << std::endl; \n    std::cout << tc4_e.getValue() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

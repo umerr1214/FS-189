@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Develop a `DynamicArray` class that manages an array of integers on the heap. Include a constructor that takes size, a destructor that deallocates memory, and a method `setElement(index, value)`.",
+  "test_cases": [
+    { "input": "Create a DynamicArray of size 3. Set elements at index 0, 1, 2. Print array. Attempt to set element at index 3. Print array. Attempt to set element at index -1. Print array.", "expected": "10 20 30 \nError: Index 3 out of bounds for size 3.\n10 20 30 \nError: Index -1 out of bounds for size 3.\n10 20 30 \n" }
+  ],
+  "driver": "int main() {\n    DynamicArray da(3);\n    da.setElement(0, 10);\n    da.setElement(1, 20);\n    da.setElement(2, 30);\n    da.printArray();\n\n    da.setElement(3, 40); // This will attempt an out-of-bounds write due to logical error\n    da.printArray();\n    \n    da.setElement(-1, 50); // This will print an error message from the flawed bounds check\n    da.printArray();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `setElement` method contains a logical error in its bounds checking. The condition `index <= size` allows access to `arr[size]`, which is one element beyond the allocated memory (valid indices are 0 to `size-1`). This leads to an out-of-bounds write and undefined behavior. While it correctly flags negative indices as out of bounds, the upper bound check is flawed."
+  ]
+}

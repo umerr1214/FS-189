@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Model a `Car` class that has an `Engine` object (composition). The `Engine` class should have `horsepower` and `fuelType` attributes. Demonstrate how a `Car` object is constructed with an `Engine` and how `Car` methods can access `Engine` properties.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Car 1 ---\nCar Make: Toyota, Model: Corolla\nEngine Details:\n  Horsepower: 139 HP\n  Fuel Type: Gasoline\nAccessed Engine Horsepower via Car: 139\nAccessed Engine Fuel Type via Car: Gasoline\n\n--- Car 2 ---\nCar Make: BMW, Model: X5\nEngine Details:\n  Horsepower: 335 HP\n  Fuel Type: Petrol\nAccessed Engine Horsepower via Car: 335\nAccessed Engine Fuel Type via Car: Petrol\n\n--- Attempting to create Invalid Car (negative horsepower) ---\nError creating car: Engine horsepower must be a positive value.\n\n--- Attempting to create Invalid Car (empty fuel type) ---\nError creating car: Engine fuel type cannot be empty.\n\n"
+    }
+  ],
+  "driver": "See main function in the provided C++ file, which includes multiple test cases demonstrating valid and invalid object creation.",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Enhance the `Shape` class by adding a pure virtual function `double calculateArea()`. Implement this function in the `Circle` class to return the area of the circle. Demonstrate calling `calculateArea()` through a `Shape` pointer.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Circle radius: 5\nArea (via Shape pointer): 78.53981633974483\n"
+    }
+  ],
+  "driver": "// Program is self-contained and runs test cases directly.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Circle::calculateArea` function does not robustly handle negative radius inputs. It directly calculates `M_PI * radius * radius`, which results in a negative area for a negative radius, a physically incorrect value. A robust solution would validate the radius in the constructor or `calculateArea` method, returning 0 or throwing an error for non-positive radii."
+  ]
+}

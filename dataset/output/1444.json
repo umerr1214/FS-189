@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a `Temperature` class that stores temperature in Celsius (private double). Provide a constructor and a public method `getFahrenheit()` that converts and returns the temperature in Fahrenheit. Ensure direct access to Celsius is restricted.",
+  "test_cases": [
+    { "input": "0.0", "expected": "32.0" },
+    { "input": "100.0", "expected": "212.0" },
+    { "input": "25.0", "expected": "77.0" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <cmath> \n\n// Assuming the Temperature class definition is available here\n\nvoid run_test(double input_celsius, double expected_fahrenheit) {\n    Temperature temp(input_celsius);\n    double actual_fahrenheit = temp.getFahrenheit();\n    bool passed = std::abs(actual_fahrenheit - expected_fahrenheit) < 0.001;\n\n    std::cout << \"Input Celsius: \" << input_celsius\n              << \", Expected Fahrenheit: \" << expected_fahrenheit\n              << \", Actual Fahrenheit: \" << actual_fahrenheit\n              << (passed ? \" (PASSED)\" : \" (FAILED)\") << std::endl;\n}\n\nint main() {\n    run_test(0.0, 32.0);\n    run_test(100.0, 212.0);\n    run_test(25.0, 77.0);\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition."
+  ]
+}

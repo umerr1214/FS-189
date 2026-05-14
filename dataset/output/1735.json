@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Printer` class with overloaded `print` methods. One method should take an integer, another a string, and a third a character. Each method should display its respective argument.",
+  "test_cases": [
+    {
+      "input": "123, \"Hello, C++!\", 'A', '$', '\\n', '\\t', char(27), char(127)",
+      "expected": "Integer: 123\nString: Hello, C++!\nCharacter: A\nCharacter: $\nCharacter (ASCII value): 10\nCharacter (ASCII value): 9\nCharacter (ASCII value): 27\nCharacter (ASCII value): 127\n"
+    }
+  ],
+  "driver": "int main() {\n    Printer p;\n    p.print(123);\n    p.print(\"Hello, C++!\");\n    p.print('A');\n    p.print('$');\n    p.print('\\n');\n    p.print('\\t');\n    p.print(static_cast<char>(27));\n    p.print(static_cast<char>(127));\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `print(char)` method handles non-printable ASCII characters by printing their integer ASCII value instead of the character itself. While preventing potential display issues, this behavior might be unexpected or inconsistent with a user's intuitive understanding of 'printing a character', thus reducing robustness in terms of user experience for all valid char inputs."
+  ]
+}

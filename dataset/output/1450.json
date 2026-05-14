@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `Rectangle` class with private `width` and `height` (doubles). Declare a `friend` function `calculateArea(const Rectangle& rect)` that takes a `Rectangle` object and computes its area directly accessing `width` and `height`.",
+  "test_cases": [
+    { "input": "Rectangle(5.0, 10.0)", "expected": "Area: 50.0" }
+  ],
+  "driver": "int main() {\n    Rectangle r(5.0, 10.0);\n    std::cout << \"Area: \" << calculateArea(r) << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the class definition '}' for Rectangle class. This will lead to a compilation error."
+  ]
+}

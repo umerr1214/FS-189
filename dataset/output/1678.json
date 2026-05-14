@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a base class `Shape` with a virtual function `calculateArea()` that returns a double. Derive `Circle` (with radius) and `Square` (with side length) classes from `Shape`, and override `calculateArea()` in each derived class.",
+  "test_cases": [
+    { "input": "5.0 (for Circle), 4.0 (for Square)", "expected": "78.5398\n16.0" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <memory>\n#include <cmath>\n\nint main() {\n    std::vector<std::unique_ptr<Shape>> shapes;\n    shapes.push_back(std::make_unique<Circle>(5.0));\n    shapes.push_back(std::make_unique<Square>(4.0));\n\n    for (const auto& shape : shapes) {\n        std::cout << shape->calculateArea() << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition.",
+    "Missing 'return' statement in Circle::calculateArea()."
+  ]
+}

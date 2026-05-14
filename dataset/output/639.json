@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void binomSum(int arr[], int size) that updates each element with the sum of numbers from 1 to that element.",
+  "test_cases": [
+    {
+      "input": "arr = {6}, size = 1",
+      "expected": "{21}"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"639.cpp\"\n\nint main() {\n    int arr[] = {6};\n    binomSum(arr, 1);\n    // Will result in 0 (sum of index 0) instead of 21\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using array index 'i' in calculation instead of array value 'arr[i]'."
+  ]
+}

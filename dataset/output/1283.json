@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a `Date` class with private `day`, `month`, and `year` attributes. Provide public setter methods for each attribute that include robust validation (e.g., month must be 1-12, day valid for the given month and year).",
+  "test_cases": [
+    { "input": "Date d_1900(29, 2, 1900); d_1900.display();", "expected": "29/2/1900\n" },
+    { "input": "Date d_2000(29, 2, 2000); d_2000.display();", "expected": "29/2/2000\n" },
+    { "input": "Date d_2100(29, 2, 2100); d_2100.display();", "expected": "29/2/2100\n" },
+    { "input": "Date testDate; testDate.setYear(1900); testDate.setMonth(2); testDate.setDay(29); testDate.display();", "expected": "29/2/1900\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// The Date class code will be inserted here, which has a logical error.\n\nint main() {\n    std::cout << \"Testing Date class with Logical Error (incorrect leap year check):\\n\";\n\n    // Year 1900 is NOT a leap year (divisible by 100 but not 400).\n    // Our 'isLeap' will incorrectly mark it as a leap year, allowing 29/2/1900.\n    Date d_1900(29, 2, 1900); \n    std::cout << \"Date(29, 2, 1900): \";\n    d_1900.display(); \n\n    // Year 2000 IS a leap year (divisible by 400). This case will work correctly.\n    Date d_2000(29, 2, 2000);\n    std::cout << \"Date(29, 2, 2000): \";\n    d_2000.display();\n\n    // Year 2100 is NOT a leap year (divisible by 100 but not 400).\n    // Our 'isLeap' will incorrectly mark it as a leap year, allowing 29/2/2100.\n    Date d_2100(29, 2, 2100); \n    std::cout << \"Date(29, 2, 2100): \";\n    d_2100.display(); \n\n    Date testDate;\n    std::cout << \"Initial date: \";\n    testDate.display(); \n\n    // Try to set 29 Feb 1900 - should fail, but will succeed due to logical error\n    std::cout << \"Attempting to set 29/2/1900 (should be invalid): \";\n    if (testDate.setYear(1900) && testDate.setMonth(2) && testDate.setDay(29)) {\n        std::cout << \"set(29, 2, 1900) succeeded (LOGICAL ERROR): \";\n    } else {\n        std::cout << \"set(29, 2, 1900) failed (CORRECT BEHAVIOR): \";\n    }\n    testDate.display(); \n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `isLeap` helper function contains a logical error. It incorrectly identifies years divisible by 100 but not by 400 (e.g., 1900, 2100) as leap years. This leads to dates like 29/2/1900 or 29/2/2100 being considered valid by the setters, when they should be invalid."
+  ]
+}

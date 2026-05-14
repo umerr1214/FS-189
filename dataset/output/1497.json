@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `Calculator` class with a single `add` method overloaded to perform the following operations: 1. Add two integers. 2. Add two doubles. 3. Add three integers. Demonstrate calling all three overloaded versions.",
+  "test_cases": [
+    { "input": "10, 20", "expected": "--- Correct Version Demonstration ---\nSum of two integers (10 + 20): 30\n" },
+    { "input": "15.5, 7.25", "expected": "Sum of two doubles (15.5 + 7.25): 22.75\n" },
+    { "input": "100, 200, 300", "expected": "Sum of three integers (100 + 200 + 300): 600\n" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\nclass Calculator {\npublic:\n    int add(int a, int b) const { return a + b; }\n    double add(double a, double b) const { return a + b; }\n    int add(int a, int b, int c) const { return a + b + c; }\n};\n\nint main() {\n    Calculator calc;\n\n    std::cout << \"--- Correct Version Demonstration ---\" << '\\n';\n\n    int sum_int_2 = calc.add(10, 20);\n    std::cout << \"Sum of two integers (10 + 20): \" << sum_int_2 << '\\n';\n\n    double sum_double_2 = calc.add(15.5, 7.25);\n    std::cout << std::fixed << std::setprecision(2);\n    std::cout << \"Sum of two doubles (15.5 + 7.25): \" << sum_double_2 << '\\n';\n\n    int sum_int_3 = calc.add(100, 200, 300);\n    std::cout << \"Sum of three integers (100 + 200 + 300): \" << sum_int_3 << '\\n';\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

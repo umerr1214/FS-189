@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Implement a `Vector2D` class with private double members `x` and `y`. Provide a parameterized constructor and a copy constructor that performs a deep copy of the `Vector2D` object.",
+  "test_cases": [
+    {
+      "input": "Create vector (1.0, 2.0) using parameterized constructor, then create a copy of it using the copy constructor.",
+      "expected": "\n>>> Creating v1 (1.0, 2.0) <<<\n--- Parameterized constructor called. Initializing a new Vector2D object. ---\nVector2D object successfully created with x = 1.0 and y = 2.0.\n--- End of parameterized constructor. ---\nv1: (1.00, 2.00)\n\n>>> Creating v2 as a copy of v1 <<<\n--- Copy constructor called. Creating a duplicate Vector2D object. ---\nIt is crucial to perform a 'deep copy' here. For primitive 'double' members,\na simple member-wise assignment copies the values themselves, which constitutes\na deep copy of the data, as there are no pointers or dynamically allocated memory.\nCopying the X-coordinate value from the source object.\nCopying the Y-coordinate value from the source object.\nVector2D object successfully copied. New vector is (1.0, 2.0).\n--- End of copy constructor. ---\nv2 (copy of v1): (1.00, 2.00)\n\n>>> Demonstrating independence <<<\nv1.getX(): 1.00, v1.getY(): 2.00\nv2.getX(): 1.00, v2.getY(): 2.00\n"
+    }
+  ],
+  "driver": "    // Create a Vector2D using the parameterized constructor\n    std::cout << \"\\n>>> Creating v1 (1.0, 2.0) <<<\" << std::endl;\n    Vector2D v1(1.0, 2.0);\n    std::cout << \"v1: \"; v1.print(); std::cout << std::endl;\n\n    // Create another Vector2D using the copy constructor\n    std::cout << \"\\n>>> Creating v2 as a copy of v1 <<<\" << std::endl;\n    Vector2D v2 = v1; // Uses copy constructor\n    std::cout << \"v2 (copy of v1): \"; v2.print(); std::cout << std::endl;\n\n    // Demonstrate that they are independent objects (conceptually)\n    std::cout << \"\\n>>> Demonstrating independence <<<\" << std::endl;\n    std::cout << \"v1.getX(): \" << v1.getX() << \", v1.getY(): \" << v1.getY() << std::endl;\n    std::cout << \"v2.getX(): \" << v2.getX() << \", v2.getY(): \" << v2.getY() << std::endl;\n",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Members `x` and `y` are initialized in the constructor bodies using assignment (`this->x = initialX;`) instead of an initializer list. This is less efficient as it involves default construction followed by assignment.",
+    "Constructors include excessive and verbose print statements and comments, reducing readability and adding unnecessary runtime overhead.",
+    "Inconsistent formatting, indentation, and variable spacing (e.g., `double x;` vs `double y;`) make the code harder to read."
+  ]
+}

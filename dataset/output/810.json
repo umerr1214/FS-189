@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a function void runLengthEncode(const char* input, char* output) that performs run-length encoding on the input string.",
+  "test_cases": [
+    {
+      "input": "input = \"AAABBBCCCDDE\"",
+      "expected": "\"A3B3C3D2E1\""
+    },
+    {
+      "input": "input = \"ABCD\"",
+      "expected": "\"A1B1C1D1\""
+    },
+    {
+      "input": "input = NULL",
+      "expected": "No crash"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cstdio>\n#include <cassert>\n#include \"810.cpp\"\n\nint main() {\n    char res[100];\n    runLengthEncode(\"AAABBB\", res);\n    assert(strcmp(res, \"A3B3\") == 0);\n    \n    runLengthEncode(\"A\", res);\n    assert(strcmp(res, \"A1\") == 0);\n    \n    runLengthEncode(NULL, res);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

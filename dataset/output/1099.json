@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Person` with attributes `name` (string) and `age` (int). Implement a parameterized constructor. Derive a class `Student` from `Person` with an additional attribute `studentId` (string). Ensure the `Student` constructor correctly initializes `Person`'s attributes using constructor chaining.",
+  "test_cases": [
+    {
+      "input": "No direct input, objects created in main.",
+      "expected": "--- Student 1 ---\nName: Alice Smith, Age: 20\nStudent ID: S1001\n\n--- Student 1 (After direct modification) ---\nName: Alice Smith, Age: -5\nStudent ID: \n\n--- Student 2 ---\nName: Bob Johnson, Age: 22\nStudent ID: S1002\n"
+    }
+  ],
+  "driver": "int main() {\n    Student student1(\"Alice Smith\", 20, \"S1001\");\n    std::cout << \"--- Student 1 ---\" << std::endl;\n    student1.displayStudentInfo();\n\n    student1.age = -5; \n    student1.studentId = \"\"; \n    std::cout << \"\\n--- Student 1 (After direct modification) ---\" << std::endl;\n    student1.displayStudentInfo();\n\n    Student student2(\"Bob Johnson\", 22, \"S1002\");\n    std::cout << \"\\n--- Student 2 ---\" << std::endl;\n    student2.displayStudentInfo();\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Attributes are declared as public, violating encapsulation principles. This allows direct external modification, making the class less robust against invalid states (e.g., negative age, empty student ID without validation).",
+    "Lack of input validation for 'age' attribute in the Person constructor, allowing potentially invalid negative values."
+  ]
+}

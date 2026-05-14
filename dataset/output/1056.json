@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a class `BankAccount` with private member variables for `accountNumber` (string) and `balance` (double). Implement public methods `deposit(double amount)` and `withdraw(double amount)` that validate the transaction (e.g., negative deposit, insufficient funds for withdrawal) and update the balance. Provide a `getBalance()` method.",
+  "test_cases": [
+    { "input": "initial: 500, deposit: 200, direct_modify_balance_to: -1000, withdraw: 50", "expected": "-1050" }
+  ],
+  "driver": "BankAccount myAccount(\"11223\", 500.0);\nmyAccount.deposit(200.0);\ndouble& refBalance = myAccount.getBalance();\nrefBalance = -1000.0;\nmyAccount.withdraw(50.0);\nstd::cout << myAccount.getBalance();",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The `getBalance()` method returns a reference to the private `balance` member, allowing external code to directly modify the account balance, bypassing all validation logic (e.g., negative balance, withdrawal limits). This violates encapsulation and the intended semantics of a getter method."]
+}

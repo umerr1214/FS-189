@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Date` class with private `day`, `month`, and `year` integers. Overload the `==` operator to compare if two `Date` objects represent the same date.",
+  "test_cases": [
+    { "input": "d1=(10,5,2023), d2=(10,5,2023)", "expected": "true" },
+    { "input": "d1=(10,5,2023), d2=(11,5,2023)", "expected": "false" },
+    { "input": "d1=(30,2,2023) (invalid), d2=(30,2,2023) (invalid)", "expected": "true" },
+    { "input": "d1=(1,1,2000), d2=(1,1,2001)", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Date {\nprivate:\n    int day;\n    int month;\n    int year;\n\npublic:\n    Date(int d, int m, int y) : day(d), month(m), year(y) {}\n\n    bool operator==(const Date& other) const {\n        return day == other.day && month == other.month && year == other.year;\n    }\n\n    void print() const {\n        std::cout << day << \"/\" << month << \"/\" << year;\n    }\n};\n\nint main() {\n    Date d1(10, 5, 2023);\n    Date d2(10, 5, 2023);\n    Date d3(11, 5, 2023);\n    Date d4(30, 2, 2023); // Invalid date\n    Date d5(30, 2, 2023); // Invalid date\n\n    std::cout << (d1 == d2 ? \"true\" : \"false\") << std::endl;\n    std::cout << (d1 == d3 ? \"true\" : \"false\") << std::endl;\n    std::cout << (d4 == d5 ? \"true\" : \"false\") << std::endl;\n    std::cout << (d1 == d4 ? \"true\" : \"false\") << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The `Date` constructor does not validate the input day, month, or year, allowing the creation of invalid date objects (e.g., February 30th). This can lead to unexpected behavior or an inconsistent state if these objects are used elsewhere, even though the `operator==` itself functions correctly for any stored values."]
+}

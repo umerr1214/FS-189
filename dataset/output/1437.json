@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Base` and a derived class `Derived`. In their default constructors and destructors, print messages indicating which class's constructor/destructor is being called to observe the order of construction and destruction.",
+  "test_cases": [
+    { "input": "", "expected": "Creating a Derived object via Base pointer (Correct Version):\nBase Constructor\nDerived Constructor\nDeleting the object via Base pointer:\nDerived Destructor\nBase Destructor\nObservation complete.\n" }
+  ],
+  "driver": "int main() { std::cout << \"Creating a Derived object via Base pointer (Correct Version):\\n\"; Base* objPtr = new Derived(); std::cout << \"Deleting the object via Base pointer:\\n\"; delete objPtr; std::cout << \"Observation complete.\\n\"; return 0; }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

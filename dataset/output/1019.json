@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `Point` class with private `x` and `y` coordinates. Implement getter methods `getX()` and `getY()` as `const` member functions. Demonstrate declaring a `const` `Point` object and calling its `const` getter methods.",
+  "test_cases": [
+    { "input": "", "expected": "Point coordinates (const object):\nx: 10\ny: 20\n" }
+  ],
+  "driver": "",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The `getX()` method incorrectly returns the `y` coordinate, and `getY()` incorrectly returns the `x` coordinate, leading to swapped output values."]
+}

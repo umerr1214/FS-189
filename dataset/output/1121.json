@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a class `Matrix` with a private 2D array (e.g., `int mat[2][2]` or `int**` for dynamic). Implement overloaded `setElement` methods: one that takes `row`, `col`, and `value` to set a single element, and another that takes a `row` index and an array/`std::vector<int>` to set an entire row.",
+  "test_cases": [
+    { "input": "", "expected": "Initial Matrix:\n1 2 \n3 4 \n---\nAfter setting row 0 with {10}:\n10 2 \n3 4 \n---\nAfter setting row 1 with {50, 60}:\n10 2 \n50 60 \n" }
+  ],
+  "driver": "int main() {\n    Matrix m;\n    m.setElement(0, 0, 1);\n    m.setElement(0, 1, 2);\n    m.setElement(1, 0, 3);\n    m.setElement(1, 1, 4);\n\n    std::cout << \"Initial Matrix:\" << std::endl;\n    m.print();\n    std::cout << \"---\" << std::endl;\n\n    // Test case 1: vector smaller than row size\n    std::vector<int> partial_row = {10};\n    m.setElement(0, partial_row); // Due to logical error, only mat[0][0] will be updated\n    std::cout << \"After setting row 0 with {10}:\" << std::endl;\n    m.print(); \n\n    std::cout << \"---\" << std::endl;\n\n    // Test case 2: vector full size (this works correctly by chance)\n    std::vector<int> full_row = {50, 60};\n    m.setElement(1, full_row); \n    std::cout << \"After setting row 1 with {50, 60}:\" << std::endl;\n    m.print(); \n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'setElement' method that takes a 'std::vector<int>' for an entire row has a logical flaw: it only iterates up to 'row_values.size()'. If the provided vector is smaller than the matrix's row width, it will not set the 'entire' row as intended, leaving trailing elements of the row unchanged."
+  ]
+}

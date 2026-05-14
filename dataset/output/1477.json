@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Extend the `Book` class to include a parameterized constructor that accepts and initializes `title`, `author`, and `isbn` upon object creation. Demonstrate its usage.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Title: The C++ Programming Language\nAuthor: Bjarne Stroustrup\nISBN: 978-0321563842\nTitle: Effective C++\nAuthor: Scott Meyers\nISBN: 978-0321334879\n"
+    }
+  ],
+  "driver": "int main() {\n    Book book1(\"The C++ Programming Language\", \"Bjarne Stroustrup\", \"978-0321563842\");\n    book1.display();\n\n    Book book2(\"Effective C++\", \"Scott Meyers\", \"978-0321334879\");\n    book2.display();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Inefficient string parameter passing in constructor: parameters are passed by value, leading to an extra copy for lvalue arguments before being moved. For potentially large strings, passing by 'const std::string&' or using a 'pass-by-value-and-move' idiom more carefully is generally more robust for performance."
+  ]
+}

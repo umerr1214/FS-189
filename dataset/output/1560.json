@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Design a `Course` class and a `Student` class. `Course` should have a `name` and a private pointer to a `Student` object (`Student* assignedStudent`) to demonstrate aggregation (a student can exist independently of a course). Implement methods to assign and unassign a student to the course.",
+  "test_cases": [
+    {
+      "input": "Initialize two heap-allocated students and two courses. Assign students to courses, then unassign and reassign. Observe destructor calls and manual student deletions.",
+      "expected": "Student Alice created.\nStudent Bob created.\nCourse C++ Programming created.\nCourse Data Structures created.\nCourse: C++ Programming (No student assigned)\nCourse: Data Structures (No student assigned)\nStudent Alice assigned to course C++ Programming\nCourse: C++ Programming (Assigned Student: Alice)\nStudent Bob assigned to course Data Structures\nCourse: Data Structures (Assigned Student: Bob)\nStudent Alice unassigned from course C++ Programming\nCourse: C++ Programming (No student assigned)\nWarning: Course C++ Programming already has a student assigned. Unassigning first.\nStudent Bob assigned to course C++ Programming\nCourse: C++ Programming (Assigned Student: Bob)\n\n--- End of main scope, courses destroyed ---\nCourse Data Structures destroyed.\nSEMANTIC ERROR: Attempting to delete assigned student 'Bob' from course Data Structures\nStudent Bob destroyed.\nCourse C++ Programming destroyed.\nSEMANTIC ERROR: Attempting to delete assigned student 'Bob' from course C++ Programming\n\n--- Manual cleanup of students ---\nStudent Alice destroyed.\nDouble-free or corruption (likely a crash/undefined behavior) when attempting to delete 'Bob' again.\n"
+    }
+  ],
+  "driver": "    Student* s1 = new Student(\"Alice\", 101);\n    Student* s2 = new Student(\"Bob\", 102);\n\n    Course c1(\"C++ Programming\");\n    Course c2(\"Data Structures\");\n\n    c1.display();\n    c2.display();\n\n    c1.assignStudent(s1);\n    c1.display();\n\n    c2.assignStudent(s2);\n    c2.display();\n\n    c1.unassignStudent();\n    c1.display();\n\n    c1.assignStudent(s2);\n    c1.display();\n\n    std::cout << \"\\n--- End of main scope, courses destroyed ---\\n\";\n\n    std::cout << \"\\n--- Manual cleanup of students ---\\n\";\n    delete s1;\n    delete s2;",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    {
+      "line": 39,
+      "column": 13,
+      "message": "The `Course` class destructor attempts to `delete assignedStudent`. This is a semantic error because `Course` is designed to demonstrate aggregation, meaning it does not own the `Student` object. Deleting an aggregated object leads to undefined behavior, such as a double-free if the student is also deleted by its actual owner or if multiple courses point to the same student."
+    }
+  ]
+}

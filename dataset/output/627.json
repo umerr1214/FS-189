@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function int searchData(int arr[], int size, int key) that performs binary search to find the key in the sorted array. Return the index if found, -1 otherwise.",
+  "test_cases": [
+    {
+      "input": "arr = {1, 2, 3}, size = 3, key = 99",
+      "expected": "-1"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"627.cpp\"\n\nint main() {\n    int arr[] = {1, 2, 3};\n    // Will incorrectly return index of mid because assignment returns true (99)\n    // instead of comparing\n    searchData(arr, 3, 99);\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using assignment '=' instead of equality '==' in 'if (arr[mid] = key)'."
+  ]
+}

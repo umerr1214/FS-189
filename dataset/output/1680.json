@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a base class `Shape` with a virtual function `calculateArea()` that returns a double. Derive `Circle` (with radius) and `Square` (with side length) classes from `Shape`, and override `calculateArea()` in each derived class.",
+  "test_cases": [
+    { "input": "5.0 (Circle)", "expected": "78.53981633974483" },
+    { "input": "4.0 (Square)", "expected": "16.0" },
+    { "input": "10.0 (Circle)", "expected": "314.1592653589793" },
+    { "input": "7.0 (Square)", "expected": "49.0" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <memory>\n#include <cmath>\n\nint main() {\n    std::vector<std::unique_ptr<Shape>> shapes;\n    shapes.push_back(std::make_unique<Circle>(5.0));\n    shapes.push_back(std::make_unique<Square>(4.0));\n    shapes.push_back(std::make_unique<Circle>(10.0));\n    shapes.push_back(std::make_unique<Square>(7.0));\n\n    for (const auto& shape : shapes) {\n        std::cout << shape->calculateArea() << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `calculateArea()` function in the base `Shape` class is not declared `virtual`. When calling `calculateArea()` through a `Shape*` pointer, the base class implementation is always invoked, preventing dynamic dispatch to derived class methods.",
+    "Derived classes `Circle` and `Square` implement `calculateArea()` but are merely hiding the base class function, not overriding it due to the missing `virtual` keyword in the base class."
+  ]
+}

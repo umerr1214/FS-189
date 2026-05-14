@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Extend the `Date` class (from Q13) to overload the `<<` operator (insertion operator) so that `Date` objects can be easily printed to `std::cout` in a 'DD-MM-YYYY' format.",
+  "test_cases": [
+    { "input": "Date d1(5, 12, 2023); std::cout << \"Date 1: \" << d1 << std::endl;", "expected": "Date 1: 05-12-2023\n" },
+    { "input": "Date d2(1, 1, 2024); std::cout << \"Date 2: \" << d2 << std::endl;", "expected": "Date 2: 01-01-2024\n" },
+    { "input": "Date d3(25, 3, 2025); std::cout << \"Date 3: \" << d3 << std::endl;", "expected": "Date 3: 25-03-2025\n" }
+  ],
+  "driver": "int main() {\n    Date d1(5, 12, 2023); // Expected: 05-12-2023 (December 5th)\n    std::cout << \"Date 1: \" << d1 << std::endl;\n\n    Date d2(1, 1, 2024); // Expected: 01-01-2024 (January 1st)\n    std::cout << \"Date 2: \" << d2 << std::endl;\n\n    Date d3(25, 3, 2025); // Expected: 25-03-2025 (March 25th)\n    std::cout << \"Date 3: \" << d3 << std::endl;\n    \n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": []
+}

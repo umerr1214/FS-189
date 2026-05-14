@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a recursive function long long factorial(int n) that calculates the factorial of n.",
+  "test_cases": [
+    {
+      "input": "n = 5",
+      "expected": "120"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include \"917.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Performs unnecessary dynamic memory allocation `vector<int> dummy(n)` in every recursive call, increasing space complexity to O(N^2)."
+  ]
+}

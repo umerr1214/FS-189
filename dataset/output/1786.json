@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a `Resource` class that simulates acquiring a resource in its constructor (e.g., printing \"Resource acquired\") and releasing it in its destructor (e.g., printing \"Resource released\"). Demonstrate the order of constructor and destructor calls for local objects within a function scope.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Compilation Error"
+    }
+  ],
+  "driver": "// The main function serves as the driver for this program.",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing 'class' keyword (typo 'clas'). The program will fail to compile."
+  ]
+}

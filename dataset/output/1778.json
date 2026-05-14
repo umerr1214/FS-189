@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Enhance the `Student` class from the previous question by adding a default constructor that initializes `studentID` to 0, `name` to \"N/A\", and `major` to \"Undecided\". Also, implement a parameterized constructor that takes `studentID`, `name`, and `major` as arguments to initialize the object.",
+  "test_cases": [
+    { "input": "Default student creation\nParameterized student 101 Alice Smith Computer Science\nParameterized student 102 Bob Johnson Physics", "expected": "Default Student: ID: 0, Name: N/A, Major: Undecided\nParameterized Student: ID: 101, Name: Alice Smith, Major: Computer Science\nParameterized Student: ID: 102, Name: Bob Johnson, Major: Physics\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Student {\npublic:\n    int studentID;\n    std::string name;\n    std::string major;\n\n    // Default constructor - readability issue (assignments in body instead of initializer list)\n    Student() {\n        studentID = 0;\n        name = \"N/A\";\n        major = \"Undecided\";\n    }\n\n    // Parameterized constructor - efficiency issue (pass by value, assignments in body)\n    Student(int id, std::string n, std::string m) { // Pass by value creates copies of n and m\n        this->studentID = id; // Mixing this-> with direct access (minor readability)\n        name = n;             // n is a copy, then assigned to name (another copy/move)\n        this->major = m;      // m is a copy, then assigned to major (another copy/move)\n    }\n\n    void display() const {\n        std::cout << \"ID: \" << studentID << \", Name: \" << name << \", Major: \" << major << std::endl;\n    }\n};\n\nint main() {\n    // Test case for default constructor\n    Student s1;\n    std::cout << \"Default Student: \";\n    s1.display();\n\n    // Test case for parameterized constructor (efficiency issue here)\n    Student s2(101, \"Alice Smith\", \"Computer Science\");\n    std::cout << \"Parameterized Student: \";\n    s2.display();\n\n    Student s3(102, \"Bob Johnson\", \"Physics\");\n    std::cout << \"Parameterized Student: \";\n    s3.display();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The default constructor initializes members by assignment in the constructor body instead of using an initializer list, which can be less efficient for complex types and less idiomatic C++.",
+    "The parameterized constructor passes `std::string` arguments by value (`std::string n`, `std::string m`), causing unnecessary copies of the string objects. It should use `const std::string&` to avoid these copies.",
+    "The parameterized constructor also initializes members by assignment in the constructor body instead of using an initializer list, which is less efficient as members are first default-constructed and then assigned.",
+    "Minor readability issue: Inconsistent use of `this->` (e.g., `this->studentID = id;` but `name = n;`)."
+  ]
+}

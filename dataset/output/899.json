@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function bool isPalindrome(int n) that checks if a number is a palindrome.",
+  "test_cases": [
+    {
+      "input": "n = 121",
+      "expected": "true"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <algorithm>\n#include \"899.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses `to_string` and string reversal (O(digits) space and allocation) instead of efficient O(1) space integer arithmetic."
+  ]
+}

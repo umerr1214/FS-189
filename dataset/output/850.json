@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void printSpiral(int matrix[][COLS], int rows, int cols) that prints the matrix in spiral order.",
+  "test_cases": [
+    {
+      "input": "matrix = NULL",
+      "expected": "Graceful failure"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"850.cpp\"\n\nint main() {\n    // printSpiral(NULL, 4, 4);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing NULL pointer check for the matrix."
+  ]
+}

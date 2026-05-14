@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define an `Order` base class with a constructor taking an `orderId`. Create a `SpecialOrder` derived class that adds a `discount` parameter. Demonstrate how `SpecialOrder`'s constructor explicitly calls the `Order` base class constructor.",
+  "test_cases": [
+    { "input": "", "expected": "Order ID: 101\nOrder ID: 201, Discount: 10.5%\n" }
+  ],
+  "driver": "#include <iostream>\n\nclass Order {\nprotected:\n    int orderId;\npublic:\n    Order(int id) : orderId(id) {}\n    virtual void display() const {\n        std::cout << \"Order ID: \" << orderId;\n    }\n};\n\nclass SpecialOrder : public Order {\nprivate:\n    double discount;\npublic:\n    SpecialOrder(int id, double disc) : Order(id), discount(disc) {}\n    void display() const override {\n        Order::display();\n        std::cout << \", Discount: \" << discount << \"%\";\n    }\n};\n\nint main() {\n    Order o1(101);\n    o1.display();\n    std::cout << std::endl;\n\n    SpecialOrder so1(201, 10.5);\n    so1.display();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The `SpecialOrder` constructor does not explicitly call its base class `Order` constructor in the initializer list. Since `Order` only has a parameterized constructor and no default constructor, this results in a semantic error during compilation because the base class cannot be properly initialized."]
+}

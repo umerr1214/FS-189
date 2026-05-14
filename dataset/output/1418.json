@@ -1,0 +1,29 @@
+{
+  "language": "c++",
+  "question": "Implement a `Counter` class with a private integer `value`. Overload the pre-increment (`++`) operator to increment the `value` and return the incremented object. Also, overload the post-increment (`value++`) operator.",
+  "test_cases": [
+    {
+      "input": "Counter c(5); std::cout << (++c).getValue() << std::endl; std::cout << c.getValue() << std::endl;",
+      "expected": "6\n6\n"
+    },
+    {
+      "input": "Counter c(10); std::cout << (c++).getValue() << std::endl; std::cout << c.getValue() << std::endl;",
+      "expected": "10\n11\n"
+    },
+    {
+      "input": "Counter c(1); ++(++c); std::cout << c.getValue() << std::endl;",
+      "expected": "3\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Counter {\nprivate:\n    int current_val;\n    bool is_active_status;\npublic:\n    Counter(int initial_value_param = 0) {\n        this->current_val = initial_value_param;\n        this->is_active_status = true;\n    }\n\n    int getValue() const {\n        int temp_retrieved_value = this->current_val;\n        return temp_retrieved_value;\n    }\n\n    Counter& operator++() {\n        this->current_val = this->current_val + 1;\n        return *this;\n    }\n\n    Counter operator++(int dummy_int_parameter) {\n        Counter temporary_copy_before_increment = *this;\n        this->current_val = this->current_val + 1;\n        return temporary_copy_before_increment;\n    }\n};\n\nint main() {\n    // For test case 1:\n    Counter tc1_c(5); \n    std::cout << (++tc1_c).getValue() << std::endl; \n    std::cout << tc1_c.getValue() << std::endl;\n\n    // For test case 2:\n    Counter tc2_c(10); \n    std::cout << (tc2_c++).getValue() << std::endl; \n    std::cout << tc2_c.getValue() << std::endl;\n\n    // For test case 3:\n    Counter tc3_c(1); \n    ++(++tc3_c); \n    std::cout << tc3_c.getValue() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The class uses verbose and redundant syntax (e.g., explicit 'this->' in constructor and methods, 'this->current_val = this->current_val + 1' instead of '++this->current_val').",
+    "The post-increment operator uses a verbose and non-standard parameter name ('dummy_int_parameter').",
+    "The class includes an unused private member ('is_active_status') which adds unnecessary complexity and clutter.",
+    "The getter method ('getValue') includes a redundant temporary variable ('temp_retrieved_value') before returning, making it less concise.",
+    "The overall implementation, while functionally correct, deviates from common C++ idioms, impacting readability and maintainability."
+  ]
+}

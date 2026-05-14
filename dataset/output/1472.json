@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Define a `Book` class with private data members `title` (string), `author` (string), and `isbn` (string). Provide public getter methods `getTitle()`, `getAuthor()`, `getIsbn()`, and a `displayBookInfo()` method that prints all book details.",
+  "test_cases": [
+    {
+      "input": "Book(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\")",
+      "expected": "--- Book 1 ---\nTitle: The Hitchhiker's Guide to the Galaxy\nAuthor: Douglas Adams\nISBN: 978-0345391803\n--- End Book 1 ---\n--- Book 2 ---\nTitle: 1984\nAuthor: George Orwell\nISBN: 978-0451524935\n--- End Book 2 ---\n--- Book 3 ---\nTitle: \nAuthor: Unknown Author\nISBN: \n--- End Book 3 ---\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\nusing namespace std;\n\nclass Book {\nprivate:\n    string title;\n    string author;\n    string isbn;\n\npublic:\n    Book(const string& title, const string& author, const string& isbn)\n        : title(title), author(author), isbn(isbn) {}\n\n    string getTitle() {\n        return title;\n    }\n\n    string getAuthor() {\n        return author;\n    }\n\n    string getIsbn() {\n        return isbn;\n    }\n\n    void displayBookInfo() {\n        cout << \"Title: \" << title << endl;\n        cout << \"Author: \" << author << endl;\n        cout << \"ISBN: \" << isbn << endl;\n    }\n};\n\nint main() {\n    Book book1(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\");\n    cout << \"--- Book 1 ---\" << endl;\n    book1.displayBookInfo();\n    cout << \"--- End Book 1 ---\" << endl;\n\n    Book book2(\"1984\", \"George Orwell\", \"978-0451524935\");\n    cout << \"--- Book 2 ---\" << endl;\n    book2.displayBookInfo();\n    cout << \"--- End Book 2 ---\" << endl;\n\n    Book book3(\"\", \"Unknown Author\", \"\");\n    cout << \"--- Book 3 ---\" << endl;\n    book3.displayBookInfo();\n    cout << \"--- End Book 3 ---\" << endl;\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The use of `using namespace std;` in the global scope can lead to name collisions and reduced readability, especially in larger projects. It's generally better practice to qualify `std` members or use specific `using` declarations within functions/classes.",
+    "The getter methods (`getTitle`, `getAuthor`, `getIsbn`) return `std::string` by value. This creates unnecessary copies of the string objects, which is inefficient. They should ideally return `const std::string&` to avoid copies.",
+    "The getter methods (`getTitle`, `getAuthor`, `getIsbn`) and `displayBookInfo` are not marked `const`. These methods do not modify the object's state and should be `const` to allow them to be called on `const` objects and improve code correctness and clarity.",
+    "The `displayBookInfo` method uses `std::endl` on each line, which flushes the output buffer every time. While not incorrect, using `\\n` characters and flushing less frequently (e.g., once at the end of the method or letting `std::cout` buffer automatically) can be more efficient, especially for multiple output operations."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design a `Counter` class that uses a `static` member variable to keep track of the total number of `Counter` objects currently alive (created minus destroyed). Update this static member in constructors and the destructor.",
+  "test_cases": [
+    { "input": "", "expected": "Initial count: 0\nAfter c1 creation: 1\nAfter c2 creation: 2\nAfter c3 (copy of c1) creation: 3\nAfter c2 and c3 destroyed: 1\nAfter p created with new: 2\nAfter p deleted: 1" }
+  ],
+  "driver": "int main() {\n    std::cout << \"Initial count: \" << Counter::getCount() << std::endl;\n\n    Counter c1;\n    std::cout << \"After c1 creation: \" << Counter::getCount() << std::endl;\n\n    {\n        Counter c2;\n        std::cout << \"After c2 creation: \" << Counter::getCount() << std::endl;\n        Counter c3 = c1;\n        std::cout << \"After c3 (copy of c1) creation: \" << Counter::getCount() << std::endl;\n    }\n    std::cout << \"After c2 and c3 destroyed: \" << Counter::getCount() << std::endl;\n\n    Counter* p = new Counter();\n    std::cout << \"After p created with new: \" << Counter::getCount() << std::endl;\n    delete p;\n    std::cout << \"After p deleted: \" << Counter::getCount() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": []
+}

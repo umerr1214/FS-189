@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void rotateMatrix(int matrix[][N], int n) that rotates a square matrix 90 degrees clockwise in-place.",
+  "test_cases": [
+    {
+      "input": "n = 10 (N=3)",
+      "expected": "Graceful failure"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include <algorithm>\n#include \"796.cpp\"\n\nint main() {\n    // rotateMatrix(matrix, 10);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing bounds check for 'n' relative to fixed dimension 'N', allowing out-of-bounds access."
+  ]
+}

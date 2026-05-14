@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void characterHistogram(char grid[][COLS], int rows) that prints a histogram of character frequencies.",
+  "test_cases": [
+    {
+      "input": "extended ascii char",
+      "expected": "Graceful failure"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include \"790.cpp\"\n\nint main() {\n    // characterHistogram(bad_grid, 1);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Potential negative array index access `freq[grid[i][j]]` if input contains extended ASCII characters (signed char)."
+  ]
+}

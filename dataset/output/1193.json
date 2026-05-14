@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Demonstrate polymorphism by creating an array of `Shape` pointers. Populate this array with objects of `Circle` and `Rectangle` (from the previous question) and then iterate through the array to call `calculateArea()` on each object.",
+  "test_cases": [
+    { "input": "", "expected": "Area: 78.53982\nArea: 10.00000\nArea: 19.63495\n" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <cmath>\n#include <iomanip>\n\n#ifndef M_PI\n#define M_PI 3.14159265358979323846\n#endif\n\nclass Shape {\npublic:\n    virtual double calculateArea() const = 0;\n    virtual ~Shape() {}\n};\n\nclass Circle : public Shape {\nprivate:\n    double radius;\npublic:\n    Circle(double r) : radius(r) {}\n    double calculateArea() const override {\n        return M_PI * radius * radius;\n    }\n    ~Circle() override {}\n};\n\nclass Rectangle : public Shape {\nprivate:\n    double width;\n    double height;\npublic:\n    Rectangle(double w, double h) : width(w), height(h) {}\n    double calculateArea() const override {\n        return width * height;\n    }\n    ~Rectangle() override {}\n};\n\nint main() {\n    std::vector<Shape*> shapes;\n\n    shapes.push_back(new Circle(5.0));\n    shapes.push_back(new Rectangle(4.0, 6.0));\n    shapes.push_back(new Circle(2.5));\n\n    std::cout << std::fixed << std::setprecision(5);\n\n    for (const auto& shape : shapes) {\n        std::cout << \"Area: \" << shape->calculateArea() << std::endl;\n    }\n\n    for (const auto& shape : shapes) {\n        delete shape;\n    }\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": []
+}

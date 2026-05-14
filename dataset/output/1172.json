@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Design a C++ class named `Book` with private member variables for `title` (string), `author` (string), and `isbn` (string). Provide public getter and setter methods for each attribute.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Creating book1 using parameterized constructor:\nTitle: The Hitchhiker's Guide to the Galaxy\nAuthor: Douglas Adams\nISBN: 978-0345391803\n\nCreating book2 using default constructor and then setters:\nDefault Title: Unknown Title\nNew Title: Dune\nNew Author: Frank Herbert\nNew ISBN: 978-0441172719\n\nModifying book1 using setters:\nUpdated Title for book1: The Restaurant at the End of the Universe\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Book {\nprivate:\n    std::string m_bookTitle;\n    std::string m_bookAuthor;\n    std::string m_bookISBN;\n\npublic:\n    Book() {\n        this->m_bookTitle = \"Unknown Title\";\n        this->m_bookAuthor = \"Unknown Author\";\n        this->m_bookISBN = \"000-0-00-000000-0\";\n    }\n\n    Book(std::string initialTitle, std::string initialAuthor, std::string initialISBN) {\n        this->m_bookTitle = initialTitle;\n        this->m_bookAuthor = initialAuthor;\n        this->m_bookISBN = initialISBN;\n    }\n\n    std::string getBookTitle() const {\n        return this->m_bookTitle;\n    }\n\n    void setBookTitle(std::string newTitle) {\n        this->m_bookTitle = newTitle;\n    }\n\n    std::string getBookAuthor() const {\n        return this->m_bookAuthor;\n    }\n\n    void setBookAuthor(std::string newAuthor) {\n        this->m_bookAuthor = newAuthor;\n    }\n\n    std::string getBookISBN() const {\n        return this->m_bookISBN;\n    }\n\n    void setBookISBN(std::string newISBN) {\n        this->m_bookISBN = newISBN;\n    }\n};\n\nint main() {\n    std::cout << \"Creating book1 using parameterized constructor:\\n\";\n    Book book1(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\");\n    std::cout << \"Title: \" << book1.getBookTitle() << \"\\n\";\n    std::cout << \"Author: \" << book1.getBookAuthor() << \"\\n\";\n    std::cout << \"ISBN: \" << book1.getBookISBN() << \"\\n\\n\";\n\n    std::cout << \"Creating book2 using default constructor and then setters:\\n\";\n    Book book2;\n    std::cout << \"Default Title: \" << book2.getBookTitle() << \"\\n\";\n    book2.setBookTitle(\"Dune\");\n    book2.setBookAuthor(\"Frank Herbert\");\n    book2.setBookISBN(\"978-0441172719\");\n    std::cout << \"New Title: \" << book2.getBookTitle() << \"\\n\";\n    std::cout << \"New Author: \" << book2.getBookAuthor() << \"\\n\";\n    std::cout << \"New ISBN: \" << book2.getBookISBN() << \"\\n\\n\";\n\n    std::cout << \"Modifying book1 using setters:\\n\";\n    book1.setBookTitle(\"The Restaurant at the End of the Universe\");\n    std::cout << \"Updated Title for book1: \" << book1.getBookTitle() << \"\\n\";\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Setter methods (e.g., `setBookTitle`) pass `std::string` parameters by value, leading to unnecessary string copies upon function call, which can reduce efficiency, especially for large strings. Passing by `const std::string&` is generally more efficient.",
+    "Getter methods (e.g., `getBookTitle`) return `std::string` by value, creating a copy of the member string. Returning by `const std::string&` would avoid this copy and improve efficiency.",
+    "Excessive and often redundant use of `this->` keyword throughout the class methods adds verbosity without significantly improving clarity, as member variables are clearly distinguishable in this context (e.g., using `m_` prefix).",
+    "Member variable names like `m_bookTitle`, `m_bookAuthor`, `m_bookISBN` are a bit verbose; `m_title`, `m_author`, `m_isbn` would be sufficient and more concise."
+  ]
+}

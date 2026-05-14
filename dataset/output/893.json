@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function int sumOfDigits(int n) that calculates the sum of digits of a non-negative integer.",
+  "test_cases": [
+    {
+      "input": "n = 123",
+      "expected": "6"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include \"893.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses `to_string` conversion which incurs heap allocation and string parsing overhead, less efficient than simple integer arithmetic."
+  ]
+}

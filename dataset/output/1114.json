@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "For the `Date` class (from Q12 or similar with `day`, `month`, `year`), overload the `<<` (stream insertion) operator to allow `Date` objects to be printed directly using `std::cout` in the format `DD/MM/YYYY`.",
+  "test_cases": [
+    { "input": "Date d(1, 5, 2023);", "expected": "Compilation Error" },
+    { "input": "Date d(25, 12, 1999);", "expected": "Compilation Error" }
+  ],
+  "driver": "This code will not compile due to a syntax error. A driver cannot be run.",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    {
+      "line": 15,
+      "column": 1,
+      "message": "error: expected ';' after class definition"
+    }
+  ]
+}

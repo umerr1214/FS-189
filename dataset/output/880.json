@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void removeVowels(char* str) that removes vowels from the string in-place.",
+  "test_cases": [
+    {
+      "input": "str = NULL",
+      "expected": "Graceful failure"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cctype>\n#include \"880.cpp\"\n\nint main() {\n    // removeVowels(NULL);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing NULL pointer check before accessing string."
+  ]
+}

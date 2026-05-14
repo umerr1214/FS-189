@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function int findLongestPalindrome(const char arr[]) that returns the length of the longest palindromic substring.",
+  "test_cases": [
+    {
+      "input": "arr = \"aba\"",
+      "expected": "3"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include \"645.cpp\"\n\nint main() {\n    const char* str = \"aba\";\n    // Semantic error causes unpredictable behavior/crash\n    findLongestPalindrome(str);\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using character value 'arr[i]' as a loop limit count, which is semantically incorrect and leads to out-of-bounds access."
+  ]
+}

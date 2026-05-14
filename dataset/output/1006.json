@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Model a `Department` class that contains a collection (e.g., `std::vector`) of `Employee` objects (aggregation). An `Employee` object can exist independently of a `Department`. Implement methods to add an employee to a department and list all employees in a department.",
+  "test_cases": [
+    {
+      "input": "No direct input, execution demonstrates functionality.",
+      "expected": "Added employee Alice to Human Resources\nAdded employee Bob to Human Resources\nEmployee Alice (ID: 101) already in Human Resources\nEmployees in Department Human Resources:\n  - Employee ID: 101, Name: Alice\n  - Employee ID: 102, Name: Bob\n\n--- Another Department ---\nAdded employee Charlie to Development\nAdded employee Bob to Development\nEmployees in Department Development:\n  - Employee ID: 103, Name: Charlie\n  - Employee ID: 102, Name: Bob\n\n--- Verifying independent existence ---\n  - Employee ID: 101, Name: Alice\n  - Employee ID: 102, Name: Bob\n"
+    }
+  ],
+  "driver": "int main() {\n    Employee emp1(\"Alice\", 101);\n    Employee emp2(\"Bob\", 102);\n    Employee emp3(\"Charlie\", 103);\n\n    Department hrDept(\"Human Resources\");\n    hrDept.addEmployee(&emp1);\n    hrDept.addEmployee(&emp2);\n    hrDept.addEmployee(&emp1);\n    hrDept.listEmployees();\n\n    Department devDept(\"Development\");\n    devDept.addEmployee(&emp3);\n    devDept.addEmployee(&emp2);\n    devDept.listEmployees();\n\n    emp1.display();\n    emp2.display();\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    {
+      "line": 20,
+      "column": 1,
+      "message": "Missing semicolon after class definition 'Employee'"
+    }
+  ]
+}

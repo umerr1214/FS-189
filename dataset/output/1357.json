@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a `Calculator` class with overloaded `add` methods: one that takes two integers, another that takes two doubles, and a third that takes three integers. Demonstrate calling each version.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Int sum: 30\nDouble sum (as float): 31.11111069\nThree int sum: 60\n"
+    }
+  ],
+  "driver": "int main() {\n    Calculator calc;\n    int int_val1 = 10;\n    int int_val2 = 20;\n    int int_val3 = 30;\n    double double_val1 = 10.123456789;\n    double double_val2 = 20.987654321;\n    int sum_int = calc.add(int_val1, int_val2);\n    std::cout << \"Int sum: \" << sum_int << '\\n';\n    float sum_double_as_float = calc.add(double_val1, double_val2);\n    std::cout << std::fixed << std::setprecision(8);\n    std::cout << \"Double sum (as float): \" << sum_double_as_float << '\\n';\n    int sum_three_int = calc.add(int_val1, int_val2, int_val3);\n    std::cout << \"Three int sum: \" << sum_three_int << '\\n';\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `add(int, int)` and `add(int, int, int)` methods do not explicitly handle potential integer overflow for very large inputs, relying on default C++ behavior which might not be robust for all applications.",
+    "The `add(double, double)` method returns a `float` instead of a `double`, leading to a loss of precision from the input `double` values."
+  ]
+}

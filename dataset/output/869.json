@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function int binaryToDecimal(const char* binary) that converts a binary string to a decimal integer.",
+  "test_cases": [
+    {
+      "input": "binary = \"1011\"",
+      "expected": "11"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cmath>\n#include \"869.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses expensive floating-point `pow` function repeatedly instead of efficient integer arithmetic (bitwise shifts or `decimal = decimal * 2 + bit`)."
+  ]
+}

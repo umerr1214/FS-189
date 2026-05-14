@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a `Calculator` class with overloaded `add` methods. One `add` method should take two integers, another two doubles, and a third `add` method should take three integers.",
+  "test_cases": [
+    { "input": "calc.add(5, 3)", "expected": "8" },
+    { "input": "calc.add(5.5, 3.2)", "expected": "8.7" },
+    { "input": "calc.add(1, 2, 3)", "expected": "6" }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n\nint main() {\n    Calculator calc;\n    std::stringstream ss;\n    ss << calc.add(5, 3) << \"\\n\";\n    ss << calc.add(5.5, 3.2) << \"\\n\";\n    ss << calc.add(1, 2, 3) << \"\\n\";\n    std::cout << ss.str();\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition."
+  ]
+}

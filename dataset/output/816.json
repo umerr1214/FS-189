@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a function bool areAnagrams(const char* str1, const char* str2) that checks if two strings are anagrams.",
+  "test_cases": [
+    {
+      "input": "str1 = \"listen\", str2 = \"silent\"",
+      "expected": "true"
+    },
+    {
+      "input": "str1 = \"hello\", str2 = \"world\"",
+      "expected": "false"
+    },
+    {
+      "input": "str1 = NULL",
+      "expected": "false"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cassert>\n#include \"816.cpp\"\n\nint main() {\n    assert(areAnagrams(\"listen\", \"silent\") == true);\n    assert(areAnagrams(\"a\", \"b\") == false);\n    assert(areAnagrams(NULL, \"a\") == false);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

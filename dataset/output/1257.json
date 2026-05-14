@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Vector2D` class with `x` and `y` coordinates. Create a `getLength()` method that calculates the magnitude of the vector and mark it as a `const` method. Demonstrate calling this method on a `const Vector2D` object.",
+  "test_cases": [
+    { "input": "3.0 4.0", "expected": "5.0000000000\n5.0000000000" },
+    { "input": "5.0 12.0", "expected": "13.0000000000\n13.0000000000" },
+    { "input": "0.0 0.0", "expected": "0.0000000000\n0.0000000000" },
+    { "input": "1.0 1.0", "expected": "1.4142135624\n1.4142135624" }
+  ],
+  "driver": "int main() { std::cout << std::fixed << std::setprecision(10); double x, y; std::cin >> x >> y; Vector2D vec(x, y); std::cout << vec.getLength() << std::endl; const Vector2D constVec(x, y); std::cout << constVec.getLength(); return 0; }",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a function void CheckFrequency(int arr[], int size) that prints the frequency of each element in the array.",
+  "test_cases": [],
+  "driver": "#include <iostream>\n#include \"631.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after function call 'CheckFrequency(arr, size)'"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function bool isSubsequence(const char* s1, const char* s2) that checks if s1 is a subsequence of s2.",
+  "test_cases": [
+    {
+      "input": "s1=\"a\", s2=\"b\"",
+      "expected": "false"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include \"872.cpp\"\n\nint main() {\n    // Infinite loop expected\n    // isSubsequence(\"a\", \"b\");\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Fails to increment `j` (index for `s2`) when a mismatch occurs, causing an infinite loop."
+  ]
+}

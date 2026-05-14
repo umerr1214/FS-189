@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a program to track monkey food intake (3 monkeys, 5 days) and report statistics.",
+  "test_cases": [
+    {
+      "input": "Standard data",
+      "expected": "Correct stats"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include \"749.cpp\"\n\nint main() {\n    double food[3][5];\n    printReport(food);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inefficient: Iterates through the array multiple times (3 passes) to calculate total, min, and max, when it could be done in a single pass."
+  ]
+}

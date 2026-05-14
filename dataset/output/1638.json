@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Develop a `Rectangle` class with private double members `width` and `height`. Implement a parameterized constructor that initializes these dimensions and a public method `getArea()` that returns the rectangle's area.",
+  "test_cases": [
+    { "input": "5.0 3.0", "expected": "15.00" },
+    { "input": "7.5 2.0", "expected": "15.00" },
+    { "input": "4.5 2.5", "expected": "11.25" }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n#include <iomanip>\n\nclass Rectangle {\nprivate:\n    double width;\n    double height;\n\npublic:\n    Rectangle(double w, double h) : width(w), height(h) {}\n\n    double getArea() {\n        return width * height;\n    }\n};\n\nint main() {\n    double w, h;\n    std::cout << std::fixed << std::setprecision(2);\n    while (std::cin >> w >> h) {\n        Rectangle r(w, h);\n        std::cout << r.getArea() << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The `getArea()` method is declared to return an `int` instead of `double`. This causes the floating-point area calculation to be truncated to an integer, leading to a loss of precision and semantically incorrect results for double dimensions."]
+}

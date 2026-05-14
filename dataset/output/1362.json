@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `ComplexNumber` class with private `real` and `imaginary` parts (doubles). Overload the binary `+` operator to perform addition of two `ComplexNumber` objects.",
+  "test_cases": [
+    {
+      "input": "ComplexNumber c1(1.0, 2.0);\nComplexNumber c2(3.0, 4.0);\nComplexNumber c3 = c1 + c2;",
+      "expected": "Undefined behavior (e.g., garbage values, crash, or seemingly correct but unreliable output)"
+    }
+  ],
+  "driver": "int main() {\n    ComplexNumber c1(1.0, 2.0);\n    ComplexNumber c2(3.0, 4.0);\n    ComplexNumber c3 = c1 + c2;\n    std::cout << \"c1: \"; c1.print();\n    std::cout << \"c2: \"; c2.print();\n    std::cout << \"c1 + c2 (potentially garbage): \"; c3.print();\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The overloaded binary '+' operator `operator+(const ComplexNumber&, const ComplexNumber&)` returns a `ComplexNumber&` (reference) to a local `ComplexNumber` object (`result`). This results in a dangling reference and undefined behavior when the returned reference is used, as the local object is destroyed upon function exit."
+  ]
+}

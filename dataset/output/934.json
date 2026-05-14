@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a Stack class using an array.",
+  "test_cases": [
+    {
+      "input": "push more than capacity",
+      "expected": "Graceful failure / Error message"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"934.cpp\"\n\nint main() {\n    Stack s;\n    s.push(1);\n    s.push(2);\n    // s.push(3); // Crash/Overwrite\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing boundary checks for Stack Overflow (`push`) and Underflow (`pop`), leading to out-of-bounds memory access."
+  ]
+}

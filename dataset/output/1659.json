@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Vector2D` class with private double members `x` and `y`. Provide a parameterized constructor and a copy constructor that performs a deep copy of the `Vector2D` object.",
+  "test_cases": [
+    {
+      "input": "Create vector (5.5, 6.6) using parameterized constructor, then create a copy of it using the copy constructor.",
+      "expected": "Original vector v1: (5.50, 6.60)\nCopied vector v2 (from v1): (5.50, 6.60)\nVerifying values after creation and copy:\nv1.getX(): 5.50, v1.getY(): 6.60\nv2.getX(): 5.50, v2.getY(): 6.60\n"
+    }
+  ],
+  "driver": "    // Test parameterized constructor\n    Vector2D v1(5.5, 6.6);\n    std::cout << \"Original vector v1: \";\n    v1.print();\n    std::cout << std::endl;\n\n    // Test copy constructor\n    Vector2D v2 = v1; // Uses copy constructor\n    std::cout << \"Copied vector v2 (from v1): \";\n    v2.print();\n    std::cout << std::endl;\n\n    // Verify independence by printing values again (if setters were present,\n    // we would modify v1 and check that v2 remains unchanged).\n    std::cout << \"Verifying values after creation and copy:\" << std::endl;\n    std::cout << \"v1.getX(): \" << v1.getX() << \", v1.getY(): \" << v1.getY() << std::endl;\n    std::cout << \"v2.getX(): \" << v2.getX() << \", v2.getY(): \" << v2.getY() << std::endl;\n",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

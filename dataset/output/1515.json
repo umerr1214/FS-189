@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Enhance the `Shape` class by adding a pure virtual function `double calculateArea()`. Implement this function in the `Circle` class to return the area of the circle. Demonstrate calling `calculateArea()` through a `Shape` pointer.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Circle radius: 10\nArea (via Shape pointer): 314.1592653589793\n"
+    }
+  ],
+  "driver": "// Program is self-contained and runs test cases directly.",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

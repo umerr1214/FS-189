@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Demonstrate the use of `protected` members in inheritance. Create a base class `Animal` with a protected `weight` attribute. Derive a `Dog` class and show that `Dog` can access `weight`, but an external non-member function cannot directly access `Animal`'s `weight`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Animal created with weight: 50 kg.\nAnimal created with initial weight: 20 kg.\nWoof! My weight is 10 kg (this is a fixed value, not the actual inherited weight).\nDog's actual inherited weight: 20 kg.\nDog's weight updated to: 25 kg.\nWoof! My weight is 10 kg (this is a fixed value, not the actual inherited weight).\nDog's actual inherited weight: 25 kg.\n\nMain function cannot directly access Animal's protected 'weight'.\n\n--- External Access Demonstration ---\nExternal function cannot directly access Animal's protected 'weight'.\nAnimal's current weight (from public method): 50 kg.\n-----------------------------------"
+    }
+  ],
+  "driver": "int main() { Animal genericAnimal(50); Dog myDog(20); myDog.bark(); myDog.displayActualDogWeight(); myDog.setDogWeight(25); myDog.bark(); myDog.displayActualDogWeight(); std::cout << \"\\nMain function cannot directly access Animal's protected 'weight'.\" << std::endl; demonstrateExternalAccess(genericAnimal); return 0; }",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `Dog::bark()` method contains a logical error. It prints a hardcoded weight (10 kg) instead of accessing and displaying the actual `protected` `weight` member inherited from the `Animal` class, thus failing to correctly demonstrate `Dog`'s ability to access the inherited `protected` member."
+  ]
+}

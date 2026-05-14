@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Model a `Department` class that aggregates `Employee` objects. `Department` should have a name and a list (e.g., array or vector) of `Employee` pointers. `Employee` objects should be created independently and managed by the `Department` through aggregation.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Department: Sales Division ---\nNumber of employees currently: 3\n  Employee ID: 201 -- Employee Name: David.\n  Employee ID: 202 -- Employee Name: Eve.\n  Employee ID: 203 -- Employee Name: Frank.\n--------------------------------\nFound employee with ID 202:   Employee ID: 202 -- Employee Name: Eve.\nEmployee with ID 999 not found.\n--- Department: Marketing Team ---\nNumber of employees currently: 1\n  Employee ID: 301 -- Employee Name: Grace.\n--------------------------------\n"
+    }
+  ],
+  "driver": "int main() {\n    Department sales_dept(\"Sales Division\");\n    Employee* empA = new Employee(201, \"David\");\n    Employee* empB = new Employee(202, \"Eve\");\n    Employee* empC = new Employee(203, \"Frank\");\n\n    sales_dept.addEmployeeToDepartment(empA);\n    sales_dept.addEmployeeToDepartment(empB);\n    sales_dept.addEmployeeToDepartment(empC);\n\n    sales_dept.displayAllDepartmentEmployees();\n\n    Employee* empD = new Employee(201, \"Duplicate David\");\n    sales_dept.addEmployeeToDepartment(empD);\n\n    Employee* found_emp = sales_dept.locateEmployeeById(202);\n    if (found_emp != nullptr) {\n        std::cout << \"Found employee with ID 202: \";\n        found_emp->showEmployeeDetails();\n    } else {\n        std::cout << \"Employee with ID 202 not found.\\n\";\n    }\n\n    Employee* not_found_emp = sales_dept.locateEmployeeById(999);\n    if (not_found_emp != nullptr) {\n        std::cout << \"Found employee with ID 999: \";\n        not_found_emp->showEmployeeDetails();\n    } else {\n        std::cout << \"Employee with ID 999 not found.\\n\";\n    }\n\n    Department marketing_dept(\"Marketing Team\");\n    Employee* empE = new Employee(301, \"Grace\");\n    marketing_dept.addEmployeeToDepartment(empE);\n    marketing_dept.displayAllDepartmentEmployees();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Readability: Inconsistent naming conventions (e.g., `employee_id_val`, `employee_name_str` vs. `id_param`, `name_param`), verbose method names (`addEmployeeToDepartment`, `showEmployeeDetails`, `displayAllDepartmentEmployees`, `locateEmployeeById`), and the use of a flag variable (`found_duplicate_flag`) for a simple boolean check. The output formatting for `displayAllDepartmentEmployees` is also overly verbose and inconsistent.",
+    "Efficiency: The `addEmployeeToDepartment` method performs a linear search (manual `for` loop) to check for duplicate employee IDs. For a large number of employees, this becomes an O(N) operation. Similarly, `locateEmployeeById` also uses a linear search, which is inefficient for frequent lookups. A `std::map` or `std::unordered_map` could provide O(log N) or average O(1) lookup times, respectively. The code also uses manual `for` loops where range-based `for` loops or standard algorithms like `std::find_if` could be more concise and readable."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `Calculator` class. Implement overloaded `add` methods within this class that can accept two `int`s, two `double`s, or two `float`s, returning the sum of the corresponding type.",
+  "test_cases": [
+    { "input": "i 10 20", "expected": "30\n" },
+    { "input": "i -5 15", "expected": "10\n" },
+    { "input": "d 10.5 20.3", "expected": "30.800000\n" },
+    { "input": "d 0.1 0.2", "expected": "0.300000\n" },
+    { "input": "f 1.1 2.2", "expected": "3.300000\n" },
+    { "input": "f 100.0 -25.5", "expected": "74.500000\n" }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n#include <string>\n#include <iomanip>\n\nclass Calculator {\npublic:\n    int add(int a, int b) {\n        return a + b;\n    }\n    double add(double a, double b) {\n        return a + b;\n    }\n    float add(float a, float b) {\n        return a + b;\n    }\n};\n\nint main() {\n    std::string line;\n    std::cout << std::fixed << std::setprecision(6);\n    Calculator calc;\n\n    while (std::getline(std::cin, line)) {\n        std::stringstream ss(line);\n        char type_char;\n        ss >> type_char;\n        \n        if (type_char == 'i') {\n            int a, b;\n            ss >> a >> b;\n            std::cout << calc.add(a, b) << std::endl;\n        } else if (type_char == 'd') {\n            double a, b;\n            ss >> a >> b;\n            std::cout << calc.add(a, b) << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a program to encrypt and decrypt a sentence by adding/subtracting the index.",
+  "test_cases": [
+    {
+      "input": "arr = \"Hello\"",
+      "expected": "Reversible encryption"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include \"759.cpp\"\n\nint main() {\n    char str[100] = \"Hello\";\n    encrypt(str);\n    // Destructive shift\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using bitwise left shift `<<=` by index `i` instead of addition `+=`, which is a destructive operation (loses bits) and causes Undefined Behavior for `i >= 8` (char width)."
+  ]
+}

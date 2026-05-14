@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a class `Calculator` with overloaded public methods named `add`. One `add` method should take two integers, another should take two doubles, and a third should take three integers, returning their sum.",
+  "test_cases": [
+    { "input": "5 7", "expected": "12" },
+    { "input": "5.5 7.7", "expected": "13.2" },
+    { "input": "1 2 3", "expected": "6" }
+  ],
+  "driver": "int main() {\n    Calculator calc;\n    // The following lines would be used to test, but the code has a syntax error.\n    // std::cout << calc.add(5, 7) << std::endl;\n    // std::cout << calc.add(5.5, 7.7) << std::endl;\n    // std::cout << calc.add(1, 2, 3) << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing return type for the `add(double, double)` method declaration within the `Calculator` class."]
+}

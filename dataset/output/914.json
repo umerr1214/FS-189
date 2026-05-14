@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a recursive function long long factorial(int n) that calculates the factorial of n.",
+  "test_cases": [
+    {
+      "input": "n = 5",
+      "expected": "120"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cassert>\n#include \"914.cpp\"\n\nint main() {\n    // Will return 0\n    // assert(factorial(5) == 120);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Incorrect base case: returns 0 for `n == 0` instead of 1, causing the entire product to become 0."
+  ]
+}

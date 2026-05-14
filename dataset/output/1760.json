@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Design a `Department` class that uses composition to manage a collection of `Employee` objects. The `Department` class should have a private member (e.g., `std::vector<Employee>`) to store employees. Include methods to add an employee and list all employees in the department.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Displaying Sales Department Personnel ---\nDepartment Label: Sales & Marketing\nID: 301, Name: Michael Green\n\nID: 302, Name: Nancy White\n\nID: 303, Name: Oliver Black\n\n\n--- Displaying Support Division Personnel ---\nDepartment Label: Customer Support\nID: 401, Name: Patricia King\n\n"
+    }
+  ],
+  "driver": "int main() {\n    Department sales_department(\"Sales & Marketing\");\n\n    sales_department.addEmployee(Employee(\"Michael Green\", 301));\n    sales_department.addEmployee(Employee(\"Nancy White\", 302));\n    sales_department.addEmployee(Employee(\"Oliver Black\", 303));\n\n    std::cout << \"--- Displaying Sales Department Personnel ---\\n\";\n    sales_department.listEmployees();\n    std::cout << \"\\n\";\n\n    Department support_division(\"Customer Support\");\n    support_division.addEmployee(Employee(\"Patricia King\", 401));\n    std::cout << \"--- Displaying Support Division Personnel ---\\n\";\n    support_division.listEmployees();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `addEmployee` method takes `Employee` by value, leading to an unnecessary copy of the `Employee` object. It should ideally take a `const Employee&` or `Employee&&` to improve efficiency.",
+    "The `listEmployees` method uses an old-style iterator loop (`std::vector<Employee>::const_iterator`) which is less readable and more verbose than a modern range-based for loop.",
+    "Using `std::endl` inside the `listEmployees` loop flushes the output buffer on each iteration. For repeated output, using `\\n` instead of `std::endl` is generally more efficient as it avoids frequent buffer flushes.",
+    "Variable names like `emp_name_val`, `emp_id_val`, `dept_label`, `employee_container`, and `new_employee_obj` are either verbose, inconsistent, or lack clarity, reducing overall code readability."
+  ]
+}

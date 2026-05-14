@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function int largestRegion(char grid[][COLS]) that finds the size of the largest connected region of 1s.",
+  "test_cases": [
+    {
+      "input": "Boundary traversal",
+      "expected": "Crash / UB"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <algorithm>\n#include \"783.cpp\"\n\nint main() {\n    // Crash due to OOB access\n    char grid[ROWS][COLS] = {{'1'}};\n    // largestRegion(grid);\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using bitwise OR `|` instead of logical OR `||` disables short-circuit evaluation, causing `grid[r][c]` to be accessed even when `r` or `c` are out of bounds."
+  ]
+}

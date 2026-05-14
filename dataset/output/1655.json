@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Vector2D` class with private double members `x` and `y`. Provide a parameterized constructor and a copy constructor that performs a deep copy of the `Vector2D` object.",
+  "test_cases": [
+    { "input": "Vector2D v1(10.5, 20.3); Vector2D v2 = v1; v2.print();", "expected": "Vector2D(10.5, 20.3)" },
+    { "input": "Vector2D v3(5.0, 7.0); Vector2D v4(v3); v4.print();", "expected": "Vector2D(5.0, 7.0)" }
+  ],
+  "driver": "#include <iostream>\n\nclass Vector2D {\nprivate:\n    double x;\n    double y;\n\npublic:\n    Vector2D(double x_val, double y_val) : x(x_val), y(y_val) {}\n    Vector2D(const Vector2D& other) : x(other.y), y(other.x) {}\n    void print() const {\n        std::cout << \"Vector2D(\" << x << \", \" << y << \")\" << std::endl;\n    }\n};\n\nint main() {\n    Vector2D v1(10.5, 20.3);\n    std::cout << \"Original vector v1: \";\n    v1.print();\n\n    Vector2D v2 = v1;\n    std::cout << \"Copied vector v2 (from v1): \";\n    v2.print();\n\n    Vector2D v3(5.0, 7.0);\n    std::cout << \"Original vector v3: \";\n    v3.print();\n\n    Vector2D v4(v3);\n    std::cout << \"Copied vector v4 (from v3): \";\n    v4.print();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The copy constructor incorrectly swaps the 'x' and 'y' components when copying from another Vector2D object, leading to incorrect vector values."
+  ]
+}

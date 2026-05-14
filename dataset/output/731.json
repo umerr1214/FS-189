@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function bool Exists(int data[][6], int pattern[][3]) that checks if the 3x3 pattern exists in the 6x6 data.",
+  "test_cases": [
+    {
+      "input": "Standard case",
+      "expected": "True"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include \"731.cpp\"\n\nint main() {\n    int data[6][6] = {{0}}; int pattern[3][3] = {{0}};\n    Exists(data, pattern);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inefficient memory usage: creating and populating `vector<vector<int>>` inside the inner loops causes frequent allocations/deallocations overhead compared to simple array access."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a `Point` class with private integer member variables `x` and `y`. Provide a default constructor that initializes `x` and `y` to (0,0), and a parameterized constructor that takes two integers to set `x` and `y`.",
+  "test_cases": [
+    { "input": "", "expected": "0 0\n5 10\n-3 7\n" }
+  ],
+  "driver": "#include <iostream>\n\nclass Point {\nprivate:\n    int x;\n    int y;\n\npublic:\n    Point() {\n        x = 0;\n        y = 0;\n    }\n\n    Point(int val_x, int val_y) {\n        x = val_x;\n        y = val_y;\n    }\n\n    int getX() {\n        return x;\n    }\n\n    int getY() {\n        return y;\n    }\n};\n\nint main() {\n    Point p1;\n    std::cout << p1.getX() << \" \" << p1.getY() << std::endl;\n\n    Point p2(5, 10);\n    std::cout << p2.getX() << \" \" << p2.getY() << std::endl;\n\n    Point p3(-3, 7);\n    std::cout << p3.getX() << \" \" << p3.getY() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The getter methods `getX()` and `getY()` are not declared as `const`. This is a robustness issue because it prevents these methods from being called on `const Point` objects, limiting the class's usability and safety in `const` contexts (e.g., when passing `Point` objects by `const` reference). A `const` method guarantees it won't modify the object's state, which is crucial for getters."
+  ]
+}

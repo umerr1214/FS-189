@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that defines a global function `printValue` overloaded for three different data types: `int`, `double`, and `std::string`. Each version should print the value along with its type.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Value: 10, Type: int\nValue: 3.14, Type: double\nValue: Hello C++, Type: string\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// The user's code will provide printValue overloads\nextern void printValue(int);\nextern void printValue(double);\nextern void printValue(std::string);\n\nint main() {\n    printValue(10);\n    printValue(3.14);\n    printValue(std::string(\"Hello C++\"));\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The printValue(double) function incorrectly prints 'Type: int' instead of 'Type: double'."
+  ]
+}

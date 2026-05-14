@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a function void findDuplicateCharacters(const char arr[], char duplicates[], int& duplicatesSize) that finds duplicate characters in the string.",
+  "test_cases": [],
+  "driver": "#include <iostream>\n#include <cstring>\n#include \"661.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'duplicatesSize = k'"
+  ]
+}

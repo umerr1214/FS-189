@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Develop a `Logger` class that maintains a static integer member `messageCount` to track the total number of log messages generated across all instances. Increment this counter in a `logMessage(std::string message)` method and provide a static `getTotalMessages()` method.",
+  "test_cases": [
+    { "input": "", "expected": "Logging: First message.\nLogging: Second message.\nLogging: Third message.\nTotal messages: 3\n" }
+  ],
+  "driver": "int main() {\n    Logger l1;\n    l1.logMessage(\"First message.\");\n    l1.logMessage(\"Second message.\");\n\n    Logger l2;\n    l2.logMessage(\"Third message.\");\n\n    std::cout << \"Total messages: \" << Logger::getTotalMessages() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": []
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create an abstract base class `Shape` with a pure virtual method `calculateArea()`. Derive `Circle` and `Rectangle` classes from `Shape`, and implement `calculateArea()` appropriately for each.",
+  "test_cases": [
+    { "input": "5.0", "expected": "Circle (radius 5.0) Area: 78.539816339744831" },
+    { "input": "4.0 6.0", "expected": "Rectangle (4.0x6.0) Area: 24.000000000000000" },
+    { "input": "1.0", "expected": "Circle (radius 1.0) Area: 3.141592653589793" },
+    { "input": "10.0 2.5", "expected": "Rectangle (10.0x2.5) Area: 25.000000000000000" }
+  ],
+  "driver": "std::cout << std::fixed << std::setprecision(15);\nCircle c(5.0);\nstd::cout << \"Circle (radius 5.0) Area: \" << c.calculateArea() << std::endl;\nRectangle r(4.0, 6.0);\nstd::cout << \"Rectangle (4.0x6.0) Area: \" << r.calculateArea() << std::endl;\nCircle c2(1.0);\nstd::cout << \"Circle (radius 1.0) Area: \" << c2.calculateArea() << std::endl;\nRectangle r2(10.0, 2.5);\nstd::cout << \"Rectangle (10.0x2.5) Area: \" << r2.calculateArea() << std::endl;",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after class definition for 'Shape'."]
+}

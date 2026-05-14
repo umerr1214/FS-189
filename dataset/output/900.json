@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a function bool isPalindrome(int n) that checks if a number is a palindrome.",
+  "test_cases": [
+    {
+      "input": "n = 121",
+      "expected": "true"
+    },
+    {
+      "input": "n = -121",
+      "expected": "false"
+    },
+    {
+      "input": "n = 10",
+      "expected": "false"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <climits>\n#include <cassert>\n#include \"900.cpp\"\n\nint main() {\n    assert(isPalindrome(121) == true);\n    assert(isPalindrome(-121) == false);\n    assert(isPalindrome(10) == false);\n    assert(isPalindrome(0) == true);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

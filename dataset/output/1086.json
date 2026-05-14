@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `Date` class with private members `day`, `month`, and `year` (integers). Implement public setter methods `setDay`, `setMonth`, `setYear` that perform basic validation (e.g., month between 1-12, day between 1-31, ignoring leap years for simplicity). If validation fails, do not update the member and optionally print an error message.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "1/1/2000\n15/7/2023\nDirectly accessing day: 15\n"
+    }
+  ],
+  "driver": "#include <iostream>\n\nclass Date {\nprivate:\n    int day;\n    int month;\n    int year;\n\npublic:\n    Date() : day(1), month(1), year(2000) {}\n\n    void setDay(int d) {\n        if (d >= 1 && d <= 31) {\n            day = d;\n        } else {\n            std::cout << \"Error: Invalid day \" << d << \". Day not updated.\" << std::endl;\n        }\n    }\n\n    void setMonth(int m) {\n        if (m >= 1 && m <= 12) {\n            month = m;\n        }\n        else {\n            std::cout << \"Error: Invalid month \" << m << \". Month not updated.\" << std::endl;\n        }\n    }\n\n    void setYear(int y) {\n        year = y;\n    }\n\n    void displayDate() {\n        std::cout << day << \"/\" << month << \"/\" << year << std::endl;\n    }\n\n    // Added a public getter for 'day' to make the driver code semantically correct\n    int getDay() const { return day; }\n};\n\nint main() {\n    Date myDate;\n    myDate.displayDate();\n\n    myDate.setDay(15);\n    myDate.setMonth(7);\n    myDate.setYear(2023);\n    myDate.displayDate();\n\n    // In a correct program, a public getter is used to access private members.\n    std::cout << \"Directly accessing day: \" << myDate.getDay() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Attempt to directly access a private member 'day' of class 'Date' from outside the class, violating encapsulation and C++ access rules. A public getter method would be required for legitimate access."
+  ]
+}

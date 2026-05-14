@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Demonstrate the use of `protected` members in inheritance. Create a base class `Animal` with a protected `weight` attribute. Derive a `Dog` class and show that `Dog` can access `weight`, but an external non-member function cannot directly access `Animal`'s `weight`.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation Error: Expected ';' after class definition." }
+  ],
+  "driver": "// No driver needed as it won't compile.",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the definition of class 'Animal'."
+  ]
+}

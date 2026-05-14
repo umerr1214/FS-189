@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Model a `Department` class that aggregates `Employee` objects. The `Department` should have a name and a list of employees. Employees can exist independently of departments. Demonstrate adding employees to a department and displaying the department's staff.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Department: Engineering\nStaff:\n  ID: 101, Name: Alice\n  ID: 102, Name: Bob\n[Program will crash here due to null pointer dereference]"
+    }
+  ],
+  "driver": "int main() {\n    Employee emp1(\"Alice\", 101);\n    Employee emp2(\"Bob\", 102);\n\n    Department engineering(\"Engineering\");\n\n    engineering.addEmployee(&emp1);\n    engineering.addEmployee(&emp2);\n\n    Employee* invalid_emp = nullptr;\n    engineering.addEmployee(invalid_emp);\n\n    engineering.displayStaff();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Department::addEmployee` method does not validate the input `Employee*` pointer. It allows `nullptr` to be added to the `employees` vector.",
+    "The `Department::displayStaff` method iterates through the `employees` vector and unconditionally dereferences each `Employee*` pointer. If a `nullptr` was added, attempting to call `emp->display()` on it will result in a null pointer dereference, causing the program to crash at runtime."
+  ]
+}

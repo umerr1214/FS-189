@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function bool isLeapYear(int year) that checks if a year is a leap year.",
+  "test_cases": [
+    {
+      "input": "year = 0",
+      "expected": "false (Invalid)"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"904.cpp\"\n\nint main() {\n    // isLeapYear(0) returns true\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing validation for invalid years (<= 0)."
+  ]
+}

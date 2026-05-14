@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Base` with a public method `void show(int val)`. Derive a `Derived` class from `Base`. In `Derived`, overload `show` with `void show(double val)` and also define `void show(int val)` (non-virtual). Demonstrate calling `show` using `Base` and `Derived` class objects and pointers, highlighting method hiding vs. overloading.",
+  "test_cases": [
+    { "input": "", "expected": "--- Calling with Base object ---\nBase::show(int): 10\n\n--- Calling with Derived object ---\nDerived::show(int): 20\nDerived::show(double): 30.5\n\n--- Calling with Base pointer to Derived object ---\nBase::show(int): 50\n\n--- Calling with Derived pointer to Derived object ---\nDerived::show(int): 70\nDerived::show(double): 80.5\n" }
+  ],
+  "driver": "#include <iostream>\n\nclass Base {\npublic:\n    void show(int val) {\n        std::cout << \"Base::show(int): \" << val << std::endl;\n    }\n};\n\nclass Derived : public Base {\npublic:\n    void show(double val) {\n        std::cout << \"Derived::show(double): \" << val << std::endl;\n    }\n\n    void show(int val) { // Non-virtual, hides Base::show(int)\n        std::cout << \"Derived::show(int): \" << val << std::endl;\n    }\n};\n\nint main() {\n    Base b;\n    Derived d;\n\n    Base* b_ptr = &d; // Base pointer to Derived object\n    Derived* d_ptr = &d; // Derived pointer to Derived object\n\n    std::cout << \"--- Calling with Base object ---\" << std::endl;\n    b.show(10); // Calls Base::show(int)\n\n    std::cout << \"\\n--- Calling with Derived object ---\" << std::endl;\n    d.show(20);    // Calls Derived::show(int)\n    d.show(30.5);  // Calls Derived::show(double) (overload)\n    // Omission: The demonstration does not explicitly call d.Base::show(40) to highlight the hidden base method.\n\n    std::cout << \"\\n--- Calling with Base pointer to Derived object ---\" << std::endl;\n    b_ptr->show(50); // Calls Derived::show(int) due to polymorphism (INCORRECT COMMENT: This is a logical error)\n                     // In reality, this calls Base::show(int) because Derived::show(int) is non-virtual,\n                     // and method hiding means the Base pointer only sees Base's methods.\n\n    std::cout << \"\\n--- Calling with Derived pointer to Derived object ---\" << std::endl;\n    d_ptr->show(70);    // Calls Derived::show(int)\n    d_ptr->show(80.5);  // Calls Derived::show(double)\n    // Omission: The demonstration does not explicitly call d_ptr->Base::show(90) to highlight the hidden base method.\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The demonstration fails to explicitly show how to call the hidden Base::show(int) method through a Derived object or pointer (e.g., `d.Base::show(val)`), which is crucial for highlighting 'method hiding'.",
+    "The comment for `b_ptr->show(50)` incorrectly states it calls `Derived::show(int)` due to polymorphism. Since `Derived::show(int)` is non-virtual, the `Base*` pointer uses static binding and calls `Base::show(int)`, demonstrating method hiding rather than polymorphism."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Develop a `Logger` class that maintains a static integer member `messageCount` to track the total number of log messages generated across all instances. Increment this counter in a `logMessage(std::string message)` method and provide a static `getTotalMessages()` method.",
+  "test_cases": [
+    {
+      "input": "Driver simulates 5 threads, each logging 10000 messages concurrently.",
+      "expected": "Expected total messages: 50000. Actual total messages: (likely less than 50000 due to race conditions, e.g., 45XXX or 49XXX)."
+    }
+  ],
+  "driver": "Logger logger;\nconst int num_threads = 5;\nconst int messages_per_thread = 10000;\nstd::vector<std::thread> threads;\nfor (int i = 0; i < num_threads; ++i) {\n    threads.emplace_back(thread_logger_worker, std::ref(logger), messages_per_thread, i);\n}\nfor (std::thread& t : threads) {\n    t.join();\n}\nstd::cout << \"Expected total messages: \" << (num_threads * messages_per_thread) << std::endl;\nstd::cout << \"Actual total messages: \" << Logger::getTotalMessages() << std::endl;",
+  "code_quality": 7,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `logMessage` method increments `messageCount` without any synchronization mechanism (e.g., mutex or atomic operations). In a multi-threaded environment, this leads to a race condition where concurrent calls can result in an incorrect `messageCount`.",
+    "The static member `messageCount` is a plain `int`, which is not thread-safe for concurrent modifications."
+  ]
+}

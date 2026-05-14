@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a `Student` class with private attributes `studentID` (int), `name` (string), `major` (string). Implement public methods `setDetails(int id, string n, string m)` to initialize these attributes and `displayDetails()` to print them to the console.",
+  "test_cases": [
+    {
+      "input": "Student s1; s1.setDetails(101, \"Alice Smith\", \"Computer Science\"); s1.displayDetails(); Student s2; s2.setDetails(202, \"Bob Junior\", \"Mechanical Engineering\"); s2.displayDetails();",
+      "expected": "Student ID: 101, Name: Alice Smith, Major: Computer Science\nStudent ID: 202, Name: Bob Junior, Major: Mechanical Engineering\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Student {\nprivate:\n    int studentID;\n    std::string name;\n    std::string major;\n\npublic:\n    void setDetails(int i, std::string n_val, std::string m_val) {\n        studentID = i;\n        name = n_val;\n        major = m_val;\n    }\n\n    void displayDetails() {\n        std::cout << \"Student ID: \" << studentID\n                  << \", Name: \" << name\n                  << \", Major: \" << major << std::endl;\n    }\n};\n\nint main() {\n    Student s1;\n    s1.setDetails(101, \"Alice Smith\", \"Computer Science\");\n    s1.displayDetails();\n\n    Student s2;\n    s2.setDetails(202, \"Bob Junior\", \"Mechanical Engineering\");\n    s2.displayDetails();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `setDetails` method passes `std::string` parameters (`n_val`, `m_val`) by value, which incurs unnecessary string copy overhead. For efficiency, they should be passed by `const std::string&`.",
+    "The `displayDetails` method uses `std::endl`, which flushes the output buffer after each print. Using `\\n` instead is generally more efficient when an explicit flush is not required.",
+    "Parameter names `i`, `n_val`, `m_val` in `setDetails` are less descriptive than standard practice, impacting code readability."
+  ]
+}

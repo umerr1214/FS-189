@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Shape` with a protected string member `color` and a constructor to initialize it. Derive a `Circle` class from `Shape`, adding a private double member `radius` and its own constructor. Implement a `displayInfo()` method in both classes.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Shape Info - Color: Blue\nShape Info - Color: Red\nCircle Info - Radius: 5\n\n--- Polymorphic Calls ---\nCalling displayInfo via Shape* to Shape object:\nShape Info - Color: Blue\nCalling displayInfo via Shape* to Circle object:\nShape Info - Color: Red\nCircle Info - Radius: 5\n\n--- Dynamic Allocation Example ---\nShape Info - Color: Green\nShape Info - Color: Yellow\nCircle Info - Radius: 10\n"
+    }
+  ],
+  "driver": "int main() {\n    Shape s(\"Blue\");\n    s.displayInfo();\n\n    Circle c(\"Red\", 5.0);\n    c.displayInfo();\n\n    std::cout << \"\\n--- Polymorphic Calls ---\\n\";\n    Shape* s_ptr1 = &s;\n    Shape* s_ptr2 = &c;\n\n    std::cout << \"Calling displayInfo via Shape* to Shape object:\\n\";\n    s_ptr1->displayInfo();\n\n    std::cout << \"Calling displayInfo via Shape* to Circle object:\\n\";\n    s_ptr2->displayInfo(); // Correctly calls Circle::displayInfo due to virtual function\n\n    // Example with dynamic allocation\n    std::cout << \"\\n--- Dynamic Allocation Example ---\\n\";\n    Shape* dynamic_s = new Shape(\"Green\");\n    Shape* dynamic_c = new Circle(\"Yellow\", 10.0);\n\n    dynamic_s->displayInfo();\n    dynamic_c->displayInfo(); // Correctly calls Circle::displayInfo\n\n    delete dynamic_s;\n    delete dynamic_c; // Virtual destructor ensures correct deletion\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `Counter` class with a private integer `count`. Overload the prefix increment operator `++` (e.g., `++myCounter`) to increase the `count` by one and return the modified `Counter` object. Demonstrate its usage.",
+  "test_cases": [
+    { "input": "", "expected": "Initial count: 5\nAfter ++myCounter (result_counter): 6\nOriginal myCounter: 6\nAfter incrementing result_counter: 7\nOriginal myCounter (unaffected): 6\nInitial anotherCounter: 10\nAfter ++++anotherCounter (chained_result): 12\nOriginal anotherCounter: 12\n" }
+  ],
+  "driver": "int main() {\n    Counter myCounter(5);\n    std::cout << \"Initial count: \" << myCounter.getCount() << std::endl;\n\n    Counter result_counter = ++myCounter;\n    std::cout << \"After ++myCounter (result_counter): \" << result_counter.getCount() << std::endl;\n    std::cout << \"Original myCounter: \" << myCounter.getCount() << std::endl;\n\n    result_counter.operator++();\n    std::cout << \"After incrementing result_counter: \" << result_counter.getCount() << std::endl;\n    std::cout << \"Original myCounter (unaffected): \" << myCounter.getCount() << std::endl;\n\n    Counter anotherCounter(10);\n    Counter chained_result = ++++anotherCounter;\n    std::cout << \"Initial anotherCounter: \" << 10 << std::endl;\n    std::cout << \"After ++++anotherCounter (chained_result): \" << chained_result.getCount() << std::endl;\n    std::cout << \"Original anotherCounter: \" << anotherCounter.getCount() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 8,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The prefix increment operator `operator++()` returns `Counter` by value instead of `Counter&`. While functionally correct in many cases, this creates a temporary copy of the object. This is less robust as it can lead to unexpected behavior if users try to chain operations or take a reference to the result, as the reference would bind to a temporary, potentially causing dangling references or incorrect assumptions about object identity. The standard practice for prefix increment is to return a reference to the modified object (`Counter&`)."
+  ]
+}

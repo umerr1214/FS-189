@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Date` class with private `day`, `month`, and `year` integers. Overload the `==` operator to compare if two `Date` objects represent the same date.",
+  "test_cases": [
+    { "input": "d1=(1,1,2024), d2=(1,1,2024)", "expected": "true" },
+    { "input": "d1=(1,1,2024), d2=(2,1,2024)", "expected": "false" },
+    { "input": "d1=(1,2,2024), d2=(1,1,2024)", "expected": "false" },
+    { "input": "d1=(1,1,2024), d2=(1,1,2025)", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Date {\nprivate:\n    int day;\n    int month;\n    int year;\n\npublic:\n    Date(int d, int m, int y) : day(d), month(m), year(y) {}\n\n    bool operator==(const Date& other) const {\n        if (day != other.day) {\n            return false;\n        }\n        if (month != other.month) {\n            return false;\n        }\n        if (year != other.year) {\n            return false;\n        }\n        return true;\n    }\n\n    void print() const {\n        std::cout << day << \"/\" << month << \"/\" << year;\n    }\n};\n\nint main() {\n    Date d1(1, 1, 2024);\n    Date d2(1, 1, 2024);\n    Date d3(2, 1, 2024);\n    Date d4(1, 2, 2024);\n\n    std::cout << (d1 == d2 ? \"true\" : \"false\") << std::endl;\n    std::cout << (d1 == d3 ? \"true\" : \"false\") << std::endl;\n    std::cout << (d1 == d4 ? \"true\" : \"false\") << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["The `operator==` implementation is verbose and less concise than necessary, using multiple conditional checks instead of a single logical expression. This reduces readability and introduces minor, unnecessary branching overhead compared to a direct logical AND comparison."]
+}

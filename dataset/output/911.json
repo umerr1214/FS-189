@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void selectionSort(int arr[], int n) that sorts an array using Selection Sort.",
+  "test_cases": [
+    {
+      "input": "arr = {2, 1}",
+      "expected": "{1, 2}"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <algorithm>\n#include \"911.cpp\"\n\nint main() {\n    int arr[] = {2, 1};\n    selectionSort(arr, 2);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses O(N) extra space (vector) to perform the sort instead of doing it in-place."
+  ]
+}

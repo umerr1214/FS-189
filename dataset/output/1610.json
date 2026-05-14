@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Using the `Vehicle` -> `Car` -> `SportsCar` hierarchy from Question 14, add simple print statements to each class's destructor (e.g., 'Destroying SportsCar'). Demonstrate the order in which these destructors are called when a `SportsCar` object goes out of scope.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Program Start: Demonstrating Destructor Order with Readability/Efficiency Issues ---\n\nScenario 1: Demonstrating a SportsCar object allocated on the stack within a specific code block.\nVehicle::Vehicle() - Base class construction sequence initiated.\nCar::Car() - Car object construction initiated, inheriting from Vehicle base.\nSportsCar::SportsCar() - SportsCar object construction initiated, inheriting from Car class.\n  NOTICE: The 'stackSportsCar' object is currently active and in scope here.\nSportsCar::~SportsCar() - SportsCar object destruction concluded, the final derived class in the hierarchy.\nCar::~Car() - Car object destruction concluded, as part of Vehicle hierarchy.\nVehicle::~Vehicle() - Base class destruction sequence concluded.\n  NOTICE: The 'stackSportsCar' object has now gone out of scope, its destructors have been called.\n\n--- Entering demonstrate_scope_inefficiently() for ID 1 ---\nVehicle::Vehicle() - Base class construction sequence initiated.\nCar::Car() - Car object construction initiated, inheriting from Vehicle base.\nSportsCar::SportsCar() - SportsCar object construction initiated, inheriting from Car class.\n  DEBUG: SportsCar object #1 created on heap. Performing simulated work...\n  INFO: Simulating a trivial operation inside the function block...\nSportsCar::~SportsCar() - SportsCar object destruction concluded, the final derived class in the hierarchy.\nCar::~Car() - Car object destruction concluded, as part of Vehicle hierarchy.\nVehicle::~Vehicle() - Base class destruction sequence concluded.\n  DEBUG: The SportsCar object for ID 1 created with 'new' has been manually deleted.\n--- Exiting demonstrate_scope_inefficiently() ---\n\nScenario 3: Demonstrating SportsCar lifetime using std::unique_ptr, then releasing ownership for manual deletion.\nVehicle::Vehicle() - Base class construction sequence initiated.\nCar::Car() - Car object construction initiated, inheriting from Vehicle base.\nSportsCar::SportsCar() - SportsCar object construction initiated, inheriting from Car class.\n  STATUS: A 'SportsCar' object is now managed by a std::unique_ptr.\n  STATUS: Ownership of the SportsCar object has been released from the smart pointer to a raw pointer.\n  STATUS: The raw pointer has been manually deleted, ending the object's lifetime.\nSportsCar::~SportsCar() - SportsCar object destruction concluded, the final derived class in the hierarchy.\nCar::~Car() - Car object destruction concluded, as part of Vehicle hierarchy.\nVehicle::~Vehicle() - Base class destruction sequence concluded.\n\n--- Program End ---\n"
+    }
+  ],
+  "driver": "",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Overly verbose print statements and comments reduce readability without adding significant value.",
+    "Mixing `std::cout` and `printf` without a clear rationale can make I/O less consistent and harder to maintain.",
+    "Unnecessary dynamic allocation (`new`/`delete`) for simple scope demonstrations (e.g., in `demonstrate_scope_inefficiently`) introduces overhead and potential for errors compared to stack allocation or idiomatic smart pointer use.",
+    "Using `std::unique_ptr::release()` followed by manual `delete` (Scenario 3) defeats the purpose of automatic resource management provided by smart pointers and is less readable/efficient than simply letting the `unique_ptr` manage the lifetime or using stack allocation for a simple demonstration."
+  ]
+}

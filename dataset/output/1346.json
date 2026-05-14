@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Vehicle` with `make` (string) and `model` (string). Derive a class `Car` that adds `numDoors` (int). Both classes should have a `displayInfo()` method; `Car` should override `displayInfo()` to include its specific attribute.",
+  "test_cases": [
+    {
+      "input": "Honda Civic 4",
+      "expected": "Make: Honda, Model: Civic\nDoors: 4\n"
+    }
+  ],
+  "driver": "std::string run_test_case(const std::string& input_str) {\n    std::stringstream input_ss(input_str);\n    std::string make, model;\n    int numDoors;\n    input_ss >> make >> model >> numDoors;\n\n    Car myCar(make, model, numDoors);\n\n    std::stringstream ss;\n    std::streambuf* oldCout = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n\n    myCar.displayInfo();\n\n    std::cout.rdbuf(oldCout);\n    return ss.str();\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Constructors take `std::string` parameters by value, leading to unnecessary string copies. Using `const std::string&` for parameters and then `std::move` in the initializer list would be more efficient.",
+    "The `Car::displayInfo()` method duplicates the logic for displaying `make` and `model` instead of calling `Vehicle::displayInfo()`. This leads to code duplication and reduces maintainability.",
+    "Excessive use of `std::endl` which flushes the output buffer on each call, potentially impacting performance. `\\n` is generally preferred for simple newlines unless an immediate flush is required.",
+    "`displayInfo()` methods are not marked `const`, even though they do not modify the object's state. This limits their usability with `const` objects and references."
+  ]
+}

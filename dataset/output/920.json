@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a recursive function int fibonacci(int n) that returns the nth Fibonacci number.",
+  "test_cases": [
+    {
+      "input": "n = 5",
+      "expected": "5"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cassert>\n#include \"920.cpp\"\n\nint main() {\n    // Will return 0\n    // assert(fibonacci(5) == 5);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Using multiplication `*` instead of addition `+` in the recursive step."
+  ]
+}

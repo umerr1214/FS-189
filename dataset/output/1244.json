@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create an abstract `Animal` class with a pure virtual `makeSound()` method. Implement `Dog` and `Cat` classes deriving from `Animal`, each providing its own distinct `makeSound()` implementation.",
+  "test_cases": [
+    { "input": "", "expected": "Woof!\nMeow!\n" }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <memory>\n\n// The class definitions from the user's code will be inserted here.\n\nint main() {\n    std::stringstream ss;\n    std::streambuf* oldCout = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n\n    // The driver uses good practices for testing, creating objects and calling makeSound.\n    std::vector<std::unique_ptr<Animal>> animals;\n    animals.push_back(std::make_unique<Dog>());\n    animals.push_back(std::make_unique<Cat>());\n\n    for (const auto& animal : animals) {\n        animal->makeSound();\n    }\n\n    std::cout.rdbuf(oldCout);\n\n    std::cout << ss.str();\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inconsistent and poor code formatting/indentation, making the code harder to read and maintain.",
+    "Missing `override` keyword in derived class `makeSound` methods. While not strictly an error, it reduces readability and prevents compile-time checks for correct overriding.",
+    "Using raw pointers (`new`/`delete`) for simple object management in `main` instead of stack allocation or smart pointers (`std::unique_ptr`), which is less safe, more verbose, and prone to memory leaks if `delete` calls are missed."
+  ]
+}

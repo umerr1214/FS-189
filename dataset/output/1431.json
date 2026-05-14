@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a base class `MediaItem` with a `play()` method that prints a generic message. Derive `AudioFile` and `VideoFile` classes, overriding `play()` to print messages specific to playing an audio or video file.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Playing a generic media item.\nPlaying an audio file.\nPlaying a video file.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <streambuf>\n\n// Declare the function provided by the user's solution\nvoid test_solution();\n\nint main() {\n    // Redirect stdout to capture output\n    std::stringstream ss;\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n\n    // Call the user's test function\n    test_solution();\n\n    // Restore stdout\n    std::cout.rdbuf(old_cout_buf);\n\n    // Print the captured output to stdout for the testing framework\n    std::cout << ss.str();\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

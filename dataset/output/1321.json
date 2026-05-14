@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Point` class with private `x` and `y` integer coordinates. Include a default constructor that initializes both to 0, a parameterized constructor, and a public method `displayPoint()` that prints the coordinates.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Point p1 (default): (0, 0)\nPoint p2 (parameterized): (10, 20)\nPoint p3 (negative): (-5, -8)\n"
+    }
+  ],
+  "driver": "#include <iostream>\n\nclass Point {\nprivate:\n    int x;\n    int y;\n\npublic:\n    // Default constructor\n    Point() {\n        x = 0;\n        y = 0;\n    }\n\n    // Parameterized constructor\n    Point(int initialX, int initialY) {\n        x = initialX;\n        y = initialY;\n    }\n\n    // Public method to display coordinates\n    void displayPoint() {\n        std::cout << \"(\" << x << \", \" << y << \")\";\n    }\n};\n\nint main() {\n    // Test default constructor\n    Point p1;\n    std::cout << \"Point p1 (default): \";\n    p1.displayPoint();\n    std::cout << std::endl;\n\n    // Test parameterized constructor\n    Point p2(10, 20);\n    std::cout << \"Point p2 (parameterized): \";\n    p2.displayPoint();\n    std::cout << std::endl;\n\n    // Test with negative coordinates\n    Point p3(-5, -8);\n    std::cout << \"Point p3 (negative): \";\n    p3.displayPoint();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `displayPoint()` method is not declared `const`. This is a robustness issue because display methods typically do not modify the object's state and should be callable on `const` objects. Failing to mark it `const` restricts its usage and can lead to unexpected compilation errors when working with `const` instances or references."
+  ]
+}

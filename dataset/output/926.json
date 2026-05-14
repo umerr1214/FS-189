@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void mergeSort(int arr[], int l, int r) that sorts an array using Merge Sort algorithm.",
+  "test_cases": [
+    {
+      "input": "arr = {1, 2}",
+      "expected": "Sorted"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"926.cpp\"\n\nint main() {\n    // Infinite recursion\n    // int arr[] = {1, 2};\n    // mergeSort(arr, 0, 1);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Incorrect recursive range: calling `mergeSort(arr, m, r)` instead of `mergeSort(arr, m + 1, r)` causes infinite recursion."
+  ]
+}

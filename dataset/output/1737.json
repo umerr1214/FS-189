@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Printer` class with overloaded `print` methods. One method should take an integer, another a string, and a third a character. Each method should display its respective argument.",
+  "test_cases": [
+    {
+      "input": "42, \"This is a well-designed string.\", 'K', ' '",
+      "expected": "Integer: 42\nString: This is a well-designed string.\nCharacter: K\nCharacter:  \n"
+    }
+  ],
+  "driver": "int main() {\n    Printer printer_instance;\n    printer_instance.print(42);\n    printer_instance.print(\"This is a well-designed string.\");\n    printer_instance.print('K');\n    printer_instance.print(' ');\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Model a `Car` class using composition. `Car` should contain an `Engine` object as a member. The `Engine` class should have a `start()` method, and `Car` should have a `startCar()` method that calls `Engine::start()`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "An engine component instance has been successfully initialized.\nA new vehicle car instance has been created.\n\n--- First Attempt ---\n\nInitiating the ignition sequence for the vehicle...\nThe vehicular engine has commenced operation.\nVehicle ignition sequence completed, car is ready.\n\n--- Second Attempt ---\n\nInitiating the ignition sequence for the vehicle...\nThe engine is already in an operational state, no action required.\nVehicle ignition sequence failed or engine was already running.\n"
+    }
+  ],
+  "driver": "The `main` function in the provided C++ code serves as the driver, demonstrating the functionality of the `Car` and `Engine` classes.",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Excessive use of `std::endl` instead of `\\n` which flushes the buffer unnecessarily, impacting efficiency.",
+    "Verbose and inconsistent naming conventions (e.g., `Engine_Component`, `start_the_engine`, `commence_vehicle_ignition_sequence`, `internal_engine_object`) make the code hard to read and understand.",
+    "Unnecessary member variables (`engine_status_message` in `Engine_Component`, `vehicle_operation_status` in `Vehicle_Car`) for the simple functionality required, leading to increased memory footprint and complexity.",
+    "Redundant logic and checks (e.g., checking engine status string after `start_the_engine()` call) decrease efficiency and clarity.",
+    "Overly verbose output messages and comments add clutter without proportional benefit."
+  ]
+}

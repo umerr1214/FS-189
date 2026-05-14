@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function bool Exists(int data[][6], int pattern[][3]) that checks if the 3x3 pattern exists in the 6x6 data.",
+  "test_cases": [
+    {
+      "input": "Any data, Any pattern",
+      "expected": "Depends on content"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"729.cpp\"\n\nint main() {\n    int data[6][6] = {{1}}; \n    int pattern[3][3] = {{2}}; \n    // Comparison of row addresses is always false, so it assumes match=true always?\n    // Yes, returns true even for mismatch\n    if (Exists(data, pattern)) return 0; // It incorrectly says found\n    return 1;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Comparing row addresses `data[i+r] == pattern[r]` instead of element values, which is semantically incorrect for checking content equality."
+  ]
+}

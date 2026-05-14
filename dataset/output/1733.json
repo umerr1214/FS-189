@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `Printer` class with overloaded `print` methods. One method should take an integer, another a string, and a third a character. Each method should display its respective argument.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Printing int: 42\nPrinting string: Test String\nPrinting char: C\nPrinting int: 0\nPrinting string: Another String\nPrinting char: Z\n" }
+  ],
+  "driver": "    Printer p;\n    p.print(42);\n    p.print(\"Test String\");\n    p.print('C');\n    p.print(0);\n    p.print(\"Another String\");\n    p.print('Z');",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `print(const std::string&)` method prints a generic message instead of the actual string argument, leading to incorrect output for string inputs."
+  ]
+}

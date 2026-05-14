@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Enhance the `Book` class by adding a parameterized constructor that takes `title`, `author`, and `isbn` as arguments and initializes the object upon creation. Also, include a default constructor that initializes attributes to empty or default values.",
+  "test_cases": [
+    {
+      "input": "Book book1;\nBook book2(\"The C++ Programming Language\", \"Bjarne Stroustrup\", \"978-0321563842\");",
+      "expected": "Default Book Details:\nTitle: Untitled, Author: , ISBN: \n\nParameterized Book Details:\nTitle: , Author: , ISBN: "
+    }
+  ],
+  "driver": "int main() {\n    Book book1;\n    std::cout << \"Default Book Details:\" << std::endl;\n    book1.printDetails();\n\n    Book book2(\"The C++ Programming Language\", \"Bjarne Stroustrup\", \"978-0321563842\");\n    std::cout << \"\\nParameterized Book Details:\" << std::endl;\n    book2.printDetails();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The parameterized constructor incorrectly shadows member variables by declaring local variables with the same names as the parameters, leading to the member variables remaining default-constructed (empty strings) instead of being initialized with the provided arguments.",
+    "The default constructor explicitly initializes 'title' but relies on implicit default construction for 'author' and 'isbn', which might not fully satisfy the requirement to 'explicitly initialize attributes to empty or default values' for all members."
+  ]
+}

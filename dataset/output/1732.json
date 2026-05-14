@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `Printer` class with overloaded `print` methods. One method should take an integer, another a string, and a third a character. Each method should display its respective argument.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Printing int: 123\nPrinting string: Hello, World!\nPrinting char: X\n" }
+  ],
+  "driver": "    Printer p;\n    p.print(123);\n    p.print(\"Hello, World!\");\n    p.print('X');",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition."
+  ]
+}

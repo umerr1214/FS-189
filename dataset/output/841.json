@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a function bool isBalanced(const char* str) that checks if the parentheses '(' and ')' in the string are balanced.",
+  "test_cases": [],
+  "driver": "#include <iostream>\n#include <cstring>\n#include \"841.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'return balance == 0'"
+  ]
+}

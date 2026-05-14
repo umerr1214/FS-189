@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private members for title (string), author (string), and price (double). Include a parameterized constructor to initialize these members and a public method `displayBookInfo()` to print all details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Compilation Error: Expected ';' before 'double price'"
+    }
+  ],
+  "driver": "Book myBook(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", 12.99);\nmyBook.displayBookInfo();",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing a semicolon after the 'std::string author' member declaration within the `Book` class, leading to a compilation error."
+  ]
+}

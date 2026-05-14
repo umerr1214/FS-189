@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Using the `Vehicle` -> `Car` -> `SportsCar` hierarchy from Question 14, add simple print statements to each class's destructor (e.g., 'Destroying SportsCar'). Demonstrate the order in which these destructors are called when a `SportsCar` object goes out of scope.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating stack-allocated SportsCar (correct destructor order) ---\nConstructing Vehicle\nConstructing Car\nConstructing SportsCar\n  myStackSportsCar is in scope.\nDestroying SportsCar\nDestroying Car\nDestroying Vehicle\n\n--- Demonstrating dynamically-allocated SportsCar via base pointer (Robustness Issue) ---\nConstructing Vehicle\nConstructing Car\nConstructing SportsCar\n  SportsCar object created via Vehicle* pointer.\nDestroying Vehicle\n\n--- Demonstrating dynamically-allocated SportsCar via derived pointer (correct destructor order) ---\nConstructing Vehicle\nConstructing Car\nConstructing SportsCar\n  SportsCar object created via SportsCar* pointer.\nDestroying SportsCar\nDestroying Car\nDestroying Vehicle\n"
+    }
+  ],
+  "driver": "",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The destructor of the base class 'Vehicle' is not declared as virtual. This is a critical robustness issue (polymorphic base classes should always have virtual destructors). When a derived object is deleted through a pointer to the base class, only the base class destructor is called, leading to resource leaks and partial object destruction for the derived parts. The demonstration clearly shows this for the 'polyCarPtr' case."
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Implement a multilevel inheritance hierarchy: `Vehicle` (base) -> `Car` -> `SportsCar`. Each class should have a simple constructor that prints its name and a unique method (e.g., `startEngine()` in `Vehicle`, `drive()` in `Car`, `activateBoost()` in `SportsCar`).",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": ">> Initializing Base V_hicle Object! <<\n>> Initializing Derived C_ar Object! <<\n>> Initializing Super Derived S_portsCar Object! <<\nV_hicle engine has been started up.\nC_ar is now in motion, driving along.\nS_portsCar's super boost feature has been activated!\n"
+    }
+  ],
+  "driver": "int main() {\n    S_portsCar mySportsCar;\n    mySportsCar._start_engine_method_(); // Call inherited method\n    mySportsCar._drive_method_();      // Call inherited method\n    mySportsCar._activate_boost_method_(); // Call its own method\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inconsistent and poor code formatting, including indentation, makes the code hard to read and maintain.",
+    "Non-standard and verbose naming conventions (e.g., `V_hicle`, `_start_engine_method_`) reduce readability.",
+    "Excessive use of `std::endl` instead of `\\n` forces a flush of the output buffer on every line, which can introduce minor performance overhead in applications with heavy console output."
+  ]
+}

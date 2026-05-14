@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void binomSum(int arr[], int size) that updates each element with the sum of numbers from 1 to that element.",
+  "test_cases": [
+    {
+      "input": "arr = {4}, size = 1",
+      "expected": "{10}"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cassert>\n#include \"638.cpp\"\n\nint main() {\n    int arr[] = {4};\n    binomSum(arr, 1);\n    // Will be 16 instead of 10\n    // assert(arr[0] == 10);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Incorrect formula used for summation: calculated square 'n * n' instead of 'n * (n + 1) / 2'."
+  ]
+}

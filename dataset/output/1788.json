@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a `Resource` class that simulates acquiring a resource in its constructor (e.g., printing \"Resource acquired\") and releasing it in its destructor (e.g., printing \"Resource released\"). Demonstrate the order of constructor and destructor calls for local objects within a function scope.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Resource 1 (main_local) acquired.\n  Entering demonstrateLeak (Semantic Error: Memory Leak)...\n  Resource 2 (heap_allocated) acquired.\n  Resource 2 (heap_allocated) released.\n  Exiting demonstrateLeak...\n  Entering demoScope (normal local objects)...\n  Resource 3 (local_in_demo_scope1) acquired.\n    Entering inner scope...\n    Resource 4 (local_in_demo_scope2) acquired.\n    Resource 4 (local_in_demo_scope2) released.\n    Exiting inner scope...\n  Resource 3 (local_in_demo_scope1) released.\n  Exiting demoScope...\nResource 1 (main_local) released.\nEnd of main."
+    }
+  ],
+  "driver": "// The main function serves as the driver for this program.",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Memory leak: A Resource object allocated with 'new' inside 'demonstrateLeak' is not deallocated with 'delete'. This prevents its destructor from being called, violating the resource management contract and failing to demonstrate its release."
+  ]
+}

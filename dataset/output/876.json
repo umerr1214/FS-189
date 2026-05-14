@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a function bool isSubsequence(const char* s1, const char* s2) that checks if s1 is a subsequence of s2.",
+  "test_cases": [
+    {
+      "input": "s1=\"abc\", s2=\"ahbgdc\"",
+      "expected": "true"
+    },
+    {
+      "input": "s1=\"axc\", s2=\"ahbgdc\"",
+      "expected": "false"
+    },
+    {
+      "input": "s1=NULL",
+      "expected": "false"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cassert>\n#include \"876.cpp\"\n\nint main() {\n    assert(isSubsequence(\"abc\", \"ahbgdc\") == true);\n    assert(isSubsequence(\"axc\", \"ahbgdc\") == false);\n    assert(isSubsequence(NULL, \"a\") == false);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

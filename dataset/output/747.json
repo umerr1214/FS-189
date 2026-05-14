@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a program to track monkey food intake (3 monkeys, 5 days) and report statistics.",
+  "test_cases": [
+    {
+      "input": "Any input",
+      "expected": "Correct average"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include \"747.cpp\"\n\nint main() {\n    double food[3][5];\n    printReport(food);\n    // Output will be nonsense based on pointer size * 15\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using `sizeof(food)` inside the function on an array parameter, which returns the size of the pointer (4 or 8) rather than the array's data size, leading to incorrect calculations."
+  ]
+}

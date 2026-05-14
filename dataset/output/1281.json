@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define an `Order` base class with a constructor taking an `orderId`. Create a `SpecialOrder` derived class that adds a `discount` parameter. Demonstrate how `SpecialOrder`'s constructor explicitly calls the `Order` base class constructor.",
+  "test_cases": [
+    { "input": "", "expected": "--- Demonstrating Correct Implementation ---\nOrder ID: 1001\n\nOrder ID: 2001\n  Discount: 10.00%\n\nOrder ID: 2002\n  Discount: 25.00%\n\n--- Testing correct version's discount clamping ---\nOrder ID: 2003\n  Discount: 0.00%\n\nOrder ID: 2004\n  Discount: 100.00%\n\n" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include <algorithm>\n\n// Assuming Order and SpecialOrder classes are defined above this driver code.\n\nint main() {\n    std::cout << \"--- Demonstrating Correct Implementation ---\" << std::endl;\n\n    Order regularOrder(1001);\n    regularOrder.display();\n    std::cout << std::endl;\n\n    SpecialOrder specialOrder1(2001, 0.10);\n    specialOrder1.display();\n    std::cout << std::endl;\n\n    SpecialOrder specialOrder2(2002, 0.25);\n    specialOrder2.display();\n    std::cout << std::endl;\n\n    std::cout << \"--- Testing correct version's discount clamping ---\" << std::endl;\n    SpecialOrder specialOrder3(2003, -0.05);\n    specialOrder3.display();\n    std::cout << std::endl;\n\n    SpecialOrder specialOrder4(2004, 1.50);\n    specialOrder4.display();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

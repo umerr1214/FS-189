@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Model a `Department` class that aggregates `Employee` objects. The `Department` should have a name and a list of employees. Employees can exist independently of departments. Demonstrate adding employees to a department and displaying the department's staff.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Added employee Alice Johnson to Sales.\n\nAdded employee Bob Smith to Sales.\n\nAdded employee Charlie Brown to Sales.\n\nDepartment: Sales\n\nStaff:\n  ID: 101, Name: Alice Johnson\n  ID: 102, Name: Bob Smith\n  ID: 103, Name: Charlie Brown\n--- End of Staff List ---\n\nAdded employee Diana Prince to Marketing.\n\nDepartment: Marketing\n\nStaff:\n  ID: 201, Name: Diana Prince\n--- End of Staff List ---\n\n"
+    }
+  ],
+  "driver": "int main() {\n    Employee emp1(\"Alice Johnson\", 101);\n    Employee emp2(\"Bob Smith\", 102);\n    Employee emp3(\"Charlie Brown\", 103);\n\n    Department sales(\"Sales\");\n\n    sales.addEmployee(emp1);\n    sales.addEmployee(emp2);\n    sales.addEmployee(emp3);\n\n    sales.displayStaff();\n\n    Department marketing(\"Marketing\");\n    Employee emp4(\"Diana Prince\", 201);\n    marketing.addEmployee(emp4);\n    marketing.displayStaff();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `Department::employees` vector stores `Employee` objects by value (`std::vector<Employee>`), which means each `Employee` object is copied when added to the department. This is inefficient if `Employee` objects are large or if the intent is to share a single `Employee` instance across multiple departments or contexts, as stated in the prompt ('Employees can exist independently'). Using `std::shared_ptr<Employee>` would be more efficient and better reflect aggregation semantics.",
+    "The `Department::addEmployee` method takes an `Employee` object by value (`Employee emp`), resulting in an unnecessary copy of the `Employee` object when the function is called. It should ideally take a `const Employee&` or `std::shared_ptr<Employee>`.",
+    "Excessive use of `std::endl` throughout the code (`addEmployee`, `displayStaff`, and `Employee::display`). `std::endl` not only inserts a newline character but also flushes the output buffer, which can be a performance bottleneck, especially in programs with heavy output. Using `\\n` instead is generally more efficient when a buffer flush is not explicitly required."
+  ]
+}

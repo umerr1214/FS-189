@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a multilevel inheritance hierarchy: `Vehicle` -> `Car` -> `SportsCar`. Each class should have a constructor that prints its name and a method `drive()`. Demonstrate the order of constructor calls and method overriding across the hierarchy.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "\n--- Creating SportsCar object ---\nVehicle constructor called.\nCar constructor called.\nSportsCar constructor called.\n\n--- Demonstrating direct drive() method call ---\nSportsCar is driving fast!\n\n--- Demonstrating polymorphic drive() using base pointers ---\nSportsCar is driving fast!\nSportsCar is driving fast!\n\n--- End of program. Destructors will be called. ---\nSportsCar destructor called.\nCar destructor called.\nVehicle destructor called.\n"
+    }
+  ],
+  "driver": "    // Demonstrate constructor call order\n    std::cout << \"\\n--- Creating SportsCar object ---\" << std::endl;\n    SportsCar mySportsCar; // Object created on stack\n\n    // Demonstrate method overriding (direct call)\n    std::cout << \"\\n--- Demonstrating direct drive() method call ---\" << std::endl;\n    mySportsCar.drive();\n\n    // Demonstrate polymorphic method overriding using base class pointers\n    std::cout << \"\\n--- Demonstrating polymorphic drive() using base pointers ---\" << std::endl;\n    Vehicle* vehiclePtr = &mySportsCar;\n    vehiclePtr->drive(); // Should call SportsCar::drive()\n\n    Car* carPtr = &mySportsCar;\n    carPtr->drive(); // Should call SportsCar::drive()\n    \n    std::cout << \"\\n--- End of program. Destructors will be called. ---\" << std::endl;\n    return 0;",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

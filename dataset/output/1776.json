@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Enhance the `Student` class from the previous question by adding a default constructor that initializes `studentID` to 0, `name` to \"N/A\", and `major` to \"Undecided\". Also, implement a parameterized constructor that takes `studentID`, `name`, and `major` as arguments to initialize the object.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Default Student: ID: 0, Name: N/A, Major: Undecided\nParameterized Student: ID: 101, Name: Alice, Major: CS\nAnother Parameterized Student: ID: 102, Name: Bob, Major: Physics\n"
+    }
+  ],
+  "driver": "    Student s1;\n    std::cout << \"Default Student: \";\n    s1.display();\n\n    Student s2(101, \"Alice\", \"CS\");\n    std::cout << \"Parameterized Student: \";\n    s2.display();\n\n    Student s3(102, \"Bob\", \"Physics\");\n    std::cout << \"Another Parameterized Student: \";\n    s3.display();\n",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The program uses `std::string` without explicitly including the `<string>` header. While it might compile on some systems due to transitive includes (e.g., from `<iostream>`), this is semantically incorrect and leads to non-portable code. The `<string>` header should always be explicitly included when using `std::string`."
+  ]
+}

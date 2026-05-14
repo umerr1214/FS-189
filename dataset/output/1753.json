@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "For the `Point` class (from a previous question with `x`, `y` coordinates), overload the `==` operator to compare if two `Point` objects have the same coordinates. It should return a boolean value.",
+  "test_cases": [
+    { "input": "Point p1(1, 2); Point p2(1, 2); p1 == p2;", "expected": "true" },
+    { "input": "Point p1(1, 2); Point p3(3, 4); p1 == p3;", "expected": "false" },
+    { "input": "Point p4(5, 6); Point p5(5, 7); p4 == p5;", "expected": "false" },
+    { "input": "Point p6(8, 8); Point p7(8, 8); p6 == p7;", "expected": "true" }
+  ],
+  "driver": "Point p1(1, 2); Point p2(1, 2); Point p3(3, 4); std::cout << (p1 == p2 ? \"true\" : \"false\") << std::endl; std::cout << (p1 == p3 ? \"true\" : \"false\") << std::endl; Point p4(5, 6); Point p5(5, 7); std::cout << (p4 == p5 ? \"true\" : \"false\") << std::endl; Point p6(8, 8); Point p7(8, 8); std::cout << (p6 == p7 ? \"true\" : \"false\") << std::endl;",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `operator==` is defined to take non-const references (`Point& p1`, `Point& p2`). This is a robustness issue because it prevents comparing temporary objects (rvalues) and violates the principle that comparison operations should not modify their operands. It makes the operator less flexible and potentially unsafe in a larger codebase."
+  ]
+}

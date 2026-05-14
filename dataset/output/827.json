@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function char firstNonRepeating(const char* str) that returns the first non-repeating character.",
+  "test_cases": [
+    {
+      "input": "str = \"swiss\"",
+      "expected": "'w'"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include \"827.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inefficient O(N^2) approach using nested loops to count occurrences for each character individually instead of O(N) frequency array."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void selectionSort(int arr[], int n) that sorts an array using Selection Sort.",
+  "test_cases": [
+    {
+      "input": "arr = NULL",
+      "expected": "Graceful failure"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"910.cpp\"\n\nint main() {\n    // selectionSort(NULL, 5);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing NULL pointer check for input array."
+  ]
+}

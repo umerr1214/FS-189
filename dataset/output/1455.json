@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Design a `Rectangle` class with private `width` and `height` (doubles). Declare a `friend` function `calculateArea(const Rectangle& rect)` that takes a `Rectangle` object and computes its area directly accessing `width` and `height`.",
+  "test_cases": [
+    { "input": "5.0 10.0", "expected": "50.00" },
+    { "input": "2.5 4.0", "expected": "10.00" },
+    { "input": "0.0 7.0", "expected": "0.00" },
+    { "input": "-3.0 5.0", "expected": "0.00" },
+    { "input": "1.0 1.0", "expected": "1.00" }
+  ],
+  "driver": "int main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        std::stringstream ss(line);\n        double w, h;\n        if (!(ss >> w >> h)) {\n            std::cerr << \"Invalid input format. Please enter two doubles.\" << std::endl;\n            continue;\n        }\n        \n        Rectangle rect(w, h);\n        double area = calculateArea(rect);\n        \n        std::cout << std::fixed << std::setprecision(2) << area << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

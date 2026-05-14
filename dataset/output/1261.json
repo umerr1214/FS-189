@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "For the `Point` class, overload the prefix increment operator (`++`). This operator should increment both the `x` and `y` coordinates of the `Point` object and return a reference to the modified object.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Original point p1: (1, 2)\nAfter ++p1: (2, 3)\nOriginal point p2: (5, 6)\nAfter ++p2 (temp_ref points to p2): (6, 7)\nFinal p2: (6, 7)\n"
+    }
+  ],
+  "driver": "#include <iostream>\n\nclass Point {\npublic:\n    int x;\n    int y;\n\n    Point(int x_coord = 0, int y_coord = 0) : x(x_coord), y(y_coord) {}\n\n    const Point& operator++() {\n        ++x;\n        ++y;\n        return *this;\n    }\n\n    void print() const {\n        std::cout << \"(\" << x << \", \" << y << \")\";\n    }\n};\n\nint main() {\n    Point p1(1, 2);\n    std::cout << \"Original point p1: \";\n    p1.print();\n    std::cout << std::endl;\n\n    ++p1;\n    std::cout << \"After ++p1: \";\n    p1.print();\n    std::cout << std::endl;\n\n    Point p2(5, 6);\n    std::cout << \"Original point p2: \";\n    p2.print();\n    std::cout << std::endl;\n\n    const Point& temp_ref = ++p2;\n    std::cout << \"After ++p2 (temp_ref points to p2): \";\n    temp_ref.print();\n    std::cout << std::endl;\n\n    std::cout << \"Final p2: \";\n    p2.print();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The prefix increment operator `operator++()` returns `const Point&` instead of `Point&`. While it increments the object correctly, returning a `const` reference prevents chaining of increment operations (e.g., `++(++p)`) or modifying the result of the increment (e.g., `(++p).x = 5;`), which are common and expected use cases for non-const prefix increment operators. This makes the operator less robust in complex expressions and violates the typical idiom for prefix `++`."
+  ]
+}

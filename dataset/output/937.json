@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Implement a Circular Queue class using an array.",
+  "test_cases": [],
+  "driver": "#include <iostream>\n#include \"937.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition closing brace."
+  ]
+}

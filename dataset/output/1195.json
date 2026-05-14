@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Demonstrate polymorphism by creating an array of `Shape` pointers. Populate this array with objects of `Circle` and `Rectangle` (from the previous question) and then iterate through the array to call `calculateArea()` on each object.",
+  "test_cases": [
+    {
+      "input": "No input needed, shapes are hardcoded.",
+      "expected": "Calculating areas:\nShape 1 Area: 78.5398\nShape 2 Area: 24.0000\nShape 3 Area: 28.2743\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <memory>\n#include <cmath>\n#include <iomanip>\n#include <sstream>\n\n// Base class\nclass Shape {\npublic:\n    virtual double calculateArea() const = 0;\n    virtual ~Shape() = default;\n};\n\n// Derived class: Circle\nclass Circle : public Shape {\nprivate:\n    double radius;\npublic:\n    Circle(double r) : radius(r) {}\n    double calculateArea() const override {\n        return M_PI * radius * radius;\n    }\n};\n\n// Derived class: Rectangle\nclass Rectangle : public Shape {\nprivate:\n    double width;\n    double height;\npublic:\n    Rectangle(double w, double h) : width(w), height(h) {}\n    double calculateArea() const override {\n        return width * height;\n    }\n};\n\nint main() {\n    std::stringstream ss;\n    ss << \"Calculating areas:\" << std::endl;\n\n    // Using smart pointers for correct memory management in the driver\n    std::vector<std::unique_ptr<Shape>> shapes_driver;\n    shapes_driver.push_back(std::make_unique<Circle>(5.0));\n    shapes_driver.push_back(std::make_unique<Rectangle>(4.0, 6.0));\n    shapes_driver.push_back(std::make_unique<Circle>(3.0));\n\n    for (size_t i = 0; i < shapes_driver.size(); ++i) {\n        ss << \"Shape \" << i + 1 << \" Area: \" << std::fixed << std::setprecision(4) << shapes_driver[i]->calculateArea() << std::endl;\n    }\n    \n    std::cout << ss.str();\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Memory leak: Dynamically allocated Shape objects (Circle and Rectangle) are not deallocated using 'delete' before the program exits. This leads to a memory leak, consuming system resources that are not released until the program terminates, which can be problematic in long-running applications or repeated executions."
+  ]
+}

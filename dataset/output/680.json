@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void removeDuplicates(char arr[]) that removes duplicate characters from the string in-place.",
+  "test_cases": [
+    {
+      "input": "arr = \"aa\"",
+      "expected": "\"a\""
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <algorithm>\n#include <cassert>\n#include \"680.cpp\"\n\nint main() {\n    char str[] = \"aa\";\n    removeDuplicates(str);\n    // Will contain \"aa\" or \"a\" followed by junk because terminator isn't set\n    // assert(strcmp(str, \"a\") == 0);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Fails to append the null terminator '\\0' after removing duplicates, leaving the original tail characters intact."
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Design a `Point` class with private `x` and `y` integer coordinates. Include a default constructor that initializes both to 0, a parameterized constructor, and a public method `displayPoint()` that prints the coordinates.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Point p1 (default): (0, 0)\nPoint p2 (parameterized): (10, 20)\nPoint p3 (negative): (-5, -8)\n"
+    }
+  ],
+  "driver": "#include <iostream>\n\nclass Point {\nprivate:\n    int m_xCoord;\n    int m_yCoord;\n\npublic:\n    // Default constructor\n    Point() {\n        this->m_xCoord = 0;\n        this->m_yCoord = 0;\n    }\n\n    // Parameterized constructor\n    Point(int initialXValue, int initialYValue) {\n        this->m_xCoord = initialXValue;\n        this->m_yCoord = initialYValue;\n    }\n\n    // Public method to display coordinates\n    void displayPoint() {\n        std::cout << \"(\" << this->m_xCoord << \", \" << this->m_yCoord << \")\";\n    }\n};\n\nint main() {\n    // Test default constructor\n    Point p1;\n    std::cout << \"Point p1 (default): \";\n    p1.displayPoint();\n    std::cout << std::endl;\n\n    // Test parameterized constructor\n    Point p2(10, 20);\n    std::cout << \"Point p2 (parameterized): \";\n    p2.displayPoint();\n    std::cout << std::endl;\n\n    // Test with negative coordinates\n    Point p3(-5, -8);\n    std::cout << \"Point p3 (negative): \";\n    p3.displayPoint();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Constructors do not use initializer lists. While for `int` members this has minimal efficiency impact, it's generally less efficient and less idiomatic C++ for complex types, as it involves default construction followed by assignment.",
+    "Excessive and unnecessary use of `this->` keyword throughout the class methods. While not incorrect, it reduces readability and is not standard practice when there's no ambiguity.",
+    "Member variable names (`m_xCoord`, `m_yCoord`) and parameter names (`initialXValue`, `initialYValue`) are overly verbose, reducing readability."
+  ]
+}

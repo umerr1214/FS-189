@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a base class `Employee` with private members `name` (string) and `employeeID` (int). Derive a `Manager` class from `Employee` that adds a private member `department` (string). Include constructors and methods to display details for both classes.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Employee Details ---\nEmployee Name: Alice Smith\nEmployee ID: 101\n\n--- Manager Details ---\nEmployee Name: Bob Johnson\nEmployee ID: 201\nDepartment: Sales\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// Employee and Manager class definitions would be here\n\nint main() {\n    Employee emp(\"Alice Smith\", 101);\n    std::cout << \"--- Employee Details ---\" << std::endl;\n    emp.displayDetails();\n    std::cout << std::endl;\n\n    Manager mgr(\"Bob Johnson\", 201, \"Sales\");\n    std::cout << \"--- Manager Details ---\" << std::endl;\n    mgr.displayDetails();\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the 'Manager' class definition. C++ requires a semicolon after a class declaration."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `Rectangle` class with a constructor `Rectangle(double length = 1.0, double width = 1.0)`. Demonstrate creating `Rectangle` objects using default arguments, one argument, and both arguments.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Rectangle 1 (Default): Length = 1.0, Width = 1.0, Area = 1.0\nRectangle 2 (One argument): Length = 5.0, Width = 1.0, Area = 5.0\nRectangle 3 (Both arguments): Length = 3.0, Width = 4.0, Area = 12.0\nRectangle 4 (Robustness issue): Length = -2.0, Width = 5.0, Area = -10.0\n"
+    }
+  ],
+  "driver": "int main() {\n    // Demonstrate creating Rectangle objects\n    Rectangle r1;\n    r1.displayInfo(\"Rectangle 1 (Default)\");\n\n    Rectangle r2(5.0);\n    r2.displayInfo(\"Rectangle 2 (One argument)\");\n\n    Rectangle r3(3.0, 4.0);\n    r3.displayInfo(\"Rectangle 3 (Both arguments)\");\n\n    Rectangle r_robust(-2.0, 5.0);\n    r_robust.displayInfo(\"Rectangle 4 (Robustness issue)\");\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Rectangle` class constructor does not validate input dimensions, allowing negative values for length or width. This leads to an physically impossible state for a real-world rectangle (e.g., negative area calculation for 'Rectangle 4'), which is a robustness issue as the class does not handle invalid inputs gracefully or prevent the creation of ill-defined objects."
+  ]
+}

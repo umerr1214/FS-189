@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Car` class that has an `Engine` object as a private member (composition). The `Engine` class should have attributes like `horsepower` and `fuelType`. The `Car` class should have `make`, `model`, and a method `startCar()` that internally calls a method `start()` on its `Engine` object.",
+  "test_cases": [
+    { "input": "", "expected": "Attempting to start Car: Toyota Camry\nEngine started! Fuel: Gasoline, HP: 200\n\nAttempting to start Car: Ford Pinto\nEngine started! Fuel: Gasoline, HP: -50\n\nAttempting to start Car: Honda Civic\nEngine started! Fuel: Petrol, HP: 150\nEngine started! Fuel: Petrol, HP: 150\n\n" }
+  ],
+  "driver": "See main function in .cpp file",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Engine constructor allows negative horsepower without validation, which could lead to unexpected behavior or misrepresentation of engine power.",
+    "Engine::start() method lacks internal state management; it prints 'Engine started!' regardless of whether the engine is already running, making it not robust to multiple start calls.",
+    "Car::startCar() directly calls Engine::start() without any pre-checks or error handling, making it susceptible to issues if the engine state is invalid or already running.",
+    "Getter methods in both Car and Engine classes are not declared `const`, reducing robustness and preventing their use on constant objects."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a class `ResourceHandler` that simulates acquiring and releasing a system resource. Implement a destructor for this class that prints a message indicating the resource has been released.",
+  "test_cases": [],
+  "driver": "int main() { ResourceHandler res; return 0; }",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the class definition of `ResourceHandler`."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a class `Person` with a `public` name, a `protected` age, and a `private` social security number. Demonstrate which members are accessible from outside the class and within a derived class (without showing the derived class implementation).",
+  "test_cases": [
+    { "input": "", "expected": "Compilation failed due to a semantic error: 'age' is a protected member of 'Person' and cannot be accessed directly from an object of 'Person' in the main function." }
+  ],
+  "driver": "The main function attempts to instantiate a 'Person' object and then directly access its protected 'age' member, which leads to a compilation error. A 'Student' (derived) class is also defined to illustrate derived class access, but the program fails before reaching its execution.",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The program attempts to access the protected member 'age' of a 'Person' object directly from the 'main' function. Protected members are only accessible from within the class itself, its friends, or its derived classes, not from arbitrary external code, leading to a semantic compilation error."
+  ]
+}

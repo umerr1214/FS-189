@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void runLengthEncode(const char* input, char* output) that performs run-length encoding on the input string.",
+  "test_cases": [
+    {
+      "input": "input = NULL",
+      "expected": "Graceful failure"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cstdio>\n#include \"808.cpp\"\n\nint main() {\n    // runLengthEncode(NULL, NULL);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing NULL pointer checks for input and output strings."
+  ]
+}

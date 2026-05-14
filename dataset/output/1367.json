@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Illustrate access specifiers (`public`, `private`, `protected`). Create a base class `Person` with `public` name, `protected` age, and `private` socialSecurityNumber. Derive a `Student` class and try to access these members, explaining which are accessible and why.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Access from main function ---\nAccessing public member 'name': Bob Johnson\nAttempting to access protected member 'age': Not accessible directly from main (outside derived class).\nAttempting to access private member 'socialSecurityNumber': Not accessible directly from main.\n\n--- Student Info (from Student class) ---\nAccessing public member 'name': Bob Johnson\nAccessing protected member 'age': 22\nStudent ID: S1002\nAttempting to access private member 'socialSecurityNumber': Accessible from Student class because it's part of the base class."
+    }
+  ],
+  "driver": "int main() { Student s(\"Bob Johnson\", 22, \"987-65-4321\", \"S1002\"); std::cout << \"--- Access from main function ---\" << std::endl; std::cout << \"Accessing public member 'name': \" << s.name << std::endl; std::cout << \"Attempting to access protected member 'age': Not accessible directly from main (outside derived class).\" << std::endl; std::cout << \"Attempting to access private member 'socialSecurityNumber': Not accessible directly from main.\" << std::endl; s.displayStudentInfo(); return 0; }",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The program incorrectly states that 'private' members are accessible from a derived class. Private members are only accessible from within the class where they are declared, not from derived classes or outside."
+  ]
+}

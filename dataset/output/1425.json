@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Model a `Department` class that aggregates `Employee` objects. `Department` should have a name and a list (e.g., array or vector) of `Employee` pointers. `Employee` objects should be created independently and managed by the `Department` through aggregation.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Department: Human Resources (3 employees)\n  ID: 101, Name: Alice\n  ID: 102, Name: Bob\n  ID: 103, Name: Charlie\n\nAttempting to find employee with ID 102...\nFound:   ID: 102, Name: Bob\n\nAttempting to find employee with ID 999...\nEmployee 999 not found.\n\nRemoving employee with ID 101...\nDepartment: Human Resources (2 employees)\n  ID: 102, Name: Bob\n  ID: 103, Name: Charlie\n\nRemoving non-existent employee with ID 999...\nDepartment: Human Resources (2 employees)\n  ID: 102, Name: Bob\n  ID: 103, Name: Charlie\nDepartment: IT Operations (1 employees)\n  ID: 201, Name: David\n"
+    }
+  ],
+  "driver": "int main() {\n    Department hr_dept(\"Human Resources\");\n\n    hr_dept.addEmployee(std::make_unique<Employee>(101, \"Alice\"));\n    hr_dept.addEmployee(std::make_unique<Employee>(102, \"Bob\"));\n    hr_dept.addEmployee(std::make_unique<Employee>(103, \"Charlie\"));\n    hr_dept.addEmployee(std::make_unique<Employee>(102, \"Duplicate Bob\"));\n\n    hr_dept.listEmployees();\n\n    std::cout << \"\\nAttempting to find employee with ID 102...\\n\";\n    const Employee* bob = hr_dept.findEmployee(102);\n    if (bob) {\n        std::cout << \"Found: \";\n        bob->display();\n    } else {\n        std::cout << \"Employee 102 not found.\\n\";\n    }\n\n    std::cout << \"\\nAttempting to find employee with ID 999...\\n\";\n    const Employee* unknown = hr_dept.findEmployee(999);\n    if (unknown) {\n        std::cout << \"Found: \";\n        unknown->display();\n    } else {\n        std::cout << \"Employee 999 not found.\\n\";\n    }\n\n    std::cout << \"\\nRemoving employee with ID 101...\\n\";\n    hr_dept.removeEmployee(101);\n    hr_dept.listEmployees();\n\n    std::cout << \"\\nRemoving non-existent employee with ID 999...\\n\";\n    hr_dept.removeEmployee(999);\n    hr_dept.listEmployees();\n\n    Department it_dept(\"IT Operations\");\n    it_dept.addEmployee(std::make_unique<Employee>(201, \"David\"));\n    it_dept.listEmployees();\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

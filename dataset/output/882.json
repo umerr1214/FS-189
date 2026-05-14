@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a function void removeVowels(char* str) that removes vowels from the string in-place.",
+  "test_cases": [
+    {
+      "input": "str = \"Hello World\"",
+      "expected": "\"Hll Wrld\""
+    },
+    {
+      "input": "str = \"aeiou\"",
+      "expected": "\"\""
+    },
+    {
+      "input": "str = NULL",
+      "expected": "No crash"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cctype>\n#include <cassert>\n#include \"882.cpp\"\n\nint main() {\n    char str1[] = \"Hello World\";\n    removeVowels(str1);\n    assert(strcmp(str1, \"Hll Wrld\") == 0);\n\n    char str2[] = \"aeiou\";\n    removeVowels(str2);\n    assert(strcmp(str2, \"\") == 0);\n    \n    removeVowels(NULL);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

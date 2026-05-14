@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Model a `Department` class that aggregates `Employee` objects. `Department` should have a name and a list (e.g., array or vector) of `Employee` pointers. `Employee` objects should be created independently and managed by the `Department` through aggregation.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Department: Human Resources has 2 employees:\n  ID: 101, Name: Alice\n  ID: 102, Name: Bob\nDepartment: IT has 1 employees:\n  ID: 103, Name: Charlie\n"
+    }
+  ],
+  "driver": "int main() {\n    Employee* emp1 = new Employee(101, \"Alice\");\n    Employee* emp2 = new Employee(102, \"Bob\");\n    Employee* emp3 = new Employee(103, \"Charlie\");\n\n    {\n        Department hr_dept(\"Human Resources\");\n        hr_dept.addEmployee(emp1);\n        hr_dept.addEmployee(emp2);\n        hr_dept.listEmployees();\n    }\n\n    {\n        Department it_dept(\"IT\");\n        it_dept.addEmployee(emp3);\n        it_dept.listEmployees();\n    }\n\n    delete emp1;\n    delete emp2;\n    delete emp3;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Memory leak: The Department destructor does not deallocate the Employee objects pointed to by its aggregated raw pointers. When a Department object is destroyed, the Employee objects it manages remain in memory, leading to a leak. This violates the principle of RAII for owned resources, even in an aggregation scenario where ownership implies responsibility for deletion. Although the driver manually cleans up, the class itself is flawed."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Create a `ResourceHandler` class that manages a dynamically allocated integer array. Its constructor should allocate an array of a specified size. Implement a destructor that correctly deallocates the dynamically allocated memory to prevent memory leaks.",
+  "test_cases": [
+    {
+      "input": "3\n0 100\n1 200\n2 300",
+      "expected": "Constructing ResourceHandler with size 3\nArray after construction (uninitialized values): {0,0,0}\nInitializing array with 0...\nArray after initialization: {0,0,0}\nArray after setting values: {100,200,300}\nEnd of test case.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n\nclass ResourceHandler {\npublic:\n    int* data_ptr;\n    int array_size;\n\n    ResourceHandler(int sz) : array_size(sz), data_ptr(nullptr) {\n        if (array_size > 0) {\n            data_ptr = new int[array_size];\n            // For consistent test output, we'll assume uninitialized values are 0 in this context\n            // In reality, they would be garbage. This driver can't perfectly simulate garbage values.\n            for(int i = 0; i < array_size; ++i) { data_ptr[i] = 0; }\n        } else {\n            array_size = 0;\n        }\n    }\n\n    ~ResourceHandler() {\n        if (data_ptr != nullptr) {\n            delete[] data_ptr;\n            data_ptr = nullptr;\n        }\n    }\n\n    void initialize_with_val(int value) {\n        for (int i = 0; i < array_size; ++i) {\n            *(data_ptr + i) = value;\n        }\n    }\n\n    void set_val(int idx, int val) {\n        if (idx >= 0 && idx < array_size) {\n            data_ptr[idx] = val;\n        }\n    }\n\n    std::string print_arr() const {\n        std::ostringstream oss;\n        oss << \"{\";\n        for (int i = 0; i < array_size; ++i) {\n            oss << data_ptr[i];\n            if (i < array_size - 1) {\n                oss << \",\";\n            }\n        }\n        oss << \"}\";\n        return oss.str();\n    }\n};\n\nvoid run_test_case(int initial_size, const std::vector<std::pair<int, int>>& values_to_set, std::ostream& os) {\n    os << \"Constructing ResourceHandler with size \" << initial_size << std::endl;\n    ResourceHandler handler(initial_size);\n\n    os << \"Array after construction (uninitialized values): \" << handler.print_arr() << std::endl;\n\n    os << \"Initializing array with 0...\" << std::endl;\n    handler.initialize_with_val(0);\n    os << \"Array after initialization: \" << handler.print_arr() << std::endl;\n\n    for (const auto& p : values_to_set) {\n        handler.set_val(p.first, p.second);\n    }\n    os << \"Array after setting values: \" << handler.print_arr() << std::endl;\n    os << \"End of test case.\" << std::endl;\n}\n\nint main() {\n    std::ostringstream oss;\n    std::vector<std::pair<int, int>> values1 = {{0, 100}, {1, 200}, {2, 300}};\n    run_test_case(3, values1, oss);\n    std::cout << oss.str();\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Constructor does not initialize array elements, leading to uninitialized data and requiring a separate initialization step, which is less efficient and robust.",
+    "Variable names like 'data_ptr' and 'array_size' are less descriptive than 'm_data' and 'm_size'.",
+    "Method names like 'initialize_with_val' and 'set_val' are verbose or less idiomatic.",
+    "Using pointer arithmetic '*(data_ptr + i)' instead of array indexing 'data_ptr[i]' can reduce readability.",
+    "Inconsistent formatting for print_arr output (no space after comma) affects readability."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a `Counter` class that uses a `static` member variable to keep track of the total number of `Counter` objects currently alive (created minus destroyed). Update this static member in constructors and the destructor.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Robustness Issue Test ---\nInitial alive count: 0\nAfter creating c1: 1\nAfter creating c2 (copy of c1): 1\nAfter creating c3 in inner scope: 2\nAfter c3 goes out of scope: 1\nExpected final alive count after c1, c2 destroyed: 0\nFinal alive count (after c1, c2 destroyed): -1\n"
+    }
+  ],
+  "driver": "int main() {\n    run_test_case();\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The default copy constructor is used, which does not increment the static counter. This leads to undercounting of objects when copies are made.",
+    "The incorrect count during copy construction subsequently leads to a negative count when all objects are destroyed, indicating a severe logic error in object lifecycle management."
+  ]
+}

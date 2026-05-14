@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a function void findDuplicateCharacters(const char arr[], char duplicates[], int& duplicatesSize) that finds duplicate characters in the string.",
+  "test_cases": [
+    {
+      "input": "arr = NULL",
+      "expected": "Graceful failure"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include \"664.cpp\"\n\nint main() {\n    // findDuplicateCharacters(NULL, NULL, 0);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing NULL pointer check before accessing array.",
+    "Potential buffer overflow writing to 'duplicates' array."
+  ]
+}

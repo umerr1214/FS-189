@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "For the `Vector2D` class, overload the pre-increment `++` operator to increment both `x` and `y` coordinates by 1. The operator should modify the object itself and return a reference to the modified object.",
+  "test_cases": [
+    { "input": "Vector2D v(1, 2); ++v;", "expected": "(2, 3)" },
+    { "input": "Vector2D v(0, 0); ++v;", "expected": "(1, 1)" },
+    { "input": "Vector2D v(-5, 10); ++v;", "expected": "(-4, 11)" },
+    { "input": "Vector2D v(10, 20); (++v).x = 100;", "expected": "(100, 21)" }
+  ],
+  "driver": "int main() { Vector2D v1(1, 2); ++v1; std::cout << v1 << std::endl; Vector2D v2(0, 0); ++v2; std::cout << v2 << std::endl; Vector2D v3(-5, 10); ++v3; std::cout << v3 << std::endl; Vector2D v4(10, 20); (++v4).x = 100; std::cout << v4 << std::endl; return 0; }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The pre-increment operator uses `x = x + 1;` and `y = y + 1;` instead of the more idiomatic and often marginally more efficient `++x;` and `++y;` for incrementing fundamental integer types. While functionally correct due to compiler optimizations for built-in types, it's less concise and deviates from common C++ practices for in-place increments, impacting readability and minor efficiency."
+  ]
+}

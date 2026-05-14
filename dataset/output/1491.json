@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `Logger` class that prints 'Logger initialized.' when its constructor is called and 'Logger destroyed.' when its destructor is called. Demonstrate the lifecycle of a `Logger` object in `main`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Main function started.\nLogger initialized.\nEntering nested block scope.\nLogger initialized.\nExiting nested block scope.\nLogger destroyed.\nEntering demonstrate_scoped_logger function.\nLogger initialized.\nExiting demonstrate_scoped_logger function.\nLogger destroyed.\nMain function finished.\nLogger destroyed.\n"
+    }
+  ],
+  "driver": "The `main` function in the provided C++ code directly demonstrates the `Logger` class lifecycle as per the question, covering various scopes.",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

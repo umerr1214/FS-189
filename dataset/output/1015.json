@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Explain the importance of virtual destructors. Implement a base class `Shape` and a derived class `Circle`, both with destructors that print a message. Demonstrate the issue of memory leaks/partial destruction without a virtual destructor when deleting a derived object via a base pointer, and then fix it with a virtual destructor.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation Error: Missing semicolon after class definition." }
+  ],
+  "driver": "// No driver needed, as it won't compile.",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the definition of class 'Shape'. This prevents compilation."
+  ]
+}

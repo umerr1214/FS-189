@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a `Vector2D` class with private `x` and `y` (double) coordinates. Overload the binary `+` operator to perform vector addition, returning a new `Vector2D` object.",
+  "test_cases": [
+    {
+      "input": "Vector2D v1(1.0, 2.0);\nVector2D v2(3.0, 4.0);\nVector2D v3 = v1 + v2;\nstd::cout << \"v1 after addition: \"; v1.print();\nstd::cout << \"v2: \"; v2.print();\nstd::cout << \"v3 (result): \"; v3.print();",
+      "expected": "v1 after addition: (1.0, 2.0)\nv2: (3.0, 4.0)\nv3 (result): (4.0, 6.0)\n"
+    }
+  ],
+  "driver": "#include <iostream>\n\nclass Vector2D {\nprivate:\n    double x;\n    double y;\n\npublic:\n    Vector2D(double x_val = 0.0, double y_val = 0.0) : x(x_val), y(y_val) {}\n\n    Vector2D operator+(const Vector2D& other) const {\n        return Vector2D(this->x + other.x, this->y + other.y);\n    }\n\n    void print() const {\n        std::cout << \"(\" << x << \", \" << y << \")\" << std::endl;\n    }\n};\n\nint main() {\n    Vector2D v1(1.0, 2.0);\n    Vector2D v2(3.0, 4.0);\n    Vector2D v3 = v1 + v2;\n    std::cout << \"v1 after addition: \"; v1.print();\n    std::cout << \"v2: \"; v2.print();\n    std::cout << \"v3 (result): \"; v3.print();\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The overloaded binary `+` operator is implemented as a mutating member function (modifies `*this` and returns a reference to it) instead of a non-mutating function that returns a *new* `Vector2D` object by value. This violates the semantic expectation that binary `+` operations should not modify their operands."
+  ]
+}

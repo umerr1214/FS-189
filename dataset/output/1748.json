@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a `Fraction` class with private integer members `numerator` and `denominator`. Overload the `<<` (insertion) operator to allow `Fraction` objects to be printed directly to an output stream (e.g., `cout << fractionObject;` should output `N/D`).",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "My Fraction: 5/8\nAnother Fraction: 2/3\n"
+    }
+  ],
+  "driver": "#include <iostream>\n\nclass Fraction {\nprivate:\n    int num; // Using 'num' instead of 'numerator' for brevity\n    int den; // Using 'den' instead of 'denominator' for brevity\n\npublic:\n    // Constructor does not use a member initializer list (readability/efficiency)\n    // Parameter names are short (readability)\n    Fraction(int n_val, int d_val) {\n        num = n_val;\n        den = d_val; \n        // No validation for denominator == 0, but not the primary focus of this error type.\n    }\n\n    // Friend declaration for the overloaded operator<<\n    // Takes Fraction by value (inefficient copy) and not const (readability)\n    friend std::ostream& operator<<(std::ostream& os, Fraction f); \n};\n\n// Overload the << operator to print Fraction objects\n// Takes Fraction by value, causing an unnecessary copy (efficiency issue).\n// Does not use 'const' for the Fraction parameter, which is bad practice as the function doesn't modify 'f' (readability issue).\nstd::ostream& operator<<(std::ostream& os, Fraction f) {\n    os << f.num << \"/\" << f.den;\n    return os;\n}\n\nint main() {\n    // Test cases for the fraction class\n    Fraction myFraction(5, 8);\n    std::cout << \"My Fraction: \" << myFraction << std::endl;\n\n    Fraction anotherFraction(2, 3);\n    std::cout << \"Another Fraction: \" << anotherFraction << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `operator<<` overload takes the `Fraction` object by value (`Fraction f`) instead of by `const` reference (`const Fraction& f`). This causes an unnecessary copy of the `Fraction` object, impacting efficiency.",
+    "The `operator<<` overload does not use `const` for its `Fraction` parameter. While not a functional error, it's a readability and best practice issue, as the function does not modify the object.",
+    "The `Fraction` constructor initializes member variables using assignment in the constructor body instead of a member initializer list. While functionally equivalent for simple types, member initializer lists are generally more efficient (especially for complex types) and are considered better practice for readability and consistency."
+  ]
+}

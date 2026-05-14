@@ -1,0 +1,37 @@
+{
+  "language": "c++",
+  "question": "Define an abstract base class `Printable` with a pure virtual method `print()`. Derive two concrete classes, `Document` and `Image`, from `Printable`. Implement the `print()` method in each derived class to display appropriate information (e.g., 'Printing Document: [title]', 'Printing Image: [filename]').",
+  "test_cases": [
+    {
+      "input": "Print Document with title 'Report_Q1'",
+      "expected": "Printing Document: Report_Q1\n"
+    },
+    {
+      "input": "Print Image with filename 'sunset.jpg'",
+      "expected": "Printing Image: sunset.jpg\n"
+    },
+    {
+      "input": "Print Document with empty title ''",
+      "expected": "Printing Document: \n"
+    },
+    {
+      "input": "Print Image with long filename",
+      "expected": "Printing Image: very_long_and_descriptive_image_filename_from_camera_2023_10_27_15_30_00.png\n"
+    },
+    {
+      "input": "Polymorphic print and delete of Document ('Memo_to_staff')",
+      "expected": "Printing Document: Memo_to_staff\n"
+    },
+    {
+      "input": "Polymorphic print and delete of Image ('logo.svg')",
+      "expected": "Printing Image: logo.svg\n"
+    }
+  ],
+  "driver": "std::string run_test_cases() {\n    std::stringstream ss;\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n\n    Document doc1(\"Report_Q1\");\n    doc1.print();\n\n    Image img1(\"sunset.jpg\");\n    img1.print();\n\n    Document doc2(\"\");\n    doc2.print();\n\n    Image img2(\"very_long_and_descriptive_image_filename_from_camera_2023_10_27_15_30_00.png\");\n    img2.print();\n\n    Printable* p_doc = new Document(\"Memo_to_staff\");\n    p_doc->print();\n    delete p_doc;\n\n    Printable* p_img = new Image(\"logo.svg\");\n    p_img->print();\n    delete p_img;\n\n    std::cout.rdbuf(old_cout_buf);\n    return ss.str();\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Non-virtual destructor in base class 'Printable' can lead to undefined behavior or resource leaks when deleting derived objects through a base class pointer. The derived class destructors will not be called."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a function void sortData(int arr[], int size, char choice) that sorts the array in ascending ('a') or descending ('d') order.",
+  "test_cases": [
+    {
+      "input": "arr = {3, 2, 1}, size = 3, choice = 'a'",
+      "expected": "{1, 2, 3}"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"617.cpp\"\n\nint main() {\n    int arr[] = {3, 2, 1};\n    sortData(arr, 3, 'a');\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inefficient O(N^2) sorting algorithm used (Bubble Sort).",
+    "Checking 'choice' inside the inner loop performs redundant checks (O(N^2) checks instead of 1)."
+  ]
+}

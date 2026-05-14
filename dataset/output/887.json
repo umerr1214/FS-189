@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function bool isPrime(int n) that checks if a number is prime.",
+  "test_cases": [
+    {
+      "input": "n = 29",
+      "expected": "true"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n#include \"887.cpp\"\n\nint main() {\n    isPrime(29);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inefficient loop range: iterates up to `n/2` instead of `sqrt(n)`, resulting in O(N) complexity instead of O(sqrt(N))."
+  ]
+}

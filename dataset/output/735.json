@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void upperCase(char array[]) that capitalizes the first and last letters of each word.",
+  "test_cases": [
+    {
+      "input": "arr = \"hello\"",
+      "expected": "\"HellO\""
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cctype>\n#include \"735.cpp\"\n\nint main() {\n    char str[100] = \"hello\";\n    upperCase(str);\n    // Will corrupt string due to assignment in if condition\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using assignment `array[i+1] = ' '` in conditional check, which modifies the string content unintentionally."
+  ]
+}

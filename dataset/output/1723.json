@@ -1,0 +1,29 @@
+{
+  "language": "c++",
+  "question": "Design a simple logging system using polymorphism. Create a base `Logger` class with a virtual `log(string message)` method. Derive `ConsoleLogger` and `FileLogger` classes, overriding `log()` to print to console or write to a file, respectively.",
+  "test_cases": [
+    {
+      "input": "Application started.\nProcessing data item 123.",
+      "expected": {
+        "console_output": "[CONSOLE] Application started.\n[CONSOLE] Processing data item 123.\n",
+        "file_content": "[FILE] Application started.\n[FILE] Processing data item 123.\n"
+      }
+    },
+    {
+      "input": "Another event.\nSystem shutting down.",
+      "expected": {
+        "console_output": "[CONSOLE] Another event.\n[CONSOLE] System shutting down.\n",
+        "file_content": "[FILE] Another event.\n[FILE] System shutting down.\n"
+      }
+    }
+  ],
+  "driver": "int main() {\n    std::remove(\"log_robust.txt\");\n    ConsoleLogger consoleLogger;\n    FileLogger fileLogger(\"log_robust.txt\");\n    std::vector<Logger*> loggers;\n    loggers.push_back(&consoleLogger);\n    loggers.push_back(&fileLogger);\n    for (Logger* logger : loggers) {\n        logger->log(\"Application started.\");\n        logger->log(\"Processing data item 123.\");\n    }\n    std::cout << \"\\nLogging complete. Check console output and 'log_robust.txt' for file logs.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "File operations in `FileLogger` are not robustly handled. The `log` method silently fails (or prints to `std::cerr` without throwing an exception or returning an error code) if the file cannot be opened, potentially leading to lost log messages.",
+    "The `FileLogger` opens and closes the log file for every single log message. This is highly inefficient, especially for high-frequency logging, and can lead to performance bottlenecks or resource contention issues.",
+    "No explicit error checking for write failures after opening the file, meaning data loss could occur even if the file was opened successfully."
+  ]
+}

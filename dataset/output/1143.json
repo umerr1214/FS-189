@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Vehicle` with `protected` members `speed` (int) and `fuelLevel` (double). Implement a `protected` method `updateSpeed(int newSpeed)`. Derive a `Car` class from `Vehicle`. In `Car`, create a public method `accelerate()` that internally uses `updateSpeed()` and also adjusts `fuelLevel` based on acceleration.",
+  "test_cases": [
+    {
+      "input": "Initial: 150 speed, 10.0 fuel. Accelerate 5 times.",
+      "expected": "Final State: Speed=195, Fuel=0.0"
+    }
+  ],
+  "driver": "int main() {\n    Car myCar(150, 10.0); // Initial speed 150 km/h, fuel 10.0 liters\n\n    std::cout << \"Initial State: Speed=\" << myCar.getSpeed()\n              << \", Fuel=\" << std::fixed << std::setprecision(1) << myCar.getFuelLevel() << std::endl;\n\n    myCar.accelerate(); // 1st acceleration\n    myCar.accelerate(); // 2nd acceleration\n    myCar.accelerate(); // 3rd acceleration\n    myCar.accelerate(); // 4th acceleration\n    myCar.accelerate(); // 5th acceleration\n              \n    std::cout << \"Final State: Speed=\" << myCar.getSpeed()\n              << \", Fuel=\" << std::fixed << std::setprecision(1) << myCar.getFuelLevel() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

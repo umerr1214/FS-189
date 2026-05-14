@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "For the `Vector2D` class, overload the pre-increment `++` operator to increment both `x` and `y` coordinates by 1. The operator should modify the object itself and return a reference to the modified object.",
+  "test_cases": [
+    { "input": "Vector2D v(1, 2); ++v; std::cout << v;", "expected": "(2,3)" },
+    { "input": "Vector2D v2(5, 5); Vector2D& ref_v2 = ++v2; std::cout << ref_v2;", "expected": "(6,6)" }
+  ],
+  "driver": "    Vector2D v(1, 2);\n    std::cout << \"Original vector: \" << v << std::endl;\n    ++v;\n    std::cout << \"After pre-increment: \" << v << std::endl;\n\n    Vector2D v2(5, 5);\n    Vector2D& ref_v2 = ++v2;\n    std::cout << \"v2: \" << v2 << std::endl;\n    std::cout << \"ref_v2: \" << ref_v2 << std::endl;\n\n    return 0;",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing parentheses in the declaration of the overloaded pre-increment operator (operator++)."]
+}

@@ -1,0 +1,27 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private members for title (string), author (string), and price (double). Include a parameterized constructor to initialize these members and a public method `displayBookInfo()` to print all details.",
+  "test_cases": [
+    {
+      "input": "The Lord of the Rings\nJ.R.R. Tolkien\n25.99",
+      "expected": "Book Title: The Lord of the Rings\nBook Author: J.R.R. Tolkien\nBook Price: $25.99\n"
+    },
+    {
+      "input": "Dune\nFrank Herbert\n15.75",
+      "expected": "Book Title: Dune\nBook Author: Frank Herbert\nBook Price: $15.75\n"
+    },
+    {
+      "input": "Pride and Prejudice\nJane Austen\n7.25",
+      "expected": "Book Title: Pride and Prejudice\nBook Author: Jane Austen\nBook Price: $7.25\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <iomanip>\n#include <limits>\n\nint main() {\n    std::string title;\n    std::string author;\n    double price;\n\n    std::getline(std::cin, title);\n    std::getline(std::cin, author);\n    std::cin >> price;\n    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\\n');\n\n    Book book(title, author, price);\n    book.displayBookInfo();\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The constructor parameters for title and author are passed by value (std::string), leading to unnecessary string copies and reduced efficiency.",
+    "The `displayBookInfo` method is not declared `const`, indicating that it might modify the object's state, which is not true and violates best practices for observer methods.",
+    "Constructor parameter names 't', 'a', 'p' are not descriptive and reduce readability."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "For the `Point` class, overload the prefix increment operator (`++`). This operator should increment both the `x` and `y` coordinates of the `Point` object and return a reference to the modified object.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Original point: (10, 20)\nAfter ++p: (11, 21)\nAfter ++p (via ref): (12, 22)\nAfter p_ref.setX(100): (100, 22)\n"
+    }
+  ],
+  "driver": "#include <iostream>\n\nclass Point {\nprivate:\n    int x;\n    int y;\n\npublic:\n    Point(int x_coord = 0, int y_coord = 0) : x(x_coord), y(y_coord) {}\n\n    int getX() const { return x; }\n    int getY() const { return y; }\n\n    void setX(int val) { x = val; }\n    void setY(int val) { y = val; }\n\n    Point& operator++() {\n        setX(getX() + 1);\n        setY(getY() + 1);\n        return *this;\n    }\n\n    void print() const {\n        std::cout << \"(\" << getX() << \", \" << getY() << \")\";\n    }\n};\n\nint main() {\n    Point p(10, 20);\n    std::cout << \"Original point: \";\n    p.print();\n    std::cout << std::endl;\n\n    ++p;\n    std::cout << \"After ++p: \";\n    p.print();\n    std::cout << std::endl;\n\n    Point& p_ref = ++p;\n    std::cout << \"After ++p (via ref): \";\n    p_ref.print();\n    std::cout << std::endl;\n\n    p_ref.setX(100);\n    std::cout << \"After p_ref.setX(100): \";\n    p.print();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `operator++()` implementation accesses and modifies member variables `x` and `y` through public getter and setter methods (`getX()`, `getY()`, `setX()`, `setY()`). While this approach maintains encapsulation, for a simple operation like incrementing internal primitive members, it introduces unnecessary verbosity and minor function call overhead. Direct access to `x` and `y` (if they were `protected` or `public`, or if the operator was a `friend`) would be more idiomatic, readable, and slightly more efficient for this specific context, reducing code clutter without sacrificing safety for such a trivial operation."
+  ]
+}

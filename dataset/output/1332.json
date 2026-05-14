@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Book` class with `title` and `author` (both `std::string`). Provide a default constructor, a parameterized constructor, and a copy constructor. Demonstrate their usage by creating objects in different ways.",
+  "test_cases": [
+    {
+      "input": "Book b1; b1.display(); Book b2(\"The Hobbit\", \"J.R.R. Tolkien\"); b2.display(); Book b3 = b2; b3.display();",
+      "expected": "Default constructor called for Book: Untitled by Unknown\nBook: \"Untitled\" by Unknown\nParameterized constructor called for Book: The Hobbit by J.R.R. Tolkien\nBook: \"The Hobbit\" by J.R.R. Tolkien\n(Program crashes with stack overflow due to infinite recursion in copy constructor when attempting to create book3)"
+    }
+  ],
+  "driver": "int main() { Book book1; book1.display(); Book book2(\"The Hobbit\", \"J.R.R. Tolkien\"); book2.display(); Book book3 = book2; book3.display(); Book book4(\"1984\", \"George Orwell\"); book4.display(); Book book5(book4); book5.display(); return 0; }",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The copy constructor `Book(Book other)` takes its argument by value instead of by const reference (`const Book& other`). This causes infinite recursion when `other` is constructed (as it itself calls the copy constructor), leading to a stack overflow at runtime."]
+}

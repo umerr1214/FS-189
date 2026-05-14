@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Implement a `Date` class with private `day`, `month`, and `year` attributes. Provide public setter methods for each attribute that include robust validation (e.g., month must be 1-12, day valid for the given month and year).",
+  "test_cases": [
+    { "input": "Date d(2023, 1, 15); d.printDate();", "expected": "2023-01-15" },
+    { "input": "Date d(2023, 2, 1); d.setDay(30); d.printDate();", "expected": "2023-02-30" },
+    { "input": "Date d(2024, 4, 1); d.setDay(31); d.printDate();", "expected": "2024-04-31" },
+    { "input": "Date d(2023, 1, 1); d.setMonth(13); d.printDate();", "expected": "2023-01-01" },
+    { "input": "Date d(2024, 2, 29); d.setYear(2023); d.printDate();", "expected": "2023-02-29" }
+  ],
+  "driver": "int main() {\n    Date d1(2023, 1, 15);\n    std::cout << \"d1 initial: \"; d1.printDate(); std::cout << std::endl;\n\n    d1.setMonth(2);\n    d1.setDay(30);\n    std::cout << \"d1 after Feb 30: \"; d1.printDate(); std::cout << std::endl;\n\n    Date d2(2024, 4, 1);\n    std::cout << \"d2 initial: \"; d2.printDate(); std::cout << std::endl;\n\n    d2.setDay(31);\n    std::cout << \"d2 after Apr 31: \"; d2.printDate(); std::cout << std::endl;\n\n    Date d3(2023, 1, 1);\n    d3.setMonth(13);\n    d3.setYear(-100);\n    std::cout << \"d3 invalid attempts: \"; d3.printDate(); std::cout << std::endl;\n\n    Date d4(2024, 2, 29);\n    std::cout << \"d4 initial (leap): \"; d4.printDate(); std::cout << std::endl;\n    d4.setYear(2023);\n    std::cout << \"d4 after non-leap year: \"; d4.printDate(); std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "setDay method only checks if day is between 1-31, not considering the specific month's maximum days (e.g., allows Feb 30, Apr 31).",
+    "setMonth and setYear methods do not trigger re-validation of the day, potentially leaving the date in an invalid state (e.g., day 29 in Feb after year changes to non-leap, or day 31 after month changes to Feb/Apr/Jun/Sep/Nov)."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Create a `Person` class with `name` (public), `age` (protected), and `id` (private). Then, create a `Student` class that publicly inherits from `Person`. Demonstrate which members are accessible from `Student` methods and from outside `Student` objects.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Inside Student method (showStudentInternalAccessDetails) ---\nAccessible: Public Person::name = Jane Doe\nAccessible: Protected Person::age = 22\nAccessible: Student::studentMajor = Physics\nAccessible: Person::getThePersonsIDValue() (via public method) = 205\nAccessible: Person::getThePersonsAgeValue() (via public method) = 22\n\n--- Outside Student object (displayExternalStudentInfo function) ---\nAccessible: Public Student::name (inherited from Person) = Jane Doe\nAccessible: Public Student::studentMajor = Physics\nAccessible: Person::getThePersonsIDValue() (via public method) = 205\nAccessible: Person::getThePersonsAgeValue() (via public method) = 22"
+    }
+  ],
+  "driver": "int main() {\n    Student jane(\"Jane Doe\", 22, 205, \"Physics\");\n    jane.showStudentInternalAccessDetails();\n    displayExternalStudentInfo(jane);\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inefficient string passing by value in constructors (`Person(std::string name_param, ...)` and `Student(..., std::string student_major_field)`), leading to unnecessary string copies.",
+    "Redundant `this->` usage in constructors and methods, which adds visual clutter without functional benefit.",
+    "Overly verbose and inconsistent naming for getter methods (`getThePersonsName`, `getThePersonsIDValue`, `getThePersonsAgeValue`), hindering readability.",
+    "Unnecessary getter for a public member (`getThePersonsName`), as `name` can be accessed directly.",
+    "Using `std::endl` repeatedly instead of `\\n` for simple newlines, which can lead to unnecessary stream flushes and reduced performance."
+  ]
+}

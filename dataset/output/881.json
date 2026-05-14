@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void removeVowels(char* str) that removes vowels from the string in-place.",
+  "test_cases": [
+    {
+      "input": "str = \"Hello\"",
+      "expected": "\"Hll\""
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cctype>\n#include <string>\n#include <vector>\n#include \"881.cpp\"\n\nint main() {\n    char str[] = \"Hello\";\n    removeVowels(str);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses `std::string` allocation and copy overhead instead of performing the operation in-place on the character array."
+  ]
+}

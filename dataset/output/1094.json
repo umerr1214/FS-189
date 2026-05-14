@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "For the `Point` class (from Q10 or similar with `x`, `y` members), overload the `==` operator to compare two `Point` objects. Two points are considered equal if their `x` and `y` coordinates are the same.",
+  "test_cases": [
+    { "input": "Point p1(1, 1); Point p2(1, 1); std::cout << bool_to_string(p1 == p2) << std::endl;", "expected": "true" },
+    { "input": "Point p1(1, 2); Point p2(1, 1); std::cout << bool_to_string(p1 == p2) << std::endl;", "expected": "false" },
+    { "input": "Point p1(2, 1); Point p2(1, 1); std::cout << bool_to_string(p1 == p2) << std::endl;", "expected": "false" },
+    { "input": "Point p1(0, 0); Point p2(0, 0); std::cout << bool_to_string(p1 == p2) << std::endl;", "expected": "true" },
+    { "input": "Point p1(-5, -10); Point p2(-5, -10); std::cout << bool_to_string(p1 == p2) << std::endl;", "expected": "true" },
+    { "input": "Point p1(-5, -10); Point p2(-5, 0); std::cout << bool_to_string(p1 == p2) << std::endl;", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Point {\npublic:\n    int x, y;\n\n    Point(int x_coord = 0, int y_coord = 0) : x(x_coord), y(y_coord) {}\n\n    bool operator==(const Point& other) const {\n        bool x_are_equal;\n        bool y_are_equal;\n\n        if (this->x == other.x) {\n            x_are_equal = true;\n        } else {\n            x_are_equal = false;\n        }\n\n        if (this->y == other.y) {\n            y_are_equal = true;\n        } else {\n            y_are_equal = false;\n        }\n\n        if (x_are_equal && y_are_equal) {\n            return true;\n        } else {\n            return false;\n        }\n    }\n};\n\nstd::string bool_to_string(bool b) {\n    return b ? \"true\" : \"false\";\n}\n\nint main() {\n    // The actual test cases will be inserted here by the system.\n    Point p1(1, 1); Point p2(1, 1); std::cout << bool_to_string(p1 == p2) << std::endl;\n    Point p3(1, 2); Point p4(1, 1); std::cout << bool_to_string(p3 == p4) << std::endl;\n    Point p5(2, 1); Point p6(1, 1); std::cout << bool_to_string(p5 == p6) << std::endl;\n    Point p7(0, 0); Point p8(0, 0); std::cout << bool_to_string(p7 == p8) << std::endl;\n    Point p9(-5, -10); Point p10(-5, -10); std::cout << bool_to_string(p9 == p10) << std::endl;\n    Point p11(-5, -10); Point p12(-5, 0); std::cout << bool_to_string(p11 == p12) << std::endl;\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["The `operator==` implementation is overly verbose, using multiple `if-else` statements and unnecessary boolean variables (`x_are_equal`, `y_are_equal`) instead of a concise logical expression, reducing both readability and efficiency."]
+}

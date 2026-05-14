@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Person` with private attributes `name` (string) and `age` (int). Implement public methods to set and display these details. Derive a class `Employee` from `Person` that adds private attributes `employeeID` (int) and `salary` (double). Implement methods in `Employee` to set and display its specific details, including inherited ones.",
+  "test_cases": [
+    {
+      "input": "// No direct user input. Test cases are hardcoded in main.",
+      "expected": "--- Testing Readability / Efficiency Issue (1796) ---\nPerson 1 Details: Name: Alice Smith, Age: 30\nEmployee 1 Details: Name: Bob Johnson, Age: 25, Employee ID: 1001, Salary: 50000\nEmployee 2 Details (from constructor): Name: Charlie Brown, Age: 40, Employee ID: 1002, Salary: 75000\nNote: Code uses non-descriptive names, passes strings by value, and lacks const-correctness.\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Testing Readability / Efficiency Issue (1796) ---\" << std::endl;\n\n    // Test case 1: Person object\n    Person p1;\n    p1.set_name_val(\"Alice Smith\");\n    p1.set_age_val(30);\n    std::cout << \"Person 1 Details: \";\n    p1.disp_person_info();\n    std::cout << std::endl;\n\n    // Test case 2: Employee object\n    Employee e1;\n    e1.set_name_val(\"Bob Johnson\"); // Using poorly named base method\n    e1.set_age_val(25);           // Using poorly named base method\n    e1.set_emp_id(1001);\n    e1.set_sal_amt(50000.0);\n    std::cout << \"Employee 1 Details: \";\n    e1.disp_employee_data();\n\n    // Test case 3: Employee object with constructor\n    Employee e2(\"Charlie Brown\", 40, 1002, 75000.0);\n    std::cout << \"Employee 2 Details (from constructor): \";\n    e2.disp_employee_data();\n\n    std::cout << \"Note: Code uses non-descriptive names, passes strings by value, and lacks const-correctness.\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Poor naming conventions for methods (e.g., 'set_name_val', 'disp_person_info') reduce code readability.",
+    "Getter methods are not marked `const`, which is less efficient and violates good practice as they don't modify object state.",
+    "String parameters in setter methods are passed by value instead of `const std::string&`, leading to unnecessary string copies and reduced efficiency."
+  ]
+}

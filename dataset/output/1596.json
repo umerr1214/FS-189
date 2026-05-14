@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `Rectangle` class with a constructor `Rectangle(double length = 1.0, double width = 1.0)`. Demonstrate creating `Rectangle` objects using default arguments, one argument, and both arguments.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation Error: 'length' is a private member of 'Rectangle'" }
+  ],
+  "driver": "// The main function as provided in the C++ file up to the point of error.",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The program attempts to directly access and modify the private member 'length' of a 'Rectangle' object ('r1.length = 10.0;') from the 'main' function. This violates C++'s encapsulation rules, leading to a compilation error as 'length' is declared private."
+  ]
+}

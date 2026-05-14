@@ -1,0 +1,25 @@
+{
+  "language": "c++",
+  "question": "Create a `Date` class with private integer members `day`, `month`, and `year`. Implement a constructor and public methods `isValidDate()` (which returns true if the date is valid, false otherwise) and `displayDate()` in 'DD/MM/YYYY' format.",
+  "test_cases": [
+    { "input": "15 3 2023", "expected": "Input: 15 3 2023\nisValid: true, display: 15/03/2023\n" },
+    { "input": "29 2 2024", "expected": "Input: 29 2 2024\nisValid: true, display: 29/02/2024\n" },
+    { "input": "29 2 2023", "expected": "Input: 29 2 2023\nisValid: false, display: 29/02/2023\n" },
+    { "input": "31 4 2023", "expected": "Input: 31 4 2023\nisValid: false, display: 31/04/2023\n" },
+    { "input": "31 1 2023", "expected": "Input: 31 1 2023\nisValid: true, display: 31/01/2023\n" },
+    { "input": "1 13 2023", "expected": "Input: 1 13 2023\nisValid: false, display: 01/13/2023\n" },
+    { "input": "1 0 2023", "expected": "Input: 1 0 2023\nisValid: false, display: 01/00/2023\n" },
+    { "input": "0 1 2023", "expected": "Input: 0 1 2023\nisValid: false, display: 00/01/2023\n" },
+    { "input": "29 2 2000", "expected": "Input: 29 2 2000\nisValid: false, display: 29/02/2000\n" },
+    { "input": "29 2 1900", "expected": "Input: 29 2 1900\nisValid: false, display: 29/02/1900\n" },
+    { "input": "1 1 0", "expected": "Input: 1 1 0\nisValid: true, display: 01/01/0000\n" },
+    { "input": "1 1 -2023", "expected": "Input: 1 1 -2023\nisValid: true, display: 01/01/-2023\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <iomanip>\n#include <vector>\n#include <tuple>\n\nclass Date {\nprivate:\n    int day;\n    int month;\n    int year;\n\npublic:\n    Date(int d, int m, int y) : day(d), month(m), year(y) {}\n\n    bool isValidDate() {\n        if (month < 1 || month > 12) return false;\n        if (day < 1 || day > 31) return false;\n\n        bool isLeap = (year % 4 == 0 && year % 100 != 0);\n\n        int daysInMonth;\n        switch (month) {\n            case 2:\n                daysInMonth = isLeap ? 29 : 28;\n                break;\n            case 4: case 6: case 9: case 11:\n                daysInMonth = 30;\n                break;\n            default:\n                daysInMonth = 31;\n                break;\n        }\n\n        return day <= daysInMonth;\n    }\n\n    void displayDate() {\n        std::cout << std::setfill('0') << std::setw(2) << day << '/'\n                  << std::setfill('0') << std::setw(2) << month << '/'\n                  << std::setfill('0') << std::setw(4) << year;\n    }\n};\n\nint main() {\n    std::ios_base::sync_with_stdio(false);\n    std::cin.tie(NULL);\n\n    std::vector<std::tuple<int, int, int>> inputs = {\n        {15, 3, 2023},\n        {29, 2, 2024},\n        {29, 2, 2023},\n        {31, 4, 2023},\n        {31, 1, 2023},\n        {1, 13, 2023},\n        {1, 0, 2023},\n        {0, 1, 2023},\n        {29, 2, 2000},\n        {29, 2, 1900},\n        {1, 1, 0},\n        {1, 1, -2023}\n    };\n\n    for (const auto& input_tuple : inputs) {\n        int d = std::get<0>(input_tuple);\n        int m = std::get<1>(input_tuple);\n        int y = std::get<2>(input_tuple);\n\n        Date date(d, m, y);\n        std::cout << \"Input: \" << d << \" \" << m << \" \" << y << \"\\n\";\n        std::cout << \"isValid: \" << (date.isValidDate() ? \"true\" : \"false\") << \", display: \";\n        date.displayDate();\n        std::cout << \"\\n\";\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `isValidDate` method does not correctly validate the year range, allowing non-positive years (e.g., year 0 or negative years) to pass some checks, leading to an inconsistent state. Additionally, its leap year calculation is flawed for century years divisible by 400 (e.g., 2000), incorrectly classifying them as non-leap years. The constructor allows these invalid dates to be set without immediate validation or defaulting to a valid state, making the class less robust against invalid inputs."
+  ]
+}

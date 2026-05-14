@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a `Department` class that maintains a list of `Employee` objects (aggregation). The `Employee` class should have `name` and `id`. The `Department` class should have `name` and methods to `addEmployee` and `listEmployees`. Demonstrate how employees can exist independently of the department (e.g., an employee can be added to multiple departments or removed from one without being destroyed).",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating Readability / Efficiency Issue ---\n\nListing Departments:\nDepartment: Sales\n  Employee ID: 101, Name: Alice\n  Employee ID: 102, Name: Bob\nDepartment: Marketing\n  Employee ID: 101, Name: Alice\n  Employee ID: 103, Name: Charlie\n\nDemonstrating employee independence (Alice in both Sales and Marketing):\nAlice (ID 101) exists independently and is referenced by both departments.\n\n--- End of demonstration ---\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Demonstrating Readability / Efficiency Issue ---\" << std::endl;\n\n    Employee* emp1 = new Employee(\"Alice\", 101);\n    Employee* emp2 = new Employee(\"Bob\", 102);\n    Employee* emp3 = new Employee(\"Charlie\", 103);\n\n    Department sales_dept(\"Sales\");\n    Department marketing_dept(\"Marketing\");\n\n    sales_dept.addEmployee(emp1);\n    sales_dept.addEmployee(emp2);\n    marketing_dept.addEmployee(emp1);\n    marketing_dept.addEmployee(emp3);\n\n    std::cout << \"\\nListing Departments:\" << std::endl;\n    sales_dept.listEmployees();\n    marketing_dept.listEmployees();\n\n    std::cout << \"\\nDemonstrating employee independence (Alice in both Sales and Marketing):\" << std::endl;\n    std::cout << \"Alice (ID 101) exists independently and is referenced by both departments.\" << std::endl;\n\n    delete emp1;\n    delete emp2;\n    delete emp3;\n\n    std::cout << \"\\n--- End of demonstration ---\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Using raw pointers (`Employee*`) for aggregation instead of smart pointers (`std::shared_ptr<Employee>`) is less idiomatic, less safe, and reduces readability in modern C++. It places the burden of memory management on the client code, increasing the risk of leaks or dangling pointers.",
+    "The `listEmployees` method uses `std::ostringstream` to build the entire output string before printing. While functional, for very large numbers of employees, direct printing to `std::cout` within the loop can be more efficient as it avoids the overhead of string concatenation and a large string buffer."
+  ]
+}

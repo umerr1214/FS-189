@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function int searchData(int arr[], int size, int key) that searches for the key in the array using linear search and returns the index. Return -1 if not found.",
+  "test_cases": [
+    {
+      "input": "arr = NULL, size = 5, key = 10",
+      "expected": "Safe failure or error code (currently crashes)"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"610.cpp\"\n\nint main() {\n    // Simulate the crash scenario\n    // int* ptr = NULL;\n    // searchData(ptr, 5, 10);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing check for NULL array pointer before accessing elements."
+  ]
+}

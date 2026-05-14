@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Using the `Vehicle` -> `Car` -> `SportsCar` hierarchy from Question 14, add simple print statements to each class's destructor (e.g., 'Destroying SportsCar'). Demonstrate the order in which these destructors are called when a `SportsCar` object goes out of scope.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Program started.\n\n--- Entering demonstrateStackAllocatedSportsCarLifetime() ---\nConstructing Vehicle\nConstructing Car\nConstructing SportsCar\n  mySportsCar object is currently in scope.\n--- Exiting demonstrateStackAllocatedSportsCarLifetime() ---\nDestroying SportsCar\nDestroying Car\nDestroying Vehicle\n\n--- Demonstrating polymorphic deletion with std::unique_ptr ---\nConstructing Vehicle\nConstructing Car\nConstructing SportsCar\n  SportsCar object created and managed by std::unique_ptr<Vehicle>.\nDestroying SportsCar\nDestroying Car\nDestroying Vehicle\n\nProgram finished.\n"
+    }
+  ],
+  "driver": "",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

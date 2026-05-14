@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function int largestRegion(char grid[][COLS]) that finds the size of the largest connected region of 1s.",
+  "test_cases": [
+    {
+      "input": "Standard grid",
+      "expected": "Correct size"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <algorithm>\n#include \"785.cpp\"\n\nint main() {\n    char grid[ROWS][COLS] = {{'1'}};\n    largestRegion(grid);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inefficient visited check: uses linear search `O(K)` on a vector of visited nodes instead of `O(1)` direct access 2D boolean array, degrading performance to quadratic in region size."
+  ]
+}

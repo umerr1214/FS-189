@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Explain the importance of virtual destructors. Implement a base class `Shape` and a derived class `Circle`, both with destructors that print a message. Demonstrate the issue of memory leaks/partial destruction without a virtual destructor when deleting a derived object via a base pointer, and then fix it with a virtual destructor.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating problem (non-virtual destructor leads to partial destruction) ---\nProblematicShape constructor called.\nProblematicCircle constructor called (Memory Leak Example).\nDrawing a problematic circle named Memory Leak Example.\nProblematicShape destructor called.\n--- End of problem demonstration ---\n\n--- Demonstrating fix (virtual destructor) ---\nShape constructor called.\nCircle constructor called (Fixed Circle Demo).\nDrawing a circle named Fixed Circle Demo.\nCircle destructor called (Fixed Circle Demo).\nShape destructor called.\n--- End of fix demonstration ---\n"
+    }
+  ],
+  "driver": "",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The code correctly demonstrates the partial destruction issue without a virtual destructor. However, in the 'demonstrating fix' section, the derived object `Circle` is deleted directly via a `Circle*` pointer (`delete c;`) instead of through a base `Shape*` pointer. While both destructors are called in this specific case because the `Shape` destructor is virtual, it fails to illustrate *why* the `virtual` keyword is crucial for polymorphic deletion via a base pointer, which is the core point of the problem statement."
+  ]
+}

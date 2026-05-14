@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void reverseList(Node*& head) that reverses a singly linked list.",
+  "test_cases": [
+    {
+      "input": "head = NULL",
+      "expected": "Graceful failure"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"952.cpp\"\n\nint main() {\n    // reverseList(NULL);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing check for `head` being `NULL` before accessing `head->next`."
+  ]
+}

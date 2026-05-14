@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Illustrate the order of constructor calls in a single-level inheritance hierarchy. Create a `Base` class and a `Derived` class, each with a constructor that prints a message indicating its construction.",
+  "test_cases": [
+    { "input": "", "expected": "Base class constructor called.\nDerived class constructor called.\n" }
+  ],
+  "driver": "int main() {\n    Derived d;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'Derived' class does not inherit from 'Base', failing to illustrate the constructor call order in an inheritance hierarchy. The program will only call the 'Derived' constructor."
+  ]
+}

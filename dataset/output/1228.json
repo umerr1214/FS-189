@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a `StringWrapper` class that dynamically allocates memory for a C-style string. Provide a copy constructor that performs a deep copy to prevent issues with shallow copies.",
+  "test_cases": [
+    { "input": "StringWrapper s1(\"Hello\"); StringWrapper s2 = s1; StringWrapper s3(\"World\");", "expected": "s1: Hello\ns2 (copy of s1): Hello\ns3: World\n" }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n\nclass StringWrapper {\npublic:\n    char* data;\n    size_t length;\n\n    StringWrapper(const char* str = \"\") {\n        if (str) {\n            length = strlen(str);\n            data = new char[length + 1];\n            strcpy(data, str);\n        } else {\n            length = 0;\n            data = new char[1];\n            data[0] = '\\0';\n        }\n    }\n\n    ~StringWrapper() {\n        delete[] data;\n    }\n\n    StringWrapper(const StringWrapper& other) {\n        length = other.length;\n        data = new char[length + 1];\n        strcpy(data, other.data);\n    }\n\n    void print() const {\n        std::cout << data << std::endl;\n    }\n\n}\n\nint main() {\n    StringWrapper s1(\"Hello\");\n    std::cout << \"s1: \";\n    s1.print();\n\n    StringWrapper s2 = s1; // Calls copy constructor\n    std::cout << \"s2 (copy of s1): \";\n    s2.print();\n\n    StringWrapper s3(\"World\");\n    std::cout << \"s3: \";\n    s3.print();\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `Student` class with private attributes `studentID` (int), `name` (string), and `major` (string). Implement public methods `setDetails(int id, string n, string m)` to initialize these attributes and `displayDetails()` to print them to the console.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Student ID: 101\nName: Alice\nMajor: Computer Science\n"
+    }
+  ],
+  "driver": "Student s; s.setDetails(101, \"Alice\", \"Computer Science\"); s.displayDetails();",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Inside the `setDetails` method, local variables with the same names as the class's member attributes (`studentID`, `name`, `major`) are declared. This 'shadows' the member variables, meaning the assignments `studentID = id;` etc., are applied to the local variables, not the class's private attributes. Consequently, the member attributes remain uninitialized (or default-initialized), leading to incorrect or empty output when `displayDetails` is called."
+  ]
+}

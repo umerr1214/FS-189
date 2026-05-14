@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void runLengthEncode(const char* input, char* output) that performs run-length encoding on the input string.",
+  "test_cases": [
+    {
+      "input": "input = \"AAA\"",
+      "expected": "\"A3\""
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cstdio>\n#include <cassert>\n#include \"806.cpp\"\n\nint main() {\n    const char* str = \"AAA\";\n    char result[100];\n    runLengthEncode(str, result);\n    // Will produce \"A2A1\" instead of \"A3\"\n    // assert(strcmp(result, \"A3\") == 0);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Using `if` instead of `while` to check for repeating characters, causing runs longer than 2 to be split incorrectly (e.g., \"AAA\" becomes \"A2A1\")."
+  ]
+}

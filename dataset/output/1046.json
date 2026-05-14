@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `MyString` class that manages a dynamic character array. Implement both a copy constructor and an an assignment operator (`operator=`). Explain when each of these is invoked through code examples.",
+  "test_cases": [
+    { "input": "", "expected": "--- Demonstrating MyString Class with Logical Error (Shallow Copy) ---\nConstructor invoked for: Hello\ns1: Hello\nCopy Constructor (SHALLOW) invoked for: Hello (from Hello)\ns2 (copy of s1): Hello\n\nModifying s1...\nDestructor invoked for: Hello\nConstructor invoked for: Hello World\ns1 (modified): Hello World\ns2 (should be independent, but is affected): Hello World\n\nCalling demonstrateCopy(s1)... (will also cause issues)\nCopy Constructor (SHALLOW) invoked for: Hello World (from Hello World)\nInside demonstrateCopy function. Value: Hello World\nDestructor invoked for: Hello World\nBack in main after demonstrateCopy(s1).\nConstructor invoked for: Original\ns3: Original\n\nAssigning s1 to s3 (s3 = s1)...\nDestructor invoked for: Original\nAssignment Operator invoked for: Hello World (from Hello World)\ns3 (after assignment from s1): Hello World\nDestructor invoked for: Hello World\nConstructor invoked for: Hello World!\ns1 (modified again): Hello World!\ns3 (should be independent): Hello World\n\n--- End of main ---\nDestructor invoked for: Hello World!\nDestructor invoked for: Hello World\n" }
+  ],
+  "driver": "int main() {\n    // The provided main function already serves as a driver.\n    // No additional driver code is needed.\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The copy constructor performs a shallow copy instead of a deep copy. This leads to multiple pointers owning the same memory, resulting in: 1) shared modifications between objects (e.g., modifying 's1' also changes 's2'), and 2) double-free errors when objects are destructed (e.g., 's1' and 's2' both try to free the same memory)."
+  ]
+}

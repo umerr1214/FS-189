@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Illustrate the importance of virtual destructors. Create a base class `Base` and a derived class `Derived`, both with print statements in their constructors and destructors. Demonstrate memory leakage when deleting a `Derived` object through a `Base` class pointer without a virtual destructor, and then fix it.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Demonstrating non-virtual destructor issue (Base destructor is not virtual):\n--- Deleting Derived via Base* (Problem) ---\nBase Constructor\nDerived Constructor\nBase Destructor\n------------------------------------------\n\nDemonstrating the fix with virtual destructor (Base destructor IS virtual):\n--- Deleting Derived via Base* (Correct Fix) ---\nBase Constructor\nDerived Constructor\nDerived Destructor\nBase Destructor\n------------------------------------------"
+    }
+  ],
+  "driver": "void demonstrate_deletion_scenario(const std::string& description, Base* obj) {\n    std::cout << \"--- \" << description << \" ---\" << std::endl;\n    delete obj;\n    std::cout << \"------------------------------------------\" << std::endl;\n}\n\nint main() {\n    std::cout << \"Demonstrating non-virtual destructor issue (Base destructor is not virtual):\" << std::endl;\n    Base* problem_ptr = new Derived();\n    demonstrate_deletion_scenario(\"Deleting Derived via Base* (Problem)\", problem_ptr);\n\n    std::cout << \"\\nAttempting to fix by making Derived destructor virtual (Semantic Error):\" << std::endl;\n    Base* fixed_ptr_attempt = new Derived();\n    demonstrate_deletion_scenario(\"Deleting Derived via Base* (Attempted Fix)\", fixed_ptr_attempt);\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The code attempts to 'fix' the memory leakage by declaring the derived class destructor as virtual (`virtual ~Derived()`), but it fails to declare the base class destructor as virtual (`~Base()`). For polymorphic deletion through a base class pointer to work correctly, the base class destructor must be declared `virtual`. Making only the derived destructor virtual does not achieve the intended polymorphic behavior when deleting via a base pointer, leading to the derived part of the object not being properly destructed. This is a semantic misuse of the `virtual` keyword in this context for the intended fix."
+  ]
+}

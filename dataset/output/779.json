@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void transposeMatrix(char matrix[][COLS]) that prints the transpose of the matrix.",
+  "test_cases": [
+    {
+      "input": "matrix",
+      "expected": "Printed transpose"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include \"779.cpp\"\n\nint main() {\n    char matrix[3][4] = {{'A'}};\n    transposeMatrix(matrix);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Unnecessary memory allocation: creates a full `vector<vector<char>>` to store the transpose before printing, using O(N*M) space when O(1) direct printing is sufficient."
+  ]
+}

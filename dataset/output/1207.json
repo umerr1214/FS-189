@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Overload the binary `+` operator for the `Point` class. This operator should take two `Point` objects and return a new `Point` object representing their coordinate-wise sum.",
+  "test_cases": [
+    { "input": "1 2 3 4", "expected": "Sum: (4, 6), p1 after: (4, 6)\n" },
+    { "input": "-1 0 1 0", "expected": "Sum: (0, 0), p1 after: (0, 0)\n" },
+    { "input": "10 -5 -3 8", "expected": "Sum: (7, 3), p1 after: (7, 3)\n" },
+    { "input": "0 0 0 0", "expected": "Sum: (0, 0), p1 after: (0, 0)\n" },
+    { "input": "100 200 -50 -100", "expected": "Sum: (50, 100), p1 after: (50, 100)\n" }
+  ],
+  "driver": "int main() {\n    std::vector<std::tuple<int, int, int, int, std::string, std::string>> test_cases_data = {\n        {1, 2, 3, 4, \"(4, 6)\", \"(4, 6)\"},\n        {-1, 0, 1, 0, \"(0, 0)\", \"(0, 0)\"},\n        {10, -5, -3, 8, \"(7, 3)\", \"(7, 3)\"},\n        {0, 0, 0, 0, \"(0, 0)\", \"(0, 0)\"},\n        {100, 200, -50, -100, \"(50, 100)\", \"(50, 100)\"}\n    };\n\n    std::stringstream ss_output;\n    for (const auto& test : test_cases_data) {\n        Point p1(std::get<0>(test), std::get<1>(test));\n        Point p2(std::get<2>(test), std::get<3>(test));\n        \n        Point sum = p1 + p2; // This calls the overloaded operator, modifying p1\n        \n        ss_output << \"Sum: \" << sum.toString() << \", p1 after: \" << p1.toString() << std::endl;\n    }\n    std::cout << ss_output.str();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `operator+` modifies its first operand (`p1`) instead of returning a new `Point` object and leaving its operands unchanged. This violates the expected behavior of a binary addition operator and is a significant robustness issue."
+  ]
+}

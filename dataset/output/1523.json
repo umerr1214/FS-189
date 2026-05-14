@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `StringWrapper` class that manages a C-style string (`char*`). Implement a deep copy constructor for `StringWrapper` to ensure proper memory management when objects are copied.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "s1: String: \"Hello, Shallow Copy!\"\ns2 (copy of s1): String: \"Hello, Shallow Copy!\"\n\nModifying s1...\ns1 after modification: String: \"Modified String 1\"\ns2 after s1 modification: String: \"Hello, Shallow Copy!\"\ns3: String: \"Another one\"\ns4: String: (nullptr)\n\nEnd of main.\n"
+    }
+  ],
+  "driver": "int main() {\n    StringWrapper s1(\"Hello, Shallow Copy!\");\n    std::cout << \"s1: \"; s1.display();\n\n    StringWrapper s2 = s1;\n    std::cout << \"s2 (copy of s1): \"; s2.display();\n\n    std::cout << \"\\nModifying s1...\" << std::endl;\n    s1.setStr(\"Modified String 1\");\n    std::cout << \"s1 after modification: \"; s1.display();\n    std::cout << \"s2 after s1 modification: \"; s2.display();\n\n    StringWrapper s3(\"Another one\");\n    std::cout << \"s3: \"; s3.display();\n\n    StringWrapper s4;\n    std::cout << \"s4: \"; s4.display();\n    \n    std::cout << \"\\nEnd of main.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The copy constructor performs a shallow copy by directly copying the pointer `str` (`str(other.str)`) instead of allocating new memory and copying the string content. This leads to multiple `StringWrapper` objects sharing the same `char*` buffer. When one object's `str` is modified or freed (e.g., in `setStr` or destructor), other objects' `str` pointers become dangling, resulting in undefined behavior (such as crashes due to double-free or reading freed memory)."
+  ]
+}

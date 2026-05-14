@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function int binaryToDecimal(const char* binary) that converts a binary string to a decimal integer.",
+  "test_cases": [
+    {
+      "input": "binary = NULL",
+      "expected": "Graceful failure"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cmath>\n#include \"868.cpp\"\n\nint main() {\n    // binaryToDecimal(NULL);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing NULL pointer check before accessing string."
+  ]
+}

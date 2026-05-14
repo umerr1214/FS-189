@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Illustrate access specifiers (`public`, `private`, `protected`). Create a base class `Person` with `public` name, `protected` age, and `private` socialSecurityNumber. Derive a `Student` class and try to access these members, explaining which are accessible and why.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Access from main function ---\nAccessing public member 'name': Charlie Green\nAttempting to access protected member 'age': Not accessible directly from main (outside derived class).\nAttempting to access private member 'socialSecurityNumber': Not accessible directly from main.\n\n--- Student Info (from Student class) ---\nAccessing public member 'name': Charlie Green\nAccessing protected member 'age': 21\nStudent ID: S1003\nAttempting to access private member 'socialSecurityNumber': <COMPILER ERROR>"
+    }
+  ],
+  "driver": "int main() { Student s(\"Charlie Green\", 21, \"111-22-3333\", \"S1003\"); std::cout << \"--- Access from main function ---\" << std::endl; std::cout << \"Accessing public member 'name': \" << s.name << std::endl; std::cout << \"Attempting to access protected member 'age': Not accessible directly from main (outside derived class).\" << std::endl; std::cout << \"Attempting to access private member 'socialSecurityNumber': Not accessible directly from main.\" << std::endl; s.displayStudentInfo(); return 0; }",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Attempt to access a 'private' member 'socialSecurityNumber' from the derived class 'Student'. Private members are only accessible within the class in which they are declared, not in derived classes."
+  ]
+}

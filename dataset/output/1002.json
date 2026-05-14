@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `Counter` class with a single private integer member `count`. Overload both the prefix (`++obj`) and postfix (`obj++`) increment operators to modify and return the `Counter` object correctly.",
+  "test_cases": [
+    { "input": "Initial c1: 0\nAfter ++c1 (assigned to simple_prefix_result): c1 = 1, simple_prefix_result = 1\nInitial c2: 5\nAfter c2++: c2 = 6, c2_old_value = 5\nInitial c3: 10\nAfter ++(++c3): c3 = 11, chained_prefix_result = 12\n", "expected": "Initial c1: 0\nAfter ++c1 (assigned to simple_prefix_result): c1 = 1, simple_prefix_result = 1\nInitial c2: 5\nAfter c2++: c2 = 6, c2_old_value = 5\nInitial c3: 10\nAfter ++(++c3): c3 = 12, chained_prefix_result = 12\n" }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Testing Counter class ---\" << std::endl;\n\n    Counter c1(0);\n    std::cout << \"Initial c1: \" << c1.getCount() << std::endl;\n\n    // Test Prefix Increment (simple use works, but chaining is affected)\n    Counter simple_prefix_result = ++c1;\n    std::cout << \"After ++c1 (assigned to simple_prefix_result): c1 = \" << c1.getCount() << \", simple_prefix_result = \" << simple_prefix_result.getCount() << std::endl;\n\n    // Test Postfix Increment (should work correctly)\n    Counter c2(5);\n    std::cout << \"Initial c2: \" << c2.getCount() << std::endl;\n    Counter c2_old_value = c2++;\n    std::cout << \"After c2++: c2 = \" << c2.getCount() << \", c2_old_value = \" << c2_old_value.getCount() << std::endl;\n\n    // Test Chaining Prefix Increment (will show semantic error effect)\n    Counter c3(10);\n    std::cout << \"Initial c3: \" << c3.getCount() << std::endl;\n    Counter chained_prefix_result = ++(++c3);\n    std::cout << \"After ++(++c3): c3 = \" << c3.getCount() << \", chained_prefix_result = \" << chained_prefix_result.getCount() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The prefix increment operator (`operator++()`) returns `Counter` by value instead of `Counter&`. While syntactically valid and compiling, this is semantically incorrect for prefix increment. It means that chained prefix operations (`++(++obj)`) will operate on temporary copies, not the original object, leading to the original object being incremented only once, and assignments to references from `++obj` would typically fail to compile or bind to temporaries."]
+}

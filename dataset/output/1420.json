@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Model a `Department` class that aggregates `Employee` objects. `Department` should have a name and a list (e.g., array or vector) of `Employee` pointers. `Employee` objects should be created independently and managed by the `Department` through aggregation.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Compilation error: missing semicolon after class definition for 'Employee'."
+    }
+  ],
+  "driver": "    Employee emp1(\"Alice\", 101);\n    Employee emp2(\"Bob\", 102);\n\n    Department hr(\"Human Resources\");\n    hr.addEmployee(&emp1);\n    hr.addEmployee(&emp2);\n\n    hr.printDepartment();",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the closing brace of the `Employee` class definition, leading to a compilation error."
+  ]
+}

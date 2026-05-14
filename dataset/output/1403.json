@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a multi-level inheritance hierarchy: `Animal` (with `name`), `Mammal` (derives from `Animal`, adds `furColor`), and `Dog` (derives from `Mammal`, adds `breed`). Each class should have a constructor and a `printDetails()` method.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Name: Buddy, Fur Color: Golden, Breed: Golden Retriever\nName: Whiskers, Fur Color: Tabby\nName: Leo\n"
+    }
+  ],
+  "driver": "int main() {\n    Dog myDog(\"Buddy\", \"Golden\", \"Golden Retriever\");\n    myDog.printDetails();\n\n    Mammal myMammal(\"Whiskers\", \"Tabby\");\n    myMammal.printDetails();\n    std::cout << std::endl;\n    \n    Animal genericAnimal(\"Leo\");\n    genericAnimal.printDetails();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `Mammal::printDetails()` method fails to call `Animal::printDetails()`, leading to incomplete output for Mammal and Dog objects (missing the animal's name)."
+  ]
+}

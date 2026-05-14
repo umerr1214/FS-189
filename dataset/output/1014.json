@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Illustrate the order of constructor calls in a single-level inheritance hierarchy. Create a `Base` class and a `Derived` class, each with a constructor that prints a message indicating its construction.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation Error: The program contains a semantic error (access violation) that prevents it from compiling." }
+  ],
+  "driver": "int main() {\n    Derived d;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The 'Base' class constructor is declared as private, preventing the 'Derived' class from accessing and calling it during its construction, which is a violation of C++ access rules."
+  ]
+}

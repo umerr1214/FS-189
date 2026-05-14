@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Implement a `Resource` class that simulates acquiring a resource in its constructor (e.g., printing \"Resource acquired\") and releasing it in its destructor (e.g., printing \"Resource released\"). Demonstrate the order of constructor and destructor calls for local objects within a function scope.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Starting main function execution.\n\n--- Entering demonstrate_resource_lifespan_and_order_of_destruction ---\nResource Alpha has been acquired by the system. Starting internal data allocation now...\nInternal data for Alpha initialized with 1000 elements.\nResource Alpha is performing its designated action. First data element: 0\n  --- Entering unnecessary nested scope ---\nResource Beta has been acquired by the system. Starting internal data allocation now...\nInternal data for Beta initialized with 1000 elements.\nResource Beta is performing its designated action. First data element: 0\nResource Gamma has been acquired by the system. Starting internal data allocation now...\nInternal data for Gamma initialized with 1000 elements.\nResource Gamma is performing its designated action. First data element: 0\n  --- Exiting unnecessary nested scope ---\nResource Gamma is now being released. Goodbye from destructor!\nResource Beta is now being released. Goodbye from destructor!\nResource Delta has been acquired by the system. Starting internal data allocation now...\nInternal data for Delta initialized with 1000 elements.\nResource Delta is performing its designated action. First data element: 0\n--- Exiting demonstrate_resource_lifespan_and_order_of_destruction ---\nResource Delta is now being released. Goodbye from destructor!\nResource Alpha is now being released. Goodbye from destructor!\nMain function execution finished.\n"
+    }
+  ],
+  "driver": "int main() { demonstrate_resource_lifespan_and_order_of_destruction(); return 0; }",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Readability: Inconsistent use of `std::cout` and `printf` for output.",
+    "Readability: Overly verbose variable and function names (`resource_name_identifier`, `demonstrate_resource_lifespan_and_order_of_destruction`).",
+    "Readability: Unnecessary nested scopes within the demonstration function complicate understanding of object lifetimes.",
+    "Efficiency: Using `std::endl` flushes the buffer on each use, which can be less efficient than `\\n` for frequent output.",
+    "Efficiency: The `Resource` constructor unnecessarily initializes a `std::vector` with 1000 elements for a simple demonstration of acquisition/release, potentially leading to multiple reallocations without `reserve()`.",
+    "Efficiency: String formatting using `snprintf` and manual concatenation for simple messages is less idiomatic and potentially less efficient than `std::ostringstream` or direct stream insertion operators in modern C++.",
+    "Efficiency: `internal_data_storage.clear()` in the destructor is redundant as the `std::vector` will be destroyed automatically."
+  ]
+}

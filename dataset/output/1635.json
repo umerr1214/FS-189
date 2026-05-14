@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a `Student` class with private members for `studentID` (int) and `name` (string). Add a parameterized constructor and a public method `enrollInCourse(string courseName)` that simply prints a message indicating the student has enrolled in the given course.",
+  "test_cases": [
+    { "input": "Student s1(301, \"Harry Potter\"); s1.enrollInCourse(\"Potions Class\");", "expected": "Student Harry Potter (ID: 301) has enrolled in Potions Class.\n" },
+    { "input": "Student s2(302, \"Hermione Granger\"); s2.enrollInCourse(\"Ancient Runes\");", "expected": "Student Hermione Granger (ID: 302) has enrolled in Ancient Runes.\n" },
+    { "input": "Student s3(303, \"Ron Weasley\"); s3.enrollInCourse(\"Charms\");", "expected": "Student Ron Weasley (ID: 303) has enrolled in Charms.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\nclass Student {\nprivate:\n    int studentID;\n    std::string name;\n\npublic:\n    Student(int studentID, const std::string& name)\n        : studentID(studentID), name(name) {\n    }\n\n    void enrollInCourse(const std::string& courseName) {\n        std::cout << \"Student \" << name << \" (ID: \" << studentID << \") has enrolled in \" << courseName << \".\\n\";\n    }\n};\n\nint main() {\n    Student s1(301, \"Harry Potter\");\n    s1.enrollInCourse(\"Potions Class\");\n    Student s2(302, \"Hermione Granger\");\n    s2.enrollInCourse(\"Ancient Runes\");\n    Student s3(303, \"Ron Weasley\");\n    s3.enrollInCourse(\"Charms\");\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void reverseWords(char arr[]) that reverses the order of words in the string.",
+  "test_cases": [
+    {
+      "input": "arr = \"Hello World\"",
+      "expected": "\"World Hello\""
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <algorithm>\n#include <cassert>\n#include \"674.cpp\"\n\nint main() {\n    char str[] = \"Hello World\";\n    reverseWords(str);\n    // Will fail because it reverses letters within words but not the word order\n    // assert(strcmp(str, \"World Hello\") == 0);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Reverses individual words in place but fails to reverse the entire string (or vice versa), resulting in reversed characters within words instead of reversed word order."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a recursive function int fibonacci(int n) that returns the nth Fibonacci number.",
+  "test_cases": [
+    {
+      "input": "n = -1",
+      "expected": "Graceful failure / Error"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"922.cpp\"\n\nint main() {\n    // fibonacci(-1);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing check for negative input, leading to infinite recursion and stack overflow."
+  ]
+}

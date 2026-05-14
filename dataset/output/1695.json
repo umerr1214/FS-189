@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Vehicle` with a method `startEngine()`. Derive `Car` and `Motorcycle` classes from `Vehicle`. In `Car`, add a specific `drive()` method, and in `Motorcycle`, add a `ride()` method. Demonstrate calling `startEngine()` from derived objects.",
+  "test_cases": [
+    { "input": "", "expected": "--- Demonstrating Car ---\nCar: Preparing to drive.\nVehicle: Engine started.\nCar: Driving on the road.\n\n--- Demonstrating Motorcycle ---\nMotorcycle: Getting ready to ride.\nVehicle: Engine started.\nMotorcycle: Riding on the highway.\n\n--- Direct startEngine() calls ---\nVehicle: Engine started.\nVehicle: Engine started.\n\n" }
+  ],
+  "driver": "// The main function already demonstrates the correct implementation.\n// No additional driver code needed.",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

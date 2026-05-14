@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a function void mergeArrays(const int arr1[], int n1, const int arr2[], int n2, int result[]) that merges two sorted arrays into one sorted array.",
+  "test_cases": [
+    {
+      "input": "arr1 = {1, 3}, arr2 = {2, 4}",
+      "expected": "{1, 2, 3, 4}"
+    },
+    {
+      "input": "arr1 = {1, 2}, arr2 = {3, 4}",
+      "expected": "{1, 2, 3, 4}"
+    },
+    {
+      "input": "arr1 = NULL",
+      "expected": "No crash"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cassert>\n#include \"804.cpp\"\n\nint main() {\n    int arr1[] = {1, 3};\n    int arr2[] = {2, 4};\n    int result[4];\n    mergeArrays(arr1, 2, arr2, 2, result);\n    assert(result[0] == 1 && result[1] == 2 && result[2] == 3 && result[3] == 4);\n    \n    mergeArrays(NULL, 0, NULL, 0, result);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

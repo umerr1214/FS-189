@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Enhance a `Student` class with private attributes: `name` (string), `id` (int), and `gpa` (double). Implement public getter and setter methods for all attributes, ensuring that the `gpa` setter validates input to be between 0.0 and 4.0 (inclusive).",
+  "test_cases": [
+    { "input": "N/A", "expected": "Student: Bob, ID: 102, GPA: 3.9\nUpdated GPA: 3.0\nAttempted GPA 4.0. Success: false. Current GPA: 3.0\nAttempted GPA 4.1. Success: false. Current GPA: 3.0\nAttempted GPA -0.1. Success: false. Current GPA: 3.0\n" }
+  ],
+  "driver": "int main() {\n    Student s(\"Bob\", 102, 3.9);\n    std::cout << \"Student: \" << s.getName() << \", ID: \" << s.getId() << \", GPA: \" << std::fixed << std::setprecision(1) << s.getGpa() << std::endl;\n\n    s.setGpa(3.0);\n    std::cout << \"Updated GPA: \" << std::fixed << std::setprecision(1) << s.getGpa() << std::endl;\n\n    bool success4_0 = s.setGpa(4.0);\n    std::cout << \"Attempted GPA 4.0. Success: \" << (success4_0 ? \"true\" : \"false\") << \". Current GPA: \" << std::fixed << std::setprecision(1) << s.getGpa() << std::endl;\n    \n    bool success4_1 = s.setGpa(4.1);\n    std::cout << \"Attempted GPA 4.1. Success: \" << (success4_1 ? \"true\" : \"false\") << \". Current GPA: \" << std::fixed << std::setprecision(1) << s.getGpa() << std::endl;\n\n    bool success_neg = s.setGpa(-0.1);\n    std::cout << \"Attempted GPA -0.1. Success: \" << (success_neg ? \"true\" : \"false\") << \". Current GPA: \" << std::fixed << std::setprecision(1) << s.getGpa() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The `setGpa` method incorrectly validates the upper bound for GPA, making it exclusive (less than 4.0) instead of inclusive (less than or equal to 4.0). This causes valid GPA values like 4.0 to be rejected."]
+}

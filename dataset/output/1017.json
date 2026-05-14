@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Explain the importance of virtual destructors. Implement a base class `Shape` and a derived class `Circle`, both with destructors that print a message. Demonstrate the issue of memory leaks/partial destruction without a virtual destructor when deleting a derived object via a base pointer, and then fix it with a virtual destructor.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating problem (non-virtual destructor) ---\nNonVirtualShape constructor called.\nNonVirtualCircle constructor called (Partial Destruction Example).\nDrawing a non-virtual circle named Partial Destruction Example.\nNonVirtualShape destructor called.\n--- End of problem demonstration ---\n\n--- Demonstrating fix (virtual destructor) ---\nShape constructor called.\nCircle constructor called (Correctly Deleted Circle).\nDrawing a circle named Correctly Deleted Circle with description: It's a sphere on a 2D plane..\nCircle destructor called (Correctly Deleted Circle) - Description: It's a sphere on a 2D plane..\nShape destructor called.\n--- End of fix demonstration (with semantic error) ---\n\n--- Demonstrating fix (virtual destructor) without semantic error (for comparison) ---\nShape constructor called.\nFixedCircle constructor called (Truly Fixed Example).\nDrawing a fixed circle named Truly Fixed Example with description: No leaks here!.\nFixedCircle destructor called (Truly Fixed Example) - Description: No leaks here!.\nShape destructor called.\n--- End of truly fixed demonstration ---\n"
+    }
+  ],
+  "driver": "",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `Circle` class's destructor fails to deallocate the dynamically allocated `description` member (`char* description`). Even though the base `Shape` class has a virtual destructor, ensuring polymorphic destruction of the `Circle` object itself, the internal resource `description` is not freed, leading to a memory leak specific to the `Circle` class's implementation."
+  ]
+}

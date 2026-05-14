@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a C++ class named `Book` with private attributes for `title` (string), `author` (string), and `isbn` (string). Include public methods `setTitle`, `setAuthor`, `setISBN` to set these values, and `displayBookInfo` to print all book details. Create an object of `Book` and demonstrate its usage.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Title: Effective Modern C++\nAuthor: Scott Meyers\nISBN: 978-1491903995\n--- Another Book ---\nTitle: Clean Code\nAuthor: Robert C. Martin\nISBN: 978-0132350884\n"
+    }
+  ],
+  "driver": "int main() {\n    Book myBook;\n    myBook.setTitle(\"Effective Modern C++\");\n    myBook.setAuthor(\"Scott Meyers\");\n    myBook.setISBN(\"978-1491903995\");\n    myBook.displayBookInfo();\n\n    std::cout << \"--- Another Book ---\" << std::endl;\n    Book anotherBook;\n    anotherBook.setTitle(\"Clean Code\");\n    anotherBook.setAuthor(\"Robert C. Martin\");\n    anotherBook.setISBN(\"978-0132350884\");\n    anotherBook.displayBookInfo();\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `displayBookInfo` method has a logical error: it always prints a fixed string for ISBN ('Fixed ISBN-12345') instead of the actual `isbn` attribute of the Book object."
+  ]
+}

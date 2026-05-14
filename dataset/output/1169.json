@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a C++ class named `Book` with private member variables for `title` (string), `author` (string), and `isbn` (string). Provide public getter and setter methods for each attribute.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Initial Book Details:\nTitle: The Silent Patient\nAuthor: Alex Michaelides\nISBN: 978-1250301697\n\nUpdated Book Details:\nTitle: Where the Crawdads Sing\nAuthor: Unknown Author\nISBN: 978-0735219090" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// Assuming the Book class is defined correctly in the user's code\n// The user's main function will be used to test the class.\n// This driver simply calls the user's main function.\n\nint main() {\n    // The user's main function contains the test logic.\n    // We will compile and run the user's code as is.\n    // Expected output is based on the logic within the user's main.\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `setAuthor` method contains a logical error. It assigns a fixed string \"Unknown Author\" to the `author` member variable instead of using the `newAuthor` parameter provided. This means the author can never be set to the desired value using this method."
+  ]
+}

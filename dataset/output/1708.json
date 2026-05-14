@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Using the `Shape` hierarchy from a previous question (base `Shape`, derived `Circle` and `Square`), demonstrate runtime polymorphism. Create a `std::vector` of `Shape*` pointers, populate it with `Circle` and `Square` objects, and iterate through the vector to call `calculateArea()` for each object.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Area: 78.53981633974483\nArea: 16\nArea: 19.634954084936207\n"
+    }
+  ],
+  "driver": "int main() {\n    std::vector<Shape*> shapes;\n\n    shapes.push_back(new Circle(5.0));\n    shapes.push_back(new Square(4.0));\n    shapes.push_back(new Circle(2.5));\n\n    for (const auto& shapePtr : shapes) {\n        std::cout << \"Area: \" << shapePtr->calculateArea() << std::endl // SYNTAX ERROR: Missing semicolon\n    }\n\n    // Clean up dynamically allocated memory\n    for (const auto& shapePtr : shapes) {\n        delete shapePtr;\n    }\n    shapes.clear();\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

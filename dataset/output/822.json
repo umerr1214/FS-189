@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a function void multiplyMatrices(int A[][MAX], int B[][MAX], int C[][MAX], int m, int n, int p) that multiplies two matrices.",
+  "test_cases": [
+    {
+      "input": "A=2x3, B=3x2",
+      "expected": "{{31, 19}, {85, 55}}"
+    },
+    {
+      "input": "Dimensions invalid",
+      "expected": "No crash / No op"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include <cassert>\n#include \"822.cpp\"\n\nint main() {\n    int A[MAX][MAX] = {{1, 2, 3}, {4, 5, 6}};\n    int B[MAX][MAX] = {{7, 8}, {9, 1}, {2, 3}};\n    int C[MAX][MAX] = {{0}};\n    multiplyMatrices(A, B, C, 2, 3, 2);\n    \n    assert(C[0][0] == 31);\n    assert(C[0][1] == 19);\n    assert(C[1][0] == 85);\n    assert(C[1][1] == 55);\n    \n    C[0][0] = -1;\n    multiplyMatrices(A, B, C, 20, 20, 20); // Should do nothing\n    assert(C[0][0] == -1);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

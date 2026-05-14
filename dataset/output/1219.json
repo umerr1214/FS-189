@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a `Person` class with `name` (public), `age` (protected), and `id` (private). Then, create a `Student` class that publicly inherits from `Person`. Demonstrate which members are accessible from `Student` methods and from outside `Student` objects.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Inside Student method (demonstrateStudentAccess) ---\nAccessing public Person::name: Alice Smith\nAccessing protected Person::age: 20\nModified protected Person::age to (invalid): -10\nAccessing Student::studentMajor: Computer Science\nAccessing Person::getPersonId() (public method): 1001\nAccessing Person::getPersonAge() (public method): -10\n\n--- Outside Student object (demonstrateOutsideAccess function) ---\nAccessing public Student::name (inherited from Person): Alice Smith\nAccessing public Student::studentMajor: Computer Science\nAccessing Person::getPersonId() (public method): 1001\nAccessing Person::getPersonAge() (public method): -10"
+    }
+  ],
+  "driver": "int main() {\n    Student alice(\"Alice Smith\", 20, 1001, \"Computer Science\");\n    alice.demonstrateStudentAccess();\n    demonstrateOutsideAccess(alice);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Memory leak due to missing destructor for dynamically allocated 'id' in Person class. The 'id' pointer is allocated with `new` but never `delete`d.",
+    "Lack of input validation for 'age' in Person's constructor and 'setAgeDirectly' method, and direct modification from Student, allows setting invalid negative values (e.g., -10), leading to potential inconsistent object state.",
+    "Violation of the Rule of Three/Five/Zero for `Person` class due to managing raw pointer `id` without defining copy constructor, copy assignment operator, or move constructor/assignment operator, which can lead to shallow copies and double-free errors if objects are copied."
+  ]
+}

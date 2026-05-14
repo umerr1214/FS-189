@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void printPascalsTriangle(int n) that prints the first n rows of Pascal's Triangle.",
+  "test_cases": [
+    {
+      "input": "n = 5",
+      "expected": "1 4 6 4 1"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"855.cpp\"\n\nint main() {\n    printPascalsTriangle(5);\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Operator precedence issue: `(line - i) / i` performs integer division before multiplication, resulting in truncation to zero for many terms."
+  ]
+}

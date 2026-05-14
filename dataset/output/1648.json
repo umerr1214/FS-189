@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `ResourceHandler` class that manages a dynamically allocated integer array. Its constructor should allocate an array of a specified size. Implement a destructor that correctly deallocates the dynamically allocated memory to prevent memory leaks.",
+  "test_cases": [
+    {
+      "input": "5",
+      "expected": "Program should compile and run, creating and destroying a ResourceHandler object of size 5, printing initialization messages and element values. (If syntax error is fixed)"
+    }
+  ],
+  "driver": "#include <iostream>\n\nclass ResourceHandler {\nprivate:\n    int* data_;\n    size_t size_;\n\npublic:\n    ResourceHandler(size_t s) : size_(s) {\n        if (s > 0) {\n            data_ = new int[s];\n            for (size_t i = 0; i < s; ++i) {\n                data_[i] = static_cast<int>(i * 10);\n            }\n            std::cout << \"ResourceHandler created with array of size \" << size_ << std::endl;\n        } else {\n            data_ = nullptr;\n            std::cout << \"ResourceHandler created with null array (size 0).\" << std::endl;\n        }\n    }\n\n    ~ResourceHandler() {\n        if (data_ != nullptr) {\n            delete[] data_;\n            data_ = nullptr;\n            std::cout << \"ResourceHandler destroyed and memory deallocated.\" << std::endl;\n        } else {\n            std::cout << \"ResourceHandler destroyed (no memory to deallocate).\" << std::endl;\n        }\n    }\n\n    int getElement(size_t index) const {\n        if (data_ != nullptr && index < size_) {\n            return data_[index];\n        }\n        return -1;\n    }\n};\n\nint main() {\n    std::cout << \"Starting program...\" << std::endl;\n    try {\n        ResourceHandler handler(5);\n        std::cout << \"First element: \" << handler.getElement(0) << std::endl;\n        std::cout << \"Last element: \" << handler.getElement(4) << std::endl;\n\n        ResourceHandler empty_handler(0);\n        std::cout << \"Empty handler element (should be -1): \" << empty_handler.getElement(0) << std::endl;\n    } catch (const std::exception& e) {\n        std::cerr << \"Caught exception: \" << e.what() << std::endl;\n    }\n    std::cout << \"Program finished.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the class definition of `ResourceHandler`."
+  ]
+}

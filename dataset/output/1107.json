@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Counter` class that keeps track of how many `Counter` objects have been created using a `static` member variable. Implement a default constructor to increment this count and a destructor to decrement it. Provide a static method `getTotalCount()` to retrieve the current number of active `Counter` objects.",
+  "test_cases": [
+    {
+      "input": "Program execution demonstrating object creation, scope, and destruction.",
+      "expected": "Initial active counters: 0\nAfter creating c1: 1\nAfter creating c2: 2\nAfter c1 and c2 go out of scope: 0\nAfter adding 2 objects to vector: 2\nAfter clearing vector: 0\nAfter dynamically allocating c3: 1\nAfter creating c4 with unique_ptr: 2\nAfter deleting c3: 1\nFinal active counters before main exits: 1\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <memory>\n\nclass Counter {\nprivate:\n    static int s_count;\n\npublic:\n    Counter() {\n        s_count++;\n    }\n\n    ~Counter() {\n        s_count--;\n    }\n\n    static int getTotalCount() {\n        return s_count;\n    }\n};\n\nint Counter::s_count = 0;\n\nint main() {\n    std::cout << \"Initial active counters: \" << Counter::getTotalCount() << std::endl;\n\n    {\n        Counter c1;\n        std::cout << \"After creating c1: \" << Counter::getTotalCount() << std::endl;\n\n        Counter c2;\n        std::cout << \"After creating c2: \" << Counter::getTotalCount() << std::endl;\n    }\n    std::cout << \"After c1 and c2 go out of scope: \" << Counter::getTotalCount() << std::endl;\n\n    std::vector<Counter> counterVector;\n    counterVector.reserve(3);\n    counterVector.emplace_back();\n    counterVector.emplace_back();\n    std::cout << \"After adding 2 objects to vector: \" << Counter::getTotalCount() << std::endl;\n\n    counterVector.clear();\n    std::cout << \"After clearing vector: \" << Counter::getTotalCount() << std::endl;\n\n    Counter* c3 = new Counter();\n    std::cout << \"After dynamically allocating c3: \" << Counter::getTotalCount() << std::endl;\n\n    std::unique_ptr<Counter> c4 = std::make_unique<Counter>();\n    std::cout << \"After creating c4 with unique_ptr: \" << Counter::getTotalCount() << std::endl;\n\n    delete c3;\n    std::cout << \"After deleting c3: \" << Counter::getTotalCount() << std::endl;\n\n    std::cout << \"Final active counters before main exits: \" << Counter::getTotalCount() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

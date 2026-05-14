@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that defines a global function `printValue` overloaded for three different data types: `int`, `double`, and `std::string`. Each version should print the value along with its type.",
+  "test_cases": [
+    { "input": "printValue(42);", "expected": "Type: int, Value: 42\n" },
+    { "input": "printValue(123.4567);", "expected": "Type: double, Value: 123.4567\n" },
+    { "input": "printValue(\"Hello from inefficient code\");", "expected": "Type: std::string, Value: Hello from inefficient code\n" },
+    { "input": "printValue(\"Another string to copy\");", "expected": "Type: std::string, Value: Another string to copy\n" },
+    { "input": "printValue(0);", "expected": "Type: int, Value: 0\n" },
+    { "input": "printValue(0.0);", "expected": "Type: double, Value: 0\n" }
+  ],
+  "driver": "main()",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `printValue(std::string)` overload passes `std::string` by value instead of `const std::string&`. This creates an unnecessary copy of the string object for each function call, leading to reduced efficiency, especially for long strings.",
+    "The `printValue(double)` and `printValue(std::string)` overloads use `std::endl` to terminate lines. `std::endl` not only inserts a newline character but also flushes the output buffer. While sometimes necessary, frequent flushing can be less efficient than simply using `'\n'` when immediate flushing is not required.",
+    "The `printValue(int)` overload uses `printf` from `<cstdio>`, while the other overloads use `std::cout` from `<iostream>`. This inconsistency in I/O style reduces code readability and maintainability, making the program less idiomatic C++."
+  ]
+}

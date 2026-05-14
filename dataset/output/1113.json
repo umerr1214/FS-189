@@ -1,0 +1,35 @@
+{
+  "language": "c++",
+  "question": "Define an abstract base class `Printable` with a pure virtual method `print()`. Derive two concrete classes, `Document` and `Image`, from `Printable`. Implement the `print()` method in each derived class to display appropriate information (e.g., 'Printing Document: [title]', 'Printing Image: [filename]').",
+  "test_cases": [
+    {
+      "input": "Print Document with title 'Report_Q1'",
+      "expected": "Printing Document: Report_Q1\n"
+    },
+    {
+      "input": "Print Image with filename 'sunset.jpg'",
+      "expected": "Printing Image: sunset.jpg\n"
+    },
+    {
+      "input": "Print Document with empty title ''",
+      "expected": "Printing Document: \n"
+    },
+    {
+      "input": "Print Image with long filename",
+      "expected": "Printing Image: very_long_and_descriptive_image_filename_from_camera_2023_10_27_15_30_00.png\n"
+    },
+    {
+      "input": "Polymorphic print and delete of Document ('Memo_to_staff')",
+      "expected": "Printing Document: Memo_to_staff\n"
+    },
+    {
+      "input": "Polymorphic print and delete of Image ('logo.svg')",
+      "expected": "Printing Image: logo.svg\n"
+    }
+  ],
+  "driver": "std::string run_test_cases() {\n    std::stringstream ss;\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n\n    Document doc1(\"Report_Q1\");\n    doc1.print();\n\n    Image img1(\"sunset.jpg\");\n    img1.print();\n\n    Document doc2(\"\");\n    doc2.print();\n\n    Image img2(\"very_long_and_descriptive_image_filename_from_camera_2023_10_27_15_30_00.png\");\n    img2.print();\n\n    Printable* doc_ptr = new Document(\"Memo_to_staff\");\n    doc_ptr->print();\n    delete doc_ptr;\n\n    Printable* img_ptr = new Image(\"logo.svg\");\n    img_ptr->print();\n    delete img_ptr;\n\n    std::cout.rdbuf(old_cout_buf);\n    return ss.str();\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

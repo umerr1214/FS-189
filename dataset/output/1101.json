@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Person` with attributes `name` (string) and `age` (int). Implement a parameterized constructor. Derive a class `Student` from `Person` with an additional attribute `studentId` (string). Ensure the `Student` constructor correctly initializes `Person`'s attributes using constructor chaining.",
+  "test_cases": [
+    {
+      "input": "No direct input, objects created in main.",
+      "expected": "--- Student 1 Details ---\nName: Alice Wonderland, Age: 21\nStudent ID: S2023-001\n\n--- Student 2 Details ---\nName: Bob The Builder, Age: 19\nStudent ID: S2023-002\n\n--- Student 3 Details ---\nName: Charlie Chaplin, Age: 25\nStudent ID: S2023-003\n"
+    }
+  ],
+  "driver": "int main() {\n    Student student1(\"Alice Wonderland\", 21, \"S2023-001\");\n    std::cout << \"--- Student 1 Details ---\\n\";\n    student1.displayStudentInfo();\n    std::cout << '\\n';\n\n    Student student2(\"Bob The Builder\", 19, \"S2023-002\");\n    std::cout << \"--- Student 2 Details ---\\n\";\n    student2.displayStudentInfo();\n    std::cout << '\\n';\n\n    Student student3(\"Charlie Chaplin\", 25, \"S2023-003\");\n    std::cout << \"--- Student 3 Details ---\\n\";\n    student3.displayStudentInfo();\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

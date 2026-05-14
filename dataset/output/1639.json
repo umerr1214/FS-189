@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Develop a `Rectangle` class with private double members `width` and `height`. Implement a parameterized constructor that initializes these dimensions and a public method `getArea()` that returns the rectangle's area.",
+  "test_cases": [
+    { "input": "width=10.0, height=5.0", "expected": "Area for (10.0, 5.0): 50.0" },
+    { "input": "width=-10.0, height=5.0", "expected": "Area for (-10.0, 5.0): -50.0" },
+    { "input": "width=0.0, height=5.0", "expected": "Area for (0.0, 5.0): 0.0" },
+    { "input": "width=-7.0, height=-3.0", "expected": "Area for (-7.0, -3.0): 21.0" }
+  ],
+  "driver": "#include <iostream>\n\nclass Rectangle {\nprivate:\n    double width;\n    double height;\n\npublic:\n    // Parameterized constructor - Robustness issue: does not validate dimensions\n    Rectangle(double w, double h) {\n        width = w;\n        height = h;\n    }\n\n    // Public method to get the area\n    double getArea() const {\n        return width * height;\n    }\n};\n\nint main() {\n    // Test cases for Robustness Issue\n    Rectangle r1(10.0, 5.0);\n    std::cout << \"Area for (10.0, 5.0): \" << r1.getArea() << std::endl;\n\n    Rectangle r2(-10.0, 5.0); // Robustness issue: negative width accepted, leading to negative area\n    std::cout << \"Area for (-10.0, 5.0): \" << r2.getArea() << std::endl;\n\n    Rectangle r3(0.0, 5.0); // Edge case, valid\n    std::cout << \"Area for (0.0, 5.0): \" << r3.getArea() << std::endl;\n\n    Rectangle r4(-7.0, -3.0); // Robustness issue: two negative dimensions yield a positive area, still conceptually wrong\n    std::cout << \"Area for (-7.0, -3.0): \" << r4.getArea() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": []
+}

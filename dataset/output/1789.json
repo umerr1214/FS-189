@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Implement a `Resource` class that simulates acquiring a resource in its constructor (e.g., printing \"Resource acquired\") and releasing it in its destructor (e.g., printing \"Resource released\"). Demonstrate the order of constructor and destructor calls for local objects within a function scope.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Main function started ---\n\n--- Entering demonstrateScopeRobustness ---\nResource A acquired.\nRaw resource acquired: 100\nPotentially throwing function completed successfully.\nResource B acquired.\nResource B in use.\n--- Exiting demonstrateScopeRobustness ---\nResource B released.\nResource A released.\n\n--- Entering demonstrateScopeRobustness ---\nResource A acquired.\nRaw resource acquired: 100\nPotentially throwing function throwing an exception!\nCaught exception in demonstrateScopeRobustness: Simulated error in potentiallyThrowingFunction\nWARNING: Raw resource (int*) was leaked due to exception!\n--- Exiting demonstrateScopeRobustness ---\nResource A released.\n--- Main function finished ---\n"
+    }
+  ],
+  "driver": "int main() { try { demonstrateScopeRobustness(); demonstrateScopeRobustness(); } catch (const std::exception& e) { std::cerr << \"Caught unhandled exception in main: \" << e.what() << std::endl; } return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The code demonstrates a robustness issue by manually managing a raw pointer (`raw_resource`) without using RAII (Resource Acquisition Is Initialization).",
+    "If an exception occurs after `raw_resource` is allocated but before it is explicitly `delete`d, the memory is leaked.",
+    "The `catch` block in `demonstrateScopeRobustness` reports the leak but does not prevent it, highlighting the vulnerability to exceptions."
+  ]
+}

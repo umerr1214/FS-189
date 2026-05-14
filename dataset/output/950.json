@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void reverseList(Node*& head) that reverses a singly linked list.",
+  "test_cases": [
+    {
+      "input": "List: 1 -> 2 -> 3",
+      "expected": "3 -> 2 -> 1"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"950.cpp\"\n\nint main() {\n    Node* head = new Node{1, nullptr};\n    reverseList(head);\n    // Should return 1, but returns NULL due to error\n    if (head == nullptr) return 0; \n    return 1;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Forgot to update `prev` pointer inside the loop (`prev = current`), causing the list to break and `head` to become `nullptr`."
+  ]
+}

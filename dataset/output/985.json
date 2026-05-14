@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a class `Person` with a `public` name, a `protected` age, and a `private` social security number. Demonstrate which members are accessible from outside the class and within a derived class (without showing the derived class implementation).",
+  "test_cases": [
+    { "input": "", "expected": "Compilation failed due to a syntax error: expected ';' after class definition." }
+  ],
+  "driver": "The C++ code attempts to define a class 'Person' and a derived class 'Student', then demonstrates member accessibility in main. The syntax error prevents successful compilation.",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the 'Person' class definition, leading to a compilation error."
+  ]
+}

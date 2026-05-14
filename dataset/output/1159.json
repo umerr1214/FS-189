@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Define a base class `MediaItem` with a virtual function `play()`. Derive `AudioFile` and `VideoFile` classes from `MediaItem`. Override `play()` in each derived class to simulate playing an audio or video file (e.g., printing 'Playing audio: [title]' or 'Playing video: [filename]'). Use an array of `MediaItem` pointers to demonstrate playing various media types polymorphically.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Playing Media Collection ---\nPlaying audio: My Favorite Song\nPlaying video: vacation_2023.mp4 (Title: Holiday Memories)\nPlaying audio: Podcast Episode 1\n--------------------------------\n"
+    }
+  ],
+  "driver": "",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing virtual destructor in the `MediaItem` base class. This can lead to undefined behavior and resource leaks if derived classes allocate resources and are deleted via a base class pointer.",
+    "Memory leak: Dynamically allocated `MediaItem` objects are not deallocated using `delete`, leading to unreleased memory."
+  ]
+}

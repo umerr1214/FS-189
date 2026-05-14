@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Illustrate the importance of virtual destructors. Create a base class `Base` and a derived class `Derived`, both with print statements in their constructors and destructors. Demonstrate memory leakage when deleting a `Derived` object through a `Base` class pointer without a virtual destructor, and then fix it.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating Correct Polymorphic Destruction (Raw Pointer) ---\nCreating a Derived object via a Base pointer:\nBase Constructor\nDerived Constructor (Raw Pointer Managed Derived)\n\nDeleting the object via the Base pointer:\nDerived Destructor (Raw Pointer Managed Derived)\nBase Destructor\n--- End Raw Pointer Demonstration ---\n\n--- Demonstrating Correct Polymorphic Destruction (Smart Pointer) ---\nCreating a Derived object using std::unique_ptr<Base>:\nBase Constructor\nDerived Constructor (Smart Pointer Managed Derived)\nSmart pointer object created. It will be automatically deleted on scope exit.\n--- End Smart Pointer Demonstration (Scope Exit) ---\nDerived Destructor (Smart Pointer Managed Derived)\nBase Destructor\n"
+    }
+  ],
+  "driver": "int main() { demonstrate_correctness(); return 0; }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

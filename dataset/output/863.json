@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function int gcd(int a, int b) that computes the Greatest Common Divisor using Euclidean algorithm.",
+  "test_cases": [
+    {
+      "input": "a = 48, b = 18",
+      "expected": "6"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <numeric>\n#include <vector>\n#include \"863.cpp\"\n\nint main() {\n    gcd(48, 18);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses subtraction-based Euclidean algorithm which is inefficient O(N) for inputs with large difference, compared to modulo-based O(log N) approach."
+  ]
+}

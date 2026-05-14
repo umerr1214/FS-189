@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Define a base class `MediaItem` with a virtual function `play()`. Derive `AudioFile` and `VideoFile` classes from `MediaItem`. Override `play()` in each derived class to simulate playing an audio or video file (e.g., printing 'Playing audio: [title]' or 'Playing video: [filename]'). Use an array of `MediaItem` pointers to demonstrate playing various media types polymorphically.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "===== Demonstrating Polymorphism =====\n--- Audio Playback Initiated ---\nPlaying audio: Epic Soundtrack\nEnjoy your music!\n--------------------------------\n--- Video Playback Initiated ---\nPlaying video: cpp_tutorial_p1.mp4 (Title: Tutorial Series Part 1)\nFull screen recommended!\n--------------------------------\n--- Audio Playback Initiated ---\nPlaying audio: Morning Chill Mix\nEnjoy your music!\n--------------------------------\n--- Video Playback Initiated ---\nPlaying video: japan_vlog.mov (Title: Travel Vlog - Japan)\nFull screen recommended!\n--------------------------------\n======================================\n"
+    }
+  ],
+  "driver": "",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses C-style array and manual size tracking (`media_arr`, `media_count`) instead of `std::vector<std::unique_ptr<MediaItem>>` for polymorphic collection, which is less idiomatic, flexible, and error-prone for memory management.",
+    "Missing `override` keyword for virtual function overrides in derived classes, which reduces readability and prevents compiler from catching potential errors in function signatures.",
+    "The `play()` implementations in derived classes include slightly verbose or unnecessary print statements (e.g., 'Enjoy your music!', 'Full screen recommended!').",
+    "String concatenation in `VideoFile::play()` uses an unnecessary intermediate `std::string` variable and multiple `+=` operations, which can be less efficient and less readable than direct stream insertion for simple cases."
+  ]
+}

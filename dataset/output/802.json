@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void mergeArrays(const int arr1[], int n1, const int arr2[], int n2, int result[]) that merges two sorted arrays into one sorted array.",
+  "test_cases": [
+    {
+      "input": "arr1 = NULL",
+      "expected": "Graceful failure"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"802.cpp\"\n\nint main() {\n    // mergeArrays(NULL, 0, NULL, 0, NULL);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing NULL pointer checks for input/output arrays."
+  ]
+}

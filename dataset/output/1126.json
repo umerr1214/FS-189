@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `Department` class that maintains a list of `Employee` objects (aggregation). The `Employee` class should have `name` and `id`. The `Department` class should have `name` and methods to `addEmployee` and `listEmployees`. Demonstrate how employees can exist independently of the department (e.g., an employee can be added to multiple departments or removed from one without being destroyed).",
+  "test_cases": [
+    { "input": "", "expected": "Added employee Alice to Human Resources\nAdded employee Bob to Human Resources\nAdded employee Bob to Engineering\nAdded employee Charlie to Engineering\n\n--- Listing Employees ---\nDepartment: Human Resources\n  Employee ID: 101, Name: Alice\n  Employee ID: 102, Name: Bob\n\nDepartment: Engineering\n  Employee ID: 102, Name: Bob\n  Employee ID: 103, Name: Charlie\n\n" }
+  ],
+  "driver": "int main() {\n    Employee emp1(\"Alice\", 101);\n    Employee emp2(\"Bob\", 102);\n    Employee emp3(\"Charlie\", 103);\n\n    Department hr(\"Human Resources\");\n    Department eng(\"Engineering\");\n\n    hr.addEmployee(&emp1);\n    hr.addEmployee(&emp2);\n    eng.addEmployee(&emp2);\n    eng.addEmployee(&emp3);\n\n    std::cout << \"\\n--- Listing Employees ---\" << std::endl;\n    hr.listEmployees();\n    std::cout << std::endl;\n    eng.listEmployees();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the definition of the `Department` class."
+  ]
+}

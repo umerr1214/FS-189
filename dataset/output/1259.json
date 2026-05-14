@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "For the `Point` class, overload the prefix increment operator (`++`). This operator should increment both the `x` and `y` coordinates of the `Point` object and return a reference to the modified object.",
+  "test_cases": [
+    { "input": "Point p(1, 2); ++p;", "expected": "(2, 3)" },
+    { "input": "Point p(5, 10); ++p; ++p;", "expected": "(7, 12)" }
+  ],
+  "driver": "    std::stringstream ss;\n    // Test case 1\n    Point p1(1, 2);\n    ++p1;\n    ss << \"(\" << p1.x << \", \" << p1.y << \")\";\n    // Test case 2\n    Point p2(5, 10);\n    ++p2;\n    ++p2;\n    ss << \";\" << \"(\" << p2.x << \", \" << p2.y << \")\";\n    std::cout << ss.str();\n    return 0;",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The operator++ function increments only the x-coordinate, not the y-coordinate.", "The resulting Point object does not match the expected state after increment."]
+}

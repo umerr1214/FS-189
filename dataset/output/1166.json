@@ -1,0 +1,33 @@
+{
+  "language": "c++",
+  "question": "For the `StringWrapper` class (from Q20, managing dynamic C-style string), implement the copy assignment operator (`operator=`). Ensure it handles self-assignment correctly and performs a deep copy of the managed C-style string to prevent resource leaks and double-free issues.",
+  "test_cases": [
+    {
+      "input": "StringWrapper s1(\"Hello\"); StringWrapper s2(\"World\"); s1 = s2;",
+      "expected": "s1: World\ns2: World"
+    },
+    {
+      "input": "StringWrapper s2(\"World\"); s2 = s2;",
+      "expected": "s2: World"
+    },
+    {
+      "input": "StringWrapper s4(\"C++\"); StringWrapper s3; s4 = s3;",
+      "expected": "s4: \ns3: "
+    },
+    {
+      "input": "StringWrapper s3; StringWrapper s5(\"Programming\"); s3 = s5;",
+      "expected": "s3: Programming\ns5: Programming"
+    },
+    {
+      "input": "StringWrapper s1(\"Hello\"); StringWrapper s3(\"Programming\"); StringWrapper s4; s1 = s3 = s4;",
+      "expected": "s1: \ns3: \ns4: "
+    }
+  ],
+  "driver": "int main() {\n    StringWrapper s1(\"Hello\");\n    StringWrapper s2(\"World\");\n    StringWrapper s3; // m_str is nullptr\n    StringWrapper s4(\"C++\");\n    StringWrapper s5(\"Programming\");\n\n    std::cout << \"Initial States:\" << std::endl;\n    std::cout << \"s1: \" << s1.getString() << std::endl;\n    std::cout << \"s2: \" << s2.getString() << std::endl;\n    std::cout << \"s3: \" << s3.getString() << std::endl;\n    std::cout << \"s4: \" << s4.getString() << std::endl;\n    std::cout << \"s5: \" << s5.getString() << std::endl;\n\n    std::cout << \"\\n--- Test 1: s1 = s2 (basic assignment) ---\" << std::endl;\n    s1 = s2;\n    std::cout << \"s1: \" << s1.getString() << std::endl;\n    std::cout << \"s2: \" << s2.getString() << std::endl;\n\n    std::cout << \"\\n--- Test 2: s2 = s2 (self-assignment) ---\" << std::endl;\n    s2 = s2;\n    std::cout << \"s2: \" << s2.getString() << std::endl;\n\n    std::cout << \"\\n--- Test 3: s4 = s3 (assign from empty) ---\" << std::endl;\n    s4 = s3;\n    std::cout << \"s4: \" << s4.getString() << std::endl;\n    std::cout << \"s3: \" << s3.getString() << std::endl;\n\n    std::cout << \"\\n--- Test 4: s3 = s5 (assign to empty) ---\" << std::endl;\n    s3 = s5;\n    std::cout << \"s3: \" << s3.getString() << std::endl;\n    std::cout << \"s5: \" << s5.getString() << std::endl;\n\n    std::cout << \"\\n--- Test 5: s1 = s3 = s4 (chained assignment) ---\" << std::endl;\n    s1 = s3 = s4;\n    std::cout << \"s1: \" << s1.getString() << std::endl;\n    std::cout << \"s3: \" << s3.getString() << std::endl;\n    std::cout << \"s4: \" << s4.getString() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The copy assignment operator correctly handles deep copying and self-assignment, but it uses verbose manual resource management (explicit `delete[]` then `new char[]` and `strcpy`). This approach is less readable, more prone to errors, and less efficient than the copy-and-swap idiom, which delegates resource management to the copy constructor and destructor."
+  ]
+}

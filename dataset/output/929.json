@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void mergeSort(int arr[], int l, int r) that sorts an array using Merge Sort algorithm.",
+  "test_cases": [
+    {
+      "input": "Standard input",
+      "expected": "Sorted"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include \"929.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Frequent dynamic memory allocation `vector<int>` inside recursive `merge` function creates significant overhead compared to using a single temporary buffer."
+  ]
+}

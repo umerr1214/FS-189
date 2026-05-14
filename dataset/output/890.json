@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function int sumOfDigits(int n) that calculates the sum of digits of a non-negative integer.",
+  "test_cases": [
+    {
+      "input": "n = 123",
+      "expected": "6"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"890.cpp\"\n\nint main() {\n    // Infinite loop expected\n    // sumOfDigits(123);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Missing `n /= 10` update step inside the while loop, causing an infinite loop for any `n > 0`."
+  ]
+}

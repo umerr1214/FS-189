@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Design a `Laptop` class that contains an `SSD` object (composition). The `SSD` class should have `capacity` (int GB) and `type` (string). Implement constructors for both classes.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Compilation Error: Attempt to access private member."
+    }
+  ],
+  "driver": "int main() {\n    Laptop myLaptop(\"Dell\", 512, \"NVMe\");\n    myLaptop.printLaptop();\n\n    // SEMANTIC ERROR: Attempting to access private member 'capacity' of 'SSD'\n    // directly from main without a public getter. This violates encapsulation.\n    std::cout << \"Laptop 1 SSD Capacity (direct access attempt): \" << myLaptop.getSSD().capacity << \"GB\\n\";\n\n    Laptop gamingLaptop(\"Alienware\", 1024, \"PCIe Gen4\");\n    gamingLaptop.printLaptop();\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    {
+      "line": 49,
+      "column": 70,
+      "message": "error: 'int SSD::capacity' is private within this context"
+    }
+  ]
+}

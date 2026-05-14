@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void applyFilter(const vector<vector<int>>& input, const vector<vector<int>>& filter, vector<vector<int>>& output) that applies a 3x3 filter to the input matrix.",
+  "test_cases": [
+    {
+      "input": "input = {{0,0,0},{0,10,0},{0,0,0}}, filter = {{1,1,1},{1,1,1},{1,1,1}}",
+      "expected": "output[0][0] = 10"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <cassert>\n#include \"740.cpp\"\n\nint main() {\n    vector<vector<int>> input = {{0,0,0},{0,10,0},{0,0,0}};\n    vector<vector<int>> filter = {{1,1,1},{1,1,1},{1,1,1}};\n    vector<vector<int>> output;\n    applyFilter(input, filter, output);\n    // Correct: 10 * 1 + others * 0 = 10\n    // Error logic: input[i][j] * filter... -> input[1][1] is 10. 10 * sum(filter) = 10 * 9 = 90.\n    // assert(output[0][0] == 10);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Convolution logic incorrectly uses the center pixel `input[i][j]` for all filter multiplications instead of the corresponding neighbor pixels `input[i+k][j+l]`."
+  ]
+}

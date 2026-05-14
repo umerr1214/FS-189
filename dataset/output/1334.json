@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Implement a `Book` class with `title` and `author` (both `std::string`). Provide a default constructor, a parameterized constructor, and a copy constructor. Demonstrate their usage by creating objects in different ways.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book 1 (Default): Book: \"Default Title\" by Default Author\nBook 2 (Parameterized): Book: \"1984\" by George Orwell\nBook 3 (Copy of Book 2): Book: \"1984\" by George Orwell\n\nCreating another book with parameterized constructor:\nBook 4 (Parameterized): Book: \"Brave New World\" by Aldous Huxley\n"
+    }
+  ],
+  "driver": "int main() {\n    // 1. Default constructor\n    Book book1;\n    std::cout << \"Book 1 (Default): \";\n    book1.print();\n\n    // 2. Parameterized constructor\n    Book book2(\"1984\", \"George Orwell\");\n    std::cout << \"Book 2 (Parameterized): \";\n    book2.print();\n\n    // 3. Copy constructor\n    Book book3 = book2;\n    std::cout << \"Book 3 (Copy of Book 2): \";\n    book3.print();\n\n    std::cout << \"\\nCreating another book with parameterized constructor:\" << std::endl;\n    Book book4(\"Brave New World\", \"Aldous Huxley\");\n    std::cout << \"Book 4 (Parameterized): \";\n    book4.print();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "**Efficiency Issue**: The parameterized constructor `Book(std::string t, std::string a)` takes `std::string` arguments by value. This causes an unnecessary copy for each argument when the constructor is called. These copied temporary strings are then copied again during assignment to member variables (`this->title = t; this->author = a;`). It would be more efficient to pass by `const std::string&` or use `std::string&&` with `std::move` for the arguments.",
+    "**Efficiency Issue**: The default constructor initializes member variables in the constructor body (`this->title = ...`). It is more efficient and idiomatic C++ to use a member initializer list to directly construct member variables, avoiding default construction followed by assignment.",
+    "**Readability Issue**: The explicit use of `this->` for every member access (e.g., `this->title`, `this->author`) is often considered verbose and can reduce readability in contexts where there is no ambiguity (e.g., no parameter with the same name). While not strictly incorrect, it adds visual clutter without significant benefit in this simple class."
+  ]
+}

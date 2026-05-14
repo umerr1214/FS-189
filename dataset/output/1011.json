@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Demonstrate the use of `protected` members in inheritance. Create a base class `Animal` with a protected `weight` attribute. Derive a `Dog` class and show that `Dog` can access `weight`, but an external non-member function cannot directly access `Animal`'s `weight`.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation Error: 'int Animal::weight' is protected within this context." }
+  ],
+  "driver": "// No driver needed as it won't compile.",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Attempting to access the `protected` member `weight` of class `Animal` directly from the `main` function, which is not a member or friend of `Animal` or a derived class. This is an access violation.",
+    "Attempting to access the `protected` member `weight` of class `Animal` directly from the non-member function `demonstrateExternalAccess`, which is not a member or friend of `Animal` or a derived class. This is an access violation."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a `Student` class with private members for `studentID` (int) and `name` (string). Add a parameterized constructor and a public method `enrollInCourse(string courseName)` that simply prints a message indicating the student has enrolled in the given course.",
+  "test_cases": [
+    { "input": "Student s1(201, \"Emily White\"); s1.enrollInCourse(\"Biology I\");", "expected": "Student Emily White (ID: 201) has enrolled in Biology I.\n" },
+    { "input": "Student s2(202, \"Frank Green\"); s2.enrollInCourse(\"Sociology\");", "expected": "Student Frank Green (ID: 202) has enrolled in Sociology.\n" },
+    { "input": "Student s3(203, \"Grace Black\"); s3.enrollInCourse(\"Psychology\");", "expected": "Student Grace Black (ID: 203) has enrolled in Psychology.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\nclass Student {\nprivate:\n    int studentID;\n    std::string name;\n\npublic:\n    Student(int s_id, std::string s_name) {\n        this->studentID = s_id;\n        this->name = s_name;\n    }\n\n    void enrollInCourse(std::string course) {\n        std::string message = \"Student \" + this->name + \" (ID: \";\n        message = message + std::to_string(this->studentID) + \") has enrolled in \";\n        message = message + course + \".\";\n        std::cout << message << std::endl;\n    }\n};\n\nint main() {\n    Student s1(201, \"Emily White\");\n    s1.enrollInCourse(\"Biology I\");\n    Student s2(202, \"Frank Green\");\n    s2.enrollInCourse(\"Sociology\");\n    Student s3(203, \"Grace Black\");\n    s3.enrollInCourse(\"Psychology\");\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The constructor parameter names (`s_id`, `s_name`) are less descriptive than the member variables they initialize, potentially causing minor confusion.",
+    "The constructor initializes members in the body instead of using a more efficient and idiomatic initializer list.",
+    "The `enrollInCourse` method constructs the output string using multiple `std::string::operator+` operations, which can be less efficient for repeated string building compared to stream insertions. It also uses `std::endl` which flushes the output buffer unnecessarily, potentially impacting performance for frequent output operations."
+  ]
+}

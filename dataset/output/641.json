@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void binomSum(int arr[], int size) that updates each element with the sum of numbers from 1 to that element.",
+  "test_cases": [
+    {
+      "input": "arr = {6}, size = 1",
+      "expected": "{21}"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"641.cpp\"\n\nint main() {\n    int arr[] = {6};\n    binomSum(arr, 1);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inefficient calculation: Uses a loop to sum 1 to N (O(N) per element) instead of the O(1) mathematical formula n*(n+1)/2."
+  ]
+}

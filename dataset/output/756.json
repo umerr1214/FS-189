@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a program to track weather (3 months, 30 days) and report statistics.",
+  "test_cases": [
+    {
+      "input": "Sample data (July max rain)",
+      "expected": "July identified as rainiest"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include <cassert>\n#include \"756.cpp\"\n\nint main() {\n    // Test runs in main\n    char weather[3][30];\n    for(int i=0; i<3; i++) for(int j=0; j<30; j++) weather[i][j] = 'S';\n    weather[2][0] = 'R'; // Aug has 1 rain\n    \n    // analyzeWeather(weather); // Manually verify output\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

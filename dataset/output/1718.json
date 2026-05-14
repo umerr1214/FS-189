@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a `MediaItem` base class with a virtual `play()` method. Derive `AudioFile` and `VideoFile` classes from `MediaItem`. Override the `play()` method in each derived class to print a specific message for playing audio or video.",
+  "test_cases": [
+    { "input": "", "expected": "--- Testing Readability / Efficiency Issues ---\nPlaying an audio file now.\nNow playing the video file.\n--- End of test ---\n" }
+  ],
+  "driver": "#include <iostream>\n#include <cstdio>\n\nclass BaseM_Item_Cls {\npublic:\n    virtual void Play_Content_Func() {\n        printf(\"Playing some generic content.\\n\");\n    }\n};\n\nclass Audio_F : public BaseM_Item_Cls {\npublic:\n  void Play_Content_Func() override {\n    std::cout << \"Playing an audio file now.\" << std::endl;\n  }\n};\n\nclass Video_F_Cls : public BaseM_Item_Cls {\npublic:\n    void Play_Content_Func() override {\n        _printVideoMessage_Internal();\n    }\nprivate:\n    void _printVideoMessage_Internal() {\n        std::cout << \"Now playing the video file.\" << std::endl;\n    }\n};\n\nint main() {\n  using namespace std;\n\n    cout << \"--- Testing Readability / Efficiency Issues ---\" << endl;\n\n    BaseM_Item_Cls* media1 = new Audio_F();\n    BaseM_Item_Cls* media2 = new Video_F_Cls();\n\n    media1->Play_Content_Func();\n    media2->Play_Content_Func();\n\n    delete media1;\n    delete media2;\n\n    cout << \"--- End of test ---\" << endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inconsistent and non-standard naming conventions for classes (`BaseM_Item_Cls`, `Audio_F`, `Video_F_Cls`) and methods (`Play_Content_Func`, `_printVideoMessage_Internal`).",
+    "Inconsistent use of C-style `printf` and C++-style `std::cout` for output, making I/O less uniform.",
+    "Unnecessary helper method `_printVideoMessage_Internal()` for a simple `std::cout` statement, adding boilerplate and complexity without clear benefit.",
+    "Inconsistent formatting and indentation throughout the code, hindering readability.",
+    "Using `using namespace std;` inside `main()` is generally discouraged as it can lead to name clashes in larger scopes, though less critical for small functions."
+  ]
+}

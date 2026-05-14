@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void moveZeroes(int arr[], int n) that moves all 0s to the end while maintaining relative order of non-zero elements.",
+  "test_cases": [
+    {
+      "input": "arr = {0, 1, 0, 3, 12}",
+      "expected": "{1, 3, 12, 0, 0}"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"831.cpp\"\n\nint main() {\n    int arr[] = {0, 1, 0, 3, 12};\n    moveZeroes(arr, 5);\n    // Tail elements not zeroed\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using equality comparison `==` instead of assignment `=` in the zero-filling loop (`arr[count++] == 0`), resulting in no operation."
+  ]
+}

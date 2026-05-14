@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "For the `Point` class (from Question 15), overload the stream insertion `<<` operator to allow `Point` objects to be printed directly using `std::cout` (e.g., `std::cout << myPoint;` should output '(x, y)').",
+  "test_cases": [
+    { "input": "", "expected": "P1: (10, 20)\nP2: (-5, 15)\nP3: (0, 0)\n" }
+  ],
+  "driver": "int main() {\n    Point p1(10, 20);\n    Point p2(-5, 15);\n    Point p3(0, 0);\n\n    std::cout << \"P1: \";\n    operator<<(std::cout, p1);\n    std::cout << std::endl;\n\n    std::cout << \"P2: \";\n    operator<<(std::cout, p2);\n    std::cout << std::endl;\n\n    std::cout << \"P3: \";\n    operator<<(std::cout, p3);\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `operator<<` function takes `Point p` by value instead of `const Point&`, which can be inefficient for larger objects and prevents it from being used with `const` Point objects.",
+    "The `operator<<` function returns `void` instead of `std::ostream&`, which breaks the ability to chain stream insertion operations (e.g., `std::cout << p1 << p2;`)."
+  ]
+}

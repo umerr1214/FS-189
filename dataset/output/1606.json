@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Using the `Vehicle` -> `Car` -> `SportsCar` hierarchy from Question 14, add simple print statements to each class's destructor (e.g., 'Destroying SportsCar'). Demonstrate the order in which these destructors are called when a `SportsCar` object goes out of scope.",
+  "test_cases": [
+    { "input": "", "expected": "Constructing Vehicle\nConstructing Car\nConstructing SportsCar\nDestroying SportsCar\nDestroying Car\nDestroying Vehicle\n" }
+  ],
+  "driver": "#include <iostream>\n\n// Forward declaration of the function defined in the solution file\nextern void run_destructor_demo();\n\nint main() {\n    // The solution's main function or a specific demonstration function is expected to be called.\n    // We call run_destructor_demo() which contains the object creation and destruction logic.\n    run_destructor_demo();\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition for 'Vehicle'."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void transposeMatrix(char matrix[][COLS]) that prints the transpose of the matrix.",
+  "test_cases": [
+    {
+      "input": "matrix = NULL",
+      "expected": "Graceful failure"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"778.cpp\"\n\nint main() {\n    // transposeMatrix(NULL);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing NULL pointer check before accessing array elements."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design a `Product` class with private `productName` (string) and `price` (double). Provide public getter methods (`getProductName`, `getPrice`) and setter methods (`setProductName`, `setPrice`) for both attributes.",
+  "test_cases": [
+    { "input": "", "expected": "Initial Product: Laptop, 1200.5\nUpdated Product (via setters): Gaming PC, 1800\nDirectly modified Product: Workstation, 2500\n" }
+  ],
+  "driver": "int main() {\n    Product myProduct(\"Laptop\", 1200.50);\n    std::cout << \"Initial Product: \" << myProduct.getProductName() << \", \" << myProduct.getPrice() << std::endl;\n    myProduct.setProductName(\"Gaming PC\");\n    myProduct.setPrice(1800.00);\n    std::cout << \"Updated Product (via setters): \" << myProduct.getProductName() << \", \" << myProduct.getPrice() << std::endl;\n    myProduct.productName = \"Workstation\";\n    myProduct.price = 2500.00;\n    std::cout << \"Directly modified Product: \" << myProduct.productName << \", \" << myProduct.price << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The member variables `productName` and `price` are declared as `public` instead of `private`. While the code compiles and functions, this violates the encapsulation requirement specified in the design question, making direct access possible and breaking the intended design semantics."]
+}

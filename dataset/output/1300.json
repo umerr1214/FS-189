@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Model a `Department` class that aggregates `Employee` objects. The `Department` should have a name and a list of employees. Employees can exist independently of departments. Demonstrate adding employees to a department and displaying the department's staff.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Department: Engineering\n  - Alice (ID: 101)\n  - Bob (ID: 102)\n"
+    }
+  ],
+  "driver": "    Employee emp1(\"Alice\", 101);\n    Employee emp2(\"Bob\", 102);\n\n    Department engineering(\"Engineering\");\n    engineering.addEmployee(emp1);\n    engineering.addEmployee(emp2);\n\n    engineering.displayStaff();",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the closing brace of the 'Employee' class definition. This prevents compilation."
+  ]
+}

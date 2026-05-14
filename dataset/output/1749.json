@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `Fraction` class with private integer members `numerator` and `denominator`. Overload the `<<` (insertion) operator to allow `Fraction` objects to be printed directly to an output stream (e.g., `cout << fractionObject;` should output `N/D`).",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Fraction 1: 3/4\nFraction 2: -5/8\nFraction 3: 0/7\nError: Denominator cannot be zero.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <stdexcept> // Required for std::invalid_argument\n\nclass Fraction {\nprivate:\n    int numerator;\n    int denominator;\n\npublic:\n    // Constructor uses a member initializer list and performs validation/normalization.\n    Fraction(int num, int den) : numerator(num), denominator(den) {\n        if (denominator == 0) {\n            throw std::invalid_argument(\"Denominator cannot be zero.\");\n        }\n        // Normalize sign: ensure denominator is always positive.\n        // If denominator is negative, flip signs of both numerator and denominator.\n        if (this->denominator < 0) {\n            this->numerator = -this->numerator;\n            this->denominator = -this->denominator;\n        }\n    }\n\n    // Friend declaration for the overloaded operator<<\n    friend std::ostream& operator<<(std::ostream& os, const Fraction& f);\n};\n\n// Overload the << operator to print Fraction objects\n// Takes const Fraction& by reference (efficient and correct) and returns std::ostream&.\nstd::ostream& operator<<(std::ostream& os, const Fraction& f) {\n    os << f.numerator << \"/\" << f.denominator;\n    return os;\n}\n\nint main() {\n    // Test valid fractions\n    try {\n        Fraction f1(3, 4);\n        std::cout << \"Fraction 1: \" << f1 << std::endl; // Expected: 3/4\n\n        Fraction f2(5, -8); // Test sign normalization: 5/-8 should become -5/8\n        std::cout << \"Fraction 2: \" << f2 << std::endl; // Expected: -5/8\n\n        Fraction f3(0, 7);\n        std::cout << \"Fraction 3: \" << f3 << std::endl; // Expected: 0/7\n    } catch (const std::invalid_argument& e) {\n        std::cerr << \"Error: \" << e.what() << std::endl;\n    }\n\n    // Test robustness for denominator being zero (should throw an exception)\n    try {\n        Fraction f_invalid(1, 0); // This should throw an exception\n        std::cout << \"Fraction Invalid: \" << f_invalid << std::endl; // This line should not be reached\n    } catch (const std::invalid_argument& e) {\n        std::cerr << \"Error: \" << e.what() << std::endl; // Expected: Error: Denominator cannot be zero.\n    }\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

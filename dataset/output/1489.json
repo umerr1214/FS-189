@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a `Logger` class that prints 'Logger initialized.' when its constructor is called and 'Logger destroyed.' when its destructor is called. Demonstrate the lifecycle of a `Logger` object in `main`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Main Scope Start ---\nLogger initialized.\n--- Inner Scope Start ---\nLogger initialized.\n--- Inner Scope End ---\nLogger destroyed.\n--- Calling function with copy ---\nLogger initialized.\nLogger destroyed.\nLogger destroyed.\n--- Main Scope End ---\nLogger destroyed.\n"
+    }
+  ],
+  "driver": "The `main` function in the provided C++ code directly demonstrates the `Logger` class lifecycle, including a scenario that exposes the robustness issue.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The Logger class has a raw pointer member (`message_buffer`) but lacks a user-defined copy constructor and copy assignment operator (violating the Rule of Three/Five/Zero).",
+    "Relying on default shallow copies leads to multiple Logger objects owning and attempting to delete the same dynamically allocated memory. This results in a double-free error and undefined behavior, typically a program crash, when the copied objects go out of scope."
+  ]
+}

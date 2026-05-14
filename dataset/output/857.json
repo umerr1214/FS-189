@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void printPascalsTriangle(int n) that prints the first n rows of Pascal's Triangle.",
+  "test_cases": [
+    {
+      "input": "n = 5",
+      "expected": "Correct output"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"857.cpp\"\n\nint main() {\n    printPascalsTriangle(5);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inefficient O(N^3) approach: calculates factorials repeatedly for each coefficient instead of using the iterative O(N^2) update formula."
+  ]
+}

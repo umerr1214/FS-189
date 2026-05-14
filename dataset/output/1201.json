@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that defines a global function `printValue` overloaded for three different data types: `int`, `double`, and `std::string`. Each version should print the value along with its type.",
+  "test_cases": [
+    { "input": "printValue(123);", "expected": "Type: int, Value: 123\n" },
+    { "input": "printValue(3.1415926535);", "expected": "Type: double, Value: 3.14\n" },
+    { "input": "printValue(123456789.123456789);", "expected": "Type: double, Value: 123456789.12\n" },
+    { "input": "printValue(0.00000012345);", "expected": "Type: double, Value: 0.00\n" },
+    { "input": "printValue(\"Robustness test string\");", "expected": "Type: std::string, Value: Robustness test string\n" },
+    { "input": "printValue(\"\");", "expected": "Type: std::string, Value: \n" },
+    { "input": "printValue(1.23456789);", "expected": "Type: double, Value: 1.23456789\n" },
+    { "input": "printValue(999999999.12345);", "expected": "Type: double, Value: 999999999.12345\n" }
+  ],
+  "driver": "main()",
+  "code_quality": 7,
+  "correctness": 8,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `printValue(double)` overload forces output to two decimal places using `std::fixed` and `std::setprecision(2)`. This leads to loss of precision for many double values, providing potentially misleading or incomplete information. For example, 3.1415926535 is printed as 3.14, and 0.00000012345 as 0.00. This design choice makes the function not robust for all double inputs where full precision or scientific notation might be expected.",
+    "Although the stream state is reset after each call, modifying global stream state within a utility function is generally a fragile pattern. A more robust approach would involve creating a temporary `std::ios_base::fmtflags` object or using a local `std::stringstream` for formatting."
+  ]
+}

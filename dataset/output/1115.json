@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "For the `Date` class (from Q12 or similar with `day`, `month`, `year`), overload the `<<` (stream insertion) operator to allow `Date` objects to be printed directly using `std::cout` in the format `DD/MM/YYYY`.",
+  "test_cases": [
+    { "input": "Date d(1, 5, 2023); std::ostringstream oss; oss << d; std::cout << oss.str();", "expected": "01/05/2023" },
+    { "input": "Date d(25, 12, 1999); std::ostringstream oss; oss << d; std::cout << oss.str();", "expected": "25/12/1999" },
+    { "input": "Date d(9, 7, 2020); std::ostringstream oss; oss << d; std::cout << oss.str();", "expected": "09/07/2020" }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n#include <string>\n\n// Assuming Date class and overloaded operator<< are defined above\n\nint main() {\n    std::ostringstream oss;\n    Date d1(1, 5, 2023);\n    Date d2(25, 12, 1999);\n    Date d3(9, 7, 2020);\n\n    oss << d1 << \"\\n\" << d2 << \"\\n\" << d3;\n    std::cout << oss.str();\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    {
+      "line": 22,
+      "column": 9,
+      "message": "The operator<< implementation does not pad single-digit days or months with a leading zero, violating the 'DD/MM/YYYY' format requirement."
+    }
+  ]
+}

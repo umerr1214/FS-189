@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Implement a `Fraction` class with private `numerator` and `denominator` (integers). Overload the `*` (multiplication) operator to multiply two `Fraction` objects and return a new `Fraction` object representing the product.",
+  "test_cases": [
+    { "input": "1/2 * 3/4", "expected": "3/8" },
+    { "input": "2/3 * 6/7", "expected": "12/21" },
+    { "input": "-1/2 * 1/3", "expected": "-1/6" },
+    { "input": "5/1 * 2/5", "expected": "10/5" },
+    { "input": "0/5 * 1/2", "expected": "0/10" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <numeric>\n#include <cmath>\n#include <utility>\n\n// Custom GCD for consistency with the provided solution\nint custom_gcd(int a, int b) {\n    a = std::abs(a);\n    b = std::abs(b);\n    while (b) {\n        a %= b;\n        std::swap(a, b);\n    }\n    return a;\n}\n\n// Assuming the Fraction class is defined above this driver code\n\n// Helper function to parse a fraction string \"num/den\"\nstd::pair<int, int> parseFractionString(const std::string& s) {\n    size_t slashPos = s.find('/');\n    if (slashPos == std::string::npos) {\n        return {std::stoi(s), 1};\n    }\n    int num = std::stoi(s.substr(0, slashPos));\n    int den = std::stoi(s.substr(slashPos + 1));\n    return {num, den};\n}\n\n// Function to run a single test case\nvoid runTestCase(const std::string& input, const std::string& expected_output) {\n    std::cout << \"Input: \" << input << std::endl;\n\n    size_t starPos = input.find('*');\n    std::string frac1_str = input.substr(0, starPos - 1);\n    std::string frac2_str = input.substr(starPos + 2);\n\n    std::pair<int, int> p1 = parseFractionString(frac1_str);\n    std::pair<int, int> p2 = parseFractionString(frac2_str);\n\n    Fraction f1(p1.first, p1.second);\n    Fraction f2(p2.first, p2.second);\n\n    Fraction result = f1 * f2;\n\n    std::cout << \"Expected: \" << expected_output << std::endl;\n    std::cout << \"Actual:   \";\n    result.print();\n    std::cout << std::endl << std::endl;\n}\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> test_cases = {\n        { \"1/2 * 3/4\", \"3/8\" },\n        { \"2/3 * 6/7\", \"12/21\" },\n        { \"-1/2 * 1/3\", \"-1/6\" },\n        { \"5/1 * 2/5\", \"10/5\" },\n        { \"0/5 * 1/2\", \"0/10\" }\n    };\n\n    for (const auto& tc : test_cases) {\n        runTestCase(tc.first, tc.second);\n    }\n\n    // Demonstrating the zero denominator robustness issue (not part of automated tests, but relevant)\n    std::cout << \"Robustness Test (Zero Denominator):\" << std::endl;\n    Fraction invalid_f(5, 0);\n    std::cout << \"Fraction(5,0) printed: \";\n    invalid_f.print();\n    std::cout << std::endl << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Fraction` constructor does not validate the denominator, allowing zero. While the `print` method avoids a crash, creating such an object represents an invalid mathematical state and can lead to unexpected behavior in other operations.",
+    "The `operator*` does not simplify the resulting fraction. This can lead to numerators and denominators growing excessively large for complex calculations, potentially causing integer overflow if `int` limits are exceeded, which is a robustness concern."
+  ]
+}

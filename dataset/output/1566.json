@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Demonstrate polymorphism by creating an array of `Animal*` (from Question 11). Populate the array with `Dog` and `Cat` objects and then iterate through the array, calling `makeSound()` on each animal. Explain the output.",
+  "test_cases": [
+    { "input": "", "expected": "Dog barks.\nCat meows.\nDog barks.\n" }
+  ],
+  "driver": "",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": []
+}

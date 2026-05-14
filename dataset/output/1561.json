@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Design a `Course` class and a `Student` class. `Course` should have a `name` and a private pointer to a `Student` object (`Student* assignedStudent`) to demonstrate aggregation (a student can exist independently of a course). Implement methods to assign and unassign a student to the course.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Initial State ---\nCourse: Calculus I\n\n--- Assigning Alice ---\nCourse: Calculus I, Assigned Student: Alice Smith\n\n--- Unassigning student ---\nCourse: Calculus I\n\n--- Attempting to get student name after unassigning (EXPECTED CRASH) ---\n"
+    }
+  ],
+  "driver": "Student alice(\"Alice Smith\");\nStudent bob(\"Bob Johnson\");\n\nCourse mathCourse(\"Calculus I\");\n\nstd::cout << \"--- Initial State ---\" << std::endl;\nstd::cout << \"Course: \" << mathCourse.getName() << std::endl;\n\nstd::cout << \"\\n--- Assigning Alice ---\" << std::endl;\nmathCourse.assignStudent(&alice);\nstd::cout << \"Course: \" << mathCourse.getName() << \", Assigned Student: \" << mathCourse.getAssignedStudentName() << std::endl;\n\nstd::cout << \"\\n--- Unassigning student ---\" << std::endl;\nmathCourse.unassignStudent();\nstd::cout << \"Course: \" << mathCourse.getName() << std::endl;\n\nstd::cout << \"\\n--- Attempting to get student name after unassigning (EXPECTED CRASH) ---\" << std::endl;\nstd::cout << \"Course: \" << mathCourse.getName() << \", Assigned Student: \" << mathCourse.getAssignedStudentName() << std::endl;\n",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `getAssignedStudentName()` method attempts to dereference `assignedStudent` without checking if it's a `nullptr`, leading to a segmentation fault if no student is assigned.",
+    "The `assignStudent()` method allows assigning a `nullptr` without any checks, which can lead to subsequent crashes.",
+    "The `unassignStudent()` method doesn't check if a student is actually assigned before setting `assignedStudent` to `nullptr`, which is redundant."
+  ]
+}

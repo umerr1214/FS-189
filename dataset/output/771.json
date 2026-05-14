@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function to search for a word in a character grid.",
+  "test_cases": [
+    {
+      "input": "word = \"A\"",
+      "expected": "Found"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include \"771.cpp\"\n\nint main() {\n    char grid[ROWS][COLS] = {{'A'}};\n    // sizeof(word) is 8 (64-bit), loop checks 8 chars. word[1] is \\0.\n    // grid[0][1] is likely 0 or garbage. Loop breaks. Returns false.\n    // Should return true.\n    if (searchWord_Semantic(grid, \"A\")) return 1;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using `sizeof(word)` on a pointer parameter returns the pointer size instead of the string length, leading to incorrect iteration counts."
+  ]
+}

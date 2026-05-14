@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Extend the `Book` class by adding a private `price` (double) attribute. Implement a public setter method for `price` that includes validation to ensure the price is never set to a negative value.",
+  "test_cases": [
+    { "input": "The Hobbit,J.R.R. Tolkien,10.0,25.50", "expected": "25.5,true" },
+    { "input": "1984,George Orwell,12.50,-5.0", "expected": "12.5,false" },
+    { "input": "Brave New World,Aldous Huxley,0.0,0.0", "expected": "0,true" },
+    { "input": "Moby Dick,Herman Melville,18.75,-10.0", "expected": "18.75,false" },
+    { "input": "Pride and Prejudice,Jane Austen,5.0,15.0", "expected": "15,true" }
+  ],
+  "driver": "std::string run_test(const std::string& input_title, const std::string& input_author, double initial_price, double test_price) {\n    Book book(input_title, input_author, initial_price);\n    bool set_success = book.setPrice(test_price);\n\n    std::ostringstream oss;\n    oss.precision(10);\n    oss << book.getPrice() << \",\" << (set_success ? \"true\" : \"false\");\n    return oss.str();\n}\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        std::stringstream ss(line);\n        std::string title, author, initial_price_str, test_price_str;\n        std::getline(ss, title, ',');\n        std::getline(ss, author, ',');\n        std::getline(ss, initial_price_str, ',');\n        std::getline(ss, test_price_str, ',');\n        double initial_price = std::stod(initial_price_str);\n        double test_price = std::stod(test_price_str);\n        std::cout << run_test(title, author, initial_price, test_price) << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

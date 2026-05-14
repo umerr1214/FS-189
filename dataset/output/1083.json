@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design a `Car` class that has an `Engine` object as a private member (composition). The `Engine` class should have attributes like `horsepower` and `fuelType`. The `Car` class should have `make`, `model`, and a method `startCar()` that internally calls a method `start()` on its `Engine` object.",
+  "test_cases": [
+    { "input": "", "expected": "Attempting to start Car: Tesla Model 3\nEngine started! Fuel: Electric, HP: 450\nAttempting to start Car: Tesla Model 3\nEngine is already running.\nAttempting to stop Car: Tesla Model 3\nEngine stopped.\nAttempting to stop Car: Tesla Model 3\nEngine is already stopped.\n\nAttempting to start Car: Porsche 911\nEngine started! Fuel: Premium Gasoline, HP: 400\nCar make: Porsche, model: 911\n\nWarning: Engine horsepower cannot be negative. Setting to 0.\nAttempting to start Car: Lada Niva\nEngine started! Fuel: Diesel, HP: 0\n\n" }
+  ],
+  "driver": "See main function in .cpp file",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

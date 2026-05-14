@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a class `ResourceHandler` that simulates acquiring and releasing a system resource. Implement a destructor for this class that prints a message indicating the resource has been released.",
+  "test_cases": [],
+  "driver": "int main() { ResourceHandler res; return 0; }",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The destructor of `ResourceHandler` is declared as private, preventing the compiler from calling it when a stack-allocated object goes out of scope. This results in a compilation error related to access control, even though the destructor is correctly implemented."
+  ]
+}

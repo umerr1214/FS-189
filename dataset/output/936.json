@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Implement a Stack class using an array.",
+  "test_cases": [
+    {
+      "input": "push 10, 20, 30; pop 3 times",
+      "expected": "30, 20, 10"
+    },
+    {
+      "input": "pop empty",
+      "expected": "Underflow message"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cassert>\n#include \"936.cpp\"\n\nint main() {\n    Stack s;\n    s.push(10);\n    assert(s.peek() == 10);\n    assert(s.pop() == 10);\n    assert(s.isEmpty());\n    assert(s.pop() == -1);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

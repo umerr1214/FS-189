@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Model a `Car` class that has an `Engine` object (composition). The `Engine` class should have `horsepower` and `fuelType` attributes. Demonstrate how a `Car` object is constructed with an `Engine` and how `Car` methods can access `Engine` properties.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- First Automobile Vehicle Instance Details ---\nAutomobile Make: Honda\nAutomobile Model: Civic\n  Related Engine Information:\nEngine Horsepower Information: 158 HP\nEngine Fuel Type Information: Petrol\nAccessed Engine Horsepower: 158\nAccessed Engine Fuel Type: Petrol\n\n--- Second Automobile Vehicle Instance Details ---\nAutomobile Make: Tesla\nAutomobile Model: Model 3\n  Related Engine Information:\nEngine Horsepower Information: 450 HP\nEngine Fuel Type Information: Electric\nAccessed Engine Horsepower: 450\nAccessed Engine Fuel Type: Electric\n\n"
+    }
+  ],
+  "driver": "See main function in the provided C++ file.",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Excessive use of `typedef` for fundamental types (`int`, `std::string`) reduces readability and adds unnecessary aliases.",
+    "Overly verbose class, method, and variable names (`VeryComplexEngineClassDefinition`, `m_private_engine_horsepower_value`, `retrieveTheEngineHorsepowerValue`) make the code difficult to read and maintain.",
+    "String getter methods (`obtainTheEngineFuelTypeString`, `getTheAssociatedEngineFuelType`) return `std::string` by value, leading to unnecessary copying and potential inefficiency, especially with large strings. They should return `const std::string&`.",
+    "An unused header `<vector>` is included, indicating poor dependency management and potentially larger compile times.",
+    "Inconsistent naming conventions and verbose output formatting reduce overall code clarity."
+  ]
+}

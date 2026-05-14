@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a function void lookupName(string target, string names[], string numbers[], int size) that finds and displays the phone number for the target name.",
+  "test_cases": [
+    {
+      "input": "target = \"Ash Williams\"",
+      "expected": "Phone number: 333-2323"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include \"719.cpp\"\n\nint main() {\n    string n[] = {\"A\"}; string p[] = {\"1\"};\n    lookupName(\"A\", n, p, 1);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Passes `std::string` by value instead of `const string&`, causing unnecessary copying.",
+    "Uses Linear Search O(N) which is inefficient for lookups compared to O(1) Hash Map or O(log N) Binary Search (though constrained by array input)."
+  ]
+}

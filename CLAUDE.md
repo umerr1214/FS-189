@@ -25,6 +25,9 @@ pip install poetry && poetry install
 # Run grader
 python main.py --assignment path/to/assignment.pdf --submission path/to/submission/
 
+# Run tests
+python -m unittest discover -s tests
+
 # Docker
 docker-compose build
 docker-compose up               # reads ./input/, writes to ./output/
@@ -36,6 +39,7 @@ OPENAI_API_KEY=...
 OPENAI_MODEL_NAME=gpt-4o-mini
 HF_MODEL_NAME=meta-llama/Llama-3.2-3B-Instruct
 QWEN_MODEL_NAME=Qwen/Qwen2.5-Coder-7B-Instruct
+QWEN_MAX_NEW_TOKENS=2048
 ```
 
 ### Backend (Express.js)
@@ -85,7 +89,7 @@ The Vite dev server proxies `/api` → `http://localhost:3001`.
 
 | Workflow | File | LLM | Output |
 |---|---|---|---|
-| Test generation | `workflows/builders/test_generation.py` | Qwen 2.5-Coder 7B (local, 8-bit) | 8–15 test cases per question |
+| Test generation | `workflows/builders/test_generation.py` | Qwen 2.5-Coder 7B (local, 8-bit) | 8–15 test cases per question; malformed JSON is recovered via object salvage then a repair prompt |
 | Test execution | `workflows/builders/test_execution.py` | GPT-4o-mini (OpenAI, ReAct agent with ShellTool) | pass/fail + actual output per test |
 | Evaluation | `workflows/builders/evaluation.py` | LLaMA 3.2 3B (local, 4-bit) | correctness, quality scores, feedback |
 
@@ -120,7 +124,13 @@ Test execution runs student code via stdin: `echo "{input}" | python {code_file}
 - **Student submission files** must match the glob `q_*.py` (`core/pre_processors/submission.py`).
 - The folder `core/file_hanlders/` has a deliberate typo — do not rename it.
 - HuggingFace models require a CUDA-capable GPU and are loaded via `bitsandbytes` through `HuggingFaceClient` (`clients/huggingface_client.py`). Qwen uses 8-bit quantization (`max_new_tokens=2048`); LLaMA uses 4-bit quantization (`max_new_tokens=500`). Both models load eagerly on `EvaluationEngine` startup (~10–11 GB VRAM combined).
-- No automated test suite exists for any of the three services.
+- The backend and frontend have no automated test suite. `autograder-ai` has unit tests in `autograder-ai/tests/` covering `json_helpers` and `generate_test_cases_node` (run with `python -m unittest discover -s tests` from inside `autograder-ai/`).
+
+## Dataset
+
+`dataset/` holds a fine-tuning dataset for Qwen (~1,200 C++ problems, growing):
+- `dataset/input/` — buggy C++ student submissions (numbered e.g. `601.cpp`, `1000.cpp`, …)
+- `dataset/output/` — corresponding JSON with fields: `language`, `question`, `test_cases` (array of `{input, expected}` pairs), `driver` (C++ harness that `#include`s the submission), `code_quality` (int), `correctness` (int), `error_type` (e.g. `"Syntax Error"`, `"Logical Error"`), `errors` (array of strings)
 
 ## Useful Context Docs
 

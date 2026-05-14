@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Create a `Date` class with private integer members `day`, `month`, and `year`. Implement a constructor and public methods `isValidDate()` (which returns true if the date is valid, false otherwise) and `displayDate()` in 'DD/MM/YYYY' format.",
+  "test_cases": [
+    { "input": "1 1 2023 isValidDate", "expected": "true" },
+    { "input": "29 2 2024 isValidDate", "expected": "true" },
+    { "input": "31 4 2023 isValidDate", "expected": "false" },
+    { "input": "15 7 1999 isValidDate", "expected": "true" },
+    { "input": "5 13 2020 isValidDate", "expected": "false" },
+    { "input": "0 1 2023 isValidDate", "expected": "false" },
+    { "input": "29 2 2023 isValidDate", "expected": "false" },
+    { "input": "28 2 2023 isValidDate", "expected": "true" },
+    { "input": "1 1 2023 displayDate", "expected": "01/01/2023" },
+    { "input": "15 7 1999 displayDate", "expected": "15/07/1999" },
+    { "input": "9 10 2025 displayDate", "expected": "09/10/2025" }
+  ],
+  "driver": "    #include <iostream>\n    #include <string>\n    #include <sstream>\n    #include <iomanip>\n    #include <limits>\n\n    // Assume the user's Date class is available here\n\n    int main() {\n        int d, m, y;\n        std::string method_call;\n        while (std::cin >> d >> m >> y >> method_call) {\n            Date date(d, m, y);\n            if (method_call == \"isValidDate\") {\n                std::cout << (date.isValidDate() ? \"true\" : \"false\") << std::endl;\n            } else if (method_call == \"displayDate\") {\n                std::stringstream buffer;\n                std::streambuf* old_cout = std::cout.rdbuf(buffer.rdbuf());\n                date.displayDate();\n                std::cout.rdbuf(old_cout);\n                std::cout << buffer.str() << std::endl;\n            }\n        }\n        return 0;\n    }",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": []
+}

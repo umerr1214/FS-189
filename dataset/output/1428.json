@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a base class `MediaItem` with a `play()` method that prints a generic message. Derive `AudioFile` and `VideoFile` classes, overriding `play()` to print messages specific to playing an audio or video file.",
+  "test_cases": [
+    { "input": "", "expected": "--- Direct calls to derived objects ---\nPlaying audio file.\nPlaying video file.\n--- Calls via base class pointers ---\nPlaying audio file.\nPlaying video file.\n--- Object slicing (assignment to base by value) ---\nPlaying generic media item.\n" }
+  ],
+  "driver": "    MediaItem* item1 = new AudioFile();\n    MediaItem* item2 = new VideoFile();\n    \n    AudioFile directAudio;\n    VideoFile directVideo;\n\n    std::cout << \"--- Direct calls to derived objects ---\" << std::endl;\n    directAudio.play();\n    directVideo.play();\n\n    std::cout << \"--- Calls via base class pointers ---\" << std::endl;\n    item1->play();\n    item2->play();\n\n    std::cout << \"--- Object slicing (assignment to base by value) ---\" << std::endl;\n    MediaItem slicedItem = AudioFile();\n    slicedItem.play();\n\n    delete item1;\n    delete item2;\n",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The `play()` method in the base class `MediaItem` is not declared `virtual`. This prevents runtime polymorphism, causing the base class's `play()` method to be invoked when calling `play()` on derived objects through base class pointers, instead of the intended derived class's overridden method."]
+}

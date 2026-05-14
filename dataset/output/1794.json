@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Person` with private attributes `name` (string) and `age` (int). Implement public methods to set and display these details. Derive a class `Employee` from `Person` that adds private attributes `employeeID` (int) and `salary` (double). Implement methods in `Employee` to set and display its specific details, including inherited ones.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Person Details: Name: Alice, Age: 30\nEmployee Details: Name: Bob, Age: 25, Employee ID: 1001, Salary: 50000.50\nEmployee Details: Name: Charlie, Age: 40, Employee ID: 1002, Salary: 75000.75\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <iomanip>\n\n// Base class Person\nclass Person {\nprivate:\n    std::string name;\n    int age;\n\npublic:\n    void setDetails(const std::string& n, int a) {\n        name = n;\n        age = a;\n    }\n\n    void displayDetails() const {\n        std::cout << \"Name: \" << name << \", Age: \" << age;\n    }\n};\n\n// Derived class Employee\nclass Employee : public Person {\nprivate:\n    int employeeID;\n    double salary;\n\npublic:\n    void setEmployeeDetails(int id, double s) {\n        employeeID = id;\n        salary = s;\n    }\n\n    // This method sets both Person and Employee details\n    void setAllDetails(const std::string& n, int a, int id, double s) {\n        setDetails(n, a); // Call base class method to set inherited details\n        employeeID = id;\n        salary = s;\n    }\n\n    void displayAllDetails() const {\n        Person::displayDetails(); // Call base class method to display inherited details\n        std::cout << \", Employee ID: \" << employeeID << \", Salary: \" << std::fixed << std::setprecision(2) << salary << std::endl;\n    }\n};\n\nint main() {\n    // Test Person\n    Person p;\n    p.setDetails(\"Alice\", 30);\n    std::cout << \"Person Details: \";\n    p.displayDetails();\n    std::cout << std::endl;\n\n    // Test Employee\n    Employee e;\n    e.setAllDetails(\"Bob\", 25, 1001, 50000.50);\n    std::cout << \"Employee Details: \";\n    e.displayAllDetails();\n\n    Employee e2;\n    e2.setAllDetails(\"Charlie\", 40, 1002, 75000.75);\n    std::cout << \"Employee Details: \";\n    e2.displayAllDetails();\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": []
+}

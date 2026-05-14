@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void printPascalsTriangle(int n) that prints the first n rows of Pascal's Triangle.",
+  "test_cases": [
+    {
+      "input": "n = 35",
+      "expected": "Correct values (no overflow)"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"856.cpp\"\n\nint main() {\n    // printPascalsTriangle(35);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Uses `int` for binomial coefficients which overflows for `n >= 34`. Should use `long long`."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `Student` class with private attributes `studentID` (int), `name` (string), `major` (string). Implement public methods `setDetails(int id, string n, string m)` to initialize these attributes and `displayDetails()` to print them to the console.",
+  "test_cases": [
+    {
+      "input": "Student student1; student1.setDetails(1001, \"Alice Johnson\", \"Computer Science\"); student1.displayDetails(); Student student2; student2.setDetails(-500, \"\", \"\"); student2.displayDetails(); Student student3; student3.setDetails(0, \"Invalid Student Name\", \"\"); student3.displayDetails();",
+      "expected": "Student ID: 1001, Name: Alice Johnson, Major: Computer Science\n--- Testing Robustness Issue (Invalid Inputs) ---\nStudent ID: -500, Name: , Major: \nStudent ID: 0, Name: Invalid Student Name, Major: \n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Student {\nprivate:\n    int studentID;\n    std::string name;\n    std::string major;\n\npublic:\n    void setDetails(int id, std::string n, std::string m) {\n        studentID = id;\n        name = n;\n        major = m;\n    }\n\n    void displayDetails() {\n        std::cout << \"Student ID: \" << studentID\n                  << \", Name: \" << name\n                  << \", Major: \" << major << std::endl;\n    }\n};\n\nint main() {\n    Student student1;\n    student1.setDetails(1001, \"Alice Johnson\", \"Computer Science\");\n    student1.displayDetails();\n\n    std::cout << \"--- Testing Robustness Issue (Invalid Inputs) ---\" << std::endl;\n\n    Student student2;\n    student2.setDetails(-500, \"\", \"\");\n    student2.displayDetails();\n\n    Student student3;\n    student3.setDetails(0, \"Invalid Student Name\", \"\");\n    student3.displayDetails();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `setDetails` method lacks input validation, allowing invalid data such as negative student IDs or empty names/majors to be stored directly. This can lead to an inconsistent or misleading internal state for the `Student` object, as the class doesn't prevent itself from holding logically invalid data."
+  ]
+}

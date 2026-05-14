@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void characterHistogram(char grid[][COLS], int rows) that prints a histogram of character frequencies.",
+  "test_cases": [
+    {
+      "input": "grid = {\"aa\"}",
+      "expected": "a: **"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include \"788.cpp\"\n\nint main() {\n    char grid[3][10] = {\"aa\"};\n    // Should print ** for 'a', but will print *\n    characterHistogram(grid, 1);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Resets frequency count to 1 (`freq[grid[i][j]] = 1`) instead of incrementing it, resulting in a binary existence check rather than a frequency count."
+  ]
+}

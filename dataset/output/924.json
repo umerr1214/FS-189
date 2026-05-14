@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a function long long fibonacci(int n) that returns the nth Fibonacci number.",
+  "test_cases": [
+    {
+      "input": "n = 10",
+      "expected": "55"
+    },
+    {
+      "input": "n = 0",
+      "expected": "0"
+    },
+    {
+      "input": "n = -5",
+      "expected": "-1"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cassert>\n#include \"924.cpp\"\n\nint main() {\n    assert(fibonacci(10) == 55);\n    assert(fibonacci(0) == 0);\n    assert(fibonacci(-1) == -1);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private members for title (string), author (string), and price (double). Include a parameterized constructor to initialize these members and a public method `displayBookInfo()` to print all details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Compilation Error: 'std::string Book::title' is private within this context"
+    }
+  ],
+  "driver": "Book myBook(\"The Catcher in the Rye\", \"J.D. Salinger\", 8.75);\nmyBook.displayBookInfo();",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `main` function attempts to directly access private members (`myBook.title`, `myBook.author`) of the `Book` class. This violates C++ access control rules (encapsulation) and is a semantic error, leading to a compilation failure."
+  ]
+}

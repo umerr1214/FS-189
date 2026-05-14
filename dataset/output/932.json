@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a Stack class using an array.",
+  "test_cases": [
+    {
+      "input": "push(10), pop()",
+      "expected": "10"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cassert>\n#include \"932.cpp\"\n\nint main() {\n    Stack s;\n    s.push(10);\n    // Will return garbage\n    // assert(s.pop() == 10);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Incorrect `pop` and `peek` implementation: accesses `arr[top]` (next empty slot) instead of `arr[top-1]` (topmost element), returning garbage values."
+  ]
+}

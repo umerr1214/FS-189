@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a function int searchData(int arr[], int size, int key) that performs binary search to find the key in the sorted array. Return the index if found, -1 otherwise.",
+  "test_cases": [
+    {
+      "input": "arr = {1, 2, 3}, size = 3, key = 3",
+      "expected": "2"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"629.cpp\"\n\nint main() {\n    int arr[] = {1, 2, 3};\n    searchData(arr, 3, 3);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Recursive implementation uses O(log N) stack space; iterative approach O(1) space is preferred for binary search.",
+    "Pointer arithmetic and offset recalculation in recursion reduces readability."
+  ]
+}

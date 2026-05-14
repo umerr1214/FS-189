@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a class `BankAccount` with private member variables for `accountNumber` (string) and `balance` (double). Implement public methods `deposit(double amount)` and `withdraw(double amount)` that validate the transaction (e.g., negative deposit, insufficient funds for withdrawal) and update the balance. Provide a `getBalance()` method.",
+  "test_cases": [
+    { "input": "initial: 1000, deposit: 500, withdraw: 200", "expected": "1300" }
+  ],
+  "driver": "BankAccount myAccount(\"12345\", 1000.0);\nmyAccount.deposit(500.0);\nmyAccount.withdraw(200.0);\nstd::cout << myAccount.getBalance();",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after class definition 'BankAccount'."]
+}

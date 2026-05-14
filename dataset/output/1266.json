@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a multilevel inheritance hierarchy: `Vehicle` -> `Car` -> `SportsCar`. Each class should have a constructor that prints its name and a method `drive()`. Demonstrate the order of constructor calls and method overriding across the hierarchy.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Creating SportsCar object ---\nVehicle constructor\nCar constructor\nSportsCar constructor\n--- Calling drive() directly on SportsCar object ---\nDriving a SportsCar\n\n--- Demonstrating polymorphism with Vehicle pointer ---\nDriving a SportsCar\n\n--- Demonstrating polymorphism with Car pointer ---\nDriving a SportsCar"
+    }
+  ],
+  "driver": "    std::cout << \"--- Creating SportsCar object ---\" << std::endl;\n    SportsCar mySportsCar;\n    std::cout << \"--- Calling drive() directly on SportsCar object ---\" << std::endl;\n    mySportsCar.drive();\n\n    std::cout << \"\\n--- Demonstrating polymorphism with Vehicle pointer ---\" << std::endl;\n    Vehicle* vPtr = &mySportsCar;\n    vPtr->drive();\n\n    std::cout << \"\\n--- Demonstrating polymorphism with Car pointer ---\" << std::endl;\n    Car* cPtr = &mySportsCar;\n    cPtr->drive();",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The 'drive()' method in the base 'Vehicle' class is not declared 'virtual'. This prevents polymorphic behavior, causing static dispatch when 'drive()' is called via base class pointers or references, thereby failing to demonstrate proper method overriding and polymorphism."
+  ]
+}

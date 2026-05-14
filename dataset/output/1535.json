@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design an `Engine` class with private members `horsepower` (int) and `fuelType` (string). Then, create a `Car` class that uses composition: it 'has-a' `Engine` object. The `Car` class should have `make` (string) and `model` (string) and methods `start()` and `stop()` that delegate to the `Engine`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Engine created: 180 HP, Petrol\nCar created: Toyota Camry\nToyota Camry is attempting to start.\nEngine starting (180 HP, Petrol)...\nToyota Camry is attempting to stop.\nEngine stopping...\nEngine created: 450 HP, Electric\nCar created: Tesla Model 3\nTesla Model 3 is attempting to start.\nEngine starting (450 HP, Electric)...\nTesla Model 3 is attempting to stop.\nEngine stopping...\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// Engine class definition\nclass Engine {\nprivate:\n    int horsepower;\n    std::string fuelType;\n\npublic:\n    Engine(int hp, std::string ft) : horsepower(hp), fuelType(ft) {\n        std::cout << \"Engine created: \" << horsepower << \" HP, \" << fuelType << std::endl;\n    }\n\n    void start() {\n        std::cout << \"Engine starting (\" << horsepower << \" HP, \" << fuelType << \")...\" << std::endl;\n    }\n\n    void stop() {\n        std::cout << \"Engine stopping...\" << std::endl;\n    }\n};\n\n// Car class definition\nclass Car {\nprivate:\n    std::string make;\n    std::string model;\n    Engine engine;\n\npublic:\n    Car(std::string mk, std::string md, int engineHp, std::string engineFt)\n        : make(mk), model(md), engine(engineHp, engineFt) {\n        std::cout << \"Car created: \" << make << \" \" << model << std::endl;\n    }\n\n    void start() {\n        std::cout << make << \" \" << model << \" is attempting to start.\" << std::endl;\n        engine.start();\n    }\n\n    void stop() {\n        std::cout << make << \" \" << model << \" is attempting to stop.\" << std::endl;\n        engine.stop();\n    }\n};\n\nint main() {\n    Car myCar(\"Toyota\", \"Camry\", 180, \"Petrol\");\n    myCar.start();\n    myCar.stop();\n\n    Car anotherCar(\"Tesla\", \"Model 3\", 450, \"Electric\");\n    anotherCar.start();\n    anotherCar.stop();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": []
+}

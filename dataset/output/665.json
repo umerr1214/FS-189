@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void findDuplicateCharacters(const char arr[], char duplicates[], int& duplicatesSize) that finds duplicate characters in the string.",
+  "test_cases": [
+    {
+      "input": "arr = \"programming\"",
+      "expected": "{'r', 'g', 'm'}"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include \"665.cpp\"\n\nint main() {\n    const char* str = \"programming\";\n    char duplicates[20];\n    int dSize;\n    findDuplicateCharacters(str, duplicates, dSize);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inefficient O(N^3) algorithm used (nested loops + linear search for duplicates) compared to O(N) using a frequency map/array."
+  ]
+}

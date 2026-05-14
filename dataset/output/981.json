@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `ResourceTracker` class that allocates a dynamic integer array in its constructor and deallocates this memory in its destructor. Demonstrate its lifecycle by creating and destroying `ResourceTracker` objects.",
+  "test_cases": [
+    { "input": "", "expected": "Program start\n\n--- Creating tracker_sem ---\nResourceTracker(size=4) constructed, memory allocated at <address1>\nData: [2, 12, 22, 32]\n\n--- Calling reset_and_leak_dangling() ---\nResetting ResourceTracker, deallocating memory at <address1> (leaving dangling pointer)\nAttempting to print data after reset (should be empty/invalid):\nData: (empty or invalid)\n\n--- tracker_sem scope ending (destructor will cause double-free) ---\nResourceTracker(size=0) destructed, no memory to deallocate (or already deallocated).\n<runtime error: double free or corruption>" }
+  ],
+  "driver": "int main() {\n    std::cout << \"Program start\" << std::endl;\n    void demonstrateSemanticIssue();\n    demonstrateSemanticIssue();\n    std::cout << \"Program end\" << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `reset_and_leak_dangling` method deallocates the dynamic array but fails to set the `data` pointer to `nullptr`. This leaves `data` as a dangling pointer. Subsequently, when the `ResourceTracker` object is destroyed, its destructor attempts to `delete[]` the same dangling pointer again (as `data` is not `nullptr`), resulting in a double-free, which is undefined behavior."
+  ]
+}

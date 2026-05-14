@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a function int findLongestPalindrome(const char arr[]) that returns the length of the longest palindromic substring.",
+  "test_cases": [
+    {
+      "input": "arr = \"babad\"",
+      "expected": "3"
+    },
+    {
+      "input": "arr = \"cbbd\"",
+      "expected": "2"
+    },
+    {
+      "input": "arr = NULL",
+      "expected": "0"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <algorithm>\n#include <cassert>\n#include \"648.cpp\"\n\nint main() {\n    assert(findLongestPalindrome(\"babad\") == 3);\n    assert(findLongestPalindrome(\"cbbd\") == 2);\n    assert(findLongestPalindrome(NULL) == 0);\n    assert(findLongestPalindrome(\"a\") == 1);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

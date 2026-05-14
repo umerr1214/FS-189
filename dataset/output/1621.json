@@ -1,0 +1,25 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private members for title (string), author (string), and price (double). Include a parameterized constructor to initialize these members and a public method `displayBookInfo()` to print all details.",
+  "test_cases": [
+    {
+      "input": "The Great Gatsby\nF. Scott Fitzgerald\n10.99",
+      "expected": "Title: The Great Gatsby\nAuthor: F. Scott Fitzgerald\nPrice: $10.99\n"
+    },
+    {
+      "input": "1984\nGeorge Orwell\n8.50",
+      "expected": "Title: 1984\nAuthor: George Orwell\nPrice: $8.50\n"
+    },
+    {
+      "input": "Problematic Book\nUnknown Author\n-5.00",
+      "expected": "Title: Problematic Book\nAuthor: Unknown Author\nPrice: $-5.00\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <iomanip>\n#include <limits>\n\nint main() {\n    std::string title;\n    std::string author;\n    double price;\n\n    std::getline(std::cin, title);\n    std::getline(std::cin, author);\n    std::cin >> price;\n    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\\n');\n\n    Book book(title, author, price);\n    book.displayBookInfo();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The Book class does not validate the price, allowing negative or illogical values to be stored and displayed, which can lead to incorrect data representation."
+  ]
+}

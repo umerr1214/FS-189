@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design a `Counter` class that keeps track of the total number of `Counter` objects currently alive in the program using a static member variable. Its constructor should increment the count, and its destructor should decrement it. Provide a static method to get the current count.",
+  "test_cases": [
+    { "input": "", "expected": "0\n1\n3\n1\n2\n4\n3\n1\n" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n\n// Assuming the Counter class is defined here\n\nint main() {\n    std::cout << Counter::getCount() << std::endl;\n\n    Counter c1;\n    std::cout << Counter::getCount() << std::endl;\n\n    {\n        Counter c2;\n        Counter c3;\n        std::cout << Counter::getCount() << std::endl;\n    }\n    std::cout << Counter::getCount() << std::endl;\n\n    Counter* p_c4 = new Counter();\n    std::cout << Counter::getCount() << std::endl;\n\n    std::vector<Counter> vec_counters;\n    vec_counters.emplace_back();\n    vec_counters.emplace_back();\n    std::cout << Counter::getCount() << std::endl;\n\n    delete p_c4;\n    std::cout << Counter::getCount() << std::endl;\n\n    vec_counters.clear();\n    std::cout << Counter::getCount() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

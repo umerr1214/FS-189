@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function bool isBalanced(const char* str) that checks if the parentheses '(' and ')' in the string are balanced.",
+  "test_cases": [
+    {
+      "input": "str = \"(())\"",
+      "expected": "true"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <stack>\n#include <string>\n#include \"845.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses O(N) extra space (`std::stack` and `std::string`) for a problem solvable with O(1) space using a simple counter."
+  ]
+}

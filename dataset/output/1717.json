@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `MediaItem` base class with a virtual `play()` method. Derive `AudioFile` and `VideoFile` classes from `MediaItem`. Override the `play()` method in each derived class to print a specific message for playing audio or video.",
+  "test_cases": [
+    { "input": "", "expected": "--- Testing Robustness Issue (Missing Virtual Destructor) ---\nPlaying audio file.\nPlaying video file.\nDeleting item1 (AudioFile via MediaItem*)...\nMediaItem destructor called.\nDeleting item2 (VideoFile via MediaItem*)...\nMediaItem destructor called.\n--- End of test ---\n\n--- Correct deletion (for comparison) ---\nPlaying audio file.\nPlaying video file.\nVideoFile destructor called.\nMediaItem destructor called.\nAudioFile destructor called.\nMediaItem destructor called.\n--- Direct objects going out of scope ---\n" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <memory>\n\nclass MediaItem {\npublic:\n    MediaItem() = default;\n    ~MediaItem() {\n        std::cout << \"MediaItem destructor called.\" << std::endl;\n    }\n\n    virtual void play() {\n        std::cout << \"Playing generic media item.\" << std::endl;\n    }\n};\n\nclass AudioFile : public MediaItem {\npublic:\n    AudioFile() = default;\n    ~AudioFile() {\n        std::cout << \"AudioFile destructor called.\" << std::endl;\n    }\n    void play() {\n        std::cout << \"Playing audio file.\" << std::endl;\n    }\n};\n\nclass VideoFile : public MediaItem {\npublic:\n    VideoFile() = default;\n    ~VideoFile() {\n        std::cout << \"VideoFile destructor called.\" << std::endl;\n    }\n    void play() {\n        std::cout << \"Playing video file.\" << std::endl;\n    }\n};\n\nint main() {\n    std::cout << \"--- Testing Robustness Issue (Missing Virtual Destructor) ---\" << std::endl;\n    MediaItem* item1 = new AudioFile();\n    MediaItem* item2 = new VideoFile();\n    item1->play();\n    item2->play();\n    std::cout << \"Deleting item1 (AudioFile via MediaItem*)...\" << std::endl;\n    delete item1;\n    std::cout << \"Deleting item2 (VideoFile via MediaItem*)...\" << std::endl;\n    delete item2;\n    std::cout << \"--- End of test ---\" << std::endl;\n    std::cout << \"\\n--- Correct deletion (for comparison) ---\" << std::endl;\n    AudioFile af_direct;\n    VideoFile vf_direct;\n    af_direct.play();\n    vf_direct.play();\n    std::cout << \"--- Direct objects going out of scope ---\" << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing virtual destructor in the base class `MediaItem`. This is a critical issue in polymorphic hierarchies, leading to undefined behavior and potential memory/resource leaks when derived objects are deleted through base class pointers.",
+    "Lack of `override` keyword in derived class `play()` methods. While not a compilation error, it makes the code less robust to changes in the base class signature and can hide subtle bugs."
+  ]
+}

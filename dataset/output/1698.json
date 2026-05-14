@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Demonstrate multi-level inheritance by creating a hierarchy: `Animal` (base) -> `Mammal` -> `Dog`. Add unique characteristics (members or methods) at each level and show object creation and method calls.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation Error: 'std::string Animal::species' is private" }
+  ],
+  "driver": "int main() {\n    // Object creation and method calls\n    Animal genericAnimal(\"Generic Creature\");\n    std::cout << \"--- Animal ---\" << std::endl;\n    genericAnimal.eat();\n    genericAnimal.makeSound();\n    genericAnimal.sleep();\n    // Semantic Error: Attempting to access private member 'species' directly\n    std::cout << genericAnimal.species << std::endl; // This line causes the error\n    std::cout << std::endl;\n\n    Mammal lion(\"Lion\", \"Golden\");\n    std::cout << \"--- Mammal ---\" << std::endl;\n    lion.eat();\n    lion.makeSound();\n    lion.sleep();\n    lion.lactate();\n    std::cout << std::endl;\n\n    Dog labrador(\"Labrador Retriever\", \"Yellow\", \"Labrador\");\n    std::cout << \"--- Dog ---\" << std::endl;\n    labrador.eat();\n    labrador.makeSound();\n    labrador.sleep();\n    labrador.lactate();\n    labrador.bark();\n    labrador.fetch();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The 'species' member in the 'Animal' class is declared as private. Attempting to access 'genericAnimal.species' directly from 'main' (outside the class or its friends) results in a semantic error (access violation), as private members are not accessible from outside the class. A public getter method (e.g., getSpecies()) should be used for external access."
+  ]
+}

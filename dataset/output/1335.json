@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Book` class with `title` and `author` (both `std::string`). Provide a default constructor, a parameterized constructor, and a copy constructor. Demonstrate their usage by creating objects in different ways.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book 1 (Default): Book: \"Unknown Title\" by Unknown Author\nBook 2 (Parameterized): Book: \"The Hobbit\" by J.R.R. Tolkien\nBook 3 (Copy of Book 2): Book: \"The Hobbit\" by J.R.R. Tolkien\nBook 4 (Parameterized): Book: \"Pride and Prejudice\" by Jane Austen\n\nCreating a vector of books:\nLibrary Book 1: Book: \"Unknown Title\" by Unknown Author\nLibrary Book 2: Book: \"Dune\" by Frank Herbert\nLibrary Book 3: Book: \"The Hobbit\" by J.R.R. Tolkien\nLibrary Book 4: Book: \"To Kill a Mockingbird\" by Harper Lee\n"
+    }
+  ],
+  "driver": "int main() {\n    // 1. Default constructor\n    Book book1;\n    std::cout << \"Book 1 (Default): \";\n    book1.print();\n\n    // 2. Parameterized constructor\n    Book book2(\"The Hobbit\", \"J.R.R. Tolkien\");\n    std::cout << \"Book 2 (Parameterized): \";\n    book2.print();\n\n    // 3. Copy constructor\n    Book book3 = book2;\n    std::cout << \"Book 3 (Copy of Book 2): \";\n    book3.print();\n\n    // Another way to use parameterized constructor\n    Book book4(\"Pride and Prejudice\", \"Jane Austen\");\n    std::cout << \"Book 4 (Parameterized): \";\n    book4.print();\n\n    // Create a vector of books to demonstrate various constructions\n    std::cout << \"\\nCreating a vector of books:\" << std::endl;\n    std::vector<Book> library;\n    library.push_back(Book());\n    library.push_back(Book(\"Dune\", \"Frank Herbert\"));\n    library.push_back(book2);\n    library.emplace_back(\"To Kill a Mockingbird\", \"Harper Lee\");\n\n    for (size_t i = 0; i < library.size(); ++i) {\n        std::cout << \"Library Book \" << i + 1 << \": \";\n        library[i].print();\n    }\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

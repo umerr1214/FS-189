@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Base` and a derived class `Derived`. In their default constructors and destructors, print messages indicating which class's constructor/destructor is being called to observe the order of construction and destruction.",
+  "test_cases": [
+    { "input": "", "expected": "Creating a Derived object via Base pointer (Readability/Efficiency Issue):\nBase Constructor\nDerived Constructor\nDerived Destructor\nBase Destructor\n" }
+  ],
+  "driver": "int main() { std::cout << \"Creating a Derived object via Base pointer (Readability/Efficiency Issue):\\n\"; Base* polymorphicObject = new Derived(); delete polymorphicObject; return 0; }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Frequent use of `std::endl` instead of `\\n` can reduce efficiency, as `std::endl` flushes the output buffer on every call, which is often unnecessary for simple console logging.",
+    "Explicitly constructing `std::string` objects for simple literal messages (e.g., `std::string message = \"Base Destructor\";`) adds minor overhead and verbosity compared to direct literal output.",
+    "Defining simple one-line destructors out-of-line (e.g., `Base::~Base() { ... }`) can sometimes reduce readability for very short methods, making navigation less direct.",
+    "Using `using namespace std;` in a `.cpp` file, while common, is considered a readability concern by some as it can lead to name collisions in larger contexts and makes it less clear which names belong to the standard library."
+  ]
+}

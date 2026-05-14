@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function bool isLeapYear(int year) that checks if a year is a leap year.",
+  "test_cases": [
+    {
+      "input": "year = 1900",
+      "expected": "false"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cassert>\n#include \"902.cpp\"\n\nint main() {\n    // Will return true incorrectly\n    // assert(isLeapYear(1900) == false);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Checks only for divisibility by 4, incorrectly identifying century years (e.g., 1900) as leap years."
+  ]
+}

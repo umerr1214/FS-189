@@ -1,0 +1,27 @@
+{
+  "language": "c++",
+  "question": "Write a function int binaryToDecimal(const char* binary) that converts a binary string to a decimal integer.",
+  "test_cases": [
+    {
+      "input": "binary = \"1011\"",
+      "expected": "11"
+    },
+    {
+      "input": "binary = \"10\"",
+      "expected": "2"
+    },
+    {
+      "input": "binary = \"ABC\"",
+      "expected": "-1"
+    },
+    {
+      "input": "binary = NULL",
+      "expected": "0"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cassert>\n#include \"870.cpp\"\n\nint main() {\n    assert(binaryToDecimal(\"1011\") == 11);\n    assert(binaryToDecimal(\"10\") == 2);\n    assert(binaryToDecimal(\"2\") == -1);\n    assert(binaryToDecimal(NULL) == 0);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

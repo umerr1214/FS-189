@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a multilevel inheritance hierarchy: `Vehicle` (base) -> `Car` -> `SportsCar`. Each class should have a simple constructor that prints its name and a unique method (e.g., `startEngine()` in `Vehicle`, `drive()` in `Car`, `activateBoost()` in `SportsCar`).",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Vehicle constructor called.\nCar constructor called.\nSportsCar constructor called.\nVehicle: Engine started.\nCar: Driving.\nSportsCar: Boost activated!\nSportsCar destructor called.\nCar destructor called.\nVehicle destructor called.\n"
+    }
+  ],
+  "driver": "int main() {\n    // Create a SportsCar object polymorphically via a Vehicle pointer\n    Vehicle* myVehicle = new SportsCar();\n    myVehicle->startEngine(); // Call base method\n\n    // To call derived methods, we need to cast to the appropriate type\n    Car* myCar = static_cast<Car*>(myVehicle);\n    myCar->drive();\n\n    SportsCar* mySportsCar = static_cast<SportsCar*>(myVehicle);\n    mySportsCar->activateBoost();\n    \n    // Polymorphic deletion: `virtual ~Vehicle()` ensures all destructors are called in reverse order\n    delete myVehicle;\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

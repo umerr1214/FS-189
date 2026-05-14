@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void reverseList(Node*& head) that reverses a singly linked list.",
+  "test_cases": [
+    {
+      "input": "List: 1",
+      "expected": "Crash / UB"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"951.cpp\"\n\nint main() {\n    Node* head = new Node{1, nullptr};\n    // Crash\n    // reverseList(head);\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Assigning garbage address `(Node*)((long long)prev + 1)` to `current->next`, creating invalid pointers."
+  ]
+}

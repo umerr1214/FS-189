@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Refactor a `BankAccount` class to strictly enforce encapsulation. Make the `balance` (double) private. Provide public methods `deposit(double amount)`, `withdraw(double amount)`, and `getBalance()` to interact with the balance.",
+  "test_cases": [
+    { "input": "initial: 1000, deposit: 200, withdraw: 150", "expected": "1050.0" },
+    { "input": "initial: 500, withdraw: -100", "expected": "500.0" },
+    { "input": "initial: 200, withdraw: 300", "expected": "200.0" }
+  ],
+  "driver": "#include <iostream>\n\n// BankAccount class is assumed to be defined in the user's code\n\nint main() {\n    // Test Case 1: Valid operations\n    BankAccount account1(1000.0);\n    account1.deposit(200.0);\n    account1.withdraw(150.0);\n    std::cout << account1.getBalance() << std::endl;\n\n    // Test Case 2: Withdraw negative amount (exposes bug)\n    BankAccount account2(500.0);\n    account2.withdraw(-100.0); // Correct behavior should be 500.0, buggy code will output 600.0\n    std::cout << account2.getBalance() << std::endl;\n\n    // Test Case 3: Insufficient funds (still works as expected if amount is positive)\n    BankAccount account3(200.0);\n    account3.withdraw(300.0);\n    std::cout << account3.getBalance() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The withdraw method incorrectly allows withdrawing negative amounts (which effectively adds money), because it lacks a check for amount > 0."]
+}

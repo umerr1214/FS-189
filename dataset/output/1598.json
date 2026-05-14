@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Create a `Rectangle` class with a constructor `Rectangle(double length = 1.0, double width = 1.0)`. Demonstrate creating `Rectangle` objects using default arguments, one argument, and both arguments.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Rectangle A (Default): Length = 1.0, Width = 1.0, Area = 1.0\nRectangle B (One argument): Length = 5.0, Width = 1.0, Area = 5.0\nRectangle C (Both arguments): Length = 3.0, Width = 4.0, Area = 12.0\nRectangle D (Another one): Length = 10.0, Width = 1.0, Area = 10.0\n"
+    }
+  ],
+  "driver": "int main() {\n    Rectangle r1;\n    r1.showDimensions(\"Rectangle A (Default)\");\n\n    Rectangle r2(5.0);\n    r2.showDimensions(\"Rectangle B (One argument)\");\n\n    Rectangle r3(3.0, 4.0);\n    r3.showDimensions(\"Rectangle C (Both arguments)\");\n\n    Rectangle r4(10.0);\n    r4.showDimensions(\"Rectangle D (Another one)\");\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Member variables `len` and `wid` are less descriptive than `length` and `width`.",
+    "The constructor does not use an initializer list for member initialization, which is less efficient and not idiomatic C++ for direct member initialization.",
+    "Redundant use of `this->` in the constructor for simple member assignments.",
+    "Getter methods (`getLength`, `getWidth`, `calculateArea`, `showDimensions`) are not marked `const`, which is a best practice for methods that do not modify the object's state, impacting readability and potential for compiler optimizations.",
+    "The method name `calculateArea` is slightly verbose; `getArea` is more common and concise for an accessor."
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Define a class `ResourceHandler` that simulates acquiring and releasing a system resource. Implement a destructor for this class that prints a message indicating the resource has been released.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Main function started.\nResource Critical System Resource acquired.\nOriginal ResourceHandler object created.\nCopied ResourceHandler object created.\nResource Critical System Resource released.\nAttempted to release an already released or unacquired resource.\nMain function finished.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <utility>\n\nclass ResourceHandler {\npublic:\n    std::string* resource_name_ptr;\n\n    ResourceHandler() : resource_name_ptr(new std::string(\"Critical System Resource\")) {\n        std::cout << \"Resource \" << *resource_name_ptr << \" acquired.\" << std::endl;\n    }\n\n    ~ResourceHandler() {\n        if (resource_name_ptr) {\n            std::cout << \"Resource \" << *resource_name_ptr << \" released.\" << std::endl;\n            delete resource_name_ptr;\n            resource_name_ptr = nullptr;\n        } else {\n            std::cout << \"Attempted to release an already released or unacquired resource.\" << std::endl;\n        }\n    }\n};\n\nint main() {\n    std::cout << \"Main function started.\" << std::endl;\n    {\n        ResourceHandler handler1;\n        std::cout << \"Original ResourceHandler object created.\" << std::endl;\n        ResourceHandler handler2 = handler1;\n        std::cout << \"Copied ResourceHandler object created.\" << std::endl;\n    }\n    std::cout << \"Main function finished.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The class `ResourceHandler` uses a raw pointer (`std::string*`) to manage a resource but fails to implement the Rule of Three/Five (copy constructor, copy assignment operator, move constructor, move assignment operator, destructor).",
+    "The default copy constructor and copy assignment operator perform a shallow copy of the `resource_name_ptr`. This leads to multiple `ResourceHandler` objects owning and attempting to deallocate the same memory, resulting in a double-free error when these objects go out of scope.",
+    "Although a `nullptr` check is added in the destructor, it only prevents deleting a `nullptr` and does not prevent the second destructor call from attempting to `delete` memory that has already been deallocated by another instance, leading to undefined behavior or a crash."
+  ]
+}

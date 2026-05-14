@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Product` class with private members `name` (string), `price` (double), `quantity` (int). Implement a public method `double getTotalValue()` that calculates and returns `price * quantity`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Product: Laptop, Price: 1200.50, Quantity: 2, Total Value: 2401.00\nProduct: Mouse, Price: 25.00, Quantity: 0, Total Value: 0.00\nProduct: Keyboard, Price: 75.99, Quantity: 1, Total Value: 75.99\nProduct: Monitor, Price: 300.00, Quantity: 3, Total Value: 900.00\nProduct: Freebie, Price: 0.00, Quantity: 5, Total Value: 0.00\nProduct: Returned Item, Price: 50.00, Quantity: -3, Total Value: -150.00\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <iomanip>\n#include <cmath>\n\nclass Product {\nprivate:\n    std::string name;\n    double price;\n    int quantity;\n\npublic:\n    Product(std::string n, double p, int q) : name(n), price(p), quantity(q) {}\n\n    double getTotalValue() {\n        return price * quantity;\n    }\n\n    std::string getName() const { return name; }\n    double getPrice() const { return price; }\n    int getQuantity() const { return quantity; }\n};\n\nint main() {\n    std::cout << std::fixed << std::setprecision(2);\n\n    std::vector<Product> products;\n    products.emplace_back(\"Laptop\", 1200.50, 2);\n    products.emplace_back(\"Mouse\", 25.00, 0);\n    products.emplace_back(\"Keyboard\", 75.99, 1);\n    products.emplace_back(\"Monitor\", 300.00, 3);\n    products.emplace_back(\"Freebie\", 0.00, 5);\n    products.emplace_back(\"Returned Item\", 50.00, -3);\n\n    for (const auto& p : products) {\n        std::cout << \"Product: \" << p.getName()\n                  << \", Price: \" << p.getPrice()\n                  << \", Quantity: \" << p.getQuantity()\n                  << \", Total Value: \" << p.getTotalValue() << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `getTotalValue()` method does not validate or semantically handle negative `quantity` values. While mathematically `price * quantity` is correct, in many business contexts, a total value for products is expected to be non-negative, or negative quantities should trigger specific business logic (e.g., returns process) rather than simply yielding a negative total. This can lead to unexpected or incorrect system behavior if negative total values are not anticipated."
+  ]
+}

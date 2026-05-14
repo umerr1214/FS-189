@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Overload the `<<` (insertion) operator for a `Book` class (with title, author, and ISBN). This should allow `Book` objects to be printed directly to `std::cout` in a user-friendly format (e.g., 'Title by Author (ISBN)').",
+  "test_cases": [
+    { "input": "Book(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\")", "expected": "The Hitchhiker's Guide to the Galaxy by Douglas Adams (978-0345391803)\n" },
+    { "input": "Book(\"1984\", \"George Orwell\", \"978-0451524935\")", "expected": "1984 by George Orwell (978-0451524935)\n" }
+  ],
+  "driver": "int main() {\n    Book book1(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\");\n    Book book2(\"1984\", \"George Orwell\", \"978-0451524935\");\n    Book book3(\"Pride and Prejudice\", \"Jane Austen\", \"978-0141439518\");\n\n    std::cout << \"Test Case 1: \" << book1 << std::endl;\n    std::cout << \"Test Case 2: \" << book2 << std::endl;\n    std::cout << \"Test Case 3: \" << book3 << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The overloaded operator<< takes std::ostream by value and returns std::ostream by value instead of by reference. While it may compile and produce correct output for simple cases, this is semantically incorrect for stream operators, leading to inefficient copying of stream objects and breaking the ability to chain multiple insertion operations (e.g., `std::cout << book1 << book2;`)."
+  ]
+}

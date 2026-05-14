@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a function int sumOfDigits(int n) that calculates the sum of digits of a non-negative integer.",
+  "test_cases": [
+    {
+      "input": "n = 12345",
+      "expected": "15"
+    },
+    {
+      "input": "n = 0",
+      "expected": "0"
+    },
+    {
+      "input": "n = -123",
+      "expected": "6"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n#include <cassert>\n#include \"894.cpp\"\n\nint main() {\n    assert(sumOfDigits(12345) == 15);\n    assert(sumOfDigits(0) == 0);\n    assert(sumOfDigits(-123) == 6);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

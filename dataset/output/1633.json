@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Implement a `Student` class with private members for `studentID` (int) and `name` (string). Add a parameterized constructor and a public method `enrollInCourse(string courseName)` that simply prints a message indicating the student has enrolled in the given course.",
+  "test_cases": [
+    { "input": "Student s1(101, \"Alice Smith\"); s1.enrollInCourse(\"Mathematics I\");", "expected": "Student Alice Smith (ID: 101) has enrolled in Mathematics I.\n" },
+    { "input": "Student s2(-5, \"Bob Johnson\"); s2.enrollInCourse(\"Physics II\");", "expected": "Student Bob Johnson (ID: -5) has enrolled in Physics II.\n" },
+    { "input": "Student s3(103, \"\"); s3.enrollInCourse(\"Chemistry Basics\");", "expected": "Student (ID: 103) has enrolled in Chemistry Basics.\n" },
+    { "input": "Student s4(104, \"Charlie Brown\"); s4.enrollInCourse(\"\");", "expected": "Student Charlie Brown (ID: 104) has enrolled in .\n" },
+    { "input": "Student s5(0, \"Diana Prince\"); s5.enrollInCourse(\"History of Art\");", "expected": "Student Diana Prince (ID: 0) has enrolled in History of Art.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\nclass Student {\nprivate:\n    int studentID;\n    std::string name;\n\npublic:\n    Student(int id, std::string n) {\n        studentID = id;\n        name = n;\n    }\n\n    void enrollInCourse(std::string courseName) {\n        std::cout << \"Student \" << name << \" (ID: \" << studentID << \") has enrolled in \" << courseName << \".\\n\";\n    }\n};\n\nint main() {\n    Student s1(101, \"Alice Smith\");\n    s1.enrollInCourse(\"Mathematics I\");\n    Student s2(-5, \"Bob Johnson\");\n    s2.enrollInCourse(\"Physics II\");\n    Student s3(103, \"\");\n    s3.enrollInCourse(\"Chemistry Basics\");\n    Student s4(104, \"Charlie Brown\");\n    s4.enrollInCourse(\"\");\n    Student s5(0, \"Diana Prince\");\n    s5.enrollInCourse(\"History of Art\");\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The constructor lacks validation for `studentID` (e.g., ensuring it's positive) and `name` (e.g., ensuring it's not empty), which can lead to invalid object states.",
+    "The `enrollInCourse` method does not validate `courseName` to prevent enrolling in an empty or invalid course name."
+  ]
+}

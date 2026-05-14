@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Design a `ComplexNumber` class with private `real` and `imaginary` parts (doubles). Overload the binary `+` operator to perform addition of two `ComplexNumber` objects.",
+  "test_cases": [
+    { "input": "ComplexNumber complex1(1.1, 2.2); ComplexNumber complex2(3.3, 4.4); ComplexNumber sum1 = complex1 + complex2; std::cout << sum1.generateComplexStringRepresentation() << std::endl;", "expected": "4.40+6.60i" },
+    { "input": "ComplexNumber complex3(-0.7, 1.3); ComplexNumber complex4(2.7, -3.3); ComplexNumber sum2 = complex3 + complex4; std::cout << sum2.generateComplexStringRepresentation() << std::endl;", "expected": "2.00-2.00i" },
+    { "input": "ComplexNumber complexA(10.0, 5.0); ComplexNumber complexB(2.0, -1.0); ComplexNumber complexC(0.5, 0.5); ComplexNumber sum3 = complexA + complexB + complexC; std::cout << sum3.generateComplexStringRepresentation() << std::endl;", "expected": "12.50+4.50i" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <iomanip>\n\nclass ComplexNumber {\nprivate:\n    double m_realPart;\n    double m_imaginaryPart;\n\npublic:\n    ComplexNumber(double initialReal = 0.0, double initialImaginary = 0.0)\n        : m_realPart(initialReal), m_imaginaryPart(initialImaginary) {}\n\n    double getRealComponent() const { return m_realPart; }\n    double getImaginaryComponent() const { return m_imaginaryPart; }\n\n    ComplexNumber operator+(ComplexNumber other) {\n        double newReal = this->m_realPart + other.m_realPart;\n        double newImaginary = this->m_imaginaryPart + other.m_imaginaryPart;\n        return ComplexNumber(newReal, newImaginary);\n    }\n\n    std::string generateComplexStringRepresentation() const {\n        std::ostringstream outputStream;\n        outputStream << std::fixed << std::setprecision(2);\n        outputStream << m_realPart;\n        if (m_imaginaryPart >= 0.0) {\n            outputStream << \"+\" << m_imaginaryPart << \"i\";\n        } else {\n            outputStream << m_imaginaryPart << \"i\";\n        }\n        return outputStream.str();\n    }\n};\n\nint main() {\n    ComplexNumber complex1(1.1, 2.2); ComplexNumber complex2(3.3, 4.4); ComplexNumber sum1 = complex1 + complex2; std::cout << sum1.generateComplexStringRepresentation() << std::endl;\n    ComplexNumber complex3(-0.7, 1.3); ComplexNumber complex4(2.7, -3.3); ComplexNumber sum2 = complex3 + complex4; std::cout << sum2.generateComplexStringRepresentation() << std::endl;\n    ComplexNumber complexA(10.0, 5.0); ComplexNumber complexB(2.0, -1.0); ComplexNumber complexC(0.5, 0.5); ComplexNumber sum3 = complexA + complexB + complexC; std::cout << sum3.generateComplexStringRepresentation() << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `operator+` takes its operand by value (`ComplexNumber other`) instead of by const reference (`const ComplexNumber& other`), leading to unnecessary object copying and reduced efficiency, especially for larger objects.",
+    "Member variable names like `m_realPart` and `m_imaginaryPart` are overly verbose compared to standard C++ conventions (e.g., `real`, `imaginary`).",
+    "Getter method names like `getRealComponent()` and `getImaginaryComponent()` are also verbose.",
+    "The `generateComplexStringRepresentation()` method name is verbose, and its output format `real+imaginaryi` might be slightly less readable than `real + imaginaryi` or `real + imaginary i` due to lack of spacing."
+  ]
+}

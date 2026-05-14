@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function bool areAnagrams(const char* str1, const char* str2) that checks if two strings are anagrams.",
+  "test_cases": [
+    {
+      "input": "Any input",
+      "expected": "Crash / UB"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include \"813.cpp\"\n\nint main() {\n    // Crash\n    // areAnagrams(\"a\", \"a\");\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Casting the string pointer `str1` to an integer `(int)str1` and using it as an array index, causing wild out-of-bounds access."
+  ]
+}

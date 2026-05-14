@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void CheckFrequency(int arr[], int size) that prints the frequency of each element in the array.",
+  "test_cases": [
+    {
+      "input": "arr = {10, 10}, size = 2",
+      "expected": "10 occurs 2 times"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n#include \"632.cpp\"\n\nint main() {\n    int arr[] = {10, 10};\n    // Capturing output to check for duplicates is hard in this driver format, \n    // but functionally it prints duplicates.\n    CheckFrequency(arr, 2);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Fails to skip already counted elements, resulting in duplicate frequency prints for the same value."
+  ]
+}

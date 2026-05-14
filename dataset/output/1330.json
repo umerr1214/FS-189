@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Implement a `Book` class with `title` and `author` (both `std::string`). Provide a default constructor, a parameterized constructor, and a copy constructor. Demonstrate their usage by creating objects in different ways.",
+  "test_cases": [
+    { "input": "Create objects using default, parameterized, and copy constructors.", "expected": "Compilation error due to missing semicolon." }
+  ],
+  "driver": "int main() { Book book1; Book book2(\"The Hobbit\", \"J.R.R. Tolkien\"); Book book3 = book2; Book book4(\"1984\", \"George Orwell\"); Book book5(book4); return 0; }",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the class definition of 'Book'."]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `Vector2D` class with private members `x` and `y` (doubles). Overload the `+` operator to enable adding two `Vector2D` objects, returning a new `Vector2D` object that represents their sum.",
+  "test_cases": [
+    { "input": "Vector2D v1(1.0, 2.0);\nVector2D v2(3.0, 4.0);\nVector2D v_sum = v1 + v2;", "expected": "Sum (v1 + v2): (-2.0, -2.0)" },
+    { "input": "Vector2D v3(-1.5, 0.5);\nVector2D v4(1.5, -0.5);\nVector2D v_sum2 = v3 + v4;", "expected": "Sum (v3 + v4): (-3.0, 1.0)" }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n\nclass Vector2D {\nprivate:\n    double x;\n    double y;\n\npublic:\n    Vector2D(double x_val, double y_val) : x(x_val), y(y_val) {}\n\n    Vector2D operator+(const Vector2D& other) const {\n        return Vector2D(x + other.x, y + other.y);\n    }\n\n    void display() const {\n        std::cout << \"(\" << x << \", \" << y << \")\" << std::endl;\n    }\n};\n\nint main() {\n    std::stringstream ss_output;\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    Vector2D v1(1.0, 2.0);\n    Vector2D v2(3.0, 4.0);\n    Vector2D v_sum = v1 + v2;\n    std::cout << \"Sum (v1 + v2): \";\n    v_sum.display();\n\n    Vector2D v3(-1.5, 0.5);\n    Vector2D v4(1.5, -0.5);\n    Vector2D v_sum2 = v3 + v4;\n    std::cout << \"Sum (v3 + v4): \";\n    v_sum2.display();\n\n    std::cout.rdbuf(old_cout);\n    std::cout << ss_output.str();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The '+' operator performs subtraction instead of addition, leading to incorrect sum calculations."
+  ]
+}

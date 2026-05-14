@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Date` class with private `day`, `month`, and `year` integers. Overload the `==` operator to compare if two `Date` objects represent the same date.",
+  "test_cases": [
+    { "input": "d1=(15,7,2025), d2=(15,7,2025)", "expected": "true" },
+    { "input": "d1=(15,7,2025), d2=(16,7,2025)", "expected": "false" },
+    { "input": "d1=(29,2,2024) (leap year), d2=(29,2,2024) (leap year)", "expected": "true" },
+    { "input": "d1=(29,2,2023) (invalid, throws exception)", "expected": "Error: Invalid date provided. Day, month, or year out of range." }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <stdexcept>\n\nclass Date {\nprivate:\n    int day;\n    int month;\n    int year;\n\n    bool is_leap(int y) const {\n        return (y % 4 == 0 && y % 100 != 0) || (y % 400 == 0);\n    }\n\n    bool is_valid_date(int d, int m, int y) const {\n        if (y < 1) return false;\n        if (m < 1 || m > 12) return false;\n\n        int days_in_month[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};\n        if (is_leap(y)) {\n            days_in_month[2] = 29;\n        }\n\n        if (d < 1 || d > days_in_month[m]) return false;\n        return true;\n    }\n\npublic:\n    Date(int d, int m, int y) {\n        if (!is_valid_date(d, m, y)) {\n            throw std::invalid_argument(\"Invalid date provided. Day, month, or year out of range.\");\n        }\n        this->day = d;\n        this->month = m;\n        this->year = y;\n    }\n\n    bool operator==(const Date& other) const {\n        return day == other.day && month == other.month && year == other.year;\n    }\n\n    void print() const {\n        std::cout << day << \"/\" << month << \"/\" << year;\n    }\n};\n\nint main() {\n    try {\n        Date d1(15, 7, 2025);\n        Date d2(15, 7, 2025);\n        Date d3(16, 7, 2025);\n        Date d4(29, 2, 2024);\n\n        std::cout << (d1 == d2 ? \"true\" : \"false\") << std::endl;\n        std::cout << (d1 == d3 ? \"true\" : \"false\") << std::endl;\n        std::cout << (d4 == d4 ? \"true\" : \"false\") << std::endl;\n\n        // This will throw an exception, so it's handled in the driver for expected output\n        try {\n            Date invalid_date(29, 2, 2023); // 2023 is not a leap year\n            std::cout << \"true\" << std::endl; // Should not be reached\n        } catch (const std::invalid_argument& e) {\n            std::cerr << \"Error: \" << e.what() << std::endl;\n        }\n\n    } catch (const std::invalid_argument& e) {\n        // Catching any initial invalid date creation in main\n        std::cerr << \"Error: \" << e.what() << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

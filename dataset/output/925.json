@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a function void mergeSort(int arr[], int l, int r) that sorts an array using Merge Sort algorithm.",
+  "test_cases": [],
+  "driver": "#include <iostream>\n#include \"925.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after function call 'mergeSort(arr, 0, arr_size - 1)'"
+  ]
+}

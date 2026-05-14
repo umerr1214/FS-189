@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define a class `ResourceHandler` that simulates acquiring and releasing a system resource. Implement a destructor for this class that prints a message indicating the resource has been released.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Main function started.\nSystem resource acquired.\nResourceHandler object created in inner scope.\nResource is currently active.\nSystem resource released.\nMain function finished.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass ResourceHandler {\nprivate:\n    bool m_is_resource_acquired;\n\npublic:\n    ResourceHandler() : m_is_resource_acquired(true) {\n        std::cout << \"System resource acquired.\\n\";\n    }\n\n    ~ResourceHandler() {\n        if (m_is_resource_acquired) {\n            std::cout << \"System resource released.\\n\";\n            m_is_resource_acquired = false;\n        } else {\n            std::cout << \"Attempted to release a resource that was not acquired.\\n\";\n        }\n    }\n\n    bool isAcquired() const {\n        return m_is_resource_acquired;\n    }\n};\n\nint main() {\n    std::cout << \"Main function started.\\n\";\n    {\n        ResourceHandler handler;\n        std::cout << \"ResourceHandler object created in inner scope.\\n\";\n        if (handler.isAcquired()) {\n            std::cout << \"Resource is currently active.\\n\";\n        }\n    }\n    std::cout << \"Main function finished.\\n\";\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

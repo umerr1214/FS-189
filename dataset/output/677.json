@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void reverseWords(char arr[]) that reverses the order of words in the string.",
+  "test_cases": [
+    {
+      "input": "arr = \"Hello World\"",
+      "expected": "\"World Hello\""
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <algorithm>\n#include <vector>\n#include <sstream>\n#include \"677.cpp\"\n\nint main() {\n    char str[100] = \"Hello World\";\n    reverseWords(str);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses O(N) extra space and allocations (stringstream, vector, string) instead of an efficient in-place O(1) space algorithm."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void sortData(int arr[], int size, char choice) that sorts the array in ascending ('a') or descending ('d') order.",
+  "test_cases": [
+    {
+      "input": "arr = {1, 2, 3}, size = 3, choice = 'd'",
+      "expected": "{3, 2, 1}"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"615.cpp\"\n\nint main() {\n    int arr[] = {1, 2, 3};\n    sortData(arr, 3, 'd');\n    // Will result in 1, 2, 3 (ascending) instead of 3, 2, 1\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using assignment operator '=' instead of comparison '==' in conditional statement 'if (choice = 'a')'."
+  ]
+}

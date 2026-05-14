@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Time` class with private `hour`, `minute`, and `second` integer members. Provide public setter methods (`setHour`, `setMinute`, `setSecond`) that validate the input to ensure it falls within valid ranges (e.g., hour 0-23).",
+  "test_cases": [
+    {
+      "input": "No direct input, relies on hardcoded calls in main.",
+      "expected": "Initial time: 00:00:00\nSet to 10:30:45: 10:30:45\nAttempting to set minute to 60: 10:60:45\nSet to 23:59:59: 23:59:59\nAttempting invalid settings (non-60): 23:60:59\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\nclass Time {\nprivate:\n    int hour;\n    int minute;\n    int second;\n\npublic:\n    Time() : hour(0), minute(0), second(0) {}\n\n    void setHour(int h) {\n        if (h >= 0 && h <= 23) {\n            hour = h;\n        } else {\n            std::cerr << \"Invalid hour: \" << h << \". Hour not set.\" << std::endl;\n        }\n    }\n\n    void setMinute(int m) {\n        if (m >= 0 && m <= 59) { // Correct validation\n            minute = m;\n        } else {\n            std::cerr << \"Invalid minute: \" << m << \". Minute not set.\" << std::endl;\n        }\n    }\n\n    void setSecond(int s) {\n        if (s >= 0 && s <= 59) {\n            second = s;\n        } else {\n            std::cerr << \"Invalid second: \" << s << \". Second not set.\" << std::endl;\n        }\n    }\n\n    void displayTime() const {\n        std::cout << std::setw(2) << std::setfill('0') << hour << \":\"\n                  << std::setw(2) << std::setfill('0') << minute << \":\"\n                  << std::setw(2) << std::setfill('0') << second << std::endl;\n    }\n};\n\nint main() {\n    Time t;\n    std::cout << \"Initial time: \";\n    t.displayTime();\n\n    t.setHour(10);\n    t.setMinute(30);\n    t.setSecond(45);\n    std::cout << \"Set to 10:30:45: \";\n    t.displayTime();\n\n    t.setMinute(60); // This should be invalid\n    std::cout << \"Attempting to set minute to 60: \";\n    t.displayTime();\n\n    t.setHour(23);\n    t.setMinute(59);\n    t.setSecond(59);\n    std::cout << \"Set to 23:59:59: \";\n    t.displayTime();\n\n    t.setHour(24); // Invalid\n    t.setMinute(-1); // Invalid\n    t.setSecond(60); // Invalid\n    std::cout << \"Attempting invalid settings (non-60): \";\n    t.displayTime();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The setMinute method has an incorrect validation range. It allows minute values of 60, which are invalid. The condition `m <= 60` should be `m <= 59` or `m < 60` to correctly reject 60."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Design a `Course` class and a `Student` class. `Course` should have a `name` and a private pointer to a `Student` object (`Student* assignedStudent`) to demonstrate aggregation (a student can exist independently of a course). Implement methods to assign and unassign a student to the course.",
+  "test_cases": [
+    {
+      "input": "Initialize two students and two courses. Assign s1 to c1, s2 to c2. Unassign s1 from c1. Reassign s2 to c1.",
+      "expected": "Compilation Error: Missing semicolon after class definition."
+    }
+  ],
+  "driver": "    Student s1(\"Alice\", 101);\n    Student s2(\"Bob\", 102);\n\n    Course c1(\"C++ Programming\");\n    Course c2(\"Data Structures\");\n\n    c1.display();\n    c2.display();\n\n    c1.assignStudent(&s1);\n    c1.display();\n\n    c2.assignStudent(&s2);\n    c2.display();\n\n    c1.unassignStudent();\n    c1.display();\n\n    // Test re-assignment\n    c1.assignStudent(&s2);\n    c1.display();\n\n    std::cout << \"\\n--- End of main scope ---\\n\";",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    {
+      "line": 20,
+      "column": 1,
+      "message": "Missing semicolon after class 'Student' definition."
+    }
+  ]
+}

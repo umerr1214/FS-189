@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Implement a base class `Employee` with private members `name` (string) and `employeeID` (int). Derive a `Manager` class from `Employee` that adds a private member `department` (string). Include constructors and methods to display details for both classes.",
+  "test_cases": [
+    { "input": "", "expected": "Employee Details:\nName: Alice Smith\nID: 101\n\nManager Details:\nDepartment: Sales\n\nEmployee Details:\nName: Charlie Brown\nID: 102\n\nManager Details:\nDepartment: Marketing\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// Employee and Manager class definitions would go here\n\nint main() {\n    Employee emp(\"Alice Smith\", 101);\n    std::cout << \"Employee Details:\\n\";\n    emp.displayDetails();\n    std::cout << \"\\n\";\n\n    Manager mgr(\"Bob Johnson\", 201, \"Sales\");\n    std::cout << \"Manager Details:\\n\";\n    mgr.displayDetails();\n    std::cout << \"\\n\";\n\n    Employee emp2(\"Charlie Brown\", 102);\n    std::cout << \"Employee Details:\\n\";\n    emp2.displayDetails();\n    std::cout << \"\\n\";\n\n    Manager mgr2(\"Diana Prince\", 202, \"Marketing\");\n    std::cout << \"Manager Details:\\n\";\n    mgr2.displayDetails();\n    std::cout << \"\\n\";\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Manager::displayDetails only displays department information, failing to show inherited employee details, leading to incomplete output for Manager objects.",
+    "Missing const-correctness for displayDetails methods, which can prevent calling them on const objects and indicates a potential for unintended state modification.",
+    "Missing virtual destructor in base class Employee, which is a robustness issue in polymorphic hierarchies as it can lead to resource leaks if derived objects are deleted via base pointers."
+  ]
+}

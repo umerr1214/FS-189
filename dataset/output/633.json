@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void CheckFrequency(int arr[], int size) that prints the frequency of each element in the array.",
+  "test_cases": [
+    {
+      "input": "arr = {10, 20}, size = 2",
+      "expected": "10 occurs 1 times, 20 occurs 1 times"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"633.cpp\"\n\nint main() {\n    int arr[] = {10, 20};\n    // Will produce incorrect counts and modify array due to assignment\n    CheckFrequency(arr, 2);\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using assignment operator '=' instead of equality '==' in 'if (arr[i] = arr[j])'."
+  ]
+}

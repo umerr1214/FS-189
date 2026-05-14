@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Base` with a public method `void show(int val)`. Derive a `Derived` class from `Base`. In `Derived`, overload `show` with `void show(double val)` and also define `void show(int val)` (non-virtual). Demonstrate calling `show` using `Base` and `Derived` class objects and pointers, highlighting method hiding vs. overloading.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Hiding and Overloading Demo (Readability/Efficiency Issue) ---\n\nBase obj calls:\nBase::show(int) called. Value: 11\n\nDerived obj calls:\nDerived::show(int) called. Value: 22\nDerived::show(double) called. Value: 22.5\nBase::show(int) called. Value: 23\n\nPointers:\nBase::show(int) called. Value: 33\nDerived::show(int) called. Value: 44\nDerived::show(double) called. Value: 44.5\nBase::show(int) called. Value: 55\n\n--- End of Demo ---\nThis code demonstrates method hiding and overloading but has several readability issues:\n- Uses 'using namespace std;' which is generally discouraged in production code.\n- Inconsistent and uninformative variable names (e.g., b_obj_one, d_obj_two, ptr1, ptr2, ptr3).\n- Poor parameter names (x, y, z) in 'show' methods.\n- Overly verbose output statements using 'endl' instead of '\\n', potentially impacting efficiency.\n- Lack of specific comments or distinct output messages explaining *why* certain methods are called in each scenario, making it hard to follow the demonstration of hiding vs. overloading.\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses `using namespace std;` which can lead to name collisions and reduced clarity in larger projects.",
+    "Employs inconsistent and uninformative variable names (e.g., `b_obj_one`, `d_obj_two`, `ptr1`), hindering readability.",
+    "Uses generic and unexpressive parameter names (`x`, `y`, `z`) in the `show` methods.",
+    "Excessive use of `std::endl` instead of `\\n` for newlines, which forces a flush of the output buffer on each call, potentially reducing efficiency.",
+    "Lacks sufficient comments and clear, distinct output messages to explain the specific behavior (method hiding or overloading) for each function call, making the demonstration less effective and harder to understand."
+  ]
+}

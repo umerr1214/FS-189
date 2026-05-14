@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a function int searchData(int arr[], int size, int key) that performs binary search to find the key in the sorted array. Return the index if found, -1 otherwise.",
+  "test_cases": [
+    {
+      "input": "arr = NULL, size = 5, key = 10",
+      "expected": "Graceful failure"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"628.cpp\"\n\nint main() {\n    // searchData(NULL, 5, 10);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing NULL pointer check.",
+    "Potential integer overflow in midpoint calculation '(start + end) / 2'."
+  ]
+}

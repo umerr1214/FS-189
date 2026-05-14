@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that defines a global function `printValue` overloaded for three different data types: `int`, `double`, and `std::string`. Each version should print the value along with its type.",
+  "test_cases": [
+    { "input": "printValue(100);", "expected": "Type: int, Value: 100\n" },
+    { "input": "printValue(987.654321);", "expected": "Type: double, Value: 987.654321\n" },
+    { "input": "printValue(\"This is a correctly implemented string.\");", "expected": "Type: std::string, Value: This is a correctly implemented string.\n" },
+    { "input": "printValue(-50);", "expected": "Type: int, Value: -50\n" },
+    { "input": "printValue(0.001);", "expected": "Type: double, Value: 0.001\n" },
+    { "input": "printValue(\"\");", "expected": "Type: std::string, Value: \n" },
+    { "input": "printValue(\"A very long string that should be handled efficiently without unnecessary copies.\");", "expected": "Type: std::string, Value: A very long string that should be handled efficiently without unnecessary copies.\n" }
+  ],
+  "driver": "main()",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

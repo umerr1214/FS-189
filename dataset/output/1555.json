@@ -1,0 +1,30 @@
+{
+  "language": "c++",
+  "question": "Create a `Point` class with private `x` and `y` (double) coordinates. Write two overloaded non-member functions: `void print(Point p)` that prints 'Point: (x, y)' and `void print(Point p, string prefix)` that prints 'Prefix: (x, y)'.",
+  "test_cases": [
+    {
+      "input": "Point p1(10.5, 20.25);\nprint(p1);",
+      "expected": "Point: (10.5, 20.25)\n"
+    },
+    {
+      "input": "Point p2(0.123456789, 987654321.123456789);\nprint(p2, \"ComplexPoint\");",
+      "expected": "ComplexPoint: (0.123457, 9.87654e+08)\n"
+    },
+    {
+      "input": "Point p3(1.0/3.0, 2.0/3.0);\nprint(p3, \"FractionPoint\");",
+      "expected": "FractionPoint: (0.333333, 0.666667)\n"
+    },
+    {
+      "input": "Point p4(0.0000000001, 50.0);\nprint(p4);",
+      "expected": "Point: (1e-10, 50)\n"
+    }
+  ],
+  "driver": "int main() {\n    Point p1(10.5, 20.25);\n    Point p2(0.123456789, 987654321.123456789);\n    Point p3(1.0/3.0, 2.0/3.0);\n    Point p4(0.0000000001, 50.0);\n\n    print(p1);\n    print(p2, \"ComplexPoint\");\n    print(p3, \"FractionPoint\");\n    print(p4);\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing `const` qualifier for getter methods (`getX()`, `getY()`), which can lead to unexpected behavior if the object is treated as constant.",
+    "Lack of floating-point precision control in output, leading to inconsistent or potentially unreadable formatting (e.g., scientific notation) for certain double values."
+  ]
+}

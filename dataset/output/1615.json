@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Explain the difference between `public`, `private`, and `protected` access specifiers in C++ classes. Provide a brief code snippet demonstrating each in a simple class structure.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Explanation of Access Specifiers ---\nIn C++, access specifiers (public, private, protected) control the visibility and accessibility of class members (data members and member functions).\n\n1. Public:\n   Public members are accessible from anywhere, both inside and outside the class. They form the interface of the class.\n\n2. Private:\n   Private members are only accessible from within the class itself. They are hidden from outside the class and from derived classes. This is useful for internal implementation details.\n\n3. Protected:\n   Protected members are accessible from within the class itself and from its derived classes. They are not accessible directly from outside the class (e.g., from main()), similar to private members.\n   This allows derived classes to interact with certain base class internals while keeping them hidden from the general public.\n\n--- Code Demonstration ---\n\nFrom main (AccessDemo object):\nPublic data directly accessible: I am public data.\nAccessing public data from inside the class: I am public data.\nAccessing private data from inside the class: I am private data.\nAccessing protected data from inside the class: I am protected data.\n\nFrom main (DerivedAccessDemo object):\nPublic data of derived object directly accessible: I am public data.\nAccessing public data from inside the class: I am public data.\nAccessing private data from inside the class: I am private data.\nAccessing protected data from inside the class: I am protected data.\nAccessing protected data from derived class: I am protected data.\n\nSummary:\nPublic: Accessible everywhere.\nPrivate: Accessible only within the defining class.\nProtected: Accessible within the defining class and its derived classes.\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The code snippet demonstrates access specifiers but does not robustly show the compile-time errors that occur when attempting to access private or protected members from unauthorized scopes, which is a key aspect of their design robustness. It only comments on them.",
+    "The explanation for 'protected' could be slightly more robust in explicitly stating that direct access from non-derived, non-friend code is a compile-time error, rather than just 'not accessible directly'."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Base` and a derived class `Derived`. In their default constructors and destructors, print messages indicating which class's constructor/destructor is being called to observe the order of construction and destruction.",
+  "test_cases": [
+    { "input": "", "expected": "Creating a Derived object via Base pointer (Robustness Issue):\nBase Constructor\nDerived Constructor\nDeleting the object via Base pointer:\nBase Destructor\nObservation complete (note missing Derived Destructor).\n" }
+  ],
+  "driver": "int main() { std::cout << \"Creating a Derived object via Base pointer (Robustness Issue):\\n\"; Base* basePtr = new Derived(); std::cout << \"Deleting the object via Base pointer:\\n\"; delete basePtr; std::cout << \"Observation complete (note missing Derived Destructor).\\n\"; return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The destructor of the `Base` class is not declared as `virtual`. When a `Derived` object is deleted through a `Base*` pointer, only the `Base` destructor is called, leading to undefined behavior and potential resource leaks (the `Derived` destructor is not executed). This is a critical robustness flaw in polymorphic class hierarchies."
+  ]
+}

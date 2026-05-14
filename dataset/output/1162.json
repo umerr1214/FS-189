@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "For the `StringWrapper` class (from Q20, managing dynamic C-style string), implement the copy assignment operator (`operator=`). Ensure it handles self-assignment correctly and performs a deep copy of the managed C-style string to prevent resource leaks and double-free issues.",
+  "test_cases": [
+    { "input": "StringWrapper s1(\"Hello\"); StringWrapper s2(\"World\"); s1 = s2;", "expected": "s1: World\ns2: World" },
+    { "input": "StringWrapper s3(\"SelfAssign\"); s3 = s3;", "expected": "s3: SelfAssign" },
+    { "input": "StringWrapper s4(\"Short\"); StringWrapper s5(\"VeryLongString\"); s4 = s5;", "expected": "s4: VeryLongString" },
+    { "input": "StringWrapper s6(\"AnotherLongString\"); StringWrapper s7(\"Tiny\"); s6 = s7;", "expected": "s6: Tiny" },
+    { "input": "StringWrapper s8(\"A\"); StringWrapper s9(\"B\"); StringWrapper s10(\"C\"); s8 = s9 = s10;", "expected": "s8: C\ns9: C\ns10: C" }
+  ],
+  "driver": "void run_tests() {\n    StringWrapper s1(\"Hello\"); StringWrapper s2(\"World\"); s1 = s2;\n    std::cout << \"s1: \" << s1.c_str() << \"\\n\";\n    std::cout << \"s2: \" << s2.c_str() << \"\\n\";\n\n    StringWrapper s3(\"SelfAssign\"); s3 = s3;\n    std::cout << \"s3: \" << s3.c_str() << \"\\n\";\n\n    StringWrapper s4(\"Short\"); StringWrapper s5(\"VeryLongString\"); s4 = s5;\n    std::cout << \"s4: \" << s4.c_str() << \"\\n\";\n\n    StringWrapper s6(\"AnotherLongString\"); StringWrapper s7(\"Tiny\"); s6 = s7;\n    std::cout << \"s6: \" << s6.c_str() << \"\\n\";\n\n    StringWrapper s8(\"A\"); StringWrapper s9(\"B\"); StringWrapper s10(\"C\"); s8 = s9 = s10;\n    std::cout << \"s8: \" << s8.c_str() << \"\\n\";\n    std::cout << \"s9: \" << s9.c_str() << \"\\n\";\n    std::cout << \"s10: \" << s10.c_str() << \"\\n\";\n}\n\nint main() {\n    run_tests();\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after return statement in StringWrapper::operator=."]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create an abstract base class `Animal` with a pure virtual function `void makeSound()`. Derive two concrete classes, `Dog` and `Cat`, from `Animal` and implement their respective `makeSound()` functions.",
+  "test_cases": [
+    { "input": "", "expected": "Woof!\nMeow!\n" }
+  ],
+  "driver": "int main() {\n    Animal* myDog = new Dog();\n    Animal* myCat = new Cat();\n\n    myDog->makeSound();\n    myCat->makeSound();\n\n    delete myDog;\n    delete myCat;\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses C-style strings (`char*`) and `printf`/`fprintf` for output instead of `std::string` and `std::cout`. While functional, this is less idiomatic and generally less readable/safe in modern C++.",
+    "The code is unnecessarily verbose by using C-style arrays and functions from `<cstdio>` for simple string output, which reduces readability and maintainability."
+  ]
+}

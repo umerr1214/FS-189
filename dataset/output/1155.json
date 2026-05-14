@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `Counter` class with a private integer `count`. Overload the prefix increment operator `++` (e.g., `++myCounter`) to increase the `count` by one and return the modified `Counter` object. Demonstrate its usage.",
+  "test_cases": [
+    { "input": "", "expected": "Initial count: 5\nAfter first increment: 6\nInitial anotherCounter (before ++): 10\nAfter chained increment: 12\nInitial thirdCounter (before ++): 20\nAfter increment (ref_to_third): 21\nOriginal thirdCounter: 21\nAfter incrementing via ref_to_third: 22\nOriginal thirdCounter (affected): 22\n" }
+  ],
+  "driver": "int main() {\n    Counter myCounter(5);\n    std::cout << \"Initial count: \" << myCounter.getCount() << std::endl;\n\n    ++myCounter;\n    std::cout << \"After first increment: \" << myCounter.getCount() << std::endl;\n\n    Counter anotherCounter(10);\n    ++++anotherCounter;\n    std::cout << \"Initial anotherCounter (before ++): \" << 10 << std::endl;\n    std::cout << \"After chained increment: \" << anotherCounter.getCount() << std::endl;\n\n    Counter thirdCounter(20);\n    Counter& ref_to_third = ++thirdCounter;\n    std::cout << \"Initial thirdCounter (before ++): \" << 20 << std::endl;\n    std::cout << \"After increment (ref_to_third): \" << ref_to_third.getCount() << std::endl;\n    std::cout << \"Original thirdCounter: \" << thirdCounter.getCount() << std::endl;\n    \n    ref_to_third.operator++();\n    std::cout << \"After incrementing via ref_to_third: \" << ref_to_third.getCount() << std::endl;\n    std::cout << \"Original thirdCounter (affected): \" << thirdCounter.getCount() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

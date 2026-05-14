@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Department` class that uses composition to manage a collection of `Employee` objects. The `Department` class should have a private member (e.g., `std::vector<Employee>`) to store employees. Include methods to add an employee and list all employees in the department.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Department: Human Resources\n  ID: 101, Name: Alice Smith\n  ID: 102, Name: Bob Johnson\n  ID: 103, Name: Charlie Brown"
+    }
+  ],
+  "driver": "int main() {\n    Department hr(\"Human Resources\");\n    Employee e1(101, \"Alice Smith\");\n    Employee e2(102, \"Bob Johnson\");\n    Employee e3(103, \"Charlie Brown\");\n\n    hr.addEmployee(e1);\n    hr.addEmployee(e2);\n    hr.addEmployee(e3);\n\n    hr.listEmployees();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": []
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Explain the difference between `public`, `private`, and `protected` access specifiers in C++ classes. Provide a brief code snippet demonstrating each in a simple class structure.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Explanation of C++ Access Specifiers ---\nAccess specifiers (public, private, protected) define the accessibility of class members.\n\n1. Public:\n   - Members declared as 'public' are accessible from anywhere: inside the class, from derived classes, and from objects outside the class (e.g., in main()).\n   - They form the public interface of the class.\n\n2. Private:\n   - Members declared as 'private' are only accessible from within the class itself.\n   - They are hidden from outside the class and from derived classes, used for internal implementation details.\n\n3. Protected:\n   - Members declared as 'protected' are accessible from within the class itself and from its derived classes.\n   - They are NOT accessible directly from objects outside the class (similar to private members).\n   - This provides a way for derived classes to interact with base class internals while maintaining encapsulation from the outside world.\n\n--- Code Demonstration ---\n\nAccessing members from main() (using a base class object):\n  Public member directly accessible: This is a public string.\n  (Inside class) Public member: This is a public string.\n  (Inside class) Private member: This is a private string.\n  (Inside class) Protected member: This is a protected string.\n  (Attempting to access private/protected members directly from main() would cause compile errors.)\n\nAccessing members from main() (using a derived class object):\n  Public member (inherited) directly accessible: This is a public string.\n  (Inside class) Public member: This is a public string.\n  (Inside class) Private member: This is a private string.\n  (Inside class) Protected member: This is a protected string.\n  (Inside derived class) Accessing protected member: This is a protected string.\n\n--- Summary ---\nPublic: Accessible everywhere.\nPrivate: Accessible only within the defining class.\nProtected: Accessible within the defining class and its derived classes.\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

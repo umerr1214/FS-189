@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function int findLongestPalindrome(const char arr[]) that returns the length of the longest palindromic substring.",
+  "test_cases": [
+    {
+      "input": "arr = \"abcda\"",
+      "expected": "1"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cassert>\n#include \"644.cpp\"\n\nint main() {\n    const char* str = \"abcda\";\n    // Will fail because it returns 5 instead of 1\n    // assert(findLongestPalindrome(str) == 1);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Incorrect palindrome check: only compares the first and last characters of the substring instead of checking the entire substring."
+  ]
+}

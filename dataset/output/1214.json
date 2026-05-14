@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Define a class `ResourceHandler` that simulates acquiring and releasing a system resource. Implement a destructor for this class that prints a message indicating the resource has been released.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Main application started.\nResource acquired: System Resource: Active and operational.\nInitialization complete.\nResourceHandler object operational within its designated scope.\n--- Resource Handler Destructor Initiated ---\nSTATUS UPDATE: The resource \"System Resource: Active and operational.\" has been officially released.\n--- Resource Handler Destructor Concluded ---\nMain application finished.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\nclass ResourceHandler {\nprivate:\n    std::vector<std::string> m_resource_status_vector;\n\npublic:\n    ResourceHandler() {\n        m_resource_status_vector.push_back(\"System Resource: Active and operational.\");\n        std::cout << \"Resource acquired: \" << m_resource_status_vector[0] << std::endl;\n        std::cout << \"Initialization complete.\" << std::endl;\n    }\n\n    ~ResourceHandler() {\n        std::cout << \"--- Resource Handler Destructor Initiated ---\" << std::endl;\n        if (!m_resource_status_vector.empty()) {\n            std::cout << \"STATUS UPDATE: The resource \\\"\" << m_resource_status_vector[0] << \"\\\" has been officially released.\" << std::endl;\n        } else {\n            std::cout << \"STATUS UPDATE: No resource found to release.\" << std::endl;\n        }\n        std::cout << \"--- Resource Handler Destructor Concluded ---\" << std::endl;\n    }\n};\n\nint main() {\n    std::cout << \"Main application started.\" << std::endl;\n    {\n        ResourceHandler my_complex_resource_handler_object;\n        std::cout << \"ResourceHandler object operational within its designated scope.\" << std::endl;\n    }\n    std::cout << \"Main application finished.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The class uses a `std::vector<std::string>` to store a single string, which is an inefficient and overly complex choice compared to a simple `std::string` member.",
+    "The consistent use of `std::endl` flushes the output buffer on every print. While fine for small programs, using `\\n` is generally more efficient for console output as it defers flushing until necessary.",
+    "Variable names like `m_resource_status_vector` and `my_complex_resource_handler_object` are excessively verbose for their simple roles, hindering readability.",
+    "The output messages in both the constructor and destructor are overly verbose and include redundant logging, making the output less concise and potentially harder to parse."
+  ]
+}

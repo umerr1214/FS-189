@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function Node* insertBST(Node* root, int val) that inserts a value into a Binary Search Tree.",
+  "test_cases": [
+    {
+      "input": "Insert 50, 30, 70",
+      "expected": "30 50 70"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n#include \"968.cpp\"\n\nint main() {\n    Node* root = nullptr;\n    root = insertBST(root, 50);\n    insertBST(root, 30);\n    insertBST(root, 70);\n    // Will check inorder traversal. Should be 30 50 70. Is 70 50 30.\n    // Simulating check via structural inspection\n    if (root->left && root->left->data == 70) return 0;\n    return 1;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Incorrect BST insertion logic: inserts smaller values to the right and larger values to the left, violating the BST property."
+  ]
+}

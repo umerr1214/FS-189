@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a `Department` class that maintains a list of `Employee` objects (aggregation). The `Employee` class should have `name` and `id`. The `Department` class should have `name` and methods to `addEmployee` and `listEmployees`. Demonstrate how employees can exist independently of the department (e.g., an employee can be added to multiple departments or removed from one without being destroyed).",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating Robustness Issue (Null Pointer Dereference) ---\n\nInitial Department Listings:\nDepartment: Human Resources\n  Employee ID: 101, Name: Alice\n  Employee ID: 102, Name: Bob\nDepartment: IT Department\n  Employee ID: 101, Name: Alice\n\n--- Adding a nullptr to a department (Robustness Issue) ---\n\nAttempting to list employees after adding nullptr to HR Dept:\nDepartment: Human Resources\n  Employee ID: 101, Name: Alice\n  Employee ID: 102, Name: Bob\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Demonstrating Robustness Issue (Null Pointer Dereference) ---\" << std::endl;\n\n    Employee emp1(\"Alice\", 101);\n    Employee emp2(\"Bob\", 102);\n\n    Department hr_dept(\"Human Resources\");\n    Department it_dept(\"IT Department\");\n\n    hr_dept.addEmployee(&emp1);\n    hr_dept.addEmployee(&emp2);\n\n    it_dept.addEmployee(&emp1);\n\n    std::cout << \"\\nInitial Department Listings:\" << std::endl;\n    hr_dept.listEmployees();\n    it_dept.listEmployees();\n\n    std::cout << \"\\n--- Adding a nullptr to a department (Robustness Issue) ---\" << std::endl;\n    Employee* null_emp = nullptr;\n    hr_dept.addEmployee(null_emp);\n\n    std::cout << \"\\nAttempting to list employees after adding nullptr to HR Dept:\" << std::endl;\n    hr_dept.listEmployees();\n\n    std::cout << \"\\n--- Program will likely crash before reaching here ---\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `addEmployee` method in `Department` does not check for `nullptr` before adding a raw `Employee*` to its list.",
+    "The `listEmployees` method in `Department` dereferences `Employee*` pointers without checking if they are valid (non-null). If a `nullptr` is added, calling `listEmployees` will result in a null pointer dereference and likely a program crash."
+  ]
+}

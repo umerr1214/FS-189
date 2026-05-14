@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function to find unique elements in a 2D array.",
+  "test_cases": [
+    {
+      "input": "arr = {{1, 2}, {3, 4}}",
+      "expected": "1 2 3 4"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <cassert>\n#include \"704.cpp\"\n\nint main() {\n    int arr[3][COLS] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};\n    findUniqueElements(arr, 3);\n    // Will print nothing, logic error\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Duplicate check includes the element itself, causing all elements to be flagged as duplicates."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Create a class `Matrix` with a private 2D array (e.g., `int mat[2][2]` or `int**` for dynamic). Implement overloaded `setElement` methods: one that takes `row`, `col`, and `value` to set a single element, and another that takes a `row` index and an array/`std::vector<int>` to set an entire row.",
+  "test_cases": [
+    {
+      "input": "Initial Matrix (readability issue):\nSetting element (0,0) to 5:\nSetting row 1 to {10, 20}:\nSetting element (0,1) to 9:\n--- Demonstrating Readability/Efficiency Issues ---\nAttempting to set element (2,0) to 99 (invalid row):\nError: Invalid row index 2 for single element set.\nAttempting to set row 0 with {100, 200, 300} (too many columns):\nWarning: Row values size mismatch for row 0. Expected 2, got 3. Setting partial row.\nAttempting to set row 1 with {40} (too few columns):\nWarning: Row values size mismatch for row 1. Expected 2, got 1. Setting partial row.",
+      "expected": "Initial Matrix (readability issue):\n0 0\n0 0\n\nSetting element (0,0) to 5:\n5 0\n0 0\n\nSetting row 1 to {10, 20}:\n5 0\n10 20\n\nSetting element (0,1) to 9:\n5 9\n10 20\n\n--- Demonstrating Readability/Efficiency Issues ---\n\nAttempting to set element (2,0) to 99 (invalid row):\nError: Invalid row index 2 for single element set.\n5 9\n10 20\n\nAttempting to set row 0 with {100, 200, 300} (too many columns):\nWarning: Row values size mismatch for row 0. Expected 2, got 3. Setting partial row.\n100 200\n10 20\n\nAttempting to set row 1 with {40} (too few columns):\nWarning: Row values size mismatch for row 1. Expected 2, got 1. Setting partial row.\n100 200\n40 20\n"
+    }
+  ],
+  "driver": "int main() {\n    Matrix myMatrix;\n    std::cout << \"Initial Matrix (readability issue):\" << std::endl;\n    myMatrix.print_the_matrix();\n\n    std::cout << \"\\nSetting element (0,0) to 5:\" << std::endl;\n    myMatrix.setElement(0, 0, 5);\n    myMatrix.print_the_matrix();\n\n    std::cout << \"\\nSetting row 1 to {10, 20}:\" << std::endl;\n    myMatrix.setElement(1, {10, 20});\n    myMatrix.print_the_matrix();\n\n    std::cout << \"\\nSetting element (0,1) to 9:\" << std::endl;\n    myMatrix.setElement(0, 1, 9);\n    myMatrix.print_the_matrix();\n\n    std::cout << \"\\n--- Demonstrating Readability/Efficiency Issues ---\" << std::endl;\n\n    std::cout << \"\\nAttempting to set element (2,0) to 99 (invalid row):\" << std::endl;\n    myMatrix.setElement(2, 0, 99);\n    myMatrix.print_the_matrix();\n\n    std::cout << \"\\nAttempting to set row 0 with {100, 200, 300} (too many columns):\" << std::endl;\n    myMatrix.setElement(0, {100, 200, 300});\n    myMatrix.print_the_matrix();\n\n    std::cout << \"\\nAttempting to set row 1 with {40} (too few columns):\" << std::endl;\n    myMatrix.setElement(1, {40});\n    myMatrix.print_the_matrix();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Poor variable and method naming (e.g., `m_data_arr`, `r_idx`, `c_idx`, `val_to_set`, `print_the_matrix`).",
+    "Inefficient and verbose initialization in constructor.",
+    "Overly complex and verbose bounds checking using nested `switch` statements in `setElement(int, int, int)` instead of simple `if` conditions.",
+    "Uses a `while` loop with manual increment for iterating `row_values_container` in `setElement(int, const std::vector<int>&)` instead of a standard `for` loop.",
+    "Inconsistent use of constants vs. magic numbers (e.g., `MATRIX_DIMENSION_ROW` vs `2` in print loop).",
+    "Partial row setting in `setElement(int, const std::vector<int>&)` when `row_values.size()` doesn't match column count might be unexpected behavior for some users, though it does print a warning."
+  ]
+}

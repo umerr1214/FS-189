@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Implement a `StringWrapper` class that manages a C-style string (`char*`) internally. Provide a parameterized constructor, a copy constructor, a copy assignment operator, and a destructor to correctly handle dynamic memory allocation and deallocation for the string data.",
+  "test_cases": [
+    { "input": "N/A", "expected": "s1: \"Hello\" (length: 5)\ns2: \"Hello\" (length: 5)\ns3: \"\" (length: 0)\ns3 after assignment: \"Hello\" (length: 5)\ns4: \"World\" (length: 5)\ns3 after re-assignment: \"World\" (length: 5)\ns6 after longer assignment: \"Longer string test\" (length: 18)\n" }
+  ],
+  "driver": "    StringWrapper s1(\"Hello\");\n    print_wrapper(s1, \"s1\");\n\n    StringWrapper s2 = s1;\n    print_wrapper(s2, \"s2\");\n\n    StringWrapper s3;\n    print_wrapper(s3, \"s3\");\n\n    s3 = s1;\n    print_wrapper(s3, \"s3 after assignment\");\n\n    StringWrapper s4(\"World\");\n    print_wrapper(s4, \"s4\");\n\n    s3 = s4;\n    print_wrapper(s3, \"s3 after re-assignment\");\n\n    StringWrapper s5(\"Longer string test\");\n    StringWrapper s6(\"Short\");\n    s6 = s5;\n    print_wrapper(s6, \"s6 after longer assignment\");",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Typo in access specifier: 'pubilc' instead of 'public' within the StringWrapper class definition. This will cause a compilation error."]
+}

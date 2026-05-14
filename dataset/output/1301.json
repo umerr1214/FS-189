@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Model a `Department` class that aggregates `Employee` objects. The `Department` should have a name and a list of employees. Employees can exist independently of departments. Demonstrate adding employees to a department and displaying the department's staff.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Department: Engineering\n  No staff currently.\nDepartment: Sales\n  No staff currently.\n"
+    }
+  ],
+  "driver": "    Employee emp1(\"Alice\", 101);\n    Employee emp2(\"Bob\", 102);\n\n    Department engineering(\"Engineering\");\n    engineering.addEmployee(emp1);\n    engineering.addEmployee(emp2);\n\n    engineering.displayStaff();\n\n    Department sales(\"Sales\");\n    sales.displayStaff();",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `displayStaff` method in the `Department` class contains a logical error. It unconditionally prints 'No staff currently.' and does not iterate through or display the actual employees stored in the `employees` vector, leading to incorrect output even when employees have been added."
+  ]
+}

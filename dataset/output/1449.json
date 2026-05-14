@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `Temperature` class that stores temperature in Celsius (private double). Provide a constructor and a public method `getFahrenheit()` that converts and returns the temperature in Fahrenheit. Ensure direct access to Celsius is restricted.",
+  "test_cases": [
+    { "input": "20.0", "expected": "68.0" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <cmath>\n#include <iomanip>\n\nclass Temperature {\nprivate:\n    double celsius;\n\npublic:\n    Temperature(double c) : celsius(c) {}\n\n    double getFahrenheit() const {\n        return celsius * (9.0 / 5.0) + 32.0;\n    }\n};\n\nstruct TestCase {\n    double input_celsius;\n    double expected_fahrenheit;\n};\n\nint main() {\n    std::vector<TestCase> test_cases = {\n        {0.0, 32.0},\n        {20.0, 68.0},\n        {-10.0, 14.0},\n        {100.0, 212.0},\n        {37.0, 98.6},\n        {-40.0, -40.0}\n    };\n\n    std::cout << std::fixed << std::setprecision(1);\n\n    int passed_count = 0;\n    for (size_t i = 0; i < test_cases.size(); ++i) {\n        Temperature temp(test_cases[i].input_celsius);\n        double actual_fahrenheit = temp.getFahrenheit();\n        if (std::abs(actual_fahrenheit - test_cases[i].expected_fahrenheit) < 0.001) {\n            std::cout << \"Test Case \" << i + 1 << \" Passed: \"\n                      << test_cases[i].input_celsius << \" C -> \"\n                      << actual_fahrenheit << \" F (Expected: \"\n                      << test_cases[i].expected_fahrenheit << \" F)\" << '\\n';\n            passed_count++;\n        } else {\n            std::cout << \"Test Case \" << i + 1 << \" FAILED: \"\n                      << test_cases[i].input_celsius << \" C -> \"\n                      << actual_fahrenheit << \" F (Expected: \"\n                      << test_cases[i].expected_fahrenheit << \" F)\" << '\\n';\n        }\n    }\n\n    std::cout << \"\\n--- Test Summary ---\" << '\\n';\n    std::cout << \"Total Tests: \" << test_cases.size() << '\\n';\n    std::cout << \"Passed: \" << passed_count << '\\n';\n    std::cout << \"Failed: \" << test_cases.size() - passed_count << '\\n';\n\n    return (passed_count == test_cases.size()) ? 0 : 1;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

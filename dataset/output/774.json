@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a function to search for a word in a character grid.",
+  "test_cases": [
+    {
+      "input": "word = \"GLQ\"",
+      "expected": "Found (vertical)"
+    },
+    {
+      "input": "word = \"AFK\"",
+      "expected": "Found (vertical)"
+    },
+    {
+      "input": "word = \"ABC\"",
+      "expected": "Found (horizontal)"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cassert>\n#include \"774.cpp\"\n\nint main() {\n    char grid[ROWS][COLS] = {\n        {'A', 'B', 'C', 'D', 'E'},\n        {'F', 'G', 'H', 'I', 'J'},\n        {'K', 'L', 'M', 'N', 'O'},\n        {'P', 'Q', 'R', 'S', 'T'},\n        {'U', 'V', 'W', 'X', 'Y'}\n    };\n    assert(searchWord(grid, \"GLQ\") == true);\n    assert(searchWord(grid, \"AFK\") == true);\n    assert(searchWord(grid, \"ABC\") == true);\n    assert(searchWord(grid, \"XYZ\") == false);\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

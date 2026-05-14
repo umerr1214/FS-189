@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function void removeDuplicates(char arr[]) that removes duplicate characters from the string in-place.",
+  "test_cases": [
+    {
+      "input": "arr = \"abc\"",
+      "expected": "\"abc\""
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <algorithm>\n#include \"681.cpp\"\n\nint main() {\n    char str[] = \"abc\";\n    removeDuplicates(str);\n    // Contains non-printable chars\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Storing the loop index 'i' into the array instead of the character value 'arr[i]'."
+  ]
+}

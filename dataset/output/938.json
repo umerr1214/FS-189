@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a Circular Queue class using an array.",
+  "test_cases": [
+    {
+      "input": "enqueue(10), dequeue()",
+      "expected": "10"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cassert>\n#include \"938.cpp\"\n\nint main() {\n    Queue q;\n    q.enqueue(10);\n    // Will return garbage from index 0\n    // assert(q.dequeue() == 10);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Incorrect initialization of `rear` (starts at 0) combined with pre-increment logic causes the first element to be stored at index 1 while `dequeue` reads from index 0."
+  ]
+}
