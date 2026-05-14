@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "PowerShell(\\(Get-ChildItem \"c:\\\\Users\\\\pc\\\\Desktop\\\\vscode\\\\FS-189\\\\dataset\\\\output\\\\\"\\).Count; \\(Get-ChildItem \"c:\\\\Users\\\\pc\\\\Desktop\\\\vscode\\\\FS-189\\\\dataset\\\\input\\\\\"\\).Count)"
+      "PowerShell(\\(Get-ChildItem \"c:\\\\Users\\\\pc\\\\Desktop\\\\vscode\\\\FS-189\\\\dataset\\\\output\\\\\"\\).Count; \\(Get-ChildItem \"c:\\\\Users\\\\pc\\\\Desktop\\\\vscode\\\\FS-189\\\\dataset\\\\input\\\\\"\\).Count)",
+      "Bash(cd /c/Users/pc/Desktop/vscode/FS-189/autograder-ai && pwd && ls -la)",
+      "Read(//c/c/Users/pc/Desktop/vscode/FS-189/**)"
     ]
   }
 }
