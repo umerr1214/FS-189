@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Write a function void findMinMax(int arr[], int &min, int &max, int size) that finds the minimum and maximum values in an array and stores them in the reference variables min and max.",
+  "test_cases": [
+    {
+      "input": "arr = {}, size = 0",
+      "expected": "Handled gracefully (no crash)"
+    },
+    {
+       "input": "arr = NULL, size = 0",
+       "expected": "Handled gracefully"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"604.cpp\"\n\nint main() {\n    int *arr = NULL;\n    int min, max;\n    // This will crash\n    // findMinMax(arr, min, max, 0);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Function does not handle empty array (size 0) or null pointer input, potentially causing segmentation fault."
+  ]
+}

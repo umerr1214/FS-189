@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a function void findMinMax(int arr[], int &min, int &max, int size) that finds the minimum and maximum values in an array and stores them in the reference variables min and max.",
+  "test_cases": [
+    {
+      "input": "arr = {10, 2, 5}, size = 3",
+      "expected": "min = 2, max = 10"
+    }
+  ],
+  "driver": "#include <iostream>\n#include \"605.cpp\"\n\nint main() {\n    int arr[] = {10, 2, 5};\n    int min, max;\n    findMinMax(arr, min, max, 3);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inefficient algorithm: Sorting the array (O(N^2) or O(N log N)) to find min and max when a linear scan O(N) is sufficient.",
+    "Modifies the input array which might not be intended."
+  ]
+}

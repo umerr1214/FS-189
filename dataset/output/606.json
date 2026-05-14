@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a function void findMinMax(int arr[], int &min, int &max, int size) that finds the minimum and maximum values in an array and stores them in the reference variables min and max.",
+  "test_cases": [
+    {
+      "input": "arr = {10, 2, 5}, size = 3",
+      "expected": "min = 2, max = 10"
+    },
+    {
+      "input": "arr = {-5, -1, -10}, size = 3",
+      "expected": "min = -10, max = -1"
+    },
+    {
+      "input": "arr = {7}, size = 1",
+      "expected": "min = 7, max = 7"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cassert>\n#include \"606.cpp\"\n\nint main() {\n    int arr1[] = {10, 2, 5};\n    int min1, max1;\n    findMinMax(arr1, min1, max1, 3);\n    assert(min1 == 2 && max1 == 10);\n\n    int arr2[] = {-5, -1, -10};\n    int min2, max2;\n    findMinMax(arr2, min2, max2, 3);\n    assert(min2 == -10 && max2 == -1);\n    \n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

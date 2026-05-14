@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a function void findMinMax(int arr[], int &min, int &max, int size) that finds the minimum and maximum values in an array and stores them in the reference variables min and max.",
+  "test_cases": [],
+  "driver": "#include <iostream>\n#include <climits>\n#include \"601.cpp\"\n\nint main() {\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'min = INT_MAX'"
+  ]
+}
