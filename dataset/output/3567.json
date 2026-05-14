@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function template `void printArray(const T arr[], int size)` that can print all elements of a 1D array of any data type `T`. Demonstrate its usage with an `int` array and a `char` array.",
+  "test_cases": [
+    {
+      "input": "int myIntArray[] = {5, 10, 15, 20};\nint myIntArraySize = sizeof(myIntArray) / sizeof(myIntArray[0]);\nstd::cout << \"Testing int array:\\n\";\nprintArray(myIntArray, myIntArraySize);\n\nchar myCharArray[] = {'E', 'x', 'a', 'm', 'p', 'l', 'e'};\nint myCharArraySize = sizeof(myCharArray) / sizeof(myCharArray[0]);\nstd::cout << \"Testing char array:\\n\";\nprintArray(myCharArray, myCharArraySize);\n\nint anotherEmptyArray[] = {};\nint anotherEmptyArraySize = 0;\nstd::cout << \"Testing empty array:\\n\";\nprintArray(anotherEmptyArray, anotherEmptyArraySize);",
+      "expected": "Testing int array:\nArray elements: [5, 10, 15, 20]\n\nTesting char array:\nArray elements: [E, x, a, m, p, l, e]\n\nTesting empty array:\nArray elements: []\n"
+    }
+  ],
+  "driver": "int main() {\n    int myIntArray[] = {5, 10, 15, 20};\n    int myIntArraySize = sizeof(myIntArray) / sizeof(myIntArray[0]);\n    std::cout << \"Testing int array:\\n\";\n    printArray(myIntArray, myIntArraySize);\n\n    std::cout << \"\\n\";\n\n    char myCharArray[] = {'E', 'x', 'a', 'm', 'p', 'l', 'e'};\n    int myCharArraySize = sizeof(myCharArray) / sizeof(myCharArray[0]);\n    std::cout << \"Testing char array:\\n\";\n    printArray(myCharArray, myCharArraySize);\n\n    std::cout << \"\\n\";\n\n    int anotherEmptyArray[] = {};\n    int anotherEmptyArraySize = 0;\n    std::cout << \"Testing empty array:\\n\";\n    printArray(anotherEmptyArray, anotherEmptyArraySize);\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

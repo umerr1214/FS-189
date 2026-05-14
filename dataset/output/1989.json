@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create an `Engine` class with `horsepower` (int) and `fuelType` (string). Then, design a `Car` class that demonstrates composition by containing an `Engine` object as a member.",
+  "test_cases": [
+    { "input": "Car(\"Toyota\", \"Camry\", 2023, 203, \"Gasoline\")", "expected": "--- My Car Info ---\nCar Make: Toyota\nCar Model: Camry\nCar Year: 2023\n  Engine Horsepower: 203 HP\n  Engine Fuel Type: Gasoline\n\n" },
+    { "input": "Car(\"Tesla\", \"Model S\", 2024, 670, \"Electric\")", "expected": "--- Electric Car Info ---\nCar Make: Tesla\nCar Model: Model S\nCar Year: 2024\n  Engine Horsepower: 670 HP\n  Engine Fuel Type: Electric\n\n" },
+    { "input": "Car(\"Porsche\", \"911 GT3\", 2022, 502, \"Premium Gasoline\")", "expected": "--- Sports Car Info ---\nCar Make: Porsche\nCar Model: 911 GT3\nCar Year: 2022\n  Engine Horsepower: 502 HP\n  Engine Fuel Type: Premium Gasoline\n\n" }
+  ],
+  "driver": "The main function demonstrates the class functionality by creating and displaying Car objects with different Engine configurations, showcasing a correct and well-designed implementation.",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

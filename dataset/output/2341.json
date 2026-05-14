@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a `Library` class that uses aggregation to manage a collection of `Book` objects (from Q1). The `Library` class should store pointers (or references) to `Book` objects that are created and owned externally. Implement methods to `addBook(Book* book)` and `displayAllBooks()`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Program is expected to crash or exhibit undefined behavior due to dereferencing a nullptr. The `Library::addBook` method doesn't prevent adding `nullptr`, and `Library::displayAllBooks` doesn't check for `nullptr` before dereferencing."
+    }
+  ],
+  "driver": "int main() {\n    Book book1(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", 1979);\n    Book book2(\"Pride and Prejudice\", \"Jane Austen\", 1813);\n    Book book3(\"1984\", \"George Orwell\", 1949);\n\n    Library myLibrary;\n\n    myLibrary.addBook(&book1);\n    myLibrary.addBook(&book2);\n    myLibrary.addBook(nullptr);\n    myLibrary.addBook(&book3);\n\n    myLibrary.displayAllBooks();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `addBook` method does not check for `nullptr` inputs, allowing invalid pointers to be stored.",
+    "The `displayAllBooks` method dereferences `Book*` pointers without checking if they are `nullptr`, leading to potential crashes or undefined behavior if a `nullptr` was added."
+  ]
+}

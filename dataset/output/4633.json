@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `calculateFactorial` that takes an integer `num` as input (pass by value) and returns its factorial. Handle the case for 0! and negative numbers.",
+  "test_cases": [
+    { "input": "0", "expected": "1" },
+    { "input": "5", "expected": "120" },
+    { "input": "-3", "expected": "-1" },
+    { "input": "12", "expected": "479001600" },
+    { "input": "20", "expected": "2432902008176640000" },
+    { "input": "21", "expected": "Incorrect positive value due to long long overflow (Actual value: -3506112246473070400)" }
+  ],
+  "driver": "#include <iostream>\n\nlong long calculateFactorial(int num);\n\nint main() {\n    std::cout << calculateFactorial(0) << std::endl;\n    std::cout << calculateFactorial(5) << std::endl;\n    std::cout << calculateFactorial(-3) << std::endl;\n    std::cout << calculateFactorial(12) << std::endl;\n    std::cout << calculateFactorial(20) << std::endl;\n    std::cout << calculateFactorial(21) << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The function does not handle integer overflow for large inputs (e.g., num > 20) that exceed the capacity of 'long long'. It silently produces an incorrect positive result instead of indicating an error or returning a specific error value for overflow conditions. This makes the program non-robust for valid but extremely large inputs."
+  ]
+}

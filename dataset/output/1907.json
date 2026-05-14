@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Base` and a derived class `Derived` from `Base`. Implement a destructor for both `Base` and `Derived` that prints a message indicating which destructor is being called. Demonstrate the order of destructor execution when a `Derived` object is created and then destroyed, especially when managed via a `Base` class pointer.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Base Constructor called\nDerived Constructor called\n--- Deleting Derived object via Base pointer ---\nDerived Destructor called\nBase Destructor called\n--- End of main ---\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Creating Derived object via Base pointer ---\" << std::endl;\n    Base* p = new Derived();\n    std::cout << \"--- Deleting Derived object via Base pointer ---\" << std::endl;\n    delete p;\n    p = nullptr;\n    std::cout << \"--- End of main ---\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The destructor of the Base class is not declared as virtual. When a derived object is deleted through a base class pointer, this leads to undefined behavior or only the base class destructor being called, failing to properly destruct the derived part of the object."
+  ]
+}

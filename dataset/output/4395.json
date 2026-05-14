@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a function `resetToZero` that takes an integer by reference and sets its value to 0.",
+  "test_cases": [
+    { "input": "int val = 5;", "expected": "val is 0" },
+    { "input": "int val = -10;", "expected": "val is 0" },
+    { "input": "int val = 0;", "expected": "val is 0" }
+  ],
+  "driver": "#include <iostream>\n\nvoid resetToZero(int& num);\n\nint main() {\n    int val1 = 5;\n    std::cout << \"Initial value: \" << val1 << std::endl;\n    resetToZero(val1);\n    std::cout << \"After resetToZero: \" << val1 << std::endl;\n\n    std::cout << \"--------------------\" << std::endl;\n\n    int val2 = -10;\n    std::cout << \"Initial value: \" << val2 << std::endl;\n    resetToZero(val2);\n    std::cout << \"After resetToZero: \" << val2 << std::endl;\n\n    std::cout << \"--------------------\" << std::endl;\n\n    int val3 = 0;\n    std::cout << \"Initial value: \" << val3 << std::endl;\n    resetToZero(val3);\n    std::cout << \"After resetToZero: \" << val3 << std::endl;\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

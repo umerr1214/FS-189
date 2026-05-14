@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a function `isPrime` that takes an integer as input and returns `true` if it's a prime number, `false` otherwise.",
+  "test_cases": [
+    { "input": "7", "expected": "true" },
+    { "input": "4", "expected": "false" },
+    { "input": "2", "expected": "true" },
+    { "input": "1", "expected": "false" },
+    { "input": "0", "expected": "false" },
+    { "input": "8", "expected": "false" },
+    { "input": "10", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n\nbool isPrime(int n) {\n    if (n <= 1) {\n        return false;\n    }\n    for (int i = 3; i * i <= n; ++i) {\n        if (n % i == 0) {\n            return false;\n        }\n    }\n    return true;\n}\n\nint main() {\n    std::cout << std::boolalpha;\n    std::cout << \"Is 7 prime? \" << isPrime(7) << std::endl;\n    std::cout << \"Is 4 prime? \" << isPrime(4) << std::endl;\n    std::cout << \"Is 2 prime? \" << isPrime(2) << std::endl;\n    std::cout << \"Is 1 prime? \" << isPrime(1) << std::endl;\n    std::cout << \"Is 0 prime? \" << isPrime(0) << std::endl;\n    std::cout << \"Is 11 prime? \" << isPrime(11) << std::endl;\n    std::cout << \"Is 6 prime? \" << isPrime(6) << std::endl;\n    std::cout << \"Is 8 prime? \" << isPrime(8) << std::endl;\n    std::cout << \"Is 9 prime? \" << isPrime(9) << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The function fails to correctly identify even numbers greater than 2 as non-prime. The loop for divisors starts from 3 and there's no explicit check for divisibility by 2 (e.g., 4, 8, 10 will return true)."]
+}

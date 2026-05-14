@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `doubleValue(int& num)` that takes an integer by reference and doubles its value. Demonstrate this function in `main` by passing an integer variable and observing its change.",
+  "test_cases": [
+    { "input": "5", "expected": "Original: 5\nDoubled: 10" },
+    { "input": "-7", "expected": "Original: -7\nDoubled: -14" }
+  ],
+  "driver": "#include <iostream>\nvoid doubleValue(int& num);\nint main() {\n    int test_val;\n    if (!(std::cin >> test_val)) return 1;\n    std::cout << \"Original: \" << test_val << std::endl;\n    doubleValue(test_val);\n    std::cout << \"Doubled: \" << test_val << std::endl;\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `doubleValue` function uses an overly verbose and less direct approach (`num = num + num;` within a redundant `if/else` block) instead of the more concise and idiomatic `num *= 2;`.",
+    "The conditional `if (num >= 0)` serves no functional purpose as the logic is identical for both branches, making the code less readable and unnecessarily complex.",
+    "Excessive and trivial comments add clutter without providing meaningful insights, further reducing readability and obscuring the simple operation being performed."
+  ]
+}

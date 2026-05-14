@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create two classes, `DataHolder` and `Processor`. `DataHolder` has a private integer member `value`. Implement a function `processData(DataHolder& dh)` which needs to access and modify `DataHolder`'s private `value`. Declare `processData` as a `friend` function of the `DataHolder` class to enable this access.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial state:\nDataHolder value: 5\nprocessData: Value incremented successfully.\nAfter first processData call:\nDataHolder value: 6\nprocessData: Value incremented successfully.\nAfter second processData call:\nDataHolder value: 7\n\nInitial state for anotherData:\nDataHolder value: 100\nprocessData: Value incremented successfully.\nAfter processData call for anotherData:\nDataHolder value: 101\n"
+    }
+  ],
+  "driver": "// The main function in the provided C++ code serves as the driver.\n// It demonstrates the correct implementation and usage of DataHolder and the friend function processData.",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

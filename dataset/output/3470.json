@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function template `T findMax(T val1, T val2)` that returns the larger of two values of any data type `T`. Test it with at least two different data types (e.g., `int` and `double`).",
+  "test_cases": [
+    { "input": "15 7", "expected": "The result for integer comparison between 15 and 7 is: 15" },
+    { "input": "99.9 100.1", "expected": "Output for double values 99.9 vs 100.1: 100.1" }
+  ],
+  "driver": "#include <iostream>\n\ntemplate <typename T>\nT findMax(T val1, T val2) {\n    T result;\n    if (val1 > val2) {\n        result = val1;\n    }\n    else {\n        if (val2 >= val1) {\n            result = val2;\n        }\n        else {\n            result = val1;\n        }\n    }\n    return result;\n}\n\nint main() {\n    int first_number = 15;\n    int second_number = 7;\n    std::cout << \"The result for integer comparison between \" << first_number << \" and \" << second_number << \" is: \" << findMax(first_number, second_number) << std::endl;\n\n    double double_value_A = 99.9;\n    double double_value_B = 100.1;\n    std::cout << \"Output for double values \" << double_value_A << \" vs \" << double_value_B << \": \" << findMax(double_value_A, double_value_B) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `findMax` function uses an overly verbose and redundant `if-else` structure for a simple comparison, which negatively impacts readability and is less efficient than a direct ternary operator or `std::max`. The nested `if (val2 >= val1)` is logically redundant after the initial `if (val1 > val2)` fails, making the inner `else` branch unreachable. Additionally, the `main` function exhibits inconsistent or overly verbose output formatting."
+  ]
+}

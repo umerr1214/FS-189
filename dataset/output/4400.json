@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Declare an array of 4 integers. Initialize it with some values. Then, use a pointer to the first element to iterate through the array and print each element using pointer arithmetic.",
+  "test_cases": [
+    { "input": "", "expected": "Value: 10\nValue: 20\nValue: 30\nValue: 40\n" }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Variable names (`a`, `p`) are short and not very descriptive, impacting readability.",
+    "Calculating `sizeof(a) / sizeof(a[0])` in the loop condition repeatedly is less efficient than storing it in a constant or using the known size (4).",
+    "The use of `&a[0]` instead of simply `a` for initializing the pointer, while correct, is slightly less idiomatic and can reduce readability for simple cases."
+  ]
+}

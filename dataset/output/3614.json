@@ -1,0 +1,27 @@
+{
+  "language": "c++",
+  "question": "Write a function `bool isPrime(int num)` that returns `true` if `num` is prime and `false` otherwise. Use this function to print all prime numbers up to a user-specified limit.",
+  "test_cases": [
+    {
+      "input": "20",
+      "expected": "Prime numbers up to 20:\n2 3 5 7 11 13 17 19 \n"
+    },
+    {
+      "input": "2",
+      "expected": "Prime numbers up to 2:\n2 \n"
+    },
+    {
+      "input": "100",
+      "expected": "Prime numbers up to 100:\n2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 \n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n\n// Assume isPrime(int num) is defined externally or in the same compilation unit.\nextern bool isPrime(int num);\n\nint main() {\n    std::vector<int> testNums = {2, 3, 4, 5, 6, 7, 10, 11, 13, 17, 19, 23, 1, 0, -5};\n    std::cout << \"Testing isPrime function:\" << std::endl;\n    for (int num : testNums) {\n        std::cout << \"isPrime(\" << num << \"): \" << (isPrime(num) ? \"true\" : \"false\") << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `isPrime` function is inefficient. It checks for divisors up to `num - 1` instead of `sqrt(num)`, leading to unnecessary computations for larger numbers.",
+    "The `isPrime` function lacks comments to explain its logic or optimizations.",
+    "The parameter name `n` in `isPrime` is less descriptive than `num`."
+  ]
+}

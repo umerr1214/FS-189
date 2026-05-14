@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Building upon the `Shape` hierarchy (with `Circle` and `Rectangle`), make `calculateArea()` a virtual function in the `Shape` base class. Demonstrate runtime polymorphism by creating an array or vector of `Shape` pointers, populating it with `Circle` and `Rectangle` objects, and then iterating through it to call `calculateArea()` on each object.",
+  "test_cases": [
+    { "input": "", "expected": "Area: 78.54\nArea: 20.00\nArea: 19.63\n" }
+  ],
+  "driver": "int main() { /* The main function in the provided C++ code already serves as the driver. */ return 0; }",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `calculateArea()` method for the `Rectangle` class has a logical error. It calculates the perimeter (2 * (length + width)) instead of the area (length * width). This results in incorrect output for `Rectangle` objects, failing to meet the problem's objective of calculating area."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Calculate the sum of all natural numbers up to a given positive integer `N` entered by the user. Use a `while` loop.",
+  "test_cases": [
+    { "input": "5", "expected": "The sum of natural numbers up to 5 is: 10" },
+    { "input": "1", "expected": "The sum of natural numbers up to 1 is: 0" },
+    { "input": "10", "expected": "The sum of natural numbers up to 10 is: 45" }
+  ],
+  "driver": "The user's `main` function is expected to read an integer from stdin and print the result to stdout.",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The loop condition 'i < N' excludes N from the sum, leading to an off-by-one error. It should be 'i <= N'."]
+}

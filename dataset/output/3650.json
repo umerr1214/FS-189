@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Implement matrix addition for two 3x3 integer matrices. Populate the matrices with example data and print the resulting sum matrix.",
+  "test_cases": [
+    {
+      "input": "N/A (matrices populated internally)",
+      "expected": "Sum Matrix:\n10 10 10\n10 10 10\n10 10 10\n"
+    }
+  ],
+  "driver": "g++ 3650.cpp -o 3650 && ./3650",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses uninformative variable names (m1, m2, m3) which reduces readability and makes the code harder to understand.",
+    "Uses `std::endl` within the loop for printing each row, which flushes the output buffer on every iteration. This can lead to minor performance inefficiencies compared to using `\\n`.",
+    "The entire logic is contained within the `main` function without using helper functions, making the code less modular and harder to maintain.",
+    "Lack of comments to explain matrix initialization logic or the overall steps involved."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that defines two integer variables. Using pointers, modify the values of these two variables by incrementing each by 10. Print the original and modified values.",
+  "test_cases": [
+    { "input": "", "expected": "Original var1: 10, var2: 20\nModified var1: 20, var2: 30\n" }
+  ],
+  "driver": "g++ -std=c++11 -o 4802 4802.cpp && ./4802",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The program uses an inefficient loop (increment_by_one_ten_times function) to add 10, instead of a direct addition (*target_ptr += 10). This adds unnecessary computational overhead.",
+    "The use of a separate function for a simple, single-line operation adds unnecessary indirection and reduces readability for this specific task, making the code more verbose than needed."
+  ]
+}

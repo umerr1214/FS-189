@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function `isPalindrome(const std::string& str)` that takes a `std::string` and returns `true` if it's a palindrome (reads the same forwards and backwards, ignoring case and spaces), and `false` otherwise. Demonstrate with user input.",
+  "test_cases": [
+    { "input": "", "expected": "ERROR" },
+    { "input": " ", "expected": "ERROR" },
+    { "input": "!@#", "expected": "ERROR" },
+    { "input": "madam", "expected": "true" },
+    { "input": "A man a plan a canal Panama", "expected": "true" },
+    { "input": "hello", "expected": "false" },
+    { "input": "Race car", "expected": "false" },
+    { "input": "No lemon, no melon", "expected": "true" },
+    { "input": "12321", "expected": "true" },
+    { "input": "Was it a car or a cat I saw?", "expected": "true" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <algorithm> \n#include <cctype>    \n#include <stdexcept> \n\n// Assume isPalindrome function is defined in the same scope\n\nint main() {\n    std::vector<std::string> test_inputs = {\n        \"\",         \n        \" \",        \n        \"!@#\",      \n        \"madam\",\n        \"A man a plan a canal Panama\",\n        \"hello\",\n        \"Race car\",\n        \"No lemon, no melon\",\n        \"12321\",\n        \"Was it a car or a cat I saw?\"\n    };\n\n    std::cout << \"--- Predefined Test Cases ---\\n\";\n    for (const std::string& tc : test_inputs) {\n        std::cout << \"Input: \\\"\" << tc << \"\\\"\\n\";\n        try {\n            if (isPalindrome(tc)) {\n                std::cout << \"true\\n\";\n            } else {\n                std::cout << \"false\\n\";\n            }\n        } catch (const std::exception& e) {\n            std::cerr << \"Caught exception: \" << e.what() << \"\\n\";\n            std::cout << \"ERROR\\n\"; \n        } catch (...) {\n            std::cerr << \"Caught unknown exception (likely crash due to robustness issue).\\n\";\n            std::cout << \"ERROR\\n\"; \n        }\n        std::cout << \"---\\n\";\n    }\n\n    // Also demonstrate with user input as required by question\n    std::string user_input;\n    std::cout << \"\\n--- User Input Demo ---\\n\";\n    std::cout << \"Enter a string: \";\n    std::getline(std::cin, user_input);\n    std::cout << \"Input: \\\"\" << user_input << \"\\\"\\n\";\n    try {\n        if (isPalindrome(user_input)) {\n            std::cout << \"true\\n\";\n        } else {\n            std::cout << \"false\\n\";\n        }\n    } catch (const std::exception& e) {\n        std::cerr << \"Caught exception: \" << e.what() << \"\\n\";\n        std::cout << \"ERROR\\n\";\n    } catch (...) {\n        std::cerr << \"Caught unknown exception (likely crash).\\n\";\n        std::cout << \"ERROR\\n\";\n    }\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The function crashes (undefined behavior, typically segmentation fault) for empty strings or strings that become empty after filtering (e.g., \"\", \" \", \"!@#\") due to direct access of `filtered_str[0]` without checking if `filtered_str` is empty. A robust solution must handle these edge cases gracefully, e.g., by checking `filtered_str.empty()`."
+  ]
+}

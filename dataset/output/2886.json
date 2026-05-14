@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `StringWrapper` class that dynamically allocates memory for a `char*` to store a string. Provide a constructor, a destructor, and a proper copy constructor to ensure deep copying of the string data.",
+  "test_cases": [
+    { "input": "StringWrapper s1(\"Hello\");", "expected": "String: \"Hello\", Length: 5 (Actual output might be correct, but memory is corrupted due to buffer overflow for null terminator.)" },
+    { "input": "StringWrapper s_empty(\"\");", "expected": "String: \"\", Length: 0" },
+    { "input": "StringWrapper s2 = s1;", "expected": "String: \"Hello\", Length: 5 (Copy of potentially corrupted string, leading to further issues.)" },
+    { "input": "StringWrapper long_str(\"This is a somewhat longer string.\");", "expected": "String: \"This is a somewhat longer string.\", Length: 33 (Actual output very likely to show garbage or crash due to buffer overflow.)" }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Testing Buffer Overflow (Semantic Error) ---\" << std::endl;\n\n    StringWrapper s1(\"Hello\");\n    std::cout << \"s1 created: \";\n    s1.print();\n\n    StringWrapper s_empty(\"\");\n    std::cout << \"s_empty created: \";\n    s_empty.print();\n\n    StringWrapper s2 = s1;\n    std::cout << \"s2 copied from s1: \";\n    s2.print();\n\n    StringWrapper long_str(\"This is a somewhat longer string.\");\n    std::cout << \"long_str created: \";\n    long_str.print();\n\n    std::cout << \"Program finished. Memory corruption may have occurred, or program might crash.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": []
+}

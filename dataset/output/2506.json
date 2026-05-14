@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `Product` class with `productID`, `name`, and `price`. Overload the `==` operator to compare two `Product` objects based solely on their `productID`.",
+  "test_cases": [
+    { "input": "", "expected": "true\nfalse\nfalse\ntrue\n" }
+  ],
+  "driver": "int main() {\n    Product p1(1, \"Laptop\", 1200.0);\n    Product p2(1, \"Laptop Pro\", 1500.0);\n    Product p3(2, \"Mouse\", 25.0);\n    Product p4(3, \"Keyboard\", 75.0);\n\n    std::cout << (p1 == p2 ? \"true\" : \"false\") << std::endl;\n    std::cout << (p1 == p3 ? \"true\" : \"false\") << std::endl;\n    std::cout << (p3 == p4 ? \"true\" : \"false\") << std::endl;\n    std::cout << (p1 == p1 ? \"true\" : \"false\") << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

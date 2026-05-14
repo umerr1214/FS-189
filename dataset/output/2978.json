@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `Circle` class with a private member `radius` (double). Include a public constructor, a public method `calculateArea()` that returns the area, and another public method `calculateCircumference()` that returns the circumference. Demonstrate creating a `Circle` object and calling its methods.",
+  "test_cases": [
+    { "input": "10.0", "expected": "Circle (radius 10.0):\n  Area: 314.15927\n  Circumference: 62.83185" }
+  ],
+  "driver": "int main() {\n    Circle myCircle(10.0);\n    std::cout << \"Circle (radius 10.0):\" << std::endl;\n    std::cout << std::fixed << std::setprecision(5);\n    std::cout << \"  Area: \" << myCircle.calculateArea() << std::endl;\n    std::cout << \"  Circumference: \" << myCircle.calculateCircumference() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["The value of PI is calculated redundantly in each method call using `std::acos(-1.0)` instead of using a constant. `std::pow(radius, 2)` is used instead of the more efficient `radius * radius` for area calculation."]
+}

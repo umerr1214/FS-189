@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a class hierarchy demonstrating multilevel inheritance: `Vehicle` (base class with `maxSpeed`), `Car` (derived from `Vehicle`, adds `numDoors`), `SportsCar` (derived from `Car`, adds `turboBoostEnabled`). Ensure proper constructor chaining to initialize attributes at each level.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Test Case 1: Valid Inputs ---\nVehicle Info:\n  Max Speed: 120 km/h\n\nVehicle Info:\n  Max Speed: 180 km/h\n  Number of Doors: 4\n\nVehicle Info:\n  Max Speed: 250 km/h\n  Number of Doors: 2\n  Turbo Boost: Enabled\n\n--- Test Case 2: Illogical Negative Max Speed ---\nVehicle Info:\n  Max Speed: -50 km/h\n\n--- Test Case 3: Illogical Negative Number of Doors ---\nVehicle Info:\n  Max Speed: 150 km/h\n  Number of Doors: -2\n\n--- Test Case 4: Combined Illogical Inputs ---\nVehicle Info:\n  Max Speed: -100 km/h\n  Number of Doors: -5\n  Turbo Boost: Disabled\n\n"
+    }
+  ],
+  "driver": "This C++ program defines a class hierarchy (Vehicle -> Car -> SportsCar) with multilevel inheritance and constructor chaining. The main function demonstrates the creation and display of objects from each class. It includes test cases with valid inputs and also test cases with logically invalid (negative) inputs for `maxSpeed` and `numDoors` to highlight the robustness issue where the program does not validate these inputs, leading to objects in an inconsistent or illogical state without crashing.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The constructors for `Vehicle` and `Car` do not validate input parameters (`speed`, `doors`). They allow negative values which are physically illogical for maximum speed and number of doors. While this doesn't crash the program, it leads to an inconsistent and non-robust object state, as the program continues to operate with invalid data.",
+    "A robust solution would include input validation (e.g., throwing an `std::invalid_argument` exception or clamping values to a valid range) in the constructors to prevent objects from being created with illogical attributes."
+  ]
+}

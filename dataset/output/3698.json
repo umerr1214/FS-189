@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Student` with members `name` (std::string), `id` (int), and `grade` (float). Create an array of 3 `Student` objects, populate it with data, and then print the details (name, id, grade) of the student with the highest grade.",
+  "test_cases": [
+    {
+      "input": "Hardcoded student data:\nAlice Johnson, 101, 95.5\nBob Williams, 102, 88.0\nCharlie Brown, 103, 98.2",
+      "expected": "Student with the highest grade:\nName: Charlie Brown\nID: 103\nGrade: 98.20\n"
+    }
+  ],
+  "driver": "int main() { /* The test harness will compile and run the provided .cpp file. */ return 0; }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The code uses a manual loop with less descriptive variable names (e.g., 'sArr', 'currentMaxGrade', 'bestIdx') and hardcoded array size (3) instead of more idiomatic C++ features like `std::max_element` or using `std::array::size()`. Initializing `currentMaxGrade` with a magic number (-1.0f) is less robust than using `std::numeric_limits<float>::lowest()` or initializing with the first element's grade. The check for `bestIdx != -1` is redundant for a fixed-size array of 3, adding unnecessary complexity."
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Base` and a derived class `Derived` from `Base`. Implement a destructor for both `Base` and `Derived` that prints a message indicating which destructor is being called. Demonstrate the order of destructor execution when a `Derived` object is created and then destroyed, especially when managed via a `Base` class pointer.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Program starting.\n--- Starting demonstration function ---\nBase Constructor Called\nDerived Constructor Called\nObject created. Now deleting...\nDerived Destructor Called\nBase Destructor Called\n--- Demonstration function finished ---\nProgram exiting.\n"
+    }
+  ],
+  "driver": "// The main function in the code serves as the driver.",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Excessive use of `std::endl` instead of `\\n` can lead to minor performance overhead due to forced flushing of the output buffer.",
+    "Using raw `new` and `delete` directly is less readable and more error-prone than using smart pointers like `std::unique_ptr` for managing dynamically allocated objects, which is a modern C++ best practice for memory safety and clarity.",
+    "Encapsulating the demonstration in a separate function (`demonstrateDestruction`) adds a slight layer of unnecessary indirection for this simple task, slightly reducing immediate readability of the core logic flow."
+  ]
+}

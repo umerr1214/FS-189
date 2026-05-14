@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define a C++ struct named `Point` with two integer members, `x` and `y`, representing coordinates. Write a function `get_distance` that takes two `Point` structs as input and returns the Euclidean distance between them as a `double`.",
+  "test_cases": [
+    { "input": "0 0\n3 4", "expected": "5.000000" },
+    { "input": "-1 -1\n2 3", "expected": "5.000000" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\n// Assuming Point struct and get_distance function are defined above\n\nint main() {\n    Point p1, p2;\n    std::cin >> p1.x >> p1.y;\n    std::cin >> p2.x >> p2.y;\n    std::cout << std::fixed << std::setprecision(6) << get_distance(p1, p2) << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `get_distance` function calculates Manhattan distance (sum of absolute differences) instead of Euclidean distance (square root of sum of squared differences)."
+  ]
+}

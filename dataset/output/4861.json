@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Implement a recursive C++ function `fibonacci(n)` that calculates the n-th Fibonacci number. The program should ask the user for a non-negative integer 'n' and then print the result of `fibonacci(n)`.",
+  "test_cases": [
+    { "input": "0", "expected": "The 0-th Fibonacci number is: 0\n" },
+    { "input": "1", "expected": "The 1-th Fibonacci number is: 1\n" },
+    { "input": "5", "expected": "The 5-th Fibonacci number is: 5\n" },
+    { "input": "47", "expected": "The 47-th Fibonacci number is: 1836311903\n" },
+    { "input": "48", "expected": "The 48-th Fibonacci number is: -1458920943\n" },
+    { "input": "-5", "expected": "The -5-th Fibonacci number is: 0\n" }
+  ],
+  "driver": "int main() { int n; std::cin >> n; int result = fibonacci(n); std::cout << \"The \" << n << \"-th Fibonacci number is: \" << result << std::endl; return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not gracefully handle negative input for 'n'. Although the question specifies 'non-negative', a robust program should provide an error message or throw an exception for invalid input, rather than returning an arbitrary incorrect value (0).",
+    "The `fibonacci` function uses `int` as its return type, leading to integer overflow for larger inputs (e.g., n=48), producing incorrect results without warning.",
+    "No explicit input validation in `main` to ensure 'n' is non-negative or a valid integer, which could lead to unexpected behavior for invalid user input."
+  ]
+}

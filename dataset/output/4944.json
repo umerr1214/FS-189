@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user for a positive integer limit and then uses a for loop to calculate and display the sum of all even numbers from 1 up to that limit (inclusive).",
+  "test_cases": [
+    { "input": "10", "expected": "Enter a positive integer limit: The sum of even numbers from 1 to 10 is: 30\n" },
+    { "input": "5", "expected": "Enter a positive integer limit: The sum of even numbers from 1 to 5 is: 6\n" },
+    { "input": "1", "expected": "Enter a positive integer limit: The sum of even numbers from 1 to 1 is: 0\n" },
+    { "input": "2", "expected": "Enter a positive integer limit: The sum of even numbers from 1 to 2 is: 2\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\nstd::string run_program(const std::string& input) {\n    std::stringstream ss_in(input);\n    std::stringstream ss_out;\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::cin.rdbuf(ss_in.rdbuf());\n    std::cout.rdbuf(ss_out.rdbuf());\n\n    try {\n        main(); // Call the student's main function\n    } catch (const std::exception& e) {\n        ss_out << \"Error: \" << e.what() << std::endl;\n    }\n\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n    return ss_out.str();\n}\n\nint main() {\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The variable 'sum' is declared but not initialized to a default value (e.g., 0). When 'sum += i;' is executed, it attempts to add 'i' to an indeterminate garbage value, leading to undefined behavior and incorrect results."
+  ]
+}

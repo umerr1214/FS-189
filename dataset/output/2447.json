@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Develop a `MathOperations` class with overloaded `add` methods: one taking two integers, another taking two doubles, and a third taking three integers.",
+  "test_cases": [
+    { "input": "ops.add(5, 10)", "expected": "15" },
+    { "input": "ops.add(5.5, 10.5)", "expected": "16.0" },
+    { "input": "ops.add(1, 2, 3)", "expected": "6" }
+  ],
+  "driver": "MathOperations ops;\nstd::cout << \"Sum of 5 and 10 (int): \" << ops.add(5, 10) << std::endl;\nstd::cout << std::fixed << std::setprecision(1);\nstd::cout << \"Sum of 5.5 and 10.5 (double): \" << ops.add(5.5, 10.5) << std::endl;\nstd::cout << \"Sum of 1, 2, and 3 (int): \" << ops.add(1, 2, 3) << std::endl;",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `add` method taking three integers (`add(int a, int b, int c)`) incorrectly returns the sum of only the first two parameters (`a + b`), neglecting to add the third parameter `c`."
+  ]
+}

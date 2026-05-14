@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Model a `Library` class that manages a collection of `Book` objects (from Q1) using a simple array or vector (without using STL directly for management, just as storage). Implement methods to add a book and display all books.",
+  "test_cases": [
+    {
+      "input": "Adding 4 books to the library.",
+      "expected": "Attempting to add: The Hobbit\nAttempting to add: Dune\nAttempting to add: Foundation\nAttempting to add: Neuromancer\n--- Current Library Books ---\nTitle: The Hobbit, Author: J.R.R. Tolkien, Year: 1937\nTitle: Dune, Author: Frank Herbert, Year: 1965\nTitle: Foundation, Author: Isaac Asimov, Year: 1951\nTitle: Neuromancer, Author: William Gibson, Year: 1984\n-----------------------------\n"
+    }
+  ],
+  "driver": "int main() {\n    Library myLibrary;\n\n    myLibrary.addBook(Book(\"The Hobbit\", \"J.R.R. Tolkien\", 1937));\n    myLibrary.addBook(Book(\"Dune\", \"Frank Herbert\", 1965));\n    myLibrary.addBook(Book(\"Foundation\", \"Isaac Asimov\", 1951));\n    myLibrary.addBook(Book(\"Neuromancer\", \"William Gibson\", 1984));\n\n    myLibrary.displayAllBooks();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "**Efficiency Issue**: The `addBook` method passes the `Book` object by value (`Book a_book_to_add`), causing an unnecessary copy of the `Book` object for every addition. It should be passed by `const` reference (`const Book&`).",
+    "**Efficiency Issue**: The resizing strategy in `addBook` is inefficient. When capacity is reached, it increases `max_capacity` by only 1. This leads to frequent reallocations and copying of all existing elements, resulting in O(N^2) complexity for adding N elements. A common and more efficient strategy is to double the capacity.",
+    "**Readability Issue**: Variable names like `my_book_collection`, `current_size`, and `max_capacity` are verbose and less conventional than `books`, `count`, and `capacity` respectively.",
+    "**Efficiency Issue**: The constructor immediately allocates memory for 1 book, even if no books are added, which is a minor inefficiency. A lazy allocation (allocate when the first book is added) or a slightly larger initial capacity might be better."
+  ]
+}

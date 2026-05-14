@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a program that checks if a given `std::string` entered by the user is a palindrome (e.g., \"madam\", \"racecar\").",
+  "test_cases": [
+    { "input": "madam", "expected": "Yes, \"madam\" is a palindrome." },
+    { "input": "racecar", "expected": "Yes, \"racecar\" is a palindrome." },
+    { "input": "hello", "expected": "No, \"hello\" is not a palindrome." },
+    { "input": "", "expected": "Yes, \"\" is a palindrome." },
+    { "input": "a", "expected": "Yes, \"a\" is a palindrome." },
+    { "input": "ab", "expected": "No, \"ab\" is not a palindrome." },
+    { "input": "aba", "expected": "Yes, \"aba\" is a palindrome." }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <algorithm>\n\nbool isPalindrome(const std::string& s) {\n    if (s.empty()) {\n        return true;\n    }\n\n    std::string reversed_str_manual;\n    reversed_str_manual.reserve(s.length());\n\n    for (int i = s.length() - 1; i >= 0; --i) {\n        reversed_str_manual += s[i];\n    }\n\n    return s == reversed_str_manual;\n}\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        if (isPalindrome(line)) {\n            std::cout << \"Yes, \\\"\" << line << \"\\\" is a palindrome.\" << std::endl;\n        } else {\n            std::cout << \"No, \\\"\" << line << \"\\\" is not a palindrome.\" << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["The palindrome check manually constructs a reversed string character by character using a loop, which is less efficient than a two-pointer approach or using `std::string(s.rbegin(), s.rend())` and `std::reverse`. While functionally correct for basic cases, this approach is not optimal in terms of performance and could be more concise."]
+}

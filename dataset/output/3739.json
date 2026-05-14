@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter three distinct integers and then identifies and prints the largest among them using if-else if-else statements.",
+  "test_cases": [
+    { "input": "10 20 5", "expected": "Enter three distinct integers: The largest number is: 20\n" },
+    { "input": "-1 -5 -2", "expected": "Enter three distinct integers: The largest number is: -1\n" },
+    { "input": "7 3 7", "expected": "Enter three distinct integers: The largest number is: 7\n" },
+    { "input": "0 0 0", "expected": "Enter three distinct integers: The largest number is: 0\n" }
+  ],
+  "driver": "// Compile: g++ -o program_name 3739.cpp\n// Run: ./program_name\n// Input will be provided via stdin, output captured from stdout.\n// Example for a single test:\n// echo \"10 20 5\" | ./program_name",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program lacks input validation. If non-integer input is provided (e.g., 'abc'), `std::cin` will enter a fail state, causing subsequent reads to fail and potentially leading to undefined behavior or incorrect output (e.g., printing 0 as largest if variables are zero-initialized or default-initialized to garbage values). The program does not recover from invalid input, making it non-robust.",
+    "For example, if the input is 'abc 10 20', the program would likely output 'The largest number is: 0' (or some other incorrect value) without any error message, as `num1` fails to read 'abc' and `num2`, `num3` might not be properly assigned."
+  ]
+}

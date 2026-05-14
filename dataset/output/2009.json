@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "In a class `Printer`, overload a `print` member function to output different data types: `print(int)`, `print(double)`, and `print(const char*)`. Each should print the value with a descriptive label.",
+  "test_cases": [
+    { "input": "p.print(10);", "expected": "Integer: 10\n" },
+    { "input": "p.print(3.14);", "expected": "Double: 3.14\n" },
+    { "input": "p.print(\"Hello C++\");", "expected": "String: Hello C++\n" }
+  ],
+  "driver": "int main() {\n    Printer p;\n    p.print(10);\n    p.print(3.14);\n    p.print(\"Hello C++\");\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": []
+}

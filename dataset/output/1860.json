@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `Date` class with private attributes `day`, `month`, and `year` (all integers). Implement a `const` member function `displayDate()` that prints the date. Demonstrate that this `const` method can be called safely on both `const` and non-`const` `Date` objects.",
+  "test_cases": [
+    { "input": "", "expected": "Non-const date: 25/10/2023\nConst date: 1/1/2024\n" }
+  ],
+  "driver": "int main() {\n    Date today(25, 10, 2023);\n    std::cout << \"Non-const date: \";\n    today.displayDate();\n\n    const Date anniversary(1, 1, 2024);\n    std::cout << \"Const date: \";\n    anniversary.displayDate();\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Attempting to modify a member variable ('day') within a `const` member function (`displayDate()`). A `const` member function guarantees that it will not modify the state of the object, and modifying `day` directly violates this guarantee, leading to a compile-time error."
+  ]
+}

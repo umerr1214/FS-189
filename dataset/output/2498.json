@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Implement a `Car` class that exhibits composition with an `Engine` class. The `Engine` should be created and destroyed along with the `Car` object. Demonstrate this lifetime management.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating Readability / Efficiency Issue ---\n\nCreating a luxurious sports car.\n[Engine Lifecycle]: Engine SPRT-E9000 is being constructed now.\n[Car Lifecycle]: Car Speedster X (Red) object created. Engine SPRT-E9000 has been installed.\n--- Car Details ---\nModel: Speedster X\nColor: Red\nEngine Serial: SPRT-E9000\n-------------------\n[Car Operation]: Car Speedster X (Red) is preparing to drive.\n[Engine Operation]: Engine SPRT-E9000 initiating start sequence...\n[Car Operation]: Car Speedster X is now moving.\n[Car Status]: Querying engine status for Car Speedster X.\n[Engine Maintenance]: Performing routine check on Engine SPRT-E9000.\n\nCreating a standard family sedan.\n[Engine Lifecycle]: Engine FAM-E5000 is being constructed now.\n[Car Lifecycle]: Car Family Cruiser (Blue) object created. Engine FAM-E5000 has been installed.\n--- Car Details ---\nModel: Family Cruiser\nColor: Blue\nEngine Serial: FAM-E5000\n-------------------\n[Car Operation]: Car Family Cruiser (Blue) is preparing to drive.\n[Engine Operation]: Engine FAM-E5000 initiating start sequence...\n[Car Operation]: Car Family Cruiser is now moving.\n\nObjects going out of scope.\n[Car Lifecycle]: Car Family Cruiser (Blue) object is being destructed. Associated Engine FAM-E5000 will be destroyed.\n[Engine Lifecycle]: Engine FAM-E5000 is being destructed now.\n[Car Lifecycle]: Car Speedster X (Red) object is being destructed. Associated Engine SPRT-E9000 will be destroyed.\n[Engine Lifecycle]: Engine SPRT-E9000 is being destructed now."
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Demonstrating Readability / Efficiency Issue ---\" << std::endl;\n    std::cout << \"\\nCreating a luxurious sports car.\" << std::endl;\n    Car sportsCar(\"Speedster X\", \"SPRT-E9000\", \"Red\");\n    sportsCar.drive();\n    sportsCar.checkEngineStatus();\n    std::cout << \"\\nCreating a standard family sedan.\" << std::endl;\n    Car familyCar(\"Family Cruiser\", \"FAM-E5000\", \"Blue\");\n    familyCar.drive();\n    std::cout << \"\\nObjects going out of scope.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Using `std::unique_ptr<Engine>` for composition when a direct member variable (`Engine engine;`) would achieve the same strict ownership and lifetime management more simply, efficiently (avoiding heap allocation for the `Engine` object itself and indirection overhead), and idiomatically for direct composition.",
+    "Excessive and overly verbose logging messages (`[Engine Lifecycle]:`, `[Car Operation]:`, `--- Car Details ---`) for demonstrating basic object lifetime, which reduces readability and clutters output.",
+    "Unnecessary member function `logCarDetails()` which only prints object state, often better handled by overloading `operator<<` or integrating into `drive()`/`checkEngineStatus()` if truly necessary."
+  ]
+}

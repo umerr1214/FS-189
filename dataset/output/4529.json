@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that asks the user for a positive integer N and then prints all prime numbers up to N.",
+  "test_cases": [
+    { "input": "10\n", "expected": "Enter a positive integer N: Prime numbers up to 10:\n2 3 4 5 6 7 8 9 10 \n" },
+    { "input": "20\n", "expected": "Enter a positive integer N: Prime numbers up to 20:\n2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 \n" },
+    { "input": "1\n", "expected": "Enter a positive integer N: Prime numbers up to 1:\n\n" }
+  ],
+  "driver": "The program reads an integer N from standard input, then prints prime numbers up to N to standard output. Input/output can be redirected for testing.",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The isPrime function incorrectly returns true when a divisor is found, marking composite numbers as prime. It should return false."
+  ]
+}

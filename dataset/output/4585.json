@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `void addNumbers(int* ptr1, int* ptr2, int* sumPtr)` that takes pointers to two integers and a pointer to a third integer, then calculates the sum of the first two and stores it at the location pointed to by `sumPtr`. Demonstrate its usage in `main`.",
+  "test_cases": [
+    { "input": "", "expected": "Valid sum: 30\nProgram crashed due to nullptr dereference." }
+  ],
+  "driver": "    int a = 10;\n    int b = 20;\n    int sum = 0;\n\n    addNumbers(&a, &b, &sum);\n    std::cout << \"Valid sum: \" << sum << std::endl;\n\n    int x = 5;\n    int y = 7;\n    int* resultPtr = nullptr;\n\n    addNumbers(&x, &y, resultPtr);\n\n    std::cout << \"This line should not be reached if a crash occurs.\" << std::endl;\n\n    return 0;",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The function `addNumbers` does not perform `nullptr` checks on its input pointers (`ptr1`, `ptr2`, `sumPtr`).",
+    "Dereferencing a `nullptr` (as demonstrated with `resultPtr` in `main`) leads to undefined behavior, typically a segmentation fault or program crash."
+  ]
+}

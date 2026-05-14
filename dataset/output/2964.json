@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Document` with a virtual destructor. Derive a class `PdfDocument` from `Document`. Demonstrate the importance of the virtual destructor in `Document` when deleting a `PdfDocument` object via a `Document` pointer to prevent memory leaks or undefined behavior.",
+  "test_cases": [
+    { "input": "", "expected": "Creating an array of PdfDocument via Document pointer...\nDocument constructor called.\nPdfDocument constructor called.\nDocument constructor called.\nPdfDocument constructor called.\nDeleting PdfDocument array via Document pointer (incorrectly using 'delete' instead of 'delete[]')...\nPdfDocument destructor called.\nDocument destructor called.\nDemonstration complete (but with potential issues due to incorrect array deletion)." }
+  ],
+  "driver": "int main() {\n    std::cout << \"Creating an array of PdfDocument via Document pointer...\" << std::endl;\n    Document* docPtr = new PdfDocument[2]; \n    std::cout << \"Deleting PdfDocument array via Document pointer (incorrectly using 'delete' instead of 'delete[]')...\" << std::endl;\n    delete docPtr; \n    std::cout << \"Demonstration complete (but with potential issues due to incorrect array deletion).\" << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["An array of `PdfDocument` objects is allocated using `new PdfDocument[2]`, but it is deleted using `delete docPtr;` instead of `delete[] docPtr;`. This is a semantic error leading to undefined behavior, potential memory leaks, and heap corruption."]
+}

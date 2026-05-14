@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design an `Employee` class with `name` and `id`. Create a `Department` class which `contains` a collection of `Employee` objects (using aggregation, e.g., a `std::vector<Employee>`). Implement methods in `Department` to `addEmployee(Employee emp)` and `displayAllEmployees()`. Demonstrate adding multiple employees to a department and displaying their details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Employees in Sales Department ---\nName: Alice, ID: 101\nName: Bob, ID: 102\nName: Charlie, ID: 103\nName: David, ID: 104\n------------------------------------------\n"
+    }
+  ],
+  "driver": "int main() {\n    Department salesDept(\"Sales\");\n    Employee emp1(\"Alice\", 101);\n    Employee emp2(\"Bob\", 102);\n    Employee emp3(\"Charlie\", 103);\n    Employee emp4(\"David\", 104);\n    salesDept.addEmployee(emp1);\n    salesDept.addEmployee(emp2);\n    salesDept.addEmployee(emp3);\n    salesDept.addEmployee(emp4);\n    salesDept.displayAllEmployees();\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `displayAllEmployees` method incorrectly filters employees, only displaying those with an even ID. It should display all employees regardless of their ID."
+  ]
+}

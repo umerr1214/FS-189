@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a `Book` class with private members `title`, `author`, and `isbn` (string types). Implement a constructor to initialize these members and public getter methods for each. Include a `displayBookInfo` method that prints all book details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book Title (direct access): The Lord of the Rings\nTitle: The Lord of the Rings\nAuthor: J.R.R. Tolkien\nISBN: 978-0618053267\n"
+    }
+  ],
+  "driver": "int main() {\n    Book myBook(\"The Lord of the Rings\", \"J.R.R. Tolkien\", \"978-0618053267\");\n    // This line causes a semantic error due to direct private member access\n    std::cout << \"Book Title (direct access): \" << myBook.title << std::endl;\n    myBook.displayBookInfo();\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Attempting to access a private member (myBook.title) directly from outside the class, violating encapsulation principles. This results in a compiler error due to access restrictions."
+  ]
+}

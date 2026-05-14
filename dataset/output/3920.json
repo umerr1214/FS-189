@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that generates and prints the first `n` terms of the Fibonacci sequence, where `n` is an integer provided by the user. (The sequence starts 0, 1, 1, 2, 3, ...)",
+  "test_cases": [
+    { "input": "0", "expected": "" },
+    { "input": "1", "expected": "0\n" },
+    { "input": "5", "expected": "0 1 1 2 3\n" },
+    { "input": "15", "expected": "0 1 1 2 3 5 8 13 21 34 55 89 144 233 377\n" },
+    { "input": "20", "expected": "0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181\n" }
+  ],
+  "driver": "int main() { /* The student's program is expected to read an integer 'n' from stdin and print the Fibonacci sequence to stdout. A test harness would execute the student's compiled program for each test case, piping the 'input' string to stdin and capturing stdout to compare with 'expected'. */ return 0; }",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inefficient recursive approach without memoization, leading to exponential time complexity (O(2^n)). This will cause significant performance degradation for larger 'n' values.",
+    "Cryptic function name 'g' and lack of comments for the recursive function reduce code readability and maintainability."
+  ]
+}

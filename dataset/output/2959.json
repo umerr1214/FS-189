@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design two classes: `Building` and `Tenant`. `Building` needs to store a `Tenant` object as its owner. `Tenant` does not need to know about `Building`. Demonstrate how to use a forward declaration for `Tenant` within `Building`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Building at 123 Main St constructed. Owner assigned.\nBuilding at address: 123 Main St\nOwner: Alice (ID: 101)\n\nProgram finished. The Tenant object for 'Alice' was leaked.\n"
+    }
+  ],
+  "driver": "int main() {\n    Tenant* alice = new Tenant(\"Alice\", 101);\n    {\n        Building myBuilding(\"123 Main St\", alice);\n        myBuilding.displayInfo();\n    }\n    std::cout << \"\\nProgram finished. The Tenant object for 'Alice' was leaked.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Memory leak: The `Building` class takes ownership of a `Tenant*` in its constructor but fails to `delete` it in its destructor, leading to a memory leak when `Building` objects are destroyed."
+  ]
+}

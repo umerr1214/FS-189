@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program to check if a given integer is a palindrome. A number is a palindrome if it reads the same forwards and backwards (e.g., 121, 12321).",
+  "test_cases": [
+    { "input": "121", "expected": "true" },
+    { "input": "12321", "expected": "true" },
+    { "input": "123", "expected": "false" },
+    { "input": "0", "expected": "true" },
+    { "input": "10", "expected": "false" },
+    { "input": "-121", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n\n// The student's code will be inserted here.\n\nint main() {\n    std::ios_base::sync_with_stdio(false);\n    std::cin.tie(NULL);\n    int num;\n    while (std::cin >> num) {\n        if (isPalindrome(num)) {\n            std::cout << \"true\\n\";\n        } else {\n            std::cout << \"false\\n\";\n        }\n    }\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'return originalNum == reversedNum' in the 'isPalindrome' function."
+  ]
+}

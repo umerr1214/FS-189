@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design a class hierarchy demonstrating multilevel inheritance: `Vehicle` (base class with `maxSpeed`), `Car` (derived from `Vehicle`, adds `numDoors`), `SportsCar` (derived from `Car`, adds `turboBoostEnabled`). Ensure proper constructor chaining to initialize attributes at each level.",
+  "test_cases": [
+    { "input": "", "expected": "Vehicle constructor: maxSpeed = 300\nCar constructor: numDoors = 2\nSportsCar constructor: turboBoostEnabled = true\nMax Speed: 300 km/h\nNumber of Doors: 2\nTurbo Boost: Enabled\nVehicle constructor: maxSpeed = 180\nCar constructor: numDoors = 4\nMax Speed: 180 km/h\nNumber of Doors: 4\nVehicle constructor: maxSpeed = 120\nMax Speed: 120 km/h" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Vehicle {\nprotected:\n    int maxSpeed;\npublic:\n    Vehicle(int speed) : maxSpeed(speed) {\n        std::cout << \"Vehicle constructor: maxSpeed = \" << maxSpeed << std::endl;\n    }\n    void displayVehicle() const {\n        std::cout << \"Max Speed: \" << maxSpeed << \" km/h\" << std::endl;\n    }\n};\n\nclass Car : public Vehicle {\nprotected:\n    int numDoors;\npublic:\n    Car(int speed, int doors) : Vehicle(speed), numDoors(doors) {\n        std::cout << \"Car constructor: numDoors = \" << numDoors << std::endl;\n    }\n    void displayCar() const {\n        displayVehicle();\n        std::cout << \"Number of Doors: \" << numDoors << std::endl;\n    }\n};\n\nclass SportsCar : public Car {\nprivate:\n    bool turboBoostEnabled;\npublic:\n    SportsCar(int speed, int doors, bool turbo)\n        : Car(speed, doors), turboBoostEnabled(turbo) {\n        std::cout << \"SportsCar constructor: turboBoostEnabled = \" << (turboBoostEnabled ? \"true\" : \"false\") << std::endl;\n    }\n    void displaySportsCar() const {\n        displayCar();\n        std::cout << \"Turbo Boost: \" << (turboBoostEnabled ? \"Enabled\" : \"Disabled\") << std::endl;\n    }\n};\n\nint main() {\n    SportsCar mySportsCar(300, 2, true);\n    mySportsCar.displaySportsCar();\n\n    Car myCar(180, 4);\n    myCar.displayCar();\n\n    Vehicle myVehicle(120);\n    myVehicle.displayVehicle();\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after class definition 'Vehicle'"]
+}

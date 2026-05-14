@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `Box` class with private attributes `length`, `width`, and `height` (all doubles). Implement a non-member function `calculateVolume()` that is declared as a `friend` of the `Box` class, allowing it to access the private dimensions of a `Box` object and return its volume.",
+  "test_cases": [
+    { "input": "Box(2.0, 3.0, 4.0)", "expected": "24.0" },
+    { "input": "Box(1.5, 2.5, 3.5)", "expected": "13.125" }
+  ],
+  "driver": "Box b1(2.0, 3.0, 4.0); std::cout << calculateVolume(b1) << std::endl; Box b2(1.5, 2.5, 3.5); std::cout << calculateVolume(b2) << std::endl;",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing type specifier for parameter 'h' in the Box constructor."
+  ]
+}

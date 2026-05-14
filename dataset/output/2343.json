@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Library` class that uses aggregation to manage a collection of `Book` objects (from Q1). The `Library` class should store pointers (or references) to `Book` objects that are created and owned externally. Implement methods to `addBook(Book* book)` and `displayAllBooks()`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Library Collection ---\nTitle: The Lord of the Rings, Author: J.R.R. Tolkien, Year: 1954\nTitle: To Kill a Mockingbird, Author: Harper Lee, Year: 1960\nTitle: The Great Gatsby, Author: F. Scott Fitzgerald, Year: 1925\n--------------------------\n\nLibrary is empty.\n"
+    }
+  ],
+  "driver": "int main() {\n    Book book1(\"The Lord of the Rings\", \"J.R.R. Tolkien\", 1954);\n    Book book2(\"To Kill a Mockingbird\", \"Harper Lee\", 1960);\n    Book book3(\"The Great Gatsby\", \"F. Scott Fitzgerald\", 1925);\n\n    Library myLibrary;\n\n    myLibrary.addBook(&book1);\n    myLibrary.addBook(&book2);\n    myLibrary.addBook(nullptr);\n    myLibrary.addBook(&book3);\n\n    myLibrary.displayAllBooks();\n    std::cout << std::endl;\n\n    Library emptyLibrary;\n    emptyLibrary.displayAllBooks();\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

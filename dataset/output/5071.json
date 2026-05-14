@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that reads a student's numerical score (an integer between 0 and 100). Based on the score, assign and print a letter grade using `if-else if-else` statements: A (90-100), B (80-89), C (70-79), D (60-69), F (0-59).",
+  "test_cases": [
+    { "input": "95", "expected": "Enter student's numerical score (0-100): The grade is: A\n" },
+    { "input": "82", "expected": "Enter student's numerical score (0-100): The grade is: B\n" },
+    { "input": "55", "expected": "Enter student's numerical score (0-100): The grade is: F\n" },
+    { "input": "-5", "expected": "Enter student's numerical score (0-100): The grade is: F\n" },
+    { "input": "105", "expected": "Enter student's numerical score (0-100): The grade is: A\n" },
+    { "input": "70", "expected": "Enter student's numerical score (0-100): The grade is: C\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// This function would typically be provided by the test harness\n// and executes the student's compiled program with the given input,\n// returning its standard output.\nstd::string execute_program_and_capture_output(const std::string& input_data);\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> tests = {\n        {\"95\", \"Enter student's numerical score (0-100): The grade is: A\\n\"},\n        {\"82\", \"Enter student's numerical score (0-100): The grade is: B\\n\"},\n        {\"55\", \"Enter student's numerical score (0-100): The grade is: F\\n\"},\n        {\"-5\", \"Enter student's numerical score (0-100): The grade is: F\\n\"},\n        {\"105\", \"Enter student's numerical score (0-100): The grade is: A\\n\"},\n        {\"70\", \"Enter student's numerical score (0-100): The grade is: C\\n\"}\n    };\n\n    for (const auto& test : tests) {\n        std::string input = test.first;\n        std::string expected_output = test.second;\n        std::string actual_output = execute_program_and_capture_output(input);\n\n        if (actual_output == expected_output) {\n            std::cout << \"Test Passed for input: \" << input << std::endl;\n        } else {\n            std::cout << \"Test Failed for input: \" << input << std::endl;\n            std::cout << \"Expected output: \\\"\" << expected_output << \"\\\"\" << std::endl;\n            std::cout << \"Actual output: \\\"\" << actual_output << \"\\\"\" << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The program does not explicitly validate if the input score is within the expected range of 0-100. It assigns a grade based on the existing `if-else if-else` structure even for scores outside this range (e.g., negative scores get 'F', scores > 100 get 'A'), rather than providing an error message or handling these cases specifically."]
+}

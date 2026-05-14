@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that declares an array of 5 integers and initializes it. Then, ask the user to enter a number to search for. If the number is found in the array, print its index (position); otherwise, print a 'not found' message.",
+  "test_cases": [
+    { "input": "30\n", "expected": "not found\nnot found\n2\nnot found\nnot found\n" },
+    { "input": "15\n", "expected": "not found\nnot found\nnot found\nnot found\nnot found\n" },
+    { "input": "10\n", "expected": "0\nnot found\nnot found\nnot found\nnot found\n" }
+  ],
+  "driver": "",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The program prints 'not found' for every array element that does not match the search number, instead of waiting until all elements have been checked before determining if the number was not found. This results in multiple 'not found' messages, even if the number is eventually found."
+  ]
+}

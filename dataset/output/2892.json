@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `Timer` class with methods `start()`, `stop()`, and `reset()`. Each of these methods should return a reference to the `Timer` object itself (using `*this`), allowing for method chaining (e.g., `timer.start().reset().stop();`).",
+  "test_cases": [
+    { "input": "timer.start(); std::this_thread::sleep_for(std::chrono::milliseconds(100)); timer.stop(); timer.getElapsedTimeMs();", "expected": "~100" },
+    { "input": "timer.reset().start(); std::this_thread::sleep_for(std::chrono::milliseconds(50)); timer.stop(); timer.getElapsedTimeMs();", "expected": "~50" },
+    { "input": "Timer timer2; timer2.start(); std::this_thread::sleep_for(std::chrono::milliseconds(50)); timer2.stop().reset(); std::this_thread::sleep_for(std::chrono::milliseconds(50)); timer2.getElapsedTimeMs();", "expected": "~50" }
+  ],
+  "driver": "int main() {\n    Timer timer;\n    std::cout << \"Initial time: \" << timer.getElapsedTimeMs() << \"ms\\n\";\n\n    timer.start();\n    std::this_thread::sleep_for(std::chrono::milliseconds(100));\n    timer.stop();\n    std::cout << \"After 100ms run: \" << timer.getElapsedTimeMs() << \"ms\\n\";\n\n    timer.reset().start();\n    std::this_thread::sleep_for(std::chrono::milliseconds(50));\n    timer.stop();\n    std::cout << \"After reset and 50ms run: \" << timer.getElapsedTimeMs() << \"ms\\n\";\n\n    Timer timer_chain_test;\n    timer_chain_test.start();\n    std::this_thread::sleep_for(std::chrono::milliseconds(75));\n    timer_chain_test.stop();\n    timer_chain_test.reset().start().stop(); \n    std::cout << \"Timer (after chained reset().start().stop()): \" << timer_chain_test.getElapsedTimeMs() << \"ms\\n\";\n\n    Timer timer2;\n    timer2.start(); \n    std::this_thread::sleep_for(std::chrono::milliseconds(50));\n    timer2.stop().reset(); \n    std::this_thread::sleep_for(std::chrono::milliseconds(50));\n    std::cout << \"Timer2 after stop().reset() (expected ~50 if reset, actual ~100 if not): \" << timer2.getElapsedTimeMs() << \"ms\\n\";\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The `start()`, `stop()`, and `reset()` methods return `Timer` by value instead of `Timer&`. This violates the requirement for method chaining as operations in a chain will be performed on temporary copies of the object, not the original `Timer` instance."]
+}

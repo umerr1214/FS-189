@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a `Movie` class with `title` (string), `director` (string), and `releaseYear` (int). Implement a constructor where `director` and `releaseYear` have default values (e.g., 'Unknown' and 2000), allowing movies to be created with just a title.",
+  "test_cases": [
+    { "input": "Movie movie1(\"Inception\"); movie1.displayMovie();", "expected": "Title: Inception, Director: Unknown, Year: 2000" },
+    { "input": "Movie movie2(\"The Dark Knight\", \"Christopher Nolan\"); movie2.displayMovie();", "expected": "Title: The Dark Knight, Director: Christopher Nolan, Year: 2000" },
+    { "input": "Movie movie3(\"Interstellar\", \"Christopher Nolan\", 2014); movie3.displayMovie();", "expected": "Title: Interstellar, Director: Christopher Nolan, Year: 2014" }
+  ],
+  "driver": "#include <string>\n#include <iostream>\n\nclass Movie {\npublic:\n    std::string title;\n    std::string director;\n    int releaseYear;\n\n    Movie(std::string t, std::string d = \"Unknown\", int ry = 2000)\n        : title(t), director(d), releaseYear(ry) {}\n\n    void displayMovie() const {\n        std::cout << \"Title: \" << title\n                  << \", Director: \" << director\n                  << \", Year: \" << releaseYear << std::endl;\n    }\n};\n\nint main() {\n    Movie movie1(\"Inception\");\n    movie1.displayMovie();\n\n    Movie movie2(\"The Dark Knight\", \"Christopher Nolan\");\n    movie2.displayMovie();\n    \n    Movie movie3(\"Interstellar\", \"Christopher Nolan\", 2014);\n    movie3.displayMovie();\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the class definition of 'Movie'."
+  ]
+}

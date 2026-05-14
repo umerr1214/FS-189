@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `isSymmetric` that takes a square 2D integer array (matrix) and its dimension as input. It should return `true` if the matrix is symmetric (i.e., `matrix[i][j] == matrix[j][i]`), otherwise `false`.",
+  "test_cases": [
+    { "input": "[[[1,2,3],[2,4,5],[3,5,6]], 3]", "expected": "true" },
+    { "input": "[[[1,2,3],[4,5,6],[7,8,9]], 3]", "expected": "false" },
+    { "input": "[[[1,2],[2,1]], 2]", "expected": "true" },
+    { "input": "[[[1,2],[3,4]], 2]", "expected": "false" },
+    { "input": "[[[5]], 1]", "expected": "true" },
+    { "input": "[[], 0]", "expected": "true" },
+    { "input": "[[[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]], 4]", "expected": "true" },
+    { "input": "[[[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]], 4]", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n\nbool isSymmetric(const std::vector<std::vector<int>>& matrix, int dim);\n\nstd::string matrixToString(const std::vector<std::vector<int>>& matrix) {\n    if (matrix.empty()) return \"[]\";\n    std::string s = \"[\";\n    for (size_t i = 0; i < matrix.size(); ++i) {\n        s += \"[\";\n        for (size_t j = 0; j < matrix[i].size(); ++j) {\n            s += std::to_string(matrix[i][j]);\n            if (j < matrix[i].size() - 1) {\n                s += \", \";\n            }\n        }\n        s += \"]\";\n        if (i < matrix.size() - 1) {\n            s += \", \";\n        }\n    }\n    s += \"]\";\n    return s;\n}\n\nint main() {\n    std::vector<std::pair<std::vector<std::vector<int>>, int>> test_matrices = {\n        {{{1, 2, 3}, {2, 4, 5}, {3, 5, 6}}, 3},\n        {{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}, 3},\n        {{{1, 2}, {2, 1}}, 2},\n        {{{1, 2}, {3, 4}}, 2},\n        {{{5}}, 1},\n        {{}, 0},\n        {{{1, 0, 0, 0}, {0, 1, 0, 0}, {0, 0, 1, 0}, {0, 0, 0, 1}}, 4},\n        {{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}}, 4}\n    };\n\n    std::vector<bool> expected_results = {\n        true, false, true, false, true, true, true, false\n    };\n\n    for (size_t i = 0; i < test_matrices.size(); ++i) {\n        const auto& matrix_pair = test_matrices[i];\n        const auto& matrix = matrix_pair.first;\n        int dim = matrix_pair.second;\n        bool result = isSymmetric(matrix, dim);\n        std::cout << \"Test Case \" << (i + 1) << \":\\n\";\n        std::cout << \"  Input Matrix: \" << matrixToString(matrix) << \", Dim: \" << dim << \"\\n\";\n        std::cout << \"  Expected: \" << (expected_results[i] ? \"true\" : \"false\") << \"\\n\";\n        std::cout << \"  Got: \" << (result ? \"true\" : \"false\") << \"\\n\";\n        if (result == expected_results[i]) {\n            std::cout << \"  Result: PASSED\\n\";\n        } else {\n            std::cout << \"  Result: FAILED\\n\";\n        }\n        std::cout << \"---------------------\\n\";\n    }\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a simple command-line calculator program in C++ that takes two numbers and an operator (+, -, *, /) as input from the user. Use a `switch` statement to perform the corresponding arithmetic operation and print the result. Handle division by zero.",
+  "test_cases": [
+    { "input": "10\n+\n5\n", "expected": "Result: 15.00\n" },
+    { "input": "20\n-\n7\n", "expected": "Result: 13.00\n" },
+    { "input": "3\n*\n4\n", "expected": "Result: 7.00\n" },
+    { "input": "10\n/\n2\n", "expected": "Result: 5.00\n" },
+    { "input": "10\n/\n0\n", "expected": "Error: Division by zero is not allowed.\n" },
+    { "input": "5\n%\n2\n", "expected": "Error: Invalid operator.\n" }
+  ],
+  "driver": "int main() { /* The C++ code itself is the program to test. */ }",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The multiplication case (`*`) performs addition (`num1 + num2`) instead of multiplication (`num1 * num2`)."]
+}

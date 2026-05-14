@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Define a C++ struct named `Book` with members `title` (std::string), `author` (std::string), and `publication_year` (int). Create an array of three `Book` objects, prompt the user to enter details for each, and then print the details of all books.",
+  "test_cases": [
+    {
+      "input": "The Great Gatsby\nF. Scott Fitzgerald\n2000\nNineteen Eighty-Four\nGeorge Orwell\n1984\nThe Hitchhiker's Guide to the Galaxy\nDouglas Adams\n2005\n",
+      "expected": "Enter details for three books:\n\nBook 1:\nEnter title: Enter author: Enter publication year:\n\nBook 2:\nEnter title: Enter author: Enter publication year:\n\nBook 3:\nEnter title: Enter author: Enter publication year:\n\n--- Book Details ---\n\nBook 1:\nTitle: The Great Gatsby\nAuthor: F. Scott Fitzgerald\nPublication Year: 2000\n\nBook 2:\nTitle: Nineteen Eighty-Four\nAuthor: George Orwell\nPublication Year: 1984\n\nBook 3:\nTitle: The Hitchhiker's Guide to the Galaxy\nAuthor: Douglas Adams\nPublication Year: 2005\n"
+    }
+  ],
+  "driver": "g++ -std=c++17 -o solution {filename} && ./solution",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Excessive use of std::endl instead of '\\n' which can reduce efficiency due to frequent buffer flushes.",
+    "Uses a C-style array (Book books[3]) instead of a more modern and safer container like std::array or std::vector for a fixed-size collection."
+  ]
+}

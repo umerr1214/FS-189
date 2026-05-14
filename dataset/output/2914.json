@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Implement a `Counter` class that keeps track of the total number of `Counter` objects currently alive. Use a static member variable for the count and a static member function to retrieve this count.",
+  "test_cases": [
+    { "input": "Initial state", "expected": "Initial count: 0\n" },
+    { "input": "After c1 creation", "expected": "Count after c1: 1\n" },
+    { "input": "After c2 creation (in scope)", "expected": "Count after c2 (in scope): 2\n" },
+    { "input": "After c2 destruction", "expected": "Count after c2 out of scope: 1\n" },
+    { "input": "After c3 creation", "expected": "Count after c3: 2\n" }
+  ],
+  "driver": "std::cout << \"Initial count: \" << Counter::getCount() << std::endl;\n\n    Counter c1;\n    std::cout << \"Count after c1: \" << Counter::getCount() << std::endl;\n\n    {\n        Counter c2;\n        std::cout << \"Count after c2 (in scope): \" << Counter::getCount() << std::endl;\n    }\n    std::cout << \"Count after c2 out of scope: \" << Counter::getCount() << std::endl;\n\n    Counter c3;\n    std::cout << \"Count after c3: \" << Counter::getCount() << std::endl;",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after class definition 'Counter' at line 14."]
+}

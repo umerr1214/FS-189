@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `calculate_circle_properties` that takes a `double` radius as input and, using pass-by-reference parameters, updates two `double` variables with the calculated area and circumference of the circle.",
+  "test_cases": [
+    { "input": "5.0", "expected": "Radius: 5.000000, Area: 78.539816, Circumference: 31.415927" },
+    { "input": "1.0", "expected": "Radius: 1.000000, Area: 3.141593, Circumference: 6.283185" },
+    { "input": "7.2", "expected": "Radius: 7.200000, Area: 162.860167, Circumference: 45.238934" },
+    { "input": "0.0", "expected": "Radius: 0.000000, Area: 0.000000, Circumference: 0.000000" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include <cmath>\n\n// Function definition will be inserted here by the evaluation system\nextern void calculate_circle_properties(double r, double& ar, double& circ);\n\nint main() {\n    std::cout << std::fixed << std::setprecision(6);\n    double radius_val;\n    while (std::cin >> radius_val) {\n        double area = 0.0, circumference = 0.0;\n        calculate_circle_properties(radius_val, area, circumference);\n        std::cout << \"Radius: \" << radius_val << \", Area: \" << area << \", Circumference: \" << circumference << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["The function calculates PI using `std::atan(1.0) * 4.0` inside the function, which is inefficient as PI is a constant and should be defined once globally or as `M_PI`.", "Using `std::pow(r, 2)` is slightly less efficient than `r * r` for squaring a double, although compilers might optimize this.", "Variable names `r`, `ar`, and `circ` are less descriptive than `radius`, `area`, and `circumference`."]
+}

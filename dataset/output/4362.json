@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a function `multiplyByTwo` that takes an integer pointer as an argument, dereferences it, and doubles the value at that memory address.",
+  "test_cases": [
+    { "input": "int num = 5; multiplyByTwo(&num);", "expected": "10" },
+    { "input": "int num = 10; multiplyByTwo(&num);", "expected": "20" }
+  ],
+  "driver": "#include <iostream>\n\nvoid multiplyByTwo(int* ptr);\n\nint main() {\n    int num1 = 5;\n    std::cout << \"Original value: \" << num1 << std::endl;\n    multiplyByTwo(&num1);\n    std::cout << \"After multiplyByTwo: \" << num1 << std::endl;\n\n    int num2 = 10;\n    std::cout << \"Original value: \" << num2 << std::endl;\n    multiplyByTwo(&num2);\n    std::cout << \"After multiplyByTwo: \" << num2 << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `multiplyByTwo` function fails to modify the value at the original memory address. Instead of dereferencing `ptr` and assigning the doubled value (`*ptr = *ptr * 2;`), it creates a local variable `temp`, calculates the doubled value into `temp`, and then reassigns the local pointer `ptr` to point to `temp`. This changes only the local copy of the pointer within the function, leaving the original variable unchanged when the function returns."
+  ]
+}

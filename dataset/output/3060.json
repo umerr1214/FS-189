@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Animal` with a virtual public method `makeSound()` that prints a generic sound. Derive `Dog` and `Cat` classes from `Animal`, each overriding `makeSound()` to print their specific sound. Demonstrate calling `makeSound()` using a pointer to the `Animal` base class that points to objects of `Dog` and `Cat`.",
+  "test_cases": [
+    { "input": "", "expected": "" }
+  ],
+  "driver": "int main() {\n    Animal* myDog = new Dog();\n    // This line will cause a semantic error: cannot instantiate abstract class 'Cat'\n    Animal* myCat = new Cat(); \n\n    std::cout << \"Dog says: \";\n    myDog->makeSound();\n\n    std::cout << \"Cat says: \";\n    myCat->makeSound();\n\n    delete myDog;\n    delete myCat;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": []
+}

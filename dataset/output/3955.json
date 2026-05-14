@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ function `findGCD` that calculates the Greatest Common Divisor (GCD) of two positive integers using the Euclidean algorithm (pass by value). The main program should take two numbers from the user and display their GCD.",
+  "test_cases": [
+    { "input": "10\n5", "expected": "Enter first number: Enter second number: The GCD of 10 and 5 is 5." },
+    { "input": "48\n18", "expected": "Enter first number: Enter second number: The GCD of 48 and 18 is 6." },
+    { "input": "6\n-9", "expected": "Enter first number: Enter second number: The GCD of 6 and -9 is -3." },
+    { "input": "-15\n10", "expected": "Enter first number: Enter second number: The GCD of -15 and 10 is -5." },
+    { "input": "0\n7", "expected": "Enter first number: Enter second number: The GCD of 0 and 7 is 7." }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Program does not validate if the user inputs are positive integers as required by the problem statement.",
+    "When non-positive (specifically negative) integers are provided, the `findGCD` function produces mathematically incorrect results for GCD due to the behavior of the C++ modulo operator with negative operands.",
+    "Lack of error handling or informative messages for invalid inputs."
+  ]
+}

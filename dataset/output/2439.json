@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Extend the `Shape` hierarchy (from a previous question) by making `calculateArea()` a virtual function in the base class. Demonstrate dynamic polymorphism by storing derived class objects in a `Shape*` array and calling `calculateArea()`.",
+  "test_cases": [
+    { "input": "", "expected": "Calculating areas of various shapes (Correct Version):\nShape 1 area: 78.5398\nShape 2 area: 24.0000\nShape 3 area: 19.6350\nShape 4 area: 10.5000\n" }
+  ],
+  "driver": "int main() {\n    std::vector<std::unique_ptr<Shape>> shapes;\n\n    shapes.push_back(std::make_unique<Circle>(5.0));\n    shapes.push_back(std::make_unique<Rectangle>(4.0, 6.0));\n    shapes.push_back(std::make_unique<Circle>(2.5));\n    shapes.push_back(std::make_unique<Triangle>(3.0, 7.0));\n\n    std::cout << \"Calculating areas of various shapes (Correct Version):\" << std::endl;\n    std::cout << std::fixed << std::setprecision(4);\n\n    int shape_count = 1;\n    for (const auto& shape_ptr : shapes) {\n        std::cout << \"Shape \" << shape_count++ << \" area: \" << shape_ptr->calculateArea() << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

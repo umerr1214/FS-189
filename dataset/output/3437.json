@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `power(int base, int exp)` that calculates `base` raised to the power of `exp` (e.g., 2^3 = 8) using a loop. The function should return an integer, and parameters should be passed by value. Integrate this function into a program that takes base and exponent from the user and prints the result.",
+  "test_cases": [
+    { "input": "2\n3", "expected": "Result: 8\n" },
+    { "input": "5\n2", "expected": "Result: 25\n" },
+    { "input": "10\n1", "expected": "Result: 10\n" },
+    { "input": "7\n0", "expected": "Result: 1\n" }
+  ],
+  "driver": "int main() {\n    int base_val, exp_val;\n    std::cin >> base_val;\n    std::cin >> exp_val;\n    std::cout << \"Result: \" << power(base_val, exp_val) << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'result' variable in the power function is initialized to 0 instead of 1. This causes the function to always return 0 for any positive exponent, as 0 multiplied by any number remains 0."
+  ]
+}

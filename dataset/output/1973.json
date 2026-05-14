@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Student` class with `name` (string), `studentID` (int), and `gpa` (double). Include a static member `totalStudents` to keep track of the total number of `Student` objects created.",
+  "test_cases": [
+    {
+      "input": "Create three student objects: Alice (ID 101, GPA 3.8), Bob (ID 102, GPA 3.5), and Charlie (ID 103, GPA 3.9).",
+      "expected": "Total students created: 3\nName: Alice, ID: 101, GPA: 3.8\nName: Bob, ID: 102, GPA: 3.5\nName: Charlie, ID: 103, GPA: 3.9"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Student {\npublic:\n    std::string name;\n    int studentID;\n    double gpa;\n    static int totalStudents;\n\n    Student(std::string n, int id, double g) : name(n), studentID(id), gpa(g) {\n        // totalStudents++; // Correct logic\n    }\n\n    void display() const {\n        std::cout << \"Name: \" << name << \", ID: \" << studentID << \", GPA: \" << gpa << std::endl;\n    }\n};\n\nint Student::totalStudents = 0;\n\nint main() {\n    Student s1(\"Alice\", 101, 3.8);\n    Student s2(\"Bob\", 102, 3.5);\n    Student s3(\"Charlie\", 103, 3.9);\n\n    std::cout << \"Total students created: \" << Student::totalStudents << std::endl;\n\n    s1.display();\n    s2.display();\n    s3.display();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The static member `totalStudents` is declared but not incremented within the `Student` class constructor, causing the count to always remain 0 regardless of how many student objects are created."
+  ]
+}

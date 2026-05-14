@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that reads a `std::string` from the user and checks if it is a palindrome (reads the same forwards and backwards, ignoring case and spaces is optional but for this problem, consider exact match).",
+  "test_cases": [
+    { "input": "madam", "expected": "true" },
+    { "input": "level", "expected": "true" },
+    { "input": "hello", "expected": "false" },
+    { "input": "race car", "expected": "false" },
+    { "input": "A", "expected": "true" },
+    { "input": "", "expected": "true" },
+    { "input": "12321", "expected": "true" },
+    { "input": "noon", "expected": "true" },
+    { "input": "Was it a car or a cat I saw", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <streambuf>\n\n// The user's solution's main function is renamed to user_main for testing.\n// This driver redirects stdin and stdout to capture the program's behavior.\n\nextern int user_main(); // Declare the user's main function\n\nstd::string run_user_code(const std::string& input) {\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n\n    std::istringstream in_stream(input);\n    std::ostringstream out_stream;\n\n    std::cin.rdbuf(in_stream.rdbuf());\n    std::cout.rdbuf(out_stream.rdbuf());\n\n    // Call the user's main function\n    user_main();\n\n    std::cin.rdbuf(old_cin); // Restore original cin\n    std::cout.rdbuf(old_cout); // Restore original cout\n\n    return out_stream.str();\n}\n\n// In an actual testing environment, you would iterate through test_cases here\n// and call run_user_code for each, comparing its output with expected.\n",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

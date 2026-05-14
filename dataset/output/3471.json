@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function template `T findMax(T val1, T val2)` that returns the larger of two values of any data type `T`. Test it with at least two different data types (e.g., `int` and `double`).",
+  "test_cases": [
+    { "input": "20 30", "expected": "Max of 20 and 30 (int): 30" },
+    { "input": "5.5 5.4", "expected": "Max of 5.5 and 5.4 (double): 5.5" },
+    { "input": "'a' 'z'", "expected": "Max of 'a' and 'z' (char): z" },
+    { "input": "-10 -5", "expected": "Max of -10 and -5 (int): -5" }
+  ],
+  "driver": "#include <iostream>\n#include <algorithm>\n\ntemplate <typename T>\nT findMax(T val1, T val2) {\n    return (val1 > val2) ? val1 : val2;\n}\n\nint main() {\n    int num1 = 20;\n    int num2 = 30;\n    std::cout << \"Max of \" << num1 << \" and \" << num2 << \" (int): \" << findMax(num1, num2) << std::endl;\n\n    double dbl1 = 5.5;\n    double dbl2 = 5.4;\n    std::cout << \"Max of \" << dbl1 << \" and \" << dbl2 << \" (double): \" << findMax(dbl1, dbl2) << std::endl;\n\n    char char1 = 'a';\n    char char2 = 'z';\n    std::cout << \"Max of '\" << char1 << \"' and '\" << char2 << \"' (char): \" << findMax(char1, char2) << std::endl;\n\n    int neg1 = -10;\n    int neg2 = -5;\n    std::cout << \"Max of \" << neg1 << \" and \" << neg2 << \" (int): \" << findMax(neg1, neg2) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

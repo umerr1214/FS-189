@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Design an abstract base class `GeometricShape` with a pure virtual function `getArea()` (returning double) and a non-virtual function `getName()` (returning string). Derive `Rectangle` and `Triangle` classes from `GeometricShape`, implementing the `getArea()` function specifically for each shape.",
+  "test_cases": [
+    { "input": "Rectangle(5.0, 4.0)", "expected": "Rectangle Area: 20.0" },
+    { "input": "Triangle(6.0, 3.0)", "expected": "Triangle Area: 9.0" },
+    { "input": "Rectangle(-5.0, 4.0)", "expected": "Rectangle Area: -20.0" },
+    { "input": "Triangle(0.0, 10.0)", "expected": "Triangle Area: 0.0" },
+    { "input": "Rectangle(-2.0, -3.0)", "expected": "Rectangle Area: 6.0" },
+    { "input": "Triangle(-4.0, -5.0)", "expected": "Triangle Area: 10.0" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <cmath>\n\nclass GeometricShape {\npublic:\n    virtual double getArea() const = 0;\n    std::string getName() const {\n        return shapeName;\n    }\n    virtual ~GeometricShape() = default;\nprotected:\n    std::string shapeName;\n};\n\nclass Rectangle : public GeometricShape {\npublic:\n    Rectangle(double width, double height) : width_(width), height_(height) {\n        shapeName = \"Rectangle\";\n    }\n    double getArea() const override {\n        return width_ * height_;\n    }\nprivate:\n    double width_;\n    double height_;\n};\n\nclass Triangle : public GeometricShape {\npublic:\n    Triangle(double base, double height) : base_(base), height_(height) {\n        shapeName = \"Triangle\";\n    }\n    double getArea() const override {\n        return 0.5 * base_ * height_;\n    }\nprivate:\n    double base_;\n    double height_;\n};\n\nint main() {\n    std::vector<GeometricShape*> shapes;\n    shapes.push_back(new Rectangle(5.0, 4.0));\n    shapes.push_back(new Triangle(6.0, 3.0));\n    shapes.push_back(new Rectangle(-5.0, 4.0));\n    shapes.push_back(new Triangle(0.0, 10.0));\n    shapes.push_back(new Rectangle(-2.0, -3.0));\n    shapes.push_back(new Triangle(-4.0, -5.0));\n\n    for (const auto& shape : shapes) {\n        std::cout << shape->getName() << \" Area: \" << shape->getArea() << std::endl;\n    }\n\n    for (const auto& shape : shapes) {\n        delete shape;\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program lacks input validation for dimensions in the `Rectangle` and `Triangle` constructors or `getArea()` methods.",
+    "Allowing negative or zero dimensions leads to physically nonsensical area calculations (e.g., negative area) without any error handling or warning, which can mislead users or downstream calculations."
+  ]
+}

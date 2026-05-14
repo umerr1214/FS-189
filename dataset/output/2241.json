@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define a `Shape` base class with a `color` (string) attribute. Create a `Circle` derived class that adds a `radius` (double). Implement a constructor for `Circle` that initializes both `color` and `radius` by calling the base class constructor.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "--- Creating Circle object directly ---\nShape constructor called for color: Green\nCircle constructor called for radius: 7.5\nThis is a Circle with color: Green and radius: 7.5\n--- Creating Circle object via base pointer (polymorphism) ---\nShape constructor called for color: Yellow\nCircle constructor called for radius: 2\nThis is a Circle with color: Yellow and radius: 2\n--- End of program ---\nCircle destructor called for radius: 2\nShape destructor called for color: Yellow\nCircle destructor called for radius: 7.5\nShape destructor called for color: Green\n"
+    }
+  ],
+  "driver": "    std::cout << \"--- Creating Circle object directly ---\" << std::endl;\n    Circle myCircle(\"Green\", 7.5);\n    myCircle.printInfo();\n\n    std::cout << \"--- Creating Circle object via base pointer (polymorphism) ---\" << std::endl;\n    std::unique_ptr<Shape> anotherShape = std::make_unique<Circle>(\"Yellow\", 2.0);\n    anotherShape->printInfo();\n\n    std::cout << \"--- End of program ---\" << std::endl;\n\n    return 0;",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

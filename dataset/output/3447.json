@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that initializes a 1D integer array of size 5 with user-defined values. Then, find and print the largest element in the array.",
+  "test_cases": [
+    { "input": "10 20 5 30 15\n", "expected": "Enter 5 integers for the array:\nEnter number 1: Enter number 2: Enter number 3: Enter number 4: Enter number 5: The largest element in the array is: 30\n" },
+    { "input": "-5 -10 -2 -1 -8\n", "expected": "Enter 5 integers for the array:\nEnter number 1: Enter number 2: Enter number 3: Enter number 4: Enter number 5: The largest element in the array is: -1\n" },
+    { "input": "0 0 0 0 0\n", "expected": "Enter 5 integers for the array:\nEnter number 1: Enter number 2: Enter number 3: Enter number 4: Enter number 5: The largest element in the array is: 0\n" },
+    { "input": "100 1 50 2 99\n", "expected": "Enter 5 integers for the array:\nEnter number 1: Enter number 2: Enter number 3: Enter number 4: Enter number 5: The largest element in the array is: 100\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n#include <algorithm>\n\n// Assumes the student's core logic is within a 'void solve()' function\n// which reads from std::cin and writes to std::cout.\nstd::string execute_solution(const std::string& input_data) {\n    std::stringstream ss_input(input_data);\n    std::stringstream ss_output;\n\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    solve(); // Call the student's solution function\n\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    return ss_output.str();\n}\n",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter their name (as a string), age (as an integer), and height (in meters as a double). Store these values in appropriate variables and then print them back to the console in a formatted sentence.",
+  "test_cases": [
+    {
+      "input": "Jane Doe\n42\n1.68",
+      "expected": "Please enter your name: Please enter your age: Please enter your height (in meters): \nHello, Jane Doe! You are 42 years old and 1.68 meters tall.\n"
+    },
+    {
+      "input": "Charlie Brown\n10\n1.20",
+      "expected": "Please enter your name: Please enter your age: Please enter your height (in meters): \nHello, Charlie Brown! You are 10 years old and 1.2 meters tall.\n"
+    }
+  ],
+  "driver": "extern int student_main_logic();\n\nstd::string run_and_capture_output(const std::string& input) {\n    std::streambuf* old_cin_buf = std::cin.rdbuf();\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n\n    std::istringstream iss(input);\n    std::ostringstream oss;\n\n    std::cin.rdbuf(iss.rdbuf());\n    std::cout.rdbuf(oss.rdbuf());\n\n    student_main_logic(); \n\n    std::cin.rdbuf(old_cin_buf);\n    std::cout.rdbuf(old_cout_buf);\n\n    return oss.str();\n}\n\nint main() {\n    // This main function is part of the test driver and would typically\n    // iterate through test cases, calling run_and_capture_output for each.\n    // The actual test cases and their expected outputs are defined in the JSON.\n    std::cout << \"Test driver for student_main_logic initialized.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `Point` class with private integer attributes `x` and `y`. Provide public methods `setCoordinates(int, int)` to modify them and `getDistanceToOrigin()` to calculate the Euclidean distance from (0,0).",
+  "test_cases": [
+    { "input": "3,4", "expected": "5.0" },
+    { "input": "0,0", "expected": "0.0" },
+    { "input": "1,0", "expected": "1.0" },
+    { "input": "1,1", "expected": "1.41421356237" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n\nclass Point {\nprivate:\n    int x;\n    int y;\n\npublic:\n    void setCoordinates(int _x, int _y) {\n        x = _x;\n        y = _y;\n    }\n\n    double getDistanceToOrigin() {\n        return std::sqrt(x * x + y * y);\n    }\n};\n\nint main() {\n    Point p;\n    int x_val, y_val;\n    char comma;\n    while (std::cin >> x_val >> comma >> y_val) {\n        p.setCoordinates(x_val, y_val);\n        double dist = p.getDistanceToOrigin();\n        std::cout.precision(12);\n        std::cout << std::fixed << dist << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": []
+}

@@ -1,0 +1,27 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `swapValues` that takes two integer variables by reference and swaps their values. Demonstrate its usage in the `main` function with user-provided integers.",
+  "test_cases": [
+    {
+      "input": "5\n10\n",
+      "expected": "Enter the first integer: Enter the second integer: Before swapping: a = 5, b = 10\nAfter swapping: a = 10, b = 5\n"
+    },
+    {
+      "input": "-3\n7\n",
+      "expected": "Enter the first integer: Enter the second integer: Before swapping: a = -3, b = 7\nAfter swapping: a = 7, b = -3\n"
+    },
+    {
+      "input": "abc\n123\n",
+      "expected": "Enter the first integer: Invalid input. Please enter an integer: Enter the second integer: Before swapping: a = 123, b = 123\nAfter swapping: a = 123, b = 123\n"
+    },
+    {
+      "input": "100\nhello\n200\n",
+      "expected": "Enter the first integer: Enter the second integer: Invalid input. Please enter an integer: Before swapping: a = 100, b = 200\nAfter swapping: a = 200, b = 100\n"
+    }
+  ],
+  "driver": "int main_wrapper() { return main(); }",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

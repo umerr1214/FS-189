@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Student` class with private member variables for `name`, `id`, and `grade`. Implement public `getter` and `setter` methods for all members.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial State:\nName: \nID: 0\nGrade: 0.0\n\nSetting values...\nCurrent State (after setGrade(88.8)): \nName: Bob\nID: 88\nGrade: 0.0\n\nFurther check with s2:\nS2 ID after setGrade(75.0): 75\nS2 Grade after setGrade(75.0): 0.0\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nint main() {\n    Student s;\n    std::cout << \"Initial State:\" << std::endl;\n    std::cout << \"Name: \" << s.getName() << std::endl;\n    std::cout << \"ID: \" << s.getId() << std::endl;\n    std::cout << \"Grade: \" << s.getGrade() << std::endl;\n\n    std::cout << \"\\nSetting values...\" << std::endl;\n    s.setName(\"Bob\");\n    s.setId(202);\n    s.setGrade(88.8);\n\n    std::cout << \"Current State (after setGrade(88.8)): \" << std::endl;\n    std::cout << \"Name: \" << s.getName() << std::endl;\n    std::cout << \"ID: \" << s.getId() << std::endl;\n    std::cout << \"Grade: \" << s.getGrade() << std::endl;\n\n    std::cout << \"\\nFurther check with s2:\" << std::endl;\n    Student s2;\n    s2.setGrade(75.0);\n    std::cout << \"S2 ID after setGrade(75.0): \" << s2.getId() << std::endl;\n    std::cout << \"S2 Grade after setGrade(75.0): \" << s2.getGrade() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `setGrade` method contains a logical error: it incorrectly assigns the `newGrade` value to the `id` member variable (`id = static_cast<int>(newGrade);`) instead of the `grade` member variable (`grade = newGrade;`). This results in the student's ID being modified when their grade is set, and the actual grade member variable remains unchanged from its default or previously assigned value."
+  ]
+}

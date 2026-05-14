@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that reads a single word (as `std::string`) from the user and checks if it is a palindrome (reads the same forwards and backwards). The check should be case-sensitive.",
+  "test_cases": [
+    { "input": "madam", "expected": "The word \"madam\" is a palindrome." },
+    { "input": "hello", "expected": "The word \"hello\" is not a palindrome." },
+    { "input": "racecar", "expected": "The word \"racecar\" is a palindrome." },
+    { "input": "level", "expected": "The word \"level\" is a palindrome." },
+    { "input": "Madam", "expected": "The word \"Madam\" is not a palindrome." },
+    { "input": "a", "expected": "The word \"a\" is a palindrome." },
+    { "input": "", "expected": "The word \"\" is a palindrome." }
+  ],
+  "driver": "std::string word; std::cin >> word; if (isPalindrome(word)) { std::cout << \"The word \\\"\" << word << \"\\\" is a palindrome.\" << std::endl; } else { std::cout << \"The word \\\"\" << word << \"\\\" is not a palindrome.\" << std::endl; }",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'std::cin >> word' statement in main function."
+  ]
+}

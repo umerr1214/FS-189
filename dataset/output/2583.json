@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Car` class that demonstrates composition by containing an `Engine` object. The `Engine` class should have attributes like `horsepower` and `fuelType`. Ensure that when a `Car` object is created, its `Engine` is also created, and when the `Car` object is destroyed, its `Engine` object is automatically destroyed with it.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Creating Car1 ---\nEngine created: 200hp, Gasoline\nCar created.\nCar Details: Engine - 200hp, Gasoline\n\n--- Creating Car2 ---\nEngine created: 500hp, Electric\nCar created.\nCar Details: Engine - 500hp, Electric\n\n--- Car objects going out of scope ---\nCar destroyed.\nEngine destroyed: 500hp, Electric\nCar destroyed.\nEngine destroyed: 200hp, Gasoline\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Creating Car1 ---\" << std::endl;\n    Car car1(200, \"Gasoline\");\n    car1.displayCarDetails();\n\n    std::cout << \"\\n--- Creating Car2 ---\" << std::endl;\n    Car car2(500, \"Electric\");\n    car2.displayCarDetails();\n\n    std::cout << \"\\n--- Car objects going out of scope ---\" << std::endl;\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a `Date` class with private `day`, `month`, `year` (integers). Implement public setter methods for each (`setDay`, `setMonth`, `setYear`) that perform basic validation (e.g., month between 1-12, day valid for the given month, year positive). If validation fails, do not update the member and print an error.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial date: 15/6/2023\n\n--- Testing Robustness Issues ---\nAttempting to set month to February (2) and then day to 30:\nDate after setting month to 2 and day to 30: 30/2/2023\n\nAttempting to set day to 29 in a non-leap year (2023):\nDate after setting year to 2023, month to 2, day to 29: 29/2/2023\n\nAttempting to set day to 31, then month to April (4):\nDate after setting to 31/1/2024: 31/1/2024\nDate after setting month to 4: 31/4/2024\n\n--- Testing other invalid inputs (should be caught by basic validation) ---\nError: Invalid year -100. Year must be positive.\n31/4/2024\nError: Invalid month 0. Month must be between 1 and 12.\n31/4/2024\nError: Invalid day 0. Day must be between 1 and 31.\n31/4/2024\n"
+    }
+  ],
+  "driver": "int main() {\n    Date d(15, 6, 2023);\n    std::cout << \"Initial date: \";\n    d.displayDate();\n\n    std::cout << \"\\n--- Testing Robustness Issues ---\\n\";\n\n    // Scenario 1: Set day that is invalid for current month (Feb)\n    std::cout << \"Attempting to set month to February (2) and then day to 30:\\n\";\n    d.setMonth(2); // Sets month to 2\n    d.setDay(30);  // Robustness issue: This will succeed because setDay only checks 1-31.\n    std::cout << \"Date after setting month to 2 and day to 30: \";\n    d.displayDate(); // Expected: 30/2/2023 (INVALID DATE, but allowed by this code)\n\n    std::cout << \"\\nAttempting to set day to 29 in a non-leap year (2023):\\n\";\n    d.setYear(2023); // Set year to non-leap\n    d.setMonth(2);   // Set month to February\n    d.setDay(29);    // Robustness issue: This will succeed.\n    std::cout << \"Date after setting year to 2023, month to 2, day to 29: \";\n    d.displayDate(); // Expected: 29/2/2023 (INVALID DATE, but allowed by this code)\n\n    // Scenario 2: Set day to 31, then change month to one with fewer days (April)\n    std::cout << \"\\nAttempting to set day to 31, then month to April (4):\\n\";\n    d.setYear(2024); // Reset to a valid year\n    d.setMonth(1);   // Set to January (31 days)\n    d.setDay(31);    // Set day to 31 (valid for Jan)\n    std::cout << \"Date after setting to 31/1/2024: \";\n    d.displayDate(); // Expected: 31/1/2024\n    d.setMonth(4);   // Robustness issue: This will succeed, but day 31 is invalid for April.\n    std::cout << \"Date after setting month to 4: \";\n    d.displayDate(); // Expected: 31/4/2024 (INVALID DATE, but allowed by this code)\n\n    std::cout << \"\\n--- Testing other invalid inputs (should be caught by basic validation) ---\\n\";\n    d.setYear(-100); // Invalid year\n    d.displayDate(); // Expected: 31/4/2024 (year not updated)\n    d.setMonth(0);   // Invalid month\n    d.displayDate(); // Expected: 31/4/2024 (month not updated)\n    d.setDay(0);     // Invalid day\n    d.displayDate(); // Expected: 31/4/2024 (day not updated)\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `setDay` method does not validate the day against the current month and year, allowing invalid dates like February 30th or April 31st.",
+    "The `setMonth` method does not re-validate the day when the month changes, potentially leaving the date in an invalid state if the previous day was too high for the new month (e.g., changing from Jan 31 to April, resulting in April 31)."
+  ]
+}

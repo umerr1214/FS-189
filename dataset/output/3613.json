@@ -1,0 +1,30 @@
+{
+  "language": "c++",
+  "question": "Write a function `bool isPrime(int num)` that returns `true` if `num` is prime and `false` otherwise. Use this function to print all prime numbers up to a user-specified limit.",
+  "test_cases": [
+    {
+      "input": "10",
+      "expected": "Prime numbers up to 10:\n1 2 3 5 7 \n"
+    },
+    {
+      "input": "1",
+      "expected": "Prime numbers up to 1:\n1 \n"
+    },
+    {
+      "input": "0",
+      "expected": "Prime numbers up to 0:\n\n"
+    },
+    {
+      "input": "-5",
+      "expected": "Prime numbers up to -5:\n\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n\n// Assume isPrime(int num) is defined externally or in the same compilation unit.\n// For the actual test environment, the <file_number>.cpp will be compiled,\n// and this driver would link against it or include its parts.\n\nextern bool isPrime(int num);\n\nint main() {\n    std::vector<int> testNums = {2, 3, 4, 5, 6, 7, 10, 11, 13, 17, 19, 23, 1, 0, -5};\n    std::cout << \"Testing isPrime function:\" << std::endl;\n    for (int num : testNums) {\n        std::cout << \"isPrime(\" << num << \"): \" << (isPrime(num) ? \"true\" : \"false\") << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `isPrime` function incorrectly identifies `1` as a prime number. By mathematical definition, 1 is not prime.",
+    "The main loop iterates from 1, which, combined with the `isPrime(1)` bug, causes incorrect output for limits >= 1."
+  ]
+}

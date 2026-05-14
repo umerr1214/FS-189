@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `void swap(int& a, int& b)` that takes two integer variables by reference and exchanges their values. In `main`, declare two integers, initialize them, call `swap` with them, and then print their values before and after the swap to demonstrate its effect.",
+  "test_cases": [
+    { "input": "Initial values: x=5, y=10", "expected": "Before swap: x = 5, y = 10\nAfter swap: x = 10, y = 10" }
+  ],
+  "driver": "int main() {\n    int x = 5;\n    int y = 10;\n\n    std::cout << \"Before swap: x = \" << x << \", y = \" << y << std::endl;\n\n    swap(x, y);\n\n    std::cout << \"After swap: x = \" << x << \", y = \" << y << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The swap logic is incorrect. After `a = b;`, `a` holds the original value of `b`. Then `b = a;` assigns this new value of `a` (which is original `b`) to `b`, resulting in both `a` and `b` holding the original value of `b`."]
+}

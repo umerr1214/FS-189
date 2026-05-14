@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that presents a simple menu to the user (e.g., '1. Say Hello', '2. Say Goodbye', '3. Exit'). The program should continuously display the menu and process user choices until the user selects the 'Exit' option. Use a `do-while` loop for the menu.",
+  "test_cases": [
+    {
+      "input": "1\n3\n",
+      "expected": "--- Menu ---\n1. Say Hello\n2. Say Goodbye\n3. Exit\nEnter your choice: Say Hello!\n\n--- Menu ---\n1. Say Hello\n2. Say Goodbye\n3. Exit\nEnter your choice: Exiting...\n\n"
+    },
+    {
+      "input": "5\n2\n3\n",
+      "expected": "--- Menu ---\n1. Say Hello\n2. Say Goodbye\n3. Exit\nEnter your choice: Invalid choice. Please try again.\n\n--- Menu ---\n1. Say Hello\n2. Say Goodbye\n3. Exit\nEnter your choice: Say Goodbye!\n\n--- Menu ---\n1. Say Hello\n2. Say Goodbye\n3. Exit\nEnter your choice: Exiting...\n\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <streambuf>\n\n// Forward declaration of the user's main function, assumed to be renamed for testing\nextern int solution_main();\n\nstd::string run_test(const std::string& input_str) {\n    std::stringstream input_ss(input_str);\n    std::stringstream output_ss;\n\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n\n    std::cin.rdbuf(input_ss.rdbuf());\n    std::cout.rdbuf(output_ss.rdbuf());\n\n    solution_main();\n\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    return output_ss.str();\n}\n\nint main() {\n    // This main function would typically iterate through test_cases\n    // and call run_test for each, comparing the output.\n    // For this dataset, it serves as a conceptual driver.\n    return 0;\n}",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'std::cout << \"2. Say Goodbye\\n\"' on line 12. This will prevent the program from compiling."
+  ]
+}

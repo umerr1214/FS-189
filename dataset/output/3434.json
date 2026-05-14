@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that calculates the factorial of a non-negative integer entered by the user. Use a `for` loop for the calculation.",
+  "test_cases": [
+    { "input": "5\n", "expected": "Enter a non-negative integer: Factorial of 5 is 120.\n" },
+    { "input": "0\n", "expected": "Enter a non-negative integer: Factorial of 0 is 1.\n" },
+    { "input": "1\n", "expected": "Enter a non-negative integer: Factorial of 1 is 1.\n" },
+    { "input": "7\n", "expected": "Enter a non-negative integer: Factorial of 7 is 5040.\n" },
+    { "input": "-2\n", "expected": "Enter a non-negative integer: Invalid input. Please enter a non-negative integer.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// Assuming the user's solution is compiled and linked, and its main logic\n// is accessible via a function like `solve(std::istream&, std::ostream&)`\nextern void solve(std::istream& in, std::ostream& out);\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> test_cases = {\n        { \"5\\n\", \"Enter a non-negative integer: Factorial of 5 is 120.\\n\" },\n        { \"0\\n\", \"Enter a non-negative integer: Factorial of 0 is 1.\\n\" },\n        { \"1\\n\", \"Enter a non-negative integer: Factorial of 1 is 1.\\n\" },\n        { \"7\\n\", \"Enter a non-negative integer: Factorial of 7 is 5040.\\n\" },\n        { \"-2\\n\", \"Enter a non-negative integer: Invalid input. Please enter a non-negative integer.\\n\" }\n    };\n\n    for (size_t i = 0; i < test_cases.size(); ++i) {\n        std::stringstream ss_input(test_cases[i].first);\n        std::stringstream ss_output;\n\n        // Call the user's solve function with redirected streams\n        solve(ss_input, ss_output);\n\n        std::cout << \"Test Case \" << i + 1 << \":\\n\";\n        std::cout << \"Input: \" << test_cases[i].first;\n        std::cout << \"Expected Output:\\n\" << test_cases[i].second;\n        std::cout << \"Actual Output:\\n\" << ss_output.str();\n        if (ss_output.str() == test_cases[i].second) {\n            std::cout << \"Result: PASSED\\n\\n\";\n        } else {\n            std::cout << \"Result: FAILED\\n\\n\";\n        }\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses cryptic and overly verbose variable names like `input_val_n`, `calc_res`, and `iterator_var`, making the code harder to understand.",
+    "Includes a redundant `if (input_val_n == 0)` check; the `for` loop `for (int iterator_var = input_val_n; iterator_var >= 1; --iterator_var)` naturally handles 0 correctly (loop doesn't run, `calc_res` remains 1).",
+    "The loop iterates downwards, which is functionally correct but less common and potentially less intuitive for calculating factorial than iterating upwards from 1."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design a `Vehicle` base class and a `Car` derived class. Include simple print statements in the constructors of both classes to illustrate the order of constructor execution when a `Car` object is created.",
+  "test_cases": [
+    { "input": "", "expected": "Vehicle constructor\nCar constructor\nCar destructor\nVehicle destructor\n" }
+  ],
+  "driver": "int main() {\n    Car myCar;\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

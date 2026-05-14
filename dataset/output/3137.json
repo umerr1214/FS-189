@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `FileManager` class that dynamically allocates a character array (e.g., for a file path) in its constructor. Implement a destructor to properly deallocate this memory.",
+  "test_cases": [
+    { "input": "", "expected": "--- Demonstrating Logical Error (Buffer Overflow) ---\nFileManager created for: short.txt\nCurrent file path: short.txt\nFileManager created for: another_long_file_path_name.docx\nCurrent file path: another_long_file_path_name.docx\nFileManager created with null path.\nCurrent file path: (null)\n--- End Demonstration ---\nFileManager destroying path: another_long_file_path_name.docx\nFileManager destroying path: short.txt\nFileManager destroying null path.\n" }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Demonstrating Logical Error (Buffer Overflow) ---\" << std::endl;\n    FileManager fm1(\"short.txt\");\n    fm1.printPath();\n    FileManager fm2(\"another_long_file_path_name.docx\");\n    fm2.printPath();\n    FileManager fm3(nullptr);\n    fm3.printPath();\n    std::cout << \"--- End Demonstration ---\" << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The constructor allocates `strlen(path)` bytes for the character array, but `strcpy` requires `strlen(path) + 1` bytes to include the null terminator. This leads to a buffer overflow, which is undefined behavior."]
+}

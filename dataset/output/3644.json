@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Search for a specific integer value in a 1D array of 8 integers. If found, report its first index; otherwise, indicate it's not present.",
+  "test_cases": [
+    { "input": "5", "expected": "Enter the integer to search: Found at index 2\n" },
+    { "input": "100", "expected": "Enter the integer to search: Not present\n" },
+    { "input": "1", "expected": "Enter the integer to search: Not present\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <streambuf>\n\n// Assume the student's solution is in a function called solve_and_print()\n// and main() simply calls it. The test harness will call solve_and_print() directly.\n// int solve_and_print(); // Forward declaration if needed\n\nstd::string run_program(const std::string& input_str) {\n    std::stringstream ss_in(input_str);\n    std::stringstream ss_out;\n    \n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::cin.rdbuf(ss_in.rdbuf());\n    std::cout.rdbuf(ss_out.rdbuf());\n\n    solve_and_print(); // Call the student's solution function\n    \n    std::cin.rdbuf(old_cin);\n\n    // Restore cout only after all output is done\n    std::cout.rdbuf(old_cout);\n\n    return ss_out.str();\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["The search loop continues to iterate through the entire array even after the target element is found, which is inefficient. Using a boolean flag to track if an element is found is redundant when the loop could simply `break` or `return` upon discovery. Variable names are somewhat verbose and inconsistent in style. The array size '8' is a magic number, reducing maintainability."]
+}

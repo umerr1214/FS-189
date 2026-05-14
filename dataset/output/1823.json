@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `StringWrapper` class that manages a dynamically allocated character array to store a string. Implement a copy constructor for `StringWrapper` that performs a deep copy of the character array to ensure independent memory management between copied objects.",
+  "test_cases": [
+    { "input": "N/A", "expected": "s1: Hello\ns2: Hello\ns3: Hello\n" }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n\n// The StringWrapper class would be placed here\n\nint main() {\n    StringWrapper s1(\"Hello\");\n    StringWrapper s2 = s1; // Calls copy constructor, which is faulty\n    StringWrapper s3(\"World\");\n    s3 = s1; // Calls assignment operator\n\n    std::cout << \"s1: \" << s1.getString() << std::endl;\n    std::cout << \"s2: \" << s2.getString() << std::endl;\n    std::cout << \"s3: \" << s3.getString() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The copy constructor performs a shallow copy by copying the pointer `data` directly. This means both the original and copied `StringWrapper` objects will point to and manage the same dynamically allocated character array. This violates the requirement for independent memory management and will lead to a double-free error or memory corruption when the objects are destructed."
+  ]
+}

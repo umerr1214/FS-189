@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `Circle` class with a private `radius` member. Implement a `getArea()` method that is `const` (cannot modify object state) and another method `resize(double newRadius)` that modifies the radius. Demonstrate calling these methods on both `const Circle` objects and non-`const Circle` objects to illustrate const-correctness.",
+  "test_cases": [
+    { "input": "Circle c1(5.0)", "expected": "Initial Circle (c1): Radius = 5.0, Area = 78.53981633974483" },
+    { "input": "c1.resize(7.0)", "expected": "Resized Circle (c1): Radius = 7.0, Area = 153.93804002589972" },
+    { "input": "const Circle c2(10.0)", "expected": "Const Circle (c2): Radius = 10.0, Area = 314.1592653589793" }
+  ],
+  "driver": "int main() {\n    Circle c1(5.0);\n    std::cout << \"Initial Circle (c1): Radius = \" << c1.getRadius() << \", Area = \" << c1.getArea() << std::endl;\n\n    c1.resize(7.0);\n    std::cout << \"Resized Circle (c1): Radius = \" << c1.getRadius() << \", Area = \" << c1.getArea() << std::endl;\n\n    const Circle c2(10.0);\n    std::cout << \"Const Circle (c2): Radius = \" << c2.getRadius() << \", Area = \" << c2.getArea() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The getArea() method calculates the circumference (2*PI*r) instead of the area (PI*r*r)."]
+}

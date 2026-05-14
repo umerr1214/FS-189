@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Book` with members `title` (`std::string`), `author` (`std::string`), and `publicationYear` (int). Write a program that declares an array of three `Book` structs, prompts the user to enter details for each book, and then prints the details of all books.",
+  "test_cases": [
+    {
+      "input": "Book Title 1\nAuthor 1\n1990\nBook Title 2\nAuthor 2\n1991\nBook Title 3\nAuthor 3\n1992\n",
+      "expected": "Enter details for Book 1:\nTitle: Author: Publication Year: Enter details for Book 2:\nTitle: Author: Publication Year: Enter details for Book 3:\nTitle: Author: Publication Year: \n--- Book Details ---\nBook 1:\n  Title: Book Title 1\n  Author: Author 1\n  Publication Year: 1990\nBook 2:\n  Title: Book Title 2\n  Author: Author 2\n  Publication Year: 1991\nBook 3:\n  Title: Book Title 3\n  Author: Author 3\n  Publication Year: 1992\n"
+    }
+  ],
+  "driver": "// The student's code is a complete program that interacts with stdin/stdout. An external test runner would execute it.",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after struct definition, preventing compilation."
+  ]
+}

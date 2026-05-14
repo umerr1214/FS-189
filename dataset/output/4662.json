@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Develop a simple console-based calculator program that takes two numbers and an operator (+, -, *, /) from the user and performs the corresponding operation using a `switch` statement.",
+  "test_cases": [
+    { "input": "10.0\n+\n5.0\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 15\n" },
+    { "input": "8.0\n-\n2.0\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 6\n" },
+    { "input": "7.0\n*\n3.0\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 21\n" },
+    { "input": "10.0\n/\n2.0\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 5\n" },
+    { "input": "10.0\n/\n0.0\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: inf\n" }
+  ],
+  "driver": "The C++ program is compiled. For each test case, the 'input' string is fed to the program's stdin, and the program's stdout is captured and compared with the 'expected' string. Note: For division by zero with doubles, 'inf' (infinity) is expected.",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The program handles division by zero for floating-point numbers by performing the division directly, which results in 'inf' (infinity) or 'nan' (not a number) as per IEEE 754 standard, instead of providing a user-friendly error message or preventing the operation. While technically defined for doubles, this behavior is often not the intended 'error handling' in a user-facing calculator."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a `Counter` class with a static integer member `count` initialized to 0. Increment `count` in the constructor and decrement it in the destructor. Provide a static method `getTotalCount()` that returns the current value of `count`. Demonstrate how `count` tracks the number of `Counter` objects.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial total count: 0\nAfter creating c1. Total count: 1\nAfter creating c2 (copy of c1). Total count: 1\nInside block, after creating c3. Total count: 2\nAfter c3 destroyed. Total count: 1\nBefore main returns. Total count: 1\nProgram ending.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n\nclass Counter {\npublic:\n    Counter() {\n        count++;\n    }\n\n    ~Counter() {\n        count--;\n    }\n\n    static int getTotalCount() {\n        return count;\n    }\n\nprivate:\n    static int count;\n};\n\n// Initialize static member\nint Counter::count = 0;\n\nint main() {\n    std::cout << \"Initial total count: \" << Counter::getTotalCount() << std::endl; // 0\n\n    Counter c1;\n    std::cout << \"After creating c1. Total count: \" << Counter::getTotalCount() << std::endl; // 1\n\n    // This uses the default copy constructor.\n    // The default copy constructor performs a shallow copy of member variables.\n    // Since 'count' is static, it's not a member variable of individual objects.\n    // Therefore, the Counter constructor is NOT called for 'c2'.\n    // 'count' remains 1. This is a robustness issue as c2 is a new object instance.\n    Counter c2 = c1;\n    std::cout << \"After creating c2 (copy of c1). Total count: \" << Counter::getTotalCount() << std::endl; // 1 (Incorrect, should be 2 if c2 was a distinct object)\n\n    {\n        Counter c3;\n        std::cout << \"Inside block, after creating c3. Total count: \" << Counter::getTotalCount() << std::endl; // 2\n    } // c3 is destroyed here, count becomes 1\n    std::cout << \"After c3 destroyed. Total count: \" << Counter::getTotalCount() << std::endl; // 1\n\n    // At this point: c1 and c2 exist. count is 1.\n    // When main exits, c3 is already destroyed.\n    // c2's destructor is called: count becomes 0. (Incorrect, c1 still exists)\n    // c1's destructor is called: count becomes -1. (Incorrect, count should not go negative)\n    // This is the robustness issue: count goes negative while objects logically exist or after their destruction.\n    // The problem is that c2 was created without incrementing the counter, but its destruction decrements it.\n    std::cout << \"Before main returns. Total count: \" << Counter::getTotalCount() << std::endl;\n\n    std::cout << \"Program ending.\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The default copy constructor and copy assignment operator are not correctly handled, leading to an incorrect count when objects are copied. The counter decrements for copied objects that never incremented it, potentially leading to negative counts or an inaccurate representation of active objects."
+  ]
+}

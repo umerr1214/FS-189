@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `Coordinate` class with `x` and `y` integer members. Implement `getX()` and `getY()` as `const` member functions. Demonstrate how a `const` object of `Coordinate` can only call its `const` member functions.",
+  "test_cases": [
+    { "input": "", "expected": "Non-const object c1: (10, 20)\nConst object c2 using const accessors: (30, 40)\nAttempting to call non-const printCoordinate() on const object c2 would result in a compile error, demonstrating a robustness issue in the method's design.\n" }
+  ],
+  "driver": "int main() {\n    Coordinate c1(10, 20);\n    const Coordinate c2(30, 40);\n    std::cout << \"Non-const object c1: \";\n    c1.printCoordinate();\n    std::cout << std::endl;\n    std::cout << \"Const object c2 using const accessors: (\" << c2.getX() << \", \" << c2.getY() << \")\" << std::endl;\n    std::cout << \"Attempting to call non-const printCoordinate() on const object c2 would result in a compile error, demonstrating a robustness issue in the method's design.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `printCoordinate()` method, which does not modify the object's state, is not marked `const`. This is a robustness issue in the class design because it unnecessarily restricts `const` objects from using this utility function, leading to potential compile-time errors and limiting the flexibility of the class."
+  ]
+}

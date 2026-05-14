@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a function template `getLarger(T val1, T val2)` that accepts two arguments of the same comparable type `T` and returns the larger of the two. Demonstrate this template function with at least two different data types (e.g., `int` and `double`).",
+  "test_cases": [
+    { "input": "42, 100 (int)", "expected": "100" },
+    { "input": "99.9, 99.89 (double)", "expected": "99.9" },
+    { "input": "-5, 0 (int)", "expected": "0" },
+    { "input": "1.234567, 1.2345678 (double)", "expected": "1.2345678" },
+    { "input": "\"hello\", \"world\" (std::string)", "expected": "\"world\"" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\ntemplate <typename T>\nconst T& getLarger(const T& val1, const T& val2) {\n    return val1 > val2 ? val1 : val2;\n}\n\nint main() {\n    int int_a = 42; int int_b = 100;\n    std::cout << getLarger(int_a, int_b) << std::endl;\n\n    double double_x = 99.9; double double_y = 99.89;\n    std::cout << getLarger(double_x, double_y) << std::endl;\n\n    int int_c = -5; int int_d = 0;\n    std::cout << getLarger(int_c, int_d) << std::endl;\n\n    double double_p = 1.234567; double double_q = 1.2345678;\n    std::cout << getLarger(double_p, double_q) << std::endl;\n\n    std::string str_s1 = \"hello\"; std::string str_s2 = \"world\";\n    std::cout << getLarger(str_s1, str_s2) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

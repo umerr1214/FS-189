@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a function `char* reverse_cstring(char* str)` that takes a C-style string (character array) as input and reverses it in-place. The function should return a pointer to the modified string.",
+  "test_cases": [
+    { "input": "hello (string literal)", "expected": "olleh" },
+    { "input": "world (char array)", "expected": "dlrow" },
+    { "input": "test (string literal)", "expected": "tset" },
+    { "input": " (char array)", "expected": "" }
+  ],
+  "driver": "    char* s1 = (char*)\"hello\";\n    std::cout << \"Original: \" << s1 << \", Reversed: \";\n    char* reversed_s1 = reverse_cstring(s1);\n    std::cout << reversed_s1 << std::endl;\n\n    char s2_arr[] = \"world\";\n    std::cout << \"Original: \" << s2_arr << \", Reversed: \" << reverse_cstring(s2_arr) << std::endl;\n    \n    char* s3 = (char*)\"test\";\n    std::cout << \"Original: \" << s3 << \", Reversed: \";\n    char* reversed_s3 = reverse_cstring(s3);\n    std::cout << reversed_s3 << std::endl;\n\n    char s4_arr[] = \"\";\n    std::cout << \"Original: \" << s4_arr << \", Reversed: \" << reverse_cstring(s4_arr) << std::endl;",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": []
+}

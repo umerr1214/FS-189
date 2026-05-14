@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Calculate the average of elements in a 1D array of 5 floating-point numbers. Get the array elements from the user.",
+  "test_cases": [
+    {
+      "input": "1.0\n2.0\n3.0\n4.0\n5.0\n",
+      "expected": "Welcome! This program calculates the average of 5 floating-point numbers.\nPlease enter 5 numbers:\nEnter number 1: Enter number 2: Enter number 3: Enter number 4: Enter number 5: The average of the 5 numbers is: 3.00\n"
+    },
+    {
+      "input": "1.0\n2.0\nabc\n3.0\n4.0\n5.0\n",
+      "expected": "Welcome! This program calculates the average of 5 floating-point numbers.\nPlease enter 5 numbers:\nEnter number 1: Enter number 2: Enter number 3: Invalid input. Please enter a valid floating-point number: Enter number 4: Enter number 5: The average of the 5 numbers is: 3.00\n"
+    }
+  ],
+  "driver": "The program interacts directly with the user via standard input/output. Test cases represent the sequence of user inputs and the final expected output.",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

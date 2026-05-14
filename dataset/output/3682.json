@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Concatenate two C-style strings (character arrays) into a third C-style string without using any standard library string functions like `strcat`.",
+  "test_cases": [
+    { "input": "str1 = \"Hello\", str2 = \"World\"", "expected": "\"HelloWorld\"" },
+    { "input": "str1 = \"Open\", str2 = \"AI\"", "expected": "\"OpenAI\"" },
+    { "input": "str1 = \"\", str2 = \"Test\"", "expected": "\"Test\"" },
+    { "input": "str1 = \"Test\", str2 = \"\"", "expected": "\"Test\"" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n\n// getLength and concatenate functions would be declared/defined here for a compilable driver\n\nstruct TestCase {\n    const char* s1;\n    const char* s2;\n    const char* expected;\n    char buffer[256]; // Buffer for the result\n};\n\nint main() {\n    std::vector<TestCase> testCases = {\n        {\"Hello\", \"World\", \"HelloWorld\", \"\"},\n        {\"Open\", \"AI\", \"OpenAI\", \"\"},\n        {\"\", \"Test\", \"Test\", \"\"},\n        {\"Test\", \"\", \"Test\", \"\"},\n        {\"LongString\", \"AnotherLongString\", \"LongStringAnotherLongString\", \"\"}\n    };\n\n    // This driver code would attempt to call the 'concatenate' function,\n    // but the program would fail to compile due to the syntax error.\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing a closing parenthesis ')' in the function signature of `concatenate`."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Implement a `Vehicle` base class with `speed` (int) and `color` (string). Derive a `Car` class (adds `numDoors` int) and a `Motorcycle` class (adds `hasSidecar` bool). Demonstrate methods specific to each derived class.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "== CAR DEMO ==\n\nVehicle Details: Speed = 180 KPH, Color = Blue\n\nCar Features: Doors = 2\n\nCar Action: Zoom! This car has 2 doors.\n\n== MOTORCYCLE DEMO ==\n\nVehicle Details: Speed = 100 KPH, Color = Green\n\nMotorcycle Specs: Has a sidecar = False\n\nMotorcycle Trick: Pop a wheelie! Sidecar status: Absent\n\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"== CAR DEMO ==\" << std::endl << std::endl;\n    Car my_car_obj(180, \"Blue\", 2);\n    my_car_obj.show_c_details();\n    my_car_obj.car_special_action();\n\n    std::cout << \"== MOTORCYCLE DEMO ==\" << std::endl << std::endl;\n    Motorcycle my_moto_obj(100, \"Green\", false);\n    my_moto_obj.show_m_details();\n    my_moto_obj.moto_trick();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Poor and inconsistent variable names (e.g., `v_speed`, `v_color`, `c_doors`, `m_sidecar`, `show_v_info`, `car_special_action`).",
+    "All method definitions are placed outside the class declaration, even for simple getters/setters, making the class interface less immediately clear.",
+    "Passing `std::string` by value in constructors and setters (e.g., `Vehicle(int s, std::string c)`) is inefficient; `const std::string&` or move semantics should be used.",
+    "Lack of `const` correctness for getter methods (e.g., `get_v_speed()`) and display methods, which should not modify object state.",
+    "Excessive use of `std::endl` which flushes the buffer on each call, leading to potential performance issues. `\\n` is generally preferred for simple newlines."
+  ]
+}

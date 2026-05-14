@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program to concatenate two one-dimensional integer arrays into a third array. The program should take the sizes and elements of the first two arrays from the user, then populate and print the concatenated array.",
+  "test_cases": [
+    { "input": "3\n1 2 3\n2\n4 5\n", "expected": "Concatenated array: 4 5 3\n" },
+    { "input": "2\n10 20\n3\n30 40 50\n", "expected": "Concatenated array: 30 40 50\n" }
+  ],
+  "driver": "int main() { /* The provided code is a complete program */ return 0; }",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": []
+}

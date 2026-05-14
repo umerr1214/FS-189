@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `void swap(int& a, int& b)` that takes two integer variables by reference and exchanges their values. In `main`, declare two integers, initialize them, call `swap` with them, and then print their values before and after the swap to demonstrate its effect.",
+  "test_cases": [
+    { "input": "Initial values: a=50, b=75", "expected": "Before swap: a = 50, b = 75\nAfter swap: a = 75, b = 50\n" },
+    { "input": "Initial values: a=-1, b=-10", "expected": "Before swap: a = -1, b = -10\nAfter swap: a = -10, b = -1\n" },
+    { "input": "Initial values: a=0, b=0", "expected": "Before swap: a = 0, b = 0\nAfter swap: a = 0, b = 0\n" }
+  ],
+  "driver": "std::string driver_code = R\"(\n#include <iostream>\n#include <vector>\n#include <utility>\n\nvoid swap(int& a, int& b);\n\nint main() {\n    std::vector<std::pair<int, int>> test_values = {\n        {50, 75},\n        {-1, -10},\n        {0, 0}\n    };\n\n    for (size_t i = 0; i < test_values.size(); ++i) {\n        int a = test_values[i].first;\n        int b = test_values[i].second;\n        std::cout << \"Before swap: a = \" << a << \", b = \" << b << \"\\n\";\n        swap(a, b);\n        std::cout << \"After swap: a = \" << a << \", b = \" << b << \"\\n\";\n    }\n    return 0;\n}\n)\";",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

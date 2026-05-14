@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Implement a `Time` class with private attributes `hours`, `minutes`, and `seconds` (all integers). Overload the `==` operator to compare two `Time` objects for equality (i.e., they represent the exact same time).",
+  "test_cases": [
+    { "input": "Time t1(10, 30, 0); Time t2(10, 30, 0);", "expected": "t1 == t2 is true" },
+    { "input": "Time t1(10, 30, 0); Time t3(10, 30, 1);", "expected": "t1 == t3 is false" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// Time class definition would go here\n\nstd::string bool_to_string(bool b) {\n    return b ? \"true\" : \"false\";\n}\n\nint main() {\n    Time t1(10, 30, 0);\n    Time t2(10, 30, 0);\n    Time t3(10, 30, 1);\n\n    // The following lines would cause a compile-time error due to the semantic error\n    // std::cout << \"t1 == t2: \" << bool_to_string(t1 == t2) << std::endl;\n    // std::cout << \"t1 == t3: \" << bool_to_string(t1 == t3) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["Attempt to access private members (hours, minutes, seconds) of `Time` objects from a non-member, non-friend function (`operator==`). This violates C++ encapsulation rules and results in a compile-time error."]
+}

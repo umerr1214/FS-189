@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a simple console-based calculator program that takes two numbers and an operator (+, -, *, /) from the user and performs the corresponding operation using a `switch` statement.",
+  "test_cases": [
+    { "input": "10\n+\n5", "expected": "Simple Calculator\n-----------------\nEnter first number: Enter operator (+, -, *, /): Enter second number: Result: 10.00 + 5.00 = 15.00\n" },
+    { "input": "10.5\n*\n2", "expected": "Simple Calculator\n-----------------\nEnter first number: Enter operator (+, -, *, /): Enter second number: Result: 10.50 * 2.00 = 21.00\n" },
+    { "input": "7\n/\n3", "expected": "Simple Calculator\n-----------------\nEnter first number: Enter operator (+, -, *, /): Enter second number: Result: 7.00 / 3.00 = 2.33\n" },
+    { "input": "10\n/\n0", "expected": "Simple Calculator\n-----------------\nEnter first number: Enter operator (+, -, *, /): Enter second number: Error: Division by zero is not allowed.\n" },
+    { "input": "5\n%\n2", "expected": "Simple Calculator\n-----------------\nEnter first number: Enter operator (+, -, *, /): Enter second number: Error: Invalid operator '%'.\n" },
+    { "input": "a\n10\n+\n5", "expected": "Simple Calculator\n-----------------\nEnter first number: Invalid input. Please enter a number: Enter operator (+, -, *, /): Enter second number: Result: 10.00 + 5.00 = 15.00\n" }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

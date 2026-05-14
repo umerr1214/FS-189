@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Extend the `Shape` and `Circle` example from Q4. Add a virtual `calculateArea()` method to `Shape` (returning 0 by default). Override `calculateArea()` in `Circle` to compute the circle's area. Demonstrate calling `calculateArea()` through a `Shape` pointer pointing to a `Circle` object.",
+  "test_cases": [
+    { "input": "", "expected": "" }
+  ],
+  "driver": "int main() {\n    Circle myCircle(5.0);\n    Shape* sPtr = &myCircle;\n    std::cout << \"Area of circle (through Shape pointer): \"\n              << std::fixed << std::setprecision(2)\n              << sPtr->calculateArea() << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

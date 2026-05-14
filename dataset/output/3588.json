@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a program that takes a day number (1-7) as input and prints the corresponding day name (e.g., 1 for Monday, 2 for Tuesday) using a switch statement.",
+  "test_cases": [
+    { "input": "1", "expected": "Invalid day number or unhandled case\n" },
+    { "input": "2", "expected": "Invalid day number or unhandled case\n" },
+    { "input": "7", "expected": "Invalid day number or unhandled case\n" },
+    { "input": "49", "expected": "Monday\n" }
+  ],
+  "driver": "The program's main function is executed. Input is provided via stdin, and output is captured from stdout.",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using character literals ('1', '2', etc.) in 'case' labels while the switch variable `day_char` holds integer values (1, 2, etc.) after implicit conversion from `int`. This causes a mismatch, as '1' (char literal) has an ASCII value of 49, not the integer value 1."
+  ]
+}

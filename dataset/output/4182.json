@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that takes 10 integer values from the user and stores them in a one-dimensional array. After reading all inputs, find and print the largest and smallest elements present in the array.",
+  "test_cases": [
+    { "input": "10 20 5 30 15 25 12 18 22 8", "expected": "Largest element: 30\nSmallest element: 5\n" }
+  ],
+  "driver": "g++ -o solution 4182.cpp && ./solution",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The variables 'largest' and 'smallest' are used before being initialized. Their initial values are indeterminate, leading to undefined behavior when comparing with array elements. This can result in incorrect largest/smallest values being reported."]
+}

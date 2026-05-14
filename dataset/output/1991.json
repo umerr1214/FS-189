@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Overload the `==` operator for the `Point` class (from a previous question) to compare two `Point` objects. It should return `true` if both `x` and `y` coordinates are identical, `false` otherwise.",
+  "test_cases": [
+    { "input": "Point(1,2) == Point(1,2)", "expected": "true" },
+    { "input": "Point(1,2) == Point(1,4)", "expected": "false" },
+    { "input": "Point(1,2) == Point(3,2)", "expected": "false" },
+    { "input": "Point(1,2) == Point(3,4)", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Point {\npublic:\n    int x, y;\n    Point(int _x = 0, int _y = 0) : x(_x), y(_y) {}\n};\n\nbool operator==(const Point& p1, const Point& p2) {\n    return p1.x == p2.x || p1.y == p2.y;\n}\n\nvoid run_test(const std::string& name, const Point& p1, const Point& p2, bool expected_result) {\n    bool actual_result = (p1 == p2);\n    std::cout << name << \": Point(\" << p1.x << \",\" << p1.y << \") == Point(\" << p2.x << \",\" << p2.y << \") -> \"\n              << (actual_result ? \"true\" : \"false\")\n              << \" (Expected: \" << (expected_result ? \"true\" : \"false\") << \")\" << std::endl;\n}\n\nint main() {\n    Point p1(1, 2);\n    Point p2(1, 2);\n    Point p3(1, 4);\n    Point p4(3, 2);\n    Point p5(3, 4);\n\n    run_test(\"Test 1\", p1, p2, true);\n    run_test(\"Test 2\", p1, p3, false);\n    run_test(\"Test 3\", p1, p4, false);\n    run_test(\"Test 4\", p1, p5, false);\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The '==' operator incorrectly uses '||' (OR) instead of '&&' (AND) to compare coordinates. This leads to false positives where only one coordinate matches."]
+}

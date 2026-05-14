@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Calculate the sum of all integers from 1 to a user-specified positive integer 'n' using a 'for' loop.",
+  "test_cases": [
+    { "input": "5", "expected": "15" },
+    { "input": "100000", "expected": "5000050000" },
+    { "input": "65535", "expected": "2147450880" }
+  ],
+  "driver": "int main() { int n; std::cin >> n; long long sum = 0; if (n <= 0) { return 1; } for (int i = 1; i <= n; ++i) { sum += i; } std::cout << sum << std::endl; return 0; }",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The 'sum' variable is declared as 'int'. For sufficiently large values of 'n' (e.g., n=100000), the sum (5000050000) will exceed the maximum value an 'int' can hold (typically 2,147,483,647 for a 32-bit int), leading to integer overflow and undefined behavior. This is a semantic error because the program's meaning is altered by data type limitations."
+  ]
+}

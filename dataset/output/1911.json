@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Base` and a derived class `Derived` from `Base`. Implement a destructor for both `Base` and `Derived` that prints a message indicating which destructor is being called. Demonstrate the order of destructor execution when a `Derived` object is created and then destroyed, especially when managed via a `Base` class pointer.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Creating Derived object via Base unique_ptr...\nBase Constructor Called\nDerived Constructor Called\nObject created. 'ptr' will be deleted when it goes out of scope.\nDerived Destructor Called\nBase Destructor Called\nDemonstration complete.\n"
+    }
+  ],
+  "driver": "// The main function in the code serves as the driver.",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

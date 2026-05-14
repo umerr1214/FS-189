@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function template `T findMin(T val1, T val2)` that accepts two values of any data type and returns the smaller of the two. Demonstrate its usage with at least two different data types (e.g., `int` and `double`) in `main`.",
+  "test_cases": [
+    { "input": "10 20 (int)", "expected": "10" },
+    { "input": "5.5 3.14 (double)", "expected": "3.14" },
+    { "input": "'Z' 'A' (char)", "expected": "A" }
+  ],
+  "driver": "#include <iostream>\n\n// The `findMin` template from the user's code is expected to be available here.\n\nint main() {\n    // Test with int\n    std::cout << findMin(10, 20) << std::endl;\n    std::cout << findMin(50, 30) << std::endl;\n\n    // Test with double\n    std::cout << findMin(5.5, 3.14) << std::endl;\n    std::cout << findMin(100.1, 100.2) << std::endl;\n\n    // Test with char\n    std::cout << findMin('Z', 'A') << std::endl;\n    std::cout << findMin('a', 'b') << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing closing angle bracket '>' in the template declaration for `findMin`. The line `template <typename T` should be `template <typename T>`."]
+}

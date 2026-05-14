@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Given a 2D integer array (matrix), write a program to calculate and print the sum of all its elements.",
+  "test_cases": [
+    { "input": "2 3\n1 2 3 4 5 6", "expected": "21" },
+    { "input": "1 1\n100", "expected": "100" },
+    { "input": "3 1\n-1\n-2\n-3", "expected": "-6" },
+    { "input": "0 0", "expected": "0" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n\nextern int solution_main();\n\nint main() {\n    return solution_main();\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Readability: Variable names like `R`, `C`, `T`, `V`, `k` are not descriptive, making the code harder to understand at a glance.",
+    "Efficiency: The program first reads all elements into a single 1D vector (`V`) and then iterates through it using 2D indexing (`i * C + j`). While functionally correct, this approach adds an unnecessary layer of indirection and potentially extra memory allocation compared to directly populating and summing a `std::vector<std::vector<int>>` or summing elements as they are read.",
+    "Efficiency: Using `std::endl` in the final output flushes the output buffer, which is less efficient than using `\\n` for simple newline characters, especially in performance-critical applications."
+  ]
+}

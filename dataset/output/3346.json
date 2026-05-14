@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Implement a recursive function to calculate the `n`-th power of a number `base` (i.e., `base^n`), where `n` is a non-negative integer.",
+  "test_cases": [
+    { "input": "2 3", "expected": "8" },
+    { "input": "5 0", "expected": "1" },
+    { "input": "3 4", "expected": "81" },
+    { "input": "10 1", "expected": "10" },
+    { "input": "1 100", "expected": "1" },
+    { "input": "0 5", "expected": "0" },
+    { "input": "0 0", "expected": "1" },
+    { "input": "2 30", "expected": "1073741824" },
+    { "input": "7 10", "expected": "282475249" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\n// The power function is expected to be provided by the user's solution.\n// long long power(int base, int n);\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        std::stringstream ss(line);\n        int base, n;\n        ss >> base >> n;\n        std::cout << power(base, n) << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after return statement in 'power' function."
+  ]
+}

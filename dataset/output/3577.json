@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Accept three integer numbers from the user and determine which one is the largest. Print the largest number.",
+  "test_cases": [
+    { "input": "10 5 20", "expected": "The largest number is: 20\n" },
+    { "input": "7 7 7", "expected": "The largest number is: 7\n" },
+    { "input": "-1 -5 -2", "expected": "The largest number is: -1\n" },
+    { "input": "100 200 150", "expected": "The largest number is: 200\n" }
+  ],
+  "driver": "The program reads three integers from standard input. The test driver will provide these integers via standard input redirection and capture the program's standard output.",
+  "code_quality": 7,
+  "correctness": 8,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program lacks input validation. If the user enters non-integer input, `std::cin` will fail, leading to an incorrect state (e.g., using uninitialized variables, infinite loops if not handled) or program termination without proper error messages. It assumes valid integer input."
+  ]
+}

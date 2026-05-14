@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a program that prompts the user to enter their first name, last name, and age. Then, print a greeting message displaying all the entered information in a formatted way.",
+  "test_cases": [
+    { "input": "Alice\nWonderland\n30\n", "expected": "Enter your first name: Enter your last name: Enter your age: \nHello, Alice Wonderland!\nYou are 30 years old.\n" }
+  ],
+  "driver": "int main() {\n    std::string firstName;\n    std::string lastName;\n    int age;\n\n    std::cout << \"Enter your first name: \";\n    std::cin >> firstName;\n\n    std::cout << \"Enter your last name: \";\n    std::cin >> lastName;\n\n    std::cout << \"Enter your age: \";\n    std::cin >> age;\n\n    std::cout << \"\\nHello, \" << firstName << \" \" << lastName << \"!\" << std::endl;\n    std::cout << \"You are \" << age << \" years old.\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

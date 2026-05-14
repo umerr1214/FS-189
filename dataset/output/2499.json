@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Car` class that exhibits composition with an `Engine` class. The `Engine` should be created and destroyed along with the `Car` object. Demonstrate this lifetime management.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating Correct Composition and Lifetime Management ---\n\nCreating a Car object: myCar.\nEngine V8-12345 created.\nCar Sedan X created with Engine V8-12345.\nCar Sedan X is driving.\nEngine V8-12345 starting...\nmyCar model: Sedan X\n\nCreating another Car object: yourCar.\nEngine V6-67890 created.\nCar SUV Z created with Engine V6-67890.\nCar SUV Z is driving.\nEngine V6-67890 starting...\n\nBoth cars are active. Now leaving the scope.\nCar SUV Z destroying.\nEngine V6-67890 destroyed.\nCar SUV Z destroyed.\nCar Sedan X destroying.\nEngine V8-12345 destroyed.\nCar Sedan X destroyed.\n\nAll Car objects (and their Engines) have been destroyed."
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Demonstrating Correct Composition and Lifetime Management ---\" << std::endl;\n    { \n        std::cout << \"\\nCreating a Car object: myCar.\" << std::endl;\n        Car myCar(\"Sedan X\", \"V8-12345\");\n        myCar.drive();\n        std::cout << \"myCar model: \" << myCar.getModel() << std::endl;\n        std::cout << \"\\nCreating another Car object: yourCar.\" << std::endl;\n        Car yourCar(\"SUV Z\", \"V6-67890\");\n        yourCar.drive();\n        std::cout << \"\\nBoth cars are active. Now leaving the scope.\" << std::endl;\n    }\n    std::cout << \"\\nAll Car objects (and their Engines) have been destroyed.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

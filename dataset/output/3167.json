@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Extend the `Animal` and `Dog` classes. Make the `name` member in `Animal` `protected`. Demonstrate how `Dog` can access and modify `name` directly, while an outside function cannot.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Animal's current name: Buddy\nDog changed name to: Rex\nAnimal's current name: Rex\nOutside function attempting to access name: Blocked (would cause compile error if uncommented)"
+    }
+  ],
+  "driver": "int main() { Dog myDog(\"Buddy\"); myDog.displayAnimalName(); myDog.changeName(\"Rex\"); myDog.displayAnimalName(); outsideFunctionAttempt(myDog); return 0; }",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `displayAnimalName` method in the `Animal` class contains a logical error. It prints a hardcoded placeholder message instead of the actual `name` member, failing to reflect the current state or any modifications made to the name."
+  ]
+}

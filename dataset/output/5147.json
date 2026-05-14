@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Implement a recursive C++ function `int fibonacci(int n)` that calculates the Nth Fibonacci number. The Fibonacci sequence starts with F(0)=0, F(1)=1. In `main`, ask the user for a non-negative integer N and print the Nth Fibonacci number using your function.",
+  "test_cases": [
+    { "input": "0", "expected": "0" },
+    { "input": "1", "expected": "1" },
+    { "input": "5", "expected": "5" },
+    { "input": "10", "expected": "55" },
+    { "input": "47", "expected": "2971215073" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// The user's fibonacci function is assumed to be available in this scope.\n\nint main() {\n    std::vector<std::pair<int, long long>> test_cases = {\n        {0, 0LL}, {1, 1LL}, {5, 5LL}, {10, 55LL}, {47, 2971215073LL}\n    };\n    bool all_passed = true;\n    for (const auto& tc : test_cases) {\n        int input_n = tc.first;\n        long long expected_output = tc.second;\n        // Call the user's fibonacci function\n        int actual_output_int = fibonacci(input_n);\n        long long actual_output = actual_output_int; // Convert to long long for comparison\n\n        if (actual_output != expected_output) {\n            std::cout << \"Test failed for N=\" << input_n\n                      << \". Expected: \" << expected_output\n                      << \", Got: \" << actual_output << std::endl;\n            all_passed = false;\n        }\n    }\n    if (all_passed) {\n        std::cout << \"All test cases passed!\" << std::endl;\n    } else {\n        std::cout << \"Some test cases failed.\" << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["Incorrect base case for F(0)"]
+}

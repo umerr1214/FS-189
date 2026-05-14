@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private attributes for `title`, `author`, and `isbn` (International Standard Book Number). Implement a parameterized constructor to initialize these attributes and a public method `displayDetails()` that prints all book information. Ensure data encapsulation.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "Book Details:\nTitle: The Hitchhiker's Guide to the Galaxy\nAuthor: Douglas Adams\nISBN: 978-0345391803\n---\nBook Details:\nTitle: 1984\nAuthor: George Orwell\nISBN: 978-0451524935\n---\nBook Details:\nTitle: The Lord of the Rings\nAuthor: J.R.R. Tolkien\nISBN: 978-0618260274\n---\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// Assuming the Book class is defined above in the user's code\n\nint main() {\n    Book book1(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\");\n    book1.displayDetails();\n    std::cout << \"---\" << std::endl;\n\n    Book book2(\"1984\", \"George Orwell\", \"978-0451524935\");\n    book2.displayDetails();\n    std::cout << \"---\" << std::endl;\n\n    Book book3(\"The Lord of the Rings\", \"J.R.R. Tolkien\", \"978-0618260274\");\n    book3.displayDetails();\n    std::cout << \"---\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

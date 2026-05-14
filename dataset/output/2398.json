@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `ResourceHandler` class that simulates acquiring a resource in its constructor (e.g., printing 'Resource acquired.') and releasing it in its destructor (e.g., printing 'Resource released.').",
+  "test_cases": [
+    { "input": "", "expected": "Resource acquired.\nResource released.\n" }
+  ],
+  "driver": "int main() {\n    ResourceHandler rh;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the class definition of ResourceHandler. This will cause a compilation error."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Using the `Shape` hierarchy (from Q11), demonstrate runtime polymorphism. Create an array of `Shape` pointers, store instances of `Square` and `Circle` in it, and then iterate through the array to call `calculateArea()` for each object.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Area of Square: 16.00000\nArea of Circle: 19.63494\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n#include <iomanip>\n\n// Forward declaration of the student's main logic function\nvoid student_main();\n\nint main() {\n    std::stringstream ss;\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf()); // Redirect std::cout to stringstream\n\n    student_main(); // Call the student's program logic\n\n    std::cout.rdbuf(old_cout); // Restore std::cout\n    std::cout << ss.str(); // Print captured output to actual stdout\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

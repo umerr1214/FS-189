@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter their name (as a string), age (as an integer), and height (in meters as a double). Store these values in appropriate variables and then print them back to the console in a formatted sentence.",
+  "test_cases": [
+    {
+      "input": "Bob\n30\n1.83\n",
+      "expected": "Hello Bob, you are 30 years old and 1.83 meters tall.\n"
+    }
+  ],
+  "driver": "g++ -o program program.cpp && ./program",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The 'height' variable is declared as an 'int' instead of a 'double'. When a floating-point value (e.g., 1.83) is entered for height, it is implicitly converted (truncated) to an integer (e.g., 1) when read into the 'height' variable. This loss of precision changes the semantic meaning of the stored height, leading to incorrect output."
+  ]
+}

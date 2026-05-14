@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Create a function template `printArray(const T arr[], int size)` that can print the elements of any 1D array, regardless of its data type (`int`, `double`, `char`, etc.). Demonstrate its use with an array of integers and an array of doubles.",
+  "test_cases": [
+    { "input": "int intArray[] = {1, 2, 3, 4, 5};", "expected": "(Compilation Error: Attempt to modify a const object)" },
+    { "input": "double doubleArray[] = {1.1, 2.2, 3.3, 4.4};", "expected": "(Compilation Error: Attempt to modify a const object)" }
+  ],
+  "driver": "int main() {\n    int intArray[] = {1, 2, 3, 4, 5};\n    int intSize = sizeof(intArray) / sizeof(intArray[0]);\n    std::cout << \"Integer array: \";\n    printArray(intArray, intSize);\n\n    double doubleArray[] = {1.1, 2.2, 3.3, 4.4};\n    int doubleSize = sizeof(doubleArray) / sizeof(doubleArray[0]);\n    std::cout << \"Double array: \";\n    printArray(doubleArray, doubleSize);\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["Attempting to assign a value to `arr[i]` inside the `printArray` function, where `arr` is declared as `const T arr[]`. This violates the const-correctness rule and results in a compilation error."]
+}

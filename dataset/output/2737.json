@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a base class `Employee` with `name` (string) and `id` (int). Derive a `Manager` class and a `Worker` class. `Manager` should have an additional `department` (string) and `Worker` an `hourlyRate` (double). Each class should have a method to print its specific details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Employee Details ---\nEmployee Name: Alice Smith, ID: 101, Department: Sales\nEmployee Name: Bob Johnson, ID: 202, Hourly Rate: 25.5\nEmployee Name: Charlie Brown, ID: 303, Department: Marketing\nEmployee Name: Diana Prince, ID: -404, Hourly Rate: 30\n------------------------\n\nAttempting to delete employees polymorphically...\nEmployees deleted (potential resource leaks if derived classes manage resources).\n"
+    }
+  ],
+  "driver": "int main() {\n    std::vector<Employee*> employees;\n    employees.push_back(new Manager(\"Alice Smith\", 101, \"Sales\"));\n    employees.push_back(new Worker(\"Bob Johnson\", 202, 25.50));\n    employees.push_back(new Manager(\"Charlie Brown\", 303, \"Marketing\"));\n    employees.push_back(new Worker(\"Diana Prince\", -404, 30.00));\n\n    std::cout << \"--- Employee Details ---\" << std::endl;\n    for (const auto& emp : employees) {\n        emp->printDetails();\n    }\n    std::cout << \"------------------------\" << std::endl;\n\n    std::cout << \"\\nAttempting to delete employees polymorphically...\" << std::endl;\n    for (Employee* emp : employees) {\n        delete emp;\n    }\n    std::cout << \"Employees deleted (potential resource leaks if derived classes manage resources).\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Non-virtual destructor in base class Employee can lead to resource leaks during polymorphic deletion.",
+    "Lack of input validation for Employee ID (e.g., negative ID is allowed) and Worker hourly rate, which might represent invalid business logic."
+  ]
+}

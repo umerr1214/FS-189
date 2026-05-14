@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Accept a sentence from the user using `std::getline` and count the total number of words in it (assume words are separated by single spaces).",
+  "test_cases": [
+    { "input": "Hello World", "expected": "Enter a sentence: \nNumber of words: 2\n" },
+    { "input": "programming is fun", "expected": "Enter a sentence: \nNumber of words: 3\n" },
+    { "input": "singleword", "expected": "Enter a sentence: \nNumber of words: 1\n" },
+    { "input": "", "expected": "Enter a sentence: \nNumber of words: 0\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\n// Assume the user's solution is provided as a function:\n// void solve(std::istream& in, std::ostream& out);\n\n// This main function is for the test harness to call.\n// It reads from std::cin and writes to std::cout,\n// effectively acting as a wrapper for the solve function.\nint main() {\n    solve(std::cin, std::cout);\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The program fails to use `std::getline` as explicitly required by the question. Instead, it uses `std::cin >> sentence;`, which only reads the first word of the input sentence, leading to an incorrect interpretation of the problem statement's input requirement."
+  ]
+}

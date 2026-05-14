@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement matrix addition for two 3x3 integer matrices. Populate the matrices with example data and print the resulting sum matrix.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Sum Matrix:\n10 10 10 \n10 10 10 \n10 10 10 \n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Variable 'uninitialized_sum_val' is used without initialization, leading to undefined behavior and incorrect results in the sum matrix."
+  ]
+}

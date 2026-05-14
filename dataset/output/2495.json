@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a `Car` class that exhibits composition with an `Engine` class. The `Engine` should be created and destroyed along with the `Car` object. Demonstrate this lifetime management.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Starting main ---\nEngine created.\nCar created.\n--- End of main ---\nCar destroyed.\n"
+    }
+  ],
+  "driver": "int main() {\n    Car myCar;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The Car class dynamically allocates an Engine object but fails to deallocate it in its destructor, leading to a memory leak and incorrect lifetime management (Engine is not destroyed with Car)."
+  ]
+}

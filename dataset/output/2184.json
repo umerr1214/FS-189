@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design a `Circle` class with a private `radius`. Implement `getRadius()` as a `const` member function and `setRadius()` as a non-`const` member function. In `main`, create a `const Circle` object and demonstrate which methods it can call.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation error due to semantic error." }
+  ],
+  "driver": "The `main` function attempts to call `setRadius()` on a `const Circle` object, which is expected to cause a compilation error due to `const` correctness rules.",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["Attempting to call a non-const member function (`setRadius`) on a const object (`c`), which violates C++ const-correctness rules."]
+}

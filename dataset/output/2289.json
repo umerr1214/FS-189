@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "For a `Rectangle` class with `width` and `height` (double), implement a `getArea()` method that is declared as `const`. Demonstrate that this method can be called on a `const` `Rectangle` object and does not modify object state.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Mutable Rectangle 1: Width=5.00, Height=4.00, Area=20.00\nConst Rectangle 2: Width=10.00, Height=2.50, Area=25.00\nConst Rectangle 2 (repeated call): Area (before)=25.00, Area (after)=25.00\nInvalid Input Rectangle 3: Width=0.00, Height=7.00, Area=0.00\nInvalid Input Rectangle 4 (const): Width=8.00, Height=0.00, Area=0.00\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <algorithm>\n#include <iomanip>\n\nclass Rectangle {\nprivate:\n    double width;\n    double height;\n\npublic:\n    Rectangle(double w, double h) : width(std::max(0.0, w)), height(std::max(0.0, h)) {}\n\n    double getArea() const {\n        return width * height;\n    }\n\n    double getWidth() const { return width; }\n    double getHeight() const { return height; }\n};\n\nint main() {\n    std::cout << std::fixed << std::setprecision(2);\n\n    Rectangle rect1(5.0, 4.0);\n    std::cout << \"Mutable Rectangle 1: Width=\" << rect1.getWidth() << \", Height=\" << rect1.getHeight()\n              << \", Area=\" << rect1.getArea() << std::endl;\n\n    const Rectangle constRect(10.0, 2.5);\n    std::cout << \"Const Rectangle 2: Width=\" << constRect.getWidth() << \", Height=\" << constRect.getHeight()\n              << \", Area=\" << constRect.getArea() << std::endl;\n\n    double area_before = constRect.getArea();\n    double area_after = constRect.getArea();\n    std::cout << \"Const Rectangle 2 (repeated call): Area (before)=\" << area_before\n              << \", Area (after)=\" << area_after << std::endl;\n\n    Rectangle invalidRect(-3.0, 7.0);\n    std::cout << \"Invalid Input Rectangle 3: Width=\" << invalidRect.getWidth() << \", Height=\" << invalidRect.getHeight()\n              << \", Area=\" << invalidRect.getArea() << std::endl;\n\n    const Rectangle anotherInvalidRect(8.0, -2.0);\n    std::cout << \"Invalid Input Rectangle 4 (const): Width=\" << anotherInvalidRect.getWidth() << \", Height=\" << anotherInvalidRect.getHeight()\n              << \", Area=\" << anotherInvalidRect.getArea() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a function `void swap(int& a, int& b)` that swaps the values of two integer variables passed by reference. Demonstrate its usage in `main`.",
+  "test_cases": [
+    { "input": "5, 10", "expected": "a=10, b=5" },
+    { "input": "-3, -7", "expected": "a=-7, b=-3" },
+    { "input": "20, -5", "expected": "a=-5, b=20" },
+    { "input": "0, 8", "expected": "a=8, b=0" },
+    { "input": "7, 7", "expected": "a=7, b=7" },
+    { "input": "int x = 15; swap(x, x);", "expected": "x=0" }
+  ],
+  "driver": "#include <iostream>\nvoid swap(int& a, int& b);\nint main() {\n    int v1 = 5, v2 = 10;\n    swap(v1, v2);\n    std::cout << \"Swap(5, 10): a=\" << v1 << \", b=\" << v2 << std::endl;\n    int v3 = 15;\n    swap(v3, v3);\n    std::cout << \"Swap(15, 15) (aliased): x=\" << v3 << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The arithmetic swap implementation fails when both references 'a' and 'b' refer to the same variable, incorrectly setting it to 0. It also has potential for integer overflow if the sum of a and b exceeds INT_MAX or falls below INT_MIN, leading to undefined behavior for extreme values."]
+}

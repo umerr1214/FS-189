@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `countDigits` that accepts an integer as input (pass by value) and returns the total number of digits in that integer. For example, `countDigits(12345)` should return 5.",
+  "test_cases": [
+    { "input": "12345", "expected": "5" },
+    { "input": "0", "expected": "1" },
+    { "input": "7", "expected": "1" },
+    { "input": "-987", "expected": "3" },
+    { "input": "100", "expected": "3" },
+    { "input": "-5", "expected": "1" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <cmath>\n\n// Assume countDigits function is defined above\n\nint main() {\n    std::vector<std::pair<int, int>> tests = {\n        {12345, 5},\n        {0, 1},\n        {7, 1},\n        {-987, 3},\n        {100, 3},\n        {-5, 1}\n    };\n\n    for (const auto& test : tests) {\n        int input = test.first;\n        int expected = test.second;\n        int result = countDigits(input);\n        std::cout << \"Input: \" << input << \", Expected: \" << expected << \", Got: \" << result << std::endl;\n        if (result == expected) {\n            std::cout << \"Test passed.\" << std::endl;\n        } else {\n            std::cout << \"Test failed.\" << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The function `countDigits` incorrectly returns 0 for an input of 0. For the number 0, it should return 1 as it is considered a single digit."]
+}

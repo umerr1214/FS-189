@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Create a `Circle` class with a private member `radius` (double). Include a public constructor, a public method `calculateArea()` that returns the area, and another public method `calculateCircumference()` that returns the circumference. Demonstrate creating a `Circle` object and calling its methods.",
+  "test_cases": [
+    { "input": "7.5", "expected": "Circle 1 (radius 7.5):\n  Area: 176.71459\n  Circumference: 47.12389" },
+    { "input": "-4.0", "expected": "Warning: Radius cannot be negative. Setting to 0.\nCircle 2 (radius -4.0, corrected to 0):\n  Area: 0.00000\n  Circumference: 0.00000" }
+  ],
+  "driver": "int main() {\n    // Demonstrate creating a Circle object with a valid radius\n    Circle circle1(7.5);\n    std::cout << \"Circle 1 (radius 7.5):\" << std::endl;\n    std::cout << std::fixed << std::setprecision(5);\n    std::cout << \"  Area: \" << circle1.calculateArea() << std::endl;\n    std::cout << \"  Circumference: \" << circle1.calculateCircumference() << std::endl;\n\n    std::cout << std::endl;\n\n    // Demonstrate with an invalid radius to show robustness (handled by constructor)\n    Circle circle2(-4.0);\n    std::cout << \"Circle 2 (radius -4.0, corrected to 0):\" << std::endl;\n    std::cout << std::fixed << std::setprecision(5);\n    std::cout << \"  Area: \" << circle2.calculateArea() << std::endl;\n    std::cout << \"  Circumference: \" << circle2.calculateCircumference() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

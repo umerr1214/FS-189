@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program for a simple number guessing game. Generate a random secret number between 1 and 100. The user gets 5 attempts to guess the number. Use a while loop for the guessing process and provide hints (higher/lower).",
+  "test_cases": [
+    { "input": "50\n75\n25\n", "expected": "Compilation Error" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// This driver code is designed to illustrate how a test harness would approach\n// a program with a syntax error. It will not compile or run the user's code\n// because the user's code (4948.cpp) itself has a compilation error.\n\nint main() {\n    std::cout << \"This test case is designed to fail compilation due to a syntax error in the target program (4948.cpp).\\n\";\n    std::cout << \"The error is a missing semicolon after 'srand(time(0))'.\\n\";\n    std::cout << \"Please attempt to compile 4948.cpp using a C++ compiler (e.g., g++ 4948.cpp) to observe the syntax error.\";\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "The C++ code contains a syntax error on line 9: a missing semicolon after the `srand(time(0))` function call. This prevents the program from compiling successfully."
+  ]
+}

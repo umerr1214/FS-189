@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Declare an array of 4 integers. Initialize it with some values. Then, use a pointer to the first element to iterate through the array and print each element using pointer arithmetic.",
+  "test_cases": [
+    { "input": "", "expected": "Element 1: 10\nElement 2: 20\nElement 3: 30\nElement 4: 40\n" }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

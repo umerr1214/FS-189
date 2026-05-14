@@ -1,0 +1,25 @@
+{
+  "language": "c++",
+  "question": "Declare a `std::string` variable. Ask the user to input a sentence. Then, count and print the total number of characters in the sentence (including spaces).",
+  "test_cases": [
+    {
+      "input": "Hello World\n",
+      "expected": "Please enter a sentence: You entered: Hello\nTotal characters (including spaces in what was read): 5\n"
+    },
+    {
+      "input": "programming\n",
+      "expected": "Please enter a sentence: You entered: programming\nTotal characters (including spaces in what was read): 11\n"
+    },
+    {
+      "input": "  leading spaces\n",
+      "expected": "Please enter a sentence: You entered: leading\nTotal characters (including spaces in what was read): 7\n"
+    }
+  ],
+  "driver": "g++ -std=c++17 -o solution {file_name} && ./solution",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program uses `std::cin >> sentence;` which only reads a single word, not a full sentence. If the user inputs a sentence with spaces, only the first word is captured, leading to incorrect character counts for multi-word inputs. This is a common robustness issue for programs expecting line-based input."
+  ]
+}

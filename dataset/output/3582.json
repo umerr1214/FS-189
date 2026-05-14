@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a program that checks if a user-entered integer is positive, negative, or zero using if-else if-else statements.",
+  "test_cases": [
+    { "input": "5", "expected": "Positive\n" },
+    { "input": "-3", "expected": "Negative\n" },
+    { "input": "0", "expected": "Zero\n" },
+    { "input": "100", "expected": "Positive\n" },
+    { "input": "-1", "expected": "Negative\n" }
+  ],
+  "driver": "int main() { std::string input; std::getline(std::cin, input); std::stringstream ss(input); int temp_num; ss >> temp_num; unsigned int num = temp_num; if (num > 0) { std::cout << \"Positive\" << std::endl; } else if (num < 0) { std::cout << \"Negative\" << std::endl; } else { std::cout << \"Zero\" << std::endl; } return 0; }",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The integer variable 'num' is declared as 'unsigned int'. This type cannot represent negative numbers. While the code compiles, the condition 'num < 0' will semantically always be false (or behave unexpectedly due to integer conversion rules for negative input), making it impossible to correctly identify negative inputs as required by the problem statement."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Given a 1D array of integers, count how many times a specific target number (provided by the user) appears in the array.",
+  "test_cases": [
+    { "input": "5\n1 2 3 2 1\n2", "expected": "2" },
+    { "input": "3\n5 5 5\n5", "expected": "3" },
+    { "input": "12\n1 2 3 4 5 6 7 8 9 10 11 12\n7", "expected": "1" },
+    { "input": "15\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\n1", "expected": "15" }
+  ],
+  "driver": "std::string run_test_case(const std::string& input) {\n    std::stringstream ss_in(input);\n    std::stringstream ss_out;\n\n    std::streambuf* old_cin_buf = std::cin.rdbuf();\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n\n    std::cin.rdbuf(ss_in.rdbuf());\n    std::cout.rdbuf(ss_out.rdbuf());\n\n    solve(std::cin, std::cout);\n\n    std::cin.rdbuf(old_cin_buf);\n    std::cout.rdbuf(old_cout_buf);\n\n    return ss_out.str();\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program uses a fixed-size C-style array (MAX_SIZE = 10) without validating the input array size (n). If 'n' is greater than MAX_SIZE, it leads to a buffer overflow when populating the array, potentially causing a crash or incorrect behavior. For example, the test cases with 12 or 15 elements will write past the end of the `arr`."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define a C++ `struct` named `Book` with members `title` (std::string), `author` (std::string), and `yearPublished` (int). Write a function `printBookDetails` that takes a `Book` struct (by value) and prints all its details. Demonstrate by creating a `Book` instance and calling the function.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book Details:\n  Title: The Ultimate C++ Guide\n  Author: Bjarne Stroustrup\n  Year Published: 2020\n"
+    }
+  ],
+  "driver": "int main() {\n    Book myBook = {\"The Ultimate C++ Guide\", \"Bjarne Stroustrup\", 2020};\n    printBookDetails(myBook);\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

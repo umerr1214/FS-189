@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Define a `Book` class with private members `title`, `author`, and `isbn` (string types). Implement a constructor to initialize these members and public getter methods for each. Include a `displayBookInfo` method that prints all book details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book Details:\n  Title: The Hitchhiker's Guide to the Galaxy\n  Author: Douglas Adams\n  ISBN: 978-0345391803\n\nGetter Title: The Hitchhiker's Guide to the Galaxy\nGetter Author: Douglas Adams\nGetter ISBN: 978-0345391803\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Book {\nprivate:\n    std::string title;\n    std::string author;\n    std::string isbn;\n\npublic:\n    Book(std::string t, std::string a, std::string i) {\n        this->title = t;\n        this->author = a;\n        this->isbn = i;\n    }\n\n    std::string getTitle() const {\n        return this->title;\n    }\n\n    std::string getAuthor() const {\n        return this->author;\n    }\n\n    std::string getIsbn() const {\n        return this->isbn;\n    }\n\n    void displayBookInfo() const {\n        std::cout << \"Book Details:\" << std::endl;\n        std::cout << \"  Title: \" << this->title << std::endl;\n        std::cout << \"  Author: \" << this->author << std::endl;\n        std::cout << \"  ISBN: \" << this->isbn << std::endl;\n    }\n};\n\nint main() {\n    Book myBook(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\");\n\n    myBook.displayBookInfo();\n\n    std::cout << \"\\nGetter Title: \" << myBook.getTitle() << std::endl;\n    std::cout << \"Getter Author: \" << myBook.getAuthor() << std::endl;\n    std::cout << \"Getter ISBN: \" << myBook.getIsbn() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The constructor takes `std::string` parameters by value (`std::string t, std::string a, std::string i`) and then uses assignment. This creates unnecessary copies: one for the parameter and another for the assignment to the member. Using `const std::string&` for parameters and an initializer list would be more efficient.",
+    "The `displayBookInfo` method uses `std::endl` on every line. `std::endl` not only inserts a newline character but also flushes the output buffer, which can be inefficient for frequent output operations. Using `\\n` instead of `std::endl` for most lines and flushing only at the end (or when explicitly needed) would improve efficiency.",
+    "The constructor parameter names (`t`, `a`, `i`) are abbreviated, which reduces readability. Full, descriptive names like `title`, `author`, `isbn` would be clearer.",
+    "The `this->` pointer is used redundantly for accessing member variables within member functions (e.g., `this->title`). While technically correct, it adds visual clutter and is generally omitted when there's no ambiguity (e.g., when a local variable has the same name as a member)."
+  ]
+}

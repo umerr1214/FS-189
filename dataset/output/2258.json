@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "For a `Point` class with private `x` and `y` integer coordinates, overload the binary `+` operator to enable adding two `Point` objects (component-wise addition, returning a new `Point` object).",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Point p1: (1, 2)\nPoint p2: (3, 4)\np1 + p2: (4, 6)\np4 + p5: (-1, -1)\np7 + p8: (12, 2)\n"
+    }
+  ],
+  "driver": "g++ -std=c++17 -Wall -Wextra -o main 2258.cpp && ./main",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The global operator+ takes Point objects by value instead of const reference, leading to unnecessary object copies and reduced efficiency.",
+    "Inconsistent indentation and poor formatting within the operator+ implementation severely impact code readability.",
+    "Uses an unnecessary temporary variable and default constructor call within the operator+ implementation instead of direct construction, reducing efficiency."
+  ]
+}

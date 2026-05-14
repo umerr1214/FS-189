@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Declare and initialize a 3x3 integer 2D array (matrix). Calculate and print the sum of all elements in the entire matrix.",
+  "test_cases": [
+    { "input": "", "expected": "45\n" }
+  ],
+  "driver": "int main() { solve(); return 0; }",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    {
+      "description": "Variable names like 'm', 's', 'r', and 'c' are overly short and lack descriptive meaning, making the code harder to understand. The code also lacks proper spacing and indentation, contributing to poor readability.",
+      "line": 7
+    },
+    {
+      "description": "The initialization of the matrix and the output statement are cramped, reducing readability.",
+      "line": 7
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a C-style string function `strToUpper(char* str)` that converts all lowercase letters in a null-terminated C-style string to uppercase in-place. Demonstrate with an example string.",
+  "test_cases": [
+    { "input": "hello world", "expected": "HELLO WORLD" },
+    { "input": "123 test string!", "expected": "123 TEST STRING!" },
+    { "input": "Already UPPERCASE.", "expected": "ALREADY UPPERCASE." },
+    { "input": "", "expected": "" }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n// No cctype needed for this specific implementation, but included in driver for generality\n\n// The strToUpper function will be inserted here by the system\n\nint main() {\n    char s1[] = \"hello world\";\n    strToUpper(s1);\n    std::cout << s1 << std::endl;\n\n    char s2[] = \"TEST 123 abc\";\n    strToUpper(s2);\n    std::cout << s2 << std::endl;\n\n    char s3[] = \"\";\n    strToUpper(s3);\n    std::cout << s3 << std::endl;\n\n    char s4[] = \"aBcDeFg\";\n    strToUpper(s4);\n    std::cout << s4 << std::endl;\n\n    char* null_str = nullptr;\n    strToUpper(null_str); // Expected to be handled gracefully\n    std::cout << \"nullptr handled gracefully (no crash expected).\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `strToUpper` function uses manual character range checks and arithmetic for converting lowercase to uppercase. This approach is less readable, less maintainable, and potentially less robust compared to using standard library functions like `std::islower` and `std::toupper` from `<cctype>`, which correctly handle different character encodings and locales."
+  ]
+}

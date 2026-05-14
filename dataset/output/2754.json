@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `Person` class with `protected` members `name` (string) and `age` (int). Derive a `Student` class from `Person`. The `Student` class should have an additional private member `studentId` and be able to access `name` and `age` to print its full details.",
+  "test_cases": [
+    {
+      "input": "No direct input, uses hardcoded objects.",
+      "expected": "Compilation Error: 'name' is a protected member of 'Person' and cannot be accessed directly from 'main'."
+    }
+  ],
+  "driver": "int main() {\n    Person p1(\"Charlie Brown\", 30);\n    std::cout << \"Details for p1: \";\n    p1.printDetails();\n    std::cout << std::endl;\n\n    // This line causes the semantic error\n    std::cout << \"Accessing name directly: \" << p1.name << std::endl;\n\n    Student s1(\"Diana Prince\", 21, 1003);\n    std::cout << \"Details for s1: \";\n    s1.printDetails();\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Attempting to access a protected member ('name') of the 'Person' class directly from the 'main' function (which is not a derived class or friend). This is an access violation caught by the compiler."
+  ]
+}

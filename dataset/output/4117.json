@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a program to perform matrix addition for two 2x2 integer matrices. Prompt the user to enter elements for both matrices. Store the result in a third 2x2 matrix and then print all three matrices in a clear format.",
+  "test_cases": [
+    {
+      "input": "1 2 3 4 5 6 7 8\n",
+      "expected": "Enter elements for Matrix A (2x2):\nEnter element A[0][0]: Enter element A[0][1]: Enter element A[1][0]: Enter element A[1][1]: \nEnter elements for Matrix B (2x2):\nEnter element B[0][0]: Enter element B[0][1]: Enter element B[1][0]: Enter element B[1][1]: \nMatrix A:\n1\t2\t\n3\t4\t\n\nMatrix B:\n5\t6\t\n7\t8\t\n\nMatrix C (Sum):\n6\t8\t\n10\t12\t\n"
+    }
+  ],
+  "driver": "g++ -o solution solution.cpp && ./solution",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program lacks input validation. If the user enters non-integer input (e.g., characters or strings) when prompted for a matrix element, std::cin will enter a fail state. This can lead to an infinite loop, incorrect values being stored, or the program not progressing as expected, making it non-robust against invalid user input. The program assumes valid integer input."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter the length and width of a rectangle, then calculates and displays its area and perimeter.",
+  "test_cases": [
+    { "input": "5\n10\n", "expected": "Enter length: Enter width: Area: 50\nPerimeter: 30\n" },
+    { "input": "7.5\n4\n", "expected": "Enter length: Enter width: Area: 30\nPerimeter: 23\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <fstream>\n#include <cstdlib> // For system()\n\nstd::string read_file(const std::string& filename) {\n    std::ifstream ifs(filename);\n    std::string content((std::istreambuf_iterator<char>(ifs)),\n                           (std::istreambuf_iterator<char>()));\n    ifs.close();\n    return content;\n}\n\nvoid run_test_case(const std::string& input, const std::string& expected_output) {\n    std::ofstream input_file(\"temp_input.txt\");\n    input_file << input;\n    input_file.close();\n\n    // Compile and run the user's program\n    // Assuming the user's code is in 'solution.cpp' and compiled to 'a.out'\n    // This driver assumes the compilation step happens externally or fails for syntax errors.\n    // For correctness, it would typically run a pre-compiled binary.\n    // Here, we simulate by running 'a.out' which would exist if compilation succeeded.\n    system(\"./a.out < temp_input.txt > temp_output.txt 2>&1\"); // Redirect stderr too\n\n    std::string actual_output = read_file(\"temp_output.txt\");\n\n    std::cout << \"--- Test Case ---\\n\";\n    std::cout << \"Input:\\n\" << input;\n    std::cout << \"Expected Output:\\n\" << expected_output;\n    std::cout << \"Actual Output:\\n\" << actual_output;\n\n    if (actual_output.find(expected_output) != std::string::npos && !expected_output.empty()) {\n        std::cout << \"Test Passed! (Output contains expected)\\n\\n\";\n    } else if (actual_output.empty() && expected_output.empty()) {\n        std::cout << \"Test Passed! (Both empty)\\n\\n\";\n    } else {\n        std::cout << \"Test Failed!\\n\\n\";\n    }\n\n    system(\"rm -f temp_input.txt temp_output.txt\"); // Clean up temporary files\n}\n\nint main() {\n    // This driver is illustrative. In a real testing environment,\n    // 'run_test_case' would be called for each entry in the 'test_cases' array.\n    // For a Syntax Error, compilation will fail, and 'a.out' won't be created.\n    // The testing system would detect this prior to running tests.\n    std::cout << \"Driver for syntax error: Compilation is expected to fail. If 'a.out' exists, it's from a previous successful build.\\n\";\n    // Example call (won't work for syntax error as a.out won't exist):\n    // run_test_case(\"5\\n10\\n\", \"Enter length: Enter width: Area: 50\\nPerimeter: 30\\n\");\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    {
+      "line": 14,
+      "column": 33,
+      "message": "expected ';' before 'std::cout'",
+      "error_category": "Syntax"
+    }
+  ]
+}

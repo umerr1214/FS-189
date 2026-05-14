@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Implement a `BooleanFlag` class that encapsulates a single `bool` value. Overload the unary logical NOT operator (`operator!`) to invert the encapsulated boolean value and return the new value.",
+  "test_cases": [
+    { "input": "Initial flag(true)", "expected": "Initial: true\nAfter ! (1st time): Returned false, internal false\nAfter ! (2nd time): Returned true, internal true\n" }
+  ],
+  "driver": "#include <iostream>\n\nint main() {\n    BooleanFlag flag(true);\n    std::cout << \"Initial: \" << (flag.getValue() ? \"true\" : \"false\") << std::endl;\n    bool result1 = !flag;\n    std::cout << \"After ! (1st time): Returned \" << (result1 ? \"true\" : \"false\") << \", internal \" << (flag.getValue() ? \"true\" : \"false\") << std::endl;\n    bool result2 = !flag;\n    std::cout << \"After ! (2nd time): Returned \" << (result2 ? \"true\" : \"false\") << \", internal \" << (flag.getValue() ? \"true\" : \"false\") << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The `operator!` correctly returns the inverted value, but it fails to update the encapsulated `bool` value (`_value`). The internal state of the flag remains unchanged, violating the requirement to 'invert the encapsulated boolean value'."]
+}

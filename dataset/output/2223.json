@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define a `Book` class with private members `title`, `author`, and `isbn` (string types). Implement a constructor to initialize these members and public getter methods for each. Include a `displayBookInfo` method that prints all book details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book Details:\n  Title: The Hitchhiker's Guide to the Galaxy\n  Author: Douglas Adams\n  ISBN: 978-0345391803\n\nGetter Title: The Hitchhiker's Guide to the Galaxy\nGetter Author: Douglas Adams\nGetter ISBN: 978-0345391803\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Book {\nprivate:\n    std::string title;\n    std::string author;\n    std::string isbn;\n\npublic:\n    Book(const std::string& title, const std::string& author, const std::string& isbn)\n        : title(title), author(author), isbn(isbn) {}\n\n    const std::string& getTitle() const {\n        return title;\n    }\n\n    const std::string& getAuthor() const {\n        return author;\n    }\n\n    const std::string& getIsbn() const {\n        return isbn;\n    }\n\n    void displayBookInfo() const {\n        std::cout << \"Book Details:\\n\";\n        std::cout << \"  Title: \" << title << \"\\n\";\n        std::cout << \"  Author: \" << author << \"\\n\";\n        std::cout << \"  ISBN: \" << isbn << std::endl;\n    }\n};\n\nint main() {\n    Book myBook(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\");\n\n    myBook.displayBookInfo();\n\n    std::cout << \"\\nGetter Title: \" << myBook.getTitle() << \"\\n\";\n    std::cout << \"Getter Author: \" << myBook.getAuthor() << \"\\n\";\n    std::cout << \"Getter ISBN: \" << myBook.getIsbn() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Develop a program that prompts the user to enter a sentence using `std::string`. Count the total number of words in the sentence. Assume words are separated by single spaces and there are no leading/trailing spaces.",
+  "test_cases": [
+    { "input": "Hello world", "expected": "Enter a sentence:\nTotal words: 2\n" },
+    { "input": "Programming is fun", "expected": "Enter a sentence:\nTotal words: 3\n" },
+    { "input": "Singleword", "expected": "Enter a sentence:\nTotal words: 1\n" },
+    { "input": "", "expected": "Enter a sentence:\nTotal words: 0\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// This driver facilitates running the student's program.\n// It typically redirects input from the 'input' field of a test case\n// to the standard input (stdin) of the student's program,\n// and captures the standard output (stdout) of the student's program\n// for comparison with the 'expected' field.\nint main() {\n    // In a real test environment, the student's compiled program\n    // would be executed, with std::cin redirected from the test case input\n    // and std::cout captured.\n    // For this example, this driver is illustrative of the test setup.\n    // The student's program is expected to prompt, read a line, and print the word count.\n    std::cout << \"Test driver ready. Student program will execute with redirected I/O.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

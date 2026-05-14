@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define an abstract base class `Animal` with a pure virtual `void makeSound()` method. Derive concrete classes `Dog` and `Cat` from `Animal`, and each should provide its specific implementation for the `makeSound()` method.",
+  "test_cases": [
+    { "input": "", "expected": "Woof! Woof!\nMeow! Purrr.\nWoof! Woof!\n--- Stack-allocated animals ---\nWoof! Woof!\nMeow! Purrr.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <memory>\n#include <vector>\n\n// Abstract base class Animal\nclass Animal {\npublic:\n    virtual void makeSound() = 0;\n    virtual ~Animal() {}\n};\n\n// Concrete class Dog\nclass Dog : public Animal {\npublic:\n    void makeSound() override {\n        std::cout << \"Woof! Woof!\" << std::endl;\n    }\n    ~Dog() override {}\n};\n\n// Concrete class Cat\nclass Cat : public Animal {\npublic:\n    void makeSound() override {\n        std::cout << \"Meow! Purrr.\" << std::endl;\n    }\n    ~Cat() override {}\n};\n\nint main() {\n    std::vector<std::unique_ptr<Animal>> farm_animals;\n\n    farm_animals.push_back(std::make_unique<Dog>());\n    farm_animals.push_back(std::make_unique<Cat>());\n    farm_animals.push_back(std::make_unique<Dog>());\n\n    for (const auto& animal : farm_animals) {\n        animal->makeSound();\n    }\n\n    std::cout << \"--- Stack-allocated animals ---\" << std::endl;\n    Dog stack_dog;\n    Cat stack_cat;\n    stack_dog.makeSound();\n    stack_cat.makeSound();\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

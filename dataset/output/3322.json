@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Implement a program that continuously asks the user to enter positive integers until they enter '0'. After '0' is entered, print the sum of all the non-zero numbers entered.",
+  "test_cases": [
+    { "input": "5\n10\n0\n", "expected": "Sum of non-zero numbers: 15\n" },
+    { "input": "1\n2\n3\n0\n", "expected": "Sum of non-zero numbers: 6\n" },
+    { "input": "100\n0\n", "expected": "Sum of non-zero numbers: 100\n" }
+  ],
+  "driver": "int main() {\n    // The provided C++ code will be compiled and executed directly.\n    // Input will be piped to stdin, and stdout will be captured.\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'std::endl' on the line printing the sum."
+  ]
+}

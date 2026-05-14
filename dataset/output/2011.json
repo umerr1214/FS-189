@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "In a class `Printer`, overload a `print` member function to output different data types: `print(int)`, `print(double)`, and `print(const char*)`. Each should print the value with a descriptive label.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Integer: 10\nDouble: 3.14\nString: Test String\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n#include <string>\n\n// The Printer class definition will be prepended by the evaluation system.\n\nint main() {\n    std::stringstream ss;\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n\n    Printer p;\n    p.print(10);\n    p.print(3.14);\n    p.print(\"Test String\");\n    // This call is intended to trigger the robustness issue\n    p.print(static_cast<const char*>(nullptr)); \n\n    std::cout.rdbuf(old_cout);\n    std::cout << ss.str();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `print(const char*)` member function does not handle `nullptr` input gracefully. Passing `nullptr` to `std::cout << value` where `value` is `const char*` results in undefined behavior, which can lead to program crashes or unexpected output, making the code non-robust for valid edge cases."
+  ]
+}

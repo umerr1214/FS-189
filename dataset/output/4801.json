@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that defines two integer variables. Using pointers, modify the values of these two variables by incrementing each by 10. Print the original and modified values.",
+  "test_cases": [
+    { "input": "", "expected": "Original var1: 10, var2: 20\n" }
+  ],
+  "driver": "g++ -std=c++11 -o 4801 4801.cpp && ./4801",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program attempts to dereference a nullptr (ptr2) without checking if it's valid, leading to undefined behavior and likely a runtime crash (e.g., segmentation fault). This lack of null-pointer checking makes the program non-robust."
+  ]
+}

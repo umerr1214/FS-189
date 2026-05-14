@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Design a `Car` class that demonstrates composition by containing an `Engine` object. The `Engine` class should have attributes like `horsepower` and `fuelType`. Ensure that when a `Car` object is created, its `Engine` is also created, and when the `Car` object is destroyed, its `Engine` object is automatically destroyed with it.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Creating Car1 ---\nEngine default-constructed.\nEngine created: 250hp, Diesel\nEngine destroyed: 0hp, Unknown\nCar created.\nCar Details: Engine - 250hp, Diesel\n\n--- Creating Car2 ---\nEngine default-constructed.\nEngine created: 400hp, Electric\nEngine destroyed: 0hp, Unknown\nCar created.\nCar Details: Engine - 400hp, Electric\n\n--- Car objects going out of scope ---\nCar destroyed.\nEngine destroyed: 400hp, Electric\nCar destroyed.\nEngine destroyed: 250hp, Diesel\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Creating Car1 ---\" << std::endl;\n    Car car1(250, \"Diesel\");\n    car1.displayCarDetails();\n\n    std::cout << \"\\n--- Creating Car2 ---\" << std::endl;\n    Car car2(400, \"Electric\");\n    car2.displayCarDetails();\n\n    std::cout << \"\\n--- Car objects going out of scope ---\" << std::endl;\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `Car` constructor initializes the `Engine` member using assignment within the constructor body (`engine = Engine(hp, ft);`) instead of using a member initializer list (`: engine(hp, ft)`). This results in the `engine` member being default-constructed first, then assigned, which is less efficient and not the idiomatic C++ way for direct member initialization.",
+    "Getter methods in both `Engine` and `Car` classes lack `const` correctness, which limits their use with `const` objects and can be considered a minor readability/design flaw.",
+    "The `Engine::getFuelType()` and `Car::getEngineFuelType()` methods return `std::string` by value. Returning by `const std::string&` would be more efficient as it avoids unnecessary string copying."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Model a `Laptop` class that contains a `CPU` object (composition). The `CPU` class should have private attributes `manufacturer` (string) and `clockSpeed` (double). The `Laptop` class should have a `modelName` (string) and instantiate a `CPU` object as a member, demonstrating their 'has-a' relationship.",
+  "test_cases": [
+    {
+      "input": "Create a Laptop 'XPS 15' with an 'Intel' CPU at 2.3 GHz. Then create 'ROG Strix' with 'AMD' CPU at 3.8 GHz.",
+      "expected": "--- My Laptop ---\nLaptop Model: XPS 15\nCPU Manufacturer: Intel, Clock Speed: 2.30 GHz\n\n--- Gaming Laptop ---\nLaptop Model: ROG Strix\nCPU Manufacturer: AMD, Clock Speed: 3.80 GHz\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <iomanip>\n\n// CPU class\nclass CPU {\nprivate:\n    std::string manufacturer;\n    double clockSpeed; // GHz\n\npublic:\n    // Constructor\n    CPU(const std::string& manufacturer, double clockSpeed)\n        : manufacturer(manufacturer), clockSpeed(clockSpeed) {}\n\n    // Getters\n    std::string getManufacturer() const {\n        return manufacturer;\n    }\n\n    double getClockSpeed() const {\n        return clockSpeed;\n    }\n\n    void displayCPU() const {\n        std::cout << \"CPU Manufacturer: \" << manufacturer\n                  << \", Clock Speed: \" << std::fixed << std::setprecision(2) << clockSpeed << \" GHz\" << std::endl;\n    }\n};\n\n// Laptop class\nclass Laptop {\nprivate:\n    std::string modelName;\n    // CPU object as a member (composition)\n    CPU cpu;\n\npublic:\n    // Constructor for Laptop\n    Laptop(const std::string& modelName, const std::string& cpuManufacturer, double cpuClockSpeed)\n        : modelName(modelName), cpu(cpuManufacturer, cpuClockSpeed) {}\n\n    // Method to display Laptop details\n    void displayLaptop() const {\n        std::cout << \"Laptop Model: \" << modelName << std::endl;\n        cpu.displayCPU();\n    }\n};\n\nint main() {\n    // Example usage\n    std::cout << \"--- My Laptop ---\" << std::endl;\n    Laptop myLaptop(\"XPS 15\", \"Intel\", 2.3);\n    myLaptop.displayLaptop();\n\n    std::cout << \"\\n--- Gaming Laptop ---\" << std::endl;\n    Laptop gamingLaptop(\"ROG Strix\", \"AMD\", 3.8);\n    gamingLaptop.displayLaptop();\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the closing brace of the 'CPU' class definition. This causes a compilation error."
+  ]
+}

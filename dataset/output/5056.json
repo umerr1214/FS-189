@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function template named `arraySum` that takes an array of any numeric type and its size as input. The function should return the sum of all elements in that array.",
+  "test_cases": [
+    { "input": "int intArray[] = {1, 2, 3, 4, 5}; int intSize = 5;", "expected": "15" },
+    { "input": "double doubleArray[] = {1.1, 2.2, 3.3}; int doubleSize = 3;", "expected": "6.6" }
+  ],
+  "driver": "int main() {\n    // The call to arraySum would cause a compilation error due to the syntax error.\n    // int intArray[] = {1, 2, 3, 4, 5};\n    // int intSize = sizeof(intArray) / sizeof(intArray[0]);\n    // std::cout << \"Sum of int array: \" << arraySum(intArray, intSize) << std::endl;\n\n    // double doubleArray[] = {1.1, 2.2, 3.3};\n    // int doubleSize = sizeof(doubleArray) / sizeof(doubleArray[0]);\n    // std::cout << \"Sum of double array: \" << arraySum(doubleArray, doubleSize) << std::endl;\n\n    std::cout << \"This program contains a syntax error and is designed to fail compilation.\" << std::endl;\n    std::cout << \"The 'arraySum' function template is missing a closing angle bracket in its definition.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing closing angle bracket ('>') in the template parameter list for `arraySum` function template."]
+}

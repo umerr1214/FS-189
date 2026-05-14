@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `Player` class with `name` (public string), `health` (protected int), and `score` (private int). Create a `Wizard` class inheriting from `Player`. In `Wizard`, demonstrate accessing `name` directly and modifying `health` through a member function.",
+  "test_cases": [
+    { "input": "", "expected": "Wizard Name: Gandalf\nWizard Health: 100\nWizard Score: 500\nGandalf casts a spell!\nGandalf's health modified to: 110\nWizard Name: Gandalf\nWizard Health: 110\nWizard Score: 500\n" }
+  ],
+  "driver": "// The main function already serves as a driver for demonstration\nint main() {\n    Wizard gandalf(\"Gandalf\", 100, 500);\n    gandalf.displayWizardInfo();\n    gandalf.castSpell();\n    gandalf.displayWizardInfo();\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Attempting to access 'score', which is a private member of the base class 'Player', from the derived class 'Wizard'. Private members are not accessible to derived classes."
+  ]
+}

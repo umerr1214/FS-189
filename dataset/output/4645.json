@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function `swapNumbers` that takes two integer pointers as arguments and swaps the values they point to.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Test 1: Normal swap\nBefore: x1 = 5, y1 = 10\nAfter: x1 = 10, y1 = 5\n\nTest 2: Negative numbers\nBefore: x2 = -3, y2 = -7\nAfter: x2 = -7, y2 = -3\n\nTest 3: Pointers to same location\nBefore: x3 = 42\nAfter: x3 = 42\n\nTest 4: Attempting swap with one nullptr (expected crash/segmentation fault)...\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <limits> \n\nvoid swapNumbers(int* a, int* b) {\n    int temp = *a; \n    *a = *b;       \n    *b = temp;     \n}\n\nint main() {\n    int x1 = 5, y1 = 10;\n    std::cout << \"Test 1: Normal swap\" << std::endl;\n    std::cout << \"Before: x1 = \" << x1 << \", y1 = \" << y1 << std::endl;\n    swapNumbers(&x1, &y1);\n    std::cout << \"After: x1 = \" << x1 << \", y1 = \" << y1 << std::endl << std::endl;\n\n    int x2 = -3, y2 = -7;\n    std::cout << \"Test 2: Negative numbers\" << std::endl;\n    std::cout << \"Before: x2 = \" << x2 << \", y2 = \" << y2 << std::endl;\n    swapNumbers(&x2, &y2);\n    std::cout << \"After: x2 = \" << x2 << \", y2 = \" << y2 << std::endl << std::endl;\n\n    int x3 = 42;\n    std::cout << \"Test 3: Pointers to same location\" << std::endl;\n    std::cout << \"Before: x3 = \" << x3 << std::endl;\n    swapNumbers(&x3, &x3);\n    std::cout << \"After: x3 = \" << x3 << std::endl << std::endl;\n\n    std::cout << \"Test 4: Attempting swap with one nullptr (expected crash/segmentation fault)...\" << std::endl;\n    int x4 = 100;\n    swapNumbers(&x4, nullptr);\n    std::cout << \"This line should not be reached.\" << std::endl;\n    \n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The function does not handle null pointer inputs, leading to a segmentation fault or program crash when a null pointer is dereferenced. A robust implementation should check for null pointers before dereferencing."
+  ]
+}

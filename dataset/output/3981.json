@@ -1,0 +1,31 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ function `rotateArrayRight` that takes a 1D integer array and its size. The function should shift all elements one position to the right, moving the last element to the first position. Demonstrate with an example.",
+  "test_cases": [
+    {
+      "input": "{1, 2, 3, 4, 5}, size = 5",
+      "expected": "[5, 1, 2, 3, 4]"
+    },
+    {
+      "input": "{99}, size = 1",
+      "expected": "[99]"
+    },
+    {
+      "input": "{}, size = 0",
+      "expected": "[]"
+    },
+    {
+      "input": "{100, 101, ..., 109}, size = 10",
+      "expected": "[109, 100, 101, 102, 103, 104, 105, 106, 107, 108]"
+    },
+    {
+      "input": "{10, 20}, size = 2",
+      "expected": "[20, 10]"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <sstream>\n#include <numeric>\n\n// Function to rotate an array one position to the right\n// Correct Version: Efficient and handles edge cases.\nvoid rotateArrayRight(int arr[], int size) {\n    if (size <= 1) {\n        return;\n    }\n\n    int lastElement = arr[size - 1];\n\n    for (int i = size - 1; i > 0; --i) {\n        arr[i] = arr[i - 1];\n    }\n\n    arr[0] = lastElement;\n}\n\nstd::string arrayToString(const int arr[], int size) {\n    std::stringstream ss;\n    ss << \"[\";\n    for (int i = 0; i < size; ++i) {\n        ss << arr[i];\n        if (i < size - 1) {\n            ss << \", \";\n        }\n    }\n    ss << \"]\";\n    return ss.str();\n}\n\nint main() {\n    // Test Case 1\n    int arr1[] = {1, 2, 3, 4, 5};\n    int size1 = sizeof(arr1) / sizeof(arr1[0]);\n    rotateArrayRight(arr1, size1);\n    std::cout << arrayToString(arr1, size1) << std::endl;\n\n    // Test Case 2\n    int arr2[] = {99};\n    int size2 = sizeof(arr2) / sizeof(arr2[0]);\n    rotateArrayRight(arr2, size2);\n    std::cout << arrayToString(arr2, size2) << std::endl;\n\n    // Test Case 3\n    int arr3[] = {};\n    int size3 = 0;\n    rotateArrayRight(arr3, size3);\n    std::cout << arrayToString(arr3, size3) << std::endl;\n\n    // Test Case 4\n    int arr4[10];\n    std::iota(arr4, arr4 + 10, 100);\n    int size4 = sizeof(arr4) / sizeof(arr4[0]);\n    rotateArrayRight(arr4, size4);\n    std::cout << arrayToString(arr4, size4) << std::endl;\n\n    // Test Case 5\n    int arr5[] = {10, 20};\n    int size5 = sizeof(arr5) / sizeof(arr5[0]);\n    rotateArrayRight(arr5, size5);\n    std::cout << arrayToString(arr5, size5) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

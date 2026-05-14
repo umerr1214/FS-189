@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Parent` and a derived class `Child`. Add a constructor and a destructor to both classes, each printing a message indicating its creation or destruction. Demonstrate the order in which these constructors and destructors are called when a `Child` object is created and destroyed.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Parent Constructor Called\nChild Constructor Called\nChild Destructor Called\nParent Destructor Called\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The code uses unnecessary dynamic allocation (`new`/`delete`) for an object that could be simply stack-allocated (`Child myChild;`). This adds unnecessary complexity, verbosity, and potential for memory leaks, reducing efficiency and readability for this simple use case.",
+    "There is an inconsistent mix of I/O methods (`std::cout` and `printf`) throughout the code. While both work, using a consistent style (`std::cout` is preferred in C++) improves readability and maintainability."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Building upon the `Shape` hierarchy (with `Circle` and `Rectangle`), make `calculateArea()` a virtual function in the `Shape` base class. Demonstrate runtime polymorphism by creating an array or vector of `Shape` pointers, populating it with `Circle` and `Rectangle` objects, and then iterating through it to call `calculateArea()` on each object.",
+  "test_cases": [
+    { "input": "", "expected": "Shape::calculateArea() called. Area: 0.00\nShape::calculateArea() called. Area: 0.00\nShape::calculateArea() called. Area: 0.00\n" }
+  ],
+  "driver": "int main() { /* The main function in the provided C++ code already serves as the driver. */ return 0; }",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The program demonstrates object slicing. Instead of using a vector of `Shape` pointers (`std::vector<Shape*>`) or smart pointers, it uses `std::vector<Shape>`. When derived objects (`Circle`, `Rectangle`) are inserted into this vector, only their base `Shape` part is copied, and the derived-specific data and virtual function overrides are 'sliced off'. As a result, when `calculateArea()` is called, the base `Shape::calculateArea()` method is always invoked, preventing runtime polymorphism and yielding incorrect area calculations (0.00)."
+  ]
+}

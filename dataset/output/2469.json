@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `ComplexNumber` class with `real` and `imaginary` parts. Overload the `+` operator for complex number addition and the `<<` operator to enable easy printing of `ComplexNumber` objects.",
+  "test_cases": [
+    { "input": "", "expected": "c1: 3 + 4i\nc2: 1.5 - 2.5i\nc1 + c2: 4.5 + 1.5i\nc4 + c5: -1.5 + 1i\n0 + 5: 5 + 0i\nconst_c1 + const_c2: 3 + 3i\n" }
+  ],
+  "driver": "int main() {\n    ComplexNumber c1(3.0, 4.0);\n    ComplexNumber c2(1.5, -2.5);\n    ComplexNumber c3 = c1 + c2;\n\n    std::cout << \"c1: \" << c1 << std::endl;\n    std::cout << \"c2: \" << c2 << std::endl;\n    std::cout << \"c1 + c2: \" << c3 << std::endl;\n\n    ComplexNumber c4(0.5, 1.0);\n    ComplexNumber c5(-2.0, 0.0);\n    ComplexNumber c6 = c4 + c5;\n    std::cout << \"c4 + c5: \" << c6 << std::endl;\n\n    ComplexNumber zero_c;\n    ComplexNumber five_plus_zero(5.0);\n    ComplexNumber result_zero = zero_c + five_plus_zero;\n    std::cout << \"0 + 5: \" << result_zero << std::endl;\n\n    const ComplexNumber const_c1(1.0, 1.0);\n    const ComplexNumber const_c2(2.0, 2.0);\n    ComplexNumber const_sum = const_c1 + const_c2;\n    std::cout << \"const_c1 + const_c2: \" << const_sum << std::endl;\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

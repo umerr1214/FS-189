@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a program that prompts the user for a non-negative integer and uses a `while` loop to count the number of digits in that integer.",
+  "test_cases": [
+    { "input": "123", "expected": "The number 123 has 3 digits." },
+    { "input": "0", "expected": "The number 0 has 1 digit." },
+    { "input": "987654", "expected": "The number 987654 has 6 digits." }
+  ],
+  "driver": "int main_wrapper() { return main(); }\n",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The program incorrectly reports 0 digits for the input 0. It should report 1 digit."
+  ]
+}

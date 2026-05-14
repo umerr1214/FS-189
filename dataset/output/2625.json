@@ -1,0 +1,24 @@
+{
+  "language": "c++",
+  "question": "Create a `Time` class with private integer members `hours`, `minutes`, and `seconds`. Overload the constructor to allow creating `Time` objects in three ways: 1) no arguments (default to 00:00:00), 2) with only `hours` (minutes and seconds default to 0), and 3) with `hours`, `minutes`, and `seconds`. Ensure values are within valid ranges (e.g., minutes 0-59).",
+  "test_cases": [
+    { "input": "Time t1;", "expected": "00:00:00" },
+    { "input": "Time t2(5);", "expected": "05:00:00" },
+    { "input": "Time t3(15, 30, 45);", "expected": "15:30:45" },
+    { "input": "Time t4(23, 59, 59);", "expected": "23:59:59" },
+    { "input": "Time t5(0, 0, 0);", "expected": "00:00:00" },
+    { "input": "Time t6(25, 65, 70);", "expected": "02:06:10" },
+    { "input": "Time t7(10, -5, 0);", "expected": "09:55:00" },
+    { "input": "Time t8(0, 0, -1);", "expected": "23:59:59" },
+    { "input": "Time t9(-2, 10, 20);", "expected": "22:10:20" },
+    { "input": "Time t10(24, 0, 0);", "expected": "00:00:00" },
+    { "input": "Time t11(0, 60, 0);", "expected": "01:00:00" },
+    { "input": "Time t12(0, 0, 60);", "expected": "00:01:00" },
+    { "input": "Time t13(48, 120, 120);", "expected": "02:02:00" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\nclass Time {\nprivate:\n    int hours;\n    int minutes;\n    int seconds;\n\n    void normalize() {\n        minutes += seconds / 60;\n        seconds %= 60;\n        if (seconds < 0) {\n            seconds += 60;\n            minutes--;\n        }\n\n        hours += minutes / 60;\n        minutes %= 60;\n        if (minutes < 0) {\n            minutes += 60;\n            hours--;\n        }\n\n        hours %= 24;\n        if (hours < 0) {\n            hours += 24;\n        }\n    }\n\npublic:\n    Time(int h, int m, int s) : hours(h), minutes(m), seconds(s) {\n        normalize();\n    }\n\n    Time() : Time(0, 0, 0) {}\n\n    Time(int h) : Time(h, 0, 0) {}\n\n    void display() const {\n        std::cout << std::setfill('0') << std::setw(2) << hours << \":\"\n                  << std::setfill('0') << std::setw(2) << minutes << \":\"\n                  << std::setfill('0') << std::setw(2) << seconds << std::endl;\n    }\n};\n\nint main() {\n    Time t1;\n    Time t2(5);\n    Time t3(15, 30, 45);\n    Time t4(23, 59, 59);\n    Time t5(0, 0, 0);\n    Time t6(25, 65, 70);\n    Time t7(10, -5, 0);\n    Time t8(0, 0, -1);\n    Time t9(-2, 10, 20);\n    Time t10(24, 0, 0);\n    Time t11(0, 60, 0);\n    Time t12(0, 0, 60);\n    Time t13(48, 120, 120);\n\n    t1.display();\n    t2.display();\n    t3.display();\n    t4.display();\n    t5.display();\n    t6.display();\n    t7.display();\n    t8.display();\n    t9.display();\n    t10.display();\n    t11.display();\n    t12.display();\n    t13.display();\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter the length and width of a rectangle (as floating-point numbers). Calculate and display both the area and the perimeter of the rectangle, formatted to two decimal places.",
+  "test_cases": [
+    { "input": "5.5\n10.25\n", "expected": "Enter the length of the rectangle: Enter the width of the rectangle: Calculated Area: 56.38\nCalculated Perimeter: 31.50\n" }
+  ],
+  "driver": "valid C++ code to run test cases",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "For the `Book` class (from a previous problem), overload the output stream operator `<<` to allow printing `Book` objects directly to `std::cout` in a formatted way (e.g., \"Title: [title], Author: [author], ISBN: [isbn]\").",
+  "test_cases": [
+    {
+      "input": "Book(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0-345-39180-3\")",
+      "expected": "Title: The Hitchhiker's Guide to the Galaxy, Author: Douglas Adams, ISBN: 978-0-345-39180-3"
+    },
+    {
+      "input": "Book(\"1984\", \"George Orwell\", \"978-0-451-52493-5\")",
+      "expected": "Title: 1984, Author: George Orwell, ISBN: 978-0-451-52493-5"
+    }
+  ],
+  "driver": "int main() {\n    Book book1(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0-345-39180-3\");\n    std::cout << book1 << std::endl;\n    Book book2(\"1984\", \"George Orwell\", \"978-0-451-52493-5\");\n    std::cout << book2 << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing comma in function parameter list for operator<<"
+  ]
+}

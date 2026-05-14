@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that declares an array of 5 integers and initializes it. Then, ask the user to enter a number to search for. If the number is found in the array, print its index (position); otherwise, print a 'not found' message.",
+  "test_cases": [
+    { "input": "30\n", "expected": "2\n" },
+    { "input": "15\n", "expected": "Attempting to access arr[5], which is out of bounds.\nnot found\n" },
+    { "input": "50\n", "expected": "4\n" }
+  ],
+  "driver": "",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The loop condition 'i <= arr.size()' allows the loop to iterate one element too far, attempting to access 'arr[arr.size()]' (i.e., 'arr[5]' for a 5-element array). This is an out-of-bounds access, leading to undefined behavior. While the added 'if (i == arr.size())' check prevents a crash, it still highlights the intent to access an invalid index."
+  ]
+}

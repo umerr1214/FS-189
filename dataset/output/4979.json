@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that reads 5 integer values into a one-dimensional array. After reading, find and display the second largest element present in the array.",
+  "test_cases": [
+    { "input": "5 5 3 2 1", "expected": "The second largest element is: 5\n" },
+    { "input": "7 7 7 7 7", "expected": "The second largest element is: 7\n" },
+    { "input": "10 20 30 40 50", "expected": "The second largest element is: 40\n" }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The logic for finding the second largest element incorrectly assumes it must be strictly smaller than the largest element. This fails when the second largest value is equal to the largest value (e.g., in {5,5,3,2,1}, it incorrectly finds 3 instead of 5). It also fails when all elements are identical (e.g., in {7,7,7,7,7}, it incorrectly reports no second distinct largest instead of 7)."
+  ]
+}

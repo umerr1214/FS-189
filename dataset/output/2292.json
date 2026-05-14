@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Implement a `StringWrapper` class that manages a dynamically allocated C-style character array (char*). Write a copy constructor that performs a deep copy of the string data, ensuring independent memory management for copied objects.",
+  "test_cases": [
+    { "input": "StringWrapper s1(\"Hello\"); StringWrapper s2 = s1;", "expected": "s1: String: \"Hello\" (Length reported: 5, Actual C-string length: 5)\ns2: String: \"<garbage>\" (Length reported: 5, Actual C-string length: <large number or crash>)\n(Expected s2 to be \"Hello\", but it shows garbage or crashes due to missing null terminator.)" },
+    { "input": "StringWrapper s3(\"Test\"); StringWrapper s4 = s3;", "expected": "s3: String: \"Test\" (Length reported: 4, Actual C-string length: 4)\ns4: String: \"<garbage>\" (Length reported: 4, Actual C-string length: <large number or crash>)\n(Expected s4 to be \"Test\", but it shows garbage or crashes due to missing null terminator.)" }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Test 1: Original String ---\" << std::endl;\n    StringWrapper s1(\"Hello\");\n    std::cout << \"s1: \"; s1.print(); // Should print \"Hello\" correctly\n\n    std::cout << \"\\n--- Test 2: Copied String (Semantic Error) ---\" << std::endl;\n    StringWrapper s2 = s1; // Calls copy constructor with semantic error\n    // The string 'data' in s2 is NOT null-terminated.\n    // Printing it will lead to reading past allocated memory (Undefined Behavior).\n    std::cout << \"s2 (copy of s1): \"; s2.print(); // Expect garbage or crash due to missing null terminator\n\n    std::cout << \"\\n--- Test 3: Another Original String ---\" << std::endl;\n    StringWrapper s3(\"World!\");\n    std::cout << \"s3: \"; s3.print();\n\n    std::cout << \"\\n--- Test 4: Copied String from s3 ---\" << std::endl;\n    StringWrapper s4 = s3; // Calls copy constructor with semantic error\n    std::cout << \"s4 (copy of s3): \"; s4.print(); // Expect garbage or crash\n\n    std::cout << \"\\n--- Test 5: Assignment Operator (Correct) ---\" << std::endl;\n    StringWrapper s5;\n    s5 = s1; // Uses correctly implemented assignment operator\n    std::cout << \"s5 (assigned from s1): \"; s5.print(); // Should print \"Hello\" correctly\n\n    std::cout << \"\\nProgram finished. Expect undefined behavior (garbage output or crash) for copied strings.\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": []
+}

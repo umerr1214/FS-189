@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Extend the `Animal` and `Dog` classes. Make the `name` member in `Animal` `protected`. Demonstrate how `Dog` can access and modify `name` directly, while an outside function cannot.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Buddy says Woof!\nDog's info: My name is Buddy.\n\nAttempting to set an empty name (Robustness Issue demonstration):\n says Woof!\nDog's info: My name is .\n\nOutside function access attempt (indirect via public method):\nDog's name via public method: \nAnimal's name via public method: \n"
+    }
+  ],
+  "driver": "int main() {\n    Dog myDog(\"Buddy\");\n    myDog.bark();\n    myDog.displayInfo();\n\n    std::cout << \"\\nAttempting to set an empty name (Robustness Issue demonstration):\" << std::endl;\n    myDog.setDogName(\"\");\n    myDog.bark();\n    myDog.displayInfo();\n\n    std::cout << \"\\nOutside function access attempt (indirect via public method):\" << std::endl;\n    std::cout << \"Dog's name via public method: \" << myDog.getDogName() << std::endl;\n    std::cout << \"Animal's name via public method: \" << myDog.getAnimalNamePublic() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `setDogName` method lacks input validation, allowing an empty string for the name. This leads to awkward or potentially confusing output in methods like `bark()` and `displayInfo()`, demonstrating a lack of robustness in handling valid but undesirable input."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program to count the frequency of each distinct element in a 1D array of integers. Print each element and its count.",
+  "test_cases": [
+    { "input": "5 1 2 2 3 1", "expected": "1: 2\n2: 2\n3: 1\n" },
+    { "input": "3 7 7 7", "expected": "7: 3\n" },
+    { "input": "1 100", "expected": "100: 1\n" },
+    { "input": "0", "expected": "" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <map>\n#include <sstream>\n\n// Assume the user's solution defines this function\nextern void countFrequency(const std::vector<int>& arr);\n\nint main() {\n    int n;\n    std::cin >> n;\n\n    std::vector<int> arr(n);\n    for (int i = 0; i < n; ++i) {\n        std::cin >> arr[i];\n    }\n\n    countFrequency(arr);\n\n    return 0;\n}",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

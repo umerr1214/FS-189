@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create two classes, `Box` (with private `length`) and `Container` (with private `volume`). Declare a non-member function `compareSizes(Box b, Container c)` as a friend to both classes, allowing it to access their private members and print a comparison.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Initiating Size Comparison ---\nBox object's internal length value is: 10 units.\nContainer object's internal volume value is: 20 units.\nIt has been determined that the Box's length is numerically smaller than the Container's volume.\n--- Comparison Concluded ---\n\n--- Initiating Size Comparison ---\nBox object's internal length value is: 30 units.\nContainer object's internal volume value is: 15 units.\nIt has been determined that the Box's length is numerically larger than the Container's volume.\n--- Comparison Concluded ---\n\n--- Initiating Size Comparison ---\nBox object's internal length value is: 25 units.\nContainer object's internal volume value is: 25 units.\nIt has been determined that the Box's length is numerically equivalent to the Container's volume.\n--- Comparison Concluded ---\n\n"
+    }
+  ],
+  "driver": "int main() {\n    Box firstBox(10);\n    Container firstContainer(20);\n    compareSizes(firstBox, firstContainer);\n\n    Box secondBox(30);\n    Container secondContainer(15);\n    compareSizes(secondBox, secondContainer);\n\n    Box thirdBox(25);\n    Container thirdContainer(25);\n    compareSizes(thirdBox, thirdContainer);\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `compareSizes` function passes `Box` and `Container` objects by value. This leads to unnecessary object copying, which is an efficiency issue. For better performance, especially with larger objects, they should be passed by `const` reference (`const Box& b`, `const Container& c`).",
+    "The output messages in `compareSizes` are overly verbose and less concise than necessary, reducing readability. The frequent use of `std::endl` instead of `\\n` can also impact performance due to flushing the buffer on each call. The nested `if-else` structure for comparison could also be simplified for better clarity."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that declares an array of 5 integers and initializes it. Then, ask the user to enter a number to search for. If the number is found in the array, print its index (position); otherwise, print a 'not found' message.",
+  "test_cases": [
+    { "input": "40\n", "expected": "Number found at index: 3\n" },
+    { "input": "5\n", "expected": "not found\n" },
+    { "input": "10\n", "expected": "Number found at index: 0\n" },
+    { "input": "50\n", "expected": "Number found at index: 4\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n\nextern int main(); // Forward declaration for the actual solution's main\n\nstd::string run_test(const std::string& input_data) {\n    std::stringstream input_stream(input_data);\n    std::stringstream output_stream;\n\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::cin.rdbuf(input_stream.rdbuf());\n    std::cout.rdbuf(output_stream.rdbuf());\n\n    main(); // Call the solution's main function\n\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    return output_stream.str();\n}\n\nint main() {\n    // This main function is part of the driver.\n    // It would typically iterate through test cases.\n    // The actual testing system would manage calling run_test with various inputs.\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

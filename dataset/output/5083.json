@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `bool isPalindrome(int num)` that accepts an integer and returns `true` if it's a palindrome (reads the same forwards and backwards, e.g., 121) and `false` otherwise. In `main`, prompt the user for an integer and use this function to check and print the result.",
+  "test_cases": [
+    { "input": "121", "expected": "121 is a palindrome." },
+    { "input": "123", "expected": "123 is not a palindrome." },
+    { "input": "-121", "expected": "-121 is not a palindrome." },
+    { "input": "0", "expected": "0 is a palindrome." },
+    { "input": "1001", "expected": "1001 is a palindrome." }
+  ],
+  "driver": "int main() {\n    std::cout << \"Enter an integer: \";\n    int number;\n    std::cin >> number;\n    if (isPalindrome(number)) {\n        std::cout << number << \" is a palindrome.\" << std::endl;\n    } else {\n        std::cout << number << \" is not a palindrome.\" << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `isPalindrome` function fails to correctly identify `0` as a palindrome. It explicitly returns `false` for `0` when it should return `true`."
+  ]
+}

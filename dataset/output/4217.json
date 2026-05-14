@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a simple calculator program in C++ that takes two numbers and an operator (+, -, *, /) from the user. Use a `switch` statement to perform the chosen operation and display the result. Handle division by zero.",
+  "test_cases": [
+    { "input": "10\n+\n5", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 15\n" },
+    { "input": "10\n-\n5", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 5\n" },
+    { "input": "10\n*\n5", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 15\n" },
+    { "input": "10\n/\n5", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 2\n" },
+    { "input": "10\n/\n4", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 2.5\n" },
+    { "input": "10\n/\n0", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Error: Division by zero is not allowed.\n" },
+    { "input": "10\n%\n5", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Error: Invalid operator.\n" }
+  ],
+  "driver": "Compile the C++ file (e.g., g++ <file_name>.cpp -o <executable_name>) and then run the executable, providing input via standard input (e.g., echo \"10\\n+\\n5\" | ./<executable_name>).",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The multiplication operator '*' performs addition instead of multiplication, leading to incorrect results for multiplication operations."]
+}

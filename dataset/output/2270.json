@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a `Player` class with `name` (public string), `health` (protected int), and `score` (private int). Create a `Wizard` class inheriting from `Player`. In `Wizard`, demonstrate accessing `name` directly and modifying `health` through a member function.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Test Case 1: Healing with string command ---\nWizard Name: Elara\nCurrent Health: 80\nScore (via getter): 1200\nElara healed by 20. New health: 100\nWizard Name: Elara\nCurrent Health: 100\nScore (via getter): 1200\n\n--- Test Case 2: Damaging with string command ---\nWizard Name: Zoltan\nCurrent Health: 150\nScore (via getter): 1800\nZoltan damaged by 50. New health: 100\nWizard Name: Zoltan\nCurrent Health: 100\nScore (via getter): 1800\n\n--- Test Case 3: Invalid command ---\nWizard Name: Arcane\nCurrent Health: 75\nScore (via getter): 900\nInvalid command: boost 10. Health remains: 75\nWizard Name: Arcane\nCurrent Health: 75\nScore (via getter): 900\n\n"
+    }
+  ],
+  "driver": "// Driver code\nint main() {\n    std::cout << \"--- Test Case 1: Healing with string command ---\" << std::endl;\n    Wizard elara(\"Elara\", 80, 1200);\n    elara.displayWizardInfo();\n    elara.modifyHealth(\"heal 20\");\n    elara.displayWizardInfo();\n    std::cout << std::endl;\n\n    std::cout << \"--- Test Case 2: Damaging with string command ---\" << std::endl;\n    Wizard zoltan(\"Zoltan\", 150, 1800);\n    zoltan.displayWizardInfo();\n    zoltan.modifyHealth(\"damage 50\");\n    zoltan.displayWizardInfo();\n    std::cout << std::endl;\n\n    std::cout << \"--- Test Case 3: Invalid command ---\" << std::endl;\n    Wizard arcane(\"Arcane\", 75, 900);\n    arcane.displayWizardInfo();\n    arcane.modifyHealth(\"boost 10\");\n    arcane.displayWizardInfo();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `modifyHealth` function in `Wizard` takes a string command and parses it, which is less efficient and less readable than directly passing an integer amount for health modification.",
+    "String parsing introduces unnecessary overhead and complexity for a simple arithmetic operation."
+  ]
+}

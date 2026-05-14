@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `Box` class with private attributes `length`, `width`, and `height` (all doubles). Implement a non-member function `calculateVolume()` that is declared as a `friend` of the `Box` class, allowing it to access the private dimensions of a `Box` object and return its volume.",
+  "test_cases": [
+    { "input": "Box box(10.0, 5.0, 2.0); calculateVolume(box);", "expected": "100.0\n" },
+    { "input": "Box box(3.0, 4.0, 5.0); calculateVolume(box);", "expected": "60.0\n" },
+    { "input": "Box box(-5.0, 2.0, 3.0); calculateVolume(box);", "expected": "0.0\n" },
+    { "input": "Box box(0.0, 2.0, 3.0); calculateVolume(box);", "expected": "0.0\n" }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n#include <algorithm>\n\nclass Box {\nprivate:\n    double length;\n    double width;\n    double height;\n\npublic:\n    Box(double l, double w, double h)\n        : length(std::max(0.0, l)),\n          width(std::max(0.0, w)),\n          height(std::max(0.0, h)) {}\n\n    friend double calculateVolume(const Box& b);\n};\n\ndouble calculateVolume(const Box& b) {\n    return b.length * b.width * b.height;\n}\n\nint main() {\n    std::stringstream ss;\n    std::streambuf* oldCout = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n\n    Box box1(10.0, 5.0, 2.0);\n    std::cout << calculateVolume(box1) << std::endl;\n\n    Box box2(3.0, 4.0, 5.0);\n    std::cout << calculateVolume(box2) << std::endl;\n\n    Box box3(-5.0, 2.0, 3.0);\n    std::cout << calculateVolume(box3) << std::endl;\n\n    Box box4(0.0, 2.0, 3.0);\n    std::cout << calculateVolume(box4) << std::endl;\n\n    std::cout.rdbuf(oldCout);\n    std::cout << ss.str();\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "No Error",
+  "errors": []
+}

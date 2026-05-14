@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a `Calculator` class with overloaded `add` methods: one taking two integers, another taking two doubles, and a third taking three integers. Each method should return the sum.",
+  "test_cases": [
+    { "input": "calculator.add(10, 20)", "expected": "30" },
+    { "input": "calculator.add(10.5, 20.3)", "expected": "30.80" },
+    { "input": "calculator.add(1, 2, 3)", "expected": "6" },
+    { "input": "calculator.add(-5, 15)", "expected": "10" },
+    { "input": "calculator.add(0.1, 0.2)", "expected": "0.30" },
+    { "input": "calculator.add(100, 200, -50)", "expected": "250" }
+  ],
+  "driver": "Calculator calculator;\nstd::cout << calculator.add(10, 20) << std::endl;\nstd::cout << std::fixed << std::setprecision(2);\nstd::cout << calculator.add(10.5, 20.3) << std::endl;\nstd::cout << calculator.add(1, 2, 3) << std::endl;\nstd::cout << calculator.add(-5, 15) << std::endl;\nstd::cout << calculator.add(0.1, 0.2) << std::endl;\nstd::cout << calculator.add(100, 200, -50) << std::endl;",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a function `bool isPrime(int num)` that returns `true` if `num` is prime and `false` otherwise. Use this function to print all prime numbers up to a user-specified limit.",
+  "test_cases": [
+    { "input": "30", "expected": "Enter a limit: Prime numbers up to 30:\n2 3 5 7 11 13 17 19 23 29 \n" },
+    { "input": "2200000000", "expected": "Enter a limit: Prime numbers up to 2200000000:\n[A very long list of prime numbers up to 2.2 billion. The provided code will incorrectly stop identifying primes after INT_MAX due to type truncation.]\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\n// This driver simulates running the user's complete program.\n// It expects the user's program to read an integer from stdin and print to stdout.\n// The 'input' field in test_cases will be fed to stdin.\n// The 'expected' field is the exact string expected on stdout, including prompts.\n\nint main() {\n    std::cout << \"Driver for Semantic Error: Expects full program execution.\" << std::endl;\n    std::cout << \"Input from test_cases will be fed to stdin.\" << std::endl;\n    std::cout << \"Stdout will be captured and compared to expected output.\" << std::endl;\n    std::cout << \"The second test case with a large limit is designed to expose truncation issues.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `isPrime` function takes an `int` argument, but in `main`, `long long` values are implicitly converted to `int` when passed to `isPrime`. If the `long long` value exceeds `INT_MAX`, truncation occurs, leading to incorrect prime checking for numbers greater than `INT_MAX`."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Shape` with a public method `calculateArea()` that returns 0. Derive two classes, `Circle` and `Rectangle`, from `Shape`. `Circle` should have a `radius` and `Rectangle` should have `width` and `height`. Override the `calculateArea()` method in both derived classes to compute their respective areas.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Calculating areas using polymorphism (via Shape pointers):\nArea: 78.5398\nArea: 24.0000\nArea: 28.2743\nArea: 14.0000\n\nDirect object calls:\nArea of Circle (radius 10.0): 314.1593\nArea of Rectangle (width 8.0, height 5.0): 40.0000" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n#include <iomanip>\n#include <vector>\n\nclass Shape {\npublic:\n    virtual double calculateArea() const {\n        return 0.0;\n    }\n    virtual ~Shape() {}\n};\n\nclass Circle : public Shape {\nprivate:\n    double radius;\n\npublic:\n    Circle(double r) : radius(r) {}\n\n    double calculateArea() const override {\n        return M_PI * radius * radius;\n    }\n};\n\nclass Rectangle : public Shape {\nprivate:\n    double width;\n    double height;\n\npublic:\n    Rectangle(double w, double h) : width(w), height(h) {}\n\n    double calculateArea() const override {\n        return width * height;\n    }\n};\n\nint main() {\n    std::cout << std::fixed << std::setprecision(4);\n\n    std::vector<Shape*> shapes;\n\n    Circle circle1(5.0);\n    Rectangle rectangle1(4.0, 6.0);\n    Circle circle2(3.0);\n    Rectangle rectangle2(7.0, 2.0);\n\n    shapes.push_back(&circle1);\n    shapes.push_back(&rectangle1);\n    shapes.push_back(&circle2);\n    shapes.push_back(&rectangle2);\n\n    std::cout << \"Calculating areas using polymorphism (via Shape pointers):\" << std::endl;\n    for (const Shape* s : shapes) {\n        std::cout << \"Area: \" << s->calculateArea() << std::endl;\n    }\n\n    std::cout << \"\\nDirect object calls:\" << std::endl;\n    Circle c_direct(10.0);\n    Rectangle r_direct(8.0, 5.0);\n    std::cout << \"Area of Circle (radius 10.0): \" << c_direct.calculateArea() << std::endl;\n    std::cout << \"Area of Rectangle (width 8.0, height 5.0): \" << r_direct.calculateArea() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

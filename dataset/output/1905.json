@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `Complex` class with private `real` and `imaginary` parts (doubles). Implement multiple overloaded constructors: a default constructor (initializes both to 0), a constructor taking only the `real` part (imaginary is 0), and a constructor taking both `real` and `imaginary` parts.",
+  "test_cases": [
+    { "input": "", "expected": "c1: 0 + 0i\nc2: 5.5 + 0i\nc3: -2.1 + 3.8i\nc4: 0 - 7i\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\n// The Complex class definition with its constructors and methods is assumed to be provided by the user.\n// This driver will link against the user's Complex class.\n\nint main() {\n    Complex c1; // Default\n    Complex c2(5.5); // Real part only\n    Complex c3(-2.1, 3.8); // Both parts\n    Complex c4(0.0, -7.0); // Both parts, edge case\n\n    std::cout << \"c1: \"; c1.display();\n    std::cout << \"c2: \"; c2.display();\n    std::cout << \"c3: \"; c3.display();\n    std::cout << \"c4: \"; c4.display();\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

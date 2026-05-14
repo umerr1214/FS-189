@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function named `is_prime` that accepts an integer as input and returns `true` if the number is prime, and `false` otherwise. Use this function in your `main` program to print all prime numbers between 1 and 100.",
+  "test_cases": [
+    { "input": "2", "expected": "true" },
+    { "input": "4", "expected": "false" },
+    { "input": "97", "expected": "true" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// Driver expects int return type as per the provided code's semantic error\nextern int is_prime(int n);\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        try {\n            int n = std::stoi(line);\n            if (is_prime(n)) { // Implicit conversion from int (0/1) to bool\n                std::cout << \"true\" << std::endl;\n            } else {\n                std::cout << \"false\" << std::endl;\n            }\n        } catch (const std::invalid_argument& e) {\n            std::cerr << \"Invalid input: \" << line << std::endl;\n            return 1;\n        } catch (const std::out_of_range& e) {\n            std::cerr << \"Input out of range: \" << line << std::endl;\n            return 1;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `is_prime` function is declared with an `int` return type, but its name and logical purpose (a predicate function) strongly suggest a `bool` return type. While C++ allows implicit conversion of 0/1 to boolean, this represents a semantic mismatch between the function's declared type and its intended meaning."
+  ]
+}

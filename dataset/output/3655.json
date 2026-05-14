@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Given a 2D integer array (matrix) of size 4x3, find the sum of all elements in a specified row (e.g., the second row).",
+  "test_cases": [
+    { "input": "1", "expected": "15" },
+    { "input": "0", "expected": "6" },
+    { "input": "3", "expected": "33" },
+    { "input": "4", "expected": "Error: Row index out of bounds." },
+    { "input": "-1", "expected": "Error: Row index out of bounds." }
+  ],
+  "driver": "#include <iostream>\n\nconst int MATRIX_ROWS = 4;\nconst int MATRIX_COLS = 3;\nint global_matrix[MATRIX_ROWS][MATRIX_COLS] = {\n    {1, 2, 3},\n    {4, 5, 6},\n    {7, 8, 9},\n    {10, 11, 12}\n};\n\nint sumRowElements(int row_index) {\n    int row_sum = 0;\n    for (int j = 0; j < MATRIX_COLS; ++j) {\n        row_sum += global_matrix[row_index][j];\n    }\n    return row_sum;\n}\n\nint main() {\n    int target_row;\n    if (!(std::cin >> target_row)) {\n        std::cerr << \"Invalid input for row index.\" << std::endl;\n        return 1;\n    }\n    int result = sumRowElements(target_row);\n    std::cout << result << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": []
+}

@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "For a `Point` class with private `x` and `y` integer coordinates, overload the binary `+` operator to enable adding two `Point` objects (component-wise addition, returning a new `Point` object).",
+  "test_cases": [
+    { "input": "Point p1(10, 20);\nPoint p2(3, 7);", "expected": "(13, 27)" },
+    { "input": "Point p4(0, 0);\nPoint p5(-5, 12);", "expected": "(-5, 12)" }
+  ],
+  "driver": "#include <iostream>\n\nclass Point {\nprivate:\n    int x;\n    int y;\n\npublic:\n    Point(int _x = 0, int _y = 0) : x(_x), y(_y) {}\n\n    void display() const {\n        std::cout << \"(\" << x << \", \" << y << \")\";\n    }\n\n    Point operator+(const Point& other) const {\n        return Point(x + other.x, y + other.y);\n    }\n};\n\nint main() {\n    Point p1(10, 20);\n    Point p2(3, 7);\n    Point p3 = p1 + p2;\n    p3.display();\n    std::cout << \"\\n\";\n\n    Point p4(0, 0);\n    Point p5(-5, 12);\n    Point p6 = p4 + p5;\n    p6.display();\n    std::cout << \"\\n\";\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The overloaded '+' operator incorrectly subtracts the x-coordinates instead of adding them."]
+}

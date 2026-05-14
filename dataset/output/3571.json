@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Calculate the area and perimeter of a circle given its radius, which is entered by the user. Use `const` for PI.",
+  "test_cases": [
+    { "input": "5.0", "expected": "Enter radius: Area: 78.53975\nPerimeter: 31.41590\n" },
+    { "input": "-2.0", "expected": "Enter radius: Area: 12.56636\nPerimeter: -12.56636\n" },
+    { "input": "0.0", "expected": "Enter radius: Area: 0.00000\nPerimeter: 0.00000\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// This C++ code serves as a conceptual driver description.\n// In an automated testing environment, for each test case:\n// 1. The input string (e.g., '5.0') would be fed to the standard input of the compiled user program.\n// 2. The standard output of the user program would be captured.\n// 3. The captured output would be compared against the 'expected' string.\n// Example: For input '5.0', the program should output lines containing 'Area: 78.53975' and 'Perimeter: 31.41590'.\n\nint main() {\n    std::cout << \"This C++ code serves as a conceptual driver description.\" << std::endl;\n    std::cout << \"In an automated testing environment, for each test case:\" << std::endl;\n    std::cout << \"1. The input string (e.g., '5.0') would be fed to the standard input of the compiled user program.\" << std::endl;\n    std::cout << \"2. The standard output of the user program would be captured.\" << std::endl;\n    std::cout << \"3. The captured output would be compared against the 'expected' string.\" << std::endl;\n    std::cout << \"Example: For input '5.0', the program should output lines containing 'Area: 78.53975' and 'Perimeter: 31.41590'.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": []
+}

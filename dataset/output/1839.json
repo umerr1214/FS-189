@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Model a `Laptop` class that contains a `CPU` object (composition). The `CPU` class should have private attributes `manufacturer` (string) and `clockSpeed` (double). The `Laptop` class should have a `modelName` (string) and instantiate a `CPU` object as a member, demonstrating their 'has-a' relationship.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "Laptop Model: XPS 15\n  CPU Manufacturer: Intel\n  CPU Clock Speed: 2.3 GHz\nLaptop Model: MacBook Pro\n  CPU Manufacturer: Apple\n  CPU Clock Speed: 3.2 GHz\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <utility>\n#include <stdexcept>\n\nclass CPU {\nprivate:\n    std::string manufacturer;\n    double clockSpeed;\n\npublic:\n    CPU(std::string manufacturer, double clockSpeed)\n        : manufacturer(std::move(manufacturer)), clockSpeed(clockSpeed)\n    {\n        if (this->manufacturer.empty()) {\n            throw std::invalid_argument(\"CPU manufacturer cannot be empty.\");\n        }\n        if (this->clockSpeed <= 0) {\n            throw std::invalid_argument(\"CPU clock speed must be positive.\");\n        }\n    }\n\n    std::string getManufacturer() const { return manufacturer; }\n    double getClockSpeed() const { return clockSpeed; }\n};\n\nclass Laptop {\nprivate:\n    std::string modelName;\n    CPU cpu;\n\npublic:\n    Laptop(std::string modelName, std::string cpuManufacturer, double cpuClockSpeed)\n        : modelName(std::move(modelName)),\n          cpu(std::move(cpuManufacturer), cpuClockSpeed)\n    {\n        if (this->modelName.empty()) {\n            throw std::invalid_argument(\"Laptop model name cannot be empty.\");\n        }\n    }\n\n    std::string getModelName() const { return modelName; }\n    std::string getCpuManufacturer() const { return cpu.getManufacturer(); }\n    double getCpuClockSpeed() const { return cpu.getClockSpeed(); }\n\n    void displayDetails() const {\n        std::cout << \"Laptop Model: \" << modelName << '\\n';\n        std::cout << \"  CPU Manufacturer: \" << cpu.getManufacturer() << '\\n';\n        std::cout << \"  CPU Clock Speed: \" << cpu.getClockSpeed() << \" GHz\" << '\\n';\n    }\n};\n\nint main() {\n    try {\n        Laptop laptop1(\"XPS 15\", \"Intel\", 2.3);\n        laptop1.displayDetails();\n\n        Laptop laptop2(\"MacBook Pro\", \"Apple\", 3.2);\n        laptop2.displayDetails();\n\n    } catch (const std::invalid_argument& e) {\n        std::cerr << \"Error: \" << e.what() << '\\n';\n        return 1;\n    }\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

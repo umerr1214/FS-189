@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Shape` with a `protected` member `color` (string) and a public method `displayColor()`. Derive a class `ColoredCircle` from `Shape`. Demonstrate how `ColoredCircle` can directly access and modify the `protected` `color` member, and then use `displayColor()` to confirm the change.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial color:\nColor: Red\nAfter changing color to Green:\nColor: Green\n"
+    }
+  ],
+  "driver": "int main() {\n    ColoredCircle myCircle(5.0, \"Red\");\n    std::cout << \"Initial color:\" << std::endl;\n    myCircle.displayColor();\n    myCircle.changeColor(\"Green\");\n    std::cout << \"After changing color to Green:\" << std::endl;\n    myCircle.displayColor();\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `Shape` constructor, `ColoredCircle` constructor, and `changeColor` method all take `std::string` parameters by value. This leads to unnecessary copies of the string objects, which can be inefficient, especially for larger strings. Passing by `const std::string&` would be more efficient. The `displayColor` method creates a temporary `std::string` by concatenating a literal with the `color` member, which is less efficient than directly streaming to `std::cout`. Additionally, the `displayColor` method is not marked `const`, even though it does not modify the object's state, which limits its usability with `const` objects."
+  ]
+}

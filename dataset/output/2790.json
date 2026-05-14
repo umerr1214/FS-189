@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Define a `Vector2D` class with `x` and `y` components (double). Overload the binary `+` operator to allow adding two `Vector2D` objects, returning a new `Vector2D` object that represents their sum.",
+  "test_cases": [
+    { "input": "Vector2D v1(1.0, 2.0); Vector2D v2(3.0, 4.0); Vector2D v3 = v1 + v2; v1.print();", "expected": "(1.0, 2.0)" },
+    { "input": "Vector2D v4(10.0, 10.0); Vector2D v5(1.0, 1.0); Vector2D v6(2.0, 2.0); Vector2D v7 = (v4 + v5) + v6; v4.print();", "expected": "(10.0, 10.0)" }
+  ],
+  "driver": "int main() {\n    Vector2D v1(1.0, 2.0);\n    Vector2D v2(3.0, 4.0);\n    std::cout << \"Before addition:\" << std::endl;\n    std::cout << \"Vector v1: \"; v1.print(); std::cout << std::endl;\n    std::cout << \"Vector v2: \"; v2.print(); std::cout << std::endl;\n    Vector2D v3 = v1 + v2;\n    std::cout << \"After addition:\" << std::endl;\n    std::cout << \"Vector v1: \"; v1.print(); std::cout << std::endl;\n    std::cout << \"Vector v2: \"; v2.print(); std::cout << std::endl;\n    std::cout << \"v1 + v2 (v3) = \"; v3.print(); std::cout << std::endl;\n    Vector2D v4(10.0, 10.0);\n    Vector2D v5(1.0, 1.0);\n    Vector2D v6(2.0, 2.0);\n    Vector2D v7 = (v4 + v5) + v6;\n    std::cout << \"Chained addition (v4 + v5) + v6 = \"; v7.print(); std::cout << std::endl;\n    std::cout << \"Original v4 after chained addition: \"; v4.print(); std::cout << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": []
+}

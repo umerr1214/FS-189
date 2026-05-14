@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function template `find_maximum` that takes two arguments of any comparable data type and returns the larger of the two. Test it with at least two different data types (e.g., int and double).",
+  "test_cases": [
+    { "input": "int_val1 = 10, int_val2 = 20", "expected": "Maximum of 10 and 20 (int): 20" },
+    { "input": "double_val1 = 15.5, double_val2 = 10.2", "expected": "Maximum of 15.5 and 10.2 (double): 15.5" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\ntemplate <typename T>\nconst T& find_maximum(const T& a, const T& b) {\n    if (a > b) {\n        return a;\n    } else {\n        return b;\n    }\n}\n\nint main() {\n    int int_val1 = 10;\n    int int_val2 = 20;\n    const int& max_int_ref = find_maximum(int_val1, int_val2);\n    std::cout << \"Maximum of \" << int_val1 << \" and \" << int_val2 << \" (int): \" << max_int_ref << std::endl;\n\n    double double_val1 = 15.5;\n    double double_val2 = 10.2;\n    const double& max_double_ref = find_maximum(double_val1, double_val2);\n    std::cout << \"Maximum of \" << double_val1 << \" and \" << double_val2 << \" (double): \" << max_double_ref << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The function template `find_maximum` returns a `const T&` (constant reference). While efficient, this can lead to a dangling reference if the arguments passed to the function are temporaries or go out of scope before the returned reference is used. For a generic maximum function, returning by value (`T`) is generally safer to ensure the returned object's lifetime is independent of the input arguments, especially for user-defined types."
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "language": "c++",
+  "question": "Write a program that takes a sentence (std::string) and a character from the user, then counts and displays how many times that character appears in the sentence.",
+  "test_cases": [
+    { "input": "o\nHello World\n", "expected": "Enter a character to count: Enter a sentence: The character 'o' appears 0 times.\n" },
+    { "input": "g\nProgramming is fun\n", "expected": "Enter a character to count: Enter a sentence: The character 'g' appears 0 times.\n" },
+    { "input": "p\napple\n", "expected": "Enter a character to count: Enter a sentence: The character 'p' appears 0 times.\n" },
+    { "input": "z\nbanana\n", "expected": "Enter a character to count: Enter a sentence: The character 'z' appears 0 times.\n" },
+    { "input": "A\nAAAAA\n", "expected": "Enter a character to count: Enter a sentence: The character 'A' appears 0 times.\n" }
+  ],
+  "driver": "
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <vector>
+#include <functional>
+
+// Forward declaration of the solution's logic function
+void execute_program_logic();
+
+struct TestCase {
+    std::string input;
+    std::string expected_output;
+};
+
+// Function to run a single test case by redirecting std::cin and std::cout
+std::string run_test(const std::string& input_str) {
+    std::stringstream ss_input(input_str);
+    std::stringstream ss_output;
+
+    // Redirect std::cin and std::cout
+    std::streambuf* old_cin = std::cin.rdbuf();
+    std::streambuf* old_cout = std::cout.rdbuf();
+    std::cin.rdbuf(ss_input.rdbuf());
+    std::cout.rdbuf(ss_output.rdbuf());
+
+    // Call the program's logic function
+    execute_program_logic();
+
+    // Restore std::cin and std::cout
+    std::cin.rdbuf(old_cin);
+    std::cout.rdbuf(old_cout);
+
+    return ss_output.str();
+}
+
+int main() {
+    // Test cases are typically loaded from the JSON, but for this driver snippet,
+    // we'll use a placeholder. The actual test cases are in the 'test_cases' field.
+    std::vector<TestCase> tests_from_json = {
+        {\"o\\nHello World\\n\", \"Enter a character to count: Enter a sentence: The character 'o' appears 0 times.\\n\" },
+        {\"g\\nProgramming is fun\\n\", \"Enter a character to count: Enter a sentence: The character 'g' appears 0 times.\\n\" },
+        {\"p\\napple\\n\", \"Enter a character to count: Enter a sentence: The character 'p' appears 0 times.\\n\" },
+        {\"z\\nbanana\\n\", \"Enter a character to count: Enter a sentence: The character 'z' appears 0 times.\\n\" },
+        {\"A\\nAAAAA\\n\", \"Enter a character to count: Enter a sentence: The character 'A' appears 0 times.\\n\" }
+    };
+
+    bool all_passed = true;
+    for (size_t i = 0; i < tests_from_json.size(); ++i) {
+        std::string actual_output = run_test(tests_from_json[i].input);
+        if (actual_output != tests_from_json[i].expected_output) {
+            std::cerr << \"Test Case \" << i + 1 << \" FAILED!\" << std::endl;
+            std::cerr << \"Input:\\n\" << tests_from_json[i].input << std::endl;
+            std::cerr << \"Expected Output:\\n\" << tests_from_json[i].expected_output << std::endl;
+            std::cerr << \"Actual Output:\\n\" << actual_output << std::endl;
+            all_passed = false;
+        } else {
+            std::cout << \"Test Case \" << i + 1 << \" PASSED.\" << std::endl;
+        }
+    }
+
+    if (all_passed) {
+        std::cout << \"All test cases passed!\" << std::endl;
+    } else {
+        std::cout << \"Some test cases failed.\" << std::endl;
+    }
+
+    return all_passed ? 0 : 1;
+}
+",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program has a robustness issue related to input handling. It reads a character using `std::cin >> charToFind` and then attempts to read a sentence using `std::getline(std::cin, sentence)`. The `std::cin >> charToFind` operation leaves the newline character in the input buffer. The subsequent `std::getline` then immediately consumes this leftover newline, resulting in an empty string for 'sentence'. This leads to incorrect character counting for any non-empty sentence input after the character."
+  ]
+}

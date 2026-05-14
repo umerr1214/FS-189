@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Design an `Engine` class with a `string type` and `int horsepower`. Then create a `Car` class that uses an `Engine` object as a private member, demonstrating composition.",
+  "test_cases": [
+    {
+      "input": "Car myCar(\"V8\", 500); myCar.displayCarInfo();",
+      "expected": "Car Engine Type: V8\nCar Engine Horsepower: 500\n"
+    },
+    {
+      "input": "Car anotherCar(\"Electric\", 250); anotherCar.displayCarInfo();",
+      "expected": "Car Engine Type: Electric\nCar Engine Horsepower: 250\n"
+    }
+  ],
+  "driver": "#include <string>\n#include <iostream>\n\n// The user's code will be inserted here.\n\nint main() {\n    Car myCar(\"V8\", 500);\n    myCar.displayCarInfo();\n    \n    Car anotherCar(\"Electric\", 250);\n    anotherCar.displayCarInfo();\n    \n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The Car constructor initializes the composed Engine object with a fixed horsepower value (100) instead of using the 'engineHorsepower' parameter, leading to incorrect engine data."]
+}

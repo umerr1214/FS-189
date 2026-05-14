@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Develop a program that takes an integer from the user and determines if it is positive, negative, or zero. Print an appropriate message for each case.",
+  "test_cases": [
+    { "input": "7", "expected": "Enter an integer: The number is positive.\n" },
+    { "input": "-10", "expected": "Enter an integer: The number is negative.\n" },
+    { "input": "0", "expected": "Enter an integer: The number is zero.\n" }
+  ],
+  "driver": "std::stringstream input_stream(\"{{input}}\"); std::stringstream output_stream; \n std::streambuf* old_cin = std::cin.rdbuf(); std::cin.rdbuf(input_stream.rdbuf()); \n std::streambuf* old_cout = std::cout.rdbuf(); std::cout.rdbuf(output_stream.rdbuf()); \n main(); \n std::cin.rdbuf(old_cin); std::cout.rdbuf(old_cout); \n return output_stream.str();",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The program uses an unnecessary intermediate 'determinationStatus' variable and a more convoluted conditional structure than required. This adds an extra layer of indirection and redundancy, making the code less direct and harder to read. For example, the final 'else if (determinationStatus == 0)' could simply be an 'else', and the subsequent 'else' block is unreachable, indicating over-engineering for a simple task."
+  ]
+}

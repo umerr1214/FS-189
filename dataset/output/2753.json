@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `Person` class with `protected` members `name` (string) and `age` (int). Derive a `Student` class from `Person`. The `Student` class should have an additional private member `studentId` and be able to access `name` and `age` to print its full details.",
+  "test_cases": [
+    {
+      "input": "No direct input, uses hardcoded objects.",
+      "expected": "Details for s1: Name: Alice Smith, Age: 20, Student ID: 1001\nDetails for s2: Name: Bob Johnson, Age: 22, Student ID: 1002\n"
+    }
+  ],
+  "driver": "int main() {\n    Student s1(\"Alice Smith\", 20, 1001);\n    std::cout << \"Details for s1: \";\n    s1.printDetails();\n\n    Student s2(\"Bob Johnson\", 22, 1002);\n    std::cout << \"Details for s2: \";\n    s2.printDetails();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'studentId' member in the 'Student' class constructor is not initialized. It will be default-initialized to 0, leading to incorrect student ID output."
+  ]
+}

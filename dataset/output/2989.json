@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Design a `Date` class with private members `day`, `month`, and `year` (all integers). Implement a parameterized constructor. Add a public method `isValidDate()` that returns `true` if the date is valid (e.g., month between 1-12, day within month's range, considering leap years for February), otherwise `false`.",
+  "test_cases": [
+    { "input": "15 6 2023", "expected": "Date 15/6/2023 is valid" },
+    { "input": "31 2 2024", "expected": "Date 31/2/2024 is invalid" },
+    { "input": "29 2 2024", "expected": "Date 29/2/2024 is valid" },
+    { "input": "31 4 2023", "expected": "Date 31/4/2023 is invalid" },
+    { "input": "0 1 2023", "expected": "Date 0/1/2023 is valid" },
+    { "input": "29 2 1900", "expected": "Date 29/2/1900 is valid" },
+    { "input": "29 2 2000", "expected": "Date 29/2/2000 is valid" },
+    { "input": "1 13 2023", "expected": "Date 1/13/2023 is invalid" }
+  ],
+  "driver": "    Date d1(15, 6, 2023); // Valid\n    Date d2(31, 2, 2024); // Invalid (Feb 2024 is leap, has 29 days)\n    Date d3(29, 2, 2024); // Valid (Leap year)\n    Date d4(31, 4, 2023); // Invalid (April has 30 days)\n    Date d5(0, 1, 2023);  // Expected: Invalid (day <= 0). Actual: Valid due to robustness issue.\n    Date d6(29, 2, 1900); // Expected: Invalid (1900 not leap year). Actual: Valid due to leap year flaw.\n    Date d7(29, 2, 2000); // Expected: Valid (2000 is leap year). Actual: Valid.\n    Date d8(1, 13, 2023); // Invalid (month > 12)\n\n    std::cout << \"Date \" << d1.getDay() << \"/\" << d1.getMonth() << \"/\" << d1.getYear() << \" is \" << (d1.isValidDate() ? \"valid\" : \"invalid\") << std::endl;\n    std::cout << \"Date \" << d2.getDay() << \"/\" << d2.getMonth() << \"/\" << d2.getYear() << \" is \" << (d2.isValidDate() ? \"valid\" : \"invalid\") << std::endl;\n    std::cout << \"Date \" << d3.getDay() << \"/\" << d3.getMonth() << \"/\" << d3.getYear() << \" is \" << (d3.isValidDate() ? \"valid\" : \"invalid\") << std::endl;\n    std::cout << \"Date \" << d4.getDay() << \"/\" << d4.getMonth() << \"/\" << d4.getYear() << \" is \" << (d4.isValidDate() ? \"valid\" : \"invalid\") << std::endl;\n    std::cout << \"Date \" << d5.getDay() << \"/\" << d5.getMonth() << \"/\" << d5.getYear() << \" is \" << (d5.isValidDate() ? \"valid\" : \"invalid\") << std::endl;\n    std::cout << \"Date \" << d6.getDay() << \"/\" << d6.getMonth() << \"/\" << d6.getYear() << \" is \" << (d6.isValidDate() ? \"valid\" : \"invalid\") << std::endl;\n    std::cout << \"Date \" << d7.getDay() << \"/\" << d7.getMonth() << \"/\" << d7.getYear() << \" is \" << (d7.isValidDate() ? \"valid\" : \"invalid\") << std::endl;\n    std::cout << \"Date \" << d8.getDay() << \"/\" << d8.getMonth() << \"/\" << d8.getYear() << \" is \" << (d8.isValidDate() ? \"valid\" : \"invalid\") << std::endl;",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `isValidDate` method does not explicitly check if the 'day' member is positive (day > 0). Dates with `day` less than or equal to 0 (e.g., 0/1/2023) might be incorrectly validated as true if only the upper bound `day > daysInMonth` is checked.",
+    "The leap year calculation `(year % 4 == 0)` is incomplete. It fails to correctly handle years divisible by 100 but not by 400 (e.g., 1900), incorrectly classifying them as leap years. This leads to incorrect validation for February dates in such years."
+  ]
+}

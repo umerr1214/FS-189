@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that calculates the factorial of a non-negative integer entered by the user using a `for` loop. If the user enters a negative number, display an error message.",
+  "test_cases": [
+    { "input": "5", "expected": "Factorial of 5 is 120\n" },
+    { "input": "0", "expected": "Factorial of 0 is 1\n" },
+    { "input": "-3", "expected": "Error: Factorial is not defined for negative numbers.\n" },
+    { "input": "10", "expected": "Factorial of 10 is 3628800\n" },
+    { "input": "13", "expected": "Factorial of 13 is 1932053504\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\nint main() {\n    std::string line;\n    if (std::getline(std::cin, line)) {\n        std::stringstream ss(line);\n        int num;\n        ss >> num;\n\n        int factorial = 1;\n\n        if (num < 0) {\n            std::cout << "Error: Factorial is not defined for negative numbers." << std::endl;\n        } else {\n            if (num == 0) {\n                factorial = 1;\n            } else {\n                for (int i = 1; i <= num; ++i) {\n                    factorial *= i;\n                }\n            }\n            std::cout << "Factorial of " << num << " is " << factorial << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The 'factorial' variable is declared as an 'int', which is insufficient to hold the factorial of numbers greater than 12. For example, 13! (6,227,020,800) exceeds the maximum value of a 32-bit signed integer (2,147,483,647), leading to integer overflow and incorrect results."]
+}

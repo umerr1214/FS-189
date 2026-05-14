@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that reads a floating-point number from the user. Cast this floating-point number to an integer using explicit type casting and then print both the original number and the integer-converted number. Finally, calculate and print the difference between them.",
+  "test_cases": [
+    {
+      "input": "5.7",
+      "expected": "Enter a floating-point number: Original number: <undefined>\nInteger-converted number: <undefined>\nDifference: <undefined>\n"
+    }
+  ],
+  "driver": "g++ -o solution 4278.cpp && echo \"5.7\" | ./solution",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The variable 'original_num' is used before being initialized or having a value read into it. This leads to undefined behavior when 'original_num', 'converted_int', and 'difference' are printed and calculated."
+  ]
+}

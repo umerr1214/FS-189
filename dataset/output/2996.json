@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `Student` class with private members `name` (string) and `id` (integer). Implement a parameterized constructor. Include a static member `totalStudents` to keep track of the total number of `Student` objects created. Increment this counter in the constructor and provide a static method `getTotalStudents()`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial count: 0\nCount after s_obj1: 1\nCount after s_obj2, s_obj3: 3\nCount after s_long_name (with a very long name): 4\nCount after s_obj4 (in scope): 5\nCount after s_obj4 out of scope: 5\nCount after vector additions: 7\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\nclass Student {\nprivate:\n    std::string name;\n    int id;\n\npublic:\n    static int totalStudents;\n\n    Student(std::string n, int i) {\n        this->name = n;\n        this->id = i;\n        this->totalStudents++;\n    }\n\n    static int getTotalStudents() {\n        return totalStudents;\n    }\n\n    std::string getName() const { return this->name; }\n    int getId() const { return this->id; }\n};\n\nint Student::totalStudents = 0;\n\nint main() {\n    std::cout << \"Initial count: \" << Student::getTotalStudents() << std::endl;\n\n    Student s_obj1(\"Alice Smith\", 101);\n    std::cout << \"Count after s_obj1: \" << Student::getTotalStudents() << std::endl;\n\n    Student s_obj2(\"Bob Johnson\", 102);\n    Student s_obj3(\"Charlie Brown\", 103);\n    std::cout << \"Count after s_obj2, s_obj3: \" << Student::getTotalStudents() << std::endl;\n\n    std::string veryLongName(1000, 'X');\n    Student s_long_name(veryLongName, 200);\n    std::cout << \"Count after s_long_name (with a very long name): \" << Student::getTotalStudents() << std::endl;\n\n    {\n        Student s_obj4(\"David Lee\", 104);\n        std::cout << \"Count after s_obj4 (in scope): \" << Student::getTotalStudents() << std::endl;\n    }\n\n    std::cout << \"Count after s_obj4 out of scope: \" << Student::getTotalStudents() << std::endl;\n\n    std::vector<Student> student_list;\n    student_list.emplace_back(\"Eve Davis\", 105);\n    student_list.emplace_back(\"Frank White\", 106);\n    std::cout << \"Count after vector additions: \" << Student::getTotalStudents() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": []
+}

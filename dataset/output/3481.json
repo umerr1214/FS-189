@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function `calculateAverage(float arr[], int size)` that takes a 1D float array and its size, then returns the average of its elements. In `main`, create a float array, pass it to the function, and print the calculated average.",
+  "test_cases": [
+    { "input": "float arr[] = {10.0f, 20.0f, 30.0f, 40.0f, 50.0f}; int size = 5;", "expected": "Average: 30" },
+    { "input": "float arr[] = {}; int size = 0;", "expected": "Average: nan" },
+    { "input": "float arr[] = {123.45f}; int size = 1;", "expected": "Average: 123.45" }
+  ],
+  "driver": "#include <iostream>\n#include <vector> // Not strictly necessary for fixed-size arrays, but useful for context\n\n// Function to calculate the average of a float array\nfloat calculateAverage(float arr[], int size) {\n    float sum = 0.0f;\n    for (int i = 0; i < size; ++i) {\n        sum += arr[i];\n    }\n    // Robustness Issue: Does not explicitly handle size == 0.\n    // If size is 0, sum will be 0.0f, leading to 0.0f / 0.0f which results in NaN (Not a Number).\n    // A robust solution would check `if (size <= 0)` before division.\n    return sum / static_cast<float>(size);\n}\n\nint main() {\n    // Test case 1: Normal array\n    float data1[] = {10.0f, 20.0f, 30.0f, 40.0f, 50.0f};\n    int size1 = sizeof(data1) / sizeof(data1[0]);\n    std::cout << \"Array 1: {10.0, 20.0, 30.0, 40.0, 50.0}, Size: 5\" << std::endl;\n    std::cout << \"Average: \" << calculateAverage(data1, size1) << std::endl; // Expected: 30\n\n    std::cout << \"--------------------\" << std::endl;\n\n    // Test case 2: Empty array (leads to NaN output due to 0/0)\n    float data2[] = {};\n    int size2 = 0;\n    std::cout << \"Array 2: {}, Size: 0\" << std::endl;\n    std::cout << \"Average: \" << calculateAverage(data2, size2) << std::endl; // Expected: nan\n\n    std::cout << \"--------------------\" << std::endl;\n\n    // Test case 3: Single element array\n    float data3[] = {123.45f};\n    int size3 = sizeof(data3) / sizeof(data3[0]);\n    std::cout << \"Array 3: {123.45}, Size: 1\" << std::endl;\n    std::cout << \"Average: \" << calculateAverage(data3, size3) << std::endl; // Expected: 123.45\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": []
+}

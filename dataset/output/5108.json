@@ -1,0 +1,39 @@
+{
+  "language": "c++",
+  "question": "Write a simple C++ calculator program. It should ask the user for two numbers and an arithmetic operator (+, -, *, /). Use a `switch` statement to perform the chosen operation and display the result. Handle division by zero appropriately.",
+  "test_cases": [
+    {
+      "input": "10\n+\n5\n",
+      "expected": "Welcome to the Simple Calculator!\nPlease enter the first number: Please enter an operator (+, -, *, /): Please enter the second number: Result: 15\n"
+    },
+    {
+      "input": "20\n-\n7\n",
+      "expected": "Welcome to the Simple Calculator!\nPlease enter the first number: Please enter an operator (+, -, *, /): Please enter the second number: Result: 13\n"
+    },
+    {
+      "input": "4\n*\n6\n",
+      "expected": "Welcome to the Simple Calculator!\nPlease enter the first number: Please enter an operator (+, -, *, /): Please enter the second number: Result: 24\n"
+    },
+    {
+      "input": "15\n/\n3\n",
+      "expected": "Welcome to the Simple Calculator!\nPlease enter the first number: Please enter an operator (+, -, *, /): Please enter the second number: Result: 5\n"
+    },
+    {
+      "input": "10\n/\n0\n",
+      "expected": "Welcome to the Simple Calculator!\nPlease enter the first number: Please enter an operator (+, -, *, /): Please enter the second number: Error: Division by zero is not allowed.\n"
+    },
+    {
+      "input": "10\n^\n5\n",
+      "expected": "Welcome to the Simple Calculator!\nPlease enter the first number: Please enter an operator (+, -, *, /): Please enter the second number: Error: Invalid operator.\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Poor variable names (e.g., 'a', 'b', 'o', 'r') significantly reduce code clarity and make it harder to understand the purpose of each variable.",
+    "Lack of comments throughout the code makes it difficult for others (or the author in the future) to quickly grasp the logic and intent.",
+    "Inconsistent and minimal formatting, particularly within the `switch` statement, negatively impacts readability."
+  ]
+}

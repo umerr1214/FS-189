@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that takes an integer year as input from the user and determines if it is a leap year. Print an appropriate message. (A leap year is divisible by 4, but not by 100 unless it is also divisible by 400).",
+  "test_cases": [
+    { "input": "2000", "expected": "Enter a year: 2000 is a leap year.\n" },
+    { "input": "1900", "expected": "Enter a year: 1900 is not a leap year.\n" },
+    { "input": "2004", "expected": "Enter a year: 2004 is a leap year.\n" },
+    { "input": "2023", "expected": "Enter a year: 2023 is not a leap year.\n" },
+    { "input": "abc", "expected": "Enter a year: " }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <functional>\n\nextern void solve(); \n\nstd::string run_test_case(const std::string& input) {\n    std::stringstream ss_in(input);\n    std::stringstream ss_out;\n    \n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n    \n    std::cin.rdbuf(ss_in.rdbuf());\n    std::cout.rdbuf(ss_out.rdbuf());\n    \n    solve(); \n    \n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n    \n    return ss_out.str();\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The program does not handle non-integer input. If the user enters non-numeric data, std::cin will enter a fail state, leading to uninitialized variable usage and potentially incorrect or undefined behavior without appropriate error checking and recovery (e.g., std::cin.fail(), std::cin.clear(), std::cin.ignore())."]
+}

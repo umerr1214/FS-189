@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Create a `Student` class with `name` (string) and `studentID` (int) as private members. Implement a default constructor that initializes `name` to \"Unknown\" and `studentID` to 0, and a parameterized constructor that takes both `name` and `studentID`. Also, implement a destructor that prints a message indicating when a `Student` object is being destroyed, e.g., 'Student [name] with ID [id] destroyed.'",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Default student created: Unknown (ID: 0)\nParameterized student created: Heidi (ID: 204)\nStudent Frank with ID 202 destroyed.\nStudent Grace with ID 203 destroyed.\nStudent Eve with ID 201 destroyed.\nStudent Heidi with ID 204 destroyed.\nStudent Unknown with ID 0 destroyed.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Student {\nprivate:\n    std::string name;\n    int studentID;\n\npublic:\n    Student()\n    {\n        this->name = \"Unknown\";\n        studentID = 0;\n    }\n\n    Student(std::string n, int id)\n    {\n        name = n;\n        this->studentID = id;\n    }\n\n    ~Student() {\n        std::cout << \"Student \" << name << \" with ID \" << studentID << \" destroyed.\\n\";\n    }\n\n    std::string getName() const { return name; }\n    int getStudentID() const { return studentID; }\n};\n\nvoid createAndDestroyStudentsInefficiently() {\n    Student s1(\"Eve\", 201);\n    {\n        Student s2(\"Frank\", 202);\n    }\n    Student s3(\"Grace\", 203);\n}\n\nint main() {\n    Student defaultStudent;\n    std::cout << \"Default student created: \" << defaultStudent.getName() << \" (ID: \" << defaultStudent.getStudentID() << \")\" << std::endl;\n\n    Student paramStudent(\"Heidi\", 204);\n    std::cout << \"Parameterized student created: \" << paramStudent.getName() << \" (ID: \" << paramStudent.getStudentID() << \")\" << std::endl;\n\n    createAndDestroyStudentsInefficiently();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The default constructor initializes members using assignment in the constructor body instead of an initializer list, which can be less efficient as members are default-constructed first and then assigned.",
+    "The parameterized constructor passes `std::string n` by value, causing an unnecessary copy of the string argument. It then performs another copy during assignment to the `name` member, leading to two copies instead of one move or a single copy from a `const` reference.",
+    "Inconsistent use of the `this->` keyword; sometimes it is used, sometimes it is omitted, reducing code readability and consistency.",
+    "Poorly chosen parameter names (`n`, `id`) for the parameterized constructor, which are not descriptive and can hinder understanding.",
+    "Using `\\n` instead of `std::endl` in the destructor's output. While `\\n` might be marginally faster as it doesn't force a flush, `std::endl` is generally preferred for consistency and immediate output in debugging scenarios, and its absence here represents a minor style inconsistency."
+  ]
+}

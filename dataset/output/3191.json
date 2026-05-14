@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "For the `MyString` class, implement the copy assignment operator (`=`) to ensure proper deep copying and handle self-assignment.",
+  "test_cases": [
+    { "input": "MyString s1(\"Hello\"); MyString s2(\"World\"); MyString s3; s3 = s1;", "expected": "s1: Hello, Length: 5\ns2: World, Length: 5\ns3 after s3 = s1: Hello, Length: 5\n" },
+    { "input": "MyString s4(\"Test string that is quite long\"); MyString s5(\"Short\"); s4 = s5;", "expected": "s4 after s4 = s5: Short, Length: 5\n" },
+    { "input": "MyString s6(\"Another test\"); s6 = s6;", "expected": "s6 after self-assignment: Another test, Length: 12\n" }
+  ],
+  "driver": "int main() {\n    MyString s1(\"Hello\");\n    MyString s2(\"World\");\n    MyString s3; // s3 initially holds an empty string, memory for \"\" is allocated.\n\n    std::cout << \"s1: \" << s1.c_str() << \", Length: \" << s1.getLength() << std::endl;\n    std::cout << \"s2: \" << s2.c_str() << \", Length: \" << s2.getLength() << std::endl;\n\n    s3 = s1; // Assignment. The memory for s3's initial \"\" is leaked.\n\n    std::cout << \"s3 after s3 = s1: \" << s3.c_str() << \", Length: \" << s3.getLength() << std::endl;\n\n    MyString s4(\"Test string that is quite long\"); // s4 holds a long string.\n    MyString s5(\"Short\");\n    s4 = s5; // Assignment. The memory for s4's initial long string is leaked.\n\n    std::cout << \"s4 after s4 = s5: \" << s4.c_str() << \", Length: \" << s4.getLength() << std::endl;\n\n    MyString s6(\"Another test\");\n    s6 = s6; // Self-assignment. No leak here as old data is not touched, and no new allocation.\n    std::cout << \"s6 after self-assignment: \" << s6.c_str() << \", Length: \" << s6.getLength() << std::endl;\n\n    // The program will run and produce correct output, but with memory leaks\n    // which can be detected by memory profiling tools like Valgrind.\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": []
+}

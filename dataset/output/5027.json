@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that reads a `std::string` from the user and checks if it is a palindrome (reads the same forwards and backwards, ignoring case and spaces is optional but for this problem, consider exact match).",
+  "test_cases": [
+    { "input": "madam", "expected": "false" },
+    { "input": "hello", "expected": "true" },
+    { "input": "racecar", "expected": "false" },
+    { "input": "", "expected": "true" },
+    { "input": "a", "expected": "true" },
+    { "input": "ab", "expected": "true" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\nbool isPalindrome(const std::string& s); // Forward declaration\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        if (isPalindrome(line)) {\n            std::cout << \"true\" << std::endl;\n        } else {\n            std::cout << \"false\" << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    {
+      "line": 15,
+      "column": 12,
+      "message": "The condition 's[i] == s[len - 1 - i]' is inverted. It should be '!=' to detect non-palindrome characters. This causes the function to return false for palindromes and true for non-palindromes."
+    }
+  ]
+}

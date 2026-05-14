@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Given a 2D integer array (matrix) of size 4x3, find the sum of all elements in a specified row (e.g., the second row).",
+  "test_cases": [
+    { "input": "1", "expected": "15" },
+    { "input": "0", "expected": "6" },
+    { "input": "3", "expected": "33" },
+    { "input": "4", "expected": "Error: Row index out of bounds." },
+    { "input": "-1", "expected": "Error: Row index out of bounds." }
+  ],
+  "driver": "#include <iostream>\n\nconst int MATRIX_ROWS = 4;\nconst int MATRIX_COLS = 3;\n\nint matrix_data[MATRIX_ROWS][MATRIX_COLS] = {\n    {1, 2, 3},\n    {4, 5, 6},\n    {7, 8, 9},\n    {10, 11, 12}\n};\n\nint calculateRowSum(int row_index) {\n    if (row_index < 0 || row_index >= MATRIX_ROWS) {\n        return -1;\n    }\n\n    int sum = 0;\n    for (int col = 0; col < MATRIX_COLS; ++col) {\n        sum += matrix_data[row_index][col];\n    }\n    return sum;\n}\n\nint main() {\n    int target_row_index;\n    if (!(std::cin >> target_row_index)) {\n        std::cerr << \"Invalid input for row index.\" << std::endl;\n        return 1;\n    }\n\n    int result_sum = calculateRowSum(target_row_index);\n\n    if (result_sum == -1) {\n        std::cerr << \"Error: Row index out of bounds.\" << std::endl;\n        return 1;\n    } else {\n        std::cout << result_sum << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

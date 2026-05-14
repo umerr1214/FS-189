@@ -1,0 +1,25 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ function `rotateArrayRight` that takes a 1D integer array and its size. The function should shift all elements one position to the right, moving the last element to the first position. Demonstrate with an example.",
+  "test_cases": [
+    {
+      "input": "{1, 2, 3, 4, 5}, size = 5",
+      "expected": "[5, 1, 2, 3, 4]"
+    },
+    {
+      "input": "{99}, size = 1",
+      "expected": "[99]"
+    },
+    {
+      "input": "{}, size = 0",
+      "expected": "Undefined Behavior (e.g., crash or segmentation fault)"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <sstream>\n\n// Function to rotate an array one position to the right\n// Robustness Issue: Does not handle size == 0 gracefully. Accessing arr[size - 1] when size is 0 leads to undefined behavior.\nvoid rotateArrayRight(int arr[], int size) {\n    if (size == 0) {\n        // This check is added in the driver for safety, but the described flaw is that the function itself doesn't have it.\n        // If we want to demonstrate the crash, we'd remove this check.\n        // For automated testing, it's better to prevent the crash in the driver.\n        return;\n    }\n    if (size == 1) {\n        return;\n    }\n\n    int lastElement = arr[size - 1];\n\n    for (int i = size - 1; i > 0; --i) {\n        arr[i] = arr[i - 1];\n    }\n    arr[0] = lastElement;\n}\n\nstd::string arrayToString(const int arr[], int size) {\n    std::stringstream ss;\n    ss << \"[\";\n    for (int i = 0; i < size; ++i) {\n        ss << arr[i];\n        if (i < size - 1) {\n            ss << \", \";\n        }\n    }\n    ss << \"]\";\n    return ss.str();\n}\n\nint main() {\n    // Test Case 1\n    int arr1[] = {1, 2, 3, 4, 5};\n    int size1 = sizeof(arr1) / sizeof(arr1[0]);\n    rotateArrayRight(arr1, size1);\n    std::cout << arrayToString(arr1) << std::endl;\n\n    // Test Case 2\n    int arr2[] = {99};\n    int size2 = sizeof(arr2) / sizeof(arr2[0]);\n    rotateArrayRight(arr2, size2);\n    std::cout << arrayToString(arr2) << std::endl;\n\n    // Test Case 3: Empty array - This would cause a robustness issue in the original function.\n    // The driver explicitly handles size=0 to avoid crash for automated testing.\n    int arr3[] = {};\n    int size3 = 0;\n    // If the original `rotateArrayRight` were called without modification, it would crash.\n    // The driver here calls a version that has the initial `if (size == 0) return;` guard.\n    // The JSON `errors` field describes the original flaw.\n    rotateArrayRight(arr3, size3);\n    std::cout << arrayToString(arr3) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `rotateArrayRight` function does not handle an array of size 0 gracefully. When `size` is 0, accessing `arr[size - 1]` (i.e., `arr[-1]`) leads to undefined behavior, likely a segmentation fault or crash."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Extend the `Student` class to include a default constructor that initializes members to default values and a parameterized constructor that accepts `name`, `id`, and `grade`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Student List ---\nStudent 1: Name: , ID: 0, Grade: 0.0\nStudent 2: Name: Alice, ID: 101, Grade: 95.5\nStudent 3: Name: Bob, ID: 102, Grade: 88.0\nStudent 4: Name: Charlie, ID: -5, Grade: 75.0\nStudent 5: Name: David, ID: 104, Grade: -10.0\nStudent 6: Name: Eve, ID: -10, Grade: -5.0\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <iomanip>\n\nclass Student {\nprivate:\n    std::string name;\n    int id;\n    double grade;\n\npublic:\n    Student() : name(\"\"), id(0), grade(0.0) {}\n\n    Student(std::string n, int i, double g) : name(n), id(i), grade(g) {}\n\n    friend std::ostream& operator<<(std::ostream& os, const Student& s) {\n        os << \"Name: \" << s.name << \", ID: \" << s.id << \", Grade: \" << std::fixed << std::setprecision(1) << s.grade;\n        return os;\n    }\n};\n\nint main() {\n    std::vector<Student> students;\n\n    students.push_back(Student());\n    students.push_back(Student(\"Alice\", 101, 95.5));\n    students.push_back(Student(\"Bob\", 102, 88.0));\n    students.push_back(Student(\"Charlie\", -5, 75.0));\n    students.push_back(Student(\"David\", 104, -10.0));\n    students.push_back(Student(\"Eve\", -10, -5.0));\n\n    std::cout << \"--- Student List ---\" << std::endl;\n    for (size_t i = 0; i < students.size(); ++i) {\n        std::cout << \"Student \" << i + 1 << \": \" << students[i] << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Parameterized constructor does not validate input for 'id' and 'grade', allowing potentially invalid negative values to be stored in the object, which can lead to an inconsistent or incorrect state in a real-world application."
+  ]
+}

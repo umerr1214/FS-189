@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a `Calculator` class with overloaded `add` methods: one taking two integers, another taking two doubles, and a third taking three integers. Each method should return the sum.",
+  "test_cases": [
+    { "input": "calc.add(5, 7)", "expected": "12" },
+    { "input": "calc.add(5.5, 7.7)", "expected": "13.2" },
+    { "input": "calc.add(1, 2, 3)", "expected": "6" }
+  ],
+  "driver": "int main() {\n    Calculator calc;\n    std::cout << \"Sum of 5 and 7: \" << calc.add(5, 7) << std::endl;\n    std::cout << std::fixed << std::setprecision(1);\n    std::cout << \"Sum of 5.5 and 7.7: \" << calc.add(5.5, 7.7) << std::endl;\n    std::cout << \"Sum of 1, 2, and 3: \" << calc.add(1, 2, 3) << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The `add` method designed for two doubles returns an integer type, which truncates the fractional part of the sum instead of preserving double precision as implied by the input types and the question's intent for a 'sum'."]
+}

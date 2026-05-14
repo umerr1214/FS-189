@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that reads an `std::string` from the user and checks if it is a palindrome (reads the same forwards and backwards), ignoring case and non-alphanumeric characters. Print whether it is a palindrome or not.",
+  "test_cases": [
+    { "input": "", "expected": "The string is a palindrome." },
+    { "input": "!", "expected": "The string is a palindrome." },
+    { "input": "A", "expected": "The string is a palindrome." },
+    { "input": "Racecar", "expected": "The string is a palindrome." },
+    { "input": "Hello", "expected": "The string is not a palindrome." },
+    { "input": "Madam, I'm Adam", "expected": "The string is a palindrome." },
+    { "input": "A man, a plan, a canal: Panama", "expected": "The string is a palindrome." }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\nextern bool isPalindromeSolution(const std::string& s);\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> test_cases_data = {\n        {\"\", \"The string is a palindrome.\"},\n        {\"!\", \"The string is a palindrome.\"},\n        {\"A\", \"The string is a palindrome.\"},\n        {\"Racecar\", \"The string is a palindrome.\"},\n        {\"Hello\", \"The string is not a palindrome.\"},\n        {\"Madam, I'm Adam\", \"The string is a palindrome.\"},\n        {\"A man, a plan, a canal: Panama\", \"The string is a palindrome.\"}\n    };\n\n    for (const auto& tc : test_cases_data) {\n        bool result = isPalindromeSolution(tc.first);\n        std::string output_message = result ? \"The string is a palindrome.\" : \"The string is not a palindrome.\";\n        std::cout << output_message << std::endl;\n    }\n\n    return 0;\n}\n",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

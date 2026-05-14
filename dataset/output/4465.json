@@ -1,0 +1,24 @@
+{
+  "language": "c++",
+  "question": "Given three distinct integer numbers, determine and print which of them is the middle value (neither the smallest nor the largest).",
+  "test_cases": [
+    { "input": "1 5 10", "expected": "5" },
+    { "input": "10 5 1", "expected": "5" },
+    { "input": "1 10 5", "expected": "5" },
+    { "input": "5 1 10", "expected": "5" },
+    { "input": "10 1 5", "expected": "5" },
+    { "input": "5 10 1", "expected": "5" },
+    { "input": "-1 -5 -10", "expected": "-5" },
+    { "input": "-10 -5 -1", "expected": "-5" },
+    { "input": "-5 0 5", "expected": "0" },
+    { "input": "100 -50 0", "expected": "0" }
+  ],
+  "driver": "The program reads three integers from standard input and prints the middle value to standard output. Test cases are executed by providing input to stdin and comparing stdout with expected output.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The code fails to handle all permutations of input numbers. Specifically, it only identifies the middle value if the numbers are ordered in certain ways (e.g., num2 < num1 < num3), but fails for other valid orderings (e.g., 10 5 1, 10 1 5, 5 10 1).",
+    "For inputs not covered by its limited 'if-else if' conditions, the program outputs a default value (0), which is incorrect for the problem's requirements."
+  ]
+}

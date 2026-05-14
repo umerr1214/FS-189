@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `Person` class with `protected` members `name` (string) and `age` (int). Derive a `Student` class from `Person`. The `Student` class should have an additional private member `studentId` and be able to access `name` and `age` to print its full details.",
+  "test_cases": [
+    { "input": "", "expected": "Name: David Lee, Age: 21, Student ID: 3001\nName: Emily Chen, Age: 19, Student ID: 3002\nName: Ferdinand Maximilian Von Habsburg, Age: 23, Student ID: 3003\n" }
+  ],
+  "driver": "int main() {\n    // Test case 1: Standard student\n    Student s1(\"David Lee\", 21, 3001);\n    s1.printFullDetails();\n\n    // Test case 2: Another student\n    Student s2(\"Emily Chen\", 19, 3002);\n    s2.printFullDetails();\n\n    // Test case 3: Student with long name\n    Student s3(\"Ferdinand Maximilian Von Habsburg\", 23, 3003);\n    s3.printFullDetails();\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

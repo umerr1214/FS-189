@@ -1,0 +1,30 @@
+{
+  "language": "c++",
+  "question": "Create a `Vector2D` class with private members `x` and `y` (doubles). Overload the insertion operator `<<` (output stream operator) as a non-member (friend) function to allow printing a `Vector2D` object directly to `std::cout` in the format `(x, y)`.",
+  "test_cases": [
+    {
+      "input": "Vector2D v1(1.0, 2.5); std::cout << v1;",
+      "expected": "(1, 2.5)"
+    },
+    {
+      "input": "Vector2D v2(-3.14, 0.0); std::cout << v2;",
+      "expected": "(-3.14, 0)"
+    },
+    {
+      "input": "Vector2D v3(100.0, -200.0); std::cout << v3;",
+      "expected": "(100, -200)"
+    },
+    {
+      "input": "Vector2D v4; std::cout << v4;",
+      "expected": "(0, 0)"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n\nclass Vector2D {\nprivate:\n    double x;\n    double y;\npublic:\n    Vector2D(double _x = 0.0, double _y = 0.0) : x(_x), y(_y) {}\n    friend std::ostream& operator<<(std::ostream& os, const Vector2D& vec);\n};\n\nstd::ostream& operator<<(std::ostream& os, const Vector2D& vec) {\n    std::stringstream ss;\n    ss << \"(\" << vec.x << \", \" << vec.y << \")\";\n    os << ss.str();\n    return os;\n}\n\nint main() {\n    std::cout << \"Vector v1: \";\n    Vector2D v1(1.0, 2.5);\n    std::cout << v1 << std::endl;\n\n    std::cout << \"Vector v2: \";\n    Vector2D v2(-3.14, 0.0);\n    std::cout << v2 << std::endl;\n\n    std::cout << \"Vector v3: \";\n    Vector2D v3(100.0, -200.0);\n    std::cout << v3 << std::endl;\n\n    std::cout << \"Vector v4 (default): \";\n    Vector2D v4;\n    std::cout << v4 << std::endl;\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses `std::stringstream` unnecessarily for simple formatting, leading to reduced efficiency due to intermediate string creation and copying.",
+    "Increases code verbosity and reduces readability compared to direct stream output manipulation, which is more idiomatic for C++ stream operators."
+  ]
+}

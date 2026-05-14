@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Implement a `Temperature` class with a private `celsiusValue`. Provide public methods `setCelsius(double c)` and `getFahrenheit()` (which converts Celsius to Fahrenheit).",
+  "test_cases": [
+    { "input": "0.0\n", "expected": "32.00\n" },
+    { "input": "100.0\n", "expected": "212.00\n" },
+    { "input": "25.0\n", "expected": "77.00\n" },
+    { "input": "-40.0\n", "expected": "-40.00\n" },
+    { "input": "-273.15\n", "expected": "-459.67\n" }
+  ],
+  "driver": "std::ostringstream oss;\nTemperature temp;\n\nstd::vector<double> testCelsius = {0.0, 100.0, 25.0, -40.0, -273.15};\n\nfor (double c : testCelsius) {\n    temp.setCelsius(c);\n    oss << std::fixed << std::setprecision(2) << temp.getFahrenheit() << \"\\n\";\n}\n\nstd::cout << oss.str();",
+  "code_quality": 7,
+  "correctness": 8,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `setCelsius` method does not validate the input `c` against physical constraints, such as absolute zero (-273.15 C), allowing the internal state to represent physically impossible temperatures. A robust implementation would include such checks or throw an exception for invalid inputs.",
+    "The class does not handle potential `NaN` or `infinity` inputs for `setCelsius` explicitly, relying solely on `double`'s default behavior, which might not be robust enough for all applications."
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `doubleValue(int& num)` that takes an integer by reference and doubles its value. Demonstrate this function in `main` by passing an integer variable and observing its change.",
+  "test_cases": [
+    { "input": "15", "expected": "Original: 15\nDoubled: 30" },
+    { "input": "-100", "expected": "Original: -100\nDoubled: -200" }
+  ],
+  "driver": "#include <iostream>\nvoid doubleValue(int& num);\nint main() {\n    int test_val;\n    if (!(std::cin >> test_val)) return 1;\n    std::cout << \"Original: \" << test_val << std::endl;\n    doubleValue(test_val);\n    std::cout << \"Doubled: \" << test_val << std::endl;\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

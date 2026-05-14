@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private members for `title`, `author`, and `isbn` (string types). Provide public methods to set and retrieve these details, and a method `displayBookDetails()` to print all information.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book Details:\n  Title: The C++ Programming Language\n  Author: Bjarne Stroustrup\n  ISBN: 978-0321563842\n\n--- Testing with empty fields ---\nBook Details:\n  Title: \n  Author: \n  ISBN: \n"
+    }
+  ],
+  "driver": "Book myBook;\nmyBook.setTitle(\"The C++ Programming Language\");\nmyBook.setAuthor(\"Bjarne Stroustrup\");\nmyBook.setISBN(\"978-0321563842\");\nmyBook.displayBookDetails();\n\nstd::cout << \"\\n--- Testing with empty fields ---\\n\";\nBook emptyBook;\nemptyBook.setTitle(\"\");\nemptyBook.setAuthor(\"\");\nemptyBook.setISBN(\"\");\nemptyBook.displayBookDetails();",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Setters do not validate input (e.g., prevent empty strings for title, author, ISBN), potentially leading to invalid or meaningless book data.",
+    "The `displayBookDetails` method prints empty strings directly without indicating if a field is missing or invalid, which can be uninformative."
+  ]
+}

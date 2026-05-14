@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `FileManager` class that dynamically allocates a character array (e.g., for a file path) in its constructor. Implement a destructor to properly deallocate this memory.",
+  "test_cases": [
+    { "input": "", "expected": "The program will demonstrate correct creation, destruction, copying (via copy constructor and copy assignment), and moving (via move constructor and move assignment) of `FileManager` objects. All operations will properly manage dynamically allocated memory, ensuring no memory leaks or double-frees. Output will clearly show the lifecycle of each object and its path." }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Correct Version (3141) ---\\n\";\n\n    FileManager fm1(\"data/document.pdf\");\n    fm1.displayPath();\n\n    std::cout << \"\\n--- Testing Copy Constructor ---\\n\";\n    FileManager fm2 = fm1; \n    fm2.displayPath();\n    fm1.displayPath(); \n\n    std::cout << \"\\n--- Testing Copy Constructor (function parameter) ---\\n\";\n    processFileManagerByValue(fm1);\n    fm1.displayPath(); \n\n    std::cout << \"\\n--- Testing Copy Assignment Operator ---\\n\";\n    FileManager fm3(\"temp/old_file.txt\");\n    fm3.displayPath();\n    fm3 = fm1; \n    fm3.displayPath();\n    fm1.displayPath(); \n\n    std::cout << \"\\n--- Testing Self-Assignment ---\\n\";\n    fm3 = fm3;\n    fm3.displayPath();\n\n    std::cout << \"\\n--- Testing Move Constructor ---\\n\";\n    FileManager fm4 = createFileManager(\"new/report.xlsx\"); \n    fm4.displayPath();\n\n    std::cout << \"\\n--- Testing Move Assignment Operator ---\\n\";\n    FileManager fm5(\"another/temp.txt\");\n    fm5.displayPath();\n    fm5 = createFileManager(\"moved/path.csv\"); \n    fm5.displayPath();\n\n    std::cout << \"\\nAll objects going out of scope. Proper deallocations will occur.\\n\";\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function named `is_prime` that accepts an integer as input and returns `true` if the number is prime, and `false` otherwise. Use this function in your `main` program to print all prime numbers between 1 and 100.",
+  "test_cases": [
+    { "input": "", "expected": "2\n3\n5\n7\n11\n13\n17\n19\n23\n29\n31\n37\n41\n43\n47\n53\n59\n61\n67\n71\n73\n79\n83\n89\n97\n" }
+  ],
+  "driver": "for (int i = 1; i <= 100; ++i) { if (is_prime(i)) { /* std::cout << i << std::endl; */ } }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

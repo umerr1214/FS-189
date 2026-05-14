@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Time` with members `hours` (int), `minutes` (int), and `seconds` (int). Write a C++ function `addTimes` that takes two `Time` structs as input and returns a new `Time` struct representing their sum. Handle rollovers (e.g., 60 seconds becomes 1 minute).",
+  "test_cases": [
+    { "input": "Time t1 = {1, 30, 0}; Time t2 = {0, 15, 0};", "expected": "1 45 0" },
+    { "input": "Time t1 = {0, 0, 50}; Time t2 = {0, 0, 20};", "expected": "0 1 10" },
+    { "input": "Time t1 = {0, 59, 30}; Time t2 = {0, 1, 40};", "expected": "1 1 10" },
+    { "input": "Time t1 = {2, 30, 45}; Time t2 = {3, 40, 20};", "expected": "6 11 5" },
+    { "input": "Time t1 = {23, 59, 59}; Time t2 = {0, 0, 1};", "expected": "24 0 0" }
+  ],
+  "driver": "int main() {\n    Time t1, t2, sum;\n\n    t1 = {1, 30, 0}; t2 = {0, 15, 0};\n    sum = addTimes(t1, t2);\n    std::cout << sum.hours << \" \" << sum.minutes << \" \" << sum.seconds << std::endl;\n\n    t1 = {0, 0, 50}; t2 = {0, 0, 20};\n    sum = addTimes(t1, t2);\n    std::cout << sum.hours << \" \" << sum.minutes << \" \" << sum.seconds << std::endl;\n\n    t1 = {0, 59, 30}; t2 = {0, 1, 40};\n    sum = addTimes(t1, t2);\n    std::cout << sum.hours << \" \" << sum.minutes << \" \" << sum.seconds << std::endl;\n\n    t1 = {2, 30, 45}; t2 = {3, 40, 20};\n    sum = addTimes(t1, t2);\n    std::cout << sum.hours << \" \" << sum.minutes << \" \" << sum.seconds << std::endl;\n\n    t1 = {23, 59, 59}; t2 = {0, 0, 1};\n    sum = addTimes(t1, t2);\n    std::cout << sum.hours << \" \" << sum.minutes << \" \" << sum.seconds << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": []
+}

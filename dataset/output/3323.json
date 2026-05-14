@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Implement a program that continuously asks the user to enter positive integers until they enter '0'. After '0' is entered, print the sum of all the non-zero numbers entered.",
+  "test_cases": [
+    { "input": "5\n10\n0\n", "expected": "Sum of non-zero numbers: 15\n" },
+    { "input": "1\n2\n3\n0\n", "expected": "Sum of non-zero numbers: 6\n" },
+    { "input": "100\n200\n0\n", "expected": "Sum of non-zero numbers: 300\n" }
+  ],
+  "driver": "int main() {\n    // The provided C++ code will be compiled and executed directly.\n    // Input will be piped to stdin, and stdout will be captured.\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The sum variable is assigned the current number in each iteration (sum = num) instead of accumulating (sum += num). This causes the program to only output the last non-zero number entered, not the total sum."
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `concatenateStrings` that takes two constant C-style string pointers (`char*`) and a third `char*` pointer to a destination buffer, along with the buffer's maximum size. It should concatenate the first two strings into the destination buffer. Ensure null termination and prevent buffer overflow.",
+  "test_cases": [
+    { "input": "str1=\"Hello\", str2=\"World\", destSize=20", "expected": "HelloWorld" },
+    { "input": "str1=\"One\", str2=\"Two\", destSize=5", "expected": "OneT" },
+    { "input": "str1=\"\", str2=\"Test\", destSize=10", "expected": "Test" },
+    { "input": "str1=\"Test\", str2=\"\", destSize=10", "expected": "Test" },
+    { "input": "str1=\"Long\", str2=\"String\", destSize=1", "expected": "" },
+    { "input": "str1=\"ABCDEFGHI\", str2=\"J\", destSize=10", "expected": "ABCDEFGHI" },
+    { "input": "str1=\"Hello\", str2=\"World\", destSize=10", "expected": "HelloWorl" }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n\nvoid concatenateStrings(const char* str1, const char* str2, char* dest, int destSize);\n\nint main() {\n    char buffer[20];\n\n    // Test Case 1\n    concatenateStrings(\"Hello\", \"World\", buffer, sizeof(buffer));\n    std::cout << \"Test 1: \" << buffer << std::endl;\n\n    // Test Case 2 (Truncation/Overflow - depends on environment)\n    char buffer2[5];\n    concatenateStrings(\"One\", \"Two\", buffer2, sizeof(buffer2));\n    std::cout << \"Test 2: \" << buffer2 << std::endl;\n\n    // Test Case 3 (Empty str1)\n    char buffer3[10];\n    concatenateStrings(\"\", \"Test\", buffer3, sizeof(buffer3));\n    std::cout << \"Test 3: \" << buffer3 << std::endl;\n\n    // Test Case 4 (Empty str2)\n    char buffer4[10];\n    concatenateStrings(\"Test\", \"\", buffer4, sizeof(buffer4));\n    std::cout << \"Test 4: \" << buffer4 << std::endl;\n\n    // Test Case 5 (Buffer too small for anything)\n    char buffer5[1];\n    concatenateStrings(\"Long\", \"String\", buffer5, sizeof(buffer5));\n    std::cout << \"Test 5: \" << buffer5 << std::endl;\n\n    // Test Case 6 (str1 fills buffer, str2 causes overflow)\n    char buffer6[10]; \n    concatenateStrings(\"ABCDEFGHI\", \"J\", buffer6, sizeof(buffer6));\n    std::cout << \"Test 6: \" << buffer6 << std::endl;\n\n    // Test Case 7 (str1 + str2 exceeds buffer slightly)\n    char buffer7[10];\n    concatenateStrings(\"Hello\", \"World\", buffer7, sizeof(buffer7));\n    std::cout << \"Test 7: \" << buffer7 << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    {
+      "line": 16,
+      "column": 5,
+      "message": "The use of `strcpy` without prior bounds checking is a semantic error, as it can lead to buffer overflow if `strlen(str1)` is greater than or equal to `destSize`. This violates the requirement to prevent buffer overflow."
+    },
+    {
+      "line": 21,
+      "column": 5,
+      "message": "The use of `strcat` without prior bounds checking (i.e., ensuring `strlen(dest) + strlen(str2) + 1 < destSize`) is a critical semantic error. `strcat` does not take a size argument and will write past the end of the `dest` buffer if the combined string length exceeds its allocated size, leading to undefined behavior and potential security vulnerabilities."
+    },
+    {
+      "line": 28,
+      "column": 9,
+      "message": "The final null termination `dest[destSize - 1] = '\\0';` is semantically incorrect in this context. If a buffer overflow has already occurred due to `strcpy` or `strcat`, this line might write to an invalid memory location or overwrite a character that was intended to be part of the concatenated string, leading to incorrect output or further undefined behavior. It also truncates the string if it perfectly fits the buffer."
+    }
+  ]
+}

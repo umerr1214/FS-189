@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private attributes for `title`, `author`, and `isbn` (International Standard Book Number). Implement a parameterized constructor to initialize these attributes and a public method `displayDetails()` that prints all book information. Ensure data encapsulation.",
+  "test_cases": [
+    { "input": "", "expected": "Title: Pride and Prejudice\nAuthor: Jane Austen\nISBN: 978-0141439518\n\nAccessing attributes directly (semantic error demonstration):\nModified Title: New Title\n" }
+  ],
+  "driver": "int main() {\n    Book myBook(\"Pride and Prejudice\", \"Jane Austen\", \"978-0141439518\");\n    myBook.displayDetails();\n\n    // Demonstrate the violation of encapsulation\n    std::cout << \"\\nAccessing attributes directly (semantic error demonstration):\" << std::endl;\n    myBook.title = \"New Title\"; // Direct modification possible due to public attributes\n    std::cout << \"Modified Title: \" << myBook.title << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": []
+}

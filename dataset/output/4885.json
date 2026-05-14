@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that initializes a 4x4 integer matrix (2D array). Then, calculate and print the sum of the elements along its main diagonal (top-left to bottom-right).",
+  "test_cases": [
+    { "input": "", "expected": "Sum of main diagonal elements: 34\n" }
+  ],
+  "driver": "#include <iostream>\nextern void calculateAndPrintDiagonalSum();\n\nint main() {\n    calculateAndPrintDiagonalSum();\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The matrix dimensions are hardcoded as magic numbers (e.g., '4') in both the matrix declaration and the loop bounds. This makes the code fragile and difficult to maintain; a change in matrix size would require manual updates in multiple locations, increasing the risk of introducing errors (e.g., forgetting to update a loop bound)."
+  ]
+}

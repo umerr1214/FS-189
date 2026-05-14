@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program to create a 3x4 integer matrix (2D array). Initialize it with some values, then calculate and print the sum of elements for each individual row.",
+  "test_cases": [
+    { "input": "", "expected": "Row 0 sum: 10\nRow 1 sum: 26\nRow 2 sum: 42\n" }
+  ],
+  "driver": "int main() {\n    // The provided code is already a complete main function.\n    // No external driver needed, just compile and run the file.\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The outer loop for iterating through rows has an incorrect upper bound. It iterates from `i = 0` to `i <= 3`. Since the matrix is declared as `matrix[3][4]`, valid row indices are 0, 1, and 2. When `i` becomes 3, accessing `matrix[3][j]` results in an out-of-bounds memory access, leading to undefined behavior (e.g., crash, garbage output, security vulnerabilities)."
+  ]
+}

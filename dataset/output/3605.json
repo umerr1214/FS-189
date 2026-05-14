@@ -1,0 +1,26 @@
+{
+  "language": "c++",
+  "question": "Create a simple menu-driven program (e.g., 'A' for Add, 'S' for Subtract, 'Q' for Quit) that continuously prompts the user for choices until 'Q' is entered. Use a `do-while` loop and a `switch` statement.",
+  "test_cases": [
+    {
+      "input": "A\n5\n3\n",
+      "expected": "Menu:\nA - Add\nS - Subtract\nQ - Quit\nEnter your choice (A/S/Q): Enter two numbers: Result (Subtraction): 2\n\n"
+    },
+    {
+      "input": "S\n10\n2\n",
+      "expected": "Menu:\nA - Add\nS - Subtract\nQ - Quit\nEnter your choice (A/S/Q): Enter two numbers: Result (Addition): 12\n\n"
+    },
+    {
+      "input": "A\n5\n3\nS\n10\n2\nQ\n",
+      "expected": "Menu:\nA - Add\nS - Subtract\nQ - Quit\nEnter your choice (A/S/Q): Enter two numbers: Result (Subtraction): 2\n\nMenu:\nA - Add\nS - Subtract\nQ - Quit\nEnter your choice (A/S/Q): Enter two numbers: Result (Addition): 12\n\nMenu:\nA - Add\nS - Subtract\nQ - Quit\nEnter your choice (A/S/Q): Exiting program. Goodbye!\n\n"
+    }
+  ],
+  "driver": "The program can be executed by redirecting a file containing input sequences to stdin and capturing stdout. For example, 'echo -e \"A\\n5\\n3\\nS\\n10\\n2\\nQ\\n\" | ./a.out' to test the full sequence.",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'A' (Add) option in the switch statement incorrectly performs subtraction (num1 - num2) instead of addition (num1 + num2).",
+    "The 'S' (Subtract) option in the switch statement incorrectly performs addition (num1 + num2) instead of subtraction (num1 - num2)."
+  ]
+}

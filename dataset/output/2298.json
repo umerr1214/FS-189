@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "For the `Point` class (from Q7), overload the stream insertion operator `<<` to enable printing `Point` objects directly to `std::cout` in the format `(x, y)`. Make this an external friend function.",
+  "test_cases": [
+    { "input": "Point p1(1, 2); std::cout << p1;", "expected": "(1, 2)\n" },
+    { "input": "Point p2(0, 0); std::cout << p2;", "expected": "(0, 0)\n" },
+    { "input": "Point p3(-5, 10); std::cout << p3;", "expected": "(-5, 10)\n" }
+  ],
+  "driver": "int main() {\n    Point p1(1, 2);\n    std::cout << p1 << std::endl;\n    Point p2(0, 0);\n    std::cout << p2 << std::endl;\n    Point p3(-5, 10);\n    std::cout << p3 << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The stream insertion operator attempts to access private members `x` and `y` of the `Point` class without being declared as a friend function, violating access rules."
+  ]
+}

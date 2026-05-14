@@ -1,0 +1,25 @@
+{
+  "language": "c++",
+  "question": "Generate and print all prime numbers within a specified range (e.g., from `start` to `end` provided by the user). Reuse the `isPrime` logic if you created it earlier.",
+  "test_cases": [
+    {
+      "input": "1 10",
+      "expected": "Enter the start of the range: Enter the end of the range: Prime numbers between 1 and 10 are:\n1 2 3 5 7 \n"
+    },
+    {
+      "input": "0 5",
+      "expected": "Enter the start of the range: Enter the end of the range: Prime numbers between 0 and 5 are:\n1 2 3 5 \n"
+    },
+    {
+      "input": "11 20",
+      "expected": "Enter the start of the range: Enter the end of the range: Prime numbers between 11 and 20 are:\n11 13 17 19 \n"
+    }
+  ],
+  "driver": "The user's `main` function is compiled and executed. Standard input is provided via `std::cin` for the range boundaries, and standard output is captured from `std::cout` for verification against expected results.",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `isPrime` function incorrectly identifies 1 as a prime number because it lacks the `if (num <= 1) return false;` check. For `num=0`, it also incorrectly returns true."
+  ]
+}

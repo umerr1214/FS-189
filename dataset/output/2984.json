@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Implement a `Counter` class with a private integer `count`. Provide public methods `increment()`, `decrement()`, and `getCount()`. Ensure that `count` cannot go below zero. Demonstrate its usage.",
+  "test_cases": [
+    { "input": "Initial counter", "expected": "Count: 0" },
+    { "input": "Increment once", "expected": "Count: 1" },
+    { "input": "Increment again", "expected": "Count: 2" },
+    { "input": "Decrement once", "expected": "Count: 1" },
+    { "input": "Decrement to zero", "expected": "Count: 0" },
+    { "input": "Attempt decrement below zero", "expected": "Count: 0" },
+    { "input": "Increment and decrement multiple times", "expected": "Count: 5" }
+  ],
+  "driver": "int main() {\n    Counter c;\n    std::cout << \"Count: \" << c.getCount() << std::endl;\n    c.increment();\n    std::cout << \"Count: \" << c.getCount() << std::endl;\n    c.increment();\n    std::cout << \"Count: \" << c.getCount() << std::endl;\n    c.decrement();\n    std::cout << \"Count: \" << c.getCount() << std::endl;\n    c.decrement();\n    std::cout << \"Count: \" << c.getCount() << std::endl;\n    c.decrement(); // Should not go below zero\n    std::cout << \"Count: \" << c.getCount() << std::endl;\n    for (int i = 0; i < 10; ++i) c.increment();\n    for (int i = 0; i < 5; ++i) c.decrement();\n    std::cout << \"Count: \" << c.getCount() << std::endl;\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "**Readability:**\n  - Excessive use of `this->` keyword, which is redundant for member access within the class and clutters the code.\n  - Overly verbose variable names like `count_value_internal`, `my_counter_instance`, `loop_index`, `another_loop_variable`.\n  - Main function contains very verbose `std::cout` statements with redundant explanations, making it hard to quickly grasp the flow.\n  - Unnecessary `else` block in `decrement()`.\n  - Unnecessary include of `<string>`.\n**Efficiency:**\n  - Frequent use of `std::endl` in `main`, which flushes the output buffer on each call, potentially leading to performance overhead compared to using `\\n`."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "For the `Book` class (from Q1), overload the binary `==` operator to compare two `Book` objects. Two books should be considered equal if their `isbn` values are identical.",
+  "test_cases": [
+    { "input": "[{\"title\": \"The Hobbit\", \"author\": \"J.R.R. Tolkien\", \"isbn\": \"978-0-345-33968-3\"}, {\"title\": \"The Hobbit\", \"author\": \"J.R.R. Tolkien\", \"isbn\": \"978-0-345-33968-3\"}]", "expected": "true" },
+    { "input": "[{\"title\": \"The Hobbit\", \"author\": \"J.R.R. Tolkien\", \"isbn\": \"978-0-345-33968-3\"}, {\"title\": \"The Lord of the Rings\", \"author\": \"J.R.R. Tolkien\", \"isbn\": \"978-0-345-33968-3\"}]", "expected": "true" },
+    { "input": "[{\"title\": \"1984\", \"author\": \"George Orwell\", \"isbn\": \"978-0-452-28423-1\"}, {\"title\": \"Animal Farm\", \"author\": \"George Orwell\", \"isbn\": \"978-0-451-52634-2\"}]", "expected": "false" },
+    { "input": "[{\"title\": \"Book A\", \"author\": \"Author X\", \"isbn\": \"ISBN123\"}, {\"title\": \"Book A\", \"author\": \"Author Y\", \"isbn\": \"ISBN456\"}]", "expected": "false" }
+  ],
+  "driver": "std::vector<std::pair<std::pair<Book, Book>, bool>> testCases = { /* ... */ }; for (const auto& tc : testCases) { bool result = (tc.first.first == tc.first.second); /* ... */ }",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing 'operator' keyword in the overload definition for '=='. The compiler expects 'operator==' to define the overloaded operator, not just '=='. This causes a compilation error."
+  ]
+}

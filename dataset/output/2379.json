@@ -1,0 +1,27 @@
+{
+  "language": "c++",
+  "question": "Create a `Point` class with private integer attributes `x` and `y`. Provide public methods `setCoordinates(int, int)` to modify them and `getDistanceToOrigin()` to calculate the Euclidean distance from (0,0).",
+  "test_cases": [
+    {
+      "input": "Point p; p.setCoordinates(3, 4);",
+      "expected": "Distance for (3, 4): 5.00"
+    },
+    {
+      "input": "Point p(0, 0);",
+      "expected": "Distance for (0, 0): 0.00"
+    },
+    {
+      "input": "Point p(-5, 12);",
+      "expected": "Distance for (-5, 12): 13.00"
+    },
+    {
+      "input": "Point p; p.setCoordinates(50000, 50000);",
+      "expected": "Distance for (50000, 50000): 70710.68"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>   // For std::hypot, std::sqrt\n#include <iomanip> // For std::fixed, std::setprecision\n\nclass Point {\nprivate:\n    int x;\n    int y;\n\npublic:\n    // Constructor with default arguments for convenience\n    Point(int _x = 0, int _y = 0) : x(_x), y(_y) {}\n\n    // Public method to modify coordinates\n    void setCoordinates(int newX, int newY) {\n        x = newX;\n        y = newY;\n    }\n\n    // Public method to calculate Euclidean distance from (0,0)\n    // Uses std::hypot for robust and precise calculation, avoiding intermediate overflow issues.\n    double getDistanceToOrigin() const {\n        // std::hypot(x, y) is robust against overflow/underflow compared to sqrt(x*x + y*y)\n        // by scaling the inputs if they are very large or very small.\n        return std::hypot(static_cast<double>(x), static_cast<double>(y));\n    }\n};\n\nint main() {\n    // Set output precision for double values\n    std::cout << std::fixed << std::setprecision(2);\n\n    Point p1;\n    p1.setCoordinates(3, 4);\n    std::cout << \"Distance for (3, 4): \" << p1.getDistanceToOrigin() << std::endl;\n\n    Point p2(0, 0); // Using constructor\n    std::cout << \"Distance for (0, 0): \" << p2.getDistanceToOrigin() << std::endl;\n\n    Point p3(-5, 12); // Using constructor\n    std::cout << \"Distance for (-5, 12): \" << p3.getDistanceToOrigin() << std::endl;\n\n    // Test with large coordinates to ensure robustness (even though hypot handles it)\n    Point p4;\n    p4.setCoordinates(50000, 50000);\n    std::cout << \"Distance for (50000, 50000): \" << p4.getDistanceToOrigin() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

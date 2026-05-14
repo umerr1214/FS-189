@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter the length and width of a rectangle (as floating-point numbers), then calculates and displays its area and perimeter with appropriate labels.",
+  "test_cases": [
+    { "input": "10.5\n5.0", "expected": "Area: 52.50\nPerimeter: 31.00\n" },
+    { "input": "4.0\n2.5", "expected": "Area: 10.00\nPerimeter: 13.00\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <iomanip> // For std::fixed and std::setprecision\n\n// This driver conceptually runs the user's program with given inputs\n// and compares its output to expected outputs.\n// In a real testing environment, this would involve\n// redirecting stdin/stdout or linking against the user's code.\n\nint main() {\n    // Example test case:\n    // Input: \"10.5 5.0\"\n    // Expected Output (approximately): \"Area: 52.50\\nPerimeter: 31.00\\n\"\n\n    // The actual testing system would:\n    // 1. Compile the user's submitted code.\n    // 2. For each test case:\n    //    a. Provide the input string to the user program's stdin.\n    //    b. Capture the user program's stdout.\n    //    c. Compare the captured stdout with the 'expected' output.\n\n    // Since we cannot directly execute the user's code within this JSON field,\n    // this driver serves as a conceptual representation of the testing process.\n    // The 'test_cases' array provides the concrete inputs and expected outputs.\n\n    // For programs like this one, which read two floats and print two lines,\n    // the execution flow in a judge system would typically be:\n    // ./user_program < input_file.txt > output_file.txt\n    // Then 'output_file.txt' is compared with the expected output.\n\n    std::cout << \"Driver executed. See 'test_cases' for inputs and expected outputs.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The perimeter calculation is incorrect. It should be 2 * (length + width) but is currently length + width."]
+}

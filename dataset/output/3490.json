@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter a C-style string (character array). Then, count and print the total number of vowels (a, e, i, o, u, case-insensitive) present in the string.",
+  "test_cases": [
+    { "input": "Hello World", "expected": "3" },
+    { "input": "Programming", "expected": "3" },
+    { "input": "AEIOUaeiou", "expected": "10" },
+    { "input": "Rhythm", "expected": "0" },
+    { "input": "C++ is FUN!", "expected": "2" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <streambuf>\n\n// Assume the student's code is compiled into an executable and run as a separate process.\n// This driver sets up the environment to simulate running test cases.\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> test_cases = {\n        {\"Hello World\", \"3\"},\n        {\"Programming\", \"3\"},\n        {\"AEIOUaeiou\", \"10\"},\n        {\"Rhythm\", \"0\"},\n        {\"C++ is FUN!\", \"2\"}\n    };\n\n    for (size_t i = 0; i < test_cases.size(); ++i) {\n        std::string input = test_cases[i].first;\n        std::string expected_output = test_cases[i].second;\n\n        // In a real testing environment, input would be fed to the student's program's stdin,\n        // and its stdout would be captured. For this C++ driver template, we simulate this.\n\n        // std::cout << \"--- Test Case \" << i + 1 << \" ---\" << std::endl;\n        // std::cout << \"Input: \\\"\" << input << \"\\\"\" << std::endl;\n        // std::cout << \"Expected Output: \\\"\" << expected_output << \"\\\"\" << std::endl;\n\n        // Example of how I/O redirection *could* be done if the student's code was a function:\n        // std::istringstream iss(input);\n        // std::streambuf* old_cin = std::cin.rdbuf(iss.rdbuf());\n        // std::ostringstream oss;\n        // std::streambuf* old_cout = std::cout.rdbuf(oss.rdbuf());\n\n        // Call student's main function here (if refactored, e.g., student_solution_main();)\n\n        // std::cin.rdbuf(old_cin);\n        // std::cout.rdbuf(old_cout);\n        // std::string actual_output = oss.str();\n        // std::cout << \"Actual Output (simulated): \\\"\" << actual_output << \"\\\"\" << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after `std::cout << \"Enter a C-style string: \"`"
+  ]
+}

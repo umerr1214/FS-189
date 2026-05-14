@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `Vehicle` base class with a public method `startEngine()` that prints 'Vehicle engine started.' Derive a `Car` class and implement its own `startEngine()` method that prints 'Car engine started with a roar!'. Demonstrate calling `startEngine()` using both a `Vehicle` object and a `Car` object, showing method hiding (non-virtual overriding).",
+  "test_cases": [
+    { "input": "", "expected": "Calling startEngine on Vehicle object:\nVehicle engine started.\nCalling startEngine on Car object:\nCar engine started with a roar!\nDemonstrating method hiding via Vehicle reference to Car object:\nVehicle engine started.\n" }
+  ],
+  "driver": "int main() { Vehicle v; std::cout << \"Calling startEngine on Vehicle object:\" << std::endl; v.startEngine(); Car c; std::cout << \"Calling startEngine on Car object:\" << std::endl; c.startEngine(); std::cout << \"Demonstrating method hiding via Vehicle reference to Car object:\" << std::endl; Vehicle& v_ref = c; v_ref.startEngine(); return 0; }",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `startEngine()` method in the `Vehicle` base class is declared as `private`, making it inaccessible from `main()` when trying to call `v.startEngine()` and `v_ref.startEngine()`. The problem statement requires it to be a public method."
+  ]
+}

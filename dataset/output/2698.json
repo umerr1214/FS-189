@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a simple `MyString` class that dynamically allocates a character array for its string data. Implement a copy constructor for `MyString` to perform a deep copy, preventing shallow copy issues.",
+  "test_cases": [
+    { "input": "test_string", "expected": "" }
+  ],
+  "driver": "int main() {\n    // Code will not compile due to syntax error in MyString class definition.\n    // A minimal driver is provided, but it cannot execute successfully.\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing or misspelled keyword 'public' in class definition. The keyword 'publc' is used instead of 'public'."]
+}

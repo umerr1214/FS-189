@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a `Person` base class with `name` (string) and `age` (int). Derive a `Teacher` class that adds `subject` (string) and `salary` (double). Demonstrate how the `Teacher` constructor should call the `Person` base class constructor to initialize inherited members.",
+  "test_cases": [
+    {
+      "input": "No direct input, output is from hardcoded objects.",
+      "expected": "--- Robustness Issue Demonstration ---\nPerson Name: Alice, Age: -5\n\nPerson Name: Bob, Age: 35\nSubject: Math, Salary: $-1500\n\nPerson Name: Charlie, Age: 40\nSubject: Physics, Salary: $0\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Robustness Issue Demonstration ---\" << std::endl;\n    Person person1(\"Alice\", -5);\n    person1.displayPersonInfo();\n    std::cout << std::endl;\n    Teacher teacher1(\"Bob\", 35, \"Math\", -1500.00);\n    teacher1.displayTeacherInfo();\n    std::cout << std::endl;\n    Teacher teacher2(\"Charlie\", 40, \"Physics\", 0.0);\n    teacher2.displayTeacherInfo();\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The constructors for `Person` and `Teacher` do not validate input parameters (e.g., `age` should not be negative, `salary` should not be negative). This allows the creation of objects in an invalid state, which can lead to incorrect behavior or misleading information if these values are used in further calculations or displayed without checks.",
+    "Member variables are public, breaking encapsulation and allowing external code to directly modify them, potentially leading to inconsistent states without proper checks."
+  ]
+}

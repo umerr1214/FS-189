@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that initializes a 3x3 integer matrix with hardcoded values, then calculates and prints the sum of elements for each row and each column separately.",
+  "test_cases": [
+    { "input": "", "expected": "Calculating row sums:\nRow 0 sum: 6\nRow 1 sum: 15\nRow 2 sum: 24\nCalculating column sums:\nColumn 0 sum: 12\nColumn 1 sum: 15\nColumn 2 sum: 18\n" }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program uses hardcoded magic numbers (e.g., '3') for matrix dimensions in loops, making it non-robust to changes in matrix size. Constants should be used instead.",
+    "The matrix is declared globally, which can lead to maintainability and robustness issues in larger programs.",
+    "Using 'unsigned int' for loop counters without careful consideration of potential underflow or large values, though not problematic for this specific 3x3 case, can be a robustness concern."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Implement a `Car` class. Provide a default constructor, a parameterized constructor (taking `make`, `model`, `year`), and a copy constructor. Demonstrate the usage of all three constructors in `main`.",
+  "test_cases": [
+    { "input": "", "expected": "Default constructor called.\nCar: Unknown Unknown (2000)\nParameterized constructor called for Toyota Camry.\nCar: Toyota Camry (1900)\nCopy constructor called for Toyota Camry.\nCar: Toyota Camry (1900)\n" }
+  ],
+  "driver": "int main() {\n    Car car1;\n    car1.display();\n\n    Car car2(\"Toyota\", \"Camry\", 2020);\n    car2.display();\n\n    Car car3 = car2;\n    car3.display();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": []
+}

@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Implement a `Vehicle` base class with `speed` (int) and `color` (string). Derive a `Car` class (adds `numDoors` int) and a `Motorcycle` class (adds `hasSidecar` bool). Demonstrate methods specific to each derived class.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Vehicle Red accelerates. Speed: 130 km/h\nVehicle Info: Color=Red, Speed=130 km/h\n  Specific Car Info: Doors=2\nThe Red car with 4 doors opens its trunk.\n\nVehicle Black accelerates. Speed: 100 km/h\nVehicle Info: Color=Black, Speed=100 km/h\n  Specific Motorcycle Info: Has Sidecar=Yes\nThe Black motorcycle with a sidecar performs a wheelie!\n"
+    }
+  ],
+  "driver": "g++ -o main 2045.cpp && ./main",
+  "code_quality": 4,
+  "correctness": 5,
+  "error_type": "Logical Error",
+  "errors": [
+    {
+      "line": 34,
+      "column": 49,
+      "message": "The `displayCarInfo` method incorrectly reports the number of doors as a fixed value (2) instead of using the `numDoors` member variable, leading to incorrect output for a car initialized with a different number of doors."
+    }
+  ]
+}

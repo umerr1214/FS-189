@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a simple calculator program that takes two numbers and an operator (+, -, *, /) as input from the user. Use a switch statement to perform the chosen operation and display the result. Handle division by zero.",
+  "test_cases": [
+    { "input": "10\n+\n5\n", "expected": "Result: 15\n" },
+    { "input": "10\n/\n0\n", "expected": "Error: Division by zero is not allowed.\n" },
+    { "input": "7\n*\n3\n", "expected": "Result: 21\n" }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the 'std::cout << \"Result: \" << result << std::endl' statement within the 'if (!error)' block."]
+}

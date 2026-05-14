@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Print the multiplication table for a user-specified number `X` up to `10` (e.g., X * 1, X * 2, ..., X * 10).",
+  "test_cases": [
+    {
+      "input": "5",
+      "expected": "Multiplication table for 5:\n5 * 1 = 5\n5 * 2 = 10\n5 * 3 = 15\n5 * 4 = 20\n5 * 5 = 25\n5 * 6 = 30\n5 * 7 = 35\n5 * 8 = 40\n5 * 9 = 45\n5 * 10 = 50\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\nint main() {\n    std::cout << \"Test driver will execute the submitted C++ solution with predefined inputs.\" << std::endl;\n    std::cout << \"For example, if the solution takes an integer as input, the driver would feed it.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after std::endl in the loop.", "Compilation failed due to syntax error."]
+}

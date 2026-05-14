@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Printer` class with overloaded `print` methods that can display a `string`, an `int`, a `double`, and a `bool` value to the console.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "String: Hello, C++!\nInt: 123\nDouble: 45.6789\nBool: true\nString: \nInt: -5\nDouble: 0\nBool: false\n"
+    }
+  ],
+  "driver": "int main() {\n    Printer p;\n    p.print(\"Hello, C++!\");\n    p.print(123);\n    p.print(45.6789);\n    p.print(true);\n    p.print(\"\");\n    p.print(-5);\n    p.print(0.0);\n    p.print(false);\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

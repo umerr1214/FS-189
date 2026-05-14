@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "For the `Point` class (from Q7), overload the stream insertion operator `<<` to enable printing `Point` objects directly to `std::cout` in the format `(x, y)`. Make this an external friend function.",
+  "test_cases": [
+    { "input": "Point p1(10, 20);", "expected": "Point 1: (10, 20)\n" },
+    { "input": "Point p2(-5, 0);", "expected": "Point 2: (-5, 0)\n" },
+    { "input": "Point p3(1000, -2000);", "expected": "Point 3: (1000, -2000)\n" }
+  ],
+  "driver": "int main() {\n    Point p1(10, 20);\n    Point p2(-5, 0);\n    Point p3(1000, -2000);\n\n    std::cout << \"Point 1: \" << p1;\n    std::cout << \"Point 2: \" << p2;\n    std::cout << \"Point 3: \" << p3;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The stream insertion operator `operator<<` passes the `Point` object by value (`Point p`) instead of by constant reference (`const Point& p`). This creates an unnecessary copy of the `Point` object for every print operation, leading to reduced efficiency, especially for larger objects.",
+    "The operator uses `std::endl` which not only inserts a newline character but also flushes the output buffer. Flushing the buffer is often an unnecessary overhead, especially in performance-critical applications or loops. Using `\\n` instead is generally more efficient when an explicit flush is not strictly required."
+  ]
+}

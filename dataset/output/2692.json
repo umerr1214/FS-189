@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Enhance the `Rectangle` class by adding a destructor that prints a message like 'Rectangle object destroyed.' whenever an object goes out of scope.",
+  "test_cases": [
+    { "input": "", "expected": "Rectangle object destroyed.\nRectangle object destroyed.\n" }
+  ],
+  "driver": "int main() {\n    {\n        Rectangle r1;\n    }\n    Rectangle r2;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'std::endl' in the destructor definition."
+  ]
+}

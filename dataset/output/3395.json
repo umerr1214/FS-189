@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Count the number of words in a sentence entered by the user. Assume words are separated by single spaces and there are no leading or trailing spaces.",
+  "test_cases": [
+    { "input": "Hello world", "expected": "Number of words: 2" },
+    { "input": "One", "expected": "Number of words: 1" },
+    { "input": "This is a test sentence", "expected": "Number of words: 5" },
+    { "input": "", "expected": "Number of words: 0" }
+  ],
+  "driver": "int main() { std::string sentence; std::getline(std::cin, sentence); if (sentence.empty()) { std::cout << \"Number of words: 0\\n\"; return 0; } std::stringstream ss(sentence); std::string word; int wordCount = 0; while (ss >> word) { wordCount++; } std::cout << \"Number of words: \" << wordCount << \"\\n\"; return 0; }",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": []
+}

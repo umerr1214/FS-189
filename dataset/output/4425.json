@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Book` with `title` (std::string) and `pages` (int). Create an array of 2 `Book` structs, populate their data, and print the title of the book with more pages.",
+  "test_cases": [
+    { "input": "", "expected": "Programming: Principles and Practice Using C++\n" }
+  ],
+  "driver": "// No specific driver needed as input is hardcoded in the C++ program itself.\n// The program will compile and run, printing the result to stdout.",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

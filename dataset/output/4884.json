@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that initializes a 4x4 integer matrix (2D array). Then, calculate and print the sum of the elements along its main diagonal (top-left to bottom-right).",
+  "test_cases": [
+    { "input": "", "expected": "Sum of main diagonal elements: 34\n" }
+  ],
+  "driver": "",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": []
+}

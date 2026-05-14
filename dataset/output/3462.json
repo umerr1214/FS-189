@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a C++ `struct Student` with members `std::string name`, `int id`, and `float score`. In `main`, declare a `Student` variable, prompt the user to input data for it, and then print the student's details.",
+  "test_cases": [
+    { "input": "Charlie\n303\n88.8", "expected": "Enter student name: Enter student ID: Enter student score: \n--- Student Details ---\nName: [ERROR: Undefined behavior from printf with std::string]\nID: 303\nScore: 88.80\n" }
+  ],
+  "driver": "N/A - self-contained program.",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": []
+}

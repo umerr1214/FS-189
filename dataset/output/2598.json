@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Establish a multilevel inheritance hierarchy: `Electronics` (base class) -> `Smartphone` (derived from `Electronics`) -> `PremiumSmartphone` (derived from `Smartphone`). Each class should add at least one unique attribute (e.g., `Electronics` has `powerConsumption`, `Smartphone` adds `operatingSystem`, `PremiumSmartphone` adds `cameraMP`) and a method to display its specific details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Test Case 1: Calling PremiumSmartphone via Electronics pointer ---\n--- Electronics Details ---\nPower Consumption: 6.8W\n--- Smartphone Details ---\nOperating System: iOS\n--- Premium Smartphone Details ---\nCamera Megapixels: 108MP\n\n--- Test Case 2: Calling Smartphone via Electronics pointer ---\n--- Electronics Details ---\nPower Consumption: 5.5W\n--- Smartphone Details ---\nOperating System: Android\n\n--- Test Case 3: Direct call to PremiumSmartphone ---\n--- Electronics Details ---\nPower Consumption: 6.8W\n--- Smartphone Details ---\nOperating System: iOS\n--- Premium Smartphone Details ---\nCamera Megapixels: 108MP\n"
+    }
+  ],
+  "driver": "PremiumSmartphone flagshipPhone(6.8, \"iOS\", 108);\nSmartphone midRangePhone(5.5, \"Android\");\n\nElectronics* e1 = &flagshipPhone;\nElectronics* e2 = &midRangePhone;\n\nstd::cout << \"--- Test Case 1: Calling PremiumSmartphone via Electronics pointer ---\" << std::endl;\ne1->displayDetails();\nstd::cout << \"\\n\";\n\nstd::cout << \"--- Test Case 2: Calling Smartphone via Electronics pointer ---\" << std::endl;\ne2->displayDetails();\nstd::cout << \"\\n\";\n\nstd::cout << \"--- Test Case 3: Direct call to PremiumSmartphone ---\" << std::endl;\nflagshipPhone.displayDetails();\nstd::cout << \"\\n\";",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The 'displayDetails' method in the base class 'Electronics' is not declared as 'virtual'. This prevents polymorphic behavior when calling 'displayDetails' through base class pointers or references. Consequently, when a 'Smartphone' or 'PremiumSmartphone' object is accessed via an 'Electronics*' pointer, 'Electronics::displayDetails()' is always called instead of the derived class's specific implementation, leading to incorrect output for polymorphic calls. The derived class methods effectively 'hide' the base class method rather than 'override' it polymorphically."
+  ]
+}

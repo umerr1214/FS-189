@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Refactor the `Shape` class to be an abstract base class with a pure virtual `double calculateArea()` method. Ensure `Circle` and `Rectangle` properly implement this method and create instances of them.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Area of Circle (radius 5.0): 78.54\nArea of Circle (radius -3.0): 28.27\nArea of Rectangle (4.0x5.0): 20.00\nArea of Rectangle (-2.0x6.0): -12.00\nArea of Rectangle (1.0x-7.0): -7.00" }
+  ],
+  "driver": "The `main` function in the provided C++ code creates instances of Circle and Rectangle with both valid and invalid (negative) dimensions, calculates their areas, and prints them to standard output.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Constructors for Circle and Rectangle do not validate input dimensions, allowing negative values.",
+    "Circle's calculateArea method returns a positive area for a negative radius (due to squaring), which hides the invalid input and makes the system less robust.",
+    "Rectangle's calculateArea method returns a negative area if either dimension is negative, which is physically impossible and indicates a lack of robustness in handling invalid input."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Vehicle` base class and a `Car` derived class. Include simple print statements in the constructors of both classes to illustrate the order of constructor execution when a `Car` object is created.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Vehicle constructor called.\nCar constructor called.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\n// Assume Vehicle and Car classes are defined here by the user.\n\nint main() {\n    std::stringstream buffer;\n    // Redirect std::cout to buffer\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::cout.rdbuf(buffer.rdbuf());\n\n    // Create a Car object, triggering constructor calls\n    Car myCar;\n\n    // Restore std::cout\n    std::cout.rdbuf(old_cout);\n\n    // Print the captured output\n    std::cout << buffer.str();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The main function creates a 'Vehicle' object instead of a 'Car' object. This fails to demonstrate the constructor execution order specifically for a derived class ('Car') as required by the question."
+  ]
+}

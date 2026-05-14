@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private attributes for `title`, `author`, and `isbn`. Implement a public constructor to initialize these attributes and a `displayDetails()` method to print all book information.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Title: The Hitchhiker's Guide to the Galaxy\nAuthor: 978-0345391803\nISBN: Douglas Adams\n---\nTitle: 1984\nAuthor: 978-0451524935\nISBN: George Orwell\n"
+    }
+  ],
+  "driver": "Book book1(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\");\nbook1.displayDetails();\nstd::cout << \"---\" << std::endl;\nBook book2(\"1984\", \"George Orwell\", \"978-0451524935\");\nbook2.displayDetails();\n",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The displayDetails method incorrectly swaps the author and ISBN values when printing them to the console."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Declare an integer variable, initialize it, then declare a pointer to that variable. Print both the value of the variable and the value accessed through the pointer, as well as the address of the variable and the pointer.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Value of variable: 123\nValue through pointer: 123\nAddress of variable: <address of myVar>\nAddress of pointer: <address of ptrToVar>\n"
+    }
+  ],
+  "driver": "The main function directly executes the required operations.",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The code incorrectly prints the value stored in the pointer variable (which is the address of 'myVar') when it should print the address of the pointer variable 'ptrToVar' itself."
+  ]
+}

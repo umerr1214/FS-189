@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design two classes: `Building` and `Tenant`. `Building` needs to store a `Tenant` object as its owner. `Tenant` does not need to know about `Building`. Demonstrate how to use a forward declaration for `Tenant` within `Building`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Building at 456 Oak Ave constructed.\nBuilding at address: 456 Oak Ave\nOwner: Bob (ID: 202)\n\nBob's shared_ptr still exists, Tenant object is alive.\n"
+    }
+  ],
+  "driver": "int main() {\n    std::shared_ptr<Tenant> bob = std::make_shared<Tenant>(\"Bob\", 202);\n    Building myBuilding(\"456 Oak Ave\", bob);\n    myBuilding.displayInfo();\n    std::cout << \"\\nBob's shared_ptr still exists, Tenant object is alive.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Efficiency issue: `std::shared_ptr` is used for `owner` when `std::unique_ptr` would be more appropriate for expressing exclusive ownership. `shared_ptr` introduces overhead (atomic reference counting) that is unnecessary if the `Building` is the sole owner of the `Tenant` object.",
+    "Readability issue: Using `shared_ptr` for what should be unique ownership can obscure the design intent and make it less clear that `Building` is meant to be the exclusive owner."
+  ]
+}

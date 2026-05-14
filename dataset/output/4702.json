@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Write a program that asks the user to input a temperature in Celsius and converts it to Fahrenheit, then prints the result. The formula is F = C * 9/5 + 32.",
+  "test_cases": [
+    { "input": "25", "expected": "Temperature in Fahrenheit: 77.0" },
+    { "input": "0", "expected": "Temperature in Fahrenheit: 32.0" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\nint main() {\n    // This driver describes how a test runner would interact with the student's program.\n    // Since this program contains a syntax error, it will not compile or run successfully.\n    std::cout << \"Driver attempting to compile and execute student's main function.\\n\";\n    std::cout << \"Compilation is expected to fail due to syntax errors.\\n\";\n    return 0;\n}",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the 'std::cout << \"Enter temperature in Celsius: \"' statement."]
+}

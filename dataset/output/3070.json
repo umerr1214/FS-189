@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Design a `Printer` class with an overloaded public method `print`. This method should be able to print: 1) an integer, 2) a double, and 3) a C-style string (`const char*`). Demonstrate printing different data types using the same method name.",
+  "test_cases": [
+    { "input": "10", "expected": "Integer: 10\n" },
+    { "input": "3.14", "expected": "Double: 3.14\n" },
+    { "input": "\"Hello, C++\"", "expected": "String: Hello, C++\n" }
+  ],
+  "driver": "int main() {\n    Printer printer;\n    printer.print(10);\n    printer.print(3.14);\n    printer.print(\"Hello, C++\");\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "The 'print(int)' method has a syntax error: a '<<' operator is missing between the variable 'i' and 'std::endl'. This prevents the program from compiling."
+  ]
+}

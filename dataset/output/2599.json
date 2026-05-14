@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Establish a multilevel inheritance hierarchy: `Electronics` (base class) -> `Smartphone` (derived from `Electronics`) -> `PremiumSmartphone` (derived from `Smartphone`). Each class should add at least one unique attribute (e.g., `Electronics` has `powerConsumption`, `Smartphone` adds `operatingSystem`, `PremiumSmartphone` adds `cameraMP`) and a method to display its specific details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- First Premium Smartphone Details ---\nElectronics Details:\n  Power Consumption: 10.5W\n  Manufacturer: ElectroCorp\nSmartphone Details:\n  Operating System: Android 12\nPremium Smartphone Details:\n  Camera Megapixels: 64MP\n\n--- Demonstrating polymorphic deletion with non-virtual destructor ---\nElectronics Details:\n  Power Consumption: 12W\n  Manufacturer: TechGear\n\nProgram finished. A memory profiler would indicate leaks due to design flaws.\n"
+    }
+  ],
+  "driver": "int main() {\n    PremiumSmartphone myPhone(10.5, \"ElectroCorp\", \"Android 12\", 64);\n    std::cout << \"--- First Premium Smartphone Details ---\" << std::endl;\n    myPhone.displayPremiumSmartphoneDetails();\n    std::cout << std::endl;\n\n    Electronics* polyPhone = new PremiumSmartphone(12.0, \"TechGear\", \"iOS 15\", 108);\n    std::cout << \"--- Demonstrating polymorphic deletion with non-virtual destructor ---\" << std::endl;\n    polyPhone->displayElectronicsDetails(); \n    delete polyPhone;\n\n    std::cout << \"\\nProgram finished. A memory profiler would indicate leaks due to design flaws.\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing virtual destructor in base classes (Electronics, Smartphone) leads to memory leaks during polymorphic deletion.",
+    "Using raw `char*` for string attributes without implementing Rule of Three/Five (copy constructor, assignment operator) can lead to shallow copies and undefined behavior (e.g., double-free) if objects are copied."
+  ]
+}

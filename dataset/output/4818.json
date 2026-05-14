@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `swapValues(int& a, int& b)` that takes two integer references and swaps their values. Demonstrate its usage in a `main` function by swapping two user-defined integers.",
+  "test_cases": [
+    { "input": "5 10\n", "expected": "Enter first integer: Enter second integer: Before swap: a = 5, b = 10\nAfter swap: a = 5, b = 10\n" },
+    { "input": "20 7\n", "expected": "Enter first integer: Enter second integer: Before swap: a = 20, b = 7\nAfter swap: a = 20, b = 7\n" }
+  ],
+  "driver": "#include <iostream>\n\nvoid swapValues(int a, int b);\n\nint main() {\n    int num1, num2;\n    std::cin >> num1 >> num2;\n    std::cout << \"Before swap: a = \" << num1 << \", b = \" << num2 << std::endl;\n    swapValues(num1, num2);\n    std::cout << \"After swap: a = \" << num1 << \", b = \" << num2 << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `swapValues` function is declared and implemented to take parameters by value (`int a, int b`) instead of by reference (`int& a, int& b`) as required by the problem statement. This means the original variables in `main` are not swapped."
+  ]
+}

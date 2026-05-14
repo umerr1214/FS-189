@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that reads a single word (as `std::string`) from the user and checks if it is a palindrome (reads the same forwards and backwards). The check should be case-sensitive.",
+  "test_cases": [
+    { "input": "racecar", "expected": "true" },
+    { "input": "hello", "expected": "false" },
+    { "input": "Madam", "expected": "false" },
+    { "input": "level", "expected": "true" },
+    { "input": "A", "expected": "true" },
+    { "input": "aa", "expected": "true" },
+    { "input": "ab", "expected": "false" },
+    { "input": "rotor", "expected": "true" },
+    { "input": "programming", "expected": "false" },
+    { "input": "", "expected": "true" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\nextern bool isPalindrome(const std::string& s);\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        bool result = isPalindrome(line);\n        std::cout << (result ? \"true\" : \"false\") << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

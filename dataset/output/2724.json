@@ -1,0 +1,5 @@
+{
+  "language": "c++",
+  "question": "Implement a `Circle` class with a private `radius` (double). The constructor should initialize the radius. Provide a public method `setRadius()` that only accepts positive values. Include public methods `getArea()` and `getCircumference()`.",
+  "test_cases": [
+    { "input

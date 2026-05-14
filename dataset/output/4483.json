@@ -1,0 +1,30 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program to calculate the simple interest given the principal amount, rate of interest, and time period from user input. Display the calculated interest.",
+  "test_cases": [
+    {
+      "input": "1000\n5\n2",
+      "expected": "Enter principal amount: Enter annual rate of interest (%): Enter time period (years): Simple Interest: 100"
+    },
+    {
+      "input": "2500.50\n7.25\n3",
+      "expected": "Enter principal amount: Enter annual rate of interest (%): Enter time period (years): Simple Interest: 543.85875"
+    },
+    {
+      "input": "abc\n5\n2",
+      "expected": "Enter principal amount: Enter annual rate of interest (%): Enter time period (years): Simple Interest: 0"
+    },
+    {
+      "input": "1000\n-5\n2",
+      "expected": "Enter principal amount: Enter annual rate of interest (%): Enter time period (years): Simple Interest: -100"
+    }
+  ],
+  "driver": "main()",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program lacks proper input validation for non-numeric input. If non-numeric data is entered, `std::cin` fails, but the program continues without checking, leading to variables retaining their default 0.0 values and calculating an incorrect 0 interest.",
+    "The program does not validate if principal, rate, or time are positive. It calculates simple interest even with negative inputs, which can lead to semantically incorrect negative interest values without any warning or error handling."
+  ]
+}

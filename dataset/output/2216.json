@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define an abstract base class `Animal` with a pure virtual function `makeSound()`. Create two concrete derived classes, `Dog` and `Cat`, each implementing `makeSound()` to print their specific sound. Demonstrate that you cannot instantiate `Animal` directly, but can use `Animal` pointers to refer to `Dog` and `Cat` objects.",
+  "test_cases": [
+    { "input": "", "expected": "Note: Direct instantiation of Animal is not possible (compile-time error).\n\nDemonstrating sounds via Animal pointers:\nWoof!\nMeow!\n" }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["Inefficient printing: `makeSound` functions iterate character by character and use `std::endl` which flushes the buffer on each call, leading to reduced efficiency. `std::cout << \"Sound\\n\";` would be more efficient and readable.", "Verbose printing logic for a simple task."]
+}

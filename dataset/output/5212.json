@@ -1,0 +1,25 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that defines a class `Matrix` to represent a 2D matrix. Implement a constructor to initialize the matrix, a method to input values, and a method to add two matrices. Overload the `+` operator to perform matrix addition. Demonstrate the functionality in `main` by adding two matrices and displaying the result.",
+  "test_cases": [
+    {
+      "input": "2 2 1 2 3 4 2 2 5 6 7 8",
+      "expected": "6 8\n10 12\n"
+    },
+    {
+      "input": "3 2 1 1 1 2 2 2 3 2 1 1 1 2 2 2",
+      "expected": "4 3\n3 4\n3 4\n"
+    }
+  ],
+  "driver": "int main() {\n    int r1, c1, r2, c2;\n\n    std::cin >> r1 >> c1;\n    Matrix m1(r1, c1);\n    m1.inputValues();\n\n    std::cin >> r2 >> c2;\n    Matrix m2(r2, c2);\n    m2.inputValues();\n\n    Matrix m3 = m1 + m2;\n\n    m3.display();\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    {
+      "line": 52,
+      "column": 1,
+      "message": "expected ';' after class definition"
+    }
+  ]
+}

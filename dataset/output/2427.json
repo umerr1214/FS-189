@@ -1,0 +1,27 @@
+{
+  "language": "c++",
+  "question": "Design a `Vehicle` base class with protected attributes `speed` and `fuelType`. Derive `Car` and `Motorcycle` classes, adding specific attributes like `numDoors` for `Car` and `hasSidecar` for `Motorcycle`.",
+  "test_cases": [
+    {
+      "input": "Car(180, \"Gasoline\", 4)",
+      "expected": "Vehicle Type: Car\n  Speed: 180 km/h\n  Fuel Type: Gasoline\n  Number of Doors: 4\n"
+    },
+    {
+      "input": "Motorcycle(100, \"Petrol\", true)",
+      "expected": "Vehicle Type: Motorcycle\n  Speed: 100 km/h\n  Fuel Type: Petrol\n  Has Sidecar: Yes\n"
+    },
+    {
+      "input": "Car(90, \"Electric\", 2)",
+      "expected": "Vehicle Type: Car\n  Speed: 90 km/h\n  Fuel Type: Electric\n  Number of Doors: 2\n"
+    },
+    {
+      "input": "Motorcycle(120, \"Diesel\", false)",
+      "expected": "Vehicle Type: Motorcycle\n  Speed: 120 km/h\n  Fuel Type: Diesel\n  Has Sidecar: No\n"
+    }
+  ],
+  "driver": "    std::cout << \"Demonstrating Correct Version: Proper Class Design and Polymorphism\" << std::endl;\n    std::cout << \"-----------------------------------------------------------------\" << std::endl;\n\n    std::vector<std::unique_ptr<Vehicle>> vehicles;\n\n    vehicles.push_back(std::make_unique<Car>(180, \"Gasoline\", 4));\n    vehicles.push_back(std::make_unique<Motorcycle>(100, \"Petrol\", true));\n    vehicles.push_back(std::make_unique<Car>(90, \"Electric\", 2));\n    vehicles.push_back(std::make_unique<Motorcycle>(120, \"Diesel\", false));\n\n    for (const auto& vehicle : vehicles) {\n        std::cout << \"\\n\";\n        vehicle->display();\n    }\n\n    std::cout << \"\\nAll vehicles displayed successfully.\" << std::endl;\n",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

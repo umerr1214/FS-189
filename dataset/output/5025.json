@@ -1,0 +1,65 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `countWords` that takes a C-style string (character array) as input and returns the number of words in it. Assume words are separated by single spaces and there are no leading or trailing spaces.",
+  "test_cases": [
+    { "input": "hello world", "expected": "2" },
+    { "input": "programming", "expected": "1" },
+    { "input": "", "expected": "0" },
+    { "input": "one two three four", "expected": "4" },
+    { "input": "singleword", "expected": "1" },
+    { "input": "nullptr", "expected": "0" }
+  ],
+  "driver": "
+#include <iostream>
+#include <vector>
+#include <string>
+#include <cstring> // For strcpy, strcmp, strlen
+
+// Assume countWords function is defined elsewhere (e.g., in the submitted code)
+extern int countWords(char* str);
+
+struct TestCase {
+    std::string input_str;
+    std::string expected;
+};
+
+int main() {
+    std::vector<TestCase> tests = {
+        { \"hello world\", \"2\" },
+        { \"programming\", \"1\" },
+        { \"\", \"0\" },
+        { \"one two three four\", \"4\" },
+        { \"singleword\", \"1\" },
+        { \"nullptr\", \"0\" }
+    };
+
+    for (size_t i = 0; i < tests.size(); ++i) {
+        const TestCase& tc = tests[i];
+
+        std::cout << \"Test Case \" << (i + 1) << \": Input: \";
+        if (tc.input_str == \"nullptr\") {
+            std::cout << \"nullptr\";
+            // For nullptr, this version correctly returns 0.
+            std::cout << \", Expected: \" << tc.expected << \", Actual: \" << countWords(nullptr) << std::endl;
+        } else {
+            // Create a mutable copy of the input string for countWords
+            // This is good practice as countWords takes char* input.
+            char buffer[256]; // Assuming max string length 255 + null terminator
+            if (tc.input_str.length() >= sizeof(buffer)) {
+                std::cerr << \"Error: Input string \\\"\" << tc.input_str << \"\\\" too long for buffer in test driver.\" << std::endl;
+                continue;
+            }
+            strcpy(buffer, tc.input_str.c_str());
+
+            std::cout << '\"' << tc.input_str << '\"';
+            int actual_output = countWords(buffer);
+            std::cout << \", Expected: \" << tc.expected << \", Actual: \" << actual_output << std::endl;
+        }
+    }
+    return 0;
+}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

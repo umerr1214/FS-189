@@ -1,0 +1,31 @@
+{
+  "language": "c++",
+  "question": "Design a `SecretAgent` class where the agent's `codename` is public, `trueIdentity` is private, and `missionBriefing` is protected. Show how these access levels restrict or permit access from outside and from a derived class `Handler`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Compilation Error"
+    }
+  ],
+  "driver": "int main() { SecretAgent agent1(\"Phoenix\", \"John Doe\", \"Infiltrate organization X.\"); Handler handler1(\"Viper\", \"Jane Smith\", \"Extract target Y.\", \"Alpha7\"); std::cout << \"--- Outside Access (from main) ---\" << std::endl; agent1.displayCodename(); std::cout << \"Main can see Agent Codename: \" << agent1.codename << std::endl; std::cout << \"Main trying to access True Identity: \" << agent1.trueIdentity << std::endl; std::cout << \"Main trying to access Mission Briefing: \" << agent1.missionBriefing << std::endl; handler1.accessAgentInfo(); return 0; }",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    {
+      "line": 45,
+      "column": 59,
+      "message": "'std::string SecretAgent::trueIdentity' is private"
+    },
+    {
+      "line": 48,
+      "column": 59,
+      "message": "'std::string SecretAgent::missionBriefing' is protected"
+    },
+    {
+      "line": 34,
+      "column": 59,
+      "message": "'std::string SecretAgent::trueIdentity' is private"
+    }
+  ]
+}

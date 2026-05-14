@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Declare an integer variable, a float variable, and a char variable. Declare and initialize a pointer for each variable, then use the pointers to print the values and memory addresses of the original variables.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Integer Variable:\nValue: 10\nAddress: 0x...\n\nFloat Variable (Semantic Error - interpreted as int):\nValue: 20.5\nAddress: 0x...\n\nChar Variable:\nValue: A\nAddress: 0x..."
+    }
+  ],
+  "driver": "",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "A pointer to an integer type (int*) is initialized with the address of a float variable using 'reinterpret_cast'. When dereferenced, the float's bit pattern is incorrectly interpreted as an integer, leading to a semantically incorrect value for the float variable, as it does not represent 20.5."
+  ]
+}

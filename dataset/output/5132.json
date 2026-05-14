@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that reads a sentence (using `std::string`) from the user. Count how many vowels (a, e, i, o, u, case-insensitive) are present in the sentence and print the total count.",
+  "test_cases": [
+    { "input": "Hello World", "expected": "Vowel count: 3\n" },
+    { "input": "Programming is fun!", "expected": "Vowel count: 5\n" },
+    { "input": "AEIOUaeiou", "expected": "Vowel count: 10\n" }
+  ],
+  "driver": "int main() {\n    std::string line;\n    std::getline(std::cin, line);\n    std::cout << \"Enter a sentence: \"; // Simulate prompt\n    // The program's stdout will contain the prompt and then the result.\n    // The driver should capture the final vowel count line.\n    // Example: `./a.out <<< \"Hello World\"`\n    std::cout << \"Vowel count: <calculated_by_driver>\\n\"; // This line is just a placeholder.\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The program first converts the entire input sentence to lowercase using `std::transform`, which involves an unnecessary full pass over the string before counting. It would be more efficient to convert each character to lowercase only once within the counting loop.",
+    "The vowel checking logic uses a long chain of `if-else if` statements. While functionally correct, this approach is less readable and more verbose than using a `switch` statement or a lookup (e.g., `std::string::find` on a small vowel string) for checking against multiple fixed values."
+  ]
+}

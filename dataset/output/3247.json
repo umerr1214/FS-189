@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Logger` with a `void logMessage(string msg)` method. Create a `ConsoleLogger` derived class that provides its own `void logMessage(string msg)` method. Demonstrate that calling `logMessage` on a `ConsoleLogger` object hides the base class method without `virtual`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating Method Hiding (Robustness Issue) ---\n[ConsoleLogger Derived] Message 1: Called directly on ConsoleLogger object.\n[Logger Base] Message 2: Called via Logger* pointing to ConsoleLogger.\n[Logger Base] Message 3: Called via Logger& referring to ConsoleLogger.\n--- End Demonstration ---"
+    }
+  ],
+  "driver": "int main() {\n    ConsoleLogger myConsoleLogger;\n    Logger* basePtr = &myConsoleLogger;\n    Logger& baseRef = myConsoleLogger;\n\n    std::cout << \"--- Demonstrating Method Hiding (Robustness Issue) ---\" << std::endl;\n\n    myConsoleLogger.logMessage(\"Message 1: Called directly on ConsoleLogger object.\");\n    basePtr->logMessage(\"Message 2: Called via Logger* pointing to ConsoleLogger.\");\n    baseRef.logMessage(\"Message 3: Called via Logger& referring to ConsoleLogger.\");\n\n    std::cout << \"--- End Demonstration ---\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `ConsoleLogger::logMessage` method attempts to write to a file (`log.txt`) without checking if the `ofstream` object was successfully opened or is in a good state before performing write operations. If the file cannot be created or written to (e.g., due to permissions, disk full, or an invalid path), the write operation will fail silently, leading to lost log messages and a non-robust program. A robust implementation would check `logFile.is_open()` or `logFile.good()` before writing and handle potential errors."
+  ]
+}

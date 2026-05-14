@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a function `calculateAverage(int arr[], int size)` that takes a 1D integer array and its size as input. The function should calculate and return the average of all elements in the array. In `main`, prompt the user for 10 integers, store them in an array, and then call this function to display their average.",
+  "test_cases": [
+    { "input": "1 2 3 4 5 6 7 8 9 10", "expected": "5.50" },
+    { "input": "100 200 300 400 500 600 700 800 900 1000", "expected": "550.00" },
+    { "input": "-5 -10 15 20 0 5 10 -15 -20 25", "expected": "2.50" },
+    { "input": "214748364 214748364 214748364 214748364 214748364 214748364 214748364 214748364 214748364 214748364", "expected": "214748364.00" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\ndouble calculateAverage(int arr[], int size) {\n    if (size <= 0) {\n        return 0.0;\n    }\n    long long sum = 0;\n    for (int i = 0; i < size; ++i) {\n        sum += arr[i];\n    }\n    return static_cast<double>(sum) / size;\n}\n\nint main() {\n    int test_arr1[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};\n    std::cout << std::fixed << std::setprecision(2) << calculateAverage(test_arr1, 10) << std::endl;\n\n    int test_arr2[] = {100, 200, 300, 400, 500, 600, 700, 800, 900, 1000};\n    std::cout << std::fixed << std::setprecision(2) << calculateAverage(test_arr2, 10) << std::endl;\n\n    int test_arr3[] = {214748364, 214748364, 214748364, 214748364, 214748364, 214748364, 214748364, 214748364, 214748364, 214748364};\n    std::cout << std::fixed << std::setprecision(2) << calculateAverage(test_arr3, 10) << std::endl;\n\n    int test_arr4[] = {};\n    std::cout << std::fixed << std::setprecision(2) << calculateAverage(test_arr4, 0) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

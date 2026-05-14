@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Book` with `title` (std::string) and `pages` (int). Create an array of 2 `Book` structs, populate their data, and print the title of the book with more pages.",
+  "test_cases": [
+    { "input": "", "expected": "Title of book with more pages: The Hitchhiker's Guide to the Galaxy\n" }
+  ],
+  "driver": "int main() { /* The provided code */ }",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The comparison logic is inverted, causing the program to print the title of the book with fewer pages ('The Restaurant at the End of the Universe') instead of more pages ('The Hitchhiker's Guide to the Galaxy')."]
+}

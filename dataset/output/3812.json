@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that takes a 2x3 integer matrix as input from the user, transposes it (swaps rows and columns to make it 3x2), and then prints the original and transposed matrices in a clear format.",
+  "test_cases": [
+    {
+      "input": "1 2 3 4 5 6",
+      "expected": "Original Matrix:\n1 2 3 \n4 5 6 \n\nTransposed Matrix:\n1 4 \n2 5 \n3 6 \n"
+    },
+    {
+      "input": "7 8 9 10 11 12",
+      "expected": "Original Matrix:\n7 8 9 \n10 11 12 \n\nTransposed Matrix:\n7 10 \n8 11 \n9 12 \n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n\n// Forward declaration of the user's solution function\nvoid solve(); \n\nstd::string run_test(const std::string& input) {\n    std::stringstream ss_input(input);\n    std::stringstream ss_output;\n\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    solve();\n\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    return ss_output.str();\n}\n\nint main() {\n    // Example usage for a single test case\n    // std::cout << run_test(\"1 2 3 4 5 6\");\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The program uses 1D arrays and manual index calculations (e.g., `r * 3 + c`) to simulate 2D matrices. This makes the code less readable and harder to understand compared to using actual 2D arrays (e.g., `int matrix[2][3];`).",
+    "Magic numbers (e.g., `2`, `3`, `6`) are used directly in loops and array access, making it difficult to modify the matrix dimensions without changing multiple parts of the code. Named constants would improve maintainability.",
+    "The transposition logic is hardcoded for specific elements (e.g., `t[0] = m[0]; t[1] = m[3];`), which is not scalable or easily readable for larger matrices. A nested loop approach for transposition would be more efficient and readable."
+  ]
+}

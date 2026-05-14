@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design an `Employee` class with `name` and `id`. Create a `Department` class which `contains` a collection of `Employee` objects (using aggregation, e.g., a `std::vector<Employee>`). Implement methods in `Department` to `addEmployee(Employee emp)` and `displayAllEmployees()`. Demonstrate adding multiple employees to a department and displaying their details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Employees in Human Resources Department ---\nName: Alice, ID: 101\nName: Bob, ID: 102\nName: Charlie, ID: 103\n------------------------------------------\n"
+    }
+  ],
+  "driver": "int main() {\n    Department hrDept(\"Human Resources\");\n    Employee emp1(\"Alice\", 101);\n    Employee emp2(\"Bob\", 102);\n    Employee emp3(\"Charlie\", 103);\n    hrDept.addEmployee(emp1);\n    hrDept.addEmployee(emp2);\n    hrDept.addEmployee(emp3);\n    hrDept.displayAllEmployees();\n    return 0;\n}",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the initializer list in Department constructor definition: `Department(std::string name) : departmentName(name) {}`"
+  ]
+}

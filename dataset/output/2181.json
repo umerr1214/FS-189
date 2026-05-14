@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create two classes, `Box` (with private `length`) and `Container` (with private `volume`). Declare a non-member function `compareSizes(Box b, Container c)` as a friend to both classes, allowing it to access their private members and print a comparison.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Comparing Box (length: 10) and Container (volume: 20):\n  Box's length is less than Container's volume.\n\nComparing Box (length: 30) and Container (volume: 15):\n  Box's length is greater than Container's volume.\n\nComparing Box (length: 25) and Container (volume: 25):\n  Box's length is equal to Container's volume.\n\nWarning: Box length cannot be negative. Setting to 0.\nComparing Box (length: 0) and Container (volume: 10):\n  Box's length is less than Container's volume.\n\nWarning: Container volume cannot be negative. Setting to 0.\nComparing Box (length: 0) and Container (volume: 0):\n  Box's length is equal to Container's volume.\n\n"
+    }
+  ],
+  "driver": "int main() {\n    Box box1(10);\n    Container cont1(20);\n    compareSizes(box1, cont1);\n\n    Box box2(30);\n    Container cont2(15);\n    compareSizes(box2, cont2);\n\n    Box box3(25);\n    Container cont3(25);\n    compareSizes(box3, cont3);\n\n    Box box4(-5);\n    Container cont4(10);\n    compareSizes(box4, cont4);\n\n    Box box5(0);\n    Container cont5(-10);\n    compareSizes(box5, cont5);\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

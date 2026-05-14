@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a `Fraction` class with `numerator` and `denominator`. Overload the `*` operator to multiply two `Fraction` objects and return a new `Fraction` object.",
+  "test_cases": [
+    { "input": "Fraction f1(1, 2); Fraction f2(3, 4); Fraction f3 = f1 * f2; f3.print();", "expected": "3/8\n" },
+    { "input": "Fraction f4(5, 10); Fraction f5(2, 3); Fraction f6 = f4 * f5; f6.print();", "expected": "1/3\n" },
+    { "input": "Fraction f7(2, -3); Fraction f8(1, 2); Fraction f9 = f7 * f8; f9.print();", "expected": "-1/3\n" },
+    { "input": "Fraction f10(0, 5); Fraction f11(7, 8); Fraction f12 = f10 * f11; f12.print();", "expected": "0/1\n" },
+    { "input": "Fraction f13(-1, 3); Fraction f14(-2, 5); Fraction f15 = f13 * f14; f15.print();", "expected": "2/15\n" },
+    { "input": "Fraction f16(123456789, 987654321); Fraction f17(246813579, 753951824); Fraction f18 = f16 * f17; f18.print();", "expected": "30510255376526011/744594326577889504\n" },
+    { "input": "Fraction f19(5); Fraction f20(2, 7); Fraction f21 = f19 * f20; f21.print();", "expected": "10/7\n" }
+  ],
+  "driver": "int main() {\n    try {\n        Fraction f1(1, 2); Fraction f2(3, 4); Fraction f3 = f1 * f2; f3.print();\n        Fraction f4(5, 10); Fraction f5(2, 3); Fraction f6 = f4 * f5; f6.print();\n        Fraction f7(2, -3); Fraction f8(1, 2); Fraction f9 = f7 * f8; f9.print();\n        Fraction f10(0, 5); Fraction f11(7, 8); Fraction f12 = f10 * f11; f12.print();\n        Fraction f13(-1, 3); Fraction f14(-2, 5); Fraction f15 = f13 * f14; f15.print();\n        Fraction f16(123456789, 987654321); Fraction f17(246813579, 753951824); Fraction f18 = f16 * f17; f18.print();\n        Fraction f19(5); Fraction f20(2, 7); Fraction f21 = f19 * f20; f21.print();\n    } catch (const std::runtime_error& e) {\n        std::cerr << \"Caught Error: \" << e.what() << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

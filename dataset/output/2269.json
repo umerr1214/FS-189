@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Player` class with `name` (public string), `health` (protected int), and `score` (private int). Create a `Wizard` class inheriting from `Player`. In `Wizard`, demonstrate accessing `name` directly and modifying `health` through a member function.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Test Case 1: Initial state and basic damage ---\nWizard Name: Gandalf\nCurrent Health: 100\nScore (via getter): 1500\nGandalf's health changed by -30. New health: 70\nWizard Name: Gandalf\nCurrent Health: 70\nScore (via getter): 1500\n\n--- Test Case 2: Demonstrating robustness issue - health going below zero ---\nWizard Name: Merlin\nCurrent Health: 20\nScore (via getter): 1000\nMerlin's health changed by -50. New health: -30\nWizard Name: Merlin\nCurrent Health: -30\nScore (via getter): 1000\n\n"
+    }
+  ],
+  "driver": "// Driver code\nint main() {\n    std::cout << \"--- Test Case 1: Initial state and basic damage ---\" << std::endl;\n    Wizard gandalf(\"Gandalf\", 100, 1500);\n    gandalf.displayWizardInfo();\n    gandalf.modifyHealth(-30); // Damage\n    gandalf.displayWizardInfo();\n    std::cout << std::endl;\n\n    std::cout << \"--- Test Case 2: Demonstrating robustness issue - health going below zero ---\" << std::endl;\n    Wizard merlin(\"Merlin\", 20, 1000);\n    merlin.displayWizardInfo();\n    merlin.modifyHealth(-50); // Damage that makes health negative\n    merlin.displayWizardInfo();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `modifyHealth` function in `Wizard` does not prevent health from falling below zero, which can lead to an invalid game state in many contexts where health is expected to be non-negative."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program to create a 3x4 integer matrix (2D array). Initialize it with some values, then calculate and print the sum of elements for each individual row.",
+  "test_cases": [
+    { "input": "", "expected": "Row 0 sum: 10\nRow 1 sum: 26\nRow 2 sum: 42\n" }
+  ],
+  "driver": "int main() {\n    // The provided code is already a complete main function.\n    // No external driver needed, just compile and run the file.\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon at the end of the `std::cout` statement in the outer loop, specifically on line 21: `std::cout << \"Row \" << i << \" sum: \" << rowSum << std::endl`."
+  ]
+}

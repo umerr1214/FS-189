@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `Logger` class. Its constructor should open a specified log file, and its destructor should close the file, ensuring proper resource management. Add a `logMessage(const std::string& message)` method.",
+  "test_cases": [
+    {
+      "input": "Logger(\"test_log_2831.txt\");\nlogger.logMessage(\"Hello World\");\nlogger.logMessage(\"Another message\");",
+      "expected": "Hello World\nAnother message\n"
+    }
+  ],
+  "driver": "#include <fstream>\n#include <string>\n#include <iostream>\n#include <cstdio> // For std::remove\n\nclass Logger {\npublic:\n    Logger(const std::string& filename) : logFilename(filename) {\n        outFile.open(logFilename, std::ios::app);\n        if (!outFile.is_open()) {\n            std::cerr << \"Error: Could not open log file \" << logFilename << std::endl;\n        }\n    }\n\n    ~Logger() {\n        if (outFile.is_open()) {\n            outFile.close();\n        }\n    }\n\n    void logMessage(const std::string& message) {\n        if (outFile.is_open()) {\n            outFile << message << std::endl;\n        } else {\n            std::cerr << \"Error: Log file is not open. Message not logged.\" << std::endl;\n        }\n    }\n\nprivate:\n    std::ofstream outFile;\n    std::string logFilename;\n};\n\nint main() {\n    std::string test_file = \"test_log_2831.txt\";\n    std::remove(test_file.c_str());\n\n    Logger logger(test_file);\n    logger.logMessage(\"Hello World\");\n    logger.logMessage(\"Another message\");\n\n    std::ifstream inFile(test_file);\n    if (inFile.is_open()) {\n        std::string line;\n        while (std::getline(inFile, line)) {\n            std::cout << line << std::endl;\n        }\n        inFile.close();\n    } else {\n        std::cout << \"Log file could not be opened for reading.\" << std::endl;\n    }\n    std::remove(test_file.c_str());\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The `logMessage` method always writes a fixed string 'LOGGED MESSAGE' instead of the actual message passed as an argument, leading to incorrect log content."]
+}

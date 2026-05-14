@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Implement a `Counter` class that keeps track of the total number of `Counter` objects currently alive. Use a static member variable for the count and a static member function to retrieve this count.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Beginning test. Initial object count: 0\nObject 1 created. Current object count: 1\nObject 2 created. Current object count: 2\nObject 3 created. Current object count: 3\nAfter temporary objects destroyed. Current object count: 1\nObject 4 created. Current object count: 2\nEnd of test. Final object count before main exit: 2\n"
+    }
+  ],
+  "driver": "#include <cstdio>\n\n// Assume Counter class is defined in the primary C++ file\n\nint main() {\n    printf(\"Beginning test. Initial object count: %d\\n\", Counter::retrieveCurrentObjectCount());\n\n    Counter obj1;\n    printf(\"Object 1 created. Current object count: %d\\n\", Counter::retrieveCurrentObjectCount());\n\n    { \n        Counter obj2;\n        printf(\"Object 2 created. Current object count: %d\\n\", Counter::retrieveCurrentObjectCount());\n\n        Counter obj3;\n        printf(\"Object 3 created. Current object count: %d\\n\", Counter::retrieveCurrentObjectCount());\n    } \n\n    printf(\"After temporary objects destroyed. Current object count: %d\\n\", Counter::retrieveCurrentObjectCount());\n\n    Counter obj4;\n    printf(\"Object 4 created. Current object count: %d\\n\", Counter::retrieveCurrentObjectCount());\n\n    printf(\"End of test. Final object count before main exit: %d\\n\", Counter::retrieveCurrentObjectCount());\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses C-style `printf` for output instead of C++ streams (`std::cout`), which is less idiomatic, type-safe, and flexible in C++.",
+    "The static member variable `s_obj_tracker_count_val` has a verbose and less clear name compared to a simpler `s_count`.",
+    "The getter function `retrieveCurrentObjectCount` includes an unnecessary local variable (`current_val`) which adds minor verbosity and a negligible performance overhead.",
+    "Uses a preprocessor macro (`#define`) for `INITIAL_COUNT_VALUE` instead of `const int` or `static constexpr int`, which is less type-safe and generally discouraged in modern C++."
+  ]
+}

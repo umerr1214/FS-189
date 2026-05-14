@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define an abstract base class `Animal` with a pure virtual method `void makeSound()`. Implement two derived classes, `Dog` and `Cat`, each overriding `makeSound()` to print their respective sounds.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Animals making sounds:\nWoof!\nMeow!\nWoof!\nMeow!\n\nAll animals have made their sounds and will be automatically cleaned up.\n"
+    }
+  ],
+  "driver": "int main() { std::vector<std::unique_ptr<Animal>> animals; animals.push_back(std::make_unique<Dog>()); animals.push_back(std::make_unique<Cat>()); animals.push_back(std::make_unique<Dog>()); animals.push_back(std::make_unique<Cat>()); std::cout << \"Animals making sounds:\" << std::endl; for (const auto& animal : animals) { animal->makeSound(); } std::cout << std::endl; std::cout << \"All animals have made their sounds and will be automatically cleaned up.\" << std::endl; return 0; }",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

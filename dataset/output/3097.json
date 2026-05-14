@@ -1,0 +1,30 @@
+{
+  "language": "c++",
+  "question": "Create a `Vector2D` class with private members `x` and `y` (doubles). Overload the insertion operator `<<` (output stream operator) as a non-member (friend) function to allow printing a `Vector2D` object directly to `std::cout` in the format `(x, y)`.",
+  "test_cases": [
+    {
+      "input": "Vector2D v1(1.234567890123, 2.5); std::cout << \"Vector v1: \" << v1 << std::endl;",
+      "expected": "Vector v1: (1.2345678901, 2.5000000000)\n"
+    },
+    {
+      "input": "Vector2D v1(1.234567890123, 2.5); std::cout << \"Vector v1: \" << v1 << std::endl; std::cout << \"Default double output (should be affected): \" << 3.1415926535 << std::endl;",
+      "expected": "Vector v1: (1.2345678901, 2.5000000000)\nDefault double output (should be affected): 3.1415926535\n"
+    },
+    {
+      "input": "Vector2D v2(-3.14, 0.0); std::cout << \"Vector v2: \" << v2 << std::endl;",
+      "expected": "Vector v2: (-3.1400000000, 0.0000000000)\n"
+    },
+    {
+      "input": "Vector2D v2(-3.14, 0.0); std::cout << \"Vector v2: \" << v2 << std::endl; double test_val = 123.456; std::cout << \"Another double value (should be affected): \" << test_val << std::endl;",
+      "expected": "Vector v2: (-3.1400000000, 0.0000000000)\nAnother double value (should be affected): 123.4560000000\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include <sstream>\n\nclass Vector2D {\nprivate:\n    double x;\n    double y;\npublic:\n    Vector2D(double _x = 0.0, double _y = 0.0) : x(_x), y(_y) {}\n    friend std::ostream& operator<<(std::ostream& os, const Vector2D& vec);\n};\n\nstd::ostream& operator<<(std::ostream& os, const Vector2D& vec) {\n    os << \"(\" << std::fixed << std::setprecision(10) << vec.x << \", \" << vec.y << \")\";\n    return os;\n}\n\nint main() {\n    std::ostringstream oss;\n\n    Vector2D v1(1.234567890123, 2.5);\n    oss << \"Vector v1: \" << v1 << std::endl;\n    oss << \"Default double output (should be affected): \" << 3.1415926535 << std::endl;\n\n    Vector2D v2(-3.14, 0.0);\n    oss << \"Vector v2: \" << v2 << std::endl;\n\n    double test_val = 123.456;\n    oss << \"Another double value (should be affected): \" << test_val << std::endl;\n\n    std::cout << oss.str();\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The overloaded insertion operator modifies the `std::ostream`'s formatting flags (e.g., `std::fixed`, `std::setprecision`) without restoring them, leading to unexpected formatting for subsequent output operations on the same stream.",
+    "Violates the principle that stream manipulators should not have lasting side-effects on the stream state unless explicitly intended by the user, making the operator non-robust for general use."
+  ]
+}

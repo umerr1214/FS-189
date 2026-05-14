@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Develop a `Logger` class that prints 'Logger created.' when an object is constructed and 'Logger destroyed.' when it is destructed. Demonstrate its usage in `main`.",
+  "test_cases": [
+    { "input": "", "expected": "" }
+  ],
+  "driver": "g++ 2386.cpp -o 2386 && ./2386",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Typo in 'std::cout' ('std::caut') within the Logger constructor, causing a compilation error."]
+}

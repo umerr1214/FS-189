@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Modify the `Book` class to include a destructor. The destructor should print a message indicating the title of the book object that is being destroyed.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Starting Robustness Test ---\nBook 'The Great Gatsby' (ID: 1) constructed.\nBook 'The Great Gatsby' (ID: 1) constructed.\nCreated book1 (ID: The Great Gatsby) and book2 (ID: The Great Gatsby) via shallow copy.\nBook 'The Great Gatsby' (ID: 1) is being destroyed.\nBook 'The Great Gatsby' (ID: 1) is being destroyed.\n--- Robustness Test Ended (if program didn't crash before this) ---\nBook 'Dynamic Book' (ID: 5) constructed.\nDynamically allocated book created.\nBook 'Dynamic Book' (ID: 5) is being destroyed."
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Starting Robustness Test ---\" << std::endl;\n    createAndCopyBook();\n    std::cout << \"--- Robustness Test Ended (if program didn't crash before this) ---\" << std::endl;\n    Book* ptrBook = new Book(\"Dynamic Book\", 5);\n    std::cout << \"Dynamically allocated book created.\" << std::endl;\n    delete ptrBook;\n    return 0;\n}\n\nvoid createAndCopyBook() {\n    Book book1(\"The Great Gatsby\", 1);\n    Book book2 = book1;\n    std::cout << \"Created book1 (ID: \" << book1.getTitle() << \") and book2 (ID: \" << book2.getTitle() << \") via shallow copy.\" << std::endl;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The class uses a raw `char*` for string management but fails to implement a user-defined copy constructor and copy assignment operator (violating the Rule of Three/Five).",
+    "This leads to shallow copies where multiple `Book` objects share the same dynamically allocated memory for the title.",
+    "When these shallow-copied objects are destroyed, a double-free error occurs, resulting in undefined behavior and likely a program crash."
+  ]
+}

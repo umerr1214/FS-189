@@ -1,0 +1,89 @@
+{
+  "language": "c++",
+  "question": "Write a program that takes a sentence (std::string) and a character from the user, then counts and displays how many times that character appears in the sentence.",
+  "test_cases": [
+    { "input": "Hello World\no\n", "expected": "Enter a sentence: Enter a character to count: The character 'o' appears 2 times.\n" },
+    { "input": "Programming is fun\ng\n", "expected": "Enter a sentence: Enter a character to count: The character 'g' appears 2 times.\n" },
+    { "input": "apple\np\n", "expected": "Enter a sentence: Enter a character to count: The character 'p' appears 2 times.\n" },
+    { "input": "banana\nz\n", "expected": "Enter a sentence: Enter a character to count: The character 'z' appears 0 times.\n" },
+    { "input": "A\nA\n", "expected": "Enter a sentence: Enter a character to count: The character 'A' appears 1 times.\n" },
+    { "input": "\nx\n", "expected": "Enter a sentence: Enter a character to count: The character 'x' appears 0 times.\n" },
+    { "input": "Mississippi\ns\n", "expected": "Enter a sentence: Enter a character to count: The character 's' appears 4 times.\n" },
+    { "input": "The quick brown fox jumps over the lazy dog\no\n", "expected": "Enter a sentence: Enter a character to count: The character 'o' appears 4 times.\n" }
+  ],
+  "driver": "
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <vector>
+#include <functional>
+
+// Forward declaration of the solution's logic function
+void execute_program_logic();
+
+struct TestCase {
+    std::string input;
+    std::string expected_output;
+};
+
+// Function to run a single test case by redirecting std::cin and std::cout
+std::string run_test(const std::string& input_str) {
+    std::stringstream ss_input(input_str);
+    std::stringstream ss_output;
+
+    // Redirect std::cin and std::cout
+    std::streambuf* old_cin = std::cin.rdbuf();
+    std::streambuf* old_cout = std::cout.rdbuf();
+    std::cin.rdbuf(ss_input.rdbuf());
+    std::cout.rdbuf(ss_output.rdbuf());
+
+    // Call the program's logic function
+    execute_program_logic();
+
+    // Restore std::cin and std::cout
+    std::cin.rdbuf(old_cin);
+    std::cout.rdbuf(old_cout);
+
+    return ss_output.str();
+}
+
+int main() {
+    std::vector<TestCase> tests_from_json = {
+        {\"Hello World\\no\\n\", \"Enter a sentence: Enter a character to count: The character 'o' appears 2 times.\\n\" },
+        {\"Programming is fun\\ng\\n\", \"Enter a sentence: Enter a character to count: The character 'g' appears 2 times.\\n\" },
+        {\"apple\\np\\n\", \"Enter a sentence: Enter a character to count: The character 'p' appears 2 times.\\n\" },
+        {\"banana\\nz\\n\", \"Enter a sentence: Enter a character to count: The character 'z' appears 0 times.\\n\" },
+        {\"A\\nA\\n\", \"Enter a sentence: Enter a character to count: The character 'A' appears 1 times.\\n\" },
+        {\"\\nx\\n\", \"Enter a sentence: Enter a character to count: The character 'x' appears 0 times.\\n\" },
+        {\"Mississippi\\ns\\n\", \"Enter a sentence: Enter a character to count: The character 's' appears 4 times.\\n\" },
+        {\"The quick brown fox jumps over the lazy dog\\no\\n\", \"Enter a sentence: Enter a character to count: The character 'o' appears 4 times.\\n\" }
+    };
+
+    bool all_passed = true;
+    for (size_t i = 0; i < tests_from_json.size(); ++i) {
+        std::string actual_output = run_test(tests_from_json[i].input);
+        if (actual_output != tests_from_json[i].expected_output) {
+            std::cerr << \"Test Case \" << i + 1 << \" FAILED!\" << std::endl;
+            std::cerr << \"Input:\\n\" << tests_from_json[i].input << std::endl;
+            std::cerr << \"Expected Output:\\n\" << tests_from_json[i].expected_output << std::endl;
+            std::cerr << \"Actual Output:\\n\" << actual_output << std::endl;
+            all_passed = false;
+        } else {
+            std::cout << \"Test Case \" << i + 1 << \" PASSED.\" << std::endl;
+        }
+    }
+
+    if (all_passed) {
+        std::cout << \"All test cases passed!\" << std::endl;
+    } else {
+        std::cout << \"Some test cases failed.\" << std::endl;
+    }
+
+    return all_passed ? 0 : 1;
+}
+",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

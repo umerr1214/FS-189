@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Car` class that uses composition to include an `Engine` object as a private member. The `Engine` class should have `horsepower` (int) and `fuelType` (string). Implement a `Car` constructor that initializes its `Engine` and a method `Car::start()` that calls an `Engine::start()` method.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Car is attempting to start...\nEngine with 180 HP (Diesel) started!\n"
+    }
+  ],
+  "driver": "int main() { Car myCar(180, \"Diesel\"); myCar.start(); return 0; }",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The Engine::start() method prints a message that implies the engine is already running or idling, rather than indicating it has just started, which is a logical inconsistency with a 'start' method."
+  ]
+}

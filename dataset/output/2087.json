@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a `ResourceLogger` class that dynamically allocates a C-style string in its constructor to store a log message. Implement a destructor that deallocates this memory and prints a message indicating the resource is freed. Demonstrate its usage by creating an object and letting it go out of scope.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Entering main scope.\nResourceLogger constructor called with: A somewhat longer message to demonstrate the issue.\nResourceLogger destructor called. Freeing resource: A somewhat longer message to demonstrate the issue.\nExiting inner scope.\nResourceLogger constructor called with: Short message\nResourceLogger destructor called. Freeing resource: Short message\nExiting main scope."
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"Entering main scope.\" << std::endl;\n    {\n        ResourceLogger myLogger(\"A somewhat longer message to demonstrate the issue.\");\n    }\n    std::cout << \"Exiting inner scope.\" << std::endl;\n    func();\n    std::cout << \"Exiting main scope.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The constructor allocates insufficient memory for the C-style string. It allocates `std::strlen(msg)` bytes instead of `std::strlen(msg) + 1` bytes, failing to reserve space for the null terminator. This leads to a buffer overflow when `std::strcpy` is called, potentially corrupting memory or causing a crash, especially for longer strings. The destructor might print a corrupted message or trigger undefined behavior."
+  ]
+}

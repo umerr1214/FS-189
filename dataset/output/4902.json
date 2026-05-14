@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Book` with members `title` (`std::string`), `author` (`std::string`), and `publicationYear` (int). Write a program that declares an array of three `Book` structs, prompts the user to enter details for each book, and then prints the details of all books.",
+  "test_cases": [
+    {
+      "input": "The Lord of the Rings\nJ.R.R. Tolkien\n1954\nThe Hobbit\nJ.R.R. Tolkien\n1937\nThe Silmarillion\nJ.R.R. Tolkien\n1977\nUnwritten Book\nUnknown\n2024\n",
+      "expected": "Enter details for Book 1:\nTitle: Author: Publication Year: Enter details for Book 2:\nTitle: Author: Publication Year: Enter details for Book 3:\nTitle: Author: Publication Year: Enter details for Book 4:\nTitle: Author: Publication Year: \n--- Book Details ---\nBook 1:\n  Title: The Lord of the Rings\n  Author: J.R.R. Tolkien\n  Publication Year: 1954\nBook 2:\n  Title: The Hobbit\n  Author: J.R.R. Tolkien\n  Publication Year: 1937\nBook 3:\n  Title: The Silmarillion\n  Author: J.R.R. Tolkien\n  Publication Year: 1977\nBook 4:\n  Title: Unwritten Book\n  Author: Unknown\n  Publication Year: 2024\n"
+    }
+  ],
+  "driver": "// The student's code is a complete program that interacts with stdin/stdout. An external test runner would execute it.",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Array out-of-bounds access: The `library` array is declared to hold 3 `Book` objects (indices 0, 1, 2). However, the loops iterate from `i = 0` to `i <= 3`, attempting to access `library[3]` in both the input and output phases. This results in undefined behavior, which could lead to crashes or corrupted data."
+  ]
+}

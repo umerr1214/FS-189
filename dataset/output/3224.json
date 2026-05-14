@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Implement a `Point` class with `x` and `y` coordinates. Provide two overloaded `getX()` methods: one `const` version and one non-`const` version. Explain when each would be called.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--------------------------------------------------------------------------------\nWelcome to the Point Class Demonstration Program!\n--------------------------------------------------------------------------------\nInitial state of myMutablePoint:\nPoint coordinates: X = 100, Y = 200\nAttempting to modify myMutablePoint's X-coordinate via non-const getX().\nState of myMutablePoint after modification:\nPoint coordinates: X = 105, Y = 200\nInitial state of myConstPoint:\nPoint coordinates: X = 300, Y = 400\nRetrieving myConstPoint's X-coordinate via const getX(): 300\n\nIn summary, the const getX() is for reading without modification, primarily on const objects.\nThe non-const getX() is for reading and potentially modifying, only on non-const objects.\n--------------------------------------------------------------------------------\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Both `getX()` methods include unnecessary `std::cerr` logging, which reduces efficiency and clutters output, especially in production.",
+    "The explanation in `main()` and comments are overly verbose and use `std::endl` excessively, which can be less efficient than `\\n` and impacts readability.",
+    "Inconsistent member variable naming (`m_x_coord`, `m_y_coord`) and excessive use of `this->` reduce readability.",
+    "The non-const `getX()` method uses a redundant intermediate reference variable (`ref_x`), which is unnecessary."
+  ]
+}

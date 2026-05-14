@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Modify the `Book` class to include a destructor. The destructor should print a message indicating the title of the book object that is being destroyed.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Starting Correct Version Test ---\nBook 'The Lord of the Rings' (ID: 201) constructed.\nBook 'The Hitchhiker's Guide to the Galaxy' (ID: 202) constructed.\nInside block scope.\nBook 'The Hitchhiker's Guide to the Galaxy' (ID: 202) is being destroyed.\nBook 'Dune' (ID: 203) constructed.\nDynamically allocated book created.\nBook 'Dune' (ID: 203) is being destroyed.\nBook 'Foundation' (ID: 204) constructed.\nBook 'I, Robot' (ID: 205) constructed.\nVector populated.\n--- Correct Version Test Ended ---\nBook 'I, Robot' (ID: 205) is being destroyed.\nBook 'Foundation' (ID: 204) is being destroyed.\nBook 'The Lord of the Rings' (ID: 201) is being destroyed."
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Starting Correct Version Test ---\" << std::endl;\n    demonstrateBookLifecycles();\n    std::cout << \"--- Correct Version Test Ended ---\" << std::endl;\n    return 0;\n}\n\nvoid demonstrateBookLifecycles() {\n    Book book1(\"The Lord of the Rings\", 201);\n    { Book book2(\"The Hitchhiker's Guide to the Galaxy\", 202); std::cout << \"Inside block scope.\" << std::endl; }\n    Book* bookPtr = new Book(\"Dune\", 203);\n    std::cout << \"Dynamically allocated book created.\" << std::endl;\n    delete bookPtr;\n    std::vector<Book> library;\n    library.reserve(2);\n    library.emplace_back(\"Foundation\", 204);\n    library.push_back(Book(\"I, Robot\", 205));\n    std::cout << \"Vector populated.\" << std::endl;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

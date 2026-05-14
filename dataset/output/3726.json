@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that takes a temperature in Celsius as input from the user and converts it to Fahrenheit, displaying the result. Use the formula: F = C * 9/5 + 32. Ensure the calculation handles decimal values correctly.",
+  "test_cases": [
+    { "input": "0.0", "expected": "32.00" },
+    { "input": "100.0", "expected": "212.00" },
+    { "input": "25.5", "expected": "77.90" },
+    { "input": "-10.7", "expected": "12.74" }
+  ],
+  "driver": "int main() {\n    // This driver would compile and execute the user's code.\n    // It would feed each 'input' from test_cases to the user program's stdin\n    // and compare the captured stdout with the 'expected' output.\n    // Example: system(\"g++ -o user_program user_program.cpp\");\n    // system(\"./user_program < input.txt > output.txt\");\n    std::cout << \"Driver would run the user's code with test inputs.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The program reads the Celsius input into an `int` variable (`celsius_int`) instead of a `double`. This causes any decimal part of the input temperature to be truncated before the conversion, violating the requirement to 'handle decimal values correctly'. For example, an input of `25.5` will be read as `25`."
+  ]
+}

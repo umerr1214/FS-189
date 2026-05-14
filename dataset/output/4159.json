@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a function template `printArray(const T arr[], int size)` that can print the elements of any 1D array, regardless of its data type (`int`, `double`, `char`, etc.). Demonstrate its use with an array of integers and an array of doubles.",
+  "test_cases": [
+    { "input": "int arr[] = {10, 20, 30}; printArray(arr, 3);", "expected": "Array elements: 10 20 30 \n" },
+    { "input": "double arr[] = {1.1, 2.2, 3.3, 4.4}; printArray(arr, 4);", "expected": "Array elements: 1.1 2.2 3.3 4.4 \n" },
+    { "input": "char arr[] = {'a', 'b', 'c'}; printArray(arr, 3);", "expected": "Array elements: a b c \n" },
+    { "input": "int arr_empty[] = {}; printArray(arr_empty, 0);", "expected": "Array elements: \n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <iomanip>\n\n// The printArray template function will be placed here by the evaluation system.\n\nint main() {\n    // Test case 1: int array\n    int intArray[] = {10, 20, 30};\n    printArray(intArray, 3);\n\n    // Test case 2: double array\n    double doubleArray[] = {1.1, 2.2, 3.3, 4.4};\n    printArray(doubleArray, 4);\n\n    // Test case 3: char array\n    char charArray[] = {'a', 'b', 'c'};\n    printArray(charArray, 3);\n\n    // Test case 4: empty array\n    int emptyArray[] = {};\n    printArray(emptyArray, 0);\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The loop condition `for (int i = 0; i <= size; ++i)` in `printArray` is an off-by-one error. It attempts to access `arr[size]`, which is one element beyond the valid array bounds (0 to `size-1`). This leads to out-of-bounds memory access and undefined behavior. For an empty array (`size=0`), it incorrectly attempts to access `arr[0]`."
+  ]
+}

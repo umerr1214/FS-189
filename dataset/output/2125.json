@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a `MathOperations` class with three overloaded `add` methods: one that takes two integers, one that takes two doubles, and one that takes three integers. Demonstrate calling each version of the `add` method.",
+  "test_cases": [
+    {
+      "input": "Hardcoded values:\nint_val1 = 2147483640, int_val2 = 5\ndouble_val1 = 0.1, double_val2 = 0.2\nint_val3 = 700000000, int_val4 = 800000000, int_val5 = 600000000",
+      "expected": "Adding two integers (2147483640 + 5): 2147483645\nAdding two doubles (0.1 + 0.2): 0.3\nAdding three integers (700000000 + 800000000 + 600000000): 2100000000"
+    }
+  ],
+  "driver": "The `main` function demonstrates calling each overloaded `add` method with hardcoded values.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The integer `add` methods return `int`, which is not robust against potential overflow for very large input sums (e.g., exceeding `INT_MAX`). While the provided example inputs do not cause overflow, the methods themselves lack overflow handling.",
+    "The output for floating-point addition uses default precision, which might not be robust for all scenarios where specific precision is required, potentially leading to misleading or inaccurate display of results."
+  ]
+}

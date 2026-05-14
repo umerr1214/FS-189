@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that prompts the user to enter a `std::string`. Then, print the entered string to the console in reverse order.",
+  "test_cases": [
+    { "input": "hello", "expected": "Enter a string: olleh\n" },
+    { "input": "world", "expected": "Enter a string: dlrow\n" },
+    { "input": "", "expected": "Enter a string: \n" },
+    { "input": "a", "expected": "Enter a string: a\n" },
+    { "input": "123 456", "expected": "Enter a string: 654 321\n" },
+    { "input": "Racecar", "expected": "Enter a string: racecaR\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <streambuf>\n\n// Declare the user's main function, which is renamed to user_main for testing.\nextern int user_main();\n\n// Function to run a single test case\nstd::string run_test_case(const std::string& input_str) {\n    std::stringstream ss_in(input_str);\n    std::stringstream ss_out;\n\n    // Save original cin/cout buffers\n    std::streambuf* old_cin_buf = std::cin.rdbuf();\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n\n    // Redirect cin/cout\n    std::cin.rdbuf(ss_in.rdbuf());\n    std::cout.rdbuf(ss_out.rdbuf());\n\n    // Call the user's program logic\n    user_main();\n\n    // Restore original cin/cout buffers\n    std::cin.rdbuf(old_cin_buf);\n    std::cout.rdbuf(old_cout_buf);\n\n    return ss_out.str();\n}\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> test_cases = {\n        {\"hello\", \"Enter a string: olleh\\n\"},\n        {\"world\", \"Enter a string: dlrow\\n\"},\n        {\"\", \"Enter a string: \\n\"},\n        {\"a\", \"Enter a string: a\\n\"},\n        {\"123 456\", \"Enter a string: 654 321\\n\"},\n        {\"Racecar\", \"Enter a string: racecaR\\n\"}\n    };\n\n    for (size_t i = 0; i < test_cases.size(); ++i) {\n        const auto& tc = test_cases[i];\n        std::string actual_output = run_test_case(tc.first);\n        if (actual_output == tc.second) {\n            // Test passed logic (e.g., print success message)\n        } else {\n            // Test failed logic (e.g., print error message, expected vs actual)\n        }\n    }\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

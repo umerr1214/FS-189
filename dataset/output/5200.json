@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that continuously reads positive integers from the user using a `while` loop. The loop should terminate when the user enters -1 (a sentinel value). After termination, calculate and print the average of all positive integers entered (excluding the -1).",
+  "test_cases": [
+    { "input": "10\n20\n30\n-1\n", "expected": "Average of positive integers: 20.00" },
+    { "input": "5\n-2\n15\n0\n-1\n", "expected": "Average of positive integers: 10.00" },
+    { "input": "-1\n", "expected": "No positive integers were entered." }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\nint main() {\n    // This driver assumes the compiled program will output to stdout.\n    // Since this is a syntax error, the program won't compile, so the driver won't execute it.\n    // However, for completeness, a placeholder driver is provided.\n    std::cout << \"This program contains a syntax error and cannot be compiled or run by the driver.\\n\";\n    return 0;\n}",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after variable declaration 'dummyVar' in main function, leading to a compilation error."
+  ]
+}

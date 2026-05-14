@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function template `T findMin(T val1, T val2)` that accepts two values of any data type and returns the smaller of the two. Demonstrate its usage with at least two different data types (e.g., `int` and `double`) in `main`.",
+  "test_cases": [
+    { "input": "10 20 (int)", "expected": "10" },
+    { "input": "5.5 3.14 (double)", "expected": "3.14" },
+    { "input": "'Z' 'A' (char)", "expected": "A" }
+  ],
+  "driver": "#include <iostream>\n\n// The `findMin` template from the user's code is expected to be available here.\n\nint main() {\n    // Test with int\n    std::cout << findMin(10, 20) << std::endl;\n    std::cout << findMin(50, 30) << std::endl;\n\n    // Test with double\n    std::cout << findMin(5.5, 3.14) << std::endl;\n    std::cout << findMin(100.1, 100.2) << std::endl;\n\n    // Test with char\n    std::cout << findMin('Z', 'A') << std::endl;\n    std::cout << findMin('a', 'b') << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The `findMin` function template contains a logical error. It uses the comparison `val1 > val2` which causes it to return the maximum of the two values instead of the minimum. The condition should be `val1 < val2`."]
+}

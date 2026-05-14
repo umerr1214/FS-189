@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Design a `ComplexNumber` class with `real` and `imaginary` parts. Overload the binary `+` operator to enable addition of two `ComplexNumber` objects.",
+  "test_cases": [
+    { "input": "c1(2.5, 3.0), c2(1.0, -1.5)", "expected": "(2.50 + 3.00i) + (1.00 - 1.50i) = 3.50 + 1.50i" },
+    { "input": "c1(2.5, 3.0), c4(0.0, 0.0)", "expected": "(2.50 + 3.00i) + (0.00 + 0.00i) = 2.50 + 3.00i" },
+    { "input": "c6(-5.0, -2.0), c7(3.0, 4.0)", "expected": "(-5.00 - 2.00i) + (3.00 + 4.00i) = -2.00 + 2.00i" },
+    { "input": "c9(1.0, 1.0), c10(2.0, 2.0), c11(3.0, 3.0)", "expected": "(1.00 + 1.00i) + (2.00 + 2.00i) + (3.00 + 3.00i) = 6.00 + 6.00i" },
+    { "input": "c13(0.12, 0.34), c14(0.56, -0.78)", "expected": "(0.12 + 0.34i) + (0.56 - 0.78i) = 0.68 - 0.44i" }
+  ],
+  "driver": "See main function in .cpp file.",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

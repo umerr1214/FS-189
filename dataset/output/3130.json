@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Enhance the `setter` methods of the `Student` class. The `setGrade` method should validate that the grade is between 0 and 100, otherwise print an error and keep the old value.",
+  "test_cases": [
+    {
+      "input": "John 85 105 90",
+      "expected": "Student: John, Grade: 85\nError: Grade must be between 0 and 100. Keeping old value.\nStudent: John, Grade: 85\nStudent: John, Grade: 90\n"
+    }
+  ],
+  "driver": "int main() {\n    std::string name;\n    int initialGrade, invalidGrade, validGrade;\n\n    std::cin >> name >> initialGrade >> invalidGrade >> validGrade;\n\n    Student s(name, initialGrade);\n    s.displayStudent();\n\n    s.setGrade(invalidGrade);\n    s.displayStudent();\n\n    s.setGrade(validGrade);\n    s.displayStudent();\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

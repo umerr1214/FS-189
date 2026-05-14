@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "For the `Point2D` class (from Q7) with private `x` and `y` coordinates, overload the stream insertion operator `<<` to enable printing `Point2D` objects directly to `std::cout` in the format \"(x, y)\".",
+  "test_cases": [
+    { "input": "Point2D p1(10, 20);", "expected": "Point p1: (10, 20)\n" },
+    { "input": "Point2D p2(-5, 0);", "expected": "Point p2: (-5, 0)\n" },
+    { "input": "Point2D p3(100, -200);", "expected": "Point p3: (100, -200)\n" },
+    { "input": "Point2D p4; // Default constructor", "expected": "Point p4 (default): (0, 0)\n" }
+  ],
+  "driver": "    Point2D p1(10, 20);\n    Point2D p2(-5, 0);\n    Point2D p3(100, -200);\n    Point2D p4; // Default constructor\n\n    std::cout << \"Point p1: \" << p1 << std::endl;\n    std::cout << \"Point p2: \" << p2 << std::endl;\n    std::cout << \"Point p3: \" << p3 << std::endl;\n    std::cout << \"Point p4 (default): \" << p4 << std::endl;\n",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,25 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Point` with `x` and `y` (double) coordinates. Create two `Point` objects, read their coordinates from the user, and calculate the Euclidean distance between them.",
+  "test_cases": [
+    {
+      "input": "0 0\n3 4",
+      "expected": "The Euclidean distance between the two points is: 5.00000\n"
+    },
+    {
+      "input": "1.5 2.5\n1.5 2.5",
+      "expected": "The Euclidean distance between the two points is: 0.00000\n"
+    },
+    {
+      "input": "abc 1.0\n2.0 3.0",
+      "expected": "The Euclidean distance between the two points is: 0.00000\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not handle invalid input gracefully. If non-numeric input is provided, `std::cin` enters a fail state, causing subsequent reads to fail silently. The program then proceeds with uninitialized or default-initialized values (0.0 in this specific implementation due to explicit initialization), leading to incorrect distance calculation without any error message to the user."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "For a `Product` class with `id` (int), `name` (string), and `price` (double), implement three constructors: one that takes only `id`, one that takes `id` and `name`, and one that takes `id`, `name`, and `price`. Use constructor chaining where appropriate.",
+  "test_cases": [
+    { "input": "", "expected": "ID: 101, Name: Unnamed Product, Price: [indeterminate]\nID: 102, Name: Laptop, Price: [indeterminate]\nID: 103, Name: Mouse, Price: 25.99\n" }
+  ],
+  "driver": "int main() {\n    Product p1(101);\n    Product p2(102, \"Laptop\");\n    Product p3(103, \"Mouse\", 25.99);\n\n    p1.display();\n    p2.display();\n    p3.display();\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The `price` member variable is not initialized in the `Product(int, std::string)` constructor, leading to indeterminate values and undefined behavior when accessed."]
+}

@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that uses nested `for` loops to print the following pattern of asterisks to the console, for a user-specified number of rows 'N':\n*\n**\n***\n****\n(For N=4)",
+  "test_cases": [
+    { "input": "4", "expected": "Enter the number of rows (N): *\n**\n***\n****\n" },
+    { "input": "1", "expected": "Enter the number of rows (N): *\n" },
+    { "input": "5", "expected": "Enter the number of rows (N): *\n**\n***\n****\n*****\n" },
+    { "input": "0", "expected": "Enter the number of rows (N): Number of rows must be a positive integer.\n" },
+    { "input": "-3", "expected": "Enter the number of rows (N): Number of rows must be a positive integer.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// This is a conceptual driver. The actual submitted C++ code has its own main.\n// This driver would typically compile and run the submitted code, providing input via stdin\n// and capturing output from stdout.\n\nint main() {\n    int N;\n    std::cin >> N;\n    // Assuming the submitted code has a main function that reads N and prints the pattern.\n    // The testing framework would execute that main function.\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

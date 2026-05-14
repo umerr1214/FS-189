@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that continuously prompts the user to enter integers until a negative number is entered. After a negative number is input, display the sum of all the positive numbers that were entered. Use a do-while loop.",
+  "test_cases": [
+    { "input": "10 20 30 -5", "expected": "Sum of positive numbers: 60\n" },
+    { "input": "5 0 15 -1", "expected": "Sum of positive numbers: 20\n" },
+    { "input": "100 120 10 -10", "expected": "Sum of positive numbers: 230\n" },
+    { "input": "150 200 10 -10", "expected": "Sum of positive numbers: 360\n" }
+  ],
+  "driver": "The program's `main` function is executed, and standard input is provided. The standard output is captured for comparison with the expected output.",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The variable 'num' is declared as 'signed char' instead of 'int'. This is semantically incorrect for general integer input, as 'signed char' has a very limited range (-128 to 127). Entering numbers outside this range leads to integer overflow/wrap-around, causing incorrect values to be stored, affecting the sum calculation and loop termination logic."
+  ]
+}

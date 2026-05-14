@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Employee` with `name` (string) and `salary` (double). Derive two classes: `Manager` (adds `department` string) and `Engineer` (adds `specialization` string). Implement constructors for all classes.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Compilation error: Missing semicolon after class definition." }
+  ],
+  "driver": "int main() {\n    // The program is expected to fail compilation due to a syntax error.\n    // No runtime execution is expected.\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after 'class Employee' definition."]
+}

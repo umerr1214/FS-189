@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ function `void reverseArray(int arr[], int size)` that takes an integer array and its size, and reverses the array in-place. Use pass-by-reference semantics for the array. Demonstrate with an example array in `main`.",
+  "test_cases": [
+    { "input": "1 2 3 4 5", "expected": "5 4 3 2 1" },
+    { "input": "10 20 30 40", "expected": "40 30 20 10" },
+    { "input": "7", "expected": "7" },
+    { "input": "", "expected": "" },
+    { "input": "1 2", "expected": "2 1" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <sstream>\n#include <string>\n\n// The function `void reverseArray(int arr[], int size)` is expected to be provided.\n\n// Helper to convert an array to a string for output comparison\nstd::string arrayToString(const int arr[], int size) {\n    if (size == 0) return \"\";\n    std::stringstream ss;\n    for (int i = 0; i < size; ++i) {\n        ss << arr[i] << (i == size - 1 ? \"\" : \" \");\n    }\n    return ss.str();\n}\n\n// Helper to convert a space-separated string to a vector of ints\nstd::vector<int> stringToVector(const std::string& s) {\n    std::vector<int> vec;\n    if (s.empty()) return vec;\n    std::stringstream ss(s);\n    int num;\n    while (ss >> num) {\n        vec.push_back(num);\n    }\n    return vec;\n}\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        std::vector<int> vec = stringToVector(line);\n        \n        // Create a C-style array from vector for the function call\n        // Handle empty array case\n        int* arr = nullptr;\n        if (!vec.empty()) {\n            arr = new int[vec.size()];\n            for (size_t i = 0; i < vec.size(); ++i) {\n                arr[i] = vec[i];\n            }\n        }\n        \n        // Call the function under test\n        reverseArray(arr, vec.size());\n\n        // Print the result\n        std::cout << arrayToString(arr, vec.size()) << std::endl;\n\n        // Clean up\n        if (arr != nullptr) {\n            delete[] arr;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the declaration and initialization of 'arr2' in the main function."]
+}

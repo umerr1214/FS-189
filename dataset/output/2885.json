@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a `StringWrapper` class that dynamically allocates memory for a `char*` to store a string. Provide a constructor, a destructor, and a proper copy constructor to ensure deep copying of the string data.",
+  "test_cases": [
+    { "input": "StringWrapper s1(\"Hello\");", "expected": "String: \"Hello\", Length: 5" },
+    { "input": "StringWrapper s2 = s1;", "expected": "String: \"Hello\", Length: 5 (but actually a shallow copy, sharing memory with s1)" },
+    { "input": "Program termination (s1 and s2 destructors)", "expected": "Runtime error: Double-free detected or heap corruption due to shallow copy in StringWrapper's copy constructor." }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Testing Shallow Copy (Logical Error) ---\" << std::endl;\n\n    StringWrapper s1(\"Hello\");\n    std::cout << \"s1 created: \";\n    s1.print();\n\n    StringWrapper s2 = s1; // Copy constructor called (shallow copy)\n    std::cout << \"s2 copied from s1: \";\n    s2.print();\n\n    std::cout << \"Objects s1 and s2 are about to go out of scope.\" << std::endl;\n    std::cout << \"Expect a runtime error (e.g., double-free or heap corruption).\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": []
+}

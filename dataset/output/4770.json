@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that takes three integer numbers as input from the user. Determine and print the largest among the three numbers using `if-else if-else` statements.",
+  "test_cases": [
+    { "input": "10 20 5", "expected": "The largest number is: 20\n" },
+    { "input": "20 10 5", "expected": "The largest number is: 20\n" },
+    { "input": "10 0 5", "expected": "The largest number is: 10\n" },
+    { "input": "5 10 20", "expected": "The largest number is: 20\n" },
+    { "input": "0 0 0", "expected": "The largest number is: 0\n" }
+  ],
+  "driver": "#include <iostream>\n\nint main() {\n    int n1, n2, n3;\n    // This driver simulates how an input would be provided to the student's program.\n    // The student's program is expected to read from std::cin and print to std::cout.\n    // The actual test system would pipe input to the student's compiled executable.\n    if (std::cin >> n1 >> n2 >> n3) {\n        // We don't have the student's logic here, as their code is a full program.\n        // This driver is just a placeholder for the environment setup.\n        std::cout << \"Test input processed by driver (conceptually): \" << n1 << \" \" << n2 << \" \" << n3 << std::endl;\n    } else {\n        std::cerr << \"Driver failed to read input.\" << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The assignment operator '=' is used instead of the comparison operator '==' in the 'if (num1 = num2)' condition. This semantically changes the value of 'num1' and evaluates the result of the assignment, leading to incorrect control flow and variable state."
+  ]
+}

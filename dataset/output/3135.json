@@ -1,0 +1,43 @@
+{
+  "language": "c++",
+  "question": "Enhance the `setter` methods of the `Student` class. The `setGrade` method should validate that the grade is between 0 and 100, otherwise print an error and keep the old value.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Student: Charlie, Grade: 88\n"
+    },
+    {
+      "input": "",
+      "expected": "\nTest Case 1: Set valid grade (95)\nStudent: Charlie, Grade: 95\n\n"
+    },
+    {
+      "input": "",
+      "expected": "Test Case 2: Set invalid grade (-1)\nError: Invalid grade -1. Grade must be between 0 and 100. Keeping old value (95).\nStudent: Charlie, Grade: 95\n\n"
+    },
+    {
+      "input": "",
+      "expected": "Test Case 3: Set invalid grade (101)\nError: Invalid grade 101. Grade must be between 0 and 100. Keeping old value (95).\nStudent: Charlie, Grade: 95\n\n"
+    },
+    {
+      "input": "",
+      "expected": "Test Case 4: Set valid grade (0) - lower bound\nStudent: Charlie, Grade: 0\n\n"
+    },
+    {
+      "input": "",
+      "expected": "Test Case 5: Set valid grade (100) - upper bound\nStudent: Charlie, Grade: 100\n\n"
+    },
+    {
+      "input": "",
+      "expected": "\nTest Case 6: Initial student with invalid grade in constructor\nWarning: Initial grade 120 for David is invalid. Setting to 0.\nStudent: David, Grade: 0\n\n"
+    },
+    {
+      "input": "",
+      "expected": "Test Case 7: Initial student with valid grade in constructor\nStudent: Eve, Grade: 50\n\n"
+    }
+  ],
+  "driver": "int main() {\n    Student s1(\"Charlie\", 88);\n    s1.printInfo();\n\n    std::cout << \"\\nTest Case 1: Set valid grade (95)\" << std::endl;\n    s1.setGrade(95);\n    s1.printInfo();\n\n    std::cout << \"\\nTest Case 2: Set invalid grade (-1)\" << std::endl;\n    s1.setGrade(-1);\n    s1.printInfo();\n\n    std::cout << \"\\nTest Case 3: Set invalid grade (101)\" << std::endl;\n    s1.setGrade(101);\n    s1.printInfo();\n\n    std::cout << \"\\nTest Case 4: Set valid grade (0) - lower bound\" << std::endl;\n    s1.setGrade(0);\n    s1.printInfo();\n\n    std::cout << \"\\nTest Case 5: Set valid grade (100) - upper bound\" << std::endl;\n    s1.setGrade(100);\n    s1.printInfo();\n\n    std::cout << \"\\nTest Case 6: Initial student with invalid grade in constructor\" << std::endl;\n    Student s2(\"David\", 120);\n    s2.printInfo();\n\n    std::cout << \"\\nTest Case 7: Initial student with valid grade in constructor\" << std::endl;\n    Student s3(\"Eve\", 50);\n    s3.printInfo();\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

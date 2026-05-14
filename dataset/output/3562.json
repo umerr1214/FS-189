@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function template `void printArray(const T arr[], int size)` that can print all elements of a 1D array of any data type `T`. Demonstrate its usage with an `int` array and a `char` array.",
+  "test_cases": [
+    {
+      "input": "Demonstration with int array: {1, 2, 3, 4, 5}, char array: {'H', 'e', 'l', 'l', 'o'}",
+      "expected": "[1, 2, 3, 4, 5]\n[H, e, l, l, o]\n"
+    }
+  ],
+  "driver": "int intArray[] = {1, 2, 3, 4, 5};\nint intSize = sizeof(intArray) / sizeof(intArray[0]);\nprintArray(intArray, intSize);\n\nchar charArray[] = {'H', 'e', 'l', 'l', 'o'};\nint charSize = sizeof(charArray) / sizeof(charArray[0]);\nprintArray(charArray, charSize);\n",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing 'typename' or 'class' keyword in template parameter list for 'T'."
+  ]
+}

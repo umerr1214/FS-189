@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a `ResourceLogger` class that dynamically allocates a C-style string in its constructor to store a log message. Implement a destructor that deallocates this memory and prints a message indicating the resource is freed. Demonstrate its usage by creating an object and letting it go out of scope.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Entering main scope (malloc version)...\nResourceLogger (malloc version) created with message: This is a message logged with malloc.\nResourceLogger (malloc version) created with message: Another message, different scope.\nInside nested scope (malloc version).\nResource (malloc version) freed: Another message, different scope.\nResourceLogger (malloc version) created with message: \nResource (malloc version) freed: \nExiting main scope (malloc version)...\nResource (malloc version) freed: This is a message logged with malloc.\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"Entering main scope (malloc version)...\" << std::endl;\n\n    ResourceLogger logger1(\"This is a message logged with malloc.\");\n\n    { \n        ResourceLogger logger2(\"Another message, different scope.\");\n        std::cout << \"Inside nested scope (malloc version).\" << std::endl;\n    } \n\n    ResourceLogger logger3(nullptr);\n\n    std::cout << \"Exiting main scope (malloc version)...\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `ResourceLogger` class uses C-style memory allocation (`malloc` and `free`) instead of C++'s `new` and `delete` operators. This requires explicit casting and is less idiomatic for C++ development, reducing readability and maintainability. While functionally correct, it's not the preferred C++ approach for dynamic memory management. Additionally, parameter and member variable names (`log_msg_data`, `message_ptr`) could be more descriptive to improve readability."
+  ]
+}

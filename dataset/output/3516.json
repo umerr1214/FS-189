@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Define a C++ `struct Book` with members `std::string title`, `std::string author`, and `int publicationYear`. In `main`, create an array of 3 `Book` structs, populate their details, and then iterate through the array to print the details of each book.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book 1:\n  Title: The Hitchhiker's Guide to the Galaxy\n  Author: Douglas Adams\n  Year: \n\nBook 2:\n  Title: Pride and Prejudice\n  Author: Jane Austen\n  Year: \n\nBook 3:\n  Title: 1984\n  Author: George Orwell\n  Year: \n\n"
+    }
+  ],
+  "driver": "g++ -o solution solution.cpp && ./solution",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    {
+      "line": 34,
+      "column": 23,
+      "message": "The `publicationYear` (an integer) is explicitly cast to `char` during printing, which misinterprets its semantic meaning. It should be printed as an integer to represent the year correctly."
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Write a program that asks the user to input a temperature in Celsius and converts it to Fahrenheit, then prints the result. The formula is F = C * 9/5 + 32.",
+  "test_cases": [
+    { "input": "25", "expected": "Enter temp (C): Temp (F): 77\n" },
+    { "input": "0", "expected": "Enter temp (C): Temp (F): 32\n" },
+    { "input": "-10", "expected": "Enter temp (C): Temp (F): 14\n" },
+    { "input": "37.5", "expected": "Enter temp (C): Temp (F): 99.5\n" }
+  ],
+  "driver": "g++ -o solution 4706.cpp && echo \"$input\" | ./solution",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Poor variable names ('c', 'f') make the code less readable without context.",
+    "The output prompts are abbreviated ('Enter temp (C)', 'Temp (F)'), reducing clarity for the user.",
+    "Lack of consistent formatting for floating-point output (e.g., using std::fixed and std::setprecision) can lead to inconsistent or overly verbose results, affecting readability of the output.",
+    "The entire main function body is condensed into a few lines without proper spacing or comments, significantly reducing readability."
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "language": "c++",
+  "question": "Create a `Temperature` class with a private `celsius` (double) member. Provide a public `setCelsius()` method that validates input (e.g., must be >= absolute zero). Implement public `getFahrenheit()` and `getKelvin()` methods to convert and return the temperature.",
+  "test_cases": [
+    {
+      "input": "25.0",
+      "expected": "--- Valid Temperature (Room Temp) ---\nAttempting to set Celsius to: 25.0 C\nTemperature set successfully.\nCurrent Temperature:\n  Celsius:    25.00 C\n  Fahrenheit: 77.00 F\n  Kelvin:     298.15 K\n"
+    },
+    {
+      "input": "-273.15",
+      "expected": "--- Absolute Zero ---\nAttempting to set Celsius to: -273.15 C\nTemperature set successfully.\nCurrent Temperature:\n  Celsius:    -273.15 C\n  Fahrenheit: -459.67 F\n  Kelvin:     0.00 K\n"
+    },
+    {
+      "input": "-300.0",
+      "expected": "--- Below Absolute Zero (Invalid Input - Robustness Issue) ---\nAttempting to set Celsius to: -300.0 C\nWarning: Input temperature -300.0 C is below absolute zero (-273.15 C). Setting value anyway, but this may lead to invalid conversions.\nFailed to set temperature (input invalid or warning issued). Note: internal state might be invalid.\nCurrent Temperature:\n  Celsius:    -300.00 C\n  Fahrenheit: -508.00 F\n  Kelvin:     -26.85 K\n"
+    },
+    {
+      "input": "100.0",
+      "expected": "--- Valid Temperature (Boiling Point) ---\nAttempting to set Celsius to: 100.0 C\nTemperature set successfully.\nCurrent Temperature:\n  Celsius:    100.00 C\n  Fahrenheit: 212.00 F\n  Kelvin:     373.15 K\n"
+    },
+    {
+      "input": "-273.16",
+      "expected": "--- Slightly Below Absolute Zero (Invalid Input - Robustness Issue) ---\nAttempting to set Celsius to: -273.16 C\nWarning: Input temperature -273.16 C is below absolute zero (-273.15 C). Setting value anyway, but this may lead to invalid conversions.\nFailed to set temperature (input invalid or warning issued). Note: internal state might be invalid.\nCurrent Temperature:\n  Celsius:    -273.16 C\n  Fahrenheit: -459.69 F\n  Kelvin:     -0.01 K\n"
+    }
+  ],
+  "driver": "// The `run_test` function and `main` function provided in the C++ file serve as the driver.\n// It creates a Temperature object, calls `setCelsius` with various values (valid and invalid),\n// and then prints the Celsius, Fahrenheit, and Kelvin conversions.\n// The expected output reflects the behavior of the `setCelsius` method, specifically how it handles\n// invalid input by updating the internal state despite indicating a failure.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `setCelsius` method fails to maintain the class invariant: when an invalid temperature (below absolute zero) is provided, it updates the private `celsius` member with this invalid value, even though it returns `false` and prints a warning. This corrupts the object's internal state, leading to nonsensical results from `getFahrenheit()` and `getKelvin()` for that invalid state.",
+    "The constructor also calls `setCelsius`, inheriting the same robustness flaw if an invalid initial temperature is passed."
+  ]
+}

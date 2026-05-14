@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `void addNumbers(int* ptr1, int* ptr2, int* sumPtr)` that takes pointers to two integers and a pointer to a third integer, then calculates the sum of the first two and stores it at the location pointed to by `sumPtr`. Demonstrate its usage in `main`.",
+  "test_cases": [
+    { "input": "", "expected": "Sum is: 30\nAnother sum: 10\n" }
+  ],
+  "driver": "    int   a = 10;\n    int     b = 20;\n    int        c = 0;\n\n    addNumbers(&a, &b, &c);\n\n    std::cout << \"Sum is: \" << c << std::endl;\n\n    int valA = -5;\n    int valB = 15;\n    int valC = 0;\n    addNumbers(&valA, &valB, &valC);\n    std::cout << \"Another sum: \" << valC << std::endl;\n\n    return 0;",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Poor variable naming (e.g., `p1`, `p2`, `ps`, `a`, `b`, `c`, `valA`, `valB`, `valC`) significantly reduces code readability.",
+    "The use of unnecessary intermediate variables (`val1`, `val2`, `res` in `addNumbers`) adds verbosity without improving clarity or efficiency for such a simple operation.",
+    "Inconsistent formatting and lack of comments make the code harder to understand and maintain.",
+    "Including `<vector>` header unnecessarily adds to compilation time and executable size, albeit minimally for this example."
+  ]
+}

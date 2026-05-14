@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Model a `Course` class that aggregates `Student` objects. The `Course` class should have a `courseName` (string) and maintain a collection (e.g., `std::vector`) of `Student` objects. Implement methods to add a student to the course and display all enrolled students.",
+  "test_cases": [
+    { "input": "Add students Alice (101), Bob (102), Charlie (103) to C++ Programming course and display.", "expected": "Course: C++ Programming\n  Student ID: 101, Name: Alice Smith\n  Student ID: 102, Name: Bob Johnson\n  Student ID: 103, Name: Charlie Brown\n" }
+  ],
+  "driver": "int main() {\n    Course cppCourse(\"C++ Programming\");\n\n    cppCourse.addStudent(new Student(\"Alice Smith\", 101));\n    cppCourse.addStudent(new Student(\"Bob Johnson\", 102));\n    cppCourse.addStudent(new Student(\"Charlie Brown\", 103));\n\n    cppCourse.displayStudents();\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": []
+}

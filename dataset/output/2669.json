@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define a C++ class named `Book` with private member variables for `title` (string), `author` (string), and `isbn` (string). Implement public methods to `setTitle`, `setAuthor`, `setISBN` and `displayBookInfo` which prints all details.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "Title: The Hitchhiker's Guide to the Galaxy\nAuthor: Douglas Adams\nISBN: 978-0345391803\n"
+    }
+  ],
+  "driver": "Book myBook;\nmyBook.setTitle(\"The Hitchhiker's Guide to the Galaxy\");\nmyBook.setAuthor(\"Douglas Adams\");\nmyBook.setISBN(\"978-0345391803\");\nmyBook.displayBookInfo();",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The `displayBookInfo` method contains a logical error where it prints hardcoded empty strings instead of the actual `title`, `author`, and `isbn` member variables that were set."]
+}

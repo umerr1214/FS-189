@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that calculates the sum of the digits of a given integer. For example, if the input is 123, the output should be 6 (1+2+3).",
+  "test_cases": [
+    { "input": "123", "expected": "6" },
+    { "input": "45", "expected": "9" },
+    { "input": "7", "expected": "7" },
+    { "input": "0", "expected": "0" },
+    { "input": "999", "expected": "27" },
+    { "input": "100", "expected": "1" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n\n// The function sumDigits will be provided by the user's code.\n// We only need to define the test runner.\n\nvoid run_test(int input, int expected) {\n    int result = sumDigits(input);\n    std::cout << \"Input: \" << input << \", Expected: \" << expected << \", Got: \" << result;\n    if (result == expected) {\n        std::cout << \" (PASS)\\n\";\n    } else {\n        std::cout << \" (FAIL)\\n\";\n    }\n}\n\nint main() {\n    run_test(123, 6);\n    run_test(45, 9);\n    run_test(7, 7);\n    run_test(0, 0);\n    run_test(999, 27);\n    run_test(100, 1);\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

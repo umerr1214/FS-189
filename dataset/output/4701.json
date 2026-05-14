@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Implement a simple menu-driven program for a basic task list (e.g., Add Task, View Tasks, Exit). Use a `do-while` loop to keep displaying the menu until the user chooses to exit.",
+  "test_cases": [
+    {
+      "input": "1\nGo to the gym\n1\nPrepare dinner\n2\n1\n\n4\nview\n2\n3\n",
+      "expected": "\n--- Task List Menu ---\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: Enter task description: Task added successfully.\n\n--- Task List Menu ---\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: Enter task description: Task added successfully.\n\n--- Task List Menu ---\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: \n--- Your Tasks ---\n1. Go to the gym\n2. Prepare dinner\n\n--- Task List Menu ---\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: Enter task description: Task description cannot be empty. Task not added.\n\n--- Task List Menu ---\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: Invalid input. Please enter a number: Invalid choice. Please select an option between 1 and 3.\n\n--- Task List Menu ---\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: \n--- Your Tasks ---\n1. Go to the gym\n2. Prepare dinner\n\n--- Task List Menu ---\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: Exiting program. Goodbye!\n"
+    },
+    {
+      "input": "2\n1\nFinish report\n2\n3\n",
+      "expected": "\n--- Task List Menu ---\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: No tasks to display.\n\n--- Task List Menu ---\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: Enter task description: Task added successfully.\n\n--- Task List Menu ---\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: \n--- Your Tasks ---\n1. Finish report\n\n--- Task List Menu ---\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: Exiting program. Goodbye!\n"
+    },
+    {
+      "input": "invalid_input\n1\nAnother task\n3\n",
+      "expected": "\n--- Task List Menu ---\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: Invalid input. Please enter a number: Enter task description: Task added successfully.\n\n--- Task List Menu ---\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: Exiting program. Goodbye!\n"
+    }
+  ],
+  "driver": "/*\nThis is a placeholder driver. In a real testing environment,\nthe test harness would redirect stdin/stdout for the student's program.\nFor this dataset generation, we assume the test harness\nwill execute the student's program with the provided input\nand compare its output with the expected output.\n*/\n#include <iostream>\nint main() {\n    // The actual program to be tested will be compiled and run separately,\n    // with its standard input and output streams redirected.\n    // This driver merely serves as a structural component for the JSON.\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

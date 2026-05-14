@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter their name (as a single word) and their age. Then, print a greeting message displaying both pieces of information.",
+  "test_cases": [
+    { "input": "David\n", "expected": "Hello, David! You are [garbage_value] years old.\n" }
+  ],
+  "driver": "g++ -o 4320 4320.cpp && ./4320",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The variable 'age' is used in the output statement without being initialized or having a value assigned, resulting in undefined behavior."]
+}

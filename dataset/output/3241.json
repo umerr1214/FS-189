@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Wallet` class with a private `balance`. Implement `deposit(amount)` and `withdraw(amount)` public methods. Ensure `deposit` only accepts positive amounts and `withdraw` only proceeds if sufficient funds are available.",
+  "test_cases": [
+    { "input": "Initial balance: 0\nDeposited 100. New balance: 100\nDeposited 0. New balance: 100\nWarning: Added negative amount -50. New balance: 50\nBalance after deposits: 50\nWithdrew 20. New balance: 30\nAttempted to withdraw 0. Balance unchanged: 30\nWarning: Withdrew negative amount -30 (effectively deposited). New balance: 60\nBalance after withdrawals: 60\nInsufficient funds to withdraw 500. Current balance: 60\nWithdrew 80. New balance: -20\nFinal balance: -20", "expected": "Initial balance: 0\nDeposited 100. New balance: 100\nError: Deposit amount must be positive. Received: 0\nError: Deposit amount must be positive. Received: -50\nBalance after deposits: 100\nWithdrew 20. New balance: 80\nError: Withdraw amount must be positive. Received: 0\nError: Withdraw amount must be positive. Received: -30\nBalance after withdrawals: 80\nInsufficient funds to withdraw 500. Current balance: 80\nWithdrew 80. New balance: 0\nFinal balance: 0" }
+  ],
+  "driver": "int main() {\n    Wallet myWallet;\n\n    std::cout << \"Initial balance: \" << myWallet.getBalance() << std::endl;\n\n    myWallet.deposit(100);\n    myWallet.deposit(0);\n    myWallet.deposit(-50);\n    std::cout << \"Balance after deposits: \" << myWallet.getBalance() << std::endl;\n\n    myWallet.withdraw(20);\n    myWallet.withdraw(0);\n    myWallet.withdraw(-30);\n    std::cout << \"Balance after withdrawals: \" << myWallet.getBalance() << std::endl;\n\n    myWallet.withdraw(500);\n    myWallet.withdraw(80);\n    std::cout << \"Final balance: \" << myWallet.getBalance() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `deposit` method accepts 0 as a valid amount, violating the 'only accepts positive amounts' requirement.",
+    "The `deposit` method incorrectly adds negative amounts to the balance instead of rejecting them, leading to an unintended 'withdrawal' behavior.",
+    "The `withdraw` method allows withdrawing 0, which is a no-op but not explicitly disallowed for 'positive amounts'.",
+    "The `withdraw` method incorrectly treats negative amounts as deposits (by subtracting a negative value), violating its intended purpose and creating a security vulnerability."
+  ]
+}

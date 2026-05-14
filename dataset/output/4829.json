@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Student` with members `studentID` (int), `name` (`std::string`), and `gpa` (double). Write a program that creates an instance of `Student`, prompts the user to enter its details, and then prints all the student's information.",
+  "test_cases": [
+    {
+      "input": "101\nJohn Smith\n3.8",
+      "expected": "Enter student ID: Enter student name: Enter student GPA:\nStudent Information:\nID: 101\nName: John Smith\nGPA: 3.8\n"
+    }
+  ],
+  "driver": "g++ 4829.cpp -o 4829 && echo -e \"101\\nJohn Smith\\n3.8\" | ./4829",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The program uses `std::cin >> s.name;` to read the student's name after reading an integer. This operator only reads a single word, leaving the rest of a multi-word name (like 'Smith') and the newline character in the buffer. Consequently, `s.name` will only contain 'John', and the subsequent `std::cin >> s.gpa;` will attempt to read ' Smith\\n3.8', causing input failure and `s.gpa` to remain 0, leading to incorrect output."
+  ]
+}

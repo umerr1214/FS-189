@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Animal` with a virtual public method `makeSound()` that prints a generic sound. Derive `Dog` and `Cat` classes from `Animal`. Each derived class should override `makeSound()` to print its specific sound (e.g., \"Woof!\", \"Meow!\"). Demonstrate polymorphic behavior by calling `makeSound()` through a pointer to the base class `Animal`.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation Error" }
+  ],
+  "driver": "int main() { Animal* myDog = new Dog(); Animal* myCat = new Cat(); Animal* genericAnimal = new Animal(); myDog->makeSound(); myCat->makeSound(); genericAnimal->makeSound(); delete myDog; delete myCat; delete genericAnimal; return 0; }",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "missing semicolon after 'std::cout << \"Woof!\"'"
+  ]
+}

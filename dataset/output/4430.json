@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Write a program that takes a positive integer from the user and determines if it is a prime number (divisible only by 1 and itself).",
+  "test_cases": [
+    { "input": "1", "expected": "1 is not a prime number.\n" },
+    { "input": "2", "expected": "2 is a prime number.\n" },
+    { "input": "4", "expected": "4 is not a prime number.\n" },
+    { "input": "997", "expected": "997 is a prime number.\n" },
+    { "input": "999", "expected": "999 is not a prime number.\n" },
+    { "input": "0", "expected": "Please enter a positive integer greater than 0.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <streambuf>\n\n// Assumes the user's solution is encapsulated in a 'solve()' function.\n// The 'main' function in the user's code should simply call 'solve()'.\nstd::string run_user_code(const std::string& input) {\n    std::istringstream iss(input);\n    std::streambuf* old_cin_buf = std::cin.rdbuf(iss.rdbuf());\n\n    std::ostringstream oss;\n    std::streambuf* old_cout_buf = std::cout.rdbuf(oss.rdbuf());\n\n    solve(); \n\n    std::cin.rdbuf(old_cin_buf);\n    std::cout.rdbuf(old_cout_buf);\n\n    return oss.str();\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The primality test is inefficient, checking divisors up to `n / 2` instead of `sqrt(n)`.",
+    "The loop iterates through all numbers (even and odd) up to the limit, missing optimization to check only 2 and then odd numbers."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program to concatenate two C-style strings (character arrays) into a third C-style string without using standard library functions like `strcat`.",
+  "test_cases": [
+    { "input": "Hello \nWorld!\n", "expected": "Concatenated: Hello World!\n" },
+    { "input": "\nTest\n", "expected": "Concatenated: Test\n" },
+    { "input": "Test\n\n", "expected": "Concatenated: Test\n" },
+    { "input": "\n\n", "expected": "Concatenated: \n" },
+    { "input": "Programming \nis fun!\n", "expected": "Concatenated: Programming is fun!\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <cstring> // For strncpy, memset\n\n// Assumed to be provided by the user's code\nint myStrlen(const char* str);\nvoid myStrcat(char* dest, const char* src1, const char* src2);\n\nint main() {\n    std::string s1_str, s2_str;\n    std::getline(std::cin, s1_str);\n    std::getline(std::cin, s2_str);\n\n    const int MAX_LEN = 200; // Sufficiently large buffer\n    char str1_arr[MAX_LEN];\n    char str2_arr[MAX_LEN];\n    char result_arr[MAX_LEN * 2];\n\n    std::strncpy(str1_arr, s1_str.c_str(), MAX_LEN - 1);\n    str1_arr[MAX_LEN - 1] = '\\0';\n    std::strncpy(str2_arr, s2_str.c_str(), MAX_LEN - 1);\n    str2_arr[MAX_LEN - 1] = '\\0';\n\n    std::memset(result_arr, 0, sizeof(result_arr)); // Ensure buffer is clean\n\n    myStrcat(result_arr, str1_arr, str2_arr);\n\n    std::cout << \"Concatenated: \" << result_arr << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": []
+}

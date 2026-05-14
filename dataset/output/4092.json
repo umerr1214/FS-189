@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a function `swapValues(int* ptr1, int* ptr2)` that takes two integer pointers as arguments and swaps the values they point to. Demonstrate this function by swapping two variables in your `main` function.",
+  "test_cases": [
+    { "input": "", "expected": "" }
+  ],
+  "driver": "#include <iostream>\n\nvoid swapValues(int* ptr1, int* ptr2) {\n    int temp = *ptr1;\n    *ptr1 = *ptr2;\n    *ptr2 = temp;\n}\n\nint main() {\n    int x = 5;\n    int y = 15;\n    std::cout << \"Initial: x = \" << x << \", y = \" << y << std::endl;\n    swapValues(&x, &y);\n    std::cout << \"Swapped: x = \" << x << \", y = \" << y << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": []
+}

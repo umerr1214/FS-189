@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "For the `Book` class (from a previous problem), overload the output stream operator `<<` to allow printing `Book` objects directly to `std::cout` in a formatted way (e.g., \"Title: [title], Author: [author], ISBN: [isbn]\").",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book 1 details (inefficient string construction):\nTitle: The Lord of the Rings, Author: J.R.R. Tolkien, ISBN: 978-0618260274\n\nBook 2 details (inefficient string construction):\nTitle: Dune, Author: Frank Herbert, ISBN: 978-0441013593\n"
+    }
+  ],
+  "driver": "    Book book1(\"The Lord of the Rings\", \"J.R.R. Tolkien\", \"978-0618260274\");\n    Book book2(\"Dune\", \"Frank Herbert\", \"978-0441013593\");\n\n    std::cout << \"Book 1 details (inefficient string construction):\\n\";\n    std::cout << book1 << std::endl;\n    std::cout << \"\\nBook 2 details (inefficient string construction):\\n\";\n    std::cout << book2 << std::endl;\n",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The overloaded output stream operator constructs a temporary `std::string` object to hold the entire formatted output before streaming it to `std::ostream`. This is less efficient than directly streaming each component (title, author, ISBN) to the output stream, as it involves unnecessary memory allocation and copying for the temporary string."
+  ]
+}

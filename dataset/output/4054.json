@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that calculates the factorial of a non-negative integer entered by the user. Use a `for` loop to perform the calculation. Handle invalid input (negative numbers) by printing an error message.",
+  "test_cases": [
+    { "input": "5", "expected": "Factorial of 5 is 120\n" },
+    { "input": "0", "expected": "Factorial of 0 is 1\n" },
+    { "input": "-3", "expected": "Error: Factorial is not defined for negative numbers.\n" }
+  ],
+  "driver": "int main() {\n    int num;\n    long long factorial = 1;\n\n    std::cout << \"Enter a non-negative integer: \";\n    std::cin >> num;\n\n    if (num < 0) {\n        std::cout << \"Error: Factorial is not defined for negative numbers.\" << std::endl;\n    } else {\n        for (int i = 1; i <= num; ++i) {\n            factorial *= i;\n        }\n        std::cout << \"Factorial of \" << num << \" is \" << factorial << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon at the end of the `std::cout` statement inside the `if (num < 0)` block."
+  ]
+}

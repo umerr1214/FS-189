@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `bool areMatricesEqual(int mat1[ROWS][COLS], int mat2[ROWS][COLS], int rows, int cols)` that checks if two 2D integer matrices are identical. Demonstrate with example matrices in `main`.",
+  "test_cases": [
+    { "input": "mat1={{1,2,3},{4,5,6},{7,8,9}}, mat2={{1,2,3},{4,5,6},{7,8,9}}, rows=3, cols=3", "expected": "Test 1: Matrices are equal.\n" },
+    { "input": "mat1={{1,2,3},{4,5,6},{7,8,9}}, mat2={{1,2,3},{4,0,6},{7,8,9}}, rows=3, cols=3", "expected": "Test 2: Matrices are not equal.\n" },
+    { "input": "mat1={{1,2,3},{4,5,6},{7,8,9}}, mat4={{1,2,3},{4,5,6},{7,8,0}}, rows=2, cols=2", "expected": "Test 3: Matrices (2x2) are equal.\n" }
+  ],
+  "driver": "int main() {\n    int matrix1[MAX_ROWS][MAX_COLS] = {\n        {1, 2, 3},\n        {4, 5, 6},\n        {7, 8, 9}\n    };\n\n    int matrix2[MAX_ROWS][MAX_COLS] = {\n        {1, 2, 3},\n        {4, 5, 6},\n        {7, 8, 9}\n    };\n\n    int matrix3[MAX_ROWS][MAX_COLS] = {\n        {1, 2, 3},\n        {4, 0, 6},\n        {7, 8, 9}\n    };\n\n    int matrix4[MAX_ROWS][MAX_COLS] = {\n        {1, 2, 3},\n        {4, 5, 6},\n        {7, 8, 0}\n    };\n    \n    if (areMatricesEqual(matrix1, matrix2, 3, 3)) {\n        std::cout << \"Test 1: Matrices are equal.\" << std::endl;\n    } else {\n        std::cout << \"Test 1: Matrices are not equal.\" << std::endl;\n    }\n\n    if (areMatricesEqual(matrix1, matrix3, 3, 3)) {\n        std::cout << \"Test 2: Matrices are equal.\" << std::endl;\n    } else {\n        std::cout << \"Test 2: Matrices are not equal.\" << std::endl;\n    }\n\n    if (areMatricesEqual(matrix1, matrix4, 2, 2)) {\n        std::cout << \"Test 3: Matrices (2x2) are equal.\" << std::endl;\n    } else {\n        std::cout << \"Test 3: Matrices (2x2) are not equal.\" << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The `areMatricesEqual` function semantically misinterprets its parameters `rows` and `cols`. It uses the global `MAX_ROWS` and `MAX_COLS` for loop bounds instead of the provided `rows` and `cols` parameters, leading to comparing more elements than intended by the caller. This can result in incorrect comparison results when comparing sub-matrices or smaller actual dimensions."]
+}

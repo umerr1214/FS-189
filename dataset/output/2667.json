@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Revisit the `Shape` hierarchy (with `Shape` as an abstract base class, and derived `Circle`/`Rectangle`). Demonstrate the importance of a virtual destructor in the `Shape` base class. Create a `Shape` pointer that points to a dynamically allocated `Circle` or `Rectangle` object, and then `delete` it through the `Shape` pointer. Explain the consequences if the base class destructor were not virtual.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating Correct Polymorphic Destruction (Virtual Destructor) ---\n\n--- Case 1: Deleting a dynamically allocated Circle via Shape* ---\nShape constructor called.\nCircle constructor called with radius 5.\nI am a Circle with radius 5.\nDeleting myCircle via Shape*...\nCircle destructor called.\nShape destructor called.\nCircle object deleted.\n\n--- Case 2: Deleting a dynamically allocated Rectangle via Shape* ---\nShape constructor called.\nRectangle constructor called with width 4 and height 6.\nI am a Rectangle with width 4 and height 6.\nDeleting myRectangle via Shape*...\nRectangle destructor called.\nShape destructor called.\nRectangle object deleted.\n\n--- Case 3: Using a vector of Shape pointers for multiple objects ---\nShape constructor called.\nCircle constructor called with radius 2.5.\nShape constructor called.\nRectangle constructor called with width 3 and height 7.\nShape constructor called.\nCircle constructor called with radius 1.\nDisplaying info for all shapes in the vector:\nI am a Circle with radius 2.5.\nI am a Rectangle with width 3 and height 7.\nI am a Circle with radius 1.\n\nDeleting all shapes in the vector:\nDeleting a shape...\nCircle destructor called.\nShape destructor called.\nDeleting a shape...\nRectangle destructor called.\nShape destructor called.\nDeleting a shape...\nCircle destructor called.\nShape destructor called.\n\n--- Explanation of Consequences if Destructor were NOT Virtual ---\nIf the `Shape` base class destructor were not virtual, deleting a derived object\n(e.g., `Circle` or `Rectangle`) through a base class pointer (`Shape*`) would lead to\nundefined behavior. Specifically, only the `Shape` destructor would be called,\nand the derived class's destructor (`~Circle()` or `~Rectangle()`) would be skipped.\nThis is problematic because derived classes often manage their own resources (e.g.,\ndynamically allocated memory, file handles, network connections). Failing to call\nthe derived destructor would result in these resources not being properly released,\ncausing resource leaks (like memory leaks) and potentially program instability.\nBy making the base class destructor `virtual`, C++ ensures that the entire object\nhierarchy is correctly unwound and all resources are deallocated, preserving resource integrity.\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

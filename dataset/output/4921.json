@@ -1,0 +1,26 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that takes a total number of seconds as input from the user and converts it into equivalent hours, minutes, and remaining seconds, then prints the result.",
+  "test_cases": [
+    { "input": "0", "expected": "0h 0m 0s" },
+    { "input": "59", "expected": "0h 0m 59s" },
+    { "input": "60", "expected": "0h 1m 0s" },
+    { "input": "3599", "expected": "0h 59m 59s" },
+    { "input": "3600", "expected": "1h 0m 0s" },
+    { "input": "3601", "expected": "1h 0m 1s" },
+    { "input": "7200", "expected": "2h 0m 0s" },
+    { "input": "86399", "expected": "23h 59m 59s" },
+    { "input": "90000", "expected": "25h 0m 0s" },
+    { "input": "123456789", "expected": "34293h 31m 29s" },
+    { "input": "-100", "expected": "0h -1m -40s" },
+    { "input": "abc", "expected": "0h 0m 0s" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <cstdio>\n#include <stdexcept>\n#include <algorithm>\n#include <sstream>\n\nstd::string run_program(const std::string& program_path, const std::string& input) {\n    std::string command;\n#ifdef _WIN32\n    command = \"echo \" + input + \" | \\\"\" + program_path + \"\\\"\";\n#else\n    command = \"echo \\\"\" + input + \"\\\" | \" + program_path;\n#endif\n\n    char buffer[128];\n    std::string result = \"\";\n    FILE* pipe = popen(command.c_str(), \"r\");\n    if (!pipe) {\n        throw std::runtime_error(\"popen() failed for command: \" + command);\n    }\n    while (!feof(pipe)) {\n        if (fgets(buffer, 128, pipe) != nullptr) {\n            result += buffer;\n        }\n    }\n    pclose(pipe);\n    return result;\n}\n\nstd::string extract_last_line(const std::string& raw_output) {\n    std::istringstream iss(raw_output);\n    std::string line;\n    std::string last_non_empty_line = \"\";\n    while (std::getline(iss, line)) {\n        size_t first = line.find_first_not_of(\" \\t\\r\\n\");\n        if (std::string::npos == first) continue;\n        size_t last = line.find_last_not_of(\" \\t\\r\\n\");\n        std::string trimmed_line = line.substr(first, (last - first + 1));\n        last_non_empty_line = trimmed_line;\n    }\n    return last_non_empty_line;\n}\n\nint main() {\n    std::string program_path = \"./solution_program\"; \n#ifdef _WIN32\n    program_path = \".\\\\solution_program.exe\";\n#endif\n\n    std::vector<std::pair<std::string, std::string>> test_cases = {\n        {\"0\", \"0h 0m 0s\"},\n        {\"59\", \"0h 0m 59s\"},\n        {\"60\", \"0h 1m 0s\"},\n        {\"3599\", \"0h 59m 59s\"},\n        {\"3600\", \"1h 0m 0s\"},\n        {\"3601\", \"1h 0m 1s\"},\n        {\"7200\", \"2h 0m 0s\"},\n        {\"86399\", \"23h 59m 59s\"},\n        {\"90000\", \"25h 0m 0s\"},\n        {\"123456789\", \"34293h 31m 29s\"},\n        {\"-100\", \"0h -1m -40s\"},\n        {\"abc\", \"0h 0m 0s\"}\n    };\n\n    for (size_t i = 0; i < test_cases.size(); ++i) {\n        const auto& tc = test_cases[i];\n        std::string input_str = tc.first;\n        std::string expected_output = tc.second;\n        \n        try {\n            std::string actual_output_raw = run_program(program_path, input_str);\n            std::string actual_output = extract_last_line(actual_output_raw);\n            \n            if (actual_output == expected_output) {\n                std::cout << \"Test PASSED for input: \" << input_str << std::endl;\n            } else {\n                std::cout << \"Test FAILED for input: \" << input_str << std::endl;\n                std::cout << \"  Expected: '\" << expected_output << \"'\" << std::endl;\n                std::cout << \"  Actual:   '\" << actual_output << \"'\" << std::endl;\n            }\n        } catch (const std::exception& e) {\n            std::cerr << \"Error running program for input \" << input_str << \": \" << e.what() << std::endl;\n            std::cout << \"Test FAILED for input: \" << input_str << \" (Exception)\" << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Program does not validate user input for negative numbers, leading to incorrect calculations and potentially negative time components.",
+    "Program does not handle non-numeric input gracefully; it fails silently (std::cin enters fail state, variable remains uninitialized or 0) and processes 0 seconds, which is misleading."
+  ]
+}

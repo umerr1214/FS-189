@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `Complex` class with private `real` and `imaginary` parts (doubles). Implement multiple overloaded constructors: a default constructor (initializes both to 0), a constructor taking only the `real` part (imaginary is 0), and a constructor taking both `real` and `imaginary` parts.",
+  "test_cases": [
+    { "input": "Attempt to compile and run the program.", "expected": "" }
+  ],
+  "driver": "/* The program contains a semantic error and will not compile. */\n/* If it were to compile (e.g., if 'real' was public), the main function would be:\nint main() {\n    Complex c1;\n    Complex c2(5.0);\n    Complex c3(3.0, 4.0);\n\n    c1.print();\n    c2.print();\n    c3.print();\n    // std::cout << \"Real part of c1: \" << c1.real << std::endl; // This line would then print the real part\n\n    return 0;\n}\n*/",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["Attempt to access private member `real` of a `Complex` object directly from the `main` function. Accessing private members is only allowed within the class's member functions or by friend functions/classes, leading to a compilation error."]
+}

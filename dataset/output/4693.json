@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Write a C-style string function `strConcatenate` that takes two character arrays (C-strings) as input and appends the second string to the first. Assume the first array has enough space.",
+  "test_cases": [
+    { "input": { "dest": "Hello ", "src": "World!" }, "expected": "Hello World!" },
+    { "input": { "dest": "", "src": "Test" }, "expected": "Test" },
+    { "input": { "dest": "Base", "src": "" }, "expected": "Base" },
+    { "input": { "dest": "A", "src": "B" }, "expected": "AB" },
+    { "input": { "dest": "", "src": "" }, "expected": "" },
+    { "input": { "dest": "Very long initial string that needs to be concatenated ", "src": "with another long string to test buffer capacity assumptions." }, "expected": "Very long initial string that needs to be concatenated with another long string to test buffer capacity assumptions." },
+    { "input": { "dest": "Short", "src": "LongerString" }, "expected": "ShortLongerString" }
+  ],
+  "driver": "#include <iostream>\n#include <cstring> // Required for strlen in some implementations, and for driver.\n\n// Function to concatenate two C-style strings.\n// Robustness Issue: Fails to null-terminate the destination string if the source string is not empty.\n// This can lead to undefined behavior when the string is later read or processed.\nvoid strConcatenate(char* dest, const char* src);\n\n// Driver code for testing\nint main() {\n    struct TestCase {\n        char initial_dest[256];\n        const char* src;\n        const char* expected;\n    };\n\n    TestCase test_cases[] = {\n        {\"Hello \", \"World!\", \"Hello World!\"},\n        {\"\", \"Test\", \"Test\"},\n        {\"Base\", \"\", \"Base\"}, // This case will pass due to the nature of the bug\n        {\"A\", \"B\", \"AB\"},\n        {\"\", \"\", \"\"}, // This case will pass due to the nature of the bug\n        {\"Very long initial string that needs to be concatenated \", \"with another long string to test buffer capacity assumptions.\", \"Very long initial string that needs to be concatenated with another long string to test buffer capacity assumptions.\"},\n        {\"Short\", \"LongerString\", \"ShortLongerString\"}\n    };\n\n    int num_passed = 0;\n    for (int i = 0; i < sizeof(test_cases) / sizeof(TestCase); ++i) {\n        char dest_buffer[256];\n        strcpy(dest_buffer, test_cases[i].initial_dest);\n\n        strConcatenate(dest_buffer, test_cases[i].src);\n\n        // For robustness issue, strcmp might fail due to unterminated string,\n        // or it might pass if the memory immediately after happens to be '\\0'.\n        // However, the intent is that it's an issue.\n        if (strcmp(dest_buffer, test_cases[i].expected) == 0) {\n            std::cout << \"Test \" << (i + 1) << \" Passed.\" << std::endl;\n            num_passed++;\n        } else {\n            std::cout << \"Test \" << (i + 1) << \" Failed.\" << std::endl;\n            std::cout << \"  Input dest: \\\"\" << test_cases[i].initial_dest << \"\\\", src: \\\"\" << test_cases[i].src << \"\\\"\" << std::endl;\n            std::cout << \"  Expected: \\\"\" << test_cases[i].expected << \"\\\", Got: \\\"\" << dest_buffer << \"\\\"\" << std::endl;\n        }\n    }\n\n    std::cout << \"\\n\" << num_passed << \"/\" << (sizeof(test_cases) / sizeof(TestCase)) << \" tests passed.\" << std::endl;\n\n    return 0;\n}\n",
+  "code_quality": 7,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The function fails to null-terminate the destination string when the source string is not empty. This results in an unterminated C-string, leading to undefined behavior or buffer over-reads if the string is subsequently used by other C-string functions (e.g., strlen, strcmp, printf/cout)."
+  ]
+}

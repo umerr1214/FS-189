@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Extend the `Animal` hierarchy (from Q14) to use virtual functions for the `sound()` method. Create a `Zoo` class that takes a `Animal*` and calls its `sound()` method, showcasing polymorphic behavior.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Animal Fido created.\nAnimal Mittens created.\nAnimal Blob created.\nZoo is open for business!\nAdded Fido to the zoo's collection. Remember to delete it later!\nAdded Mittens to the zoo's collection. Remember to delete it later!\nAdded Blob to the zoo's collection. Remember to delete it later!\n\n--- All animals in the zoo are making sounds! ---\nFido barks: Woof! Woof! (Very loudly, much wow!)\nMittens meows: Meow! (Purrrfectly adorable.)\nBlob makes a generic animal sound (default implementation).\n--- End of animal sounds ---\n\n--- Manual cleanup phase ---\nAnimal Fido destroyed.\nFido (Dog) destroyed.\nAnimal Mittens destroyed.\nMittens (Cat) destroyed.\nAnimal Blob destroyed.\nAll animals manually deleted. Program ending.\nZoo is closing. Remember to manually delete all animals you added!\n"
+    }
+  ],
+  "driver": "",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `Zoo` class uses `std::vector<Animal*>` for storing animals, which forces manual memory management on the user. This is less efficient and more error-prone than using smart pointers (e.g., `std::unique_ptr`).",
+    "The `Zoo`'s destructor does not clean up the `Animal*` pointers it holds, relying on the caller to perform manual `delete` operations, making ownership unclear and increasing the risk of memory leaks or double-frees.",
+    "Variable names like `animals_in_zoo_list` and `my_local_zoo_instance` are overly verbose and reduce readability.",
+    "Overly verbose output messages in `sound()` methods reduce focus on core functionality."
+  ]
+}

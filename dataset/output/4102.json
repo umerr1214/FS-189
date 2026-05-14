@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a function `calculateAverage(int arr[], int size)` that takes a 1D integer array and its size as input. The function should calculate and return the average of all elements in the array. In `main`, prompt the user for 10 integers, store them in an array, and then call this function to display their average.",
+  "test_cases": [
+    { "input": "1 2 3 4 5 6 7 8 9 10", "expected": "The average of the elements is: 5.50" },
+    { "input": "10 20 30 40 50 60 70 80 90 100", "expected": "The average of the elements is: 55.00" }
+  ],
+  "driver": "This program requires user input for 10 integers. A driver would simulate this input by feeding the numbers to stdin.",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after array declaration 'int numbers[ARRAY_SIZE]' in the main function. This will cause a compilation error."
+  ]
+}

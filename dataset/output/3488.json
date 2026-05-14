@@ -1,0 +1,85 @@
+{
+  "language": "c++",
+  "question": "Develop a simple command-line calculator program in C++ that takes two numbers and an operator (+, -, *, /) as input from the user. Use a `switch` statement to perform the corresponding arithmetic operation and print the result. Handle division by zero.",
+  "test_cases": [
+    { "input": "10\n+\n5\n", "expected": "Enter first number: \nEnter operator (+, -, *, /): \nEnter second number: \nResult: 15.00\n" },
+    { "input": "20\n-\n7\n", "expected": "Enter first number: \nEnter operator (+, -, *, /): \nEnter second number: \nResult: 13.00\n" },
+    { "input": "6\n*\n8\n", "expected": "Enter first number: \nEnter operator (+, -, *, /): \nEnter second number: \nResult: 48.00\n" },
+    { "input": "100\n/\n4\n", "expected": "Enter first number: \nEnter operator (+, -, *, /): \nEnter second number: \nResult: 25.00\n" },
+    { "input": "5\n/\n0\n", "expected": "Enter first number: \nEnter operator (+, -, *, /): \nEnter second number: \nCannot divide by zero!\n" },
+    { "input": "7.5\n*\n2.5\n", "expected": "Enter first number: \nEnter operator (+, -, *, /): \nEnter second number: \nResult: 18.75\n" },
+    { "input": "10\n%\n2\n", "expected": "Enter first number: \nEnter operator (+, -, *, /): \nEnter second number: \nInvalid operation!\nResult: 0.00\n" }
+  ],
+  "driver": "
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <streambuf>
+#include <vector>
+#include <utility> // For std::pair
+
+// Assume the calculator logic is in a function named 'solve()'
+extern void solve();
+
+int main() {
+    std::vector<std::pair<std::string, std::string>> test_cases = {
+        {\"10\\n+\\n5\\n\", \"Enter first number: \\nEnter operator (+, -, *, /): \\nEnter second number: \\nResult: 15.00\\n\"},
+        {\"20\\n-\\n7\\n\", \"Enter first number: \\nEnter operator (+, -, *, /): \\nEnter second number: \\nResult: 13.00\\n\"},
+        {\"6\\n*\\n8\\n\", \"Enter first number: \\nEnter operator (+, -, *, /): \\nEnter second number: \\nResult: 48.00\\n\"},
+        {\"100\\n/\\n4\\n\", \"Enter first number: \\nEnter operator (+, -, *, /): \\nEnter second number: \\nResult: 25.00\\n\"},
+        {\"5\\n/\\n0\\n\", \"Enter first number: \\nEnter operator (+, -, *, /): \\nEnter second number: \\nCannot divide by zero!\\n\"},
+        {\"7.5\\n*\\n2.5\\n\", \"Enter first number: \\nEnter operator (+, -, *, /): \\nEnter second number: \\nResult: 18.75\\n\"},
+        {\"10\\n%\\n2\\n\", \"Enter first number: \\nEnter operator (+, -, *, /): \\nEnter second number: \\nInvalid operation!\\nResult: 0.00\\n\"}
+    };
+
+    bool all_passed = true;
+    for (size_t i = 0; i < test_cases.size(); ++i) {
+        std::string input_str = test_cases[i].first;
+        std::string expected_output = test_cases[i].second;
+
+        std::streambuf* old_cin_buf = std::cin.rdbuf();
+        std::streambuf* old_cout_buf = std::cout.rdbuf();
+
+        std::istringstream iss(input_str);
+        std::cin.rdbuf(iss.rdbuf());
+
+        std::ostringstream oss;
+        std::cout.rdbuf(oss.rdbuf());
+
+        solve(); // Call the function containing the program's logic
+
+        std::cin.rdbuf(old_cin_buf);   // Restore cin
+        std::cout.rdbuf(old_cout_buf); // Restore cout
+
+        std::string actual_output = oss.str();
+
+        if (actual_output != expected_output) {
+            std::cerr << \"Test case \" << i + 1 << \" failed.\\n\";
+            std::cerr << \"Input: \\n---\\n\" << input_str << \"---\\n\";
+            std::cerr << \"Expected: \\n---\\n\" << expected_output << \"---\\n\";
+            std::cerr << \"Actual: \\n---\\n\" << actual_output << \"---\\n\";
+            all_passed = false;
+        } else {
+            // std::cout << \"Test case \" << i + 1 << \" passed.\\n\";
+        }
+    }
+
+    if (all_passed) {
+        std::cout << \"All test cases passed!\\n\";
+        return 0;
+    } else {
+        std::cout << \"Some test cases failed.\\n\";
+        return 1;
+    }
+}
+",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses cryptic variable names (n1, n2, op, r) which reduces readability.",
+    "Lacks comments to explain the code's logic, especially for input handling and the switch statement.",
+    "Inconsistent formatting and awkward spacing make the code harder to read.",
+    "Excessive use of `std::endl` instead of `\\n` which can be less efficient due to forced buffer flushes."
+  ]
+}

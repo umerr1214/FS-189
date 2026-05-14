@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a function `concatenateStrings` that takes two C-style strings (char arrays) as input and prints their combined string. (Assume the destination array has enough space).",
+  "test_cases": [
+    { "input": "src1=\"Hello, \", src2=\"World!\"", "expected": "Combined string: Hello, World!" },
+    { "input": "src1=\"C++ \", src2=\"Programming\"", "expected": "Combined string: C++ Programming" }
+  ],
+  "driver": "int main() {\n    char buffer1[100];\n    concatenateStrings(buffer1, \"Hello, \", \"World!\");\n\n    char buffer2[100];\n    concatenateStrings(buffer2, \"C++ \", \"Programming\");\n    \n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the 'strcat' function call on line 9."
+  ]
+}

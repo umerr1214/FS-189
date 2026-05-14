@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a `Person` class with `name` (public), `address` (protected), and `phone` (private). Create a derived class `Student` that tries to access all three members. Demonstrate which members are accessible from `Student` and from a non-member function.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Student Access Attempt ---\nStudent Name (public): Alice Smith (Accessible)\nStudent Address (protected): 123 Main St (Accessible)\nStudent Phone (private): Access attempt failed (Inaccessible)\n\n--- Non-Member Function Access Attempt ---\nNon-member Name (public): Alice Smith (Accessible)\nNon-member Address (protected): Access attempt failed (Inaccessible)\nNon-member Phone (private): Access attempt failed (Inaccessible)"
+    }
+  ],
+  "driver": "int main() {\n    Student s(\"Alice Smith\", \"123 Main St\", \"555-1234\");\n    s.displayStudentInfo();\n    demonstrateNonMemberAccess(s);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The program fails to fully 'demonstrate' member accessibility by omitting actual access attempts for inaccessible members, instead printing statements that avoid compilation errors. A proper demonstration would involve attempting the access and showing the resulting compilation failure (e.g., via comments or conditional compilation if demonstrating multiple paths)."
+  ]
+}

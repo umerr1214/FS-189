@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that initializes an array of 5 integers (e.g., {10, 20, 30, 40, 50}), then reverses the order of its elements *in-place* (without using a second array) and prints the modified array.",
+  "test_cases": [
+    { "input": "", "expected": "50 40 30 20 10 \n" }
+  ],
+  "driver": "int main() { /* The solution's main function is executed directly. */ return 0; }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

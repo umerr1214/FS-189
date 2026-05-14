@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that takes a temperature in Celsius as input from the user and converts it to Fahrenheit, displaying the result. Use the formula: F = C * 9/5 + 32. Ensure the calculation handles decimal values correctly.",
+  "test_cases": [
+    { "input": "0.0", "expected": "32.00" },
+    { "input": "100.0", "expected": "212.00" },
+    { "input": "25.5", "expected": "77.90" },
+    { "input": "-10.7", "expected": "12.74" }
+  ],
+  "driver": "int main() {\n    // This driver would compile and execute the user's code.\n    // It would feed each 'input' from test_cases to the user program's stdin\n    // and compare the captured stdout with the 'expected' output.\n    // Example: system(\"g++ -o user_program user_program.cpp\");\n    // system(\"./user_program < input.txt > output.txt\");\n    std::cout << \"Driver would run the user's code with test inputs.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The expression `9 / 5` uses integer division, which evaluates to `1`. The formula should use floating-point division, e.g., `9.0 / 5.0` or `9.0 / 5`, to correctly calculate the conversion factor of 1.8. This results in the incorrect formula `F = C * 1 + 32`."
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program to calculate the simple interest given the principal amount, rate of interest, and time period from user input. Display the calculated interest.",
+  "test_cases": [
+    {
+      "input": "1000\n5\n2",
+      "expected": "Enter principal amount: Enter annual rate of interest (%): Enter time period (years): Simple Interest: 100.00"
+    },
+    {
+      "input": "2500.50\n7.25\n3",
+      "expected": "Enter principal amount: Enter annual rate of interest (%): Enter time period (years): Simple Interest: 543.86"
+    },
+    {
+      "input": "5000\n3.75\n1.5",
+      "expected": "Enter principal amount: Enter annual rate of interest (%): Enter time period (years): Simple Interest: 281.25"
+    },
+    {
+      "input": "abc\n5\n2",
+      "expected": "Enter principal amount: Error: Invalid principal amount. Please enter a non-negative number.\n"
+    },
+    {
+      "input": "1000\n-5\n2",
+      "expected": "Enter principal amount: Enter annual rate of interest (%): Error: Invalid rate of interest. Please enter a non-negative number.\n"
+    }
+  ],
+  "driver": "main()",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

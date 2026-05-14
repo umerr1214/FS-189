@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `printArrayElements(int* arr, int size)` that takes a pointer to an integer array and its size, then prints all elements of the array. Demonstrate its use by passing an array from `main`.",
+  "test_cases": [
+    { "input": "int arr[] = {11, 22, 33, 44, 55}; int size = 5;", "expected": "11 22 33 44 55 \n" },
+    { "input": "int arr[] = {}; int size = 0;", "expected": "\n" }
+  ],
+  "driver": "#include <iostream>\n\nvoid printArrayElements(int* ptr_to_int_array_elements, int num_elements_in_array);\n\nint main() {\n    std::cout << \"Test Case 1 (Valid Array):\\n\";\n    int my_int_data_array[] = {11, 22, 33, 44, 55};\n    int total_count_of_elements = sizeof(my_int_data_array) / sizeof(my_int_data_array[0]);\n    printArrayElements(my_int_data_array, total_count_of_elements);\n\n    std::cout << \"Test Case 2 (Empty Array):\\n\";\n    int empty_array_for_test[] = {};\n    int zero_elements_count = 0;\n    printArrayElements(empty_array_for_test, zero_elements_count);\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inefficiently flushes `std::cout` buffer on every iteration using `std::cout.flush()`. A single flush at the end (e.g., with `\\n` or `std::endl`) would be sufficient.",
+    "Uses overly verbose and unclear variable names (e.g., `ptr_to_int_array_elements`, `num_elements_in_array`, `index_iterator_for_array`).",
+    "Poor and inconsistent code formatting and indentation.",
+    "Lacks comments to explain the function's purpose or any potentially non-obvious logic."
+  ]
+}

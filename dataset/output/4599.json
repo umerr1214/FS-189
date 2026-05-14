@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program to concatenate two C-style strings (character arrays) into a third C-style string without using standard library functions like `strcat`.",
+  "test_cases": [
+    { "input": "Hello,World", "expected": "HelloWorld" },
+    { "input": ",EmptyFirst", "expected": "EmptyFirst" },
+    { "input": "EmptySecond,", "expected": "EmptySecond" },
+    { "input": ",", "expected": "" },
+    { "input": "ProgrammingIs,FunAndChallenging", "expected": "ProgrammingIsFunAndChallenging" },
+    { "input": "Prefix,nullptr", "expected": "Prefix" }
+  ],
+  "driver": "extern void my_strcat_correct(char* dest, const char* src1, const char* src2);\n\n#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <cstring>\n\n// Helper to parse comma-separated input\nvoid parse_input(const std::string& input_str, std::string& src1, std::string& src2) {\n    std::stringstream ss(input_str);\n    std::string segment;\n    std::vector<std::string> parts;\n\n    while(std::getline(ss, segment, ',')) {\n        parts.push_back(segment);\n    }\n\n    src1 = parts[0];\n    src2 = parts[1];\n}\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> test_data = {\n        { \"Hello\", \"World\" },\n        { \"\", \"EmptyFirst\" },\        { \"EmptySecond\", \"\" },\n        { \"\", \"\" },\n        { \"ProgrammingIs\", \"FunAndChallenging\" },\
+        { \"Prefix\", \"nullptr\" } // Special case for testing null pointer handling\n    };\n\n    for (size_t i = 0; i < test_data.size(); ++i) {\n        std::string src1_str = test_data[i].first;\n        std::string src2_str = test_data[i].second;\n        \n        const char* p_src1 = src1_str.c_str();\n        const char* p_src2 = src2_str.c_str();\n\n        // Special handling for \"nullptr\" string to pass actual nullptr\n        if (src1_str == \"nullptr\") p_src1 = nullptr;\n        if (src2_str == \"nullptr\") p_src2 = nullptr;\n\n        std::string expected_output_str;\n        if (p_src1) expected_output_str += p_src1;\n        if (p_src2) expected_output_str += p_src2;\n        \n        // Determine required buffer size\n        size_t buffer_size = expected_output_str.length() + 1;\n        char* dest_buffer = new char[buffer_size];\n        std::memset(dest_buffer, 0, buffer_size); // Initialize to ensure clean state\n        \n        // Call the student's function\n        my_strcat_correct(dest_buffer, p_src1, p_src2);\n\n        std::cout << \"Test Case \" << i + 1 << \":\\n\";\n        std::cout << \"  Input src1: \\\"\" << (p_src1 ? p_src1 : \"(nullptr)\") << \"\\\"\\n\";\n        std::cout << \"  Input src2: \\\"\" << (p_src2 ? p_src2 : \"(nullptr)\") << \"\\\"\\n\";\n        std::cout << \"  Expected:   \\\"\" << expected_output_str << \"\\\"\\n\";\n        std::cout << \"  Actual:     \\\"\" << dest_buffer << \"\\\"\\n\";\n\n        if (std::string(dest_buffer) == expected_output_str) {\n            std::cout << \"  Result: PASSED\\n\";\n        } else {\n            std::cout << \"  Result: FAILED\\n\";\n        }\n        std::cout << std::endl;\n\n        delete[] dest_buffer;\n    }\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,26 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter the length and width of a rectangle. Calculate and print both the area and the perimeter of the rectangle, ensuring to use appropriate data types for real-world measurements.",
+  "test_cases": [
+    {
+      "input": "10.0\n5.0\n",
+      "expected": "Enter length: Enter width: Area: 50.00\nPerimeter: 30.00\n"
+    },
+    {
+      "input": "abc\n5.0\n",
+      "expected": "Enter length: Enter width: Area: 0.00\nPerimeter: 0.00\n"
+    },
+    {
+      "input": "10.0\n-5.0\n",
+      "expected": "Enter length: Enter width: Area: -50.00\nPerimeter: 10.00\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\n// This is a placeholder driver. In a real testing environment,\n// the student's main function would be compiled and executed directly.\n// Input would be provided via stdin redirection, and output captured from stdout.\n// For example: `./student_program < input.txt > output.txt`\n// The 'test_cases' in the JSON describe the expected input/output interaction.\nint main() {\n    std::cout << \"This program is a placeholder driver.\" << std::endl;\n    std::cout << \"The actual student solution (a C++ program with a main function)\" << std::endl;\n    std::cout << \"would be compiled and run, with input provided via standard input\" << std::endl;\n    std::cout << \"and output captured from standard output.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not handle non-numeric input gracefully. If non-numeric input is provided, `std::cin` enters a fail state, causing subsequent input operations to fail and variables to retain their default/initial values, leading to incorrect calculations (e.g., 0 for area/perimeter).",
+    "The program does not validate for negative or zero dimensions. It performs calculations with these physically invalid values, which is incorrect for real-world measurements."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function template `T findMin(T val1, T val2)` that accepts two values of any data type and returns the smaller of the two. Demonstrate its usage with at least two different data types (e.g., `int` and `double`) in `main`.",
+  "test_cases": [
+    { "input": "findMin(10, 5)", "expected": "5" },
+    { "input": "findMin(3.14, 2.71)", "expected": "2.71" },
+    { "input": "findMin(std::string(\"apple\"), std::string(\"banana\"))", "expected": "apple" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\ntemplate <typename T>\nT findMin(T val1, T val2) {\n    T result;\n    if (val1 < val2) {\n        result = val1;\n    } else {\n        result = val2;\n    }\n    return result;\n}\n\nint main() {\n    std::cout << findMin(10, 5) << std::endl;\n    std::cout << findMin(3.14, 2.71) << std::endl;\n    std::cout << findMin(std::string(\"apple\"), std::string(\"banana\")) << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["The `findMin` function uses an unnecessary temporary variable and an overly verbose `if-else` structure instead of a more concise and idiomatic ternary operator. While functionally correct, this reduces readability and can potentially be less efficient for types with expensive default constructors and assignment operators due to extra construction/assignment steps."]
+}

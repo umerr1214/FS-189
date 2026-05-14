@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program using nested `for` loops to print a right-angled triangle pattern of asterisks (`*`). The height of the triangle should be specified by the user.",
+  "test_cases": [
+    { "input": "4", "expected": "*\n**\n***\n****\n" },
+    { "input": "1", "expected": "*\n" },
+    { "input": "0", "expected": "" },
+    { "input": "-3", "expected": "" },
+    { "input": "abc", "expected": "" }
+  ],
+  "driver": "The program reads an integer from standard input, then prints the pattern to standard output. A test driver would feed the input string to stdin and capture stdout for comparison.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program lacks input validation for non-integer inputs. If a non-integer is entered, std::cin fails, 'height' might remain uninitialized or 0, leading to an empty output without error message.",
+    "The program does not handle non-positive height inputs (0 or negative) gracefully. It simply prints nothing without informing the user or prompting for valid input."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ function `findGCD` that calculates the Greatest Common Divisor (GCD) of two positive integers using the Euclidean algorithm (pass by value). The main program should take two numbers from the user and display their GCD.",
+  "test_cases": [
+    { "input": "10\n5", "expected": "Enter the first positive integer: Enter the second positive integer: The Greatest Common Divisor (GCD) of 10 and 5 is 5." },
+    { "input": "48\n18", "expected": "Enter the first positive integer: Enter the second positive integer: The Greatest Common Divisor (GCD) of 48 and 18 is 6." },
+    { "input": "123\n456", "expected": "Enter the first positive integer: Enter the second positive integer: The Greatest Common Divisor (GCD) of 123 and 456 is 3." },
+    { "input": "7\n1", "expected": "Enter the first positive integer: Enter the second positive integer: The Greatest Common Divisor (GCD) of 7 and 1 is 1." },
+    { "input": "17\n19", "expected": "Enter the first positive integer: Enter the second positive integer: The Greatest Common Divisor (GCD) of 17 and 19 is 1." },
+    { "input": "-5\n0\n10\n-3\nabc\n20\n15\n25", "expected": "Enter the first positive integer: Invalid input. Please enter a positive integer.\nEnter the first positive integer: Invalid input. Please enter a positive integer.\nEnter the first positive integer: Enter the second positive integer: Invalid input. Please enter a positive integer.\nEnter the second positive integer: Invalid input. Please enter a positive integer.\nEnter the second positive integer: Enter the second positive integer: The Greatest Common Divisor (GCD) of 15 and 25 is 5." }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

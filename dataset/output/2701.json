@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a simple `MyString` class that dynamically allocates a character array for its string data. Implement a copy constructor for `MyString` to perform a deep copy, preventing shallow copy issues.",
+  "test_cases": [
+    { "input": "Hello", "expected": "s1: Hello (Length: 5)\ns2 (copy of s1): Hello (Length: 5)\ns3: World (Length: 5)\ns4 (empty):  (Length: 0)\nAttempting to create MyString from nullptr...\n" },
+    { "input": "nullptr", "expected": "Runtime error: Program crashed due to `strlen(nullptr)` in MyString constructor." }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n\nclass MyString {\nprivate:\n    char* data;\n    size_t len;\n\npublic:\n    MyString() : data(nullptr), len(0) {\n        data = new char[1];\n        data[0] = '\\0';\n    }\n\n    MyString(const char* s) {\n        len = std::strlen(s);\n        data = new char[len + 1];\n        std::strcpy(data, s);\n    }\n\n    MyString(const MyString& other) : len(other.len) {\n        data = new char[len + 1];\n        std::strcpy(data, other.data);\n    }\n\n    ~MyString() {\n        delete[] data;\n    }\n\n    void display() const {\n        std::cout << data;\n    }\n\n    size_t getLength() const {\n        std::cout << len;\n    }\n};\n\nint main() {\n    MyString s1(\"Hello\");\n    std::cout << \"s1: \";\n    s1.display();\n    std::cout << \" (Length: \"; s1.getLength(); std::cout << \")\\n\";\n\n    MyString s2 = s1;\n    std::cout << \"s2 (copy of s1): \";\n    s2.display();\n    std::cout << \" (Length: \"; s2.getLength(); std::cout << \")\\n\";\n\n    MyString s3(\"World\");\n    std::cout << \"s3: \";\n    s3.display();\n    std::cout << \" (Length: \"; s3.getLength(); std::cout << \")\\n\";\n\n    MyString s4(\"\");\n    std::cout << \"s4 (empty): \";\n    s4.display();\n    std::cout << \" (Length: \"; s4.getLength(); std::cout << \")\\n\";\n\n    std::cout << \"Attempting to create MyString from nullptr...\\n\";\n    // This will cause a runtime crash due to strlen(nullptr)\n    MyString s5(nullptr); \n    std::cout << \"s5: \";\n    s5.display();\n    std::cout << \" (Length: \"; s5.getLength(); std::cout << \")\\n\";\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The constructor `MyString(const char* s)` does not handle `nullptr` input for `s`, leading to a crash when `strlen(nullptr)` is called.",
+    "Potential for undefined behavior if `MyString` is initialized with a null pointer string, as it assumes `s` is a valid C-style string."
+  ]
+}

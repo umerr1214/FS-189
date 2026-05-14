@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `void transposeMatrix(int matrix[3][3], int result[3][3])` that takes a 3x3 integer matrix and stores its transpose in another 3x3 matrix. In `main`, initialize a matrix, call the function, and print both the original and transposed matrices.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Original Matrix:\n1 2 3\n4 5 6\n7 8 9\nTransposed Matrix:\n1 2 3\n4 5 6\n7 8 9\n"
+    }
+  ],
+  "driver": "#include <iostream>\n\nvoid printMatrix(const int mat[3][3]) {\n    for (int i = 0; i < 3; ++i) {\n        for (int j = 0; j < 3; ++j) {\n            std::cout << mat[i][j] << (j == 2 ? \"\" : \" \");\n        }\n        std::cout << std::endl;\n    }\n}\n\nint main() {\n    int originalMatrix[3][3] = {\n        {1, 2, 3},\n        {4, 5, 6},\n        {7, 8, 9}\n    };\n    int transposedMatrix[3][3];\n\n    transposeMatrix(originalMatrix, transposedMatrix);\n\n    std::cout << \"Original Matrix:\" << std::endl;\n    printMatrix(originalMatrix);\n    std::cout << \"Transposed Matrix:\" << std::endl;\n    printMatrix(transposedMatrix);\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": []
+}

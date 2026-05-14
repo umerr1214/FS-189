@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "For the `StringWrapper` class from Q12, implement a proper copy assignment operator (`operator=`) to handle deep copying when assigning one `StringWrapper` object to another, including self-assignment protection.",
+  "test_cases": [
+    { "input": "Initial", "expected": "Initial: s1=\"Hello\" (len: 5), s2=\"World\" (len: 5), s3=\"C++\" (len: 3), s4=\"\" (len: 0)\nAfter s4 = s1: s4=\"Hello\" (len: 5)\nAfter s1 = s2: s1=\"World\" (len: 5)\nAfter s2 = s2: s2=\"World\" (len: 5)\nAfter s1 = s2 = s3: s1=\"C++\" (len: 3), s2=\"C++\" (len: 3), s3=\"C++\" (len: 3)\nAfter s4 = empty_str: s4=\"\" (len: 0)\nAfter s5 = empty_str: s5=\"\" (len: 0)\n" }
+  ],
+  "driver": "StringWrapper s1(\"Hello\"); StringWrapper s2(\"World\"); StringWrapper s3(\"C++\"); StringWrapper s4; std::cout << \"Initial: s1=\" << s1 << \", s2=\" << s2 << \", s3=\" << s3 << \", s4=\" << s4 << std::endl; s4 = s1; std::cout << \"After s4 = s1: s4=\" << s4 << std::endl; s1 = s2; std::cout << \"After s1 = s2: s1=\" << s1 << std::endl; s2 = s2; std::cout << \"After s2 = s2: s2=\" << s2 << std::endl; s1 = s2 = s3; std::cout << \"After s1 = s2 = s3: s1=\" << s1 << \", s2=\" << s2 << \", s3=\" << s3 << std::endl; StringWrapper empty_str; s4 = empty_str; std::cout << \"After s4 = empty_str: s4=\" << s4 << std::endl; StringWrapper s5(\"Temporary\"); s5 = empty_str; std::cout << \"After s5 = empty_str: s5=\" << s5 << std::endl;",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after 'delete[] data' in StringWrapper::operator="]
+}

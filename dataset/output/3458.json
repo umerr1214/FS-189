@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter a word (using `std::string`), then reverses the string and prints the reversed word.",
+  "test_cases": [
+    { "input": "programming", "expected": "gnimmargorp" },
+    { "input": "efficiency", "expected": "ycneiciffe" },
+    { "input": "cpp", "expected": "ppc" },
+    { "input": "longwordexample", "expected": "elpmaxedrowgnol" },
+    { "input": "", "expected": "" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <utility>\n\n// Assume getReversedString is provided by the user's code\nstd::string getReversedString(std::string in_str);\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> tests = {\n        {\"programming\", \"gnimmargorp\"},\n        {\"efficiency\", \"ycneiciffe\"},\n        {\"cpp\", \"ppc\"},\n        {\"longwordexample\", \"elpmaxedrowgnol\"},\n        {\"\", \"\"}\n    };\n\n    for (const auto& test : tests) {\n        std::string input = test.first;\n        std::string expected_output = test.second;\n        std::string actual_output = getReversedString(input);\n        \n        if (actual_output == expected_output) {\n            std::cout << \"Test passed for input \\\"\" << input << \"\\\"\" << std::endl;\n        } else {\n            std::cout << \"Test FAILED for input \\\"\" << input << \"\\\". Expected: \\\"\"\n                      << expected_output << \"\\\", Got: \\\"\" << actual_output << \"\\\"\" << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Efficiency: The string reversal algorithm uses repeated string concatenation (`rev_str = in_str[i] + rev_str;`), which has O(N) complexity for each concatenation due to potential reallocations and copying. In a loop, this leads to an overall O(N^2) time complexity, which is inefficient for longer strings. An O(N) in-place reversal (e.g., using `std::reverse` or two pointers) would be more efficient.",
+    "Readability: Variable names like `in_str`, `rev_str`, and `len` are somewhat generic. While functional, more descriptive names like `inputWord`, `reversedWord`, and `wordLength` could improve clarity. The lack of comments also slightly impacts readability for someone unfamiliar with the specific O(N^2) reversal technique used."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a multi-level inheritance hierarchy: `Person` (base) -> `Employee` (derived from Person) -> `Manager` (derived from Employee). Add relevant attributes and methods at each level.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Person Info (Invalid Age): Name: Alice, Age: -5\nEmployee Info (Invalid Salary): Name: Bob, Age: 30, Employee ID: 101, Salary: -5000\nEmployee Bonus (10% on negative salary): -500\nManager Info (Invalid Reports): Name: Charlie, Age: 45, Employee ID: 201, Salary: 80000, Department: Sales, Direct Reports: -2\nManager Charlie is conducting a performance review for Dave in Sales.\n\nValid Person Info: Name: Eve, Age: 25\nValid Employee Info: Name: Frank, Age: 35, Employee ID: 102, Salary: 60000\nValid Employee Bonus (10%): 6000\nValid Manager Info: Name: Grace, Age: 50, Employee ID: 202, Salary: 120000, Department: HR, Direct Reports: 10\nManager Grace is conducting a performance review for Heidi in HR.\n"
+    }
+  ],
+  "driver": "int main() {\n    // Demonstrating robustness issues with invalid data\n    Person p_invalid_age(\"Alice\", -5); // Negative age\n    std::cout << \"Person Info (Invalid Age): \";\n    p_invalid_age.display();\n    std::cout << \"\\n\";\n\n    Employee e_invalid_salary(\"Bob\", 30, 101, -5000.0); // Negative salary\n    std::cout << \"Employee Info (Invalid Salary): \";\n    e_invalid_salary.display();\n    std::cout << \"\\n\";\n    std::cout << \"Employee Bonus (10% on negative salary): \" << e_invalid_salary.calculateBonus(0.10) << \"\\n\"; // Negative bonus\n\n    Manager m_invalid_reports(\"Charlie\", 45, 201, 80000.0, \"Sales\", -2); // Negative direct reports\n    std::cout << \"Manager Info (Invalid Reports): \";\n    m_invalid_reports.display();\n    std::cout << \"\\n\";\n    m_invalid_reports.conductPerformanceReview(\"Dave\");\n    std::cout << \"\\n\";\n\n    // Valid data for comparison\n    Person p_valid(\"Eve\", 25);\n    std::cout << \"Valid Person Info: \";\n    p_valid.display();\n    std::cout << \"\\n\";\n\n    Employee e_valid(\"Frank\", 35, 102, 60000.0);\n    std::cout << \"Valid Employee Info: \";\n    e_valid.display();\n    std::cout << \"\\n\";\n    std::cout << \"Valid Employee Bonus (10%): \" << e_valid.calculateBonus(0.10) << \"\\n\";\n\n    Manager m_valid(\"Grace\", 50, 202, 120000.0, \"HR\", 10);\n    std::cout << \"Valid Manager Info: \";\n    m_valid.display();\n    std::cout << \"\\n\";\n    m_valid.conductPerformanceReview(\"Heidi\");\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The code lacks input validation in constructors, allowing the creation of objects with invalid states (e.g., negative age, negative salary, negative number of direct reports). Methods like `calculateBonus` do not handle these invalid states gracefully, leading to nonsensical output (e.g., negative bonus)."
+  ]
+}

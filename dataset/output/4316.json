@@ -1,0 +1,26 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ function `fill_array_sequential` that takes an integer pointer `arr` and an integer `size` as arguments. The function should fill the array pointed to by `arr` with sequential values starting from 1 up to `size`.",
+  "test_cases": [
+    {
+      "input": "int arr_test1[5]; fill_array_sequential(arr_test1, 5);",
+      "expected": "1 2 3 4 5"
+    },
+    {
+      "input": "int arr_test2[1]; fill_array_sequential(arr_test2, 0);",
+      "expected": "Array 2 (size 0): (should be empty)"
+    },
+    {
+      "input": "int arr_test3[10]; fill_array_sequential(arr_test3, 10);",
+      "expected": "1 2 3 4 5 6 7 8 9 10"
+    }
+  ],
+  "driver": "int main() {\n    // Test Case 1\n    int arr_test1[5];\n    fill_array_sequential(arr_test1, 5);\n    for (int i = 0; i < 5; ++i) {\n        std::cout << arr_test1[i] << (i == 4 ? \"\" : \" \");\n    }\n    std::cout << std::endl;\n\n    // Test Case 2\n    int arr_test2[1]; // Array must be allocated even if size is 0\n    fill_array_sequential(arr_test2, 0);\n    std::cout << \"Array 2 (size 0): (should be empty)\" << std::endl;\n\n    // Test Case 3\n    int arr_test3[10];\n    fill_array_sequential(arr_test3, 10);\n    for (int i = 0; i < 10; ++i) {\n        std::cout << arr_test3[i] << (i == 9 ? \"\" : \" \");\n    }\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The function uses a `while` loop with manual index management (`current_idx++`) which is less idiomatic and readable than a `for` loop for simple iteration.",
+    "An unnecessary temporary variable `val_to_assign` is used, making the code slightly more verbose without clear benefit."
+  ]
+}

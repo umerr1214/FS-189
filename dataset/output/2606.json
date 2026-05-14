@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Person` with `protected` members `firstName` and `lastName` (both strings). Create a derived class `Teacher` that has an additional `subject` (string) member. The `Teacher` constructor should correctly initialize `firstName` and `lastName` by calling the `Person` base class constructor, and then initialize its own `subject` member. Implement a method in `Teacher` to display the teacher's full name and subject.",
+  "test_cases": [
+    { "input": "", "expected": "Teacher: Alice Wonderland, Subject: Literature\n" },
+    { "input": "", "expected": "Teacher: Bob The Builder, Subject: Engineering\n" },
+    { "input": "", "expected": "Teacher: Charlie Chaplin, Subject: Drama\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Person {\nprotected:\n    std::string firstName;\n    std::string lastName;\n\npublic:\n    Person(std::string first, std::string last) : firstName(first), lastName(last) {}\n};\n\nclass Teacher : public Person {\nprivate:\n    std::string subject;\n\npublic:\n    Teacher(std::string first, std::string last, std::string sub)\n        : Person(first, last),\n          subject(sub)\n    {}\n\n    void displayTeacherInfo() {\n        std::string fullInfo = \"Teacher: \";\n        fullInfo = fullInfo + firstName + \" \" + lastName + \", Subject: \" + subject;\n        std::cout << fullInfo << std::endl;\n    }\n};\n\nint main() {\n    Teacher teacher1(\"Alice\", \"Wonderland\", \"Literature\");\n    teacher1.displayTeacherInfo();\n\n    Teacher teacher2(\"Bob\", \"The Builder\", \"Engineering\");\n    teacher2.displayTeacherInfo();\n\n    Teacher teacher3(\"Charlie\", \"Chaplin\", \"Drama\");\n    teacher3.displayTeacherInfo();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "String parameters in constructors (Person and Teacher) are passed by value (e.g., `std::string first`) instead of by const reference (`const std::string&`). This causes unnecessary string copying and can lead to performance overhead, especially for larger strings.",
+    "The `displayTeacherInfo` method is not marked `const`, even though it does not modify the object's state. Marking it `const` improves code readability, allows it to be called on `const` objects, and enables better compile-time checks.",
+    "The string concatenation in `displayTeacherInfo` uses multiple `+` operations (`fullInfo = fullInfo + firstName + ...`). This can be less efficient than using `std::stringstream` or `std::string::append` for building complex strings, as it may create several temporary string objects."
+  ]
+}

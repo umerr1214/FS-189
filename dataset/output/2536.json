@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Define a class `Vehicle` with `public` member `brand` (string), `protected` member `model` (string), and `private` member `year` (int). Demonstrate how to access and modify these members: directly for `brand`, through a derived class method for `model`, and through a public getter/setter for `year` within the `Vehicle` class itself.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation Error: Missing semicolon after member declaration." }
+  ],
+  "driver": "// The main function in 2536.cpp acts as the driver. No separate driver needed.",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    {
+      "line": 6,
+      "column": 22,
+      "message": "expected ';' after member declaration"
+    }
+  ]
+}

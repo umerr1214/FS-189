@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter their first name, last name, and age. Then, display a greeting message including all this information on the console. Ensure appropriate data types are used for each input.",
+  "test_cases": [
+    { "input": "Bob\nBuilder\n40\n", "expected": "Enter your first name: Enter your last name: Enter your age: Hello, Bob Builder! You are 40 years old.\n" },
+    { "input": "Jane\nDoe\n28\n", "expected": "Enter your first name: Enter your last name: Enter your age: Hello, Jane Doe! You are 28 years old.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\n// This driver assumes the user's `main` function is compiled and executed.\n// Standard input (stdin) will be redirected from the 'input' field of the test case.\n// Standard output (stdout) will be captured and compared with the 'expected' field.\n// No explicit function call is made here as the user's code is a complete program.\nint main() {\n    // The user's main() function will be executed directly by the testing framework.\n    // Input streams will be redirected from test case input.\n    // Output streams will be captured for comparison.\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The greeting message is incomplete, missing the 'Hello, ' prefix and '!' suffix as required by the problem statement, leading to an incorrect output format."]
+}

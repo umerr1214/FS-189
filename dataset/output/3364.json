@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Perform a left rotation on a 1D array by `k` positions. For example, if the array is `[1, 2, 3, 4, 5]` and `k=2`, the output should be `[3, 4, 5, 1, 2]`. Print the modified array.",
+  "test_cases": [
+    { "input": "5\n1 2 3 4 5\n2", "expected": "3 4 5 1 2" },
+    { "input": "3\n10 20 30\n1", "expected": "20 30 10" },
+    { "input": "4\n1 2 3 4\n4", "expected": "1 2 3 4" }
+  ],
+  "driver": "int main() {\n    int n;\n    std::cin >> n;\n    std::vector<int> arr(n);\n    for (int i = 0; i < n; ++i) {\n        std::cin >> arr[i];\n    }\n    int k;\n    std::cin >> k;\n\n    rotateLeft(arr, k);\n\n    for (int i = 0; i < n; ++i) {\n        std::cout << arr[i] << (i == n - 1 ? \"\" : \" \");\n    }\n    std::cout << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon at the end of `std::cout << std::endl` in the main function, leading to a compilation error."]
+}

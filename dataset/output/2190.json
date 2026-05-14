@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Counter` class with a static integer member `count` initialized to 0. Increment `count` in the constructor and decrement it in the destructor. Provide a static method `getTotalCount()` that returns the current value of `count`. Demonstrate how `count` tracks the number of `Counter` objects.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial count: 0\nCounter created. Total count: 1\nCount after c1: 1\nCounter created. Total count: 2\nCount after c2: 2\nEntering createAndDestroyScope()\nCounter created. Total count: 3\nCounter created. Total count: 4\nCurrent count inside inner scope: 4\nCounter destroyed. Total count: 3\nCurrent count after inner scope: 3\nCounter destroyed. Total count: 2\nExiting createAndDestroyScope()\nCount after scope function: 2\nCounter created. Total count: 3\nCounter created. Total count: 4\nCounter created. Total count: 5\nCount after vector creation: 5\nCounter destroyed. Total count: 4\nCounter destroyed. Total count: 3\nCounter destroyed. Total count: 2\nCounter destroyed. Total count: 1\nCounter destroyed. Total count: 0"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"Initial count: \" << Counter::getTotalCount() << std::endl;\n\n    Counter c1;\n    std::cout << \"Count after c1: \" << Counter::getTotalCount() << std::endl;\n\n    Counter c2;\n    std::cout << \"Count after c2: \" << Counter::getTotalCount() << std::endl;\n\n    createAndDestroyScope();\n\n    std::cout << \"Count after scope function: \" << Counter::getTotalCount() << std::endl;\n\n    std::vector<Counter> counters(3);\n    std::cout << \"Count after vector creation: \" << Counter::getTotalCount() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The static member `Counter::count` is declared inside the class but its definition and initialization `int Counter::count = 0;` are missing outside the class. This will result in a linker error 'undefined reference to `Counter::count`' when the program attempts to use the static member."]
+}

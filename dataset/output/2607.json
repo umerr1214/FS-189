@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Person` with `protected` members `firstName` and `lastName` (both strings). Create a derived class `Teacher` that has an additional `subject` (string) member. The `Teacher` constructor should correctly initialize `firstName` and `lastName` by calling the `Person` base class constructor, and then initialize its own `subject` member. Implement a method in `Teacher` to display the teacher's full name and subject.",
+  "test_cases": [
+    { "input": "", "expected": "Teacher: Dr. Alan Turing, Subject: Computer Science\n" },
+    { "input": "", "expected": "Teacher: Prof. Marie Curie, Subject: Physics & Chemistry\n" },
+    { "input": "", "expected": "Teacher: Mr. Smith, Subject: History\n" },
+    { "input": "", "expected": "Teacher: Ms. , Subject: Literature\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\nclass Person {\nprotected:\n    std::string firstName;\n    std::string lastName;\n\npublic:\n    Person(const std::string& first, const std::string& last)\n        : firstName(first), lastName(last) {}\n};\n\nclass Teacher : public Person {\nprivate:\n    std::string subject;\n\npublic:\n    Teacher(const std::string& first, const std::string& last, const std::string& sub)\n        : Person(first, last),\n          subject(sub) {}\n\n    void displayTeacherInfo() const {\n        std::stringstream ss;\n        ss << \"Teacher: \" << firstName << \" \" << lastName << \", Subject: \" << subject;\n        std::cout << ss.str() << std::endl;\n    }\n};\n\nint main() {\n    Teacher teacher1(\"Dr. Alan\", \"Turing\", \"Computer Science\");\n    teacher1.displayTeacherInfo();\n\n    Teacher teacher2(\"Prof. Marie\", \"Curie\", \"Physics & Chemistry\");\n    teacher2.displayTeacherInfo();\n\n    Teacher teacher3(\"Mr.\", \"Smith\", \"History\");\n    teacher3.displayTeacherInfo();\n\n    Teacher teacher4(\"Ms.\", \"\", \"Literature\");\n    teacher4.displayTeacherInfo();\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

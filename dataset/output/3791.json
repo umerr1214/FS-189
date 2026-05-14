@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter a sentence (as `std::string`) and then counts and displays the number of occurrences of a specific character (also input by the user) within that sentence.",
+  "test_cases": [
+    { "input": "banana\na", "expected": "The character 'a' appears 2 times in the sentence.\n" },
+    { "input": "programming\ng", "expected": "The character 'g' appears 1 times in the sentence.\n" },
+    { "input": "apple\ne", "expected": "The character 'e' appears 0 times in the sentence.\n" },
+    { "input": "hello\nl", "expected": "The character 'l' appears 2 times in the sentence.\n" }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    {
+      "line": 19,
+      "column": 23,
+      "message": "The loop condition 'i < sentence.length() - 1' causes the last character of the string to be missed during iteration, leading to an incorrect count if the target character is at the end of the sentence."
+    }
+  ]
+}

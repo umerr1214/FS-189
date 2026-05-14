@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "In an inheritance scenario, where `Base` has `privateData`, `protectedData`, and `publicData`, demonstrate how these members can (or cannot) be accessed by a `Derived` class and by a non-member function.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation should fail due to semantic errors (access violations): `Derived` attempting to directly access `privateData`, and a non-member function attempting to directly access `protectedData` and `privateData`." }
+  ],
+  "driver": "int main() {\n    Base b(10, 20, 30);\n    Derived d(100, 200, 300);\n\n    b.displayBasePublic();\n    d.accessMembers();\n    nonMemberFunction(b);\n    nonMemberFunction(d);\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Attempt to access private member `privateData` from a derived class `Derived`.",
+    "Attempt to access protected member `protectedData` from a non-member function.",
+    "Attempt to access private member `privateData` from a non-member function."
+  ]
+}

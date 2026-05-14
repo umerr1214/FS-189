@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Implement a function `void swap(int& a, int& b)` that swaps the values of two integer variables passed by reference. Demonstrate its usage in `main`.",
+  "test_cases": [
+    { "input": "", "expected": "" }
+  ],
+  "driver": "",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

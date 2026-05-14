@@ -1,0 +1,31 @@
+{
+  "language": "c++",
+  "question": "Design a simple calculator program in C++ that takes two numbers and an operator (+, -, *, /) from the user. Use a `switch` statement to perform the chosen operation and display the result. Handle division by zero.",
+  "test_cases": [
+    {
+      "input": "20\n-\n7\n",
+      "expected": "Please input first value: \nNow, what operation do you want to perform (+, -, *, /)? \nFinally, input second value: \nThe final outcome is: 13\n"
+    },
+    {
+      "input": "4\n*\n6\n",
+      "expected": "Please input first value: \nNow, what operation do you want to perform (+, -, *, /)? \nFinally, input second value: \nThe final outcome is: 24\n"
+    },
+    {
+      "input": "8\n/\n0\n",
+      "expected": "Please input first value: \nNow, what operation do you want to perform (+, -, *, /)? \nFinally, input second value: \nCannot divide by zero here. This is an error.\n"
+    },
+    {
+      "input": "10\n%\n3\n",
+      "expected": "Please input first value: \nNow, what operation do you want to perform (+, -, *, /)? \nFinally, input second value: \nThat's not a valid operation symbol. Try again next time.\n"
+    }
+  ],
+  "driver": "int main() {\n  // This is a conceptual driver. In an actual testing environment,\n  // the input string from 'test_cases[i].input' would be piped to\n  // the standard input of the compiled C++ program, and its standard output\n  // would be captured and compared with 'test_cases[i].expected'.\n  // For example, on a Unix-like system: `./your_program < input.txt`\n  // The main function of the provided C++ file is executed directly.\n  return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Poor variable names (`n1`, `n2`, `opr`, `res`, `ok`) reduce code readability.",
+    "Excessive use of `std::endl` after every `std::cin` statement causes unnecessary buffer flushes, which can slightly impact efficiency, and also makes the output verbose with extra blank lines.",
+    "Prompts and output messages are overly verbose and less concise, affecting readability and user experience."
+  ]
+}

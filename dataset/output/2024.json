@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Describe and demonstrate the order in which constructors and destructors are called when an object of a derived class is created and then goes out of scope, given a base class `Base` and a derived class `Derived`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating Readability/Efficiency Issue ---\nCreating a Derived object on the stack...\n-> Base Constructor called.\n-> Derived Constructor called.\n  (Base dummy method)\n  (Derived dummy method)\nDerived object going out of scope...\n<- Derived Destructor called.\n<- Base Destructor called.\n--- End of demonstration ---\n"
+    }
+  ],
+  "driver": "int main() {\n    // The main function of the provided code already serves as the driver.\n    // No additional driver code is needed.\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The code uses a helper function `printMessage` with `std::stringstream` for simple string concatenation, which is less efficient and more verbose than direct `std::cout` with string literals for this purpose.",
+    "The `Base` and `Derived` classes include unnecessary member variables (`base_id`, `derived_name`) that do not contribute to the problem's demonstration, adding clutter and reducing readability.",
+    "The overall printing mechanism is overly complex for a straightforward demonstration of constructor/destructor order, impacting readability."
+  ]
+}

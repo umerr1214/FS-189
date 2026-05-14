@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that calculates the factorial of a non-negative integer entered by the user. Use a `while` loop for the calculation. Ensure to handle input validation for non-negative numbers.",
+  "test_cases": [
+    { "input": "5", "expected": "Enter a non-negative integer: Factorial of 5 is 120\n" },
+    { "input": "0", "expected": "Enter a non-negative integer: Factorial of 0 is 1\n" },
+    { "input": "-3", "expected": "Enter a non-negative integer: Factorial is not defined for negative numbers.\n" }
+  ],
+  "driver": "int main() { /* This driver would attempt to compile and run the user's code. */ return 0; }",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing parentheses for 'main' function definition."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that calculates the factorial of a non-negative integer entered by the user. Use a `while` loop for the calculation. Ensure to handle input validation for non-negative numbers.",
+  "test_cases": [
+    { "input": "0", "expected": "Please enter a non-negative integer: The factorial of 0 is 1.\n" },
+    { "input": "1", "expected": "Please enter a non-negative integer: The factorial of 1 is 1.\n" },
+    { "input": "7", "expected": "Please enter a non-negative integer: The factorial of 7 is 5040.\n" },
+    { "input": "18", "expected": "Please enter a non-negative integer: The factorial of 18 is 6402373705728000.\n" },
+    { "input": "20", "expected": "Please enter a non-negative integer: The factorial of 20 is 2432902008176640000.\n" },
+    { "input": "-5\n10", "expected": "Please enter a non-negative integer: Invalid input. Please enter a non-negative integer: The factorial of 10 is 3628800.\n" },
+    { "input": "xyz\n3", "expected": "Please enter a non-negative integer: Invalid input. Please enter a non-negative integer: The factorial of 3 is 6.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <functional>\n\n// Forward declaration of the user's main function (renamed for testing)\n// The test harness will rename the student's `main` to `user_main`.\nextern int user_main();\n\n// Function to capture stdout\nstd::string capture_stdout(std::function<void()> func) {\n    std::stringstream ss;\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n    func();\n    std::cout.rdbuf(old_cout);\n    return ss.str();\n}\n\n// Function to simulate stdin\nvoid simulate_stdin(const std::string& input_str) {\n    std::stringstream ss_in(input_str);\n    std::cin.rdbuf(ss_in.rdbuf());\n}\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> test_cases = {\n        { \"0\", \"Please enter a non-negative integer: The factorial of 0 is 1.\\n\" },\n        { \"1\", \"Please enter a non-negative integer: The factorial of 1 is 1.\\n\" },\n        { \"7\", \"Please enter a non-negative integer: The factorial of 7 is 5040.\\n\" },\n        { \"18\", \"Please enter a non-negative integer: The factorial of 18 is 6402373705728000.\\n\" },\n        { \"20\", \"Please enter a non-negative integer: The factorial of 20 is 2432902008176640000.\\n\" },\n        { \"-5\\n10\", \"Please enter a non-negative integer: Invalid input. Please enter a non-negative integer: The factorial of 10 is 3628800.\\n\" },\n        { \"xyz\\n3\", \"Please enter a non-negative integer: Invalid input. Please enter a non-negative integer: The factorial of 3 is 6.\\n\" }\n    };\n\n    int passed_tests = 0;\n    for (size_t i = 0; i < test_cases.size(); ++i) {\n        std::string input = test_cases[i].first;\n        std::string expected_output = test_cases[i].second;\n\n        std::streambuf* old_cin = std::cin.rdbuf(); // Save original cin buffer\n\n        simulate_stdin(input);\n        std::string actual_output = capture_stdout(user_main);\n\n        std::cin.rdbuf(old_cin); // Restore original cin buffer\n\n        if (actual_output == expected_output) {\n            passed_tests++;\n        } else {\n            // For debugging: std::cerr << \"Test \" << i + 1 << \" Failed. Input: \" << input << \", Expected: \" << expected_output << \", Actual: \" << actual_output << std::endl;\n        }\n    }\n    return passed_tests == test_cases.size() ? 0 : 1;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

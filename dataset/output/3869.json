@@ -1,0 +1,27 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter the length and width of a rectangle, then calculates and displays its area and perimeter.",
+  "test_cases": [
+    { "input": "5\n10\n", "expected": "Enter length: Enter width: Area: 50\nPerimeter: 30\n" },
+    { "input": "7.5\n4\n", "expected": "Enter length: Enter width: Area: 30\nPerimeter: 23\n" },
+    { "input": "2\n2\n", "expected": "Enter length: Enter width: Area: 4\nPerimeter: 8\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <fstream>\n#include <cstdlib> // For system()\n\nstd::string read_file(const std::string& filename) {\n    std::ifstream ifs(filename);\n    std::string content((std::istreambuf_iterator<char>(ifs)),\n                           (std::istreambuf_iterator<char>()));\n    ifs.close();\n    return content;\n}\n\nvoid run_test_case(const std::string& input, const std::string& expected_output) {\n    std::ofstream input_file(\"temp_input.txt\");\n    input_file << input;\n    input_file.close();\n\n    system(\"./a.out < temp_input.txt > temp_output.txt 2>&1\");\n\n    std::string actual_output = read_file(\"temp_output.txt\");\n\n    std::cout << \"--- Test Case ---\\n\";\n    std::cout << \"Input:\\n\" << input;\n    std::cout << \"Expected Output:\\n\" << expected_output;\n    std::cout << \"Actual Output:\\n\" << actual_output;\n\n    if (actual_output.find(expected_output) != std::string::npos && !expected_output.empty()) {\n        std::cout << \"Test Passed! (Output contains expected)\\n\\n\";\n    } else if (actual_output.empty() && expected_output.empty()) {\n        std::cout << \"Test Passed! (Both empty)\\n\\n\";\n    } else {\n        std::cout << \"Test Failed!\\n\\n\";\n    }\n\n    system(\"rm -f temp_input.txt temp_output.txt\");\n}\n\nint main() {\n    // Example usage of run_test_case with test data from JSON\n    // To fully run, you'd iterate through all test_cases from the JSON.\n    // Example for the first test case:\n    // run_test_case(\"5\\n10\\n\", \"Enter length: Enter width: Area: 50\\nPerimeter: 30\\n\");\n    // The program compiles and runs, but the calculated values will be incorrect.\n    std::cout << \"Driver for logical error: The program compiles and runs, but produces incorrect results.\\n\";\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    {
+      "line": 12,
+      "column": 20,
+      "message": "Area calculation is incorrect. Should be `length * width`.",
+      "error_category": "Logical"
+    },
+    {
+      "line": 14,
+      "column": 25,
+      "message": "Perimeter calculation is incorrect. Should be `2 * (length + width)`.",
+      "error_category": "Logical"
+    }
+  ]
+}

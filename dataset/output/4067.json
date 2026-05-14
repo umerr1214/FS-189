@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a program that takes an integer from the user and prints its reverse. For example, if the input is 12345, the output should be 54321. Use a `while` loop.",
+  "test_cases": [
+    { "input": "12345", "expected": "Reversed number: 54321\n" },
+    { "input": "-987", "expected": "Reversed number: 789\n" },
+    { "input": "0", "expected": "Reversed number: 0\n" },
+    { "input": "100", "expected": "Reversed number: 1\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\n// This driver redirects std::cin and std::cout to test the main function\n// of the user's program. It assumes the user's program has a 'main' function\n// that reads an integer from std::cin and prints the reversed number to std::cout.\n\nstd::string run_test(const std::string& input_str) {\n    std::istringstream iss(input_str);\n    std::ostringstream oss;\n\n    // Save original streambufs\n    std::streambuf* old_cin = std::cin.rdbuf(iss.rdbuf());\n    std::streambuf* old_cout = std::cout.rdbuf(oss.rdbuf());\n\n    // Call the main function of the student's program\n    // This will execute the program as if it were run interactively\n    main(); \n\n    // Restore original streambufs\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    return oss.str();\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The program does not correctly handle negative input numbers; it outputs the absolute value of the reversed number instead of preserving the negative sign."
+  ]
+}

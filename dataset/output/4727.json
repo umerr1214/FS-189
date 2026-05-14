@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a struct `Student` with members `id` (int), `name` (std::string), and `grade` (double). Create an array of 3 `Student` structs, populate their data, and then print the details of each student.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Student ID: 101, Name: Alice, Grade: 95.5\nStudent ID: 102, Name: Bob, Grade: 88.0\nStudent ID: 103, Name: Charlie, Grade: 76.2\n"
+    }
+  ],
+  "driver": "// The problem description implies the main function will contain the full logic, so no external driver is needed.",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The program correctly populates data for 3 students but only prints the details for the first two students due to an incorrect loop condition (i < 2 instead of i < 3)."
+  ]
+}

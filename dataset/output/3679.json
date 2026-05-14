@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a program that checks if a given `std::string` entered by the user is a palindrome (e.g., \"madam\", \"racecar\").",
+  "test_cases": [
+    { "input": "madam", "expected": "Yes, \"madam\" is a palindrome." },
+    { "input": "racecar", "expected": "Yes, \"racecar\" is a palindrome." },
+    { "input": "hello", "expected": "No, \"hello\" is not a palindrome." },
+    { "input": "Madam", "expected": "No, \"Madam\" is not a palindrome." },
+    { "input": "A man, a plan, a canal: Panama", "expected": "No, \"A man, a plan, a canal: Panama\" is not a palindrome." },
+    { "input": "No lemon, no melon", "expected": "No, \"No lemon, no melon\" is not a palindrome." },
+    { "input": "", "expected": "Yes, \"\" is a palindrome." },
+    { "input": "a", "expected": "Yes, \"a\" is a palindrome." }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <algorithm>\n\nbool isPalindrome(const std::string& s) {\n    std::string reversed_s = s;\n    std::reverse(reversed_s.begin(), reversed_s.end());\n    return s == reversed_s;\n}\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        if (isPalindrome(line)) {\n            std::cout << \"Yes, \\\"\" << line << \"\\\" is a palindrome.\" << std::endl;\n        } else {\n            std::cout << \"No, \\\"\" << line << \"\\\" is not a palindrome.\" << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The program is case-sensitive and does not ignore non-alphanumeric characters (spaces, punctuation) when checking for palindromes, leading to incorrect results for common palindrome variations."]
+}

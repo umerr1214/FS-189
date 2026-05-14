@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `Student` class with `name` (string) and `studentID` (int) as private members. Implement a default constructor that initializes `name` to \"Unknown\" and `studentID` to 0, and a parameterized constructor that takes both `name` and `studentID`. Also, implement a destructor that prints a message indicating when a `Student` object is being destroyed, e.g., 'Student [name] with ID [id] destroyed.'",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Student Bob with ID 102 destroyed.\nMain function ending.\nStudent Alice with ID 101 destroyed.\nStudent Unknown with ID 0 destroyed."
+    }
+  ],
+  "driver": "int main() {\n    Student s1;\n    Student s2(\"Alice\", 101);\n    {\n        Student s3(\"Bob\", 102);\n    }\n    std::cout << \"Main function ending.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `name` and `studentID` members of the `Student` class are declared as `public` instead of `private`. This violates the encapsulation requirement specified in the problem statement, even though the program compiles and runs correctly. The class design is semantically incorrect relative to the problem's constraints."
+  ]
+}

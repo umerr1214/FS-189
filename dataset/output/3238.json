@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Wallet` class with a private `balance`. Implement `deposit(amount)` and `withdraw(amount)` public methods. Ensure `deposit` only accepts positive amounts and `withdraw` only proceeds if sufficient funds are available.",
+  "test_cases": [
+    { "input": "deposit 100\nwithdraw 30\nbalance", "expected": "Balance: 70\n" },
+    { "input": "deposit 50\nwithdraw 100\nbalance", "expected": "Balance: 50\n" },
+    { "input": "deposit -20\nbalance", "expected": "Balance: 0\n" },
+    { "input": "deposit 200\ndeposit -10\nwithdraw 150\nbalance", "expected": "Balance: 50\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\n// Wallet class will be inserted here\n\nint main() {\n    Wallet wallet;\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        std::stringstream ss(line);\n        std::string command;\n        ss >> command;\n        if (command == \"deposit\") {\n            int amount;\n            ss >> amount;\n            wallet.deposit(amount);\n        } else if (command == \"withdraw\") {\n            int amount;\n            ss >> amount;\n            wallet.withdraw(amount);\n        } else if (command == \"balance\") {\n            std::cout << \"Balance: \" << wallet.getBalance() << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition."
+  ]
+}

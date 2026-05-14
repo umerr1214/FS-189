@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `FileManager` class that dynamically allocates a character array (e.g., for a file path) in its constructor. Implement a destructor to properly deallocate this memory.",
+  "test_cases": [
+    { "input": "", "expected": "FileManager created for: my_document.txt\nCurrent file path: my_document.txt\nFileManager created with null path.\nCurrent file path: (null)\nFileManager destroying path: my_document.txt\nFileManager destroying null path.\n" }
+  ],
+  "driver": "int main() {\n    FileManager fm1(\"my_document.txt\");\n    fm1.printPath();\n    FileManager fm2(nullptr);\n    fm2.printPath();\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after class definition '}'."]
+}

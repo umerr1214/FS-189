@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Car` class that uses composition to include an `Engine` object. The `Engine` class should have `power` (int) and `type` (string). The `Car` class should have `make` (string) and `model` (string), and a `start()` method that internally calls a `startEngine()` method of its `Engine` object.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Starting Toyota Camry...\nEngine (Gasoline, 180 HP) started successfully.\nToyota Camry is ready to drive.\n--------------------\nStarting Electric Scooter...\nEngine (Electric, 0 HP) attempting to start... (Warning: Illogical power value)\nElectric Scooter is ready to drive.\n--------------------\nStarting Fantasy Unicorn-Powered...\nEngine (Magic, -50 HP) attempting to start... (Warning: Illogical power value)\nFantasy Unicorn-Powered is ready to drive.\n--------------------\n"
+    }
+  ],
+  "driver": "int main() {\n    Car car1(\"Toyota\", \"Camry\", 180, \"Gasoline\");\n    car1.start();\n    std::cout << \"--------------------\" << std::endl;\n\n    Car car2(\"Electric\", \"Scooter\", 0, \"Electric\");\n    car2.start();\n    std::cout << \"--------------------\" << std::endl;\n\n    Car car3(\"Fantasy\", \"Unicorn-Powered\", -50, \"Magic\");\n    car3.start();\n    std::cout << \"--------------------\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The Engine::startEngine() method does not validate the 'power' attribute. It allows engines with zero or negative power to 'start' and print a generic message, which is illogical for a real-world engine and indicates a lack of robustness in handling invalid or edge-case input values for power."
+  ]
+}

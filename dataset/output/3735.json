@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that asks the user to input an integer and then determines whether the number is positive, negative, or zero, printing an appropriate message.",
+  "test_cases": [
+    { "input": "15", "expected": "Please enter an integer: The number is positive.\n" },
+    { "input": "-25", "expected": "Please enter an integer: The number is negative.\n" },
+    { "input": "0", "expected": "Please enter an integer: The number is zero.\n" },
+    { "input": "abc", "expected": "Please enter an integer: Invalid input. Please enter an integer.\n" },
+    { "input": "123.45", "expected": "Please enter an integer: Invalid input. Please enter an integer.\n" },
+    { "input": "-2147483648", "expected": "Please enter an integer: The number is negative.\n" },
+    { "input": "2147483647", "expected": "Please enter an integer: The number is positive.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <limits>\n\nint main() {\n    std::string inputs[] = {\"15\", \"-25\", \"0\", \"abc\", \"123.45\", \"-2147483648\", \"2147483647\"};\n    for (const std::string& input : inputs) {\n        std::stringstream ss(input);\n        std::streambuf* old_cin = std::cin.rdbuf();\n        std::cin.rdbuf(ss.rdbuf());\n        \n        // The student's program's main function would be called here\n        // and its stdout captured for comparison with expected output.\n        // The driver should also check the exit code for robustness cases.\n        \n        std::cin.rdbuf(old_cin);\n        std::cin.clear();\n        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\\n');\n    }\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "",
+  "errors": []
+}

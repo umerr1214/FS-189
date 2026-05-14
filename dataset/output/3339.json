@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a function `void increment_by_ten(int& value)` that takes an integer by reference and increments its value by 10. Demonstrate its usage by calling it with a variable and printing the variable's value before and after the call.",
+  "test_cases": [
+    { "input": "", "expected": "Original value: 20\nValue after increment_by_ten: 30\n\nOriginal value: -3\nValue after increment_by_ten: 7\n" }
+  ],
+  "driver": "int main() {\n    int my_variable = 20;\n\n    std::cout << \"Original value: \" << my_variable << std::endl;\n    increment_by_ten(my_variable);\n    std::cout << \"Value after increment_by_ten: \" << my_variable << std::endl;\n\n    std::cout << std::endl;\n\n    int another_variable = -3;\n    std::cout << \"Original value: \" << another_variable << std::endl;\n    increment_by_ten(another_variable);\n    std::cout << \"Value after increment_by_ten: \" << another_variable << std::endl;\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

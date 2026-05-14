@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Extend the `Shape` and `Circle` example from Q4. Add a virtual `calculateArea()` method to `Shape` (returning 0 by default). Override `calculateArea()` in `Circle` to compute the circle's area. Demonstrate calling `calculateArea()` through a `Shape` pointer pointing to a `Circle` object.",
+  "test_cases": [
+    { "input": "Circle with radius 5.0", "expected": "Area of circle with radius 5.0: 78.5398..." },
+    { "input": "Circle with radius 10.0", "expected": "Area of circle with radius 10.0: 314.159..." },
+    { "input": "Circle with radius -3.0", "expected": "Warning: Circle radius cannot be negative. Setting to 0.\nArea of circle with radius -3.0 (handled): 0.0" }
+  ],
+  "driver": "int main() {\n    Shape* myShape = new Circle(5.0);\n    std::cout << myShape->calculateArea() << std::endl;\n    delete myShape;\n\n    Shape* anotherShape = new Circle(10.0);\n    std::cout << anotherShape->calculateArea() << std::endl;\n    delete anotherShape;\n\n    Shape* invalidCircle = new Circle(-3.0);\n    std::cout << invalidCircle->calculateArea() << std::endl;\n    delete invalidCircle;\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

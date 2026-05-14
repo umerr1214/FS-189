@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Model a `Library` class that manages a collection of `Book` objects (from Q1) using a simple array or vector (without using STL directly for management, just as storage). Implement methods to add a book and display all books.",
+  "test_cases": [
+    {
+      "input": "Adding 5 books, then displaying. Testing copy constructor and assignment operator.",
+      "expected": "Adding: The Lord of the Rings\nAdding: Pride and Prejudice\nAdding: Moby Dick\nAdding: War and Peace\nAdding: The Catcher in the Rye\n--- Library Books (Count: 5, Capacity: 8) ---\nTitle: The Lord of the Rings, Author: J.R.R. Tolkien, Year: 1954\nTitle: Pride and Prejudice, Author: Jane Austen, Year: 1813\nTitle: Moby Dick, Author: Herman Melville, Year: 1851\nTitle: War and Peace, Author: Leo Tolstoy, Year: 1869\nTitle: The Catcher in the Rye, Author: J.D. Salinger, Year: 1951\n----------------------------------------------------\n\n--- Another Library (copy of myLibrary) ---\n--- Library Books (Count: 5, Capacity: 8) ---\nTitle: The Lord of the Rings, Author: J.R.R. Tolkien, Year: 1954\nTitle: Pride and Prejudice, Author: Jane Austen, Year: 1813\nTitle: Moby Dick, Author: Herman Melville, Year: 1851\nTitle: War and Peace, Author: Leo Tolstoy, Year: 1869\nTitle: The Catcher in the Rye, Author: J.D. Salinger, Year: 1951\n----------------------------------------------------\n\n--- Third Library (assigned from myLibrary) ---\n--- Library Books (Count: 5, Capacity: 8) ---\nTitle: The Lord of the Rings, Author: J.R.R. Tolkien, Year: 1954\nTitle: Pride and Prejudice, Author: Jane Austen, Year: 1813\nTitle: Moby Dick, Author: Herman Melville, Year: 1851\nTitle: War and Peace, Author: Leo Tolstoy, Year: 1869\nTitle: The Catcher in the Rye, Author: J.D. Salinger, Year: 1951\n----------------------------------------------------\n"
+    }
+  ],
+  "driver": "int main() {\n    Library myLibrary;\n\n    myLibrary.addBook(Book(\"The Lord of the Rings\", \"J.R.R. Tolkien\", 1954));\n    myLibrary.addBook(Book(\"Pride and Prejudice\", \"Jane Austen\", 1813));\n    myLibrary.addBook(Book(\"Moby Dick\", \"Herman Melville\", 1851));\n    myLibrary.addBook(Book(\"War and Peace\", \"Leo Tolstoy\", 1869)); \n    myLibrary.addBook(Book(\"The Catcher in the Rye\", \"J.D. Salinger\", 1951)); \n\n    myLibrary.displayAllBooks();\n\n    Library anotherLibrary = myLibrary; \n    std::cout << \"\\n--- Another Library (copy of myLibrary) ---\" << std::endl;\n    anotherLibrary.displayAllBooks();\n\n    Library thirdLibrary;\n    thirdLibrary.addBook(Book(\"Frankenstein\", \"Mary Shelley\", 1818));\n    thirdLibrary = myLibrary; \n    std::cout << \"\\n--- Third Library (assigned from myLibrary) ---\" << std::endl;\n    thirdLibrary.displayAllBooks();\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

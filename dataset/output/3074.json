@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a `Printer` class with an overloaded public method `print`. This method should be able to print: 1) an integer, 2) a double, and 3) a C-style string (`const char*`). Demonstrate printing different data types using the same method name.",
+  "test_cases": [
+    {
+      "input": "No direct input, uses hardcoded calls.",
+      "expected": "--- Testing Readability / Efficiency Issue ---\nPrinting an integer: 12345\nPrinting a double: 98.765\nPrinting a C-style string: Another string example\nPrinting a C-style string: (null)\nPrinting a C-style string: Short\nPrinting a C-style string: A very long string that might highlight the overhead of unnecessary string conversion and allocation for C-style strings, especially if done repeatedly.\n--- End Readability / Efficiency Issue Test ---\n"
+    }
+  ],
+  "driver": "int main() {\n    Printer p;\n    std::cout << \"--- Testing Readability / Efficiency Issue ---\" << std::endl;\n    p.print(12345);\n    p.print(98.765);\n    p.print(\"Another string example\");\n    const char* null_str_test = nullptr;\n    p.print(null_str_test);\n    p.print(\"Short\");\n    p.print(\"A very long string that might highlight the overhead of unnecessary string conversion and allocation for C-style strings, especially if done repeatedly.\");\n    std::cout << \"--- End Readability / Efficiency Issue Test ---\" << std::endl;\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "All print methods use `std::endl` which flushes the output buffer on each call, potentially reducing efficiency. Using `\\n` is generally preferred unless an immediate flush is explicitly required.",
+    "The `print(const char*)` method creates a temporary `std::string` from the C-style string, incurring an unnecessary memory allocation and copy operation. Direct printing using `std::cout << value` (with a `nullptr` check) would be more efficient."
+  ]
+}

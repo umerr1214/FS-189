@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Implement a recursive C++ function `fibonacci(n)` that calculates the n-th Fibonacci number. The program should ask the user for a non-negative integer 'n' and then print the result of `fibonacci(n)`.",
+  "test_cases": [
+    { "input": "0", "expected": "The 0-th Fibonacci number is: 0\n" },
+    { "input": "1", "expected": "The 1-th Fibonacci number is: 1\n" },
+    { "input": "5", "expected": "The 5-th Fibonacci number is: 5\n" },
+    { "input": "10", "expected": "The 10-th Fibonacci number is: 55\n" },
+    { "input": "20", "expected": "The 20-th Fibonacci number is: 6765\n" },
+    { "input": "30", "expected": "The 30-th Fibonacci number is: 832040\n" },
+    { "input": "-1", "expected": "Error: 'n' must be a non-negative integer.\n" }
+  ],
+  "driver": "int main() { int n; std::cin >> n; if (std::cin.fail() || n < 0) { std::cerr << \"Error: 'n' must be a non-negative integer.\" << std::endl; return 1; } int result = fibonacci(n); if (result != -1) { std::cout << \"The \" << n << \"-th Fibonacci number is: \" << result << std::endl; } return 0; }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The recursive `fibonacci` function lacks memoization, leading to exponential time complexity (O(2^n)). This results in significant performance degradation for larger inputs.",
+    "Many subproblems are re-calculated multiple times, making the solution highly inefficient.",
+    "While the code is functionally correct for valid inputs within `int` limits, its inefficiency makes it impractical for common use cases with larger 'n'."
+  ]
+}

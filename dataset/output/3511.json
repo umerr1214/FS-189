@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that declares a 1D integer array and initializes it. Then, calculate and print the sum of all elements in the array using pointer arithmetic instead of array indexing.",
+  "test_cases": [
+    { "input": "", "expected": "Sum of array elements: 150\n" }
+  ],
+  "driver": "g++ -o {file_name_no_ext} {file_name}.cpp && ./{file_name_no_ext}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The loop condition `i <= SIZE` causes an out-of-bounds access when `i` equals `SIZE`. This attempts to dereference memory one element past the end of the array, leading to undefined behavior. It should be `i < SIZE`."
+  ]
+}

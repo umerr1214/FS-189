@@ -1,0 +1,25 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function `is_palindrome` that takes a `std::string` as input and returns `true` if the string is a palindrome (reads the same forwards and backward, case-sensitive), and `false` otherwise. Test it with several example strings.",
+  "test_cases": [
+    { "input": "madam", "expected": "Yes" },
+    { "input": "racecar", "expected": "Yes" },
+    { "input": "hello", "expected": "No" },
+    { "input": "A", "expected": "Yes" },
+    { "input": "", "expected": "Yes" },
+    { "input": "ab", "expected": "No" },
+    { "input": "aba", "expected": "Yes" },
+    { "input": "Madam", "expected": "No" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <algorithm>\n\n// Assuming is_palindrome function is defined above\n\nint main() {\n    std::cout << \"Is 'madam' a palindrome? \" << (is_palindrome(\"madam\") ? \"Yes\" : \"No\") << std::endl;\n    std::cout << \"Is 'racecar' a palindrome? \" << (is_palindrome(\"racecar\") ? \"Yes\" : \"No\") << std::endl;\n    std::cout << \"Is 'hello' a palindrome? \" << (is_palindrome(\"hello\") ? \"Yes\" : \"No\") << std::endl;\n    std::cout << \"Is 'A' a palindrome? \" << (is_palindrome(\"A\") ? \"Yes\" : \"No\") << std::endl;\n    std::cout << \"Is '' a palindrome? \" << (is_palindrome(\"\") ? \"Yes\" : \"No\") << std::endl;\n    std::cout << \"Is 'ab' a palindrome? \" << (is_palindrome(\"ab\") ? \"Yes\" : \"No\") << std::endl;\n    std::cout << \"Is 'aba' a palindrome? \" << (is_palindrome(\"aba\") ? \"Yes\" : \"No\") << std::endl;\n    std::cout << \"Is 'Madam' a palindrome? \" << (is_palindrome(\"Madam\") ? \"Yes\" : \"No\") << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    {
+      "line": 10,
+      "column": 2,
+      "message": "expected ';' before '}' token"
+    }
+  ]
+}

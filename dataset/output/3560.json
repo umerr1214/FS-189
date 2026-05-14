@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `void transposeMatrix(int matrix[3][3], int result[3][3])` that takes a 3x3 integer matrix and stores its transpose in another 3x3 matrix. In `main`, initialize a matrix, call the function, and print both the original and transposed matrices.",
+  "test_cases": [
+    { "input": "1 2 3\n4 5 6\n7 8 9", "expected": "Original Matrix:\n1 2 3 \n4 5 6 \n7 8 9 \n\nTransposed Matrix:\n1 4 7 \n2 5 8 \n3 6 9 \n\n" }
+  ],
+  "driver": "#include <iostream>\n#include <cstdio>\n\nvoid printMatrix(const int matrix[3][3], const char* name) {\n    printf(\"%s:\\n\", name);\n    for (int i = 0; i < 3; ++i) {\n        for (int j = 0; j < 3; ++j) {\n            printf(\"%d \", matrix[i][j]);\n        }\n        printf(\"\\n\");\n    }\n    printf(\"\\n\");\n}\n\nvoid transposeMatrix(int matrix[3][3], int result[3][3]) {\n    // Row 0\n    result[0][0] = matrix[0][0];\n    result[1][0] = matrix[0][1];\n    result[2][0] = matrix[0][2];\n\n    // Row 1\n    result[0][1] = matrix[1][0];\n    result[1][1] = matrix[1][1];\n    result[2][1] = matrix[1][2];\n\n    // Row 2\n    result[0][2] = matrix[2][0];\n    result[1][2] = matrix[2][1];\n    result[2][2] = matrix[2][2];\n}\n\nint main() {\n    int originalMatrix[3][3] = {\n        {1, 2, 3},\n        {4, 5, 6},\n        {7, 8, 9}\n    };\n    int transposedMatrix[3][3];\n\n    printMatrix(originalMatrix, \"Original Matrix\");\n\n    transposeMatrix(originalMatrix, transposedMatrix);\n\n    printMatrix(transposedMatrix, \"Transposed Matrix\");\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["The `transposeMatrix` function hardcodes the assignment for each element (9 individual assignments) instead of using nested loops. This approach severely impacts readability, maintainability, and efficiency. While it works for a fixed 3x3 matrix, it demonstrates a lack of understanding of iterative programming constructs suitable for matrix operations, making it impractical and highly error-prone for larger or variable-sized matrices."]
+}

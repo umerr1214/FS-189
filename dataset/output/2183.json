@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design a `Circle` class with a private `radius`. Implement `getRadius()` as a `const` member function and `setRadius()` as a non-`const` member function. In `main`, create a `const Circle` object and demonstrate which methods it can call.",
+  "test_cases": [
+    { "input": "", "expected": "Radius of const circle: 5.0\n" }
+  ],
+  "driver": "The `main` function creates a `const Circle` object and calls its `getRadius()` method. The expected output is the initial radius.",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The `getRadius()` member function contains a logical error, returning a hardcoded value (0.0) instead of the actual `radius` of the object."]
+}

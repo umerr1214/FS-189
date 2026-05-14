@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `Point` class with private integer members `x` and `y`. Provide public getter methods (`getX()`, `getY()`) to retrieve the coordinate values and public setter methods (`setX(int val)`, `setY(int val)`) to modify them. The setters should include basic validation, ensuring coordinates cannot be set to negative values.",
+  "test_cases": [
+    { "input": "", "expected": "Initial Point p1: (0, 0)\nAfter setting to (10, 20): (10, 20)\nAfter setting to (-5, -15) (clamped): (0, 0)\nAfter setting to (30, -2) (clamped): (30, 0)\n" }
+  ],
+  "driver": "int main() {\n    Point p1;\n    std::cout << \"Initial Point p1: (\" << p1.getX() << \", \" << p1.getY() << \")\" << std::endl;\n\n    p1.setX(10);\n    p1.setY(20);\n    std::cout << \"After setting to (10, 20): (\" << p1.getX() << \", \" << p1.getY() << \")\" << std::endl;\n\n    p1.setX(-5);\n    p1.setY(-15);\n    std::cout << \"After setting to (-5, -15) (clamped): (\" << p1.getX() << \", \" << p1.getY() << \")\" << std::endl;\n\n    p1.setX(30);\n    p1.setY(-2);\n    std::cout << \"After setting to (30, -2) (clamped): (\" << p1.getX() << \", \" << p1.getY() << \")\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The setter methods `setX` and `setY` handle negative input values by clamping them to 0. While this prevents invalid negative states, it does so silently without providing any feedback (e.g., a return value or an error message) to the caller that the input was invalid and modified. This lack of transparency makes the program less robust in terms of predictable error handling."
+  ]
+}

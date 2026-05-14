@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Enhance the `Rectangle` class. Implement setters for `length` and `width` that validate input: dimensions must be positive. If an invalid value is provided, print an error message and do not update the member.",
+  "test_cases": [
+    { "input": "Initial dimensions: \nAfter setting length to 7.5: \nAfter setting width to 2.0: \nAfter setting length to -3.0: \nAfter setting width to 0.0: \nAfter setting length to 15.0: ", "expected": "Length: 5, Width: 10\nLength: 7.5, Width: 10\nLength: 7.5, Width: 2\nError: Invalid length (value -3). Length must be positive and was not updated.\nLength: 7.5, Width: 2\nError: Invalid width (value 0). Width must be positive and was not updated.\nLength: 7.5, Width: 2\nLength: 15, Width: 2\n" }
+  ],
+  "driver": "Rectangle rect(5.0, 10.0);\nstd::cout << \"Initial dimensions: \";\nrect.printDimensions();\n\nrect.setLength(7.5);\nstd::cout << \"After setting length to 7.5: \";\nrect.printDimensions();\n\nrect.setWidth(2.0);\nstd::cout << \"After setting width to 2.0: \";\nrect.printDimensions();\n\nrect.setLength(-3.0); // Invalid\nstd::cout << \"After setting length to -3.0: \";\nrect.printDimensions();\n\nrect.setWidth(0.0); // Invalid\nstd::cout << \"After setting width to 0.0: \";\nrect.printDimensions();\n\nrect.setLength(15.0);\nstd::cout << \"After setting length to 15.0: \";\nrect.printDimensions();",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after class definition."]
+}

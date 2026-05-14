@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Design a class hierarchy demonstrating multilevel inheritance: `Vehicle` (base class with `maxSpeed`), `Car` (derived from `Vehicle`, adds `numDoors`), `SportsCar` (derived from `Car`, adds `turboBoostEnabled`). Ensure proper constructor chaining to initialize attributes at each level.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Demonstrating the Multilevel Inheritance Hierarchy:\n\nDetails of the Transportation Machine:\n  Maximum Attainable Speed: 150 kilometers per hour.\n---\n\nDetails of the Transportation Machine:\n  Maximum Attainable Speed: 200 kilometers per hour.\n  Total Number of Access Doors: 4 units.\n---\n\nDetails of the Transportation Machine:\n  Maximum Attainable Speed: 300 kilometers per hour.\n  Total Number of Access Doors: 2 units.\n  Turbocharger Boost System Status: Currently Activated.\n---\n\nDetails of the Transportation Machine:\n  Maximum Attainable Speed: 280 kilometers per hour.\n  Total Number of Access Doors: 2 units.\n  Turbocharger Boost System Status: Currently Deactivated.\n---\n\n"
+    }
+  ],
+  "driver": "This C++ program defines a class hierarchy (VehicleBaseClassForTransportationMachine -> AutomobileDerivedFromVehicle -> HighPerformanceSportsCarDerivedFromAutomobile) demonstrating multilevel inheritance and constructor chaining. The main function creates instances of each class and calls their display methods. The code is functionally correct but suffers from significant readability and minor efficiency issues.",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "**Readability:** Extremely verbose and unnecessarily long class, variable, and method names (e.g., `VehicleBaseClassForTransportationMachine`, `maximumPossibleSpeedOfThisParticularVehicle`, `displayAllRelevantVehicleInformation`). This makes the code difficult to read and understand quickly.",
+    "**Readability:** Overuse of the `this->` keyword when it's not strictly necessary, cluttering the code and making it less concise (e.g., `this->maximumPossibleSpeedOfThisParticularVehicle`).",
+    "**Readability:** Inconsistent member initialization style; some members are initialized in the initializer list, while one (`totalNumberOfPassengerEntryExitDoors`) is assigned in the constructor body. While functional, it's less consistent and slightly less efficient than using initializer lists for all members.",
+    "**Efficiency/Readability:** Excessive use of `std::endl` which flushes the output buffer on each call, potentially leading to minor performance overhead compared to `\\n` for console output, especially in loops (though not a major issue here, it's a common 'efficiency' point). Also, redundant blank lines and separators in output.",
+    "**Readability:** Lack of concise comments explaining the *why* behind design choices, focusing only on *what* the code does, which adds to verbosity without necessarily improving clarity."
+  ]
+}

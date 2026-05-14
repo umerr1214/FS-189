@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Define an abstract base class `Animal` with a pure virtual `void makeSound()` method. Derive concrete classes `Dog` and `Cat` from `Animal`, and each should provide its specific implementation for the `makeSound()` method.",
+  "test_cases": [
+    { "input": "call Dog::makeSound()", "expected": "Woof!\n" },
+    { "input": "call Cat::makeSound()", "expected": "Meow!\n" },
+    { "input": "call Animal* dog_ptr->makeSound()", "expected": "Woof!\n" },
+    { "input": "call Animal* cat_ptr->makeSound()", "expected": "Meow!\n" }
+  ],
+  "driver": "    Dog myDog;\n    Cat myCat;\n\n    std::cout << \"Testing concrete instances:\\n\";\n    std::cout << \"Dog says: \";\n    myDog.makeSound();\n\n    std::cout << \"Cat says: \";\n    myCat.makeSound();\n\n    Animal* polymorphicDog = new Dog();\n    Animal* polymorphicCat = new Cat();\n\n    std::cout << \"\\nTesting polymorphic instances:\\n\";\n    std::cout << \"Polymorphic Dog says: \";\n    polymorphicDog->makeSound();\n\n    std::cout << \"Polymorphic Cat says: \";\n    polymorphicCat->makeSound();\n\n    delete polymorphicDog;\n    delete polymorphicCat;",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `Dog::makeSound()` method outputs 'Meow!' which is incorrect; it should output 'Woof!'.",
+    "The `Cat::makeSound()` method outputs 'Woof!' which is incorrect; it should output 'Meow!'."
+  ]
+}

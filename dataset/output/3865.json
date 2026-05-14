@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `copyCString` that takes two C-style character arrays (pointers to char), `source` and `destination`, and copies the content of `source` to `destination`. Assume `destination` has sufficient capacity. Do not use `std::string` or library functions like `strcpy`. Demonstrate with example strings.",
+  "test_cases": [
+    { "input": "Hello", "expected": "Hello#####" },
+    { "input": "", "expected": "#####" },
+    { "input": "A", "expected": "A#####" },
+    { "input": "Long string test", "expected": "Long string test#####" }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n\n// The function to be tested\nvoid copyCString(const char* source, char* destination) {\n    int i = 0;\n    while (source[i] != '\\0') {\n        destination[i] = source[i];\n        i++;\n    }\n}\n\n// Helper function for the driver to set up and print for a test case\nvoid run_test(const char* source_val) {\n    char dest_buffer[100]; \n    for (int k = 0; k < 100; ++k) {\n        dest_buffer[k] = '#';\n    }\n\n    copyCString(source_val, dest_buffer);\n\n    std::cout << \"Source: \\\"\" << source_val << \"\\\"\" << std::endl;\n    std::cout << \"Destination (Robustness Issue): \\\"\";\n    int print_len = std::strlen(source_val);\n    for (int i = 0; i < print_len + 5 && i < 100; ++i) {\n        std::cout << dest_buffer[i];\n    }\n    std::cout << \"\\\"\" << std::endl;\n}\n\nint main() {\n    run_test(\"Hello\");\n    run_test(\"\");\n    run_test(\"A\");\n    run_test(\"Long string test\");\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `copyCString` function fails to copy the null terminator ('\\0') from the source string to the destination.",
+    "This leaves the `destination` array as an unterminated C-style string.",
+    "Subsequent operations (like printing or using `strlen`) on the destination will result in undefined behavior, potentially reading past the allocated buffer or printing garbage characters."
+  ]
+}

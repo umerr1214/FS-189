@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Implement a `Vehicle` base class with `speed` (int) and `color` (string). Derive a `Car` class (adds `numDoors` int) and a `Motorcycle` class (adds `hasSidecar` bool). Demonstrate methods specific to each derived class.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating Car ---\nVehicle Info: Speed = 120 mph, Color = Red\nCar Specifics: Number of Doors = 4\nCar specific method: Honk! Honk! (This car has 4 doors).\n\n--- Demonstrating Motorcycle ---\nVehicle Info: Speed = 90 mph, Color = Black\nMotorcycle Specifics: Has Sidecar = Yes\nMotorcycle specific method: Doing a wheelie! Careful with the sidecar!\n\n--- Demonstrating Robustness Issues ---\nSetting invalid speed and doors:\nVehicle Info: Speed = -50 mph, Color = Red\nCar Specifics: Number of Doors = 0\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Demonstrating Car ---\" << std::endl;\n    Car myCar(120, \"Red\", 4);\n    myCar.displayCarInfo();\n    myCar.honkHorn();\n\n    std::cout << \"\\n--- Demonstrating Motorcycle ---\" << std::endl;\n    Motorcycle myMotorcycle(90, \"Black\", true);\n    myMotorcycle.displayMotorcycleInfo();\n    myMotorcycle.wheelie();\n\n    std::cout << \"\\n--- Demonstrating Robustness Issues ---\" << std::endl;\n    std::cout << \"Setting invalid speed and doors:\" << std::endl;\n    myCar.setSpeed(-50); // Setting negative speed\n    myCar.setNumDoors(0); // Setting 0 doors\n    myCar.displayCarInfo();\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing virtual destructor in the base class `Vehicle`. This can lead to undefined behavior or memory leaks when deleting derived objects through a base class pointer.",
+    "Lack of input validation in `Vehicle::setSpeed` allows setting negative speed, which might represent an invalid state for a vehicle.",
+    "Lack of input validation in `Car::setNumDoors` allows setting zero or negative doors, which is an invalid state for a car."
+  ]
+}

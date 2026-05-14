@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that calculates the factorial of a non-negative integer entered by the user. Use a `for` loop for the calculation.",
+  "test_cases": [
+    { "input": "5", "expected": "Factorial of 5 is 120" },
+    { "input": "0", "expected": "Factorial of 0 is 1" },
+    { "input": "1", "expected": "Factorial of 1 is 1" },
+    { "input": "10", "expected": "Factorial of 10 is 3628800" },
+    { "input": "-3", "expected": "Factorial is not defined for negative numbers." }
+  ],
+  "driver": "// This driver demonstrates how test cases are processed for a program that reads from stdin and writes to stdout.\n// In a real testing environment, the student's compiled executable would be run for each test case.\n// The driver typically contains the reference solution to generate expected outputs.\n\n#include <iostream>\n#include <string>\n#include <sstream>\n#include <limits> // For numeric_limits\n\nlong long calculate_correct_factorial(int n) {\n    if (n < 0) return -1; // Special value for error condition\n    if (n == 0) return 1;\n    long long res = 1;\n    for (int i = 1; i <= n; ++i) {\n        // Check for overflow before multiplication\n        if (std::numeric_limits<long long>::max() / i < res) {\n            return -2; // Special value for overflow\n        }\n        res *= i;\n    }\n    return res;\n}\n\nint main() {\n    // Example of a single test case execution:\n    int test_input = 5;\n    long long expected_factorial = calculate_correct_factorial(test_input);\n    \n    std::cout << \"// Input: \" << test_input << std::endl;\n    if (expected_factorial == -1) {\n        std::cout << \"// Expected Output: Factorial is not defined for negative numbers.\" << std::endl;\n    } else if (expected_factorial == -2) {\n        std::cout << \"// Expected Output: (Value too large to fit in long long, indicating overflow)\" << std::endl;\n    } else {\n        std::cout << \"// Expected Output: Factorial of \" << test_input << \" is \" << expected_factorial << std::endl;\n    }\n    \n    std::cout << \"// The student's program's actual output would be captured and compared to this expected output.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": []
+}

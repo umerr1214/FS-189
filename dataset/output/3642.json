@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Search for a specific integer value in a 1D array of 8 integers. If found, report its first index; otherwise, indicate it's not present.",
+  "test_cases": [
+    { "input": "1 2 3 4 5 6 7 8 5", "expected": "Element found at index: 4" },
+    { "input": "10 20 30 40 50 60 70 80 99", "expected": "Element not present." },
+    { "input": "5 5 5 5 5 5 5 5 5", "expected": "Element found at index: 0" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream>\n\nint main() {\n    int arr[8];\n    // Read 8 integers for the array\n    for (int i = 0; i < 8; ++i) {\n        std::cin >> arr[i];\n    }\n\n    int target;\n    // Read the target integer\n    std::cin >> target;\n\n    int found_index = -1;\n    for (int i = 0; i < 8; ++i) {\n        if (arr[i] == target) {\n            found_index = i;\n            break;\n        }\n    }\n\n    if (found_index != -1) {\n        std::cout << \"Element found at index: \" << found_index << std::endl;\n    } else {\n        std::cout << \"Element not present.\" << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The loop condition `i <= 8` causes an out-of-bounds access to `arr[8]`, which is undefined behavior. The array `arr` has valid indices from 0 to 7."]
+}

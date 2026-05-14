@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a function `swapNumbers` that takes two integer pointers as arguments and swaps the values they point to.",
+  "test_cases": [
+    { "input": "a=10, b=20", "expected": "Before swap: a = 10, b = 20\nAfter swap: a = 10, b = 20" },
+    { "input": "x=5, y=5", "expected": "Before swap: x = 5, y = 5\nAfter swap: x = 5, y = 5" },
+    { "input": "p=-3, q=7", "expected": "Before swap: p = -3, q = 7\nAfter swap: p = -3, q = 7" }
+  ],
+  "driver": "#include <iostream>\n\nvoid swapNumbers(int* ptr1, int* ptr2);\n\nint main() {\n    int a = 10;\n    int b = 20;\n    std::cout << \"Before swap: a = \" << a << \", b = \" << b << std::endl;\n    swapNumbers(&a, &b);\n    std::cout << \"After swap: a = \" << a << \", b = \" << b << std::endl;\n\n    int x = 5;\n    int y = 5;\n    std::cout << \"Before swap: x = \" << x << \", y = \" << y << std::endl;\n    swapNumbers(&x, &y);\n    std::cout << \"After swap: x = \" << x << \", y = \" << y << std::endl;\n\n    int p = -3;\n    int q = 7;\n    std::cout << \"Before swap: p = \" << p << \", q = \" << q << std::endl;\n    swapNumbers(&p, &q);\n    std::cout << \"After swap: p = \" << p << \", q = \" << q << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The function swaps the local copies of the pointers themselves, not the values they point to. This means the original variables passed from the calling function (e.g., 'a' and 'b' in main) are not modified, failing to achieve the intended swap of values."]
+}

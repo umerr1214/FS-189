@@ -1,0 +1,24 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that initializes a 1D array of integers, then finds and prints the second largest element in that array.",
+  "test_cases": [
+    { "input": "[10, 5, 20, 15, 25]", "expected": "20" },
+    { "input": "[7, 7, 7, 7]", "expected": "INT_MIN" },
+    { "input": "[100]", "expected": "INT_MIN" },
+    { "input": "[]", "expected": "INT_MIN" },
+    { "input": "[1, 2]", "expected": "1" },
+    { "input": "[2, 1]", "expected": "1" },
+    { "input": "[-5, -1, -10]", "expected": "-5" },
+    { "input": "[10, 10, 5]", "expected": "5" },
+    { "input": "[5, 10, 10]", "expected": "5" },
+    { "input": "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]", "expected": "9" },
+    { "input": "[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]", "expected": "9" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <sstream>\n#include <string>\n#include <limits> // For std::numeric_limits\n#include <algorithm> // For std::sort if needed by student code\n\n// The student's code will be inserted here.\n// Assume student's findSecondLargest function is available here.\n// For example:\n// int findSecondLargest(const std::vector<int>& arr);\n\n// Helper function to parse array string \"[1, 2, 3]\" into std::vector<int>\nstd::vector<int> parseVector(const std::string& s) {\n    std::vector<int> vec;\n    std::string temp = s;\n    // Remove brackets\n    if (temp.length() >= 2 && temp.front() == '[' && temp.back() == ']') {\n        temp = temp.substr(1, temp.length() - 2);\n    }\n    std::stringstream ss(temp);\n    std::string segment;\n    while(std::getline(ss, segment, ',')) {\n        try {\n            vec.push_back(std::stoi(segment));\n        } catch (const std::invalid_argument& e) {\n            // Handle error, e.g., non-integer in list\n            std::cerr << \"Invalid argument: \" << segment << std::endl;\n        } catch (const std::out_of_range& e) {\n            // Handle error, e.g., number too large\n            std::cerr << \"Out of range: \" << segment << std::endl;\n        }\n    }\n    return vec;\n}\n\n// Helper function to convert vector to string for output\nstd::string vecToString(const std::vector<int>& vec) {\n    std::ostringstream oss;\n    oss << \"[\";\n    for (size_t i = 0; i < vec.size(); ++i) {\n        oss << vec[i];\n        if (i < vec.size() - 1) {\n            oss << \", \";\n        }\n    }\n    oss << \"]\";\n    return oss.str();\n}\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> test_cases_data = {\n        {\"[10, 5, 20, 15, 25]\", \"20\"},\n        {\"[7, 7, 7, 7]\", \"INT_MIN\"},\n        {\"[100]\", \"INT_MIN\"},\n        {\"[]\", \"INT_MIN\"},\n        {\"[1, 2]\", \"1\"},\n        {\"[2, 1]\", \"1\"},\n        {\"[-5, -1, -10]\", \"-5\"},\n        {\"[10, 10, 5]\", \"5\"},\n        {\"[5, 10, 10]\", \"5\"},\n        {\"[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\", \"9\"},\n        {\"[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]\", \"9\"}\n    };\n\n    for (size_t i = 0; i < test_cases_data.size(); ++i) {\n        std::vector<int> input_vec = parseVector(test_cases_data[i].first);\n        int expected_val;\n        if (test_cases_data[i].second == \"INT_MIN\") {\n            expected_val = std::numeric_limits<int>::min();\n        } else {\n            expected_val = std::stoi(test_cases_data[i].second);\n        }\n\n        int result = findSecondLargest(input_vec);\n        \n        std::cout << \"Test Case \" << i + 1 << \": Input \" << vecToString(input_vec) << std::endl;\n        std::cout << \"Expected: \" << (expected_val == std::numeric_limits<int>::min() ? \"INT_MIN\" : std::to_string(expected_val)) << std::endl;\n        std::cout << \"Got:      \" << (result == std::numeric_limits<int>::min() ? \"INT_MIN\" : std::to_string(result)) << std::endl;\n\n        if (result == expected_val) {\n            std::cout << \"Result: PASSED\" << std::endl;\n        } else {\n            std::cout << \"Result: FAILED\" << std::endl;\n        }\n        std::cout << \"--------------------\" << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The program uses `std::sort` which has an O(N log N) time complexity to find the second largest element. This is inefficient as the task can be accomplished in a single pass with O(N) time complexity."
+  ]
+}

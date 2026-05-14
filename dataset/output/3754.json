@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that acts as a simple calculator. It should take two numbers (doubles) and an operator (+, -, *, /) as input from the user, then perform the operation using a `switch` statement and display the result. Handle division by zero.",
+  "test_cases": [
+    { "input": "10.5\n+\n5.2\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 15.7\n" },
+    { "input": "20\n/\n4\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 5\n" },
+    { "input": "7\n*\n0\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 0\n" }
+  ],
+  "driver": "std::string input_str = R\"RAW(10.5\n+\n5.2\n)RAW\"; std::istringstream iss(input_str); std::cin.rdbuf(iss.rdbuf());\n// The program has a syntax error and will not compile or run to produce output for the driver.",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    {
+      "line": 43,
+      "column": 46,
+      "message": "expected ';' before '}' token"
+    }
+  ]
+}

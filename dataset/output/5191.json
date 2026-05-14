@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that includes an overloaded function `void printArea(double radius)` to calculate and print the area of a circle, and another `void printArea(double length, double width)` to calculate and print the area of a rectangle. Test both versions in `main`.",
+  "test_cases": [
+    { "input": "5.0", "expected": "Circle area with radius 5: 78.5398" },
+    { "input": "10.0", "expected": "Circle area with radius 10: 314.159" },
+    { "input": "-3.0", "expected": "Circle area with radius -3: 28.2743" },
+    { "input": "4.0 6.0", "expected": "Rectangle area with length 4 and width 6: 24" },
+    { "input": "7.5 2.0", "expected": "Rectangle area with length 7.5 and width 2: 15" },
+    { "input": "-5.0 4.0", "expected": "Rectangle area with length -5 and width 4: -20" },
+    { "input": "3.0 -2.0", "expected": "Rectangle area with length 3 and width -2: -6" }
+  ],
+  "driver": "int main() {\n    printArea(5.0);\n    printArea(10.0);\n    printArea(-3.0);\n    printArea(4.0, 6.0);\n    printArea(7.5, 2.0);\n    printArea(-5.0, 4.0);\n    printArea(3.0, -2.0);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `printArea` functions do not validate input parameters (radius, length, width).",
+    "Negative values for radius, length, or width are accepted and processed, leading to mathematically incorrect or physically meaningless area calculations (e.g., positive area for negative radius, negative area for negative length/width).",
+    "A robust solution would include checks for non-negative dimensions and provide appropriate error messages or default behavior for invalid inputs."
+  ]
+}

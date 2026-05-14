@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that defines a class `Matrix` to represent a 2D matrix. Implement a constructor to initialize the matrix, a method to input values, and a method to add two matrices. Overload the `+` operator to perform matrix addition. Demonstrate the functionality in `main` by adding two matrices and displaying the result.",
+  "test_cases": [
+    {
+      "input": "1 2 3 4\n5 6 7 8\n9 10 11 12 13 14\n",
+      "expected": "--- Attempting to create matrix with invalid dimensions ---\nCaught exception: Matrix dimensions must be positive.\n\n--- Demonstrating valid matrix operations ---\nInput for Matrix 1 (2x2):\nEnter value for [0][0]: Enter value for [0][1]: Enter value for [1][0]: Enter value for [1][1]: \nInput for Matrix 2 (2x2):\nEnter value for [0][0]: Enter value for [0][1]: Enter value for [1][0]: Enter value for [1][1]: \nAdding M1 and M2:\nMatrix (2x2):\n6\t8\t\n10\t12\t\n\n--- Attempting to add matrices with incompatible dimensions ---\nInput for Matrix 3 (2x3):\nEnter value for [0][0]: Enter value for [0][1]: Enter value for [0][2]: Enter value for [1][0]: Enter value for [1][1]: Enter value for [1][2]: \nAdding M1 (2x2) and M3 (2x3):\nCaught exception: Matrix dimensions mismatch for addition.\n"
+    }
+  ],
+  "driver": "g++ 5217.cpp -o 5217 && ./5217",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

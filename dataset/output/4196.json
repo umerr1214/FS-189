@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user for a positive integer `n` (representing the height). Using nested loops, print a solid pyramid pattern of asterisks `*` with `n` rows.",
+  "test_cases": [
+    {
+      "input": "4",
+      "expected": "Enter the height of the pyramid (a positive integer):    *\n  ***\n *****\n*******\n"
+    },
+    {
+      "input": "1",
+      "expected": "Enter the height of the pyramid (a positive integer): *\n"
+    }
+  ],
+  "driver": "int main() { /* The user's solution's main function will be executed. */ return 0; }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Readability: Uses non-descriptive single-letter variable names (h, r, s, a) which makes the code harder to understand.",
+    "Readability: Inconsistent indentation makes the code difficult to follow.",
+    "Efficiency: Uses `std::endl` within the loop for each row, which flushes the output buffer unnecessarily, reducing performance. Using `\\n` would be more efficient."
+  ]
+}

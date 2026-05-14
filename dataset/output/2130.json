@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Logger` class with an overloaded `log` method. One `log` method should take a `const char*` message, another should take an `int` error code, and a third should take a `bool` status. Each should print an appropriate formatted message.",
+  "test_cases": [
+    { "input": "logger.log(\"Test message.\");", "expected": "[INFO] Message: Test message.\n" },
+    { "input": "logger.log(500);", "expected": "[ERROR] Code: 500\n" },
+    { "input": "logger.log(0);", "expected": "[ERROR] Code: 0\n" },
+    { "input": "logger.log(true);", "expected": "[STATUS] Success\n" }
+  ],
+  "driver": "Logger logger;\nlogger.log(\"Test message.\");\nlogger.log(500);\nlogger.log(0);\nlogger.log(true);",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `log(int errorCode)` method introduces a semantic error by interpreting the integer error code as a boolean 'Success' or 'Failure' status based on its truthiness, which deviates from the expected meaning of logging a raw error code."
+  ]
+}

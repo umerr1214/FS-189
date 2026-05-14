@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "For a `Book` class with `title` and `author`, overload the `<<` (insertion) operator to allow direct printing of `Book` objects to `std::cout` in a readable format.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book 1: Title: 1984, Author: George Orwell.\nBook 2: Title: To Kill a Mockingbird, Author: Harper Lee.\nBook 3: Title: Pride and Prejudice, Author: Jane Austen.\nEmpty Book: Title: , Author: .\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <utility> // For std::move\n\nclass Book {\nprivate:\n    std::string title;\n    std::string author;\n\npublic:\n    // Constructor\n    Book(std::string title, std::string author)\n        : title(std::move(title)), author(std::move(author)) {}\n\n    const std::string& getTitle() const { return title; }\n    const std::string& getAuthor() const { return author; }\n\n    // No friend declaration needed if operator<< is not a friend\n    // but it's good practice to declare it, or make getters public.\n    // For this example, we make getters public.\n};\n\n// Overload the << operator for Book objects - Readability/Efficiency Issue\nstd::ostream& operator<<(std::ostream& os, const Book& book) {\n    // READABILITY/EFFICIENCY ISSUE:\n    // 1. Inefficient string concatenation: Creates a large temporary std::string\n    //    by concatenating multiple strings before streaming it to `os`.\n    //    Direct streaming (`os << \"Title: \" << book.getTitle()`) is more efficient.\n    // 2. Excessive use of `std::endl`: `std::endl` not only inserts a newline\n    //    character but also flushes the output buffer. Flushing on every print\n    //    can significantly reduce performance, especially in loops. Using `'\\n'`\n    //    is generally preferred unless an immediate flush is strictly required.\n    os << \"Title: \" + book.getTitle() + \", Author: \" + book.getAuthor() + \".\" << std::endl;\n    return os;\n}\n\nint main() {\n    // Test case 1: Basic printing\n    Book book1(\"1984\", \"George Orwell\");\n    std::cout << \"Book 1: \" << book1; // operator<< already adds std::endl\n\n    // Test case 2: Another book\n    Book book2(\"To Kill a Mockingbird\", \"Harper Lee\");\n    std::cout << \"Book 2: \" << book2;\n\n    // Test case 3: Yet another book\n    Book book3(\"Pride and Prejudice\", \"Jane Austen\");\n    std::cout << \"Book 3: \" << book3;\n\n    // Test case 4: Book with empty title/author\n    Book book4(\"\", \"\");\n    std::cout << \"Empty Book: \" << book4;\n\n    return 0;\n}\n",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `operator<<` creates a temporary `std::string` by concatenating title and author before printing. It's more efficient and idiomatic to stream each part directly (e.g., `os << \"Title: \" << book.getTitle() << ...`).",
+    "The `operator<<` uses `std::endl` which flushes the output stream. For general output, using `\\n` is more efficient as it avoids unnecessary flushes, which can impact performance, especially when printing many objects."
+  ]
+}

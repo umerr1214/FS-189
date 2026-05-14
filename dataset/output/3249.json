@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Logger` with a `void logMessage(string msg)` method. Create a `ConsoleLogger` derived class that provides its own `void logMessage(string msg)` method. Demonstrate that calling `logMessage` on a `ConsoleLogger` object hides the base class method without `virtual`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating Method Hiding (Correct Version) ---\n[ConsoleLogger Derived] Message 1: Called directly on ConsoleLogger object.\n[Logger Base] Message 2: Called via Logger* pointing to ConsoleLogger.\n[Logger Base] Message 3: Called via Logger& referring to ConsoleLogger.\n[Logger Base] Message 4: Explicitly called Logger::logMessage on ConsoleLogger object.\n--- End Demonstration ---"
+    }
+  ],
+  "driver": "int main() {\n    ConsoleLogger myConsoleLogger;\n    Logger* baseLoggerPtr = &myConsoleLogger;\n    Logger& baseLoggerRef = myConsoleLogger;\n\n    std::cout << \"--- Demonstrating Method Hiding (Correct Version) ---\" << std::endl;\n\n    myConsoleLogger.logMessage(\"Message 1: Called directly on ConsoleLogger object.\");\n    baseLoggerPtr->logMessage(\"Message 2: Called via Logger* pointing to ConsoleLogger.\");\n    baseLoggerRef.logMessage(\"Message 3: Called via Logger& referring to ConsoleLogger.\");\n    myConsoleLogger.Logger::logMessage(\"Message 4: Explicitly called Logger::logMessage on ConsoleLogger object.\");\n\n    std::cout << \"--- End Demonstration ---\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

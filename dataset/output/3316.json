@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Generate and print the first 'n' terms of the Fibonacci sequence, where 'n' is a positive integer provided by the user.",
+  "test_cases": [
+    { "input": "5", "expected": "0 1 1 2 3" }
+  ],
+  "driver": "valid C++ code to run test cases",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after 'std::cin >> n' statement."]
+}

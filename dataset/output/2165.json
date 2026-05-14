@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create an `Engine` class with a simple constructor and `start()` method. Implement a `Car` class that uses composition: a `Car` object should contain an `Engine` object as a member. Ensure the `Engine` is properly constructed and its `start()` method can be called through the `Car` object.",
+  "test_cases": [
+    { "input": "", "expected": "Engine constructed.\nCar constructed.\nCar initiating start sequence.\nEngine starting...\n" }
+  ],
+  "driver": "int main() {\n    Car myCar;\n    myCar.start();\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `Car::start()` method does not correctly delegate the 'start' action to its contained `Engine` object. It prints a message but fails to call `engine.start()`, meaning the engine is never actually 'started' via the car object as required by the problem statement."
+  ]
+}

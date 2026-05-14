@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Shape` with a public virtual method `calculateArea()` that returns 0. Derive two classes, `Square` and `Circle`, from `Shape`. Override `calculateArea()` in each derived class to return the correct area.",
+  "test_cases": [
+    { "input": "Square(7.0), Circle(4.0)", "expected": "49.0000000000\n50.2654400000\n0.0000000000" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath> // For pow, though direct multiplication is often more efficient for squares\n#include <iomanip> // For std::fixed, std::setprecision\n\n// Base class\nclass Shape {\npublic:\n    virtual double calculateArea() { // Missing const qualifier\n        return 0.0;\n    }\n    virtual ~Shape() = default;\n};\n\n// Derived class Square\nclass Square : public Shape {\nprivate:\n    double s_val; // Poor variable name for 'side'\npublic:\n    Square(double s_val_param) : s_val(s_val_param) {} // Verbose parameter name\n\n    double calculateArea() override { // Missing const qualifier, using pow for efficiency issue\n        return pow(s_val, 2.0); // Less efficient than s_val * s_val\n    }\n};\n\n// Derived class Circle\nclass Circle : public Shape {\nprivate:\n    double r_val; // Poor variable name for 'radius'\n    // Define PI manually and with lower precision for readability/efficiency issue\n    const float PI_CUSTOM = 3.14159f; \npublic:\n    Circle(double r_val_param) : r_val(r_val_param) {} // Verbose parameter name\n\n    double calculateArea() override { // Missing const qualifier, using pow for efficiency issue, using custom PI\n        return (double)PI_CUSTOM * pow(r_val, 2.0); // Less efficient and using a float PI constant\n    }\n};\n\nint main() {\n    std::cout << std::fixed << std::setprecision(10);\n\n    Square my_square(7.0);\n    Circle my_circle(4.0);\n    Shape* s_ptr1 = &my_square;\n    Shape* s_ptr2 = &my_circle;\n\n    std::cout << s_ptr1->calculateArea() << std::endl;\n    std::cout << s_ptr2->calculateArea() << std::endl;\n\n    Shape base_shape;\n    std::cout << base_shape.calculateArea() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": []
+}

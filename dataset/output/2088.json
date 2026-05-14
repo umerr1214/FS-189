@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a `ResourceLogger` class that dynamically allocates a C-style string in its constructor to store a log message. Implement a destructor that deallocates this memory and prints a message indicating the resource is freed. Demonstrate its usage by creating an object and letting it go out of scope.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Program terminates due to undefined behavior (double-free) or crashes."
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"Entering main scope.\" << std::endl;\n    {\n        ResourceLogger originalLogger(\"Original message\");\n        std::cout << \"Original message: \" << originalLogger.message << std::endl;\n        ResourceLogger copiedLogger = originalLogger;\n        std::cout << \"Copied message: \" << copiedLogger.message << std::endl;\n    }\n    std::cout << \"Exiting inner scope.\" << std::endl;\n    ResourceLogger anotherLogger(\"Another message for func\");\n    func(anotherLogger);\n    std::cout << \"After func call.\" << std::endl;\n    std::cout << \"Exiting main scope.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `ResourceLogger` class manages a raw C-style string pointer (`char* message`) but does not define a copy constructor or a copy assignment operator. The compiler-generated default versions perform a shallow copy of the `message` pointer. This leads to multiple `ResourceLogger` objects owning and pointing to the same dynamically allocated memory. When these objects go out of scope, their destructors will attempt to `delete[]` the same memory address multiple times, resulting in a 'double-free' error, which is undefined behavior and typically causes a program crash."
+  ]
+}

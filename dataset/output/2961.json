@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design two classes: `Building` and `Tenant`. `Building` needs to store a `Tenant` object as its owner. `Tenant` does not need to know about `Building`. Demonstrate how to use a forward declaration for `Tenant` within `Building`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Tenant 'Charlie' (ID: 303) constructed.\nBuilding at 789 Pine St constructed. Ownership transferred.\nBuilding at address: 789 Pine St\nOwner: Charlie (ID: 303)\nIs charlie unique_ptr null after move? Yes\nBuilding at 789 Pine St destructed.\nTenant 'Charlie' (ID: 303) destructed.\n\nProgram finished. Tenant object for 'Charlie' was properly destructed.\n"
+    }
+  ],
+  "driver": "int main() {\n    std::unique_ptr<Tenant> charlie = std::make_unique<Tenant>(\"Charlie\", 303);\n    {\n        Building myBuilding(\"789 Pine St\", std::move(charlie));\n        myBuilding.displayInfo();\n        std::cout << \"Is charlie unique_ptr null after move? \" << (charlie == nullptr ? \"Yes\" : \"No\") << std::endl;\n    }\n    std::cout << \"\\nProgram finished. Tenant object for 'Charlie' was properly destructed.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

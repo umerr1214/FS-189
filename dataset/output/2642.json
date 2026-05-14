@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Animal` with a private `species` attribute and a parameterized constructor that initializes it. Create a derived class `Dog` with an additional private `name` attribute. The `Dog` constructor must correctly call the `Animal` base class constructor to initialize the `species` and then initialize its own `name`. Include a `makeSound()` method in both classes.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Animal makes a sound. Species: Cat\nWoof! My name is Lucy. Species: Poodle.\nWoof! My name is Rex. Species: German Shepherd.\nAnimal makes a sound. Species: Snake\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <memory> // For std::unique_ptr\n\nclass Animal {\nprivate:\n    std::string species;\n\npublic:\n    // Efficiency issue: Passing std::string by value creates an unnecessary copy\n    Animal(std::string s) : species(s) {\n    }\n\n    // Virtual for proper polymorphism (correctness maintained here)\n    virtual void makeSound() const {\n        std::cout << \"Animal makes a sound. Species: \" << species << std::endl;\n    }\n\nprotected:\n    const std::string& getSpecies() const { return species; }\n};\n\nclass Dog : public Animal {\nprivate:\n    std::string name;\n\npublic:\n    // Efficiency issue: Passing std::string by value creates unnecessary copies for both parameters\n    // Readability/Efficiency issue: 'name' is initialized in the constructor body via assignment,\n    // which is less efficient than using a member initializer list (it involves default construction\n    // followed by assignment).\n    Dog(std::string species_val, std::string name_val)\n        : Animal(species_val) { // Base constructor called correctly\n        this->name = name_val; // Inefficient assignment instead of initializer list\n    }\n\n    void makeSound() const override {\n        // Readability/Efficiency issue: Using multiple '+' for string concatenation can be less efficient\n        // than direct stream insertion or using stringstream for complex formatting.\n        std::cout << \"Woof! My name is \" + name + \". Species: \" + getSpecies() + \".\" << std::endl;\n    }\n};\n\nint main() {\n    // Create an Animal object\n    Animal genericAnimal(\"Cat\");\n    genericAnimal.makeSound();\n\n    // Create a Dog object\n    Dog myDog(\"Poodle\", \"Lucy\");\n    myDog.makeSound();\n\n    // Demonstrate polymorphism (this part is correct, the issues are in constructors/makeSound implementations)\n    std::unique_ptr<Animal> polyAnimal = std::make_unique<Dog>(\"German Shepherd\", \"Rex\");\n    polyAnimal->makeSound();\n    \n    std::unique_ptr<Animal> anotherAnimal = std::make_unique<Animal>(\"Snake\");\n    anotherAnimal->makeSound();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Constructors for `Animal` and `Dog` pass `std::string` arguments by value (`std::string s`, `std::string species_val`, `std::string name_val`), leading to unnecessary string copies. Passing by `const&` would be more efficient.",
+    "The `Dog` constructor initializes the `name` attribute using assignment (`this->name = name_val;`) in the constructor body instead of using a member initializer list. This is less efficient (default construction then assignment) and generally considered bad practice for member initialization.",
+    "The `Dog::makeSound` method uses multiple `+` for string concatenation, which can be less efficient than direct stream insertion or `std::stringstream` for building the output string."
+  ]
+}

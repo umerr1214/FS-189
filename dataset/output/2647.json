@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Logger` class. It should have a static member `logCount` (int) that keeps track of the total number of `Logger` objects ever created, and a static method `getTotalLogs()` to retrieve this count. Increment `logCount` in the constructor and decrement it (if applicable) in the destructor.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial log count: 0\nAfter log1 creation: 1\nAfter log2 creation: 2\nAfter log1 and log2 destruction: 0\nAfter log3 creation: 1\nAfter logPtr creation: 2\nAfter logPtr destruction: 1\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n\n// Assuming Logger class definition is provided by the user's code\n// class Logger { /* ... */ };\n\nint main() {\n    std::cout << \"Initial log count: \" << Logger::getTotalLogs() << std::endl;\n\n    {\n        Logger log1;\n        std::cout << \"After log1 creation: \" << Logger::getTotalLogs() << std::endl;\n        Logger log2;\n        std::cout << \"After log2 creation: \" << Logger::getTotalLogs() << std::endl;\n    }\n\n    std::cout << \"After log1 and log2 destruction: \" << Logger::getTotalLogs() << std::endl;\n\n    Logger log3;\n    std::cout << \"After log3 creation: \" << Logger::getTotalLogs() << std::endl;\n\n    Logger* logPtr = new Logger();\n    std::cout << \"After logPtr creation: \" << Logger::getTotalLogs() << std::endl;\n    delete logPtr;\n    std::cout << \"After logPtr destruction: \" << Logger::getTotalLogs() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The static member `logCount` is not thread-safe. Concurrent creation or destruction of `Logger` objects in a multi-threaded environment can lead to race conditions, causing `logCount` to have an incorrect value due to lost updates or inconsistent reads. The `logCount++` and `logCount--` operations are not atomic."
+  ]
+}

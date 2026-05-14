@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a `Point2D` class with private integer member variables `x` and `y`. Include a parameterized constructor to initialize `x` and `y`. Add a public method `getDistanceToOrigin()` that calculates and returns the Euclidean distance from the point to (0,0).",
+  "test_cases": [
+    { "input": "Point2D(0, 0)", "expected": "0.00000000" },
+    { "input": "Point2D(3, 4)", "expected": "5.00000000" },
+    { "input": "Point2D(5, 12)", "expected": "13.00000000" },
+    { "input": "Point2D(1, 1)", "expected": "1.41421356" },
+    { "input": "Point2D(-3, -4)", "expected": "5.00000000" },
+    { "input": "Point2D(50000, 50000)", "expected": "70710.67811865" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream>\n#include <cmath>\n#include <iomanip>\n\nclass Point2D {\nprivate:\n    int x;\n    int y;\n\npublic:\n    Point2D(int initialX, int initialY) : x(initialX), y(initialY) {}\n\n    int getX() const {\n        return x;\n    }\n\n    int getY() const {\n        return y;\n    }\n\n    double getDistanceToOrigin() {\n        int x_squared = x * x;\n        int y_squared = y * y;\n        int sum_of_squares = x_squared + y_squared;\n        return std::sqrt(static_cast<double>(sum_of_squares));\n    }\n};\n\nint main() {\n    std::vector<Point2D> points = {\n        Point2D(0, 0),\n        Point2D(3, 4),\n        Point2D(5, 12),\n        Point2D(1, 1),\n        Point2D(-3, -4)\n    };\n\n    for (size_t i = 0; i < points.size(); ++i) {\n        std::cout << \"Point \" << i + 1 << \": (\" << points[i].getX() << \", \" << points[i].getY() << \")\\n\";\n        std::cout << \"Distance to origin: \" << std::fixed << std::setprecision(8) << points[i].getDistanceToOrigin() << \"\\n\\n\";\n    }\n\n    Point2D large_point(50000, 50000);\n    std::cout << \"Point with large coordinates: (\" << large_point.getX() << \", \" << large_point.getY() << \")\\n\";\n    std::cout << \"Distance to origin: \" << std::fixed << std::setprecision(8) << large_point.getDistanceToOrigin() << \"\\n\\n\";\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Integer overflow in intermediate distance calculation for large coordinates in `getDistanceToOrigin()` method. The `int` type used for `x*x`, `y*y`, and their sum can overflow for large inputs, leading to incorrect results."
+  ]
+}

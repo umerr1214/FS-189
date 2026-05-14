@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `printArrayElements(int* arr, int size)` that takes a pointer to an integer array and its size, then prints all elements of the array. Demonstrate its use by passing an array from `main`.",
+  "test_cases": [
+    { "input": "Array: {10, 20, 30, 40, 50}, Size: 5", "expected": "10 20 30 40 50 \n" }
+  ],
+  "driver": "int main() {\n    int myArray[] = {10, 20, 30, 40, 50};\n    int size = sizeof(myArray) / sizeof(myArray[0]);\n    printArrayElements(myArray, size);\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

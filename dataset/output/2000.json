@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Employee` with `name` (string) and `salary` (double). Derive two classes: `Manager` (adds `department` string) and `Engineer` (adds `specialization` string). Implement constructors for all classes.",
+  "test_cases": [
+    { "input": "", "expected": "--- Personnel Details ---\nWorker: Alice Smith, Pay: $65000\nBoss: Bob Johnson, Pay: $100000\nTech: Charlie Brown, Pay: $80000\nWorker: Diana Prince, Pay: $70000\n" }
+  ],
+  "driver": "int main() {\n    Employee e1(\"Alice Smith\", 65000.0);\n    Manager m1(\"Bob Johnson\", 100000.0, \"Marketing\");\n    Engineer eng1(\"Charlie Brown\", 80000.0, \"AI Research\");\n\n    std::cout << \"--- Personnel Details ---\" << std::endl;\n    e1.showInfo();\n    m1.showInfo();\n    eng1.showInfo();\n\n    Employee e2(\"Diana Prince\", 70000.0);\n    e2.showInfo();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Constructors do not use initializer lists for member variables or base class construction. This results in less efficient default construction followed by assignment for `std::string` members and base class parts, instead of direct initialization.",
+    "Variable and method names (e.g., `empName`, `empSalary`, `dept`, `spec`, `showInfo`) are less descriptive or deviate from common C++ conventions, reducing readability.",
+    "Output messages are less standard, impacting consistency and readability."
+  ]
+}

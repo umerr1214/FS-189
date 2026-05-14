@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Implement a function `isLeapYear` that takes an integer representing a year and returns true if it's a leap year, false otherwise. A leap year is divisible by 4, but not by 100 unless it is also divisible by 400.",
+  "test_cases": [
+    { "input": "2000", "expected": "true" },
+    { "input": "1900", "expected": "false" },
+    { "input": "2004", "expected": "true" },
+    { "input": "2001", "expected": "false" },
+    { "input": "0", "expected": "true" },
+    { "input": "-4", "expected": "true" },
+    { "input": "-400", "expected": "true" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n#include <utility>\n\n// The isLeapYear function is provided by the user code.\n\nint main() {\n    std::vector<std::pair<int, bool>> test_cases = {\n        {2000, true},\n        {1900, false},\n        {2004, true},\n        {2001, false},\n        {0, true},\n        {-4, true},\n        {-400, true}\n    };\n\n    for (const auto& tc : test_cases) {\n        int year = tc.first;\n        bool expected = tc.second;\n        bool result = isLeapYear(year);\n        std::cout << \"Year: \" << year << \", Expected: \" << (expected ? \"true\" : \"false\")\n                  << \", Got: \" << (result ? \"true\" : \"false\") << \" -> \"\n                  << (result == expected ? \"PASS\" : \"FAIL\") << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The function uses a verbose and deeply nested if-else structure to implement the leap year logic, which makes it less readable and harder to follow compared to a single, concise boolean expression.",
+    "While functionally correct, the code could be significantly simplified for better maintainability and understanding."
+  ]
+}

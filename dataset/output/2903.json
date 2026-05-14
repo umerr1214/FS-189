@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop an `Employee` class (with `name`, `id`). Then, create a `Department` class that *aggregates* multiple `Employee` objects using a `std::vector` of pointers to `Employee`. Demonstrate that `Employee` objects can exist independently of the `Department`.",
+  "test_cases": [
+    {
+      "input": "Create employees (Alice 101, Bob 102, Charlie 103, David 104) and attempt to add them to HR department.",
+      "expected": "--- HR Department Employees ---\nDepartment: Human Resources\nEmployee: Alice (ID: 101)\nEmployee: Bob (ID: 102)\nEmployee: Charlie (ID: 103)\nEmployee: David (ID: 104)\n\nEmployee 1 (Alice, ID 101) exists independently, even if not added to HR:\nEmployee: Alice (ID: 101)\nEmployee 3 (Charlie, ID 103) exists independently, even if not added to HR:\nEmployee: Charlie (ID: 103)\n\nEnd of program."
+    }
+  ],
+  "driver": "The `main` function directly demonstrates the class usage and aggregation.",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `Department::addEmployee` method contains a logical error: it only adds employees whose `id` is an even number. Employees with odd IDs are explicitly not added, leading to an incomplete list of employees in the department when `displayEmployees` is called, contrary to the expectation that all passed employees should be aggregated. The `expected` output in the test case represents the correct behavior if this logical error were fixed."
+  ]
+}

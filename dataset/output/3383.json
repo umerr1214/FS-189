@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a function `void find_max_min(const int* arr, int size, int* max_val, int* min_val)` that finds the maximum and minimum values in an array and returns them through pointer parameters.",
+  "test_cases": [
+    { "input": "arr={10, 5, 20, 15, 30}, size=5", "expected": "Max=30, Min=5" },
+    { "input": "arr={-1, -5, -10, -2}, size=4", "expected": "Max=-1, Min=-10" },
+    { "input": "arr={42}, size=1", "expected": "Max=42, Min=42" },
+    { "input": "arr={5, -3, 0, 10, -8}, size=5", "expected": "Max=10, Min=-8" },
+    { "input": "arr={}, size=0", "expected": "Max=12345, Min=-54321 (values should remain unchanged)" }
+  ],
+  "driver": "#include <iostream>\n#include <limits>\n#include <vector>\n#include <string>\n#include <sstream>\n\n// Helper function to convert an array to string for printing\nstd::string array_to_string(const int* arr, int size) {\n    if (size <= 0) return \"[]\";\n    std::stringstream ss;\n    ss << \"[\";\n    for (int i = 0; i < size; ++i) {\n        ss << arr[i];\n        if (i < size - 1) ss << \", \";\n    }\n    ss << \"]\";\n    return ss.str();\n}\n\nint main() {\n    int max_val_res, min_val_res;\n\n    // Test Case 1: Standard positive numbers\n    int arr1[] = {10, 5, 20, 15, 30};\n    int size1 = sizeof(arr1) / sizeof(arr1[0]);\n    find_max_min(arr1, size1, &max_val_res, &min_val_res);\n    std::cout << \"Input: \" << array_to_string(arr1, size1) << \", Size: \" << size1 << std::endl;\n    std::cout << \"Output: Max=\" << max_val_res << \", Min=\" << min_val_res << std::endl;\n\n    // Test Case 2: Negative numbers\n    int arr2[] = {-1, -5, -10, -2};\n    int size2 = sizeof(arr2) / sizeof(arr2[0]);\n    find_max_min(arr2, size2, &max_val_res, &min_val_res);\n    std::cout << \"Input: \" << array_to_string(arr2, size2) << \", Size: \" << size2 << std::endl;\n    std::cout << \"Output: Max=\" << max_val_res << \", Min=\" << min_val_res << std::endl;\n\n    // Test Case 3: Single element\n    int arr3[] = {42};\n    int size3 = sizeof(arr3) / sizeof(arr3[0]);\n    find_max_min(arr3, size3, &max_val_res, &min_val_res);\n    std::cout << \"Input: \" << array_to_string(arr3, size3) << \", Size: \" << size3 << std::endl;\n    std::cout << \"Output: Max=\" << max_val_res << \", Min=\" << min_val_res << std::endl;\n\n    // Test Case 4: Mixed positive and negative\n    int arr4[] = {5, -3, 0, 10, -8};\n    int size4 = sizeof(arr4) / sizeof(arr4[0]);\n    find_max_min(arr4, size4, &max_val_res, &min_val_res);\n    std::cout << \"Input: \" << array_to_string(arr4, size4) << \", Size: \" << size4 << std::endl;\n    std::cout << \"Output: Max=\" << max_val_res << \", Min=\" << min_val_res << std::endl;\n\n    // Test Case 5: Empty array\n    int arr5[] = {};\n    int size5 = 0;\n    int initial_max_for_empty = 12345;\n    int initial_min_for_empty = -54321;\n    max_val_res = initial_max_for_empty;\n    min_val_res = initial_min_for_empty;\n    find_max_min(arr5, size5, &max_val_res, &min_val_res);\n    std::cout << \"Input: \" << array_to_string(arr5, size5) << \", Size: \" << size5 << std::endl;\n    std::cout << \"Output (for empty): Max=\" << max_val_res << \", Min=\" << min_val_res << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The update logic for maximum and minimum values is swapped. When `arr[i]` is greater than `*min_val` (which should be `*max_val`), `*min_val` is updated instead of `*max_val`. Similarly, when `arr[i]` is less than `*max_val` (which should be `*min_val`), `*max_val` is updated instead of `*min_val`."
+  ]
+}

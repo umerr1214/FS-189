@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Using the `Shape` hierarchy from a previous problem, demonstrate runtime polymorphism. Create an array of `Shape` pointers, store instances of `Rectangle` and `Circle` in it, and then iterate through the array to call `calculateArea()` on each object.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Calculating areas:\nShape 1 area: 20.00000\nShape 2 area: 28.27431\nShape 3 area: 20.00000\n"
+    }
+  ],
+  "driver": "int main() {\n    std::vector<Shape*> shapes;\n\n    shapes.push_back(new Rectangle(5, 4));\n    shapes.push_back(new Circle(3));\n    shapes.push_back(new Rectangle(2, 10));\n\n    std::cout << std::fixed << std::setprecision(5);\n    std::cout << \"Calculating areas:\" << std::endl;\n    for (size_t i = 0; i < shapes.size(); ++i) {\n        std::cout << \"Shape \" << i + 1 << \" area: \" << shapes[i]->calculateArea() << std::endl;\n    }\n\n    for (Shape* s : shapes) {\n        delete s;\n    }\n    shapes.clear();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": []
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Print the multiplication table for a user-specified number `X` up to `10` (e.g., X * 1, X * 2, ..., X * 10).",
+  "test_cases": [
+    {
+      "input": "40000",
+      "expected": "Multiplication table for 40000:\n40000 * 1 = 40000\n40000 * 2 = 80000\n40000 * 3 = 120000\n40000 * 4 = 160000\n40000 * 5 = 200000\n40000 * 6 = 240000\n40000 * 7 = 280000\n40000 * 8 = 320000\n40000 * 9 = 360000\n40000 * 10 = 400000\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\nint main() {\n    std::cout << \"Test driver will execute the submitted C++ solution with predefined inputs.\" << std::endl;\n    std::cout << \"For example, if the solution takes an integer as input, the driver would feed it.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["Integer value X is implicitly converted to 'short' before multiplication.", "This narrow conversion leads to integer overflow for large input values of X, resulting in incorrect multiplication results.", "The meaning of the number X is lost due to the type cast."]
+}

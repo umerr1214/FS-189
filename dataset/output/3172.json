@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Shape` base class with a `virtual void draw()` method. Derive `Circle` and `Rectangle` classes, each providing their own implementation of `draw()`. Demonstrate polymorphism by calling `draw()` on an array of `Shape*`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Drawing a Circle.\nDrawing a Rectangle.\nDrawing a Circle.\n"
+    }
+  ],
+  "driver": "int main() {\n    std::vector<Shape*> shapes;\n    shapes.push_back(new Circle());\n    shapes.push_back(new Rectangle());\n    shapes.push_back(new Circle());\n    for (const auto& shape : shapes) {\n        shape->draw();\n    }\n    for (const auto& shape : shapes) {\n        delete shape;\n    }\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing parenthesis '()' in the declaration of the 'draw' virtual method in the base class 'Shape'. The line 'virtual void draw' is incomplete and causes a compilation error."
+  ]
+}

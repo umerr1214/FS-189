@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Declare an array of 4 integers. Initialize it with some values. Then, use a pointer to the first element to iterate through the array and print each element using pointer arithmetic.",
+  "test_cases": [
+    { "input": "", "expected": "10\n10\n10\n10\n" }
+  ],
+  "driver": "",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The program incorrectly prints the first element of the array multiple times instead of iterating through and printing each unique element. The pointer arithmetic is not correctly applied inside the loop for printing."
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Shape` with a virtual method `calculateArea()` that returns 0. Derive two classes, `Rectangle` (with `width`, `height`) and `Circle` (with `radius`), from `Shape`. Each derived class should override `calculateArea()` to return its specific area.",
+  "test_cases": [
+    { "input": "Rectangle(5.0, 4.0)", "expected": "Rectangle (5x4) area: 20.00" },
+    { "input": "Rectangle(0.0, 10.0)", "expected": "Rectangle (0x10) area: 0.00" },
+    { "input": "Circle(3.0)", "expected": "Circle (radius 3) area: 28.27" },
+    { "input": "Circle(0.0)", "expected": "Circle (radius 0) area: 0.00" },
+    { "input": "Polymorphic call: Rectangle(10.5, 2.0)", "expected": "Polymorphic Shape Area: 21.00" },
+    { "input": "Polymorphic call: Circle(5.5)", "expected": "Polymorphic Shape Area: 95.03" },
+    { "input": "Polymorphic call: Rectangle(7.0, 0.0)", "expected": "Polymorphic Shape Area: 0.00" },
+    { "input": "Polymorphic call: Circle(1.0)", "expected": "Polymorphic Shape Area: 3.14" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath> // For M_PI\n#include <vector>\n#include <iomanip> // For std::fixed, std::setprecision\n\n// Base class Shape\nclass Shape {\npublic:\n    // Virtual method as required, returns 0 by default\n    virtual double calculateArea() const {\n        return 0.0;\n    }\n    // Virtual destructor for proper polymorphic cleanup and to prevent memory leaks\n    virtual ~Shape() = default;\n};\n\n// Derived class Rectangle\nclass Rectangle : public Shape {\nprivate:\n    double width;\n    double height;\npublic:\n    // Constructor initializes width and height\n    Rectangle(double w, double h) : width(w), height(h) {}\n\n    // Overrides calculateArea to return specific area, using 'override' for clarity and safety\n    double calculateArea() const override {\n        return width * height;\n    }\n};\n\n// Derived class Circle\nclass Circle : public Shape {\nprivate:\n    double radius;\npublic:\n    // Constructor initializes radius\n    Circle(double r) : radius(r) {}\n\n    // Overrides calculateArea to return specific area, using 'override' for clarity and safety\n    double calculateArea() const override {\n        return M_PI * radius * radius;\n    }\n};\n\n// Driver code for test cases\nint main() {\n    std::cout << std::fixed << std::setprecision(2);\n\n    // Test Case 1: Valid Rectangle\n    Rectangle rect1(5.0, 4.0);\n    std::cout << \"Rectangle (5x4) area: \" << rect1.calculateArea() << std::endl;\n\n    // Test Case 2: Rectangle with zero dimensions\n    Rectangle rect2(0.0, 10.0);\n    std::cout << \"Rectangle (0x10) area: \" << rect2.calculateArea() << std::endl;\n\n    // Test Case 3: Valid Circle\n    Circle circ1(3.0);\n    std::cout << \"Circle (radius 3) area: \" << circ1.calculateArea() << std::endl;\n\n    // Test Case 4: Circle with zero radius\n    Circle circ2(0.0);\n    std::cout << \"Circle (radius 0) area: \" << circ2.calculateArea() << std::endl;\n\n    // Test Case 5: Polymorphic calls demonstrating correct behavior\n    std::vector<Shape*> shapes;\n    shapes.push_back(new Rectangle(10.5, 2.0));\n    shapes.push_back(new Circle(5.5));\n    shapes.push_back(new Rectangle(7.0, 0.0)); // Edge case: zero dimension\n    shapes.push_back(new Circle(1.0)); // Another valid case\n\n    for (const auto& shape : shapes) {\n        std::cout << \"Polymorphic Shape Area: \" << shape->calculateArea() << std::endl;\n    }\n\n    // Clean up dynamically allocated objects\n    for (const auto& shape : shapes) {\n        delete shape;\n    }\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

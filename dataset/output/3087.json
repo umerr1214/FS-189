@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Modify the `Point` class (from Q19) to overload the binary `==` operator as a member function. This operator should return `true` if two `Point` objects have identical `x` and `y` coordinates, otherwise `false`.",
+  "test_cases": [
+    { "input": "Point p1(1, 2); Point p2(1, 2);", "expected": "true" },
+    { "input": "Point p3(3, 4); Point p4(3, 5);", "expected": "false" },
+    { "input": "Point p5(1, 2); Point p6(1, 5);", "expected": "false" },
+    { "input": "Point p7(0, 0); Point p8(0, 0);", "expected": "true" },
+    { "input": "Point p9(5, 10); Point p10(10, 5);", "expected": "false" },
+    { "input": "const Point cp1(10, 20); const Point cp2(10, 20);", "expected": "true" }
+  ],
+  "driver": "int main() {\n    Point p1(1, 2);\n    Point p2(1, 2);\n    Point p3(3, 4);\n    Point p4(3, 5);\n    Point p5(1, 5);\n    Point p6(0, 0);\n    Point p7(0, 0);\n    Point p8(5, 10);\n    Point p9(10, 5);\n\n    std::cout << (p1 == p2 ? \"true\" : \"false\") << std::endl;\n    std::cout << (p3 == p4 ? \"true\" : \"false\") << std::endl;\n    std::cout << (p1 == p5 ? \"true\" : \"false\") << std::endl;\n    std::cout << (p6 == p7 ? \"true\" : \"false\") << std::endl;\n    std::cout << (p8 == p9 ? \"true\" : \"false\") << std::endl;\n\n    const Point const_p1(10, 20);\n    const Point const_p2(10, 20);\n    std::cout << (const_p1 == const_p2 ? \"true\" : \"false\") << std::endl;\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

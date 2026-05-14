@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Write a program that takes a character input from the user. Check if the character is an uppercase vowel (A, E, I, O, U) using a `switch` statement, and print whether it is or not.",
+  "test_cases": [
+    { "input": "A", "expected": "Enter a character: A is an uppercase vowel.\n" },
+    { "input": "E", "expected": "Enter a character: E is an uppercase vowel.\n" },
+    { "input": "I", "expected": "Enter a character: I is an uppercase vowel.\n" },
+    { "input": "O", "expected": "Enter a character: O is an uppercase vowel.\n" },
+    { "input": "U", "expected": "Enter a character: U is an uppercase vowel.\n" },
+    { "input": "B", "expected": "Enter a character: B is not an uppercase vowel.\n" },
+    { "input": "a", "expected": "Enter a character: a is not an uppercase vowel.\n" },
+    { "input": "Z", "expected": "Enter a character: Z is not an uppercase vowel.\n" },
+    { "input": "5", "expected": "Enter a character: 5 is not an uppercase vowel.\n" },
+    { "input": "@", "expected": "Enter a character: @ is not an uppercase vowel.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n\nvoid run_test_case(const std::string& input, const std::string& expected_output) {\n    std::stringstream ss_input(input);\n    std::stringstream ss_output;\n\n    // Redirect std::cin and std::cout\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    main(); // Call the user's main function\n\n    // Restore std::cin and std::cout\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    std::string actual_output = ss_output.str();\n    if (actual_output == expected_output) {\n        std::cout << \"Test passed for input: \\\"\" << input << \"\\\"\" << std::endl;\n    } else {\n        std::cout << \"Test failed for input: \\\"\" << input << \"\\\"\" << std::endl;\n        std::cout << \"  Expected: \\\"\" << expected_output << \"\\\"\" << std::endl;\n        std::cout << \"  Actual:   \\\"\" << actual_output << \"\\\"\" << std::endl;\n    }\n}\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> test_cases = {\n        { \"A\", \"Enter a character: A is an uppercase vowel.\\n\" },\n        { \"E\", \"Enter a character: E is an uppercase vowel.\\n\" },\n        { \"I\", \"Enter a character: I is an uppercase vowel.\\n\" },\n        { \"O\", \"Enter a character: O is an uppercase vowel.\\n\" },\n        { \"U\", \"Enter a character: U is an uppercase vowel.\\n\" },\n        { \"B\", \"Enter a character: B is not an uppercase vowel.\\n\" },\n        { \"a\", \"Enter a character: a is not an uppercase vowel.\\n\" },\n        { \"Z\", \"Enter a character: Z is not an uppercase vowel.\\n\" },\n        { \"5\", \"Enter a character: 5 is not an uppercase vowel.\\n\" },\n        { \"@\", \"Enter a character: @ is not an uppercase vowel.\\n\" }\n    };\n\n    for (const auto& tc : test_cases) {\n        run_test_case(tc.first, tc.second);\n    };\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,24 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `searchMatrix` that takes a 2D integer array (e.g., a 3x4 matrix), its dimensions, and an integer `target` value as input. The function should return `true` if `target` is found in the matrix, `false` otherwise.",
+  "test_cases": [
+    { "input": "[[1,2,3],[4,5,6],[7,8,9]];3;3;5", "expected": "true" },
+    { "input": "[[1,2,3],[4,5,6],[7,8,9]];3;3;10", "expected": "false" },
+    { "input": "[[10]];1;1;10", "expected": "true" },
+    { "input": "[[10]];1;1;1", "expected": "false" },
+    { "input": "[];0;0;1", "expected": "false" },
+    { "input": "[[1,2,3,4],[5,6,7,8],[9,10,11,12]];3;4;7", "expected": "true" },
+    { "input": "[[1,2,3,4],[5,6,7,8],[9,10,11,12]];3;4;13", "expected": "false" },
+    { "input": "[[1,2],[3,4]];3;3;4", "expected": "true" },
+    { "input": "[[1,2],[3,4]];3;3;5", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream>\n#include <algorithm>\n\n// The function to be tested\nbool searchMatrix(std::vector<std::vector<int>> matrix, int rows, int cols, int target);\n\n// Function to parse the input string and run a single test case\nvoid run_test_case(const std::string& input_str, const std::string& expected_output) {\n    std::stringstream ss(input_str);\n    std::string matrix_str_raw, rows_str, cols_str, target_str;\n\n    std::getline(ss, matrix_str_raw, ';');\n    std::getline(ss, rows_str, ';');\n    std::getline(ss, cols_str, ';');\n    std::getline(ss, target_str, ';');\n\n    int rows = std::stoi(rows_str);\n    int cols = std::stoi(cols_str);\n    int target = std::stoi(target_str);\n\n    std::vector<std::vector<int>> matrix;\n    if (matrix_str_raw != \"[]\") {\n        std::string matrix_content = matrix_str_raw.substr(2, matrix_str_raw.length() - 4); // Remove outer [[ and ]]\n        std::stringstream matrix_ss(matrix_content);\n        std::string row_str;\n        while (std::getline(matrix_ss, row_str, ']')) {\n            if (row_str.empty()) continue;\n            if (row_str[0] == ',') row_str = row_str.substr(1); // Remove leading comma if present\n            if (row_str[0] == '[') row_str = row_str.substr(1); // Remove leading [\n\n            std::stringstream row_ss(row_str);\n            std::string val_str;\n            std::vector<int> current_row;\n            while (std::getline(row_ss, val_str, ',')) {\n                if (!val_str.empty()) {\n                    current_row.push_back(std::stoi(val_str));\n                }\n            }\n            matrix.push_back(current_row);\n        }\n    }\n\n    bool result = searchMatrix(matrix, rows, cols, target);\n    std::string actual_output = result ? \"true\" : \"false\";\n\n    std::cout << \"Input: \" << input_str << \", Expected: \" << expected_output << \", Got: \" << actual_output << \" -> \";\n    if (actual_output == expected_output) {\n        std::cout << \"PASS\" << std::endl;\n    } else {\n        std::cout << \"FAIL\" << std::endl;\n    }\n}\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> test_cases = {\n        { \"[[1,2,3],[4,5,6],[7,8,9]];3;3;5\", \"true\" },\n        { \"[[1,2,3],[4,5,6],[7,8,9]];3;3;10\", \"false\" },\n        { \"[[10]];1;1;10\", \"true\" },\n        { \"[[10]];1;1;1\", \"false\" },\n        { \"[];0;0;1\", \"false\" },\n        { \"[[1,2,3,4],[5,6,7,8],[9,10,11,12]];3;4;7\", \"true\" },\n        { \"[[1,2,3,4],[5,6,7,8],[9,10,11,12]];3;4;13\", \"false\" },\n        { \"[[1,2],[3,4]];3;3;4\", \"true\" },\n        { \"[[1,2],[3,4]];3;3;5\", \"false\" }\n    };\n\n    for (const auto& test_case : test_cases) {\n        run_test_case(test_case.first, test_case.second);\n    }\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `matrix` parameter is passed by value (`std::vector<std::vector<int>> matrix`), causing an expensive deep copy of the entire 2D array when the function is called. For large matrices, this significantly degrades performance. It should be passed by `const` reference (`const std::vector<std::vector<int>>& matrix`).",
+    "The function unnecessarily flattens the 2D matrix into a 1D `std::vector<int>` (`flattened_matrix`) before performing the search. This involves an extra memory allocation and a full copy of all matrix elements, which is redundant and inefficient compared to directly iterating over the 2D structure.",
+    "While `std::find` is used correctly on the flattened vector, the overall approach of flattening the matrix first adds significant overhead, making the solution less efficient than a direct nested loop iteration over the 2D matrix. The defensive checks inside the flattening loop, while preventing crashes, add further complexity to an already inefficient strategy."
+  ]
+}

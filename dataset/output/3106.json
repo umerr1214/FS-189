@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `DataStore` class with a private integer member `secretValue`. Provide a public `getSecretValue()` method to access it and a public `setSecretValue(int value)` method to modify it. Demonstrate that `secretValue` cannot be accessed directly from outside the class, enforcing encapsulation.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation error: syntax error in main function (e.g., extra '<' in output stream operator)." }
+  ],
+  "driver": "    DataStore ds;\n\n    std::cout << \"Initial secret value: \" << ds.getSecretValue() << std::endl;\n\n    ds.setSecretValue(42);\n    std::cout << \"Set secret value to 42.\" << std::endl;\n\n    std::cout << \"Current secret value: \" << ds.getSecretValue() << std::endl;\n\n    std::cout << \"Demonstrating a syntax error.\" <<< std::endl;\n\n    return 0;",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["The program contains a syntax error in the main function: an extra '<' in the output stream operator 'std::cout << ... <<< std::endl;', preventing compilation."]
+}

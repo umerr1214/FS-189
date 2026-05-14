@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function template named `arraySum` that takes an array of any numeric type and its size as input. The function should return the sum of all elements in that array.",
+  "test_cases": [
+    { "input": "int intArray[] = {1, 2, 3, 4, 5}; int intSize = 5;", "expected": "15" },
+    { "input": "double doubleArray[] = {1.1, 2.2, 3.3}; int doubleSize = 3;", "expected": "6.6" }
+  ],
+  "driver": "int main() {\n    int intArray[] = {1, 2, 3, 4, 5};\n    int intSize = sizeof(intArray) / sizeof(intArray[0]);\n    std::cout << \"Sum of int array: \" << arraySum(intArray, intSize) << std::endl; // Expected: 15, Actual: 15\n\n    double doubleArray[] = {1.1, 2.2, 3.3};\n    int doubleSize = sizeof(doubleArray) / sizeof(doubleArray[0]);\n    std::cout << \"Sum of double array: \" << arraySum(doubleArray, doubleSize) << std::endl; // Expected: 6.6, Actual: 6.0\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The `sum` variable is explicitly cast to `int` (`static_cast<int>(sum)`) before being returned. This causes a loss of precision when the array type `T` is a floating-point type (e.g., `double`), as the fractional part is truncated."]
+}

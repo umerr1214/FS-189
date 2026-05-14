@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `calculateFactorial` that takes an integer `num` as input (pass by value) and returns its factorial. Handle the case for 0! and negative numbers.",
+  "test_cases": [
+    { "input": "0", "expected": "1" },
+    { "input": "5", "expected": "120" },
+    { "input": "-3", "expected": "-1" },
+    { "input": "10", "expected": "3628800" },
+    { "input": "15", "expected": "1307674368000" }
+  ],
+  "driver": "#include <iostream>\n\nlong long calculateFactorial(int num);\n\nint main() {\n    std::cout << calculateFactorial(0) << std::endl;\n    std::cout << calculateFactorial(5) << std::endl;\n    std::cout << calculateFactorial(-3) << std::endl;\n    std::cout << calculateFactorial(10) << std::endl;\n    std::cout << calculateFactorial(15) << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The function uses a recursive approach to calculate factorial. While mathematically correct, an iterative solution is generally more efficient for factorial calculation as it avoids the overhead of multiple function calls and stack space consumption. For very large 'num', recursion could lead to stack overflow, although 'long long' overflow would occur much sooner for factorials.",
+    "The recursive nature might be slightly less readable for some compared to a straightforward iterative loop for this specific problem."
+  ]
+}

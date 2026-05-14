@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Accept a sentence from the user using `std::getline` and count the total number of words in it (assume words are separated by single spaces).",
+  "test_cases": [
+    { "input": "", "expected": "0\n" },
+    { "input": "hello", "expected": "1\n" },
+    { "input": "hello world", "expected": "2\n" },
+    { "input": "  hello world  ", "expected": "2\n" },
+    { "input": "hello   world", "expected": "2\n" },
+    { "input": "one two three four five six seven eight nine ten", "expected": "10\n" },
+    { "input": "   ", "expected": "0\n" },
+    { "input": "a", "expected": "1\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <streambuf>\n\n// The solution code is expected to be in a main function that reads from std::cin and writes to std::cout.\n// This driver redirects std::cin and std::cout to stringstreams for testing.\n\nvoid run_solution(); // Placeholder for the actual solution's main function logic\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> test_cases = {\n        { \"\", \"0\\n\" },\n        { \"hello\", \"1\\n\" },\n        { \"hello world\", \"2\\n\" },\n        { \"  hello world  \", \"2\\n\" },\n        { \"hello   world\", \"2\\n\" },\n        { \"one two three four five six seven eight nine ten\", \"10\\n\" },\n        { \"   \", \"0\\n\" },\n        { \"a\", \"1\\n\" }\n    };\n\n    int passed_tests = 0;\n    for (size_t i = 0; i < test_cases.size(); ++i) {\n        const auto& tc = test_cases[i];\n        std::stringstream ss_input(tc.first);\n        std::stringstream ss_output;\n\n        std::streambuf* old_cin = std::cin.rdbuf();\n        std::streambuf* old_cout = std::cout.rdbuf();\n\n        std::cin.rdbuf(ss_input.rdbuf());\n        std::cout.rdbuf(ss_output.rdbuf());\n\n        // In a real testing environment, the student's compiled executable would be run\n        // with its stdin redirected from ss_input and stdout captured into ss_output.\n        // For this C++ driver, we'll simulate by calling the main logic if it were in a function.\n        // (Assuming the actual solution's main logic is wrapped in a callable function like `run_solution()`)\n        // run_solution(); // Call the student's solution function\n\n        // Restore std::cin and std::cout\n        std::cin.rdbuf(old_cin);\n        std::cout.rdbuf(old_cout);\n\n        std::cout << \"Test Case \" << i + 1 << \":\\n\";\n        std::cout << \"Input: \\\"\" << tc.first << \"\\\"\\n\";\n        std::cout << \"Expected: \\\"\" << tc.second << \"\\\"\\n\";\n        std::cout << \"(External execution and comparison would happen here)\" << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

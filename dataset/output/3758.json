@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that acts as a simple calculator. It should take two numbers (doubles) and an operator (+, -, *, /) as input from the user, then perform the operation using a `switch` statement and display the result. Handle division by zero.",
+  "test_cases": [
+    { "input": "20\n-\n7\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 13\n" },
+    { "input": "5\n*\n3\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 15\n" },
+    { "input": "10\n/\n0\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Error: Division by zero is not allowed.\n" },
+    { "input": "10\na\n5\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Error: Invalid operator specified.\n" },
+    { "input": "hello\n+\n5\n", "expected": "Enter first number: Invalid input detected. Please ensure you enter valid numbers.\n" }
+  ],
+  "driver": "g++ -o a.out 3758.cpp && echo \"$input\" | ./a.out",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Variable names are short and uninformative (e.g., `n1`, `n2`, `op`), hindering readability.",
+    "Lack of consistent spacing and formatting, leading to long, hard-to-read lines of code (e.g., input prompts and `std::cin` calls are on the same line).",
+    "Absence of comments to explain the code's logic or purpose beyond a basic program description.",
+    "Excessive use of `std::endl` which flushes the output buffer on every print statement. Using `\\n` instead would be more efficient in most cases where immediate flush is not critical."
+  ]
+}

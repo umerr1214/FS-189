@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Circle` class with a private `radius` member. Implement a `getArea()` method that is `const` (cannot modify object state) and another method `resize(double newRadius)` that modifies the radius. Demonstrate calling these methods on both `const Circle` objects and non-`const Circle` objects to illustrate const-correctness.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial Circle c1 (non-const):\n  Radius: 5.0000, Area: 78.5398\nc1 after resize(10.0):\n  Radius: 10.0000, Area: 314.1593\nc1 after resize(-3.0) (Robustness Issue):\n  Radius: -3.0000, Area: 28.2743 (Geometrically incorrect)\n\nInitial Circle c2 (const):\n  Radius: 7.0000, Area: 153.9380\nc2's area (called on const object): 153.9380\n"
+    }
+  ],
+  "driver": "valid C++ code to run test cases",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The Circle class's constructor and `resize` method do not validate the input `radius` to ensure it is non-negative. This allows the object to enter an invalid state (negative radius), leading to geometrically nonsensical results for `getArea()` even though the calculation itself is mathematically correct for the given negative number. A robust design would enforce the invariant that radius >= 0."
+  ]
+}

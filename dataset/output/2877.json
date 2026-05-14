@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "For the `Complex` number class, overload the stream insertion operator `operator<<` to allow `Complex` objects to be printed directly to `std::cout` in the format `(real + imaginaryi)`.",
+  "test_cases": [
+    { "input": "Complex(3, 5)", "expected": "(3.000000000000000 + 5.000000000000000i)" },
+    { "input": "Complex(3, -5)", "expected": "(3.000000000000000 - 5.000000000000000i)" },
+    { "input": "Complex(3, 0)", "expected": "(3.000000000000000)" },
+    { "input": "Complex(0, 5)", "expected": "(5.000000000000000i)" },
+    { "input": "Complex(0, -5)", "expected": "(-5.000000000000000i)" },
+    { "input": "Complex(0, 0)", "expected": "(0.000000000000000)" },
+    { "input": "Complex(-3, 5)", "expected": "(-3.000000000000000 + 5.000000000000000i)" },
+    { "input": "Complex(-3, -5)", "expected": "(-3.000000000000000 - 5.000000000000000i)" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <cmath>\n#include <iomanip>\n\nclass Complex {\npublic:\n    double real;\n    double imag;\n\n    Complex(double r = 0.0, double i = 0.0) : real(r), imag(i) {}\n\n    friend std::ostream& operator<<(std::ostream& os, const Complex& c);\n};\n\nstd::ostream& operator<<(std::ostream& os, const Complex& c) {\n    std::ios_base::fmtflags old_flags = os.flags();\n    std::streamsize old_prec = os.precision();\n    os.precision(15);\n    os << std::fixed;\n\n    os << \"(\";\n    bool real_printed = false;\n\n    if (c.real != 0.0 || c.imag == 0.0) {\n        os << c.real;\n        real_printed = true;\n    }\n\n    if (c.imag != 0.0) {\n        if (real_printed) {\n            if (c.imag > 0) {\n                os << \" + \";\n            } else {\n                os << \" - \";\n            }\n            os << std::abs(c.imag) << \"i\";\n        } else {\n            os << c.imag << \"i\";\n        }\n    } else if (!real_printed) {\n        os << \"0\";\n    }\n\n    os << \")\";\n\n    os.flags(old_flags);\n    os.precision(old_prec);\n    return os;\n}\n\nint main() {\n    std::cout.precision(15);\n    std::cout << std::fixed;\n    Complex c1(3, 5);\n    Complex c2(3, -5);\n    Complex c3(3, 0);\n    Complex c4(0, 5);\n    Complex c5(0, -5);\n    Complex c6(0, 0);\n    Complex c7(-3, 5);\n    Complex c8(-3, -5);\n\n    std::cout << c1 << std::endl;\n    std::cout << c2 << std::endl;\n    std::cout << c3 << std::endl;\n    std::cout << c4 << std::endl;\n    std::cout << c5 << std::endl;\n    std::cout << c6 << std::endl;\n    std::cout << c7 << std::endl;\n    std::cout << c8 << std::endl;\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

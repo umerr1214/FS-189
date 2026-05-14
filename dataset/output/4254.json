@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that prompts the user to enter a `std::string`. Then, print the entered string to the console in reverse order.",
+  "test_cases": [
+    { "input": "hello", "expected": "olleh" },
+    { "input": "world", "expected": "dlrow" },
+    { "input": "A", "expected": "A" },
+    { "input": "", "expected": "" }
+  ],
+  "driver": "int main() { std::string s; std::cout << \"Enter a string: \"; std::cin >> s; std::string reversed_s = s; std::reverse(reversed_s.begin(), reversed_s.end()); std::cout << \"Reversed string: \" << reversed_s << std::endl; return 0; }",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The manual string reversal logic contains a semantic error due to incorrect indexing (using 's.length() - i' instead of 's.length() - 1 - i'), which leads to an out-of-bounds access and undefined behavior when swapping characters."]
+}

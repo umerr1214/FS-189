@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that dynamically allocates a 1D array of integers of a size specified by the user. Fill the array with user-provided values, print all elements, and then deallocate the memory.",
+  "test_cases": [
+    { "input": "3\n10\n20\n30", "expected": "Array elements: 10 20 \n" },
+    { "input": "1\n5", "expected": "Array elements: \n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <cstdio>\n\nstd::string execute_command(const std::string& cmd) {\n    std::string result = \"\";\n    FILE* pipe = popen(cmd.c_str(), \"r\");\n    if (!pipe) return \"ERROR\";\n    char buffer[128];\n    while (fgets(buffer, sizeof(buffer), pipe) != NULL) {\n        result += buffer;\n    }\n    pclose(pipe);\n    return result;\n}\n\nint main() {\n    std::cout << \"Driver placeholder: This driver would attempt to compile and run the C++ code.\\n\";\n    std::cout << \"For a syntax error, it would report compilation failure.\\n\";\n    std::cout << \"For logical/semantic errors, it would execute and capture output to compare with expected.\\n\";\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["off-by-one error in array printing loop, not all elements are printed"]
+}

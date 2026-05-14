@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Shape` with a public method `calculateArea()` that returns 0. Derive two classes, `Circle` and `Rectangle`, from `Shape`. `Circle` should have a `radius` and `Rectangle` should have `width` and `height`. Override the `calculateArea()` method in both derived classes to compute their respective areas.",
+  "test_cases": [
+    { "input": "5.0\n4.0 6.0", "expected": "Circle Area (via Shape*): 78.54\nRectangle Area (via Shape*): 24.00\nCircle Area (direct): 78.54\nRectangle Area (direct): 24.00\nBase Shape Area: 0.00" }
+  ],
+  "driver": "int main() {\n    std::cout << std::fixed << std::setprecision(2);\n    Circle circle(5.0);\n    Rectangle rectangle(4.0, 6.0);\n\n    Shape* s1 = &circle;\n    Shape* s2 = &rectangle;\n\n    std::cout << \"Circle Area (via Shape*): \" << s1->calculateArea() << std::endl;\n    std::cout << \"Rectangle Area (via Shape*): \" << s2->calculateArea() << std::endl;\n\n    std::cout << \"Circle Area (direct): \" << circle.calculateArea() << std::endl;\n    std::cout << \"Rectangle Area (direct): \" << rectangle.calculateArea() << std::endl;\n\n    Shape baseShape;\n    std::cout << \"Base Shape Area: \" << baseShape.calculateArea() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    {
+      "line": 9,
+      "column": 12,
+      "message": "The 'calculateArea' method in the base class 'Shape' is not declared virtual. This prevents polymorphic behavior when using base class pointers/references, causing them to always call Shape::calculateArea() instead of the derived class overrides."
+    }
+  ]
+}

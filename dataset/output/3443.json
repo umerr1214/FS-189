@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that initializes a 1D integer array of size 5 with user-defined values. Then, find and print the largest element in the array.",
+  "test_cases": [
+    { "input": "1 2 3 4 5", "expected": "5" },
+    { "input": "-5 -10 -2 -1 -20", "expected": "-1" },
+    { "input": "10 2 8 -4 6", "expected": "10" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <algorithm>\n\nint main() {\n    std::vector<int> arr(5);\n    for (int i = 0; i < 5; ++i) {\n        std::cin >> arr[i];\n    }\n\n    if (arr.empty()) {\n        std::cout << \"Array is empty.\" << std::endl;\n        return 1;\n    }\n\n    int largest = arr[0];\n    for (int i = 1; i < 5; ++i) {\n        if (arr[i] > largest) {\n            largest = arr[i];\n        }\n    }\n    std::cout << largest << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'largest' variable is initialized to 0. If all array elements are negative, the program will incorrectly output 0 as the largest element instead of the actual largest negative number."
+  ]
+}

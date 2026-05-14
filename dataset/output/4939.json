@@ -1,0 +1,31 @@
+{
+  "language": "c++",
+  "question": "Implement a simple menu-driven calculator in C++ that allows the user to choose between addition, subtraction, multiplication, and division for two numbers. Use a switch statement to handle the operations.",
+  "test_cases": [
+    {
+      "input": "1\n10\n5\n",
+      "expected": "Menu:\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\nEnter your choice: Enter first number: Enter second number: Result: 15\nMenu:\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\nEnter your choice: "
+    },
+    {
+      "input": "4\n10\n0\n",
+      "expected": "Menu:\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\nEnter your choice: Enter first number: Enter second number: Result: inf\nMenu:\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\nEnter your choice: "
+    },
+    {
+      "input": "5\n1\n1\n",
+      "expected": "Menu:\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\nEnter your choice: Invalid choice. Please try again.\nMenu:\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\nEnter your choice: "
+    },
+    {
+      "input": "a\n1\n10\n5\n",
+      "expected": "Menu:\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\nEnter your choice: Menu:\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\nEnter your choice: Enter first number: Enter second number: Result: 15\nMenu:\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\nEnter your choice: "
+    }
+  ],
+  "driver": "The program is compiled and executed. Test inputs are fed to stdin, and the stdout is captured and compared against expected outputs. The program is expected to continue processing until the provided input stream is exhausted.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Program does not handle division by zero gracefully (produces 'inf'/'nan' for double division).",
+    "Input validation for menu choice is incomplete, leading to unexpected behavior or silent re-loops for non-numeric input.",
+    "Invalid numeric menu choices are handled with a generic 'Invalid choice' message but the program continues without clear recovery or re-prompting the choice correctly."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Point` with two integer members, `x` and `y`. Write a C++ function `calculateDistance` that takes two `Point` objects as input and returns the Euclidean distance between them. The main program should create two `Point` objects and display the distance.",
+  "test_cases": [
+    { "input": "Point p1 = {0, 0}; Point p2 = {1, 1};", "expected": "1.4142135624" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n#include <iomanip>\n\nstruct Point {\n    int x;\n    int y;\n};\n\ndouble calculateDistance(Point p1, Point p2) {\n    double dx = p1.x - p2.x;\n    double dy = p1.y - p2.y;\n    return std::sqrt(dx * dx + dy * dy);\n}\n\nint main() {\n    Point p1 = {0, 0};\n    Point p2 = {1, 1};\n    double dist = calculateDistance(p1, p2);\n    std::cout << std::fixed << std::setprecision(10) << dist;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The calculateDistance function is declared to return an 'int' instead of a 'double', leading to truncation of the Euclidean distance if it's not an integer."]
+}

@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter the radius of a circle (as a floating-point number), then calculates and prints its area and circumference. Use `M_PI` for pi if available, or define it as `3.14159`.",
+  "test_cases": [
+    { "input": "5.0", "expected": "Enter the radius of the circle: Area: 78.53975\nCircumference: 31.41590\n" },
+    { "input": "0.0", "expected": "Enter the radius of the circle: Area: 0.00000\nCircumference: 0.00000\n" },
+    { "input": "-2.5", "expected": "Enter the radius of the circle: Area: 19.63494\nCircumference: -15.70795\n" },
+    { "input": "invalid_input", "expected": "Enter the radius of the circle: Program might crash or output garbage due to non-numeric input without error handling. Expected output for garbage input would be undefined behavior or termination." }
+  ],
+  "driver": "void run_test() { solve(); }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Program does not handle non-numeric input gracefully, leading to potential crash or undefined behavior.",
+    "Program does not explicitly validate for negative radius, which might not be desirable for a physical circle problem, although the mathematical calculation remains valid."
+  ]
+}

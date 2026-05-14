@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that presents a simple menu to the user (e.g., '1. Say Hello', '2. Say Goodbye', '3. Exit'). The program should continuously display the menu and process user choices until the user selects the 'Exit' option. Use a `do-while` loop for the menu.",
+  "test_cases": [
+    {
+      "input": "1\n2\n3\n",
+      "expected": "--- Menu ---\n1. Say Hello\n2. Say Goodbye\n3. Exit\n--------------\nEnter your choice: Hello, dear user!\n\n--- Menu ---\n1. Say Hello\n2. Say Goodbye\n3. Exit\n--------------\nEnter your choice: Goodbye, for now!\n\n--- Menu ---\n1. Say Hello\n2. Say Goodbye\n3. Exit\n--------------\nEnter your choice: Exiting the program. Thank you for using it!\n\n"
+    },
+    {
+      "input": "5\n1\n3\n",
+      "expected": "--- Menu ---\n1. Say Hello\n2. Say Goodbye\n3. Exit\n--------------\nEnter your choice: Choice 5 is not a valid option. Please choose between 1 and 3.\n\n--- Menu ---\n1. Say Hello\n2. Say Goodbye\n3. Exit\n--------------\nEnter your choice: Hello, dear user!\n\n--- Menu ---\n1. Say Hello\n2. Say Goodbye\n3. Exit\n--------------\nEnter your choice: Exiting the program. Thank you for using it!\n\n"
+    },
+    {
+      "input": "invalid\n-1\n2\n3\n",
+      "expected": "--- Menu ---\n1. Say Hello\n2. Say Goodbye\n3. Exit\n--------------\nEnter your choice: Invalid input. Please enter a number: Choice -1 is not a valid option. Please choose between 1 and 3.\n\n--- Menu ---\n1. Say Hello\n2. Say Goodbye\n3. Exit\n--------------\nEnter your choice: Goodbye, for now!\n\n--- Menu ---\n1. Say Hello\n2. Say Goodbye\n3. Exit\n--------------\nEnter your choice: Exiting the program. Thank you for using it!\n\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n\n// Renamed student's main function to solution_main\nint solution_main();\n\nstd::string run_test(const std::string& input) {\n    std::stringstream ss_input(input);\n    std::stringstream ss_output;\n\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::streambuf* old_cerr = std::cerr.rdbuf();\n\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n    std::cerr.rdbuf(ss_output.rdbuf());\n\n    solution_main(); \n\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n    std::cerr.rdbuf(old_cerr);\n\n    return ss_output.str();\n}\n\nint main() {\n    return 0;\n}\n",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a function template `printValue` that takes an argument of any type and simply prints its value to the console. Demonstrate its use with an `int` and a `char`.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Value: 10\nValue: A\n" }
+  ],
+  "driver": "#include <iostream>\n\ntemplate <typename T // Syntax Error: Missing '>'\nvoid printValue(T value) {\n    std::cout << \"Value: \" << value << std::endl;\n}\n\nint main() {\n    printValue(10);\n    printValue('A');\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

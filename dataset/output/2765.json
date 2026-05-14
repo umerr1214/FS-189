@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Extend the `Animal` hierarchy (from Q14) to use virtual functions for the `sound()` method. Create a `Zoo` class that takes a `Animal*` and calls its `sound()` method, showcasing polymorphic behavior.",
+  "test_cases": [
+    { "input": "", "expected": "Dog exhibit says: Generic animal sound.\nCat exhibit says: Generic animal sound.\nGeneric exhibit says: Generic animal sound.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// The user's code will be inserted here.\n\nint main() {\n    Dog myDog;\n    Cat myCat;\n\n    Zoo dogExhibit(&myDog);\n    std::cout << \"Dog exhibit says: \" << dogExhibit.makeSound() << std::endl;\n\n    Zoo catExhibit(&myCat);\n    std::cout << \"Cat exhibit says: \" << catExhibit.makeSound() << std::endl;\n\n    Animal genericAnimal;\n    Zoo genericExhibit(&genericAnimal);\n    std::cout << \"Generic exhibit says: \" << genericExhibit.makeSound() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `Zoo` constructor incorrectly initializes `animal_in_display` with a new `Animal` base class object, instead of using the polymorphic `Animal*` passed as an argument. This prevents the `Zoo` from showcasing the specific animal's sound."
+  ]
+}

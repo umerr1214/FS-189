@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `doubleValue(int& num)` that takes an integer by reference and doubles its value. Demonstrate this function in `main` by passing an integer variable and observing its change.",
+  "test_cases": [
+    { "input": "10", "expected": "Original: 10\nDoubled: 20" },
+    { "input": "1073741824", "expected": "Original: 1073741824\nDoubled: -2147483648" }
+  ],
+  "driver": "#include <iostream>\n#include <limits>\nvoid doubleValue(int& num);\nint main() {\n    int test_val;\n    if (!(std::cin >> test_val)) return 1;\n    std::cout << \"Original: \" << test_val << std::endl;\n    doubleValue(test_val);\n    std::cout << \"Doubled: \" << test_val << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `doubleValue` function does not include explicit checks for potential integer overflow. When `num` is a large positive integer (e.g., `std::numeric_limits<int>::max() / 2 + 1`), doubling it results in a value that exceeds `INT_MAX`, leading to integer overflow and undefined behavior (typically a negative value on most systems).",
+    "The `main` function demonstrates this by showing a correct result for a small number, but an incorrect, overflowed result for a number close to the integer limit, highlighting the lack of robustness for extreme inputs."
+  ]
+}

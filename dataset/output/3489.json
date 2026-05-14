@@ -1,0 +1,84 @@
+{
+  "language": "c++",
+  "question": "Develop a simple command-line calculator program in C++ that takes two numbers and an operator (+, -, *, /) as input from the user. Use a `switch` statement to perform the corresponding arithmetic operation and print the result. Handle division by zero.",
+  "test_cases": [
+    { "input": "10\n+\n5\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 15.00\n" },
+    { "input": "20\n-\n7\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 13.00\n" },
+    { "input": "6\n*\n8\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 48.00\n" },
+    { "input": "100\n/\n4\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 25.00\n" },
+    { "input": "5\n/\n0\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Error: Division by zero is not allowed.\n" },
+    { "input": "7.5\n*\n2.5\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 18.75\n" },
+    { "input": "10\n%\n2\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Error: Invalid operator. Please use +, -, *, or /.\n" }
+  ],
+  "driver": "
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <streambuf>
+#include <vector>
+#include <utility> // For std::pair
+
+// Assume the calculator logic is in a function named 'solve()'
+extern void solve();
+
+int main() {
+    std::vector<std::pair<std::string, std::string>> test_cases = {
+        {\"10\\n+\\n5\\n\", \"Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 15.00\\n\"},
+        {\"20\\n-\\n7\\n\", \"Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 13.00\\n\"},
+        {\"6\\n*\\n8\\n\", \"Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 48.00\\n\"},
+        {\"100\\n/\\n4\\n\", \"Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 25.00\\n\"},
+        {\"5\\n/\\n0\\n\", \"Enter first number: Enter operator (+, -, *, /): Enter second number: Error: Division by zero is not allowed.\\n\"},
+        {\"7.5\\n*\\n2.5\\n\", \"Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 18.75\\n\"},
+        {\"10\\n%\\n2\\n\", \"Enter first number: Enter operator (+, -, *, /): Enter second number: Error: Invalid operator. Please use +, -, *, or /.\\n\"}
+    };
+
+    bool all_passed = true;
+    for (size_t i = 0; i < test_cases.size(); ++i) {
+        std::string input_str = test_cases[i].first;
+        std::string expected_output = test_cases[i].second;
+
+        std::streambuf* old_cin_buf = std::cin.rdbuf();
+        std::streambuf* old_cout_buf = std::cout.rdbuf();
+        std::streambuf* old_cerr_buf = std::cerr.rdbuf(); // Also capture cerr
+
+        std::istringstream iss(input_str);
+        std::cin.rdbuf(iss.rdbuf());
+
+        std::ostringstream oss_cout;
+        std::cout.rdbuf(oss_cout.rdbuf());
+        std::ostringstream oss_cerr;
+        std::cerr.rdbuf(oss_cerr.rdbuf());
+
+        solve(); // Call the function containing the program's logic
+
+        std::cin.rdbuf(old_cin_buf);     // Restore cin
+        std::cout.rdbuf(old_cout_buf);   // Restore cout
+        std::cerr.rdbuf(old_cerr_buf);   // Restore cerr
+
+        std::string actual_output = oss_cout.str() + oss_cerr.str(); // Combine cout and cerr
+
+        if (actual_output != expected_output) {
+            std::cerr << \"Test case \" << i + 1 << \" failed.\\n\";
+            std::cerr << \"Input: \\n---\\n\" << input_str << \"---\\n\";
+            std::cerr << \"Expected: \\n---\\n\" << expected_output << \"---\\n\";
+            std::cerr << \"Actual: \\n---\\n\" << actual_output << \"---\\n\";
+            all_passed = false;
+        } else {
+            // std::cout << \"Test case \" << i + 1 << \" passed.\\n\";
+        }
+    }
+
+    if (all_passed) {
+        std::cout << \"All test cases passed!\\n\";
+        return 0;
+    } else {
+        std::cout << \"Some test cases failed.\\n\";
+        return 1;
+    }
+}
+",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

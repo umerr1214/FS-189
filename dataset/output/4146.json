@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a C-style string function `strToUpper(char* str)` that converts all lowercase letters in a null-terminated C-style string to uppercase in-place. Demonstrate with an example string.",
+  "test_cases": [
+    { "input": "Hello World!", "expected": "HELLO WORLD!" },
+    { "input": "test123ABC", "expected": "TEST123ABC" },
+    { "input": "", "expected": "" },
+    { "input": "ALLCAPS", "expected": "ALLCAPS" },
+    { "input": "mixed Case StrinG", "expected": "MIXED CASE STRING" }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <vector>\n#include <cctype>\n\nstruct TestCase {\n    const char* input;\n    const char* expected;\n};\n\nint main() {\n    std::vector<TestCase> testCases = {\n        {\"Hello World!\", \"HELLO WORLD!\"},\n        {\"test123ABC\", \"TEST123ABC\"},\n        {\"\", \"\"},\n        {\"ALLCAPS\", \"ALLCAPS\"},\n        {\"mixed Case StrinG\", \"MIXED CASE STRING\"}\n    };\n\n    bool allTestsPassed = true;\n    for (size_t i = 0; i < testCases.size(); ++i) {\n        char* buffer = new char[strlen(testCases[i].input) + 1];\n        strcpy(buffer, testCases[i].input);\n\n        strToUpper(buffer);\n\n        if (strcmp(buffer, testCases[i].expected) != 0) {\n            allTestsPassed = false;\n        }\n        delete[] buffer;\n    }\n\n    char exampleString[] = \"This is an Example String for Demonstration.\";\n    strToUpper(exampleString);\n\n    return allTestsPassed ? 0 : 1;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The program attempts to modify a string literal ('char* myString = \"...\";'), which is typically stored in read-only memory. Modifying it results in undefined behavior at runtime (e.g., a segmentation fault)."]
+}

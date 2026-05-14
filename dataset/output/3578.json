@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Accept three integer numbers from the user and determine which one is the largest. Print the largest number.",
+  "test_cases": [
+    { "input": "10 5 20", "expected": "The largest number is: 20\n" },
+    { "input": "7 7 7", "expected": "The largest number is: 7\n" },
+    { "input": "-1 -5 -2", "expected": "The largest number is: -1\n" },
+    { "input": "100 200 150", "expected": "The largest number is: 200\n" },
+    { "input": "30 10 20", "expected": "The largest number is: 30\n" }
+  ],
+  "driver": "The program reads three integers from standard input. The test driver will provide these integers via standard input redirection and capture the program's standard output.",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The logic for finding the largest number uses a nested if-else structure which is overly verbose and less readable compared to simpler approaches. It could be made more efficient and concise by using a single variable to track the maximum, or by utilizing `std::max` function twice."
+  ]
+}

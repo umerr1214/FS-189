@@ -1,0 +1,29 @@
+{
+  "language": "c++",
+  "question": "Implement a `Calculator` class with overloaded `add` methods: one that takes two integers, one that takes three integers, and one that takes two doubles. Each method should return the sum.",
+  "test_cases": [
+    { "input": "add(10,20)", "expected": "30" },
+    { "input": "add(-5,-10)", "expected": "-15" },
+    { "input": "add(100,-50)", "expected": "50" },
+    { "input": "add(0,0)", "expected": "0" },
+    { "input": "add(2000000000,1000000000)", "expected": "3000000000" },
+    { "input": "add(1,2,3)", "expected": "6" },
+    { "input": "add(-1,-2,-3)", "expected": "-6" },
+    { "input": "add(10,-5,2)", "expected": "7" },
+    { "input": "add(0,0,0)", "expected": "0" },
+    { "input": "add(1000000000,1000000000,1000000000)", "expected": "3000000000" },
+    { "input": "add(1.5,2.5)", "expected": "4" },
+    { "input": "add(-1.0,-0.5)", "expected": "-1.5" },
+    { "input": "add(3.14,-1.0)", "expected": "2.14" },
+    { "input": "add(0.0,0.0)", "expected": "0" },
+    { "input": "add(0.1,0.2)", "expected": "0.3" },
+    { "input": "add(1.23e20,4.56e20)", "expected": "5.79e+20" }
+  ],
+  "driver": "Calculator calc;\nstd::cout << \"add(10,20):\" << calc.add(10, 20) << \";\";\nstd::cout << \"add(-5,-10):\" << calc.add(-5, -10) << \";\";\nstd::cout << \"add(100,-50):\" << calc.add(100, -50) << \";\";\nstd::cout << \"add(0,0):\" << calc.add(0, 0) << \";\";\nstd::cout << \"add(2000000000,1000000000):\" << calc.add(2000000000, 1000000000) << \";\";\nstd::cout << \"add(1,2,3):\" << calc.add(1, 2, 3) << \";\";\nstd::cout << \"add(-1,-2,-3):\" << calc.add(-1, -2, -3) << \";\";\nstd::cout << \"add(10,-5,2):\" << calc.add(10, -5, 2) << \";\";\nstd::cout << \"add(0,0,0):\" << calc.add(0, 0, 0) << \";\";\nstd::cout << \"add(1000000000,1000000000,1000000000):\" << calc.add(1000000000, 1000000000, 1000000000) << \";\";\nstd::cout << \"add(1.5,2.5):\" << calc.add(1.5, 2.5) << \";\";\nstd::cout << \"add(-1.0,-0.5):\" << calc.add(-1.0, -0.5) << \";\";\nstd::cout << \"add(3.14,-1.0):\" << calc.add(3.14, -1.0) << \";\";\nstd::cout << \"add(0.0,0.0):\" << calc.add(0.0, 0.0) << \";\";\nstd::cout << \"add(0.1,0.2):\" << calc.add(0.1, 0.2) << \";\";\nstd::cout << \"add(1.23e20,4.56e20):\" << calc.add(1.23e20, 4.56e20) << \";\";",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The integer addition methods do not explicitly handle potential integer overflow for very large input values, which can lead to undefined behavior or incorrect results when the sum exceeds the range of 'int'. The test cases include inputs that demonstrate this limitation."
+  ]
+}

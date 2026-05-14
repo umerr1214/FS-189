@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a simple menu-driven program for a basic task list (e.g., Add Task, View Tasks, Exit). Use a `do-while` loop to keep displaying the menu until the user chooses to exit.",
+  "test_cases": [
+    { "input": "1\nBuy groceries\n", "expected": "\nTask List Menu:\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: Enter task description: Task added!\nExiting program. Goodbye!\n" },
+    { "input": "3\n3\n3\n", "expected": "\nTask List Menu:\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: Exiting program. Goodbye!\n\nTask List Menu:\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: Exiting program. Goodbye!\n\nTask List Menu:\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: Exiting program. Goodbye!\n" }
+  ],
+  "driver": "int main() { /* The code itself is the main program */ return 0; }",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `do-while` loop condition `while (choice == 3)` is inverted. It should be `while (choice != 3)` to continue looping until the user chooses to exit (choice 3). As implemented, if the user enters 1 or 2, the loop exits immediately after one iteration. If the user enters 3, the loop becomes an infinite loop, repeatedly printing 'Exiting program. Goodbye!' and the menu."
+  ]
+}

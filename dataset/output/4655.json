@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Define a struct named `Point` with two integer members, `x` and `y`. Write a function `distance` that takes two `Point` structs as input and returns the Euclidean distance between them.",
+  "test_cases": [
+    { "input": "Point p1={0,0}, p2={3,4}", "expected": "5.000000" },
+    { "input": "Point p3={1,1}, p4={1,1}", "expected": "0.000000" },
+    { "input": "Point p5={-1,-1}, p6={2,3}", "expected": "5.000000" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n#include <iomanip>\n\nstruct Point {\n    int x;\n    int y;\n};\n\ndouble distance(Point p1, Point p2);\n\nint main() {\n    std::cout << std::fixed << std::setprecision(6);\n    Point p1 = {0, 0};\n    Point p2 = {3, 4};\n    std::cout << distance(p1, p2) << std::endl;\n\n    Point p3 = {1, 1};\n    Point p4 = {1, 1};\n    std::cout << distance(p3, p4) << std::endl;\n\n    Point p5 = {-1, -1};\n    Point p6 = {2, 3};\n    std::cout << distance(p5, p6) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": []
+}

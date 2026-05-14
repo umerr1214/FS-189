@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Given a 2D integer array (matrix) of size 4x3, find the sum of all elements in a specified row (e.g., the second row).",
+  "test_cases": [
+    { "input": "matrix = {{1,2,3},{4,5,6},{7,8,9},{10,11,12}}, target_row = 1", "expected": "15" }
+  ],
+  "driver": "int main() {\n    int matrix[4][3] = {\n        {1, 2, 3},\n        {4, 5, 6},\n        {7, 8, 9},\n        {10, 11, 12}\n    };\n    int target_row = 1;\n    int result = sumRow(matrix, target_row);\n    std::cout << \"Sum of elements in row \" << target_row << \": \" << result << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The function 'sumRow' contains a logical error: it always sums elements from the first row (index 0) instead of using the provided 'row_index'."
+  ]
+}

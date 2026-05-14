@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Calculate the Body Mass Index (BMI) given user input for weight in kilograms and height in meters. The formula for BMI is weight / (height * height). Display the result to two decimal places.",
+  "test_cases": [
+    { "input": "70\n1.75", "expected": "Your BMI is: 22.86\n" },
+    { "input": "50\n1.60", "expected": "Your BMI is: 19.53\n" },
+    { "input": "85\n1.80", "expected": "Your BMI is: 26.23\n" }
+  ],
+  "driver": "g++ -o solution 3276.cpp && ./solution",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    {
+      "line": 23,
+      "column": 30,
+      "message": "Output formatting is semantically incorrect. std::setprecision(2) without std::fixed displays 2 significant digits, not 2 decimal places as required."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a function `void incrementValue(int* ptr)` that takes an integer pointer as an argument and increments the value it points to by one. Demonstrate its use with an integer variable from `main`.",
+  "test_cases": [
+    { "input": "int x = 10;", "expected": "Initial value of x: 10\nValue of x after increment: 11\n" }
+  ],
+  "driver": "int main() {\n    int x = 10;\n    std::cout << \"Initial value of x: \" << x << std::endl;\n    incrementValue(&x);\n    std::cout << \"Value of x after increment: \" << x << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `incrementValue` function does not include a check for `nullptr`. If a null pointer is passed, dereferencing it (`*ptr`) will lead to undefined behavior, potentially causing a program crash (segmentation fault)."
+  ]
+}

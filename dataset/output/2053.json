@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a simple `Timer` class with private integer members `hours`, `minutes`, and `seconds`. Provide a public method `displayTime()` that prints the current time in `HH:MM:SS` format.",
+  "test_cases": [
+    { "input": "Timer t1(10, 30, 45); t1.displayTime();", "expected": "10:30:45\n" },
+    { "input": "Timer t2(25, 15, 0); t2.displayTime();", "expected": "25:15:00\n" },
+    { "input": "Timer t3(12, 70, 5); t3.displayTime();", "expected": "12:70:05\n" },
+    { "input": "Timer t4(1, 2, 90); t4.displayTime();", "expected": "01:02:90\n" },
+    { "input": "Timer t5(-5, 10, 20); t5.displayTime();", "expected": "-05:10:20\n" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include <sstream>\n\nclass Timer {\nprivate:\n    int hours;\n    int minutes;\n    int seconds;\n\npublic:\n    Timer(int h, int m, int s) {\n        hours = h;\n        minutes = m;\n        seconds = s;\n    }\n\n    void displayTime() const {\n        std::cout << std::setw(2) << std::setfill('0') << hours << \":\"\n                  << std::setw(2) << std::setfill('0') << minutes << \":\"\n                  << std::setw(2) << std::setfill('0') << seconds << std::endl;\n    }\n};\n\nint main() {\n    std::stringstream ss;\n    std::streambuf* oldCout = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n\n    Timer t1(10, 30, 45);\n    t1.displayTime();\n\n    Timer t2(25, 15, 0);\n    t2.displayTime();\n\n    Timer t3(12, 70, 5);\n    t3.displayTime();\n\n    Timer t4(1, 2, 90);\n    t4.displayTime();\n\n    Timer t5(-5, 10, 20);\n    t5.displayTime();\n\n    std::cout.rdbuf(oldCout);\n    std::cout << ss.str();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Timer` class constructor does not validate input values for hours, minutes, and seconds. This allows invalid time components (e.g., hours > 23, minutes > 59, seconds > 59, or negative values) to be stored and displayed directly.",
+    "The `displayTime` method assumes a valid internal state, leading to incorrect or misleading time representations when the internal state is invalid, violating expected time formatting rules."
+  ]
+}

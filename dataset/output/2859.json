@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `Vehicle` base class with a virtual `void startEngine()` method. Derive `Car` and `Motorcycle` classes, each providing its own implementation for `startEngine()`. Demonstrate polymorphic behavior by calling `startEngine()` using `Vehicle` pointers.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Demonstrating polymorphic engine starting with correct C++ practices.\nVehicle constructed.\nCar constructed.\nVehicle constructed.\nMotorcycle constructed.\n\nCalling startEngine() polymorphically:\nCar engine roaring to life!\nMotorcycle engine kicking over!\n\nObjects will be automatically destructed when unique_ptr's go out of scope.\nProgram finished.\nMotorcycle destructed.\nVehicle destructed.\nCar destructed.\nVehicle destructed.\n"
+    }
+  ],
+  "driver": "",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

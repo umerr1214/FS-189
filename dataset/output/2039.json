@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "For the `ComplexNumber` class, overload the `<<` (insertion) operator to enable printing `ComplexNumber` objects to an output stream in the format `real + imaginaryi` (e.g., `3.0 + 4.5i`).",
+  "test_cases": [
+    { "input": "ComplexNumber c1(3.0, 4.5)", "expected": "c1: 3.0 + 4.5i\n" },
+    { "input": "ComplexNumber c2(2.0, -1.5)", "expected": "c2: 2.0 - 1.5i\n" },
+    { "input": "ComplexNumber c3(0.0, 7.0)", "expected": "c3: 0.0 + 7.0i\n" },
+    { "input": "ComplexNumber c4(5.0, 0.0)", "expected": "c4: 5.0 + 0.0i\n" },
+    { "input": "ComplexNumber c5(-1.0, -2.0)", "expected": "c5: -1.0 - 2.0i\n" },
+    { "input": "ComplexNumber c6(0.0, 0.0)", "expected": "c6: 0.0 + 0.0i\n" }
+  ],
+  "driver": "    ComplexNumber c1(3.0, 4.5);\n    ComplexNumber c2(2.0, -1.5);\n    ComplexNumber c3(0.0, 7.0);\n    ComplexNumber c4(5.0, 0.0);\n    ComplexNumber c5(-1.0, -2.0);\n    ComplexNumber c6(0.0, 0.0);\n\n    std::cout << \"c1: \" << c1 << std::endl;\n    std::cout << \"c2: \" << c2 << std::endl;\n    std::cout << \"c3: \" << c3 << std::endl;\n    std::cout << \"c4: \" << c4 << std::endl;\n    std::cout << \"c5: \" << c5 << std::endl;\n    std::cout << \"c6: \" << c6 << std::endl;\n",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `operator<<` implementation for `ComplexNumber` incorrectly handles negative imaginary parts. It always prefixes the imaginary part with a `+` sign, leading to outputs like `real + -imaginaryi` instead of the correct `real - |imaginary|i`."
+  ]
+}

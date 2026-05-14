@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a function template `printValue` that takes an argument of any type and simply prints its value to the console. Demonstrate its use with an `int` and a `char`.",
+  "test_cases": [
+    { "input": "", "expected": "Value: 123\nValue: A\n" }
+  ],
+  "driver": "#include <iostream>\n\ntemplate <typename T>\nvoid printValue(T arg) {\n    std::cout << \"Value: \" << arg << '\\n';\n}\n\nint main() {\n    int i = 123;\n    char c = 'A';\n    printValue(i);\n    printValue(c);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The function template `printValue` takes its argument by value (`T arg`), which can lead to unnecessary copies for complex or large types. This design is not robust as it impacts performance and can be problematic for non-copyable types. A more robust design would use a const reference (e.g., `const T&`)."
+  ]
+}

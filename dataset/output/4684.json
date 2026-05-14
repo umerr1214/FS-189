@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Design a function template `findMax` that can compare and return the larger of two values of any data type (e.g., int, double, char).",
+  "test_cases": [
+    { "input": "int a = 10, b = 20;", "expected": "20" },
+    { "input": "double x = 5.5, y = 15.3;", "expected": "15.3" },
+    { "input": "char c = 'a', d = 'z';", "expected": "z" }
+  ],
+  "driver": "int i1 = 10, i2 = 20; double d1 = 5.5, d2 = 15.3; char c1 = 'a', c2 = 'z';\n// The following lines would be used to test, but the code has a syntax error.\n// std::cout << findMax(i1, i2) << std::endl;\n// std::cout << findMax(d1, d2) << std::endl;\n// std::cout << findMax(c1, c2) << std::endl;",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "The keyword 'template' is misspelled as 'templete' in the function template definition for `findMax`."
+  ]
+}

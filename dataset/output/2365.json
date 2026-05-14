@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `Movie` class with `title` (string), `director` (string), and `releaseYear` (int). Implement a constructor where `director` and `releaseYear` have default values (e.g., 'Unknown' and 2000), allowing movies to be created with just a title.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Movie 1 Details:\nTitle: Inception, Director: Christopher Nolan, Release Year: 2010\n\nMovie 2 Details (before invalid year set):\nTitle: Dune, Director: Unknown, Release Year: 2000\nMovie 2 Details (after invalid year set):\nTitle: Dune, Director: Unknown, Release Year: -500\n\nMovie 3 Details:\nTitle: Pulp Fiction, Director: Quentin Tarantino, Release Year: 2000\n"
+    }
+  ],
+  "driver": "int main() {\n    // Test Case 1: All arguments provided\n    Movie movie1(\"Inception\", \"Christopher Nolan\", 2010);\n    std::cout << \"Movie 1 Details:\" << std::endl;\n    movie1.display();\n\n    std::cout << std::endl;\n\n    // Test Case 2: Only title provided, using default director and releaseYear\n    Movie movie2(\"Dune\");\n    std::cout << \"Movie 2 Details (before invalid year set):\" << std::endl;\n    movie2.display();\n\n    // Demonstrate robustness issue: setting an illogical release year\n    movie2.setReleaseYear(-500); // Setting a clearly invalid year\n    std::cout << \"Movie 2 Details (after invalid year set):\" << std::endl;\n    movie2.display();\n\n    std::cout << std::endl;\n\n    // Test Case 3: Title and director provided, using default releaseYear\n    Movie movie3(\"Pulp Fiction\", \"Quentin Tarantino\");\n    std::cout << \"Movie 3 Details:\" << std::endl;\n    movie3.display();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The Movie class does not validate the `releaseYear` in its constructor or `setReleaseYear` method. This allows arbitrary and potentially illogical integer values (e.g., negative years, years far in the future) to be stored, making the class less robust against invalid data input and potentially leading to inconsistent state."
+  ]
+}

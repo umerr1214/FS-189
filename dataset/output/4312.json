@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ function `fill_array_sequential` that takes an integer pointer `arr` and an integer `size` as arguments. The function should fill the array pointed to by `arr` with sequential values starting from 1 up to `size`.",
+  "test_cases": [
+    { "input": "size = 5", "expected": "1 2 3 4 5" },
+    { "input": "size = 3", "expected": "1 2 3" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n\n// The fill_array_sequential function would be inserted here by the evaluation system.\n\nint main() {\n    // Test Case 1\n    int size1 = 5;\n    std::vector<int> vec1(size1);\n    fill_array_sequential(vec1.data(), size1);\n    for (int i = 0; i < size1; ++i) {\n        std::cout << vec1[i] << (i == size1 - 1 ? \"\" : \" \");\n    }\n    std::cout << std::endl;\n\n    // Test Case 2\n    int size2 = 3;\n    std::vector<int> vec2(size2);\n    fill_array_sequential(vec2.data(), size2);\n    for (int i = 0; i < size2; ++i) {\n        std::cout << vec2[i] << (i == size2 - 1 ? \"\" : \" \");\n    }\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing closing parenthesis in the function signature of `fill_array_sequential`."]
+}

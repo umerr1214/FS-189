@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that initializes an array of 5 integers (e.g., {10, 20, 30, 40, 50}), then reverses the order of its elements *in-place* (without using a second array) and prints the modified array.",
+  "test_cases": [
+    { "input": "", "expected": "10 20 30 40 50 \n" }
+  ],
+  "driver": "valid C++ code to run test cases",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The array reversal loop iterates 'n' times instead of 'n/2' times. This causes elements to be swapped to their reversed positions and then immediately swapped back to their original positions, resulting in an unreversed array."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Implement a `Calculator` class with an overloaded public method `add`. It should be able to: 1) add two integers, 2) add three integers, and 3) add two double-precision numbers. Demonstrate calling each version of the `add` method.",
+  "test_cases": [
+    { "input": "calc.add(5, 10)", "expected": "Sum of 5 and 10 (int): 15" },
+    { "input": "calc.add(1, 2, 3)", "expected": "Sum of 1, 2, and 3 (int): 0" },
+    { "input": "calc.add(5.5, 4.5)", "expected": "Sum of 5.5 and 4.5 (double): 10.0" }
+  ],
+  "driver": "    Calculator calc;\n\n    int sum1 = calc.add(5, 10);\n    std::cout << \"Sum of 5 and 10 (int): \" << sum1 << std::endl;\n\n    int sum2 = calc.add(1, 2, 3);\n    std::cout << \"Sum of 1, 2, and 3 (int): \" << sum2 << std::endl;\n\n    double sum3 = calc.add(5.5, 4.5);\n    std::cout << std::fixed << std::setprecision(1) << \"Sum of 5.5 and 4.5 (double): \" << sum3 << std::endl;",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'add' method for three integers incorrectly subtracts the third integer instead of adding it, leading to an incorrect sum."
+  ]
+}

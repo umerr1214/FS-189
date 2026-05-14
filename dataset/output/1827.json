@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a `StringWrapper` class that manages a dynamically allocated character array to store a string. Implement a copy constructor for `StringWrapper` that performs a deep copy of the character array to ensure independent memory management between copied objects.",
+  "test_cases": [
+    { "input": "Default constructor", "expected": "s1 (default): '', length: 0" },
+    { "input": "Constructor from C-string 'Hello C++'", "expected": "s2 (\"Hello C++\"): 'Hello C++', length: 9" },
+    { "input": "Constructor from empty C-string", "expected": "s3 (empty): '', length: 0" },
+    { "input": "Copy constructor from s2", "expected": "s4 (copied from s2): 'Hello C++', length: 9\ns2 (modified): 'Jello C++', length: 9\ns4 (should be unchanged): 'Hello C++', length: 9" },
+    { "input": "Assignment operator s5 = s4", "expected": "s5: 'Original content', length: 16\ns5 (assigned from s4): 'Hello C++', length: 9\ns4 (should be unchanged): 'Hello C++', length: 9" },
+    { "input": "Self-assignment s6 = s6", "expected": "s6 before self-assignment: 'Self-assign test', length: 16\ns6 after self-assignment: 'Self-assign test', length: 16" },
+    { "input": "Copying an empty string", "expected": "s7 (copied from s3 empty): '', length: 0" }
+  ],
+  "driver": "int main() {\n    StringWrapper s1;\n    std::cout << \"s1 (default): '\" << s1.c_str() << \"', length: \" << s1.getLength() << std::endl;\n\n    StringWrapper s2(\"Hello C++\");\n    std::cout << \"s2 (\\\"Hello C++\\\"): '\" << s2.c_str() << \"', length: \" << s2.getLength() << std::endl;\n\n    StringWrapper s3(\"\");\n    std::cout << \"s3 (empty): '\" << s3.c_str() << \"', length: \" << s3.getLength() << std::endl;\n\n    StringWrapper s4 = s2;\n    std::cout << \"s4 (copied from s2): '\" << s4.c_str() << \"', length: \" << s4.getLength() << std::endl;\n\n    s2.str[0] = 'J';\n    std::cout << \"s2 (modified): '\" << s2.c_str() << \"', length: \" << s2.getLength() << std::endl;\n    std::cout << \"s4 (should be unchanged): '\" << s4.c_str() << \"', length: \" << s4.getLength() << std::endl;\n\n    StringWrapper s5(\"Original content\");\n    std::cout << \"s5: '\" << s5.c_str() << \"', length: \" << s5.getLength() << std::endl;\n    s5 = s4;\n    std::cout << \"s5 (assigned from s4): '\" << s5.c_str() << \"', length: \" << s5.getLength() << std::endl;\n    std::cout << \"s4 (should be unchanged): '\" << s4.c_str() << \"', length: \" << s4.getLength() << std::endl;\n\n    StringWrapper s6(\"Self-assign test\");\n    std::cout << \"s6 before self-assignment: '\" << s6.c_str() << \"', length: \" << s6.getLength() << std::endl;\n    s6 = s6;\n    std::cout << \"s6 after self-assignment: '\" << s6.c_str() << \"', length: \" << s6.getLength() << std::endl;\n\n    StringWrapper s7 = s3;\n    std::cout << \"s7 (copied from s3 empty): '\" << s7.c_str() << \"', length: \" << s7.getLength() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

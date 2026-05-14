@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "For the `ComplexNumber` class, overload the equality operator (`==`) as a non-member function. This operator should return `true` if two `ComplexNumber` objects have identical real and imaginary parts, and `false` otherwise.",
+  "test_cases": [
+    { "input": "ComplexNumber c1(1.0, 2.0); ComplexNumber c2(1.0, 2.0);", "expected": "true" },
+    { "input": "ComplexNumber c1(1.0, 2.0); ComplexNumber c3(3.0, 4.0);", "expected": "false" },
+    { "input": "ComplexNumber c4(0.1 + 0.2, 0.3); ComplexNumber c5(0.3, 0.3);", "expected": "false" },
+    { "input": "ComplexNumber c6(5.0, -2.5); ComplexNumber c7(5.0, -2.5);", "expected": "true" },
+    { "input": "ComplexNumber c8(0.0, 0.0); ComplexNumber c9(0.0, 0.0);", "expected": "true" },
+    { "input": "ComplexNumber c10(1e-10, 1e-10); ComplexNumber c11(0.0, 0.0);", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n#include <cmath>\n\nclass ComplexNumber {\npublic:\n    double real;\n    double imag;\n\n    ComplexNumber(double r = 0.0, double i = 0.0) : real(r), imag(i) {}\n};\n\nbool operator==(const ComplexNumber& c1, const ComplexNumber& c2) {\n    return c1.real == c2.real && c1.imag == c2.imag;\n}\n\nint main() {\n    std::stringstream ss;\n    ComplexNumber c1(1.0, 2.0);\n    ComplexNumber c2(1.0, 2.0);\n    ComplexNumber c3(3.0, 4.0);\n    ComplexNumber c4(0.1 + 0.2, 0.3);\n    ComplexNumber c5(0.3, 0.3);\n    ComplexNumber c6(5.0, -2.5);\n    ComplexNumber c7(5.0, -2.5);\n    ComplexNumber c8(0.0, 0.0);\n    ComplexNumber c9(0.0, 0.0);\n    ComplexNumber c10(1e-10, 1e-10);\n    ComplexNumber c11(0.0, 0.0);\n\n    ss << (c1 == c2 ? \"true\" : \"false\") << std::endl;\n    ss << (c1 == c3 ? \"true\" : \"false\") << std::endl;\n    ss << (c4 == c5 ? \"true\" : \"false\") << std::endl;\n    ss << (c6 == c7 ? \"true\" : \"false\") << std::endl;\n    ss << (c8 == c9 ? \"true\" : \"false\") << std::endl;\n    ss << (c10 == c11 ? \"true\" : \"false\") << std::endl;\n\n    std::cout << ss.str();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Direct comparison of floating-point numbers (`double`) using `==` can lead to unexpected results due to precision errors. For robust comparisons, especially with computed values, a small epsilon-based tolerance should be used instead."
+  ]
+}

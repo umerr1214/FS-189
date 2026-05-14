@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Modify the `Book` class (from Q1) to include a default constructor (initializes with empty strings), a parameterized constructor, and a copy constructor. Demonstrate creating objects using all three types of constructors.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating Constructors ---\nBook 1 (Default): Title: Default Title, Author: Default Author\nBook 2 (Parameterized): Title: The Hitchhiker's Guide to the Galaxy, Author: Douglas Adams\nBook 3 (Copy of Book 2): Title: The Hitchhiker's Guide to the Galaxy, Author: Douglas Adams\nBook 3 (Modified): Title: A New Title, Author: A New Author\nBook 2 (Original after Book 3 modified): Title: The Hitchhiker's Guide to the Galaxy, Author: Douglas Adams\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Demonstrating Constructors ---\" << std::endl;\n\n    Book book1;\n    std::cout << \"Book 1 (Default): \";\n    book1.print();\n\n    Book book2(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\");\n    std::cout << \"Book 2 (Parameterized): \";\n    book2.print();\n\n    Book book3 = book2;\n    std::cout << \"Book 3 (Copy of Book 2): \";\n    book3.print();\n\n    book3.title = \"A New Title\";\n    book3.author = \"A New Author\";\n    std::cout << \"Book 3 (Modified): \";\n    book3.print();\n    std::cout << \"Book 2 (Original after Book 3 modified): \";\n    book2.print();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": []
+}

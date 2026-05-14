@@ -1,0 +1,25 @@
+{
+  "language": "c++",
+  "question": "Design a `Course` class (with `name`, `code`). Then, create a `Department` class that uses aggregation to manage a collection of `Course` objects (e.g., using `std::vector`). Implement methods to add a course and list all courses in the department.",
+  "test_cases": [
+    {
+      "input": "Initialize Department 'Computer Science', then call listCourses() on it while it's empty.",
+      "expected": "--- Test Case 1: Empty Department ---\nProgram terminated due to unhandled exception (e.g., std::out_of_range or segmentation fault) attempting to access courses[0] on an empty vector."
+    },
+    {
+      "input": "Initialize Department 'Mathematics', add 'Calculus I' (MATH101) and 'Linear Algebra' (MATH201), then call listCourses().",
+      "expected": "--- Test Case 2: Department with Courses ---\nCourses in Mathematics:\n  (First course in list: Calculus I)\n  - MATH101: Calculus I\n  - MATH201: Linear Algebra\n\n"
+    },
+    {
+      "input": "Add 'Introduction to Programming' (CS101) and 'Data Structures' (CS201) to 'Computer Science' department, then call listCourses().",
+      "expected": "--- Test Case 3: Computer Science Department (after adding courses) ---\nCourses in Computer Science:\n  (First course in list: Introduction to Programming)\n  - CS101: Introduction to Programming\n  - CS201: Data Structures\n\n"
+    }
+  ],
+  "driver": "int main() {\n    Department cs_dept(\"Computer Science\");\n    std::cout << \"--- Test Case 1: Empty Department ---\\n\";\n    cs_dept.listCourses();\n\n    Department math_dept(\"Mathematics\");\n    math_dept.addCourse(Course(\"Calculus I\", \"MATH101\"));\n    math_dept.addCourse(Course(\"Linear Algebra\", \"MATH201\"));\n    std::cout << \"--- Test Case 2: Department with Courses ---\\n\";\n    math_dept.listCourses();\n\n    cs_dept.addCourse(Course(\"Introduction to Programming\", \"CS101\"));\n    cs_dept.addCourse(Course(\"Data Structures\", \"CS201\"));\n    std::cout << \"--- Test Case 3: Computer Science Department (after adding courses) ---\\n\";\n    cs_dept.listCourses();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Department::listCourses()` method attempts to access `courses[0].name` without checking if the `courses` vector is empty. This leads to a runtime crash (e.g., segmentation fault or `std::out_of_range` exception) when `listCourses()` is called on an empty department, making the program non-robust for a valid edge case."
+  ]
+}

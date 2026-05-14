@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "In a C++ program, prompt the user to enter two integers. Using the ternary operator, determine and print which of the two integers is larger.",
+  "test_cases": [
+    { "input": "10\n5", "expected": "Based on the input values, it is clear that the first integer, which is 10, holds a greater numerical value than the second integer.\n" },
+    { "input": "5\n10", "expected": "Upon evaluation, the second integer, specifically 10, has been determined to be numerically superior to the first integer.\n" },
+    { "input": "7\n7", "expected": "Our analysis concludes that both provided integers, 7 and 7, are identical in value.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\n// The actual main function of the user's code will be compiled and executed.\n// This driver redirects stdin/stdout to capture its behavior.\n\n// For evaluation, the 'main' function of the submitted code will be renamed (e.g., to 'user_main').\n// The following driver code will then call 'user_main()'.\n\nint user_main(); // Declare the user's main function\n\nint main() {\n    // This driver is for testing the main function of the submitted C++ code.\n    // It redirects standard input and output to capture the program's behavior.\n    std::string input_data;\n    // input_data will be populated by the testing framework for each test case.\n\n    // Store original buffers\n    std::streambuf* orig_cin = std::cin.rdbuf();\n    std::streambuf* orig_cout = std::cout.rdbuf();\n\n    // Redirect cin to read from input_data string\n    std::istringstream input_stream(input_data);\n    std::cin.rdbuf(input_stream.rdbuf());\n\n    // Redirect cout to capture output\n    std::ostringstream output_stream;\n    std::cout.rdbuf(output_stream.rdbuf());\n\n    // Call the main function of the user's program\n    user_main(); \n\n    // Restore original buffers\n    std::cin.rdbuf(orig_cin);\n    std::cout.rdbuf(orig_cout);\n\n    // The captured output can now be compared with the expected output.\n    // std::string actual_output = output_stream.str();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": []
+}

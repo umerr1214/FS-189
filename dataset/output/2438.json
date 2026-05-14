@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Extend the `Shape` hierarchy (from a previous question) by making `calculateArea()` a virtual function in the base class. Demonstrate dynamic polymorphism by storing derived class objects in a `Shape*` array and calling `calculateArea()`.",
+  "test_cases": [
+    { "input": "", "expected": "Calculating areas of various shapes (Readability/Efficiency Issue):\nShape 1 area is: 78.5398\nShape 2 area is: 24.0000\nShape 3 area is: 19.6350\n" }
+  ],
+  "driver": "int main() {\n    Shape* shape_pointers_array[3];\n    double r1 = 5.0;\n    double w1 = 4.0;\n    double h1 = 6.0;\n    double r2 = 2.5;\n\n    shape_pointers_array[0] = new Circle(r1);\n    shape_pointers_array[1] = new Rectangle(w1, h1);\n    shape_pointers_array[2] = new Circle(r2);\n\n    std::cout << \"Calculating areas of various shapes (Readability/Efficiency Issue):\" << std::endl;\n    std::cout << std::fixed << std::setprecision(4);\n\n    for (int i = 0; i < 3; ++i) {\n        Shape* current_shape_ptr = shape_pointers_array[i];\n        std::cout << \"Shape \" << (i + 1) << \" area is: \" << current_shape_ptr->calculateArea() << std::endl;\n    }\n\n    for (int i = 0; i < 3; ++i) {\n        delete shape_pointers_array[i];\n        shape_pointers_array[i] = nullptr;\n    }\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Poor variable naming conventions (e.g., `rad_val`, `wid_val`, `hgt_val`, `shape_pointers_array`, `r1`, `w1`, `h1`, `r2`).",
+    "Lack of `override` keyword for virtual functions, which reduces readability and compile-time error checking for correct overrides.",
+    "Use of magic numbers (e.g., `3`) for array sizes and loop bounds instead of named constants or `std::size`.",
+    "Manual memory management with raw pointers (`new`/`delete`) instead of modern C++ RAII techniques like `std::unique_ptr`, which is less safe and more verbose.",
+    "Inefficient calculation: `std::pow(rad_val, 2)` is used instead of the simpler and more efficient `rad_val * rad_val` for squaring.",
+    "Redundant temporary variable `current_shape_ptr` inside the loop.",
+    "Using a C-style `for` loop for array iteration instead of a more readable and concise range-based `for` loop."
+  ]
+}

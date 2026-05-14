@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter three distinct integers and then identifies and prints the largest among them using if-else if-else statements.",
+  "test_cases": [
+    { "input": "10 20 5", "expected": "Enter three distinct integers: The largest number is: 20\n" },
+    { "input": "-1 -5 -2", "expected": "Enter three distinct integers: The largest number is: -1\n" },
+    { "input": "7 3 7", "expected": "Enter three distinct integers: The largest number is: 7\n" },
+    { "input": "0 0 0", "expected": "Enter three distinct integers: The largest number is: 0\n" },
+    { "input": "abc\n10 20 5", "expected": "Enter three distinct integers: Invalid input. Please enter three distinct integers: The largest number is: 20\n" },
+    { "input": "1 2 def\n30 20 10", "expected": "Enter three distinct integers: Invalid input. Please enter three distinct integers: The largest number is: 30\n" }
+  ],
+  "driver": "// Compile: g++ -o program_name 3741.cpp\n// Run: ./program_name\n// Input will be provided via stdin, output captured from stdout.\n// Example for a single test:\n// echo \"10 20 5\" | ./program_name",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

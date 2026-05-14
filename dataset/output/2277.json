@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Car` class that uses composition to include an `Engine` object as a private member. The `Engine` class should have `horsepower` (int) and `fuelType` (string). Implement a `Car` constructor that initializes its `Engine` and a method `Car::start()` that calls an `Engine::start()` method.",
+  "test_cases": [
+    {
+      "input": "Hardcoded in `main` function.",
+      "expected": "Engine object created.\nCar object constructed.\nCar is attempting to start its engine...\nEngine with 250 HP and fuel type 'Petrol' started successfully.\n---\nWarning: Engine initialized with non-positive horsepower (0).\nEngine object created.\nCar object constructed.\nCar is attempting to start its engine...\nERROR: Engine with 0 HP cannot start. Horsepower must be positive.\n---\nWarning: Engine initialized with empty fuel type.\nEngine object created.\nCar object constructed.\nCar is attempting to start its engine...\nERROR: Engine with empty fuel type cannot start.\n---\nWarning: Engine initialized with non-positive horsepower (-100).\nWarning: Engine initialized with empty fuel type.\nEngine object created.\nCar object constructed.\nCar is attempting to start its engine...\nERROR: Engine with -100 HP cannot start. Horsepower must be positive.\n"
+    }
+  ],
+  "driver": "int main() {\n    // Test Case 1: Valid Car and Engine\n    Car myCar(250, \"Petrol\");\n    myCar.start();\n    std::cout << \"---\" << std::endl;\n\n    // Test Case 2: Car with engine that has 0 HP (should report error in start())\n    Car electricCar(0, \"Electric\");\n    electricCar.start();\n    std::cout << \"---\" << std::endl;\n\n    // Test Case 3: Car with engine that has empty fuel type (should report error in start())\n    Car hydrogenCar(180, \"\");\n    hydrogenCar.start();\n    std::cout << \"---\" << std::endl;\n\n    // Test Case 4: Car with negative HP and empty fuel type (should report errors in start())\n    Car invalidCar(-100, \"\");\n    invalidCar.start();\n    std::cout << \"---\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

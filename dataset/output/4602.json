@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that reads an `std::string` from the user and checks if it is a palindrome (reads the same forwards and backwards), ignoring case and non-alphanumeric characters. Print whether it is a palindrome or not.",
+  "test_cases": [
+    { "input": "Racecar", "expected": "\"Racecar\" is a palindrome.\n" },
+    { "input": "Hello", "expected": "\"Hello\" is not a palindrome.\n" },
+    { "input": "A man, a plan, a canal: Panama", "expected": "\"A man, a plan, a canal: Panama\" is a palindrome.\n" },
+    { "input": "!", "expected": "CRASH or UNDEFINED BEHAVIOR\n" },
+    { "input": "", "expected": "CRASH or UNDEFINED BEHAVIOR\n" },
+    { "input": "123!@#", "expected": "CRASH or UNDEFINED BEHAVIOR\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <functional>\n\n// This driver assumes the user's solution is compiled into an executable.\n// It simulates running the executable with redirected standard I/O.\n// In a real test environment, you would compile the user's code \n// and execute it as a separate process, redirecting stdin/stdout.\n\n// Example of how to call the main function if it were accessible:\n// extern int user_main(); // Declare the user's main function\n\nstd::string execute_program_with_input(const std::string& input) {\n    // This part would typically involve creating a child process\n    // and piping the input, then capturing the output.\n    // For a C++ driver snippet, we describe the I/O redirection conceptually.\n    return \"// Program execution and output capture would happen here.\";\n}\n\n/*\nSimplified conceptual driver for testing:\n\n#include <iostream>\n#include <string>\n#include <sstream>\n\n// Assume the student's solution is in a function `void solve()` that reads from std::cin and writes to std::cout\n// For a complete program with `main()`, this would typically be run as a separate process.\n\nvoid run_test(const std::string& input_data, std::string& output_data) {\n    std::stringstream ss_input(input_data);\n    std::stringstream ss_output;\n\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    // Call the user's main function or equivalent entry point here.\n    // For example, if the user's code has `int main() { ... }`, \n    // you might link it as `extern int user_main();` and call `user_main();`\n    // Or, more commonly, compile the user's code into an executable and run it.\n\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    output_data = ss_output.str();\n}\n*/",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The program does not explicitly handle cases where the 'cleaned' string (after removing non-alphanumeric characters) becomes empty. If `cleaned_str` is empty, `cleaned_str.length() - 1` results in `size_t(-1)` (a very large unsigned number). The `while (left < right)` loop condition `0 < size_t(-1)` evaluates to true, causing out-of-bounds access when attempting to read `cleaned_str[left]` and `cleaned_str[right]`, leading to undefined behavior (e.g., a crash or corrupted memory)."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Extend the `Student` class to include a default constructor that initializes members to default values and a parameterized constructor that accepts `name`, `id`, and `grade`.",
+  "test_cases": [
+    { "input": "N/A (default constructor)", "expected": "Name: , ID: 0, Grade: 0.0" },
+    { "input": "Alice, 101, 95.5", "expected": "Name: Alice, ID: 101, Grade: 95.5" },
+    { "input": "Bob, 202, 88.0", "expected": "Name: Bob, ID: 202, Grade: 88.0" }
+  ],
+  "driver": "int main() {\n    Student s1;\n    s1.display();\n\n    Student s2(\"Alice\", 101, 95.5);\n    s2.display();\n\n    Student s3(\"Bob\", 202, 88.0);\n    s3.display();\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition."
+  ]
+}

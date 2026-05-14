@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Student` with members: an integer `id`, a `std::string name`, and a `double gpa`. Write a C++ program that declares a `Student` variable, prompts the user to enter its details, and then displays them.",
+  "test_cases": [
+    {
+      "input": "101\nJohn Doe\n3.85",
+      "expected": "Enter student ID: Enter student name: Enter student GPA:\n--- Student Details ---\nID: 101\nName: \nGPA: 3.85\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// The actual user's `main` function will be renamed to `user_main`\n// by the testing framework for evaluation.\nextern int user_main(); // Declare the renamed user's main function\n\nint main() {\n    // In a real testing environment, input would be redirected from\n    // a string or file, and output captured.\n    // For this dataset, we simply call the user's main function.\n    return user_main();\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Program is not robust against common input issues: `std::getline` reads a leftover newline character after `std::cin >> int`, causing the `name` to be empty.",
+    "No input validation or error handling for `id` and `gpa`. If non-numeric input is provided, `std::cin` enters a fail state, leading to incorrect program behavior or crashes."
+  ]
+}

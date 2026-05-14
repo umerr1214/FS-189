@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a base class `Payment` with a pure virtual method `processPayment(double amount)`. Derive `CreditCardPayment` and `PayPalPayment` classes, each implementing `processPayment` differently (e.g., printing specific messages).",
+  "test_cases": [
+    { "input": "100.50", "expected": "Test Case 1 (Credit Card):\nProcessing Credit Card payment of $100.50\n" },
+    { "input": "75.25", "expected": "\nTest Case 2 (PayPal):\nProcessing PayPal payment of $75.25\n" },
+    { "input": "200.00", "expected": "\nTest Case 3 (Credit Card):\nProcessing Credit Card payment of $200.00\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// The user's code will be inserted here.\n\nint main() {\n    CreditCardPayment ccPayment;\n    std::cout << \"Test Case 1 (Credit Card):\" << std::endl;\n    ccPayment.processPayment(100.50);\n\n    std::cout << \"\\nTest Case 2 (PayPal):\" << std::endl;\n    PayPalPayment ppPayment;\n    ppPayment.processPayment(75.25);\n\n    std::cout << \"\\nTest Case 3 (Credit Card):\" << std::endl;\n    ccPayment.processPayment(200.00);\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `processPayment` method in `CreditCardPayment` incorrectly prints 'PayPal payment' instead of 'Credit Card payment'.",
+    "The `processPayment` method in `PayPalPayment` incorrectly prints 'Credit Card payment' instead of 'PayPal payment'."
+  ]
+}

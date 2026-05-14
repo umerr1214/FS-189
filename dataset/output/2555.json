@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a `MathOperations` class with three overloaded `add` methods: one that takes two integers, another that takes three integers, and a third that takes two double-precision floating-point numbers. Each method should return the sum of its arguments.",
+  "test_cases": [
+    { "input": "5, 3", "expected": "8" },
+    { "input": "1, 2, 3", "expected": "6" },
+    { "input": "2.5, 3.5", "expected": "6.0" },
+    { "input": "10.1, 0.9", "expected": "11.0" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\nint main() {\n    MathOperations mo;\n\n    // Test add(int, int)\n    std::cout << \"add(5, 3) = \" << mo.add(5, 3) << std::endl;\n\n    // Test add(int, int, int)\n    std::cout << \"add(1, 2, 3) = \" << mo.add(1, 2, 3) << std::endl;\n\n    // Test add(double, double)\n    std::cout << std::fixed << std::setprecision(1);\n    std::cout << \"add(2.5, 3.5) = \" << mo.add(2.5, 3.5) << std::endl;\n    std::cout << \"add(10.1, 0.9) = \" << mo.add(10.1, 0.9) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'add(int, int)' method contains a logical error: it returns the product of its arguments (a * b) instead of their sum (a + b)."
+  ]
+}

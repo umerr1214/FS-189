@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `Student` class with private `name` (string) and `id` (int). Implement both a default constructor (initializing `name` to 'Unknown' and `id` to 0) and a parameterized constructor (taking `name` and `id`).",
+  "test_cases": [
+    {
+      "input": "No direct input, runs main function.",
+      "expected": "Student Name: Unknown, ID: 0\nStudent Name: Alice, ID: 101\nStudent Name: Charlie Brown, ID: 333\n"
+    }
+  ],
+  "driver": "int main() {\n    // Test default constructor\n    Student s1;\n    s1.printStudent();\n\n    // Test parameterized constructor\n    Student s2(\"Alice\", 101);\n    s2.printStudent();\n\n    // Another test case\n    Student s3(\"Charlie Brown\", 333);\n    s3.printStudent();\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

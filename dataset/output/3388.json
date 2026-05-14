@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a function `char* reverse_cstring(char* str)` that takes a C-style string (character array) as input and reverses it in-place. The function should return a pointer to the modified string.",
+  "test_cases": [
+    { "input": "hello", "expected": "olleh" },
+    { "input": "world", "expected": "dlrow" },
+    { "input": "", "expected": "" },
+    { "input": "a", "expected": "a" }
+  ],
+  "driver": "    char s1[] = \"hello\";\n    std::cout << \"Original: \" << s1 << \", Reversed: \" << reverse_cstring(s1) << std::endl;\n    char s2[] = \"world\";\n    std::cout << \"Original: \" << s2 << \", Reversed: \" << reverse_cstring(s2) << std::endl;\n    char s3[] = \"\";\n    std::cout << \"Original: \" << s3 << \", Reversed: \" << reverse_cstring(s3) << std::endl;\n    char s4[] = \"a\";\n    std::cout << \"Original: \" << s4 << \", Reversed: \" << reverse_cstring(s4) << std::endl;",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

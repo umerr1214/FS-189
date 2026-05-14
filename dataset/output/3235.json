@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a `Product` class with `id`, `name`, and `price`. Create an array of `Product` objects, populate it with data, and then iterate through the array to display details of each product.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Product Details (Robustness Issue) ---\nProduct 1: ID: 101, Name: Laptop, Price: $1200.50\nProduct 2: ID: 102, Name: Mouse, Price: $25.00\nProduct 3: ID: 103, Name: Keyboard, Price: $75.99\nProduct 4: ID: 0, Name: , Price: $0.00\n"
+    }
+  ],
+  "driver": "void run_test_case() { main(); }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Out-of-bounds array access in product display loop. The loop condition `i <= NUM_PRODUCTS` attempts to access `products[NUM_PRODUCTS]`, which is one element beyond the allocated size (0 to `NUM_PRODUCTS - 1`). This results in undefined behavior and can lead to crashes or corrupted data."
+  ]
+}

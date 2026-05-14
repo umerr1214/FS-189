@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Implement a base class `Vehicle` with a virtual method `startEngine()` that prints a generic message. Derive `Car` and `Motorcycle` classes, each overriding `startEngine()` to print a specific message for their vehicle type.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Testing Vehicle ---\nVehicle engine starting...\nV destructor called.\n--- Testing Car ---\nCar engine starting, vroom vroom!\nC destructor called.\nV destructor called.\n--- Testing Motorcycle ---\nMotorcycle engine starting, revving up!\nM destructor called.\nV destructor called.\n--- Testing direct Car object ---\nCar engine starting, vroom vroom!\nC destructor called.\nV destructor called.\n--- Testing direct Motorcycle object ---\nMotorcycle engine starting, revving up!\nM destructor called.\nV destructor called.\n"
+    }
+  ],
+  "driver": "See `main` function in C++ code.",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Poor naming conventions: Class names (`V`, `C`, `M`) and method names (`sE`) are overly abbreviated and not descriptive, making the code hard to understand.",
+    "Lack of `override` keyword: While the methods correctly override, explicitly using `override` improves readability, indicates intent, and helps the compiler catch potential errors.",
+    "Inconsistent and poor formatting/indentation: The code lacks consistent indentation and spacing, particularly within class definitions and method bodies, making it difficult to read and follow the structure."
+  ]
+}

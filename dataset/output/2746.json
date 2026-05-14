@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Illustrate hierarchical inheritance: Create a base class `Animal` with a `sound()` method. Derive `Dog` and `Cat` from `Animal`. Each derived class should override the `sound()` method to print its specific sound.",
+  "test_cases": [
+    { "input": "", "expected": "This program contains a syntax error and will not compile.\n" }
+  ],
+  "driver": "int main() {\n    // The program contains syntax errors and will not compile.\n    // If it were fixed, a driver would instantiate Dog and Cat\n    // and call their sound methods.\n    // For this test, we simply output a message to reflect the state.\n    std::cout << \"This program contains a syntax error and will not compile.\\n\";\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon before closing brace of Animal::sound() method."]
+}

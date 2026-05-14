@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Create a function `isEven` that takes an integer as an argument (pass by value) and returns a boolean `true` if the number is even, `false` otherwise.",
+  "test_cases": [
+    { "input": "4", "expected": "true" },
+    { "input": "7", "expected": "false" },
+    { "input": "0", "expected": "true" },
+    { "input": "-2", "expected": "true" },
+    { "input": "-3", "expected": "false" },
+    { "input": "100", "expected": "true" },
+    { "input": "99", "expected": "false" },
+    { "input": "-100", "expected": "true" },
+    { "input": "-99", "expected": "false" },
+    { "input": "-2147483648", "expected": "true" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <cmath>\n#include <limits>\n\nbool isEven(int num);\n\nint main() {\n    std::vector<std::pair<int, bool>> testCases = {\n        {4, true},\n        {7, false},\n        {0, true},\n        {-2, true},\n        {-3, false},\n        {100, true},\n        {99, false},\n        {-100, true},\n        {-99, false}\n    };\n\n    int min_int = std::numeric_limits<int>::min();\n    testCases.push_back({min_int, true});\n\n    std::cout << std::boolalpha;\n\n    for (const auto& tc : testCases) {\n        int input = tc.first;\n        bool expected = tc.second;\n        bool actual = isEven(input);\n        std::cout << \"Input: \" << input\n                  << \", Expected: \" << expected\n                  << \", Actual: \" << actual;\n        if (actual == expected) {\n            std::cout << \" [PASSED]\\n\";\n        } else {\n            std::cout << \" [FAILED]\\n\";\n        }\n    }\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The implementation uses a loop to repeatedly subtract or add 2, which is highly inefficient, especially for large integer inputs, compared to using the modulo operator (`%`) or bitwise AND (`&`). The logic is also more complex than necessary for a simple parity check, impacting readability."
+  ]
+}

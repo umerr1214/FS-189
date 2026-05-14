@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `Logger` class with overloaded `log` methods. One `log` method should take a `std::string` message, another an `int` error code, and a third a `char` severity level. Each should print an appropriate formatted message.",
+  "test_cases": [
+    { "input": "", "expected": "[APP_LOG] MESSAGE: System initialization started.\n[APP_LOG] ERROR CODE: 1001\n[APP_LOG] SEVERITY: I\n[APP_LOG] MESSAGE: User 'admin' logged in.\n[APP_LOG] ERROR CODE: 404\n[APP_LOG] SEVERITY: W\n[APP_LOG] UNKNOWN SEVERITY CHAR (raw): Z\n" }
+  ],
+  "driver": "int main() {\n    Logger loggerInstance;\n    loggerInstance.log(\"System initialization started.\");\n    loggerInstance.log(1001);\n    loggerInstance.log('I');\n    loggerInstance.log(\"User 'admin' logged in.\");\n    loggerInstance.log(404);\n    loggerInstance.log('W');\n    loggerInstance.log('Z');\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Memory leak: `log_prefix` is dynamically allocated in the constructor but never deallocated in the destructor, violating the Rule of Three/Five/Zero and leading to resource leaks.",
+    "The `log(char)` method doesn't robustly handle all possible `char` inputs; it prints potentially unreadable characters directly for unknown severity levels without further context or conversion, which could make logs difficult to interpret for non-standard inputs."
+  ]
+}

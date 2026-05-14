@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Overload the `==` operator for the `Point` class (from a previous question) to compare two `Point` objects. It should return `true` if both `x` and `y` coordinates are identical, `false` otherwise.",
+  "test_cases": [
+    { "input": "Point p1(1,2), p2(1,2)", "expected": "P1 == P2 is true" },
+    { "input": "Point p1(1,2), p3(3,4)", "expected": "P1 == P3 is false" }
+  ],
+  "driver": "int main() {\n    Point p1(1, 2);\n    Point p2(1, 2);\n    Point p3(3, 4);\n\n    if (p1 == p2) {\n        std::cout << \"P1 == P2 is true\" << std::endl;\n    } else {\n        std::cout << \"P1 == P2 is false\" << std::endl;\n    }\n\n    if (p1 == p3) {\n        std::cout << \"P1 == P3 is true\" << std::endl;\n    } else {\n        std::cout << \"P1 == P3 is false\" << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing closing brace for the main function, leading to a compilation error."]
+}

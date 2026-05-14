@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop an `Employee` class (with `name`, `id`). Then, create a `Department` class that *aggregates* multiple `Employee` objects using a `std::vector` of pointers to `Employee`. Demonstrate that `Employee` objects can exist independently of the `Department`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Program Start ---\nEmployee Alice (101) created.\nEmployee Bob (102) created.\nEmployee Charlie (103) created.\nEmployee David (104) created.\nDepartment Human Resources created.\n  Added Employee Alice to Human Resources.\n  Added Employee Bob to Human Resources.\n  Added Employee Charlie to Human Resources.\nDepartment Human Resources Employees:\n  - Employee: Alice, ID: 101\n  - Employee: Bob, ID: 102\n  - Employee: Charlie, ID: 103\nDepartment Human Resources destroyed. Attempting to delete employees...\n  (Department deleting Employee Alice)\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Program Start ---\\n\";\n\n    Employee emp1(\"Alice\", 101);\n    Employee emp2(\"Bob\", 102);\n\n    Employee* emp3 = new Employee(\"Charlie\", 103);\n    Employee* emp4 = new Employee(\"David\", 104);\n\n    {\n        Department hr_dept(\"Human Resources\");\n        hr_dept.addEmployee(&emp1);\n        hr_dept.addEmployee(&emp2);\n        hr_dept.addEmployee(emp3);\n        hr_dept.displayEmployees();\n    }\n\n    std::cout << \"\\n--- After Department HR scope ---\\n\";\n    emp1.display();\n    emp2.display();\n\n    if (emp3 != nullptr) {\n        std::cout << \"Attempting to display emp3 after HR dept destruction (might be crash/UAF):\\n\";\n        emp3->display();\n        delete emp3;\n    }\n\n    std::cout << \"Displaying emp4 (never added to department):\\n\";\n    emp4->display();\n    delete emp4;\n\n    std::cout << \"--- Program End ---\\n\";\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The Department's destructor incorrectly attempts to delete Employee objects that it does not own. This leads to a double-free error for dynamically allocated employees (emp3) and undefined behavior/crash when attempting to delete stack-allocated employees (emp1, emp2). In aggregation, the aggregating class (Department) should not manage the lifetime of the aggregated objects (Employee) if they are meant to exist independently."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that takes three integer numbers as input from the user. Determine and print the largest among the three numbers using `if-else if-else` statements.",
+  "test_cases": [
+    { "input": "10\n20\n5\n", "expected": "The largest number is: 20\n" },
+    { "input": "7\n3\n7\n", "expected": "The largest number is: 7\n" },
+    { "input": "3\n7\n7\n", "expected": "The largest number is: 7\n" },
+    { "input": "4\n4\n4\n", "expected": "The largest number is: 4\n" },
+    { "input": "-1\n-5\n-3\n", "expected": "The largest number is: -1\n" },
+    { "input": "0\n-10\n5\n", "expected": "The largest number is: 5\n" },
+    { "input": "100\n99\n98\n", "expected": "The largest number is: 100\n" },
+    { "input": "1\n2\n3\n", "expected": "The largest number is: 3\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <streambuf> // For std::streambuf\n\n// This function assumes the student's solution is implemented in a function called 'solution_main'.\n// The original 'main' function in the student's file should call 'solution_main'.\nextern int solution_main(); // Forward declaration for the student's solution\n\nstd::string run_test_case(const std::string& input) {\n    std::stringstream ss_input(input);\n    std::stringstream ss_output;\n\n    // Redirect cin and cout\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    // Call the student's solution\n    solution_main();\n\n    // Restore cin and cout\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    return ss_output.str();\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Input stream state not checked after read, program may use uninitialized variables or behave unexpectedly on non-integer input.",
+    "Program is not robust against invalid input types."
+  ]
+}

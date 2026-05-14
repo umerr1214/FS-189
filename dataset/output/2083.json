@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a `Car` class. Provide a default constructor, a parameterized constructor (taking `make`, `model`, `year`), and a copy constructor. Demonstrate the usage of all three constructors in `main`.",
+  "test_cases": [
+    { "input": "", "expected": "--- Demonstrating Constructors ---\nDefault constructor called.\nCar Details: Make: Unknown, Model: Unknown, Year: 0\n\nParameterized constructor called.\nCar Details: Make: Toyota, Model: Camry, Year: 2020\n\nCopy constructor called.\nCar Details: Make: Toyota, Model: Camry, Year: 2020\n\n" }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Demonstrating Constructors ---\" << std::endl;\n    Car car1;\n    car1.display();\n    std::cout << std::endl;\n    Car car2(\"Toyota\", \"Camry\", 2020);\n    car2.display();\n    std::cout << std::endl;\n    Car car3 = car2;\n    car3.display();\n    std::cout << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The default constructor leaves the 'year' member (a primitive type) uninitialized. Accessing an uninitialized primitive member results in undefined behavior, which is a significant robustness flaw as the object's state is not guaranteed to be valid or predictable immediately after construction."
+  ]
+}

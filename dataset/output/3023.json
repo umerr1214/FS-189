@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Design a `Temperature` class that stores temperature in Celsius (private double member). Provide public methods `setCelsius(double c)`, `getCelsius()`, `setFahrenheit(double f)`, and `getFahrenheit()`. Implement the conversions between Celsius and Fahrenheit within the setter/getter methods.",
+  "test_cases": [
+    { "input": "temp.setCelsius(25.0);", "expected": "C_to_F: 77.0" },
+    { "input": "temp.setFahrenheit(68.0);", "expected": "F_to_C: 20.0" },
+    { "input": "temp.setCelsius(0.0);", "expected": "C_to_F: 32.0" },
+    { "input": "temp.setFahrenheit(212.0);", "expected": "F_to_C: 100.0" },
+    { "input": "temp.setCelsius(-10.0);", "expected": "C_to_F: 14.0" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\nclass Temperature {\nprivate:\n    double celsius;\n\npublic:\n    void setCelsius(double c) {\n        celsius = c;\n    }\n\n    double getCelsius() {\n        return celsius;\n    }\n\n    void setFahrenheit(double f) {\n        celsius = (f - 32.0) * 5.0 / 9.0;\n    }\n\n    double getFahrenheit() {\n        return celsius * 9.0 / 5.0 + 32.0;\n    }\n};\n\nint main() {\n    Temperature temp;\n    std::cout << std::fixed << std::setprecision(1);\n\n    // Test case 1\n    temp.setCelsius(25.0);\n    std::cout << \"C_to_F: \" << temp.getFahrenheit() << \"\\n\";\n\n    // Test case 2\n    temp.setFahrenheit(68.0);\n    std::cout << \"F_to_C: \" << temp.getCelsius() << \"\\n\";\n\n    // Test case 3\n    temp.setCelsius(0.0);\n    std::cout << \"C_to_F: \" << temp.getFahrenheit() << \"\\n\";\n\n    // Test case 4\n    temp.setFahrenheit(212.0);\n    std::cout << \"F_to_C: \" << temp.getCelsius() << \"\\n\";\n\n    // Test case 5\n    temp.setCelsius(-10.0);\n    std::cout << \"C_to_F: \" << temp.getFahrenheit() << \"\\n\";\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["Incorrect Fahrenheit to Celsius conversion: uses integer division for 5/9, which evaluates to 0, causing `celsius` to always be 0 after `setFahrenheit`."]
+}

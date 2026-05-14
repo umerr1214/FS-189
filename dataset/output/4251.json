@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `linear_search` that takes an integer array, its size, and a target integer as input. The function should return the index of the first occurrence of the target in the array, or -1 if the target is not found.",
+  "test_cases": [
+    { "input": "Array: {10, 20, 30, 40, 50}, Target: 10", "expected": "Index: 0" },
+    { "input": "Array: {5, 15, 25}, Target: 15", "expected": "Index: 1" },
+    { "input": "Array: {}, Target: 100", "expected": "Index: -1" },
+    { "input": "Array: {7, 8, 9}, Target: 10", "expected": "Index: -1" },
+    { "input": "Array: {1, 2, 3, 4}, Target: 4", "expected": "Index: 3" },
+    { "input": "Array: {10, 20, 10, 30}, Target: 10", "expected": "Index: 0" },
+    { "input": "Array: {99}, Target: 99", "expected": "Index: 0" },
+    { "input": "Array: {99}, Target: 100", "expected": "Index: -1" }
+  ],
+  "driver": "#include <iostream>\n\nint linear_search(int* arr, int size, int target);\n\nint main() {\n    std::cout << \"--- Testing Correct Version ---\\n\";\n\n    int arr1[] = {10, 20, 30, 40, 50};\n    int size1 = sizeof(arr1) / sizeof(arr1[0]);\n    int target1 = 10;\n    std::cout << \"Array: {10, 20, 30, 40, 50}, Target: 10 -> Index: \" << linear_search(arr1, size1, target1) << \"\\n\";\n\n    int arr2[] = {5, 15, 25};\n    int size2 = sizeof(arr2) / sizeof(arr2[0]);\n    int target2 = 15;\n    std::cout << \"Array: {5, 15, 25}, Target: 15 -> Index: \" << linear_search(arr2, size2, target2) << \"\\n\";\n\n    int arr3[] = {};\n    int size3 = 0;\n    int target3 = 100;\n    std::cout << \"Array: {}, Target: 100 -> Index: \" << linear_search(arr3, size3, target3) << \"\\n\";\n\n    int arr4[] = {7, 8, 9};\n    int size4 = sizeof(arr4) / sizeof(arr4[0]);\n    int target4 = 10;\n    std::cout << \"Array: {7, 8, 9}, Target: 10 -> Index: \" << linear_search(arr4, size4, target4) << \"\\n\";\n\n    int arr5[] = {1, 2, 3, 4};\n    int size5 = sizeof(arr5) / sizeof(arr5[0]);\n    int target5 = 4;\n    std::cout << \"Array: {1, 2, 3, 4}, Target: 4 -> Index: \" << linear_search(arr5, size5, target5) << \"\\n\";\n\n    int arr6[] = {10, 20, 10, 30};\n    int size6 = sizeof(arr6) / sizeof(arr6[0]);\n    int target6 = 10;\n    std::cout << \"Array: {10, 20, 10, 30}, Target: 10 -> Index: \" << linear_search(arr6, size6, target6) << \"\\n\";\n\n    int arr7[] = {99};\n    int size7 = sizeof(arr7) / sizeof(arr7[0]);\n    int target7 = 99;\n    std::cout << \"Array: {99}, Target: 99 -> Index: \" << linear_search(arr7, size7, target7) << \"\\n\";\n\n    int arr8[] = {99};\n    int size8 = sizeof(arr8) / sizeof(arr8[0]);\n    int target8 = 100;\n    std::cout << \"Array: {99}, Target: 100 -> Index: \" << linear_search(arr8, size8, target8) << \"\\n\";\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

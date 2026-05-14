@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Define a `Book` class with private members `title`, `author`, and `isbn` (string types). Implement a constructor to initialize these members and public getter methods for each. Include a `displayBookInfo` method that prints all book details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book Details:\n  Title: The Hitchhiker's Guide to the Galaxy\n  Author: Douglas Adams\n  ISBN: 978-0345391803\n\nGetter Title: The Hitchhiker's Guide to the Galaxy\nGetter Author: Douglas Adams\nGetter ISBN: 978-0345391803\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Book {\nprivate:\n    std::string title;\n    std::string author;\n    std::string isbn;\n\npublic:\n    Book(std::string t, std::string a, std::string i) {\n        title = t;\n        author = a;\n        isbn = i;\n    }\n\n    std::string getTitle() const {\n        return title;\n    }\n\n    std::string getAuthor() const {\n        return author;\n    }\n\n    std::string getIsbn() const {\n        return isbn;\n    }\n\n    void displayBookInfo() {\n        std::cout << \"Book Details:\" << std::endl;\n        std::cout << \"  Title: \" << title << std::endl;\n        std::cout << \"  Author: \" << author << std::endl;\n        std::cout << \"  ISBN: \" << isbn << std::endl;\n    }\n};\n\nint main() {\n    Book myBook(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\");\n\n    myBook.displayBookInfo();\n\n    std::cout << \"\\nGetter Title: \" << myBook.getTitle() << std::endl;\n    std::cout << \"Getter Author: \" << myBook.getAuthor() << std::endl;\n    std::cout << \"Getter ISBN: \" << myBook.getIsbn() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `displayBookInfo` method is not declared `const`. A method that only reads and displays object state should be `const` to ensure object immutability and allow it to be called on `const` objects. This impacts the robustness of the class design, as it prevents calling this method on `const` instances and suggests a potential (though not actual in this case) side effect.",
+    "The constructor takes `std::string` parameters by value (`std::string t, std::string a, std::string i`). While functional, this leads to unnecessary copies if the arguments passed are already `std::string` objects (one copy for the parameter, another for assignment to the member). Using `const std::string&` for parameters and an initializer list (or `std::string&&` with move semantics) would be more efficient and robust in terms of resource management, especially for large strings or frequent object creation."
+  ]
+}

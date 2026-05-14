@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Find the maximum and minimum elements in a 1D integer array without using any standard library functions like `std::min_element` or `std::max_element`.",
+  "test_cases": [
+    { "input": "1,2,3,4,5", "expected": "Min: 0, Max: 5" },
+    { "input": "-1,-2,-3,-4,-5", "expected": "Min: -5, Max: 0" },
+    { "input": "-10,0,100,-5", "expected": "Min: -10, Max: 100" },
+    { "input": "7", "expected": "Min: 0, Max: 7" },
+    { "input": "-15", "expected": "Min: -15, Max: 0" },
+    { "input": "0", "expected": "Min: 0, Max: 0" },
+    { "input": "", "expected": "Min: 0, Max: 0" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <sstream>\n#include <string>\n#include <utility> // For std::pair\n\n// Assume the solution function is defined as:\n// std::pair<int, int> findMinMax(int arr[], int size);\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        std::stringstream ss_input(line);\n        std::vector<int> arr_vec;\n        std::string segment;\n\n        if (line.empty()) {\n            // Treat empty line as empty array\n        } else {\n            // Parse comma-separated integers\n            while(std::getline(ss_input, segment, ',')) {\n                if (!segment.empty()) {\n                    arr_vec.push_back(std::stoi(segment));\n                }\n            }\n        }\n\n        std::pair<int, int> result = findMinMax(arr_vec.data(), arr_vec.size());\n        std::cout << \"Min: \" << result.first << \", Max: \" << result.second << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program initializes min/max values to 0, which can lead to incorrect results when all array elements are positive (min will be 0) or all array elements are negative (max will be 0).",
+    "Does not handle empty arrays correctly; it returns 0,0 as an arbitrary sentinel, which is often not the desired behavior for an empty array.",
+    "The initial values for min and max should ideally be set based on the first element of the array (if not empty) or to `INT_MAX`/`INT_MIN` for a robust solution."
+  ]
+}

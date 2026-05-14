@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `calculateFactorial` that takes an integer `num` as input (pass by value) and returns its factorial. Handle the case for 0! and negative numbers.",
+  "test_cases": [
+    { "input": "5", "expected": "120" },
+    { "input": "0", "expected": "1" },
+    { "input": "-3", "expected": "-1" },
+    { "input": "1", "expected": "1" },
+    { "input": "10", "expected": "3628800" }
+  ],
+  "driver": "#include <iostream>\n\nint main() {\n    std::cout << \"Factorial of 5: \" << calculateFactorial(5) << std::endl;\n    std::cout << \"Factorial of 0: \" << calculateFactorial(0) << std::endl;\n    std::cout << \"Factorial of -3: \" << calculateFactorial(-3) << std::endl;\n    std::cout << \"Factorial of 1: \" << calculateFactorial(1) << std::endl;\n    std::cout << \"Factorial of 10: \" << calculateFactorial(10) << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The 'result' variable in calculateFactorial is initialized to 0 instead of 1. This causes all positive factorials (num > 0) to incorrectly return 0, as any multiplication by 0 yields 0."]
+}

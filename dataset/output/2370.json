@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private attributes for `title`, `author`, and `isbn`. Implement a public constructor to initialize these attributes and a `displayDetails()` method to print all book information.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Title: The Hitchhiker's Guide to the Galaxy\nAuthor: Douglas Adams\nISBN: 17\n---\nTitle: 1984\nAuthor: George Orwell\nISBN: 13\n"
+    }
+  ],
+  "driver": "Book book1(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\");\nbook1.displayDetails();\nstd::cout << \"---\" << std::endl;\nBook book2(\"1984\", \"George Orwell\", \"978-0451524935\");\nbook2.displayDetails();\n",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The 'isbn' attribute is semantically designed incorrectly as an integer (`int isbn_numerical`) instead of a string (`std::string`). The constructor then assigns the length of the ISBN string to this integer, losing the actual ISBN data and violating the semantic meaning of an ISBN."
+  ]
+}

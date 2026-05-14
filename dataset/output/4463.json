@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Given three distinct integer numbers, determine and print which of them is the middle value (neither the smallest nor the largest).",
+  "test_cases": [
+    { "input": "1 2 3", "expected": "2" },
+    { "input": "3 1 2", "expected": "2" },
+    { "input": "5 10 7", "expected": "7" },
+    { "input": "100 50 75", "expected": "75" },
+    { "input": "8 2 5", "expected": "5" },
+    { "input": "7 10 5", "expected": "7" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <algorithm>\n\n// Assuming the student's code provides:\n// int findMiddleValue(int a, int b, int c);\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        std::stringstream ss(line);\n        int a, b, c;\n        if (ss >> a >> b >> c) {\n            std::cout << findMiddleValue(a, b, c) << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The calculation for the middle value is incorrect. It uses `std::min(a, b)` and `std::max(b, c)` instead of the overall minimum and maximum of all three numbers (a, b, c). For example, for input `3 1 2`, it incorrectly returns `3` instead of `2`."
+  ]
+}

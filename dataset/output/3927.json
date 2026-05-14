@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that prompts the user to enter a string and a character, then counts and displays how many times that character appears in the given string (case-sensitive).",
+  "test_cases": [
+    { "input": "hello world\no\n", "expected": "Enter string: Enter character: The character 'o' appears 2 times in \"hello world\"." },
+    { "input": "Programming in C++\ng\n", "expected": "Enter string: Enter character: The character 'g' appears 2 times in \"Programming in C++\"." },
+    { "input": "apple\nz\n", "expected": "Enter string: Enter character: The character 'z' appears 0 times in \"apple\"." },
+    { "input": "\na\n", "expected": "Enter string: Enter character: The character 'a' appears 0 times in \"\"." },
+    { "input": "AaBbCc\na\n", "expected": "Enter string: Enter character: The character 'a' appears 1 time in \"AaBbCc\"." },
+    { "input": "123123123\n1\n", "expected": "Enter string: Enter character: The character '1' appears 3 times in \"123123123\"." }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <utility>\n\nextern void solve();\n\nint main() {\n    std::vector<std::string> inputs = {\n        \"hello world\\no\\n\",\n        \"Programming in C++\\ng\\n\",\n        \"apple\\nz\\n\",\n        \"\\na\\n\",\n        \"AaBbCc\\na\\n\",\n        \"123123123\\n1\\n\"\n    };\n\n    for (size_t i = 0; i < inputs.size(); ++i) {\n        std::stringstream ss_in(inputs[i]);\n        std::stringstream ss_out;\n\n        std::streambuf* old_cin = std::cin.rdbuf();\n        std::streambuf* old_cout = std::cout.rdbuf();\n\n        std::cin.rdbuf(ss_in.rdbuf());\n        std::cout.rdbuf(ss_out.rdbuf());\n\n        solve();\n\n        std::cin.rdbuf(old_cin);\n        std::cout.rdbuf(old_cout);\n    }\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

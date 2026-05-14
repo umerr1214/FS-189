@@ -1,0 +1,31 @@
+{
+  "language": "c++",
+  "question": "Write a function `bool isPrime(int num)` that returns `true` if `num` is prime and `false` otherwise. Use this function to print all prime numbers up to a user-specified limit.",
+  "test_cases": [
+    {
+      "input": "10",
+      "expected": "Enter a positive integer limit to find primes up to: Prime numbers up to 10:\n2 3 5 7 \n"
+    },
+    {
+      "input": "2",
+      "expected": "Enter a positive integer limit to find primes up to: Prime numbers up to 2:\n2 \n"
+    },
+    {
+      "input": "1",
+      "expected": "Enter a positive integer limit to find primes up to: There are no prime numbers to display up to 1.\n"
+    },
+    {
+      "input": "-5",
+      "expected": "Enter a positive integer limit to find primes up to: There are no prime numbers to display up to -5.\n"
+    },
+    {
+      "input": "abc",
+      "expected": "Enter a positive integer limit to find primes up to: Error: Invalid input. Please enter an integer.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n\n// Assume isPrime(int num) is defined externally or in the same compilation unit.\nextern bool isPrime(int num);\n\nint main() {\n    std::vector<int> testNums = {2, 3, 4, 5, 6, 7, 10, 11, 13, 17, 19, 23, 1, 0, -5};\n    std::cout << \"Testing isPrime function:\" << std::endl;\n    for (int num : testNums) {\n        std::cout << \"isPrime(\" << num << \"): \" << (isPrime(num) ? \"true\" : \"false\") << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

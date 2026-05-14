@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Declare an integer variable, a float variable, and a char variable. Declare and initialize a pointer for each variable, then use the pointers to print the values and memory addresses of the original variables.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Integer Variable:\nValue: 10\nAddress: 0x...\n\nFloat Variable:\nValue: 20.5\nAddress: 0x...\n\nChar Variable:\nValue: A\nAddress: 0x..."
+    }
+  ],
+  "driver": "",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The program incorrectly prints the memory address of the pointer variable itself (e.g., '&pInt') instead of the memory address of the original variable it points to (e.g., 'pInt'). This leads to displaying the wrong memory addresses."
+  ]
+}

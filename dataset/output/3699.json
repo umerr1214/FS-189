@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Student` with members `name` (std::string), `id` (int), and `grade` (float). Create an array of 3 `Student` objects, populate it with data, and then print the details (name, id, grade) of the student with the highest grade.",
+  "test_cases": [
+    {
+      "input": "Hardcoded student data:\nAlice Smith, 101, 95.5\nBob Johnson, 102, 88.0\nCharlie Davis, 103, 98.2",
+      "expected": "Student with the highest grade:\nName: Charlie Davis\nID: 103\nGrade: 98.20\n"
+    }
+  ],
+  "driver": "int main() { /* The test harness will compile and run the provided .cpp file. */ return 0; }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

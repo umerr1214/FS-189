@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a simple menu-driven program for a basic task list (e.g., Add Task, View Tasks, Exit). Use a `do-while` loop to keep displaying the menu until the user chooses to exit.",
+  "test_cases": [
+    { "input": "1\nBuy groceries\n2\n3\n", "expected": "\nTask List Menu:\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: Enter task description: Task added!\n\n--- Your Tasks ---\n(Compilation Error: cannot print std::vector directly)\n------------------\n\nTask List Menu:\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: Exiting program. Goodbye!\n" }
+  ],
+  "driver": "int main() { /* The code itself is the main program */ return 0; }",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Attempting to print a `std::vector<std::string>` directly using `std::cout << tasks;` is a semantic error. The `std::ostream` (cout) does not have an overloaded `operator<<` for `std::vector`, leading to a compilation error (e.g., 'no match for 'operator<<' in 'std::cout << tasks''). The intended behavior is to iterate through the vector and print each element individually."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create three classes: `Base`, `Derived` (inheriting `Base`), and `External`. In `Base`, declare `public`, `protected`, and `private` members. Demonstrate the accessibility of these members from `Derived` and `External` classes respectively.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "The program should output constructor calls for Base and Derived, followed by demonstrations of member accessibility from Derived and External classes. Crucially, when a `std::unique_ptr<Base>` holding a `Derived` object goes out of scope, only the `Base` destructor should be called, indicating the robustness issue of a missing virtual destructor in the `Base` class. This leads to undefined behavior during polymorphic deletion."
+    }
+  ],
+  "driver": "int main() { /* The solution code is expected to contain its own main function. */ return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Base` class destructor is not declared as `virtual`. This is a critical robustness issue in polymorphic hierarchies, as deleting a `Derived` object through a `Base*` pointer will lead to undefined behavior (e.g., memory leaks, partial destruction) because the `Derived` class destructor will not be invoked."
+  ]
+}

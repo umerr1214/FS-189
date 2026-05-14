@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create an `Engine` class with attributes like `horsepower` and `fuelType`. Then, design a `Car` class that *contains* an `Engine` object as a member, demonstrating composition. The `Car` constructor should initialize its `Engine` member.",
+  "test_cases": [
+    {
+      "input": "Create Car objects with various horsepower values, including negative and zero ones.",
+      "expected": "Car information displayed, including engine details. For 'Electric Y', the output will show '-50 HP', and for 'Truck Z', '0 HP', indicating the lack of input validation in the `Engine` constructor."
+    }
+  ],
+  "driver": "int main() {\n    Car car1(\"Sedan X\", 150, \"Petrol\");\n    car1.displayCarInfo();\n    std::cout << \"--------------------\" << std::endl;\n    Car car2(\"Electric Y\", -50, \"Electric\");\n    car2.displayCarInfo();\n    std::cout << \"--------------------\" << std::endl;\n    Car car3(\"Truck Z\", 0, \"Diesel\");\n    car3.displayCarInfo();\n    std::cout << \"--------------------\" << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Engine` class constructor does not validate `horsepower` input, allowing physically impossible negative or zero values. This can lead to objects being in an invalid state and potentially incorrect behavior if subsequent operations or logic assume positive horsepower."
+  ]
+}

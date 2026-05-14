@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Refactor the `Shape` class to be an abstract base class with a pure virtual `double calculateArea()` method. Ensure `Circle` and `Rectangle` properly implement this method and create instances of them.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Rectangle Area: 24.0\nCircle Area: 78.539816" }
+  ],
+  "driver": "The main function attempts to create instances of Circle and Rectangle. However, Circle does not implement the pure virtual method from Shape.",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The `Circle` class fails to implement the pure virtual method `calculateArea()` inherited from `Shape`, thus making `Circle` an abstract class. The program then attempts to instantiate `Circle` in `main()`, which is a semantic error."]
+}

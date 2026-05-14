@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a recursive C++ function `int fibonacci(int n)` that calculates the Nth Fibonacci number. The Fibonacci sequence starts with F(0)=0, F(1)=1. In `main`, ask the user for a non-negative integer N and print the Nth Fibonacci number using your function.",
+  "test_cases": [
+    { "input": "0", "expected": "Enter a non-negative integer N: The 0th Fibonacci number is: 0\n" },
+    { "input": "1", "expected": "Enter a non-negative integer N: The 1th Fibonacci number is: 1\n" },
+    { "input": "5", "expected": "Enter a non-negative integer N: The 5th Fibonacci number is: 5\n" },
+    { "input": "10", "expected": "Enter a non-negative integer N: The 10th Fibonacci number is: 55\n" },
+    { "input": "20", "expected": "Enter a non-negative integer N: The 20th Fibonacci number is: 6765\n" },
+    { "input": "40", "expected": "Enter a non-negative integer N: The 40th Fibonacci number is: 102334155\n" },
+    { "input": "-3", "expected": "Enter a non-negative integer N: Error: N must be a non-negative integer.\n" }
+  ],
+  "driver": "Compile the C++ code and execute the resulting binary. Provide the 'input' string to stdin and capture stdout.",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

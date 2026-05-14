@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `long long factorial(int n)` that calculates the factorial of a non-negative integer `n` iteratively (using a loop). Demonstrate calling this function from `main`.",
+  "test_cases": [
+    { "input": "0", "expected": "1" },
+    { "input": "1", "expected": "1" },
+    { "input": "5", "expected": "120" },
+    { "input": "10", "expected": "3628800" },
+    { "input": "-2", "expected": "-1" }
+  ],
+  "driver": "#include <iostream>\n\nlong long factorial(int n);\n\nint main() {\n    std::string input_str;\n    std::cin >> input_str;\n    int n = std::stoi(input_str);\n    std::cout << factorial(n) << std::endl;\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses obscure and non-descriptive variable names (`_result_val`, `_current_num`) which reduce code readability.",
+    "Employs a `while(true)` loop with an explicit `break` condition, which is less readable and idiomatic for simple iteration than a standard `for` loop.",
+    "The explicit increment `_current_num = _current_num + 1;` is slightly less concise than `++_current_num` or `_current_num++` typically used in loops."
+  ]
+}

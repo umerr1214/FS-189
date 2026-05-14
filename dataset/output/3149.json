@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Design a `ComplexNumber` class with `real` and `imaginary` parts. Overload the binary `+` operator to enable addition of two `ComplexNumber` objects.",
+  "test_cases": [
+    {
+      "input": "ComplexNumber c1(1.0, 2.0); ComplexNumber c2(3.0, 4.0);",
+      "expected": "(4.0 + 6.0i)"
+    },
+    {
+      "input": "ComplexNumber c3(5.0, -1.0); ComplexNumber c4(-2.0, 3.0);",
+      "expected": "(3.0 + 2.0i)"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\nclass ComplexNumber {\npublic:\n    double real;\n    double imaginary;\n\n    ComplexNumber(double r = 0.0, double i = 0.0) : real(r), imaginary(i) {}\n};\n\nComplexNumber operator+(const ComplexNumber& c1, const ComplexNumber& c2) {\n    // Correct logic: return ComplexNumber(c1.real + c2.real, c1.imaginary + c2.imaginary);\n    return ComplexNumber(c1.real + c2.imaginary, c1.imaginary + c2.real); // Logical error\n}\n\nstd::ostream& operator<<(std::ostream& os, const ComplexNumber& c) {\n    os << std::fixed << std::setprecision(1) << \"(\" << c.real;\n    if (c.imaginary >= 0) {\n        os << \" + \" << c.imaginary << \"i)\";\n    } else {\n        os << \" - \" << -c.imaginary << \"i)\";\n    }\n    return os;\n}\n\nint main() {\n    ComplexNumber c1(1.0, 2.0);\n    ComplexNumber c2(3.0, 4.0);\n    ComplexNumber sum = c1 + c2;\n    std::cout << sum << std::endl;\n\n    ComplexNumber c3(5.0, -1.0);\n    ComplexNumber c4(-2.0, 3.0);\n    ComplexNumber sum2 = c3 + c4;\n    std::cout << sum2 << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `operator+` implementation incorrectly adds the real part of the first complex number to the imaginary part of the second, and vice-versa, leading to incorrect addition results."
+  ]
+}

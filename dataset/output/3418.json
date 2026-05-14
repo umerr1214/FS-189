@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter the radius of a circle (as a floating-point number), then calculates and prints its area and circumference. Use `M_PI` for pi if available, or define it as `3.14159`.",
+  "test_cases": [
+    { "input": "5.0", "expected": "Area: 78.53975\nCircumference: 31.41590\n" }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the 'std::cout << \"Enter the radius of the circle: \"' statement."]
+}

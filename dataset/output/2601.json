@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Establish a multilevel inheritance hierarchy: `Electronics` (base class) -> `Smartphone` (derived from `Electronics`) -> `PremiumSmartphone` (derived from `Smartphone`). Each class should add at least one unique attribute (e.g., `Electronics` has `powerConsumption`, `Smartphone` adds `operatingSystem`, `PremiumSmartphone` adds `cameraMP`) and a method to display its specific details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Displaying Premium Smartphone Details (Direct Object) ---\nElectronics Details:\n  Power Consumption: 9.8W\n  Manufacturer: NextGen Corp\nSmartphone Details:\n  Operating System: HarmonyOS 4.0\nPremium Smartphone Details:\n  Camera Megapixels: 200MP\n\n--- Displaying Details via Electronics* (Polymorphic) ---\nElectronics Details:\n  Power Consumption: 15W\n  Manufacturer: Future Devices\n\nProgram finished successfully.\n"
+    }
+  ],
+  "driver": "int main() {\n    PremiumSmartphone myPremiumPhone(9.8, \"NextGen Corp\", \"HarmonyOS 4.0\", 200);\n\n    std::cout << \"--- Displaying Premium Smartphone Details (Direct Object) ---\\n\";\n    myPremiumPhone.displayPremiumSmartphoneDetails();\n    std::cout << \"\\n\";\n\n    Electronics* electronicsPtr = new PremiumSmartphone(15.0, \"Future Devices\", \"Android 14\", 150);\n    std::cout << \"--- Displaying Details via Electronics* (Polymorphic) ---\\n\";\n    electronicsPtr->displayElectronicsDetails();\n    std::cout << \"\\n\";\n\n    delete electronicsPtr;\n\n    std::cout << \"Program finished successfully.\\n\";\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

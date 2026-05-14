@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter a sentence (`std::string`). Then, count and display the total number of words in the sentence. Assume words are separated by a single space.",
+  "test_cases": [
+    { "input": "hello world", "expected": "Total number of words: 2" },
+    { "input": "", "expected": "Total number of words: 0" },
+    { "input": "   ", "expected": "Total number of words: 0" },
+    { "input": "  leading and trailing  ", "expected": "Total number of words: 2" },
+    { "input": "single", "expected": "Total number of words: 1" },
+    { "input": "multiple   spaces", "expected": "Total number of words: 2" }
+  ],
+  "driver": "int main_with_test_input() {\n    std::string sentence;\n    std::getline(std::cin, sentence);\n\n    std::stringstream ss(sentence);\n    std::string word;\n    int wordCount = 0;\n\n    while (ss >> word) {\n        wordCount++;\n    }\n\n    std::cout << \"Total number of words: \" << wordCount << std::endl;\n    return 0;\n}\n\nint main() {\n    return main_with_test_input();\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

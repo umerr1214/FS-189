@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Declare an integer variable, a float variable, and a char variable. Declare and initialize a pointer for each variable, then use the pointers to print the values and memory addresses of the original variables.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Details for the integer variable:\n  Value: 12345\n  Address: 0x[0-9a-fA-F]+\n\nDetails for the floating point variable:\n  Value: 6.789000\n  Address: 0x[0-9a-fA-F]+\n\nDetails for the character variable:\n  Value: Z\n  Address: 0x[0-9a-fA-F]+\n\n\n"
+    }
+  ],
+  "driver": "g++ -o 3380 3380.cpp && ./3380",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses overly verbose and inconsistent variable names, hindering readability.",
+    "Inconsistent and poor code formatting (indentation, spacing) makes the code difficult to follow.",
+    "Unnecessary `string` and `vector` headers are included, increasing compile time and code bloat.",
+    "Mixing `std::cout` and `printf` for output is inconsistent and can be less efficient than sticking to one method.",
+    "Pointers are declared and initialized in separate steps, adding verbosity without clear benefit."
+  ]
+}

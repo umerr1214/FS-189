@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a `Point` class with private `x` and `y` coordinates. Then, define a `DistanceCalculator` class. Make `DistanceCalculator` a friend of `Point` so that a `calculateDistance` method in `DistanceCalculator` can directly access the private coordinates of two `Point` objects.",
+  "test_cases": [
+    { "input": "1 2 4 6", "expected": "5.00" },
+    { "input": "0 0 3 4", "expected": "5.00" },
+    { "input": "10 20 10 20", "expected": "0.00" },
+    { "input": "-1 -1 -5 -4", "expected": "5.00" },
+    { "input": "0 0 1 1", "expected": "1.00" },
+    { "input": "0 0 10 0", "expected": "10.00" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n// Assume Point and DistanceCalculator classes are defined above\n\nint main() {\n    double x1, y1, x2, y2;\n    while (std::cin >> x1 >> y1 >> x2 >> y2) {\n        Point p1(x1, y1);\n        Point p2(x2, y2);\n        DistanceCalculator calculator;\n        int distance_int = calculator.calculateDistance(p1, p2);\n        std::cout << std::fixed << std::setprecision(2) << static_cast<double>(distance_int) << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `calculateDistance` method returns an `int` by truncating the `double` result of the square root. This leads to a loss of precision for non-integer distances, which is a robustness issue as it provides an inaccurate result in many cases."
+  ]
+}

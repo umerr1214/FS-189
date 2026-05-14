@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Illustrate hierarchical inheritance: Create a base class `Animal` with a `sound()` method. Derive `Dog` and `Cat` from `Animal`. Each derived class should override the `sound()` method to print its specific sound.",
+  "test_cases": [
+    { "input": "", "expected": "Dog sound: Woof!\nCat sound: Meow!\n" }
+  ],
+  "driver": "int main() {\n    Dog myDog;\n    Cat myCat;\n\n    std::cout << \"Dog sound: \";\n    myDog.sound();\n\n    std::cout << \"Cat sound: \";\n    myCat.sound();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The Cat::sound() method incorrectly prints 'Woof!' instead of 'Meow!', failing to produce the specific sound for a Cat."]
+}

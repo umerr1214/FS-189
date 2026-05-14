@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Given a 1D integer array, write a program to find and print the largest element in the array.",
+  "test_cases": [
+    { "input": "5\n1 5 2 8 3", "expected": "8" },
+    { "input": "1\n10", "expected": "10" },
+    { "input": "3\n-5 -1 -10", "expected": "-1" },
+    { "input": "3\n7 7 7", "expected": "7" },
+    { "input": "0\n", "expected": "Array is empty or no elements provided." }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream>\n\nint main() {\n    std::string line;\n    std::getline(std::cin, line);\n    std::stringstream ss_n(line);\n    int n;\n    ss_n >> n;\n\n    std::vector<int> arr;\n    if (n > 0) {\n        std::getline(std::cin, line);\n        std::stringstream ss_arr(line);\n        int val;\n        for (int i = 0; i < n; ++i) {\n            if (!(ss_arr >> val)) break;\n            arr.push_back(val);\n        }\n    }\n    // This driver illustrates how input is parsed.\n    // The actual user's program would then process 'arr' and print to stdout.\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["Uses an inefficient sorting algorithm (O(N log N)) instead of a single linear pass (O(N)) to find the maximum element.", "Unnecessary overhead for a simple task."]
+}

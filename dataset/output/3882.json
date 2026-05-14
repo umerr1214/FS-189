@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that asks the user for a year and determines whether it is a leap year or not. (Leap year rules: divisible by 4, but not by 100 unless also divisible by 400).",
+  "test_cases": [
+    { "input": "2000", "expected": "Enter a year: [unpredictable output]" },
+    { "input": "1900", "expected": "Enter a year: [unpredictable output]" },
+    { "input": "2004", "expected": "Enter a year: [unpredictable output]" },
+    { "input": "2007", "expected": "Enter a year: [unpredictable output]" }
+  ],
+  "driver": "int main() { int year; std::cout << \"Enter a year: \"; std::cin >> year; /* The provided code's main function handles the rest */ return 0; }",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The variable 'year' is used in the leap year determination logic before it has been initialized or assigned a value from user input. This leads to undefined behavior, as the program operates on a garbage value. The `std::cin >> year;` statement occurs after the `if` condition."
+  ]
+}

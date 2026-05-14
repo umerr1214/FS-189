@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a program that takes a day number (1-7) as input and prints the corresponding day name (e.g., 1 for Monday, 2 for Tuesday) using a switch statement.",
+  "test_cases": [
+    { "input": "1", "expected": "Monday\n" },
+    { "input": "4", "expected": "Thursday\n" },
+    { "input": "8", "expected": "Invalid day number\n" }
+  ],
+  "driver": "The program's main function is executed. Input is provided via stdin, and output is captured from stdout.",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'std::cin >> day'."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a `StringWrapper` class that manages a dynamically allocated character array to store a string. Implement a copy constructor for `StringWrapper` that performs a deep copy of the character array to ensure independent memory management between copied objects.",
+  "test_cases": [
+    { "input": "Copying 'Hello, World!'", "expected": "s1: Hello, World!\ns2 (copied from s1): Hello, World!\ns1 (modified): hello, world!\ns2 (should be unchanged): Hello, World!" },
+    { "input": "Copying an empty string", "expected": "s3 (empty): ''\ns4 (copied from s3): ''" },
+    { "input": "Copying 'Short'", "expected": "s5: Short\ns6 (copied from s5): Short" }
+  ],
+  "driver": "int main() {\n    StringWrapper s1(\"Hello, World!\");\n    std::cout << \"s1: \" << s1.c_str() << std::endl;\n    StringWrapper s2 = s1;\n    std::cout << \"s2 (copied from s1): \" << s2.c_str() << std::endl;\n    s1.str[0] = 'h';\n    s1.str[7] = 'w';\n    std::cout << \"s1 (modified): \" << s1.c_str() << std::endl;\n    std::cout << \"s2 (should be unchanged): \" << s2.c_str() << std::endl;\n\n    StringWrapper s3(\"\");\n    StringWrapper s4 = s3;\n    std::cout << \"s3 (empty): '\" << s3.c_str() << \"'\" << std::endl;\n    std::cout << \"s4 (copied from s3): '\" << s4.c_str() << \"'\" << std::endl;\n\n    StringWrapper s5(\"Short\");\n    StringWrapper s6 = s5;\n    std::cout << \"s5: \" << s5.c_str() << std::endl;\n    std::cout << \"s6 (copied from s5): \" << s6.c_str() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The copy constructor manually copies characters using a `for` loop (`for (size_t i = 0; i <= len; ++i) { str[i] = other.str[i]; }`). This approach is less readable and potentially less efficient than using the optimized standard C library function `std::strcpy(str, other.str);` for copying null-terminated strings."
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program to calculate the simple interest given the principal amount, rate of interest, and time period from user input. Display the calculated interest.",
+  "test_cases": [
+    { "input": "1000\n5\n2", "expected": "Simple Interest: 100.00\n" },
+    { "input": "5000\n10\n1", "expected": "Simple Interest: 500.00\n" }
+  ],
+  "driver": "#include <fstream>\n#include <iostream>\n#include <string>\n#include <streambuf>\n\n// This macro renames the 'main' function in the student's code\n// to 'student_main' during compilation, allowing the driver to have its own 'main'.\n#define main student_main\n\n// Declare the student's (renamed) main function\nextern int student_main();\n\nint main() {\n    // Redirect stdin to read from input.txt\n    std::ifstream in_file(\"input.txt\");\n    std::streambuf* cin_backup = std::cin.rdbuf();\n    std::cin.rdbuf(in_file.rdbuf());\n\n    // Redirect stdout to write to output.txt\n    std::ofstream out_file(\"output.txt\");\n    std::streambuf* cout_backup = std::cout.rdbuf();\n    std::cout.rdbuf(out_file.rdbuf());\n\n    // Call the student's (renamed) main function\n    int exit_code = student_main();\n\n    // Restore original cin/cout rdbufs\n    std::cin.rdbuf(cin_backup);\n    std::cout.rdbuf(cout_backup);\n\n    return exit_code;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after std::endl; in the output statement."]
+}

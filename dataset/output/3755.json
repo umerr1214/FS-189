@@ -1,0 +1,26 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that acts as a simple calculator. It should take two numbers (doubles) and an operator (+, -, *, /) as input from the user, then perform the operation using a `switch` statement and display the result. Handle division by zero.",
+  "test_cases": [
+    { "input": "10\n+\n5\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 5\n" },
+    { "input": "10\n-\n5\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 15\n" },
+    { "input": "8\n*\n2\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 16\n" },
+    { "input": "10\n/\n0\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Error: Division by zero is not allowed.\n" }
+  ],
+  "driver": "std::string input_str = R\"RAW(10\n+\n5\n)RAW\"; std::istringstream iss(input_str); std::cin.rdbuf(iss.rdbuf());",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    {
+      "line": 26,
+      "column": 22,
+      "message": "Addition operator performs subtraction."
+    },
+    {
+      "line": 29,
+      "column": 22,
+      "message": "Subtraction operator performs addition."
+    }
+  ]
+}

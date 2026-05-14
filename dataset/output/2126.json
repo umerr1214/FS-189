@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Create a `MathOperations` class with three overloaded `add` methods: one that takes two integers, one that takes two doubles, and one that takes three integers. Demonstrate calling each version of the `add` method.",
+  "test_cases": [
+    {
+      "input": "Hardcoded values:\nADd_int(10, 20)\nADd_double(3.5, 2.5)\nADd_int_triple(1, 2, 3)",
+      "expected": "Result of ADd_int (10 + 20): 30\nThis was an integer addition.\nResult of ADd_double (3.5 + 2.5): 6\nThis was a double addition.\nResult of ADd_int_triple (1 + 2 + 3): 6\nThis was a three integer addition."
+    }
+  ],
+  "driver": "The `main` function demonstrates calling each overloaded `ADd` method with hardcoded values.",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Poor and inconsistent naming conventions for the class (`MathOPerationsClasS`), methods (`ADd_int`, `ADd_double`, `ADd_int_triple`), and parameters (`firStValuE`, `sECondValuE`, `thirDValuE`), severely impacting readability.",
+    "Excessive and unhelpful comments that state the obvious, cluttering the code without adding value.",
+    "Inconsistent formatting and arbitrary spacing.",
+    "Overuse of `std::endl` which flushes the buffer on each call, potentially leading to minor efficiency issues compared to using `\\n` when not strictly necessary."
+  ]
+}

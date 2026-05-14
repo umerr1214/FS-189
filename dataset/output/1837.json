@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Model a `Laptop` class that contains a `CPU` object (composition). The `CPU` class should have private attributes `manufacturer` (string) and `clockSpeed` (double). The `Laptop` class should have a `modelName` (string) and instantiate a `CPU` object as a member, demonstrating their 'has-a' relationship.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "Laptop Model: XPS 15\n  CPU Manufacturer: Intel\n  CPU Clock Speed: -2.3 GHz\nLaptop Model: \n  CPU Manufacturer: AMD\n  CPU Clock Speed: 3.8 GHz\nLaptop Model: Gaming Beast\n  CPU Manufacturer: Nvidia\n  CPU Clock Speed: 0 GHz\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <utility>\n\nclass CPU {\nprivate:\n    std::string manufacturer;\n    double clockSpeed;\n\npublic:\n    CPU(std::string manufacturer, double clockSpeed)\n        : manufacturer(std::move(manufacturer)), clockSpeed(clockSpeed) {}\n\n    std::string getManufacturer() const { return manufacturer; }\n    double getClockSpeed() const { return clockSpeed; }\n};\n\nclass Laptop {\nprivate:\n    std::string modelName;\n    CPU cpu;\n\npublic:\n    Laptop(std::string modelName, std::string cpuManufacturer, double cpuClockSpeed)\n        : modelName(std::move(modelName)),\n          cpu(cpuManufacturer, cpuClockSpeed) {}\n\n    std::string getModelName() const { return modelName; }\n    std::string getCpuManufacturer() const { return cpu.getManufacturer(); }\n    double getCpuClockSpeed() const { return cpu.getClockSpeed(); }\n\n    void displayDetails() const {\n        std::cout << \"Laptop Model: \" << modelName << std::endl;\n        std::cout << \"  CPU Manufacturer: \" << cpu.getManufacturer() << std::endl;\n        std::cout << \"  CPU Clock Speed: \" << cpu.getClockSpeed() << \" GHz\" << std::endl;\n    }\n};\n\nint main() {\n    Laptop laptop1(\"XPS 15\", \"Intel\", -2.3);\n    laptop1.displayDetails();\n\n    Laptop laptop2(\"\", \"AMD\", 3.8);\n    laptop2.displayDetails();\n\n    Laptop laptop3(\"Gaming Beast\", \"Nvidia\", 0.0);\n    laptop3.displayDetails();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": []
+}

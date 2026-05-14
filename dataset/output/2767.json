@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Extend the `Animal` hierarchy (from Q14) to use virtual functions for the `sound()` method. Create a `Zoo` class that takes a `Animal*` and calls its `sound()` method, showcasing polymorphic behavior.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "The zoo hosts Buddy and it says: Buddy barks: Woof! Woof!\nThe zoo hosts Whiskers and it says: Whiskers meows: Meow!\n\n--- Demonstrating robustness issues ---\nAttempting to delete 'LeakDog' via Animal* (watch for Dog destructor message):\nIf you didn't see 'LeakDog (Dog) destructor called.', it's a leak.\n\nAttempting to host a nullptr animal (EXPECT CRASH or undefined behavior):\n"
+    }
+  ],
+  "driver": "",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing virtual destructor in base class `Animal` can lead to memory leaks when deleting derived objects through a base class pointer.",
+    "The `Zoo::hostAnimalAndMakeSound` method does not check if the passed `Animal*` is `nullptr` before dereferencing it, leading to a potential runtime crash (segmentation fault) if `nullptr` is passed."
+  ]
+}

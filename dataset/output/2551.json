@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Building upon the `Shape` hierarchy (with `Circle` and `Rectangle`), make `calculateArea()` a virtual function in the `Shape` base class. Demonstrate runtime polymorphism by creating an array or vector of `Shape` pointers, populating it with `Circle` and `Rectangle` objects, and then iterating through it to call `calculateArea()` on each object.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Area: 78.54\nArea: 24.00\nArea: 19.63\nArea: 20.00\n"
+    }
+  ],
+  "driver": "int main() { std::cout << run_test_cases(); return 0; }",
+  "code_quality": 7,
+  "correctness": 8,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Shape` base class destructor is not declared `virtual`. This is a critical robustness issue for polymorphic classes. When derived objects (like `Circle` or `Rectangle`) are deleted through a base class pointer (`Shape*`), only the base class destructor is called. This can lead to memory leaks or undefined behavior if derived classes manage their own resources (e.g., dynamic memory, file handles) that would normally be released in their destructors."
+  ]
+}

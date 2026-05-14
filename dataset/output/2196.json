@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Parent` and a derived class `Child`. Add a constructor and a destructor to both classes, each printing a message indicating its creation or destruction. Demonstrate the order in which these constructors and destructors are called when a `Child` object is created and destroyed.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Creating Child object via base pointer...\nParent Constructor called.\nChild Constructor called.\nChild object created.\nDestroying Child object via base pointer...\nChild Destructor called.\nParent Destructor called.\nChild object destroyed.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n\nclass Parent {\npublic:\n    Parent() {\n        std::cout << \"Parent Constructor called.\\n\";\n    }\n    virtual ~Parent() {\n        std::cout << \"Parent Destructor called.\\n\";\n    }\n};\n\nclass Child : public Parent {\npublic:\n    Child() {\n        std::cout << \"Child Constructor called.\\n\";\n    }\n    ~Child() {\n        std::cout << \"Child Destructor called.\\n\";\n    }\n};\n\nint main() {\n    std::cout << \"Creating Child object via base pointer...\\n\";\n    Parent* p = new Child();\n    std::cout << \"Child object created.\\n\";\n    std::cout << \"Destroying Child object via base pointer...\\n\";\n    delete p;\n    std::cout << \"Child object destroyed.\\n\";\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The destructor of the base class 'Parent' is not declared as virtual. When a 'Child' object is dynamically allocated and then deleted through a 'Parent' pointer (e.g., `Parent* p = new Child(); delete p;`), only the 'Parent' destructor will be called, leading to the 'Child' destructor being skipped. This is a common semantic error in C++ polymorphism that can cause resource leaks or undefined behavior."
+  ]
+}

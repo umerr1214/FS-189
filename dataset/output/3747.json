@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that calculates the factorial of a non-negative integer entered by the user using a `for` loop. If the user enters a negative number, display an error message.",
+  "test_cases": [
+    { "input": "5", "expected": "The factorial of 5 is 120.\n" },
+    { "input": "0", "expected": "The factorial of 0 is 1.\n" },
+    { "input": "1", "expected": "The factorial of 1 is 1.\n" },
+    { "input": "-7", "expected": "Error: Factorial is not defined for negative numbers.\n" },
+    { "input": "12", "expected": "The factorial of 12 is 479001600.\n" },
+    { "input": "20", "expected": "The factorial of 20 is 2432902008176640000.\n" },
+    { "input": "abc", "expected": "Invalid input. Please enter a non-negative integer.\n" }
+  ],
+  "driver": "The program is compiled and executed. Test cases are provided via standard input, and output is captured from standard output. For example, for input '5', execute `./program` and type '5' then ENTER, or use `echo '5' | ./program`.",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

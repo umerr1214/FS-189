@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `Box` class with private attributes `length`, `width`, and `height` (all doubles). Implement a non-member function `calculateVolume()` that is declared as a `friend` of the `Box` class, allowing it to access the private dimensions of a `Box` object and return its volume.",
+  "test_cases": [
+    { "input": "Box(2.0, 3.0, 4.0)", "expected": "24.000" },
+    { "input": "Box(1.5, 2.5, 3.5)", "expected": "13.125" }
+  ],
+  "driver": "Box b1(2.0, 3.0, 4.0); std::cout << std::fixed << std::setprecision(3) << calculateVolume(b1) << std::endl; Box b2(1.5, 2.5, 3.5); std::cout << std::fixed << std::setprecision(3) << calculateVolume(b2) << std::endl;",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The calculateVolume function incorrectly sums the dimensions (length + width + height) instead of multiplying them to compute the volume (length * width * height)."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a multi-level inheritance hierarchy: `Person` (base) -> `Employee` (derived from Person) -> `Manager` (derived from Employee). Add relevant attributes and methods at each level.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Original Manager Info ---\nName: Charlie, Age: 40\nEmployee ID: M201, Salary: $120000\nDepartment: HR, Team Size: 15\n\n--- Sliced Employee Info (from Manager) ---\nName: Charlie, Age: 40\nEmployee ID: M201, Salary: $120000\n\n--- Regular Employee Info ---\nName: David, Age: 28\nEmployee ID: E102, Salary: $60000\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Person {\npublic:\n    std::string name;\n    int age;\n\n    Person(const std::string& n, int a) : name(n), age(a) {}\n\n    void displayPersonInfo() const {\n        std::cout << \"Name: \" << name << \", Age: \" << age << std::endl;\n    }\n};\n\nclass Employee : public Person {\npublic:\n    std::string employeeId;\n    double salary;\n\n    Employee(const std::string& n, int a, const std::string& id, double s)\n        : Person(n, a), employeeId(id), salary(s) {}\n\n    void displayEmployeeInfo() const {\n        displayPersonInfo();\n        std::cout << \"Employee ID: \" << employeeId << \", Salary: $\" << salary << std::endl;\n    }\n};\n\nclass Manager : public Employee {\npublic:\n    std::string department;\n    int teamSize;\n\n    Manager(const std::string& n, int a, const std::string& id, double s, const std::string& dept, int ts)\n        : Employee(n, a, id, s), department(dept), teamSize(ts) {}\n\n    void displayManagerInfo() const {\n        displayEmployeeInfo();\n        std::cout << \"Department: \" << department << \", Team Size: \" << teamSize << std::endl;\n    }\n};\n\nint main() {\n    Manager originalManager(\"Charlie\", 40, \"M201\", 120000.0, \"HR\", 15);\n\n    std::cout << \"--- Original Manager Info ---\" << std::endl;\n    originalManager.displayManagerInfo();\n\n    // SEMANTIC ERROR: Object slicing occurs here.\n    // The Manager object's data for 'department' and 'teamSize' is lost\n    // when assigned to an Employee object by value.\n    Employee slicedEmployee = originalManager;\n\n    std::cout << \"\\n--- Sliced Employee Info (from Manager) ---\" << std::endl;\n    slicedEmployee.displayEmployeeInfo();\n    // Note: slicedEmployee cannot call displayManagerInfo() as it's an Employee.\n    // The semantic error is that the Manager-specific data is gone without warning (at compile time),\n    // leading to unexpected loss of information.\n\n    // To further illustrate, let's create a regular employee for comparison\n    Employee regularEmployee(\"David\", 28, \"E102\", 60000.0);\n    std::cout << \"\\n--- Regular Employee Info ---\" << std::endl;\n    regularEmployee.displayEmployeeInfo();\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Object slicing occurs when a derived class object (Manager) is assigned to a base class object (Employee) by value, leading to the loss of derived-specific attributes and methods. The 'slicedEmployee' object no longer holds the 'department' and 'teamSize' information that was present in the 'originalManager' object, which is a semantic misuse of inheritance."
+  ]
+}

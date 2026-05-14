@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a function `resetToZero` that takes an integer by reference and sets its value to 0.",
+  "test_cases": [
+    { "input": "int val = 5; enable_reset_functionality = true;", "expected": "val is 0" },
+    { "input": "int val = -10; enable_reset_functionality = false;", "expected": "val is -10" },
+    { "input": "int val = 100; enable_reset_functionality = true;", "expected": "val is 0" }
+  ],
+  "driver": "#include <iostream>\n\nbool enable_reset_functionality = true;\n\nvoid resetToZero(int& num);\n\nint main() {\n    int val1 = 5;\n    std::cout << \"Initial value 1: \" << val1 << std::endl;\n    enable_reset_functionality = true;\n    resetToZero(val1);\n    std::cout << \"After resetToZero (enabled): \" << val1 << std::endl;\n\n    std::cout << \"--------------------\" << std::endl;\n\n    int val2 = -10;\n    enable_reset_functionality = false;\n    std::cout << \"Initial value 2: \" << val2 << std::endl;\n    resetToZero(val2);\n    std::cout << \"After resetToZero (disabled): \" << val2 << std::endl;\n\n    std::cout << \"--------------------\" << std::endl;\n\n    int val3 = 100;\n    enable_reset_functionality = true;\n    std::cout << \"Initial value 3: \" << val3 << std::endl;\n    resetToZero(val3);\n    std::cout << \"After resetToZero (re-enabled): \" << val3 << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The function's behavior is dependent on a mutable global flag (`enable_reset_functionality`), making it less robust to external state changes and harder to predict or test in isolation. If the flag is set to false, the function silently fails to perform its intended operation, which can lead to unexpected program behavior without clear error handling."
+  ]
+}

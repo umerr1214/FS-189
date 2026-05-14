@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Course` class (with `name`, `code`). Then, create a `Department` class that uses aggregation to manage a collection of `Course` objects (e.g., using `std::vector`). Implement methods to add a course and list all courses in the department.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "Department: Computer Science\n  - CS101: Introduction to C++\n  - CS201: Data Structures\n  - CS301: Algorithms\nDepartment: Mathematics\n  - MA101: Calculus I\n\nProgram finished. Check for memory leaks if using a tool.\n"
+    }
+  ],
+  "driver": "int main() {\n    {\n        Department csDept(\"Computer Science\");\n        csDept.addCourse(\"Introduction to C++\", \"CS101\");\n        csDept.addCourse(\"Data Structures\", \"CS201\");\n        csDept.addCourse(\"Algorithms\", \"CS301\");\n        csDept.listCourses();\n        Department mathDept(\"Mathematics\");\n        mathDept.addCourse(\"Calculus I\", \"MA101\");\n        mathDept.listCourses();\n    }\n    std::cout << \"\\nProgram finished. Check for memory leaks if using a tool.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `Department` class manages `Course` objects using raw pointers (`Course*`) stored in a `std::vector`. The `addCourse` method dynamically allocates `Course` objects using `new`. However, the `Department` class does not implement a destructor (`~Department()`) to `delete` these dynamically allocated `Course` objects when a `Department` object goes out of scope. This results in a memory leak, as the memory for the courses is never deallocated."
+  ]
+}

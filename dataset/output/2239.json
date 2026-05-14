@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a `Shape` base class with a `color` (string) attribute. Create a `Circle` derived class that adds a `radius` (double). Implement a constructor for `Circle` that initializes both `color` and `radius` by calling the base class constructor.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "--- Creating Circle object via base pointer ---\nShape constructor called for color: Blue\nCircle constructor called for radius: 5\nThis is a Circle with color: Blue and radius: 5\n--- Deleting object via base pointer (Robustness Issue) ---\nShape destructor called for color: Blue\n--- End of program ---\n"
+    }
+  ],
+  "driver": "    std::cout << \"--- Creating Circle object via base pointer ---\" << std::endl;\n    Shape* myShape = new Circle(\"Blue\", 5.0);\n    myShape->printInfo();\n\n    std::cout << \"--- Deleting object via base pointer (Robustness Issue) ---\" << std::endl;\n    delete myShape;\n    myShape = nullptr;\n\n    std::cout << \"--- End of program ---\" << std::endl;\n\n    return 0;",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Shape` base class has a virtual function (`printInfo`), indicating it's intended for polymorphic use, but its destructor is not declared virtual. This is a critical robustness issue. When a derived class object (like `Circle`) is deleted through a pointer to the base class (`Shape*`), only the base class destructor is called, leading to undefined behavior and potential resource leaks (e.g., `Circle`'s destructor is skipped)."
+  ]
+}

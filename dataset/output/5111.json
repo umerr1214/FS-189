@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that uses a `do-while` loop to repeatedly ask the user to enter a positive integer. The loop should continue prompting until a positive integer (greater than 0) is entered. Once valid input is received, print the number.",
+  "test_cases": [
+    { "input": "-5\n10\n", "expected": "Enter a positive integer: Enter a positive integer: You entered: 10\n" },
+    { "input": "0\n", "expected": "Enter a positive integer: You entered: 0\n" },
+    { "input": "-3\n0\n5\n", "expected": "Enter a positive integer: Enter a positive integer: You entered: 0\n" }
+  ],
+  "driver": "// This program is a complete executable. The test runner will compile and execute it, providing input via stdin.",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The loop condition `num < 0` is incorrect. It should be `num <= 0` to ensure that zero is also rejected, as the problem specifies a 'positive integer' (greater than 0)."
+  ]
+}

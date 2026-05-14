@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that declares a 1D integer array of size 5. Allow the user to input values into the array. After input, iterate through the array to find and print the largest and smallest elements.",
+  "test_cases": [
+    { "input": "10\n20\n5\n30\n15\n", "expected": "Largest element: 30\nSmallest element: 0\n" },
+    { "input": "-1\n-5\n-10\n-3\n-2\n", "expected": "Largest element: 0\nSmallest element: -10\n" },
+    { "input": "0\n0\n0\n0\n0\n", "expected": "Largest element: 0\nSmallest element: 0\n" },
+    { "input": "-5\n10\n-2\n20\n0\n", "expected": "Largest element: 20\nSmallest element: -5\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n\n// Function to simulate running the student's code\nstd::string run_student_code(const std::string& input_str) {\n    std::stringstream ss_in(input_str);\n    std::stringstream ss_out;\n    \n    // Redirect cin and cout\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::cin.rdbuf(ss_in.rdbuf());\n    std::cout.rdbuf(ss_out.rdbuf());\n\n    main(); // Call the student's main function\n\n    // Restore cin and cout\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    std::string output = ss_out.str();\n    // Filter out input prompts for comparison, keep only the final two lines\n    std::string filtered_output;\n    std::stringstream temp_ss(output);\n    std::string line;\n    std::vector<std::string> lines;\n    while (std::getline(temp_ss, line)) {\n        lines.push_back(line);\n    }\n    if (lines.size() >= 2) {\n        filtered_output += lines[lines.size() - 2] + \"\\n\";\n        filtered_output += lines[lines.size() - 1] + \"\\n\";\n    }\n    return filtered_output;\n}\n\nint main() {\n    // This driver will be used by an external system to test the student's code.\n    // The actual test cases will be run by calling run_student_code with various inputs.\n    // Example usage (not part of the actual test execution, but for understanding):\n    // std::cout << run_student_code(\"10\\n20\\n5\\n30\\n15\\n\");\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The smallest element is incorrectly identified as 0 when all inputs are positive and none are 0.",
+    "The largest element is incorrectly identified as 0 when all inputs are negative and none are 0."
+  ]
+}

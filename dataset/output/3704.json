@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Write a function template `T findMax(T a, T b)` that takes two arguments of any type `T` and returns the larger of the two. Demonstrate its use with `int`, `double`, and `char` data types.",
+  "test_cases": [
+    { "input": "5, 10 (int)", "expected": "10" },
+    { "input": "7, 7 (int)", "expected": "7" },
+    { "input": "-5, -10 (int)", "expected": "-5" },
+    { "input": "3.14, 2.71 (double)", "expected": "3.14" },
+    { "input": "1.0, 1.0 (double)", "expected": "1.0" },
+    { "input": "-0.5, 0.5 (double)", "expected": "0.5" },
+    { "input": "'a', 'z' (char)", "expected": "z" },
+    { "input": "'X', 'X' (char)", "expected": "X" },
+    { "input": "'9', '0' (char)", "expected": "9" }
+  ],
+  "driver": "#include <iostream>\n\ntemplate <typename T>\nT findMax(T a, T b) {\n    T result;\n    bool a_is_definitely_greater = false;\n    bool b_is_definitely_greater = false;\n\n    if (a > b) {\n        a_is_definitely_greater = true;\n    } else { \n        if (b > a) {\n            b_is_definitely_greater = true;\n        } else { \n            a_is_definitely_greater = true; \n        }\n    }\n\n    if (a_is_definitely_greater && !b_is_definitely_greater) {\n        result = a;\n    } else if (b_is_definitely_greater && !a_is_definitely_greater) {\n        result = b;\n    } else { \n        result = a; \n    }\n    return result;\n}\n\nint main() {\n    std::cout << findMax(5, 10) << std::endl;\n    std::cout << findMax(7, 7) << std::endl;\n    std::cout << findMax(-5, -10) << std::endl;\n    std::cout << findMax(3.14, 2.71) << std::endl;\n    std::cout << findMax(1.0, 1.0) << std::endl;\n    std::cout << findMax(-0.5, 0.5) << std::endl;\n    std::cout << findMax('a', 'z') << std::endl;\n    std::cout << findMax('X', 'X') << std::endl;\n    std::cout << findMax('9', '0') << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `findMax` function uses an overly verbose and complex conditional structure with unnecessary boolean flags and redundant checks for a simple comparison. This reduces both readability and efficiency compared to a direct comparison or ternary operator."
+  ]
+}

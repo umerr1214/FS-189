@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Refactor the `Shape` class to be an abstract base class with a pure virtual `double calculateArea()` method. Ensure `Circle` and `Rectangle` properly implement this method and create instances of them.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Area of Circle: 78.54\nArea of Rectangle: 20.00\nArea of Circle: 314.16\nArea of Rectangle: 21.00\nWarning: Circle radius cannot be negative. Setting to 0.\nArea of Circle: 0.00\nWarning: Rectangle dimensions cannot be negative. Setting to absolute values.\nArea of Rectangle: 24.00" }
+  ],
+  "driver": "The `main` function in the provided C++ code creates a vector of `std::unique_ptr<Shape>`, including instances of `Circle` and `Rectangle` with both valid and invalid dimensions. It then iterates through the vector, calculates and prints the area for each shape, demonstrating polymorphism, proper input validation, and modern C++ memory management.",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

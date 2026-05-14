@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a function `isPalindrome(int num)` that takes an integer as input and returns `true` if the number is a palindrome (reads the same forwards and backwards), and `false` otherwise. Demonstrate its usage by asking the user for a number and printing the result.",
+  "test_cases": [
+    { "input": "121", "expected": "true" },
+    { "input": "123", "expected": "false" },
+    { "input": "0", "expected": "true" },
+    { "input": "1001", "expected": "true" },
+    { "input": "-121", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n\nbool isPalindrome(int num);\n\nint main() {\n    int num;\n    std::cin >> num;\n    if (isPalindrome(num)) {\n        std::cout << \"true\" << std::endl;\n    } else {\n        std::cout << \"false\" << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

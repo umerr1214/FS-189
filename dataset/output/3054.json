@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Extend the `Shape` hierarchy (from Q11). Add a `virtual` destructor to the `Shape` base class. Demonstrate polymorphic behavior by storing `Rectangle` and `Circle` objects in a `std::vector` of `Shape*` pointers and then deleting them to ensure correct destructors are called.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Rectangle constructor called.\nCircle constructor called.\nRectangle constructor called.\nRectangle: Width=10, Height=5, Area=50\nCircle: Radius=7, Area=153.938\nRectangle: Width=3, Height=8, Area=24\n\nDeleting shapes (first pass)...\nRectangle destructor called.\nShape destructor called.\nCircle destructor called.\nShape destructor called.\nRectangle destructor called.\nShape destructor called.\n\nAttempting to delete shapes again (second pass)...\n"
+    }
+  ],
+  "driver": "int main() {\n    demonstratePolymorphism();\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The program attempts to delete the same dynamically allocated memory twice (double free). After the first loop calls 'delete' on each Shape pointer, the memory is deallocated. The second loop then attempts to 'delete' the same pointers again, which leads to undefined behavior."
+  ]
+}

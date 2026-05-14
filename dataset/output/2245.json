@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Extend the `Shape` and `Circle` example from Q4. Add a virtual `calculateArea()` method to `Shape` (returning 0 by default). Override `calculateArea()` in `Circle` to compute the circle's area. Demonstrate calling `calculateArea()` through a `Shape` pointer pointing to a `Circle` object.",
+  "test_cases": [
+    { "input": "Circle with radius -5.0", "expected": "Area: 78.5398..." },
+    { "input": "Circle with radius 10.0", "expected": "Area: 314.159..." }
+  ],
+  "driver": "int main() {\n    Shape* myShape = new Circle(-5.0);\n    std::cout << myShape->calculateArea() << std::endl;\n    delete myShape;\n    Shape* anotherShape = new Circle(10.0);\n    std::cout << anotherShape->calculateArea() << std::endl;\n    delete anotherShape;\n    return 0;\n}",
+  "code_quality": 7,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The Shape class has a non-virtual destructor. Deleting a derived class object through a base class pointer (e.g., `delete myShape;`) leads to undefined behavior or memory leaks if the derived class has specific resources to free (e.g., `Circle`'s destructor is not guaranteed to be called).",
+    "The Circle constructor allows a negative radius to be set without validation. While `calculateArea()` will still produce a positive result (due to `r*r`), a negative radius is physically meaningless and represents an invalid state, indicating a lack of input robustness."
+  ]
+}

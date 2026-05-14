@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Declare an integer variable, initialize it, then declare a pointer to that variable. Print both the value of the variable and the value accessed through the pointer, as well as the address of the variable and the pointer.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Value of variable: 42\nValue through pointer: 42\nAddress of var: 0x<HEX_ADDRESS>\nAddress in ptr: 0x<HEX_ADDRESS>\n--- Confirmed values ---\nOriginal var: 42\n"
+    }
+  ],
+  "driver": "// The provided C++ code is a complete program. An external test harness would compile and execute it, capturing stdout for validation.",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses C-style `printf` instead of C++ `std::cout` for output, which is less idiomatic C++ and generally less type-safe.",
+    "Poor and uninformative variable names (`x`, `p`) reduce code readability.",
+    "The pointer declaration style `int *p;` (space before `p`) is a common style debate; `int* p;` is often preferred for consistency with type declaration.",
+    "The assignment `p = &x;` is on a separate line from the declaration, making it slightly less concise than `int* p = &x;`.",
+    "The additional print statements like '--- Confirmed values ---' and 'Original var: %d' are somewhat redundant and add minimal value, impacting readability and efficiency slightly."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Point` with `x` and `y` integer coordinates. Create an array of `Point` objects and find the point closest to the origin (0,0). Print its coordinates.",
+  "test_cases": [
+    { "input": "", "expected": "Closest point to origin: (0,0)\n" }
+  ],
+  "driver": "int main() { /* Your code */ }",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["Potential integer overflow during the calculation of squared distances (x*x + y*y). The intermediate products x*x and y*y are performed using 'int' types, which can overflow before the result is assigned to a 'long long'. This leads to incorrect distance values and subsequently an incorrect 'closest point'."]
+}

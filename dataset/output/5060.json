@@ -1,0 +1,28 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function template named `arraySum` that takes an array of any numeric type and its size as input. The function should return the sum of all elements in that array.",
+  "test_cases": [
+    {
+      "input": "int int_array[] = {10, 20, 30}; int int_array_size = 3;",
+      "expected": "60"
+    },
+    {
+      "input": "double double_array[] = {1.5, 2.5, 3.0}; int double_array_size = 3;",
+      "expected": "7.0"
+    },
+    {
+      "input": "long long large_ll_array[] = {10000000000LL, 20000000000LL, 30000000000LL}; int large_ll_array_size = 3;",
+      "expected": "60000000000"
+    }
+  ],
+  "driver": "#include <iostream>\n\ntemplate <typename T>\nlong long arraySum(T the_array_elements[], int the_size_of_array) {\n    long long current_total_value = static_cast<long long>(0);\n    for (int current_index = 0; current_index < the_size_of_array; ++current_index) {\n        current_total_value = static_cast<long long>(current_total_value + the_array_elements[current_index]);\n    }\n    return current_total_value;\n}\n\nint main() {\n    int int_array[] = {10, 20, 30};\n    int int_array_size = sizeof(int_array) / sizeof(int_array[0]);\n    std::cout << \"Sum of int_array (expected 60): \" << arraySum(int_array, int_array_size) << std::endl;\n\n    double double_array[] = {1.5, 2.5, 3.0};\n    int double_array_size = sizeof(double_array) / sizeof(double_array[0]);\n    std::cout << \"Sum of double_array (expected 7.0): \" << arraySum(double_array, double_array_size) << std::endl;\n\n    long long large_ll_array[] = {10000000000LL, 20000000000LL, 30000000000LL};\n    int large_ll_array_size = sizeof(large_ll_array) / sizeof(large_ll_array[0]);\n    std::cout << \"Sum of large_ll_array (expected 60000000000): \" << arraySum(large_ll_array, large_ll_array_size) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Variable names like `the_array_elements`, `the_size_of_array`, and `current_total_value` are overly verbose and reduce code readability.",
+    "The repeated use of `static_cast<long long>(...)` inside the loop is redundant for arithmetic promotion and adds unnecessary verbosity, slightly impacting efficiency.",
+    "The code lacks consistent formatting and indentation, making it harder to read and maintain.",
+    "No comments are provided to explain the function's purpose or complex parts (though for this simple function, the main issue is poor style)."
+  ]
+}

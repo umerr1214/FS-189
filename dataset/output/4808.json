@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that asks the user to input a number representing a day of the week (1 for Monday, 2 for Tuesday, etc.). Use a `switch` statement to print the corresponding day name.",
+  "test_cases": [
+    { "input": "1", "expected": "Please enter a numeric value for the day of the week (1=Monday, 7=Sunday): You entered 1. The day is Monday.\n" },
+    { "input": "4", "expected": "Please enter a numeric value for the day of the week (1=Monday, 7=Sunday): You entered 4. The day is Thursday.\n" },
+    { "input": "7", "expected": "Please enter a numeric value for the day of the week (1=Monday, 7=Sunday): You entered 7. The day is Sunday.\n" },
+    { "input": "0", "expected": "Please enter a numeric value for the day of the week (1=Monday, 7=Sunday): The number you entered (0) does not correspond to a valid day of the week (1-7).\n" },
+    { "input": "9", "expected": "Please enter a numeric value for the day of the week (1=Monday, 7=Sunday): The number you entered (9) does not correspond to a valid day of the week (1-7).\n" }
+  ],
+  "driver": "g++ -o program program.cpp && ./program",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The program is overly verbose and less efficient than necessary. Each `case` constructs a full string (e.g., 'You entered X. The day is Y.') using string concatenation and then prints it. A more readable and efficient approach would be to directly print the day name, or assign only the day name to a string variable and then print a common prefix/suffix if desired.",
+    "The use of `std::to_string` for the default case is correct but contributes to the verbosity when a simpler direct print could suffice."
+  ]
+}

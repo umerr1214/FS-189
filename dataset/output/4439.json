@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Implement a simple linear search function that takes an integer array, its size, and a target value. It should return the index of the target if found, otherwise -1.",
+  "test_cases": [
+    { "input": "{10, 20, 30, 40, 50}, 5, 30", "expected": "2" },
+    { "input": "{5, 15, 25}, 3, 15", "expected": "1" },
+    { "input": "{10, 20, 30}, 3, 10", "expected": "0" },
+    { "input": "{1, 2, 3}, 3, 4", "expected": "-1" },
+    { "input": "{}, 0, 10", "expected": "-1" }
+  ],
+  "driver": "int main() {\n    int arr1[] = {10, 20, 30, 40, 50};\n    int size1 = sizeof(arr1) / sizeof(arr1[0]);\n    std::cout << \"Target 30 in arr1: \" << linearSearch(arr1, size1, 30) << std::endl;\n    std::cout << \"Target 10 in arr1: \" << linearSearch(arr1, size1, 10) << std::endl;\n\n    int arr2[] = {5, 15, 25};\n    int size2 = sizeof(arr2) / sizeof(arr2[0]);\n    std::cout << \"Target 5 in arr2: \" << linearSearch(arr2, size2, 5) << std::endl;\n    std::cout << \"Target 15 in arr2: \" << linearSearch(arr2, size2, 15) << std::endl;\n    std::cout << \"Target 10 in arr2: \" << linearSearch(arr2, size2, 10) << std::endl;\n\n    int arr3[] = {};\n    int size3 = 0;\n    std::cout << \"Target 10 in empty arr3: \" << linearSearch(arr3, size3, 10) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The function incorrectly returns 0 if the target is found, regardless of its actual index. It only correctly returns the index 0 if the target happens to be at index 0. Otherwise, it returns an incorrect index (0) for found elements."]
+}

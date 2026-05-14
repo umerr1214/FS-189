@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a `Printer` class with overloaded `print` methods that can display a `string`, an `int`, a `double`, and a `bool` value to the console.",
+  "test_cases": [
+    {
+      "input": "p.print(\"Hello, C++\"); p.print(123); p.print(3.14159); p.print(true);",
+      "expected": "String: Hello, C++\nInt: 123\nDouble: 3.14159\nBool: true\n"
+    }
+  ],
+  "driver": "    Printer p;\n    p.print(\"Hello, C++\");\n    p.print(123);\n    p.print(3.14159);\n    p.print(true);\n    return 0;",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `print(double)` method has a semantic error: it ignores its `double` parameter and instead prints an unrelated private `int` member variable (`default_int_value`). This violates the intended purpose of the method, which is to display the provided double value."
+  ]
+}

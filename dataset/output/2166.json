@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create an `Engine` class with a simple constructor and `start()` method. Implement a `Car` class that uses composition: a `Car` object should contain an `Engine` object as a member. Ensure the `Engine` is properly constructed and its `start()` method can be called through the `Car` object.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation Error: `Engine::start()` is private." }
+  ],
+  "driver": "int main() {\n    Car myCar;\n    myCar.start();\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `Engine::start()` method is declared as private. When `Car::start()` attempts to call `engine.start()`, it results in a semantic error because `Car` does not have access to `Engine`'s private members. The `start()` method of `Engine` must be public for `Car` to call it."
+  ]
+}

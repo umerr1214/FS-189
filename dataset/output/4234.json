@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a C++ struct named `Book` with members `title` (std::string), `author` (std::string), and `publication_year` (int). Create an an array of three `Book` objects, prompt the user to enter details for each, and then print the details of all books.",
+  "test_cases": [
+    {
+      "input": "The Great Gatsby\nF. Scott Fitzgerald\n1925\n1984\nGeorge Orwell\n1949\nTo Kill a Mockingbird\nHarper Lee\n1960\n",
+      "expected": "Please enter details for three books:\nEnter details for Book 1:\nEnter title: Enter author: Enter publication year: Enter details for Book 2:\nEnter title: Enter author: Enter publication year: Enter details for Book 3:\nEnter title: Enter author: Enter publication year: \nBook Details:\nTitle: The Great Gatsby, Author: F. Scott Fitzgerald, Year: 1925\nTitle: 1984, Author: George Orwell, Year: 1949\nTitle: To Kill a Mockingbird, Author: Harper Lee, Year: 1960\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\n// This is a placeholder for the driver.\n// In a real evaluation system, the user's compiled program\n// would be executed, and its standard input/output would be\n// redirected to match the test_cases.\nint main() {\n    std::cout << \"Driver executing user's compiled program with provided test case input.\" << std::endl;\n    // Example:\n    // system(\"./user_program < input.txt > output.txt\");\n    return 0;\n}",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after struct definition, leading to a compilation error."
+  ]
+}

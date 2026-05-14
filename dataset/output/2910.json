@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Define an abstract base class `Animal` with a pure virtual `void makeSound()` method. Derive concrete classes `Dog` and `Cat` from `Animal`, and each should provide its specific implementation for the `makeSound()` method.",
+  "test_cases": [
+    { "input": "call Dog::makeSound()", "expected": "Woof!\n" },
+    { "input": "attempt to instantiate Cat", "expected": "Compilation Error: Cannot instantiate abstract class 'Cat'." }
+  ],
+  "driver": "    Dog myDog;\n    myDog.makeSound();\n\n    std::cout << \"Attempting to instantiate Cat (which is abstract)...\\n\";\n    // This line will cause a compilation error (semantic error)\n    // because 'Cat' is an abstract class (due to not implementing makeSound())\n    // and therefore cannot be instantiated directly.\n    // Cat myCat; // Attempting to instantiate an abstract class",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The 'Cat' class fails to provide an implementation for the pure virtual method 'makeSound()' inherited from 'Animal'. This makes 'Cat' an abstract class.",
+    "Attempting to instantiate the abstract class 'Cat' directly (e.g., 'Cat myCat;') results in a compilation error because abstract classes cannot be instantiated."
+  ]
+}

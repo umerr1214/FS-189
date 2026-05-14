@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `int customStrlen(const char* str)` that takes a C-style string (character array) as input and returns its length (number of characters excluding the null terminator) without using the built-in `strlen()` function.",
+  "test_cases": [
+    { "input": "\"hello\"", "expected": "5" },
+    { "input": "\"\"", "expected": "0" },
+    { "input": "\"a\"", "expected": "1" },
+    { "input": "\"long string with spaces\"", "expected": "23" },
+    { "input": "nullptr", "expected": "0" }
+  ],
+  "driver": "const char* s1 = \"hello\";\nconst char* s2 = \"\";\nconst char* s3 = \"a\";\nconst char* s4 = \"long string with spaces\";\nconst char* s5 = nullptr;\n\nstd::cout << \"Testing with \\\"hello\\\": \" << customStrlen(s1) << std::endl;\nstd::cout << \"Testing with \\\"\\\": \" << customStrlen(s2) << std::endl;\nstd::cout << \"Testing with \\\"a\\\": \" << customStrlen(s3) << std::endl;\nstd::cout << \"Testing with \\\"long string with spaces\\\": \" << customStrlen(s4) << std::endl;\nstd::cout << \"Testing with nullptr: \" << customStrlen(s5) << std::endl;",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The function `customStrlen` converts the `const char*` input to a temporary `std::string` object and then calls `std::string::length()`. This is inefficient as it involves an unnecessary memory allocation and string copy, which defeats the purpose of implementing a custom length calculation for C-style strings directly."
+  ]
+}

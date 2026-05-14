@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `Point` class with private members `x` and `y` (integers). Overload the binary `+` operator as a member function to add two `Point` objects, returning a new `Point` object representing the sum of their coordinates.",
+  "test_cases": [
+    { "input": "Point p1(1, 2); Point p2(3, 4);", "expected": "Sum 1: (4, 6)\n" },
+    { "input": "Point p3(-5, 10); Point p4(7, -3);", "expected": "Sum 2: (2, 7)\n" },
+    { "input": "Point p5(0, 0); Point p6(100, -200);", "expected": "Sum 3: (100, -200)\n" }
+  ],
+  "driver": "int main() {\n    Point p1(1, 2);\n    Point p2(3, 4);\n    Point& p_sum1_ref = p1 + p2; \n    std::cout << \"Sum 1: (\" << p_sum1_ref.getX() << \", \" << p_sum1_ref.getY() << \")\\n\";\n\n    Point p3(-5, 10);\n    Point p4(7, -3);\n    Point& p_sum2_ref = p3 + p4;\n    std::cout << \"Sum 2: (\" << p_sum2_ref.getX() << \", \" << p_sum2_ref.getY() << \")\\n\";\n\n    Point p5(0, 0);\n    Point p6(100, -200);\n    Point& p_sum3_ref = p5 + p6;\n    std::cout << \"Sum 3: (\" << p_sum3_ref.getX() << \", \" << p_sum3_ref.getY() << \")\\n\";\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `operator+` member function returns a local `Point` object by reference (`Point&`), leading to a dangling reference and undefined behavior when the returned reference is used. This is a severe robustness issue.",
+    "The `operator+` is not declared `const`, which prevents it from being called on `const Point` objects, reducing the robustness of the class's interface."
+  ]
+}

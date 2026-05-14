@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `bool isPalindrome(int num)` that accepts an integer and returns `true` if it's a palindrome (reads the same forwards and backwards, e.g., 121) and `false` otherwise. In `main`, prompt the user for an integer and use this function to check and print the result.",
+  "test_cases": [
+    { "input": "121", "expected": "121 is a palindrome.\n" },
+    { "input": "123", "expected": "123 is not a palindrome.\n" },
+    { "input": "0", "expected": "0 is a palindrome.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n\n// The isPalindrome function would be included here for testing.\n// Assuming it's defined in the context where this driver runs.\n\nint main() {\n    std::vector<std::pair<int, bool>> testInputs = {\n        {121, true},\n        {123, false},\n        {0, true},\n        {7, true},\n        {-121, false},\n        {1221, true},\n        {10, false}\n    };\n\n    for (const auto& tc : testInputs) {\n        bool result = isPalindrome(tc.first);\n        if (result == tc.second) {\n            // std::cout << \"Test passed for input \" << tc.first << std::endl;\n        } else {\n            std::cerr << \"Test failed for input \" << tc.first\n                      << \". Expected: \" << (tc.second ? \"true\" : \"false\")\n                      << \", Got: \" << (result ? \"true\" : \"false\") << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after `std::cout << \"Enter an integer: \"` statement in `main` function."
+  ]
+}

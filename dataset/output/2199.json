@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Parent` and a derived class `Child`. Add a constructor and a destructor to both classes, each printing a message indicating its creation or destruction. Demonstrate the order in which these constructors and destructors are called when a `Child` object is created and destroyed.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Creating Child object ---\nParent Constructor Called\nChild Constructor Called\n--- Child object created ---\n--- Child object going out of scope ---\nChild Destructor Called\nParent Destructor Called\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

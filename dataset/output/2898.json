@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create an `Engine` class with attributes like `horsepower` and `fuelType`. Then, design a `Car` class that *contains* an `Engine` object as a member, demonstrating composition. The `Car` constructor should initialize its `Engine` member.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Car Model: Sedan X\nEngine: 150 HP, Fuel Type: Petrol\nCar Model: SUV Y\nEngine: 200 HP, Fuel Type: Diesel\n"
+    }
+  ],
+  "driver": "int main() {\n    Car myCar(\"Sedan X\", 150, \"Petrol\");\n    myCar.displayCarInfo();\n\n    Car anotherCar(\"SUV Y\", 200, \"Diesel\");\n    anotherCar.displayCarInfo();\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": []
+}

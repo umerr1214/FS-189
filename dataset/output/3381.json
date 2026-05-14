@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Declare an integer variable, a float variable, and a char variable. Declare and initialize a pointer for each variable, then use the pointers to print the values and memory addresses of the original variables.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Integer Variable:\n  Value: 100\n  Address: 0x[0-9a-fA-F]+\n\nFloat Variable:\n  Value: 123.456\n  Address: 0x[0-9a-fA-F]+\n\nChar Variable:\n  Value: A\n  Address: 0x[0-9a-fA-F]+"
+    }
+  ],
+  "driver": "g++ -o 3381 3381.cpp && ./3381",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

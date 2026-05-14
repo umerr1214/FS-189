@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Extend the `Shape` and `Circle` example from Q4. Add a virtual `calculateArea()` method to `Shape` (returning 0 by default). Override `calculateArea()` in `Circle` to compute the circle's area. Demonstrate calling `calculateArea()` through a `Shape` pointer pointing to a `Circle` object.",
+  "test_cases": [
+    { "input": "Circle with radius 5.0", "expected": "Area: 78.5398..." },
+    { "input": "Circle with radius 10.0", "expected": "Area: 314.159..." }
+  ],
+  "driver": "int main() {\n    Shape* myShape = new Circle(5.0);\n    std::cout << myShape->calculateArea() << std::endl;\n    delete myShape;\n    Shape* anotherShape = new Circle(10.0);\n    std::cout << anotherShape->calculateArea() << std::endl;\n    delete anotherShape;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "In the `Circle::calculateArea()` method, `std::pow(radius, 2)` is used for squaring. While functionally correct, `radius * radius` is generally more efficient for simple squaring operations and can be considered more readable by some.",
+    "The use of `M_PI` from `<cmath>` is standard, but some might prefer defining a `const double PI = 3.141592653589793;` within the class or a global constant for explicit control and avoiding a dependency on specific math library constants, though this is a minor readability/efficiency point."
+  ]
+}

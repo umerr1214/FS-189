@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private attributes for `title`, `author`, and `isbn` (International Standard Book Number). Implement a parameterized constructor to initialize these attributes and a public method `displayDetails()` that prints all book information. Ensure data encapsulation.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "Book Details:\n    Title: The Hitchhiker's Guide to the Galaxy\n    Author: Douglas Adams\n    ISBN: 978-0345391803\n    --------------------\n---\nBook Details:\n    Title: 1984\n    Author: George Orwell\n    ISBN: 978-0451524935\n    --------------------\n---\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// Assuming the Book class is defined above in the user's code\n\nint main() {\n    Book book1(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\");\n    book1.displayDetails();\n    std::cout << \"---\" << std::endl;\n\n    Book book2(\"1984\", \"George Orwell\", \"978-0451524935\");\n    book2.displayDetails();\n    std::cout << \"---\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The constructor parameters for `title`, `author`, and `isbn` are passed by value (`std::string`), leading to unnecessary string copies. Passing by `const std::string&` would be more efficient.",
+    "Overuse of `this->` for member access, which can slightly reduce readability when not strictly needed to resolve ambiguity (e.g., when member initializer list is not used or parameter names differ from member names).",
+    "The `displayDetails` method includes an unnecessary separator line (`--------------------`) and extra indentation, making the output less concise and potentially less readable.",
+    "The `displayDetails` method is not marked `const`, which is a minor issue but impacts correctness and good practice."
+  ]
+}

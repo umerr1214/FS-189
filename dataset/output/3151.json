@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a `ComplexNumber` class with `real` and `imaginary` parts. Overload the binary `+` operator to enable addition of two `ComplexNumber` objects.",
+  "test_cases": [
+    { "input": "c1(2.5, 3.0), c2(1.0, -1.5)", "expected": "(2.50 + 3.00i) + (1.00 - 1.50i) = 3.50 + 1.50i" },
+    { "input": "c1(2.5, 3.0), c4(0.0, 0.0)", "expected": "(2.50 + 3.00i) + (0.00 + 0.00i) = 2.50 + 3.00i" },
+    { "input": "Default-constructed c6", "expected": "Default-constructed c6: [uninitialized real] + [uninitialized imaginary]i (values will be garbage and unpredictable)" },
+    { "input": "c6 (uninitialized) + c7(5.0, 5.0)", "expected": "([uninitialized real] + [uninitialized imaginary]i) + (5.00 + 5.00i) = ([uninitialized real] + 5.00) + ([uninitialized imaginary] + 5.00)i (result will be garbage and unpredictable)" },
+    { "input": "c9(10.0, -7.0), c10(-3.0, 2.0)", "expected": "(10.00 - 7.00i) + (-3.00 + 2.00i) = 7.00 - 5.00i" }
+  ],
+  "driver": "See main function in .cpp file.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The default constructor `ComplexNumber()` leaves the `real` and `imaginary` member variables uninitialized. If an object is created using this constructor (e.g., `ComplexNumber c;`) and its values are accessed before being explicitly assigned, it will contain garbage values. This leads to undefined behavior and makes the class non-robust for default initialization scenarios, as demonstrated in Test Case 3."
+  ]
+}

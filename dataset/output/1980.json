@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `StringWrapper` class that manages a C-style string (`char*`) dynamically allocated on the heap. Provide a copy constructor that performs a deep copy to prevent dangling pointers.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- StringWrapper Test (Semantic Error: Missing Assignment Operator) ---\ns1: StringWrapper content: \"First String\"\ns2: StringWrapper content: \"Second String\"\n\nAssigning s1 = s2 (triggers shallow copy assignment)...\nAfter assignment:\ns1: StringWrapper content: \"Second String\"\ns2: StringWrapper content: \"Second String\"\n\n--- Demonstrating Double Free Potential ---\nInside scope:\na: StringWrapper content: \"Hello\"\nb: StringWrapper content: \"World\"\nAfter b = a (shallow copy):\na: StringWrapper content: \"Hello\"\nb: StringWrapper content: \"Hello\"\n\n--- End Test (Potential Double Free on Exit) ---\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- StringWrapper Test (Semantic Error: Missing Assignment Operator) ---\" << std::endl;\n    StringWrapper s1(\"First String\");\n    std::cout << \"s1: \"; s1.print();\n    StringWrapper s2(\"Second String\");\n    std::cout << \"s2: \"; s2.print();\n    std::cout << \"\\nAssigning s1 = s2 (triggers shallow copy assignment)...\";\n    s1 = s2;\n    std::cout << \"\\nAfter assignment:\" << std::endl;\n    std::cout << \"s1: \"; s1.print();\n    std::cout << \"s2: \"; s2.print();\n    std::cout << \"\\n--- Demonstrating Double Free Potential ---\" << std::endl;\n    {\n        StringWrapper a(\"Hello\");\n        StringWrapper b(\"World\");\n        std::cout << \"Inside scope:\" << std::endl;\n        std::cout << \"a: \"; a.print();\n        std::cout << \"b: \"; b.print();\n        b = a;\n        std::cout << \"After b = a (shallow copy):\" << std::endl;\n        std::cout << \"a: \"; a.print();\n        std::cout << \"b: \"; b.print();\n    }\n    std::cout << \"\\n--- End Test (Potential Double Free on Exit) ---\" << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The `StringWrapper` class manages dynamic memory but lacks a user-defined copy assignment operator. This leads to the compiler-generated shallow copy assignment operator being used, causing multiple objects to point to the same memory. This results in a double-free error when the objects are destructed."]
+}

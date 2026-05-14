@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "For a `Book` class with `title` and `author`, overload the `<<` (insertion) operator to allow direct printing of `Book` objects to `std::cout` in a readable format.",
+  "test_cases": [
+    { "input": "", "expected": "Book 1: Title: The Hitchhiker's Guide to the Galaxy, Author: Douglas Adams\nBook 2: Title: 1984, Author: George Orwell\n" }
+  ],
+  "driver": "int main() {\n    Book book1(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\");\n    Book book2(\"1984\", \"George Orwell\");\n\n    std::cout << \"Book 1: \" << book1 << std::endl;\n    std::cout << \"Book 2: \" << book2 << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": []
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Student` with members `name` (std::string), `id` (int), and `grade` (float). Create an array of 3 `Student` objects, populate it with data, and then print the details (name, id, grade) of the student with the highest grade.",
+  "test_cases": [
+    {
+      "input": "Hardcoded student data:\nAlice, 101, -5.5\nBob, 102, -8.0\nCharlie, 103, -2.2",
+      "expected": "Student with the highest grade:\nName: Charlie\nID: 103\nGrade: -2.20\n"
+    }
+  ],
+  "driver": "int main() { /* The test harness will compile and run the provided .cpp file. */ return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program fails to correctly identify the student with the highest grade when all grades are negative. The 'max_grade' is initialized to 0.0f, and the comparison `students[i].grade > max_grade` never evaluates to true for negative grades, causing the 'highest_student' variable to remain at its initial value (students[0]) instead of updating to the actual highest grade student among the negative values."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter the length and width of a rectangle. Calculate and print both the area and the perimeter of the rectangle, ensuring to use appropriate data types for real-world measurements.",
+  "test_cases": [
+    {
+      "input": "10.5 5.2",
+      "expected": "Enter length: Enter width: Area: 54.60\nPerimeter: 31.40\n"
+    },
+    {
+      "input": "7.0 3.0",
+      "expected": "Enter length: Enter width: Area: 21.00\nPerimeter: 20.00\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\nextern void solution_main();\n\nint main() {\n    // In a testing environment, stdin/stdout might be redirected.\n    // The solution_main function is expected to handle I/O directly.\n    solution_main();\n    return 0;\n}",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'std::endl' on the line printing the area. This will cause a compilation error."
+  ]
+}

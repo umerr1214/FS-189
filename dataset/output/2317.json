@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `PrivateData` class that has a private integer member `value`. Declare an external `friend` function `displayPrivateValue(const PrivateData& obj)` that can access and print `obj.value`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Attempting to display uninitialized private value:\nPrivate Value: [indeterminate_value]\nAttempting to display initialized private value:\nPrivate Value: 200\n"
+    }
+  ],
+  "driver": "int main() {\n    PrivateData p;\n    std::cout << \"Attempting to display uninitialized private value:\" << std::endl;\n    displayPrivateValue(p);\n    p.setValue(200);\n    std::cout << \"Attempting to display initialized private value:\" << std::endl;\n    displayPrivateValue(p);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `PrivateData` class lacks an explicit constructor to initialize its `value` member. When `PrivateData p;` is created, `p.value` remains uninitialized, leading to undefined behavior (printing a garbage value) when `displayPrivateValue(p)` is called before `setValue()` is invoked. This is a common robustness issue in C++ where objects are used without proper initialization."
+  ]
+}

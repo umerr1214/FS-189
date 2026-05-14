@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function `calculateFactorial` that takes an integer `n` as input and returns its factorial. The main program should prompt the user for a number and display its factorial using this function. Handle negative inputs appropriately.",
+  "test_cases": [
+    { "input": "0", "expected": "1" },
+    { "input": "5", "expected": "120" },
+    { "input": "-3", "expected": "-1" },
+    { "input": "10", "expected": "3628800" },
+    { "input": "15", "expected": "1307674368000" }
+  ],
+  "driver": "int main() { std::string line; while (std::getline(std::cin, line)) { std::stringstream ss(line); int n; ss >> n; long long result = calculateFactorial(n); std::cout << result << std::endl; } return 0; }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `calculateFactorial` function uses a recursive approach. While mathematically elegant, for factorial calculation, an iterative loop is generally more efficient in C++ due to function call overhead. For extremely large inputs (beyond what `long long` can hold), recursion could also lead to stack overflow.",
+    "The variable name `num` in the function signature could be more descriptive, like `n` or `input_n`, for slightly improved readability."
+  ]
+}

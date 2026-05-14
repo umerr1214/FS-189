@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that declares an integer array of size 10. Prompt the user to enter 10 integer values to populate the array. After reading all inputs, find and print the largest element present in the array.",
+  "test_cases": [
+    { "input": "1 2 3 4 5 6 7 8 9 10", "expected": "The largest element in the array is: 10\n" },
+    { "input": "-1 -2 -3 -4 -5 -6 -7 -8 -9 -10", "expected": "The largest element in the array is: -1\n" },
+    { "input": "0 0 0 0 0 0 0 0 0 0", "expected": "The largest element in the array is: 0\n" },
+    { "input": "100 -50 20 150 -10 50 30 200 5 -20", "expected": "The largest element in the array is: 200\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <cstdio> // For popen/pclose or system\n\n// This is a placeholder driver. In a real testing environment,\n// the 'solution' program would be compiled and then executed\n// with its stdin redirected from the 'input' string of each test case.\n// Its stdout would be captured and compared with the 'expected' string.\n\n// Example conceptual execution for a test case:\n// system(\"echo \\\"<test_case_input>\\\" | ./solution > output.txt\");\n// Read output.txt and compare with <test_case_expected>;\n\nint main() {\n    std::cout << \"This C++ driver is a placeholder to illustrate how the user's solution would be tested.\" << std::endl;\n    std::cout << \"The actual testing involves compiling the user's code into an executable (e.g., 'solution'),\" << std::endl;\n    std::cout << \"then running it for each test case by redirecting standard input and capturing standard output.\" << std::endl;\n    std::cout << \"For example, using shell commands like: \" << std::endl;\n    std::cout << \"  echo \\\"1 2 3 4 5 6 7 8 9 10\\\" | ./solution\" << std::endl;\n    std::cout << \"The output of './solution' would then be compared to the expected output.\" << std::endl;\n    return 0;\n}\n",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

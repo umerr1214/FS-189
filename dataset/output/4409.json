@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Declare and initialize a 3x3 integer 2D array (matrix). Calculate and print the sum of all elements in the entire matrix.",
+  "test_cases": [
+    { "input": "", "expected": "Sum of all elements: 420\n" }
+  ],
+  "driver": "int main_wrapper() {\n    int matrix[3][3] = {\n        {10, 20, 30},\n        {40, 50, 60},\n        {70, 80, 90}\n    };\n    int correct_sum = 0;\n    for (int i = 0; i < 3; ++i) {\n        for (int j = 0; j < 3; ++j) {\n            correct_sum += matrix[i][j];\n        }\n    }\n    std::cout << \"Sum of all elements: \" << correct_sum << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The inner loop iterates 'j < 2' instead of 'j < 3', causing only the first two columns of each row to be summed. The last column (index 2) is entirely missed. Expected sum is 420, but the code will output 270 (10+20 + 40+50 + 70+80 = 30 + 90 + 150 = 270)."
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Define a `Vector2D` class with `x` and `y` components. Overload the `+` operator to perform vector addition of two `Vector2D` objects.",
+  "test_cases": [
+    { "input": "Vector2D v1(1.0, 2.0); Vector2D v2(3.0, 4.0);", "expected": "v3 = (4.0, 6.0)" },
+    { "input": "Vector2D v4(-0.5, 10.0); Vector2D v5(1.5, -3.0);", "expected": "v6 = (1.0, 7.0)" }
+  ],
+  "driver": "void printVector(const Vector2D& v, const std::string& name) {\n    std::cout << name << \" = (\" << v.x << \", \" << v.y << \")\" << std::endl;\n}\n\nint main() {\n    Vector2D v1(1.0, 2.0);\n    Vector2D v2(3.0, 4.0);\n    Vector2D v3 = v1 + v2;\n    printVector(v3, \"v3\");\n\n    Vector2D v4(-0.5, 10.0);\n    Vector2D v5(1.5, -3.0);\n    Vector2D v6 = v4 + v5;\n    printVector(v6, \"v6\");\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

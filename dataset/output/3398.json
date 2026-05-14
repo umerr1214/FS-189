@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Count the number of words in a sentence entered by the user. Assume words are separated by single spaces and there are no leading or trailing spaces.",
+  "test_cases": [
+    { "input": "hello world", "expected": "2" },
+    { "input": "one", "expected": "1" },
+    { "input": "", "expected": "0" },
+    { "input": "  multiple   spaces   here ", "expected": "4" },
+    { "input": " leading and trailing ", "expected": "4" },
+    { "input": "justone", "expected": "1" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// Forward declaration of the function implemented in the submitted C++ file\nint countWords(const std::string& sentence);\n\nint main() {\n    std::vector<std::pair<std::string, int>> test_cases = {\n        {\"hello world\", 2},\n        {\"one\", 1},\n        {\"\", 0},\n        {\"  multiple   spaces   here \", 4},\n        {\" leading and trailing \", 4},\n        {\"justone\", 1}\n    };\n\n    int passed_count = 0;\n    for (size_t i = 0; i < test_cases.size(); ++i) {\n        const std::string& input = test_cases[i].first;\n        int expected = test_cases[i].second;\n        int result = countWords(input);\n\n        if (result == expected) {\n            passed_count++;\n        }\n    }\n\n    std::cout << \"Passed: \" << passed_count << \"/\" << test_cases.size() << std::endl;\n\n    return (passed_count == test_cases.size() ? 0 : 1);\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The implementation is inefficient as it repeatedly modifies and copies the string using `std::string::erase` within a loop. A single pass or `std::stringstream` approach would be more efficient.",
+    "The logic, while correct, is somewhat convoluted due to the repetitive string manipulation, making it less readable than alternative methods."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a simple calculator program that takes two numbers and an operator (+, -, *, /) as input from the user. Use a switch statement to perform the chosen operation and display the result. Handle division by zero.",
+  "test_cases": [
+    { "input": "10\n+\n5\n", "expected": "Result: 15\n" },
+    { "input": "5\n/\n2\n", "expected": "Result: 2.5\n" },
+    { "input": "10\n/\n3\n", "expected": "Result: 3.333333\n" },
+    { "input": "10\n/\n0\n", "expected": "Error: Division by zero is not allowed.\n" },
+    { "input": "7\n*\n3\n", "expected": "Result: 21\n" }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The variables 'num1' and 'num2' are declared as 'int'. This leads to integer division for the '/' operator (e.g., 5 / 2 results in 2.0 instead of 2.5), misinterpreting the requirement for general 'numbers' in a calculator and causing loss of precision."]
+}

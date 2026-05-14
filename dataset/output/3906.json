@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that asks the user to enter an integer between 1 and 7, and then uses a switch statement to print the corresponding day of the week (e.g., 1 for Monday, 2 for Tuesday, etc.). Handle invalid input.",
+  "test_cases": [
+    { "input": "1", "expected": "Invalid input. Please enter a number between 1 and 7.\n" },
+    { "input": "4", "expected": "Invalid input. Please enter a number between 1 and 7.\n" },
+    { "input": "7", "expected": "Invalid input. Please enter a number between 1 and 7.\n" },
+    { "input": "0", "expected": "Invalid input. Please enter a number between 1 and 7.\n" },
+    { "input": "8", "expected": "Invalid input. Please enter a number between 1 and 7.\n" },
+    { "input": "a", "expected": "Invalid input. Please enter a number between 1 and 7.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// This is a generic driver structure for testing. \n// For this problem, the user's solution is expected to be a complete program \n// that interacts directly with std::cin and std::cout. \n// Therefore, an external testing harness would typically redirect standard input \n// for the program and capture standard output. \n// The 'main' function within the user's submission itself acts as its own driver.\nint main() {\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The 'day_char' variable is declared as 'char' but the 'switch' cases compare it to integer literals (e.g., 'case 1:' instead of 'case '1':'). This means for character inputs like '1' (ASCII 49), it will never match 'case 1' (integer 1), leading to the 'default' case being executed for all valid character inputs."]
+}

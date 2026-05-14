@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a `Calculator` class with overloaded `add` methods. One `add` method should take two `int` arguments, another should take two `double` arguments, and a third should concatenate two `std::string` arguments.",
+  "test_cases": [
+    { "input": "calc.add(5, 3)", "expected": "8" },
+    { "input": "calc.add(5.5, 3.3)", "expected": "8.8" },
+    { "input": "calc.add(\"Hello\", \"World\")", "expected": "HelloWorld" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// Assuming Calculator class is defined\n\nint main() {\n    Calculator calc;\n\n    // Test int add\n    std::cout << \"Int add (5 + 3): \" << calc.add(5, 3) << std::endl;\n\n    // Test double add\n    std::cout << \"Double add (5.5 + 3.3): \" << calc.add(5.5, 3.3) << std::endl;\n\n    // Test string add\n    std::cout << \"String add (\\\"Hello\\\" + \\\"World\\\"): \" << calc.add(\"Hello\", \"World\") << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

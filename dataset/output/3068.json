@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Implement a `Calculator` class with an overloaded public method `add`. It should be able to: 1) add two integers, 2) add three integers, and 3) add two double-precision numbers. Demonstrate calling each version of the `add` method.",
+  "test_cases": [
+    { "input": "", "expected": "Adding two integers (10, 20): 30\nAdding two integers (-5, 15): 10\nAdding three integers (1, 2, 3): 6\nAdding three integers (100, -50, 20): 70\nAdding two doubles (10.5, 20.3): 30.8\nAdding two doubles (-2.5, 7.0): 4.5\n" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\nclass Calculator3068 {\npublic:\n    int add(int v1, int v2) {\n        return v1 + v2;\n    }\n\n    int add(int v1, int v2, int v3) {\n        return add(v1, v2) + v3;\n    }\n\n    double add(double d1, double d2) {\n        return d1 + d2;\n    }\n};\n\nint main() {\n    Calculator3068 calculator;\n\n    std::cout << \"Adding two integers (10, 20): \" << calculator.add(10, 20) << std::endl;\n    std::cout << \"Adding two integers (-5, 15): \" << calculator.add(-5, 15) << std::endl;\n\n    std::cout << \"Adding three integers (1, 2, 3): \" << calculator.add(1, 2, 3) << std::endl;\n    std::cout << \"Adding three integers (100, -50, 20): \" << calculator.add(100, -50, 20) << std::endl;\n\n    std::cout << std::fixed << std::setprecision(1);\n    std::cout << \"Adding two doubles (10.5, 20.3): \" << calculator.add(10.5, 20.3) << std::endl;\n    std::cout << \"Adding two doubles (-2.5, 7.0): \" << calculator.add(-2.5, 7.0) << std::endl;\n    std::cout << std::setprecision(6);\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Variable names like `v1`, `v2`, `v3`, `d1`, `d2` are not descriptive, significantly reducing code readability and making it harder to understand their purpose.",
+    "The `add(int, int, int)` method calls `add(int, int)` internally. While functionally correct, it adds a minor, unnecessary function call overhead compared to a direct sum (`v1 + v2 + v3`), making it slightly less efficient and less straightforward to read.",
+    "Lack of comments to explain the purpose of methods or parameters further hinders readability for future maintainers."
+  ]
+}

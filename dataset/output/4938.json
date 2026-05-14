@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Implement a simple menu-driven calculator in C++ that allows the user to choose between addition, subtraction, multiplication, and division for two numbers. Use a switch statement to handle the operations.",
+  "test_cases": [
+    { "input": "1\n10\n5\n", "expected": "Simple Calculator\n1. Addition\n2. Subtraction\n3. Multiplication\n4. Division\nEnter your choice (1-4): Enter first number: Enter second number: Result: 15\n" },
+    { "input": "2\n20\n7\n", "expected": "Simple Calculator\n1. Addition\n2. Subtraction\n3. Multiplication\n4. Division\nEnter your choice (1-4): Enter first number: Enter second number: Result: 13\n" },
+    { "input": "5\n10\n2\n", "expected": "Simple Calculator\n1. Addition\n2. Subtraction\n3. Multiplication\n4. Division\nEnter your choice (1-4): Enter first number: Enter second number: Invalid choice!\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\nint main() {\n    // This driver is conceptual for automated testing.\n    // In a real test environment, the student's compiled C++ program\n    // would be executed. Its standard input (stdin) would be fed\n    // with the 'input' string from the test case, and its standard output (stdout)\n    // would be captured and compared against the 'expected' string.\n    std::cout << \"Test driver ready to execute student's calculator program with redirected I/O.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    {
+      "line": 45,
+      "column": 24,
+      "message": "The variable 'result' is used (printed) without being initialized when an invalid choice is made, leading to undefined behavior."
+    }
+  ]
+}

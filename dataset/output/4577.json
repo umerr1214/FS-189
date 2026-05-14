@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `bool areMatricesEqual(int mat1[ROWS][COLS], int mat2[ROWS][COLS], int rows, int cols)` that checks if two 2D integer matrices are identical. Demonstrate with example matrices in `main`.",
+  "test_cases": [
+    { "input": "mat1={{1,2,3},{4,5,6},{7,8,9}}, mat2={{1,2,3},{4,5,6},{7,8,9}}, rows=3, cols=3", "expected": "Test 1: Matrices are equal.\n" },
+    { "input": "mat1={{1,2,3},{4,5,6},{7,8,9}}, mat2={{1,2,3},{4,0,6},{7,8,9}}, rows=3, cols=3", "expected": "Test 2: Matrices are not equal.\n" },
+    { "input": "mat1={{1,2,3},{4,5,6},{7,8,9}}, mat2={{1,2,3},{4,5,6},{7,8,9}}, rows=2, cols=2", "expected": "Test 3: Matrices (2x2) are equal.\n" }
+  ],
+  "driver": "int main() {\n    int matrix1[MAX_ROWS][MAX_COLS] = {\n        {1, 2, 3},\n        {4, 5, 6},\n        {7, 8, 9}\n    };\n\n    int matrix2[MAX_ROWS][MAX_COLS] = {\n        {1, 2, 3},\n        {4, 5, 6},\n        {7, 8, 9}\n    };\n\n    int matrix3[MAX_ROWS][MAX_COLS] = {\n        {1, 2, 3},\n        {4, 0, 6},\n        {7, 8, 9}\n    };\n    \n    if (areMatricesEqual(matrix1, matrix2, 3, 3)) {\n        std::cout << \"Test 1: Matrices are equal.\" << std::endl;\n    } else {\n        std::cout << \"Test 1: Matrices are not equal.\" << std::endl;\n    }\n\n    if (areMatricesEqual(matrix1, matrix3, 3, 3)) {\n        std::cout << \"Test 2: Matrices are equal.\" << std::endl;\n    } else {\n        std::cout << \"Test 2: Matrices are not equal.\" << std::endl;\n    }\n\n    if (areMatricesEqual(matrix1, matrix2, 2, 2)) {\n        std::cout << \"Test 3: Matrices (2x2) are equal.\" << std::endl;\n    } else {\n        std::cout << \"Test 3: Matrices (2x2) are not equal.\" << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The function `areMatricesEqual` incorrectly returns `true` if any single element matches, instead of ensuring all elements match. It should only return `true` after iterating through all specified elements without finding a mismatch."]
+}

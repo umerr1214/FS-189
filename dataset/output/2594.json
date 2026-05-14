@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a `Product` class with private members `id` (int), `name` (string), and `price` (double). Implement a single constructor that uses default arguments to allow creating `Product` objects either with all attributes provided, or with only `id` and `name` (default `price` to 0.0), or with no arguments (default `id` to 0, `name` to \"Unnamed\", `price` to 0.0).",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "P1: ID=101, Name=Laptop Pro, Price=1200.50\nP2: ID=202, Name=Wireless Mouse, Price=0.00\nP3: ID=0, Name=Unnamed, Price=0.00\nP4: ID=404, Name=Charger, Price=45.99\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <iomanip>\n\nclass Product {\nprivate:\n    int _id;\n    std::string _name;\n    double _price;\n\npublic:\n    Product(int id = 0, std::string name = \"Unnamed\", double price = 0.0) {\n        this->_id = id;\n        this->_name = name;\n        this->_price = price;\n    }\n\n    int getId() const {\n        return _id;\n    }\n\n    const std::string& getName() const {\n        return _name;\n    }\n\n    double getPrice() const {\n        return _price;\n    }\n};\n\nint main() {\n    std::stringstream ss;\n\n    Product p1(101, \"Laptop Pro\", 1200.50);\n    ss << \"P1: ID=\" << p1.getId() << \", Name=\" << p1.getName() << \", Price=\" << std::fixed << std::setprecision(2) << p1.getPrice() << \"\\n\";\n\n    Product p2(202, \"Wireless Mouse\");\n    ss << \"P2: ID=\" << p2.getId() << \", Name=\" << p2.getName() << \", Price=\" << std::fixed << std::setprecision(2) << p2.getPrice() << \"\\n\";\n\n    Product p3;\n    ss << \"P3: ID=\" << p3.getId() << \", Name=\" << p3.getName() << \", Price=\" << std::fixed << std::setprecision(2) << p3.getPrice() << \"\\n\";\n\n    Product p4(404, \"Charger\", 45.99);\n    ss << \"P4: ID=\" << p4.getId() << \", Name=\" << p4.getName() << \", Price=\" << std::fixed << std::setprecision(2) << p4.getPrice() << \"\\n\";\n\n    std::cout << ss.str();\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The constructor takes the `name` parameter by value (`std::string name`). This causes an unnecessary copy of the string when a `std::string` object is passed as an argument. For efficiency, it should be passed by `const std::string&` (or `std::string&&` for move semantics).",
+    "Member variables (`_id`, `_name`, `_price`) are initialized using assignment in the constructor body instead of an initializer list. For non-trivial types like `std::string`, this means default-constructing the member and then assigning a new value, leading to potentially two operations instead of one direct construction. Using an initializer list is generally more efficient and idiomatic C++."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Explain the necessity of a virtual destructor in a polymorphic base class. Provide a simple C++ code structure with a `Base` class and a `Derived` class, illustrating a scenario where a non-virtual destructor leads to a memory leak and how a virtual destructor solves it.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstration of Virtual Destructor Necessity ---\n\nScenario 1: Using BaseNonVirtual (non-virtual destructor)\n  BaseNonVirtual constructor called.\n  DerivedLeak constructor called. Allocated 4000 bytes.\n  DerivedLeak information. First data element: 0.\n  Deleting BaseNonVirtual pointer...\n  BaseNonVirtual destructor called.\n  RESULT: DerivedLeak's destructor was NOT called. Memory leak occurred.\n  4000 bytes were leaked.\n\nScenario 2: Using BaseVirtual (virtual destructor)\n  BaseVirtual constructor called.\n  DerivedCorrect constructor called. Allocated 4000 bytes.\n  DerivedCorrect information. First data element: 0.\n  unique_ptr going out of scope, deleting BaseVirtual pointer...\n  DerivedCorrect destructor called. Deallocating m_correctData.\n  BaseVirtual destructor called.\n  RESULT: DerivedCorrect's destructor WAS called. All resources freed correctly.\n  4000 bytes were correctly deallocated.\n\n--- End of Demonstration ---\n"
+    }
+  ],
+  "driver": "// The main function directly demonstrates the concept.",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

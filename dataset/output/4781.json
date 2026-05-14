@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function `calculatePower(base, exponent)` that takes two integers (base and exponent) and returns `base` raised to the power of `exponent`. The program should then use this function to calculate and display the result for user-provided inputs. Assume `exponent` is non-negative.",
+  "test_cases": [
+    { "input": "2\n3", "expected": "Result: 8\n" },
+    { "input": "5\n0", "expected": "Result: 1\n" },
+    { "input": "10\n1", "expected": "Result: 10\n" },
+    { "input": "3\n4", "expected": "Result: 81\n" }
+  ],
+  "driver": "int main() {\n    int base, exponent;\n    std::cin >> base >> exponent;\n    std::cout << \"Result: \" << calculatePower(base, exponent) << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `calculatePower` function incorrectly calculates `base * exponent` instead of `base` raised to the power of `exponent`."
+  ]
+}

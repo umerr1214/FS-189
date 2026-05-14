@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Calculate and print the sum of all even numbers between 1 and a user-defined positive integer `N` (inclusive).",
+  "test_cases": [
+    { "input": "5", "expected": "Enter a positive integer N: The sum of even numbers is: 6\n" },
+    { "input": "10", "expected": "Enter a positive integer N: The sum of even numbers is: 30\n" },
+    { "input": "1", "expected": "Enter a positive integer N: The sum of even numbers is: 0\n" },
+    { "input": "2", "expected": "Enter a positive integer N: The sum of even numbers is: 2\n" },
+    { "input": "0", "expected": "Enter a positive integer N: The sum of even numbers is: 0\n" }
+  ],
+  "driver": "        #include <iostream>\n        #include <string>\n        #include <vector>\n        #include <sstream>\n        #include <utility> // For std::pair\n\n        // Forward declaration of the user's solution function\n        void solve(std::istream& in, std::ostream& out);\n\n        int main() {\n            std::vector<std::pair<std::string, std::string>> test_cases = {\n                {\"5\", \"Enter a positive integer N: The sum of even numbers is: 6\\n\"},\n                {\"10\", \"Enter a positive integer N: The sum of even numbers is: 30\\n\"},\n                {\"1\", \"Enter a positive integer N: The sum of even numbers is: 0\\n\"},\n                {\"2\", \"Enter a positive integer N: The sum of even numbers is: 2\\n\"},\n                {\"0\", \"Enter a positive integer N: The sum of even numbers is: 0\\n\"}\n            };\n\n            bool all_passed = true;\n            for (size_t i = 0; i < test_cases.size(); ++i) {\n                std::stringstream ss_in(test_cases[i].first);\n                std::stringstream ss_out;\n                \n                solve(ss_in, ss_out);\n                \n                if (ss_out.str() == test_cases[i].second) {\n                    // std::cout << \"Test Case \" << i + 1 << \" Passed.\" << std::endl;\n                } else {\n                    std::cerr << \"Test Case \" << i + 1 << \" Failed.\" << std::endl;\n                    std::cerr << \"Input: \\\"\" << test_cases[i].first << \"\\\"\" << std::endl;\n                    std::cerr << \"Expected: \\\"\" << test_cases[i].second << \"\\\"\" << std::endl;\n                    std::cerr << \"Got: \\\"\" << ss_out.str() << \"\\\"\" << std::endl;\n                    all_passed = false;\n                }\n            }\n\n            if (all_passed) {\n                return 0;\n            } else {\n                return 1;\n            }\n        }",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["The algorithm iterates through every number from 1 to N, then checks if it's even. This is less efficient than iterating directly over even numbers (e.g., `for (int i = 2; i <= N; i += 2)`), especially for large values of N. This constitutes an efficiency issue."]
+}

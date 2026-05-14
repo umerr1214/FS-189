@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a program that declares an array of 5 integers, prompts the user to enter values for each element, and then prints all elements of the array in reverse order.",
+  "test_cases": [
+    { "input": "1\n2\n3\n4\n5\n", "expected": "5\n4\n3\n2\n1\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// This driver is a placeholder. In a real testing environment,\n// the student's code would be compiled and executed as a separate process.\n// Its standard input and output streams would be redirected to capture input and output.\n// For example, if the student's code is compiled to 'student_program':\n// std::string input_data = \"1\\n2\\n3\\n4\\n5\\n\";\n// std::string expected_output = \"5\\n4\\n3\\n2\\n1\\n\";\n// system(\"echo \\\"\" + input_data + \"\\\" | ./student_program > actual_output.txt\");\n// Then, actual_output.txt would be read and compared with expected_output.\n\nint main() {\n    std::cout << \"This is a placeholder driver. The student's code would be compiled and run with redirected I/O.\" << std::endl;\n    std::cout << \"Example Test Case Input: \\\"1\\n2\\n3\\n4\\n5\\n\\\"\" << std::endl;\n    std::cout << \"Example Test Case Expected Output: \\\"5\\n4\\n3\\n2\\n1\\n\\\"\" << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'using namespace std' declaration."
+  ]
+}

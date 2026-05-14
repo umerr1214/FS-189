@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that uses nested `for` loops to print the following pattern of asterisks to the console, for a user-specified number of rows 'N':\n*\n**\n***\n****\n(For N=4)",
+  "test_cases": [
+    { "input": "4", "expected": "*\n**\n***\n****\n" },
+    { "input": "1", "expected": "*\n" },
+    { "input": "5", "expected": "*\n**\n***\n****\n*****\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// This is a conceptual driver. The actual submitted C++ code has its own main.\n// This driver would typically compile and run the submitted code, providing input via stdin\n// and capturing output from stdout.\n\nint main() {\n    int N;\n    std::cin >> N;\n    // Assuming the submitted code has a main function that reads N and prints the pattern.\n    // The testing framework would execute that main function.\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses 'char' for loop counters ('r_idx', 'c_idx') which is less conventional and potentially less robust than 'int' for numerical loops, impacting readability.",
+    "Variable names like 'r_idx' and 'c_idx' are less descriptive than common alternatives like 'row' and 'col'.",
+    "Employs `std::endl` at the end of each row, which flushes the output buffer. While correct, using `\\n` is generally more efficient for printing newlines as it avoids unnecessary flushes, especially in performance-critical scenarios."
+  ]
+}

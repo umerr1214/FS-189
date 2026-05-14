@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Parent` and a derived class `Child`. Add a constructor and a destructor to both classes, each printing a message indicating its creation or destruction. Demonstrate the order in which these constructors and destructors are called when a `Child` object is created and destroyed.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Parent Constructor Called\nChild Constructor Called\nParent Destructor Called\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The destructor of the base class `Parent` is not declared `virtual`. This is a significant robustness issue in C++ polymorphism. If a derived class object (`Child`) is deleted through a base class pointer (`Parent*`), only the base class destructor will be called, leading to potential resource leaks and undefined behavior for any resources managed by the derived class."
+  ]
+}

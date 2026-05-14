@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a `Printer` class with overloaded `print` methods that can display a `string`, an `int`, a `double`, and a `bool` value to the console.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "String: Hello, C++!\nInt: 123\nDouble: 45.6789\nBool: 1\nString: \nInt: -5\nDouble: 0\nBool: 0\n"
+    }
+  ],
+  "driver": "int main() {\n    Printer p;\n    p.print(\"Hello, C++!\");\n    p.print(123);\n    p.print(45.6789);\n    p.print(true);\n    p.print(\"\");\n    p.print(-5);\n    p.print(0.0);\n    p.print(false);\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The print method for bool values does not use `std::boolalpha`, resulting in '0' or '1' instead of 'false' or 'true'. This can lead to unexpected behavior if the output is parsed by other systems expecting boolean strings.",
+    "The print methods are not declared as const, even though they do not modify the object's state. This reduces the robustness of the class interface, making it less usable with const objects."
+  ]
+}

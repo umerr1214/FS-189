@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Calculate the sum of all natural numbers up to a given positive integer `N` entered by the user. Use a `while` loop.",
+  "test_cases": [
+    { "input": "5", "expected": "Enter a positive integer for N: \nCalculating sum...\nSum of numbers up to 5 is: 15\n" },
+    { "input": "10", "expected": "Enter a positive integer for N: \nCalculating sum...\nSum of numbers up to 10 is: 55\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n\n// Assumes the solution's core logic is within a void function named 'solve()'\n// which reads from std::cin and writes to std::cout.\nstd::string run_test(const std::string& input) {\n    std::stringstream ss_input(input);\n    std::stringstream ss_output;\n    \n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n    \n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n    \n    solve(); // Call the student's solution function\n    \n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n    \n    return ss_output.str();\n}\n\n// This main function would typically be part of the testing framework\n// and would iterate through test cases, calling run_test for each.\nint main() {\n    // Example usage (not part of actual test execution here)\n    // std::cout << run_test(\"5\") << std::endl;\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["Poor variable naming (e.g., 'n_val', 'curr_num', 'total_sum') hinders readability.", "Slightly verbose output and prompts reduce conciseness."]
+}

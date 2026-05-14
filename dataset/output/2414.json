@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Implement a `Temperature` class with a private `celsiusValue`. Provide public methods `setCelsius(double c)` and `getFahrenheit()` (which converts Celsius to Fahrenheit).",
+  "test_cases": [
+    { "input": "0.0\n", "expected": "32.00\n" },
+    { "input": "100.0\n", "expected": "212.00\n" },
+    { "input": "25.0\n", "expected": "77.00\n" },
+    { "input": "-40.0\n", "expected": "-40.00\n" },
+    { "input": "-273.15\n", "expected": "-459.67\n" }
+  ],
+  "driver": "std::ostringstream oss;\nTemperature temp;\n\nstd::vector<double> testCelsius = {0.0, 100.0, 25.0, -40.0, -273.15};\n\nfor (double c : testCelsius) {\n    temp.setCelsius(c);\n    oss << std::fixed << std::setprecision(2) << temp.getFahrenheit() << \"\\n\";\n}\n\nstd::cout << oss.str();",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `getFahrenheit` method is overly verbose and uses an unnecessarily complex calculation for the conversion, employing multiple temporary variables and breaking down simple constants. This significantly reduces readability and introduces minor, unnecessary computational overhead.",
+    "Variable names like `currentCelsiusValue`, `val`, and `c_val` are slightly less descriptive than `celsiusValue` or `c`, impacting readability.",
+    "The use of multiple `const double` variables for `5.0`, `9.0`, and `32.0` instead of directly using `1.8` and `32.0` in the formula adds unnecessary complexity and verbosity."
+  ]
+}

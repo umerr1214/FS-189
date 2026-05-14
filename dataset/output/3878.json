@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that takes a temperature in Celsius from the user and converts it to Fahrenheit, displaying the result. (Formula: F = C * 9/5 + 32)",
+  "test_cases": [
+    { "input": "0.0", "expected": "The equivalent temperature in Fahrenheit is: 32.00000 degrees Fahrenheit.\n" },
+    { "input": "25.0", "expected": "The equivalent temperature in Fahrenheit is: 77.00000 degrees Fahrenheit.\n" },
+    { "input": "-10.0", "expected": "The equivalent temperature in Fahrenheit is: 14.00000 degrees Fahrenheit.\n" },
+    { "input": "37.5", "expected": "The equivalent temperature in Fahrenheit is: 99.50000 degrees Fahrenheit.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <streambuf>\n\n// Forward declaration of the user's main logic function\nint _user_main_function_3878();\n\nstd::string execute_program_and_capture_output(const std::string& input) {\n    std::stringstream ss_input(input);\n    std::stringstream ss_output;\n\n    std::streambuf* old_cin_buf = std::cin.rdbuf();\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    _user_main_function_3878(); // Call the user's program logic\n\n    std::cin.rdbuf(old_cin_buf);\n    std::cout.rdbuf(old_cout_buf);\n\n    return ss_output.str();\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The variable `convertedTemperatureInFahrenheit` is excessively long, reducing readability.",
+    "The use of `std::setprecision(5)` for temperature display is unnecessarily high and makes the output verbose, impacting readability.",
+    "The conversion factor `1.8f` is used directly as a 'magic number' instead of `9.0f/5.0f`, which could make the formula less clear and harder to verify.",
+    "Formatting is inconsistent (e.g., indentation around `std::cin >> temperatureInCelsius;` could be improved)."
+  ]
+}

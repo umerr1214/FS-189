@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Find the minimum and maximum values in a 1D array of 10 integers. Initialize the array with some values.",
+  "test_cases": [
+    { "input": "", "expected": "Minimum value: 1\nMaximum value: 10\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n\n// Forward declaration for the student's main function\n// The student's main function will be renamed to student_main\nint student_main(); \n\nint main() {\n    std::stringstream ss;\n    std::streambuf* oldCout = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n\n    student_main(); // Call the student's main function\n\n    std::cout.rdbuf(oldCout); // Restore original cout\n\n    std::cout << ss.str(); // Print the captured output\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Incorrect comparison operators used for finding min and max values. The 'minVal' logic uses '>' instead of '<', and 'maxVal' logic uses '<' instead of '>'. This causes minVal to effectively store the maximum value and maxVal to store the minimum value.",
+    "The loop iterates from index 0, re-evaluating arr[0] which is redundant as minVal and maxVal are already initialized with arr[0]."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a base class `Shape` with a pure virtual method `calculateArea()` that returns a double. Create two derived classes, `Rectangle` (with `length` and `width`) and `Circle` (with `radius`). Implement the `calculateArea()` method in each derived class. Demonstrate creating objects of derived classes and calling their `calculateArea()` method.",
+  "test_cases": [
+    { "input": "Rectangle(10.0, 5.0), Circle(3.0)", "expected": "Rectangle area: 50.0\nCircle area: 28.2743" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n\n// Assume Shape, Rectangle, Circle classes are defined above\n\nint main() {\n    Rectangle rect(10.0, 5.0);\n    Circle circ(3.0);\n\n    Shape* s1 = &rect;\n    Shape* s2 = &circ;\n\n    std::cout << \"Rectangle area: \" << s1->calculateArea() << std::endl;\n    std::cout << \"Circle area: \" << s2->calculateArea() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition for 'Circle'."
+  ]
+}

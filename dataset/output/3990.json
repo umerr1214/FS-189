@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `isSymmetric` that takes a square 2D integer array (matrix) and its dimension as input. It should return `true` if the matrix is symmetric (i.e., `matrix[i][j] == matrix[j][i]`), otherwise `false`.",
+  "test_cases": [
+    { "input": "[[1,2,3],[2,4,5],[3,5,6]], 3", "expected": "true" },
+    { "input": "[[1,2,3],[4,5,6],[7,8,9]], 3", "expected": "false" }
+  ],
+  "driver": "void run_test(const std::vector<std::vector<int>>& vec_matrix, int dimension, const std::string& expected_str) {\n    // Create a static 2D array on the stack for the semantic error demonstration\n    // This assumes dimension is small and known at compile time for the test cases.\n    // This setup directly causes the semantic error as `isSymmetric` expects `int**`.\n    int static_matrix[3][3]; \n    for(int i=0; i<dimension; ++i) {\n        for(int j=0; j<dimension; ++j) {\n            static_matrix[i][j] = vec_matrix[i][j];\n        }\n    }\n\n    // The semantic error occurs here: passing a `int[N][N]` (which decays to `int (*)[N]`) \n    // to a function expecting `int**`. The `reinterpret_cast` forces compilation \n    // but leads to undefined behavior at runtime when `matrix[i][j]` is accessed.\n    bool actual_result = isSymmetric(reinterpret_cast<int**>(static_matrix), dimension);\n    bool expected_result = (expected_str == \"true\");\n\n    // Due to undefined behavior, the output might be incorrect or crash\n    if (actual_result == expected_result) {\n        std::cout << \"Test Passed (potentially due to UB not manifesting as crash)\" << std::endl;\n    } else {\n        std::cout << \"Test Failed: Expected \" << expected_str << \", Got \" << (actual_result ? \"true\" : \"false\") << \" (due to semantic error)\" << std::endl;\n    }\n}\n\nint main() {\n    run_test({{1,2,3},{2,4,5},{3,5,6}}, 3, \"true\");\n    run_test({{1,2,3},{4,5,6},{7,8,9}}, 3, \"false\");\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["Semantic error: The `isSymmetric` function expects a `int**` for the matrix parameter, which typically implies an array of pointers to arrays (dynamically allocated). However, the driver code passes a static 2D array (`int[N][N]`) by `reinterpret_cast`ing its address. This type mismatch leads to undefined behavior when `matrix[i][j]` is accessed inside the function, as the memory layout being dereferenced is not what is expected for an `int**`."]
+}

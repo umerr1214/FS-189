@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter a sentence (`std::string`). Then, count and display the total number of words in the sentence. Assume words are separated by a single space.",
+  "test_cases": [
+    { "input": "hello world", "expected": "Total number of words: 2" },
+    { "input": "", "expected": "Total number of words: 0" },
+    { "input": "   ", "expected": "Total number of words: 4" },
+    { "input": "  leading and trailing  ", "expected": "Total number of words: 5" },
+    { "input": "single", "expected": "Total number of words: 1" },
+    { "input": "multiple   spaces", "expected": "Total number of words: 3" }
+  ],
+  "driver": "int main_with_test_input() {\n    std::string sentence;\n    std::getline(std::cin, sentence);\n\n    int wordCount = 0;\n    if (!sentence.empty()) {\n        wordCount = std::count(sentence.begin(), sentence.end(), ' ') + 1;\n    }\n\n    std::cout << \"Total number of words: \" << wordCount << std::endl;\n    return 0;\n}\n\nint main() {\n    return main_with_test_input();\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program is not robust against various valid inputs.",
+    "It incorrectly counts words for sentences with only spaces (e.g., '   ' results in 4 words instead of 0).",
+    "It incorrectly counts words for sentences with leading/trailing spaces (e.g., '  hello world  ' results in 4 words instead of 2).",
+    "It incorrectly counts words when multiple spaces separate words (e.g., 'hello   world' results in 3 words instead of 2).",
+    "The logic of counting spaces and adding one is fundamentally flawed for general word counting scenarios, even with the single space assumption, as it doesn't handle boundary conditions well."
+  ]
+}

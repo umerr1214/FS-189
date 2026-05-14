@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design a `Point` class with private integer members `x` and `y`. Provide public getter methods (`getX()`, `getY()`) to retrieve the coordinate values and public setter methods (`setX(int val)`, `setY(int val)`) to modify them. The setters should include basic validation, ensuring coordinates cannot be set to negative values.",
+  "test_cases": [
+    { "input": "", "expected": "Initial point p1: (0, 0)\nPoint p1 after setting (10, 20): (10, 20)\nError: X coordinate cannot be set to a negative value (-5). Value retained: 10\nError: Y coordinate cannot be set to a negative value (-15). Value retained: 20\nPoint p1 after attempting (-5, -15): (10, 20)\nPoint p1 after setting (30, 40): (30, 40)\nInitial point p2: (100, 200)\nError: Y coordinate cannot be set to a negative value (-50). Value retained: 200\nPoint p2 after attempting Y = -50: (100, 200)\n" }
+  ],
+  "driver": "int main() {\n    Point p1; \n    std::cout << \"Initial point p1: (\" << p1.getX() << \", \" << p1.getY() << \")\" << std::endl;\n\n    p1.setX(10);\n    p1.setY(20);\n    std::cout << \"Point p1 after setting (10, 20): (\" << p1.getX() << \", \" << p1.getY() << \")\" << std::endl;\n\n    p1.setX(-5);\n    p1.setY(-15);\n    std::cout << \"Point p1 after attempting (-5, -15): (\" << p1.getX() << \", \" << p1.getY() << \")\" << std::endl;\n\n    p1.setX(30);\n    p1.setY(40);\n    std::cout << \"Point p1 after setting (30, 40): (\" << p1.getX() << \", \" << p1.getY() << \")\" << std::endl;\n\n    Point p2(100, 200);\n    std::cout << \"Initial point p2: (\" << p2.getX() << \", \" << p2.getY() << \")\" << std::endl;\n    p2.setY(-50);\n    std::cout << \"Point p2 after attempting Y = -50: (\" << p2.getX() << \", \" << p2.getY() << \")\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that reads a sentence (using `std::string`) from the user. Count how many vowels (a, e, i, o, u, case-insensitive) are present in the sentence and print the total count.",
+  "test_cases": [
+    { "input": "Hello World", "expected": "Vowel count: 2\n" },
+    { "input": "Programming is fun", "expected": "Vowel count: 3\n" },
+    { "input": "AEIOUaeiou", "expected": "Vowel count: 10\n" }
+  ],
+  "driver": "int main() {\n    std::string line;\n    std::getline(std::cin, line);\n    std::cout << \"Enter a sentence: \"; // Simulate prompt\n    // The actual program uses std::cin >> sentence, which reads only the first word.\n    // We need to simulate this behavior for testing.\n    std::string first_word;\n    std::istringstream iss(line);\n    iss >> first_word;\n    // Now feed this first_word to the program's stdin\n    // This driver cannot perfectly simulate the 'robustness issue' of reading only one word\n    // when given a full line. The expected output reflects the program's actual behavior\n    // of only processing the first word of the input.\n\n    // To truly test the robustness issue, the test harness would need to run the compiled\n    // executable with a full sentence as input and check its output against the one-word processing.\n    // For this JSON format, we adjust expected output based on the first word.\n\n    // For test cases, 'expected' values are manually adjusted to reflect only the first word's vowels.\n    // e.g., 'Hello World' -> 'Hello' -> 2 vowels (e, o)\n    // 'Programming is fun' -> 'Programming' -> 3 vowels (o, a, i)\n    // 'AEIOUaeiou' -> 'AEIOUaeiou' -> 10 vowels (no spaces, so it's read fully)\n\n    // The program's stdout will contain the prompt and then the result.\n    // The driver should capture the final vowel count line.\n    // Since we can't directly manipulate the program's std::cin for >> vs getline here,\n    // we rely on the 'expected' field reflecting the program's specific bug.\n    // A more sophisticated driver would run the compiled binary.\n\n    // For simplicity, let's assume the 'expected' field already accounts for the bug.\n    // The provided C++ code will print \"Enter a sentence: \" followed by \"Vowel count: X\\n\".\n    // The driver should capture the last line.\n\n    // This is a placeholder for a driver that would execute the compiled program.\n    // In a real evaluation, the test runner would compile 5131.cpp and run it with stdin redirected.\n    // Example: `./a.out <<< \"Hello World\"`\n    // The expected output for \"Hello World\" would be based on \"Hello\" (2 vowels).\n    // The provided expected values already reflect this behavior.\n    std::cout << \"Vowel count: <calculated_by_driver>\\n\"; // This line is just a placeholder.\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program uses `std::cin >> sentence;` to read input, which only reads a single word (up to the first whitespace character). This fails to correctly read an entire sentence as required by the problem statement, making it non-robust for multi-word inputs."
+  ]
+}

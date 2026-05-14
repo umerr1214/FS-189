@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "In an inheritance scenario, where `Base` has `privateData`, `protectedData`, and `publicData`, demonstrate how these members can (or cannot) be accessed by a `Derived` class and by a non-member function.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial Base object data:\nBase::privateData (via Base method): 10\nBase::protectedData (via Base method): 20\nBase::publicData (via Base method): 30\n\nInitial Derived object data:\nBase::privateData (via Base method): 11\nBase::protectedData (via Base method): 22\nBase::publicData (via Base method): 33\n\n--- Inside Derived::accessBaseMembers() ---\nDerived can access publicData: 33\nDerived can access protectedData: 22\nDerived modified protectedData to: 200\nDerived cannot directly access privateData. (Attempt commented out)\nDerived can access privateData via Base's public method: 11\n\n--- Inside nonMemberFunctionAccess() ---\nNon-member can access Base::publicData: 30\nNon-member modified Base::publicData to: 1000\nNon-member can access Derived::publicData: 33\nNon-member cannot directly access Base::privateData. (Attempt commented out)\nNon-member cannot directly access Base::protectedData. (Attempt commented out)\n\nRobustness Issue: Using Derived::getProtectedDataRef() to modify protectedData externally.\nDerived::getProtectedDataRef() returning reference to protectedData.\nNon-member modified Derived::protectedData via reference to: 999\nNon-member can access Base::privateData via Base's public method: 10\n\n--- After all operations ---\nFinal Base object data:\nBase::privateData (via Base method): 10\nBase::protectedData (via Base method): 20\nBase::publicData (via Base method): 1000\n\nFinal Derived object data:\nBase::privateData (via Base method): 11\nBase::protectedData (via Base method): 999\nBase::publicData (via Base method): 33"
+    }
+  ],
+  "driver": "int main() {\n    Base baseObj(10, 20, 30);\n    Derived derivedObj(11, 22, 33);\n\n    std::cout << \"Initial Base object data:\" << std::endl;\n    baseObj.displayBaseData();\n    std::cout << \"\\nInitial Derived object data:\" << std::endl;\n    derivedObj.displayBaseData();\n\n    derivedObj.accessBaseMembers();\n    nonMemberFunctionAccess(baseObj, derivedObj);\n\n    std::cout << \"\\n--- After all operations ---\" << std::endl;\n    std::cout << \"Final Base object data:\" << std::endl;\n    baseObj.displayBaseData();\n    std::cout << \"\\nFinal Derived object data:\" << std::endl;\n    derivedObj.displayBaseData();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Derived` class exposes a non-const reference to its `protectedData` via `getProtectedDataRef()`. This design decision allows non-member functions to directly modify `protectedData`, bypassing the `Base` class's intended encapsulation and control over its internal state. This can lead to a less robust system where data invariants are harder to maintain, as `Base` cannot validate changes to `protectedData` originating from `Derived`'s exposed reference.",
+    "The `Derived::accessBaseMembers()` method directly modifies `protectedData` without any validation. While technically allowed, in a more complex scenario, this could lead to an inconsistent state if `protectedData` has specific invariants that should be checked by the `Base` class."
+  ]
+}

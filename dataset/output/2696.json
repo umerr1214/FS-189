@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Enhance the `Rectangle` class by adding a destructor that prints a message like 'Rectangle object destroyed.' whenever an object goes out of scope.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Main function started.\n  Entering inner block.\n  Exiting inner block.\nRectangle object destroyed.\n  Inside createAndDestroyLocal function.\nRectangle object destroyed.\nMain function about to end.\nRectangle object destroyed.\n"
+    }
+  ],
+  "driver": "See .cpp file for main function. No additional driver needed.",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The destructor constructs a `std::string` using concatenation for a simple, fixed message. It's more efficient to use a direct `const char*` literal. Also, using `std::endl` unnecessarily flushes the output buffer, which can be less efficient than using `\\n`."
+  ]
+}

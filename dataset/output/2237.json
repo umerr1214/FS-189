@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Define a `Shape` base class with a `color` (string) attribute. Create a `Circle` derived class that adds a `radius` (double). Implement a constructor for `Circle` that initializes both `color` and `radius` by calling the base class constructor.",
+  "test_cases": [
+    {
+      "input": "Blue, 5.0",
+      "expected": "Circle color: Red, radius: 5"
+    },
+    {
+      "input": "Green, 10.0",
+      "expected": "Circle color: Red, radius: 10"
+    }
+  ],
+  "driver": "int main() {\n    Circle c(\"Blue\", 5.0);\n    c.display();\n    \n    Circle c2(\"Green\", 10.0);\n    c2.display();\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The Circle constructor passes a hardcoded string \"Red\" to the base Shape constructor instead of the provided 'c' parameter, leading to incorrect color initialization for Circle objects."
+  ]
+}

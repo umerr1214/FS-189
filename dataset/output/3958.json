@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `swapValues` that takes two integer variables by reference and swaps their values. Demonstrate its usage in the `main` function with user-provided integers.",
+  "test_cases": [
+    { "input": "10\n20\n", "expected": "Enter first integer: Enter second integer: Before swapping: num1 = 10, num2 = 20\nAfter swapping: num1 = 20, num2 = 10\n" },
+    { "input": "5\n-3\n", "expected": "Enter first integer: Enter second integer: Before swapping: num1 = 5, num2 = -3\nAfter swapping: num1 = -3, num2 = 5\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\n// Forward declaration of the student's main function,\n// which will be renamed by the test harness.\nextern int student_main();\n\nint main() {\n    // The test harness will redirect std::cin and std::cout\n    // and then call student_main().\n    // The input for student_main will come from the test case's \"input\" field.\n    // The output of student_main will be captured and compared to the \"expected\" field.\n    return student_main();\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing comma between function parameters in `swapValues` function signature, leading to a compilation error."
+  ]
+}

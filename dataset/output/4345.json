@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a program that declares an array of 5 integers, prompts the user to enter values for each element, and then prints all elements of the array in reverse order.",
+  "test_cases": [
+    { "input": "1 2 3 4 5", "expected": "Please enter 5 integer values:\nEnter value for element 1: Enter value for element 2: Enter value for element 3: Enter value for element 4: Enter value for element 5: Array elements in reverse order:\n5 4 3 2 1 \n" },
+    { "input": "10 20 30 40 50", "expected": "Please enter 5 integer values:\nEnter value for element 1: Enter value for element 2: Enter value for element 3: Enter value for element 4: Enter value for element 5: Array elements in reverse order:\n50 40 30 20 10 \n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <streambuf>\n\n// The student's main function is typically renamed for testing.\n// For this driver, we assume 'main' is the entry point and we redirect streams.\n// If the student's code were in a function like 'student_solution()', \n// this driver would call that function.\n\nstd::string run_student_code(const std::string& input_str) {\n    std::stringstream ss_input(input_str);\n    std::stringstream ss_output;\n\n    // Save original cin/cout buffers\n    std::streambuf* old_cin_buf = std::cin.rdbuf();\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n\n    // Redirect cin and cout\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    // Call the student's main function (assuming it's named 'main')\n    // For a real test harness, you might rename student's main to avoid conflicts\n    // or compile it into a separate executable.\n    int result = main(); \n\n    // Restore original cin/cout buffers\n    std::cin.rdbuf(old_cin_buf);\n    std::cout.rdbuf(old_cout_buf);\n\n    return ss_output.str();\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not handle invalid input (e.g., non-integer characters) gracefully. If a non-integer is entered, std::cin will enter a fail state, causing subsequent input operations to fail without prompting the user or allowing re-entry. This can lead to uninitialized array elements and incorrect output without crashing, which is a robustness flaw."
+  ]
+}

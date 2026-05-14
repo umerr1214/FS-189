@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a `Vector2D` class with `x` and `y` components (double). Overload the binary `+` operator to allow adding two `Vector2D` objects, returning a new `Vector2D` object that represents their sum.",
+  "test_cases": [
+    { "input": "", "expected": "v1: (1.0, 2.0)\nv2: (3.0, 4.0)\nv1 + v2: (4.0, 6.0)\nv4: (-1.5, 0.5)\nv5: (2.0, -3.0)\nv4 + v5: (0.5, -2.5)\n" }
+  ],
+  "driver": "#include <iostream>\n#include <ostream> // Required for std::ostream\n#include <iomanip> // Required for std::fixed, std::setprecision\n#include <sstream> // Required for std::stringstream in the driver\n\nclass Vector2D {\nprivate: // Encapsulation: x and y are private members\n    double x;\n    double y;\n\npublic:\n    // Default constructor: Initializes x and y to 0.0\n    Vector2D() : x(0.0), y(0.0) {}\n\n    // Parameterized constructor\n    Vector2D(double x_val, double y_val) : x(x_val), y(y_val) {}\n\n    // Method to print vector components to an output stream with fixed precision\n    void print(std::ostream& os) const {\n        os << \"(\" << std::fixed << std::setprecision(1) << x << \", \" << std::fixed << std::setprecision(1) << y << \")\";\n    }\n\n    // Friend declaration for the non-member binary + operator\n    // This allows the operator to access private members x and y directly.\n    friend Vector2D operator+(const Vector2D& v1, const Vector2D& v2);\n};\n\n// Non-member binary + operator overload\n// Takes two constant references to Vector2D objects for efficiency and safety.\n// Returns a new Vector2D object representing the sum.\nVector2D operator+(const Vector2D& v1, const Vector2D& v2) {\n    return Vector2D(v1.x + v2.x, v1.y + v2.y);\n}\n\nint main() {\n    std::stringstream ss;\n    std::streambuf* oldCout = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n\n    // Test cases\n    Vector2D v1(1.0, 2.0);\n    Vector2D v2(3.0, 4.0);\n    Vector2D v3 = v1 + v2;\n    ss << \"v1: \"; v1.print(ss); ss << std::endl;\n    ss << \"v2: \"; v2.print(ss); ss << std::endl;\n    ss << \"v1 + v2: \"; v3.print(ss); ss << std::endl;\n\n    Vector2D v4(-1.5, 0.5);\n    Vector2D v5(2.0, -3.0);\n    Vector2D v6 = v4 + v5;\n    ss << \"v4: \"; v4.print(ss); ss << std::endl;\n    ss << \"v5: \"; v5.print(ss); ss << std::endl;\n    ss << \"v4 + v5: \"; v6.print(ss); ss << std::endl;\n\n    std::cout.rdbuf(oldCout);\n    std::cout << ss.str();\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Implement a `Circle` class. Provide overloaded constructors: a default constructor setting radius to 1.0, and another constructor that takes a `double` argument for the radius. Also, include a method `calculateArea()`.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Circle 1 (default):\nRadius: 1.0\nArea: 3.1416\n\nCircle 2 (radius 5.0):\nRadius: 5.0\nArea: 78.5398\n\nCircle 3 (radius 0.0):\nRadius: 0.0\nArea: 0.0000" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n#include <iomanip>\n\n#ifndef M_PI\n#define M_PI 3.14159265358979323846\n#endif\n\nclass Circle {\nprivate:\n    double radius;\n\npublic:\n    Circle() : radius(1.0) {}\n    Circle(double r) : radius(r) {}\n    double calculateArea() {\n        return M_PI * radius * radius;\n    }\n    void printRadius() {\n        std::cout << \"Radius: \" << radius << std::endl;\n    }\n};\n\nint main() {\n    Circle c1;\n    std::cout << \"Circle 1 (default):\\n\";\n    c1.printRadius();\n    std::cout << \"Area: \" << std::fixed << std::setprecision(4) << c1.calculateArea() << \"\\n\";\n\n    Circle c2(5.0);\n    std::cout << \"\\nCircle 2 (radius 5.0):\\n\";\n    c2.printRadius();\n    std::cout << \"Area: \" << std::fixed << std::setprecision(4) << c2.calculateArea() << \"\\n\";\n\n    Circle c3(0.0);\n    std::cout << \"\\nCircle 3 (radius 0.0):\\n\";\n    c3.printRadius();\n    std::cout << \"Area: \" << std::fixed << std::setprecision(4) << c3.calculateArea() << \"\\n\";\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

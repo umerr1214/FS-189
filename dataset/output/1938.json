@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Modify the `Book` class to include a destructor. The destructor should print a message indicating the title of the book object that is being destroyed.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book 'The Hobbit' created.\nBook 'Dune' created.\nBook 'The Great Gatsby' created.\nBook 'The Great Gatsby' is being destroyed (Global suffix).\nBook '1984' created.\nBook '1984' is being destroyed (Global suffix).\nEnd of main scope.\nBook 'Dune' is being destroyed (Global suffix).\nBook 'The Hobbit' is being destroyed (Global suffix).\n"
+    }
+  ],
+  "driver": "// Global Book objects to demonstrate the potential semantic error.\n// Their constructors run before main(), and destructors run after main() returns.\n// The destruction order of global_suffix, global_book1, global_book2 is unspecified.\nBook global_book1(\"The Hobbit\");\nBook global_book2(\"Dune\");\n\nvoid run_test() {\n    // Local Book objects, their destruction is well-defined (before global objects).\n    {\n        Book b1(\"The Great Gatsby\");\n    }\n    {\n        Book b2(\"1984\");\n    }\n    std::cout << \"End of main scope.\" << std::endl;\n}\n\nint main() {\n    run_test();\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The destructor accesses a global `std::string` object (`global_suffix`). For `Book` objects with static storage duration (like `global_book1` and `global_book2`), the order of destruction of static objects is unspecified. This means `global_suffix` could be destroyed before a global `Book` object, leading to Undefined Behavior when the `Book` destructor attempts to access a potentially invalid `global_suffix`."
+  ]
+}

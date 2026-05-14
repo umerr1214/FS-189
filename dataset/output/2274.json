@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Car` class that uses composition to include an `Engine` object as a private member. The `Engine` class should have `horsepower` (int) and `fuelType` (string). Implement a `Car` constructor that initializes its `Engine` and a method `Car::start()` that calls an `Engine::start()` method.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Car is attempting to start...\nEngine with 200 HP (Electric) started!\n"
+    }
+  ],
+  "driver": "int main() { Car myCar(200, \"Electric\"); myCar.start(); return 0; }",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The 'Car' class uses a raw pointer for 'Engine' composition but fails to allocate memory for the 'Engine' object in its constructor. This leaves the 'engine' pointer uninitialized, leading to undefined behavior (e.g., a segmentation fault) when 'engine->start()' is called."
+  ]
+}

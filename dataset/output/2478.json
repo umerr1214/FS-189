@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Illustrate the use of `private`, `protected`, and `public` access specifiers by creating a `BaseClass` with members of each type and a `DerivedClass` that attempts to access them. Explain which accesses are permitted.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Compilation Error: 'int BaseClass::privateMember' is private within this context"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"Demonstrating C++ Access Specifiers (Semantic Error Example)\\n\" << std::endl;\n\n    BaseClass baseObj;\n    baseObj.displayBaseMembers();\n\n    DerivedClass derivedObj;\n    derivedObj.accessBaseMembers(); // This call will attempt the forbidden access, causing a compile error.\n\n    std::cout << \"\\nFrom main() function:\" << std::endl;\n    std::cout << \"  Accessing baseObj.publicMember (allowed): \" << baseObj.publicMember << std::endl;\n    std::cout << \"  Attempting to access baseObj.protectedMember directly: NOT PERMITTED (semantic error if uncommented)\" << std::endl;\n    std::cout << \"  Attempting to access baseObj.privateMember directly: NOT PERMITTED (semantic error if uncommented)\" << std::endl;\n    std::cout << \"  Accessing baseObj.privateMember via public getter (allowed): \" << baseObj.getPrivateMember() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["Attempt to access a private member ('privateMember') directly from a derived class ('DerivedClass::accessBaseMembers'). This is a violation of C++ access rules, resulting in a compile-time semantic error."]
+}

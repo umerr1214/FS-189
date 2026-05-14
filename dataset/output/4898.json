@@ -1,0 +1,29 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program with two overloaded functions named `calculateArea`. One function should take a single double argument (radius) and calculate the area of a circle. The second should take two double arguments (length, width) and calculate the area of a rectangle. Prompt the user to choose which area to calculate and provide inputs.",
+  "test_cases": [
+    {
+      "input": "1\n10\n",
+      "expected": "Select area type:\n1. Circle\n2. Rectangle\nYour option: Enter radius: Circle Area: 314.16\n"
+    },
+    {
+      "input": "2\n10\n20\n",
+      "expected": "Select area type:\n1. Circle\n2. Rectangle\nYour option: Enter length: Enter width: Rectangle Area: 200.00\n"
+    },
+    {
+      "input": "1\n-7\n",
+      "expected": "Select area type:\n1. Circle\n2. Rectangle\nYour option: Enter radius: Radius cannot be negative. Using absolute value.\nCircle Area: 153.94\n"
+    }
+  ],
+  "driver": "int main() {\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses a less precise constant for PI (3.14159) instead of `M_PI` or a more accurate literal, which can affect precision slightly.",
+    "Variable names in `main` (`opt`, `v1`, `v2`) are not very descriptive, reducing readability.",
+    "Parameter names in `calculateArea` functions (`r`, `l`, `w`) are abbreviated, making the function signatures less immediately clear.",
+    "Input validation for negative numbers uses `std::abs` without clear user notification or re-prompting, which might not be the desired behavior in all cases.",
+    "The output uses `\\n` instead of `std::endl` consistently, which is a minor efficiency improvement but could be inconsistent with other `std::endl` uses if present."
+  ]
+}

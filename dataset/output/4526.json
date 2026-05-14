@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program to check if a given integer is a palindrome. A number is a palindrome if it reads the same forwards and backwards (e.g., 121, 12321).",
+  "test_cases": [
+    { "input": "121", "expected": "true" },
+    { "input": "0", "expected": "true" },
+    { "input": "-121", "expected": "false" },
+    { "input": "123", "expected": "false" },
+    { "input": "10", "expected": "false" },
+    { "input": "1", "expected": "true" },
+    { "input": "2147483647", "expected": "false" },
+    { "input": "123454321", "expected": "true" },
+    { "input": "1221", "expected": "true" },
+    { "input": "1234", "expected": "false" },
+    { "input": "-1", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n\n// The isPalindrome function will be inserted here.\n\nint main() {\n    std::vector<std::pair<int, bool>> test_cases = {\n        {121, true},\n        {0, true},\n        {-121, false},\n        {123, false},\n        {10, false},\n        {1, true},\n        {2147483647, false},\n        {123454321, true},\n        {1221, true},\n        {1234, false},\n        {-1, false}\n    };\n\n    for (size_t i = 0; i < test_cases.size(); ++i) {\n        int input = test_cases[i].first;\n        bool expected = test_cases[i].second;\n        bool result = isPalindrome(input);\n        std::cout << \"Input: \" << input << \", Expected: \" << (expected ? \"true\" : \"false\")\n                  << \", Got: \" << (result ? \"true\" : \"false\") << std::endl;\n        if (result != expected) {\n            std::cout << \"Test Case \" << i << \" FAILED\" << std::endl;\n        } else {\n            std::cout << \"Test Case \" << i << \" PASSED\" << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["The solution converts the integer to a string to perform the palindrome check, which is generally less efficient than a mathematical approach.","Includes unnecessary headers (<vector>, <cmath>) that are not used by the core logic, contributing to code clutter."]
+}

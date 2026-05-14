@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `ShoppingCart` class that uses composition to manage a collection of `Item` objects. The `Item` class (separate class) should have `name` (string), `price` (double), and `quantity` (int). `ShoppingCart` should have methods to `addItem(Item item)` and `calculateTotal()`.",
+  "test_cases": [
+    { "input": "No explicit input, uses hardcoded items.", "expected": "Total: 1326.25\nTotal2: 66.50\n" }
+  ],
+  "driver": "int main() {\n    ShoppingCart cart;\n    cart.addItem(Item(\"Laptop\", 1200.0, 1));\n    cart.addItem(Item(\"Mouse\", 25.50, 2));\n    cart.addItem(Item(\"Keyboard\", 75.25, 1));\n    double total = cart.calculateTotal();\n    std::cout << \"Total: \" << std::fixed << std::setprecision(2) << total << std::endl;\n\n    ShoppingCart cart2;\n    cart2.addItem(Item(\"Book\", 15.50, 3));\n    cart2.addItem(Item(\"Pen\", 2.0, 10));\n    double total2 = cart2.calculateTotal();\n    std::cout << \"Total2: \" << std::fixed << std::setprecision(2) << total2 << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `calculateTotal()` method is declared to return an 'int' instead of 'double'. This causes the calculated total to be truncated (losing any decimal precision) before being returned, even if the internal calculation uses 'double'."
+  ]
+}

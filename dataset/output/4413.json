@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Declare and initialize a 3x3 integer 2D array (matrix). Calculate and print the sum of all elements in the entire matrix.",
+  "test_cases": [
+    { "input": "", "expected": "45\n" }
+  ],
+  "driver": "int main() { solve(); return 0; }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

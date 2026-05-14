@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function `calculatePower(base, exponent)` that takes two integers (base and exponent) and returns `base` raised to the power of `exponent`. The program should then use this function to calculate and display the result for user-provided inputs. Assume `exponent` is non-negative.",
+  "test_cases": [
+    { "input": "2 3", "expected": "8" },
+    { "input": "5 0", "expected": "1" },
+    { "input": "0 5", "expected": "0" },
+    { "input": "0 0", "expected": "1" },
+    { "input": "10 1", "expected": "10" },
+    { "input": "-2 3", "expected": "-8" },
+    { "input": "2 30", "expected": "1073741824" },
+    { "input": "2 31", "expected": "-2147483648" },
+    { "input": "7 12", "expected": "13841287201" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// The calculatePower function will be included here\n\nint main() {\n    int base, exponent;\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        std::stringstream ss(line);\n        ss >> base >> exponent;\n        long long result = calculatePower(base, exponent); // Use long long for driver to avoid driver-side overflow\n        std::cout << result << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["Integer overflow for large results due to `int` return type and intermediate calculations exceeding `INT_MAX`.", "Does not explicitly handle potential overflow, leading to incorrect negative results for large positive powers."]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Department` class that holds a collection of `Professor` objects (aggregation). Implement methods to `hireProfessor()`, `fireProfessor()`, and `displayProfessors()`.",
+  "test_cases": [
+    {
+      "input": "hire Alice Smith 101\nhire Bob Johnson 102\nhire Charlie Brown 103\ndisplay\nfire 102\nfire 105\ndisplay\nfire 101\ndisplay\nfire 103\ndisplay\nhire Diana Prince 104\ndisplay",
+      "expected": "Hired Professor Alice Smith (ID: 101)\nHired Professor Bob Johnson (ID: 102)\nHired Professor Charlie Brown (ID: 103)\n\nDepartment: Computer Science Professors (3):\n  ID: 101, Name: Alice Smith\n  ID: 102, Name: Bob Johnson\n  ID: 103, Name: Charlie Brown\n\n--- Attempting to fire professors ---\nFired Professor with ID 102\n\nDepartment: Computer Science Professors (2):\n  ID: 101, Name: Alice Smith\n  ID: 103, Name: Charlie Brown\n\n--- Firing another professor ---\nFired Professor with ID 101\n\nDepartment: Computer Science Professors (1):\n  ID: 103, Name: Charlie Brown\n\n--- Firing last professor ---\nFired Professor with ID 103\n\nDepartment: Computer Science Professors (0):\n  No professors in this department.\nHired Professor Diana Prince (ID: 104)\n\nDepartment: Computer Science Professors (1):\n  ID: 104, Name: Diana Prince\n"
+    }
+  ],
+  "driver": "The `main` function serves as the driver. It creates a `Department` object, then demonstrates hiring, displaying, and firing professors, including attempts to fire non-existent professors to show the robustness issue. The input string is processed by the `main` function's predefined sequence of calls.",
+  "code_quality": 7,
+  "correctness": 8,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `fireProfessor` method does not provide explicit feedback (e.g., a return value or a console message) if the professor with the specified ID is not found. This 'silent failure' can lead to incorrect assumptions or unexpected behavior in calling code, making the system less robust against invalid inputs."
+  ]
+}

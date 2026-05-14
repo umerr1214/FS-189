@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Perform a left rotation on a 1D array by `k` positions. For example, if the array is `[1, 2, 3, 4, 5]` and `k=2`, the output should be `[3, 4, 5, 1, 2]`. Print the modified array.",
+  "test_cases": [
+    { "input": "5 2\n1 2 3 4 5", "expected": "3 4 5 1 2\n" },
+    { "input": "3 1\n10 20 30", "expected": "20 30 10\n" },
+    { "input": "2 0\n1 2", "expected": "1 2\n" },
+    { "input": "3 3\n1 2 3", "expected": "1 2 3\n" },
+    { "input": "3 4\n1 2 3", "expected": "2 3 1\n" },
+    { "input": "0 5\n", "expected": "\n" },
+    { "input": "1 1\n5", "expected": "5\n" },
+    { "input": "10 9\n1 2 3 4 5 6 7 8 9 10", "expected": "10 1 2 3 4 5 6 7 8 9\n" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <numeric>\n#include <algorithm>\n\n// Assume leftRotate and printVector are defined above or in the same file\n// void leftRotate(std::vector<int>& arr, int k);\n// void printVector(const std::vector<int>& arr);\n\nint main() {\n    std::ios_base::sync_with_stdio(false);\n    std::cin.tie(NULL);\n\n    int num_test_cases;\n    std::cin >> num_test_cases;\n    while (num_test_cases--) {\n        int n, k;\n        std::cin >> n >> k;\n        std::vector<int> arr(n);\n        for (int i = 0; i < n; ++i) {\n            std::cin >> arr[i];\n        }\n        leftRotate(arr, k);\n        printVector(arr);\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["The algorithm performs 'k' individual left shifts, resulting in an O(k*n) time complexity. This is highly inefficient for large arrays or large rotation counts compared to optimal O(n) solutions. While correct, its performance is a significant drawback."]
+}

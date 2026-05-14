@@ -1,0 +1,40 @@
+{
+  "language": "c++",
+  "question": "Design a basic ATM menu-driven program using a `switch` statement. The program should offer options for 'Deposit', 'Withdraw', and 'Check Balance'. For 'Deposit' and 'Withdraw', prompt for an amount and update a balance variable. For 'Check Balance', display the current balance. Include an 'Exit' option.",
+  "test_cases": [
+    {
+      "input": "1\n150\n\n",
+      "expected": "\n--- ATM SYSTEM ---\n1. Deposit\n2. Withdraw\n3. Balance Inquiry\n4. Exit\n------------------\nEnter option: Enter amount to deposit: Deposited 150. New balance: 650\nPress Enter to continue..."
+    },
+    {
+      "input": "2\n100\n\n",
+      "expected": "\n--- ATM SYSTEM ---\n1. Deposit\n2. Withdraw\n3. Balance Inquiry\n4. Exit\n------------------\nEnter option: Enter amount to withdraw: Withdrew 100. New balance: 400\nPress Enter to continue..."
+    },
+    {
+      "input": "3\n\n",
+      "expected": "\n--- ATM SYSTEM ---\n1. Deposit\n2. Withdraw\n3. Balance Inquiry\n4. Exit\n------------------\nEnter option: Current balance: 500\nPress Enter to continue..."
+    },
+    {
+      "input": "5\n\n",
+      "expected": "\n--- ATM SYSTEM ---\n1. Deposit\n2. Withdraw\n3. Balance Inquiry\n4. Exit\n------------------\nEnter option: Invalid option. Try again.\nPress Enter to continue..."
+    },
+    {
+      "input": "x\n\n",
+      "expected": "\n--- ATM SYSTEM ---\n1. Deposit\n2. Withdraw\n3. Balance Inquiry\n4. Exit\n------------------\nEnter option: Invalid input. Please enter a number.\nPress Enter to continue..."
+    },
+    {
+      "input": "4\n",
+      "expected": "\n--- ATM SYSTEM ---\n1. Deposit\n2. Withdraw\n3. Balance Inquiry\n4. Exit\n------------------\nEnter option: Exiting ATM. Thank you!\n"
+    }
+  ],
+  "driver": "// This driver expects the C++ solution to be compiled into an executable named 'solution'.\n// It will feed the 'input' from each test case to the 'solution' executable's stdin\n// and capture its stdout to compare with 'expected'.\n// Example execution (pseudo-code):\n// foreach test_case in test_cases:\n//   run_command(\"./solution\", stdin=test_case.input, stdout_capture=true)\n//   assert captured_stdout == test_case.expected\n#include <iostream>\nint main() {\n    std::cout << \"This is a placeholder driver. The actual test harness will execute the compiled C++ solution.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses short, non-descriptive variable names (e.g., 'bal', 'opt', 'amt').",
+    "Lacks comments to explain code sections or complex logic.",
+    "Repeatedly prints the menu directly within the loop instead of using a dedicated function.",
+    "Includes an unnecessary 'Press Enter to continue...' prompt with std::cin.get(), which hinders automation and user flow."
+  ]
+}

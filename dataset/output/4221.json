@@ -1,0 +1,39 @@
+{
+  "language": "c++",
+  "question": "Design a simple calculator program in C++ that takes two numbers and an operator (+, -, *, /) from the user. Use a `switch` statement to perform the chosen operation and display the result. Handle division by zero.",
+  "test_cases": [
+    {
+      "input": "10\n+\n5\n",
+      "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 10 + 5 = 15\n"
+    },
+    {
+      "input": "5\n-\n10\n",
+      "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 5 - 10 = -5\n"
+    },
+    {
+      "input": "2.5\n*\n4\n",
+      "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 2.5 * 4 = 10\n"
+    },
+    {
+      "input": "10\n/\n2\n",
+      "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 10 / 2 = 5\n"
+    },
+    {
+      "input": "10\n/\n0\n",
+      "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Error: Division by zero is not allowed.\n"
+    },
+    {
+      "input": "10\n^\n3\n",
+      "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Error: Invalid operator. Please use +, -, *, or /.\n"
+    },
+    {
+      "input": "hello\n10\n*\n2\n",
+      "expected": "Enter first number: Invalid input. Please enter a number: Enter operator (+, -, *, /): Enter second number: Result: 10 * 2 = 20\n"
+    }
+  ],
+  "driver": "int main() {\n  // This is a conceptual driver. In an actual testing environment,\n  // the input string from 'test_cases[i].input' would be piped to\n  // the standard input of the compiled C++ program, and its standard output\n  // would be captured and compared with 'test_cases[i].expected'.\n  // For example, on a Unix-like system: `./your_program < input.txt`\n  // The main function of the provided C++ file is executed directly.\n  return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

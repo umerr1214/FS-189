@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "For the `ComplexNumber` class, overload the unary `-` operator. This operator should return a new `ComplexNumber` object where both the real and imaginary parts are negated.",
+  "test_cases": [
+    { "input": "5.0, -3.0", "expected": "-5.0 + 3.0i" },
+    { "input": "-1.0, 2.5", "expected": "1.0 - 2.5i" },
+    { "input": "0.0, 0.0", "expected": "0.0 + 0.0i" },
+    { "input": "10.0, 0.0", "expected": "-10.0 + 0.0i" },
+    { "input": "0.0, -7.0", "expected": "0.0 + 7.0i" }
+  ],
+  "driver": "The `main` function initializes several `ComplexNumber` objects, applies the unary `-` operator to each, and then prints the original, resulting, and expected complex numbers, indicating whether each test case passed or failed based on comparison with the correct output.",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The unary `-` operator is declared to return a `ComplexNumber&` (reference to `ComplexNumber`), but it returns a reference to a local variable `temp`. This results in a dangling reference, leading to undefined behavior when the returned value is used outside the operator's scope."
+  ]
+}

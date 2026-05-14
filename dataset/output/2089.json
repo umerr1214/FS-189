@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a `ResourceLogger` class that dynamically allocates a C-style string in its constructor to store a log message. Implement a destructor that deallocates this memory and prints a message indicating the resource is freed. Demonstrate its usage by creating an object and letting it go out of scope.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Entering main scope...\nResourceLogger created with message: Hello Wor\nInside nested scope.\nResource freed: Short\nResourceLogger created with message: (null_in\nExiting main scope...\nResource freed: Hello Wor\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"Entering main scope...\" << std::endl;\n\n    ResourceLogger logger1(\"Hello World!\");\n\n    { \n        ResourceLogger logger2(\"Short\");\n        std::cout << \"Inside nested scope.\" << std::endl;\n    } \n\n    ResourceLogger logger3(nullptr);\n\n    std::cout << \"Exiting main scope...\" << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The ResourceLogger uses a fixed-size buffer (BUFFER_SIZE = 10) for storing the log message, instead of dynamically allocating memory based on the actual length of the input message. This leads to potential buffer overflows if `strncpy` isn't used or truncation of messages if the input string is longer than `BUFFER_SIZE - 1` characters. While `strncpy` prevents a crash, it's a band-aid solution that results in data loss and does not solve the underlying design flaw of not allocating sufficient memory dynamically."
+  ]
+}

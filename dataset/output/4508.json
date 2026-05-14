@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter an integer and then prints its multiplication table up to 10 (e.g., for 5, print 5x1=5, 5x2=10, ..., 5x10=50).",
+  "test_cases": [
+    {
+      "input": "7",
+      "expected": "Enter a number: 7*1=7\n7*2=14\n7*3=21\n7*4=28\n7*5=35\n7*6=42\n7*7=49\n7*8=56\n7*9=63\n7*10=70\n"
+    },
+    {
+      "input": "3",
+      "expected": "Enter a number: 3*1=3\n3*2=6\n3*3=9\n3*4=12\n3*5=15\n3*6=18\n3*7=21\n3*8=24\n3*9=27\n3*10=30\n"
+    }
+  ],
+  "driver": "bash -c 'echo \"$input\" | ./a.out'",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Variable names like `val` and `count_var` are not as descriptive as `number` and `multiplier`, reducing readability.",
+    "The `do-while` loop is functionally correct but a `for` loop is generally more idiomatic and readable for iterating a fixed number of times with an explicit counter.",
+    "Output formatting `val\"*\"count_var\"=\"val*count_var` lacks spaces around operators, making the output slightly less readable."
+  ]
+}

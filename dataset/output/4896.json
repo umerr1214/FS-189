@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program with two overloaded functions named `calculateArea`. One function should take a single double argument (radius) and calculate the area of a circle. The second should take two double arguments (length, width) and calculate the area of a rectangle. Prompt the user to choose which area to calculate and provide inputs.",
+  "test_cases": [
+    { "input": "1\n5", "expected": "Area of circle: 78.53981633974483\n" },
+    { "input": "2\n10\n4", "expected": "Area of rectangle: 40.0\n" },
+    { "input": "3\n", "expected": "Invalid choice.\n" }
+  ],
+  "driver": "/* The program is designed to be run interactively. The main function handles user input and calls the overloaded functions. */",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The identifier 'PI' is used in the `calculateArea(double radius)` function without being declared or defined in the current scope. It should either use `M_PI` from `<cmath>` or a custom `const double PI` should be defined globally or passed as an argument."
+  ]
+}

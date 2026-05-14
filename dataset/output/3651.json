@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement matrix addition for two 3x3 integer matrices. Populate the matrices with example data and print the resulting sum matrix.",
+  "test_cases": [
+    {
+      "input": "N/A (matrices populated internally)",
+      "expected": "Sum Matrix:\n10 10 10\n10 10 10\n10 10 10\n"
+    }
+  ],
+  "driver": "g++ 3651.cpp -o 3651 && ./3651",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

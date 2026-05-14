@@ -1,0 +1,26 @@
+{
+  "language": "c++",
+  "question": "Define a C++ `struct Student` with members `std::string name`, `int id`, and `float score`. In `main`, declare a `Student` variable, prompt the user to input data for it, and then print the student's details.",
+  "test_cases": [
+    {
+      "input": "Alice\n101\n92.5",
+      "expected": "Enter student name (single word): Enter student ID (integer): Enter student score (float): \n--- Student Details ---\nName: Alice\nID: 101\nScore: 92.5\n"
+    },
+    {
+      "input": "Bob\nabc\n88.0",
+      "expected": "Enter student name (single word): Enter student ID (integer): Enter student score (float): \n--- Student Details ---\nName: Bob\nID: 0\nScore: 0\n"
+    },
+    {
+      "input": "Charlie\n103\nxyz",
+      "expected": "Enter student name (single word): Enter student ID (integer): Enter student score (float): \n--- Student Details ---\nName: Charlie\nID: 103\nScore: 0\n"
+    }
+  ],
+  "driver": "int main() {\n    // The program directly interacts with stdin/stdout, so no special driver needed.\n    // The test cases directly provide input and check output.\n    return 0;\n}",
+  "code_quality": 7,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not handle invalid input types for 'id' or 'score' gracefully. If non-numeric input is provided, `std::cin` enters a failed state, and the program proceeds without valid data or error messages, often printing default/garbage values (e.g., 0 for int/float).",
+    "The `std::cin >> s.name;` approach only reads a single word for the student's name, making it non-robust for names containing spaces."
+  ]
+}

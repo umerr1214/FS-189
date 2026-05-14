@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Find the maximum and minimum elements in a 1D integer array without using any standard library functions like `std::min_element` or `std::max_element`.",
+  "test_cases": [
+    { "input": "{5, 2, 9, 1, 7}", "expected": "Min: 1, Max: 9" },
+    { "input": "{10}", "expected": "Min: 10, Max: 10" },
+    { "input": "{-5, -2, -9, -1, -7}", "expected": "Min: -9, Max: -1" },
+    { "input": "{0, -3, 8, -1, 5}", "expected": "Min: -3, Max: 8" },
+    { "input": "{}", "expected": "Min: 0, Max: 0" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <sstream>\n#include <string>\n\n// The findMinMax function will be provided by the user's code.\n// Assuming the function signature: void findMinMax(const int arr[], int size, int& minVal, int& maxVal)\n\nvoid run_test_case(const std::vector<int>& arr_vec, int expected_min, int expected_max) {\n    int size = arr_vec.size();\n    int* arr = nullptr;\n    if (size > 0) {\n        arr = new int[size];\n        for (int i = 0; i < size; ++i) {\n            arr[i] = arr_vec[i];\n        }\n    }\n\n    int min_val, max_val;\n    // Initialize to arbitrary values to ensure they are set by the function\n    min_val = 999999;\n    max_val = -999999;\n\n    findMinMax(arr, size, min_val, max_val);\n\n    std::stringstream ss_input;\n    ss_input << \"{\";\n    for (size_t i = 0; i < arr_vec.size(); ++i) {\n        ss_input << arr_vec[i] << (i == arr_vec.size() - 1 ? \"\" : \", \");\n    }\n    ss_input << \"}\";\n\n    std::cout << \"Input Array: \" << ss_input.str() << std::endl;\n    std::cout << \"Observed Min: \" << min_val << \", Max: \" << max_val << std::endl;\n    std::cout << \"Expected Min: \" << expected_min << \", Max: \" << expected_max << std::endl;\n    std::cout << \"---\\n\";\n\n    if (size > 0) {\n        delete[] arr;\n    }\n}\n\nint main() {\n    // Test case 1: Positive numbers\n    run_test_case({5, 2, 9, 1, 7}, 1, 9);\n    // Test case 2: Single element\n    run_test_case({10}, 10, 10);\n    // Test case 3: Negative numbers\n    run_test_case({-5, -2, -9, -1, -7}, -9, -1);\n    // Test case 4: Mixed numbers\n    run_test_case({0, -3, 8, -1, 5}, -3, 8);\n    // Test case 5: Empty array\n    run_test_case({}, 0, 0);\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a `ResourceHandler` class that simulates acquiring a resource in its constructor (e.g., printing 'Resource acquired.') and releasing it in its destructor (e.g., printing 'Resource released.').",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Main Scope Start ---\nResource 1 acquired.\nResource 1 doing work.\n--- Calling process_resource ---\nResource 1 doing work.\nResource 1 released.\n--- Returned from process_resource ---\nResource 1 released.\n--- Main Scope End ---\n\n--- Another test with vector (also problematic) ---\nResource 2 acquired.\nResource 2 released.\nResource 3 acquired.\nResource 3 released.\n--- Vector filled ---\nResource 3 released.\nResource 2 released.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\n// The class definition and global 'next_resource_id' would be provided.\n\nvoid process_resource(ResourceHandler rh) {\n    rh.do_work();\n}\n\nint main() {\n    std::cout << \"--- Main Scope Start ---\" << std::endl;\n    {\n        ResourceHandler res1;\n        res1.do_work();\n\n        std::cout << \"--- Calling process_resource ---\" << std::endl;\n        process_resource(res1);\n        std::cout << \"--- Returned from process_resource ---\" << std::endl;\n    }\n    std::cout << \"--- Main Scope End ---\" << std::endl;\n\n    std::cout << \"\\n--- Another test with vector (also problematic) ---\" << std::endl;\n    std::vector<ResourceHandler> handlers;\n    handlers.push_back(ResourceHandler());\n    handlers.push_back(ResourceHandler());\n    std::cout << \"--- Vector filled ---\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `ResourceHandler` class violates the Rule of Three/Five/Zero by not explicitly defining or deleting copy/move constructors and assignment operators. The default shallow copies lead to multiple `ResourceHandler` objects managing the same conceptual resource ID.",
+    "This design results in double-release of the simulated resource when objects are copied (e.g., passed by value to `process_resource` or stored in `std::vector`). In a real-world scenario, this would lead to critical errors like double-freeing memory or closing the same file descriptor twice, which is a severe robustness issue.",
+    "The use of a global `next_resource_id` without proper encapsulation or thread-safety mechanisms also indicates a potential robustness flaw in a multi-threaded environment, although not directly tested here."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Develop a program that takes three side lengths from the user and determines if they form an equilateral, isosceles, or scalene triangle. Also, check for invalid triangle conditions (sum of any two sides must be greater than the third).",
+  "test_cases": [
+    { "input": "3 4 5", "expected": "Enter side X: Enter side Y: Enter side Z: This is a scalene triangle.\n" },
+    { "input": "5 5 5", "expected": "Enter side X: Enter side Y: Enter side Z: This is an equilateral triangle.\n" },
+    { "input": "7 7 10", "expected": "Enter side X: Enter side Y: Enter side Z: This is an isosceles triangle.\n" },
+    { "input": "1 2 5", "expected": "Enter side X: Enter side Y: Enter side Z: The given side lengths do not form a valid triangle.\n" },
+    { "input": "0 4 5", "expected": "Enter side X: Enter side Y: Enter side Z: Invalid input: Side lengths must be positive numbers.\n" },
+    { "input": "3 -4 5", "expected": "Enter side X: Enter side Y: Enter side Z: Invalid input: Side lengths must be positive numbers.\n" },
+    { "input": "a 4 5", "expected": "Enter side X: Enter side Y: Enter side Z: Invalid input: Side lengths must be positive numbers.\n" }
+  ],
+  "driver": "The program expects three space-separated float values from standard input, each preceded by a prompt. For each test case, the provided input string is fed to standard input. The program's output to standard output is captured and compared with the expected output.",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses `float` instead of `double` for side lengths, which can lead to precision issues in comparisons (especially with floating-point numbers) and is generally less preferred for general-purpose numerical calculations.",
+    "Uses `std::endl` excessively instead of `\\n`. `std::endl` flushes the output buffer, which can be less efficient in performance-critical applications compared to `\\n`.",
+    "The logic for determining triangle type is more verbose and nested than necessary, impacting readability and potentially introducing minor inefficiencies with redundant checks (e.g., checking `x == z` and `y == z` after `x == y` has been evaluated)."
+  ]
+}

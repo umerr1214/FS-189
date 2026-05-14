@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a `BooleanFlag` class that encapsulates a single `bool` value. Overload the unary logical NOT operator (`operator!`) to invert the encapsulated boolean value and return the new value.",
+  "test_cases": [
+    { "input": "BooleanFlag flag(true); bool res = !flag; std::cout << res << flag.getValue();", "expected": "00" },
+    { "input": "BooleanFlag flag(false); bool res = !flag; std::cout << res << flag.getValue();", "expected": "11" },
+    { "input": "BooleanFlag flag(true); !flag; !flag; std::cout << flag.getValue();", "expected": "1" }
+  ],
+  "driver": "int main() {\n    BooleanFlag flag(true);\n    bool res = !flag;\n    std::cout << res;\n    std::cout << flag.getValue();\n    std::cout << \"\\n\";\n\n    BooleanFlag flag2(false);\n    res = !flag2;\n    std::cout << res;\n    std::cout << flag2.getValue();\n    std::cout << \"\\n\";\n\n    BooleanFlag flag3(true);\n    !flag3; // Invert to false\n    !flag3; // Invert back to true\n    std::cout << flag3.getValue();\n    std::cout << \"\\n\";\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

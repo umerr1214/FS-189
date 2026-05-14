@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "For the `Book` class (from Q1), overload the binary `==` operator to compare two `Book` objects. Two books should be considered equal if their `isbn` values are identical.",
+  "test_cases": [
+    { "input": "", "expected": "true\nfalse\ntrue\ntrue\nfalse\ntrue\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\n// A simple Book class\nclass Book {\npublic:\n    std::string isbn;\n    std::string title;\n    std::string author;\n\n    Book(std::string isbn_val, std::string title_val = \"Unknown\", std::string author_val = \"Unknown\")\n        : isbn(std::move(isbn_val)), title(std::move(title_val)), author(std::move(author_val)) {}\n\n    Book() : isbn(\"\"), title(\"\"), author(\"\") {}\n};\n\n// Correct, readable, and efficient overloaded == operator:\n// 1. Efficiency: Books are passed by const reference, avoiding unnecessary copies.\n// 2. Readability: Direct return of the comparison result, which is concise and clear.\n// 3. Correctness: Compares isbn values as specified by the question.\nbool operator==(const Book& lhs, const Book& rhs) {\n    return lhs.isbn == rhs.isbn;\n}\n\nint main() {\n    Book book1(\"978-0321992789\", \"The C++ Programming Language\", \"Bjarne Stroustrup\");\n    Book book2(\"978-0321992789\", \"C++ Primer\", \"Stanley B. Lippman\"); // Same ISBN as book1\n    Book book3(\"978-1234567890\", \"Effective C++\", \"Scott Meyers\");\n    Book book4(\"978-1234567890\"); // Only ISBN provided\n    Book book5(\"978-9999999999\", \"Another Book\");\n    Book book6; // Default constructed, empty ISBN\n\n    std::cout << (book1 == book2 ? \"true\" : \"false\") << std::endl; // Expected: true\n    std::cout << (book1 == book3 ? \"true\" : \"false\") << std::endl; // Expected: false\n    std::cout << (book3 == book4 ? \"true\" : \"false\") << std::endl; // Expected: true\n    std::cout << (book1 == book1 ? \"true\" : \"false\") << std::endl; // Expected: true\n    std::cout << (book5 == book6 ? \"true\" : \"false\") << std::endl; // Expected: false (ISBNs \"978-999...\" vs \"\")\n    std::cout << (book6 == Book(\"\") ? \"true\" : \"false\") << std::endl; // Expected: true (ISBNs \"\" vs \"\")\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

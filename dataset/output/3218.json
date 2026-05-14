@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Vehicle` base class and a `Car` derived class. Include simple print statements in the constructors of both classes to illustrate the order of constructor execution when a `Car` object is created.",
+  "test_cases": [
+    { "input": "", "expected": "Vehicle constructor\nCar constructor\nThis is a vehicle.\nCar destructor\nVehicle destructor\n" }
+  ],
+  "driver": "int main() {\n    Car* myCarPtr = new Car();\n    myCarPtr->identifyVehicle();\n    delete myCarPtr;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses C-style `printf` for output instead of C++ streams (`std::cout`). While functional, `std::cout` is generally preferred in modern C++ for type safety, extensibility, and better integration with other C++ features. Explicit `fflush(stdout)` calls are also needed, which `std::endl` handles automatically for `std::cout`.",
+    "The `main` function unnecessarily allocates a `Car` object on the heap using `new` and `delete` for a simple, non-polymorphic object that could be stack-allocated. This adds overhead and complexity (manual memory management) without any clear benefit.",
+    "Includes an unnecessary `identifyVehicle` method and calls it in `main`, adding verbosity without contributing to the core problem's solution.",
+    "The overall code is less idiomatic C++ and demonstrates less efficient memory management for this specific use case."
+  ]
+}

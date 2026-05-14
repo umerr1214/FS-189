@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Declare a `std::string` variable. Ask the user to input a sentence. Then, count and print the total number of characters in the sentence (including spaces).",
+  "test_cases": [
+    { "input": "Hello World", "expected": "Total characters: 11\n" },
+    { "input": "  Test string with leading and trailing spaces  ", "expected": "Total characters: 47\n" },
+    { "input": "OneTwoThree", "expected": "Total characters: 11\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\nint main() {\n    std::cout << \"Driver placeholder: The user's program will be compiled and executed with provided test inputs.\" << std::endl;\n    std::cout << \"Input will be fed to stdin, and stdout will be captured for comparison.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    {
+      "line": 9,
+      "column": 40,
+      "message": "error: expected expression"
+    }
+  ]
+}

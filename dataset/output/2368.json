@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private attributes for `title`, `author`, and `isbn`. Implement a public constructor to initialize these attributes and a `displayDetails()` method to print all book information.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Title: The Hitchhiker's Guide to the Galaxy\nAuthor: Douglas Adams\nISBN: 978-0345391803\n"
+    }
+  ],
+  "driver": "Book book1(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\");\nbook1.displayDetails();\n",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing 'std::' qualifier for 'string' in constructor parameters, leading to an undeclared identifier error."
+  ]
+}

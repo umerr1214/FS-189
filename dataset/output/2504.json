@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Design a `Department` class that holds a collection of `Professor` objects (aggregation). Implement methods to `hireProfessor()`, `fireProfessor()`, and `displayProfessors()`.",
+  "test_cases": [
+    {
+      "input": "hire Dr. Smith 201\nhire Dr. Jones 202\nhire Dr. White 203\ndisplay\nfire 202\nfire 205\ndisplay\nfire 201\ndisplay\nfire 203\ndisplay\nhire Dr. Black 204\ndisplay",
+      "expected": "Hired Professor Dr. Smith (ID: 201)\nHired Professor Dr. Jones (ID: 202)\nHired Professor Dr. White (ID: 203)\n\nDepartment: Physics Department Professors (3 people):\n  PROF_ID: 201, PROF_NAME: Dr. Smith\n  PROF_ID: 202, PROF_NAME: Dr. Jones\n  PROF_ID: 203, PROF_NAME: Dr. White\n\n--- Attempting to fire professors ---\nFired Professor with ID 202\nProfessor with ID 205 not found to fire.\n\nDepartment: Physics Department Professors (2 people):\n  PROF_ID: 201, PROF_NAME: Dr. Smith\n  PROF_ID: 203, PROF_NAME: Dr. White\n\n--- Firing another professor ---\nFired Professor with ID 201\n\nDepartment: Physics Department Professors (1 people):\n  PROF_ID: 203, PROF_NAME: Dr. White\n\n--- Firing last professor ---\nFired Professor with ID 203\n\nDepartment: Physics Department Professors (0 people):\n  No professors currently employed.\nHired Professor Dr. Black (ID: 204)\n\nDepartment: Physics Department Professors (1 people):\n  PROF_ID: 204, PROF_NAME: Dr. Black\n"
+    }
+  ],
+  "driver": "The `main` function acts as the driver. It initializes a `Department` object and performs a sequence of `hireProfessor`, `fireProfessor`, and `displayProfessors` operations to demonstrate the class functionality and highlight the readability/efficiency issues.",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Efficiency Issue: The `fireProfessor` method implements a manual shifting loop to remove an element from the `std::vector`. This is less efficient than using `std::vector::erase()` directly or combining `std::remove()` with `erase()`, which are optimized for this operation.",
+    "Readability Issue: Variable names such as `prof_name`, `prof_id`, `theProfessors`, `p_obj`, `prof_identifier`, and method `display_info` are less conventional and descriptive compared to standard C++ naming conventions.",
+    "Readability Issue: The duplicate check in `hireProfessor` uses a manual `for` loop, which could be more concisely expressed using standard algorithms like `std::any_of`.",
+    "Readability Issue: The condition `theProfessors.empty() == true` in `displayProfessors` is overly verbose; `theProfessors.empty()` is sufficient and more idiomatic C++."
+  ]
+}

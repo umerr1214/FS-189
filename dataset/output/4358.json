@@ -1,0 +1,30 @@
+{
+  "language": "c++",
+  "question": "Declare a `std::string` variable. Ask the user to input a sentence. Then, count and print the total number of characters in the sentence (including spaces).",
+  "test_cases": [
+    {
+      "input": "This is a sample sentence.\n",
+      "expected": "Kindly provide a string of characters for analysis: The sentence you supplied was: \"This is a sample sentence.\"\nThe aggregate count of characters within the supplied sentence is: 26\n"
+    },
+    {
+      "input": "Hello\n",
+      "expected": "Kindly provide a string of characters for analysis: The sentence you supplied was: \"Hello\"\nThe aggregate count of characters within the supplied sentence is: 5\n"
+    },
+    {
+      "input": "\n",
+      "expected": "Kindly provide a string of characters for analysis: The sentence you supplied was: \"\"\nThe aggregate count of characters within the supplied sentence is: 0\n"
+    },
+    {
+      "input": "C++ is fun!\n",
+      "expected": "Kindly provide a string of characters for analysis: The sentence you supplied was: \"C++ is fun!\"\nThe aggregate count of characters within the supplied sentence is: 11\n"
+    }
+  ],
+  "driver": "g++ -std=c++17 -o solution {file_name} && ./solution",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The program counts characters by manually iterating through the string using a range-based for loop. While functionally correct, this is less efficient and less readable than directly using `std::string::length()` or `std::string::size()` methods, which are specifically designed for this purpose.",
+    "The variable name `user_input_sentence` is slightly verbose, and the prompt `Kindly provide a string of characters for analysis:` is less direct than a simple request for a sentence."
+  ]
+}

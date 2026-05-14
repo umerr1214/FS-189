@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `ResourceHandler` class that simulates acquiring a resource in its constructor (e.g., printing 'Resource acquired.') and releasing it in its destructor (e.g., printing 'Resource released.').",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Main Program Start ---\nResource acquired.\nResource is performing work.\n\n--- Entering manage_resource_in_scope() ---\nResource acquired.\nResource is performing work.\n--- Exiting manage_resource_in_scope() ---\nResource released.\n\n--- Entering nested block scope ---\nResource acquired.\nResource is performing work.\n--- Exiting nested block scope ---\nResource released.\n\n--- Main Program End ---\nResource released.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n\n// The class definition would be provided.\n\nvoid manage_resource_in_scope() {\n    std::cout << \"\\n--- Entering manage_resource_in_scope() ---\" << std::endl;\n    ResourceHandler handler_in_func;\n    handler_in_func.do_work();\n    std::cout << \"--- Exiting manage_resource_in_scope() ---\" << std::endl;\n}\n\nint main() {\n    std::cout << \"--- Main Program Start ---\" << std::endl;\n    ResourceHandler main_handler;\n    main_handler.do_work();\n    manage_resource_in_scope();\n    {\n        std::cout << \"\\n--- Entering nested block scope ---\" << std::endl;\n        ResourceHandler nested_handler;\n        nested_handler.do_work();\n        std::cout << \"--- Exiting nested block scope ---\" << std::endl;\n    }\n    std::cout << \"\\n--- Main Program End ---\" << std::endl;\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

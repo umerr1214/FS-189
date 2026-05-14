@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a function template `T get_absolute_value(T val)` that takes a value of any numeric type (e.g., `int`, `float`, `double`) and returns its absolute value. Demonstrate with at least two different data types.",
+  "test_cases": [
+    { "input": "", "expected": "Absolute value of -7.890 (float): 7.890\nAbsolute value of 12.340 (float): 12.340\nAbsolute value of -20 (int): 20\nAbsolute value of 15 (int): 15\nAbsolute value of 0 (int): 0\nAbsolute value of -2147483648 (int): -2147483648\n" }
+  ],
+  "driver": "g++ -std=c++17 -o 3416 3416.cpp && ./3416",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The implementation uses a conditional multiplication (val * (val < 0 ? -1 : 1)) which is generally less efficient than a direct conditional negation or using std::abs. It also reduces readability compared to the more idiomatic std::abs function."
+  ]
+}

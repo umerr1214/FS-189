@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that declares a 2D matrix (e.g., 3x3), prompts the user for a scalar value, and then performs scalar multiplication on the matrix, printing the resulting matrix.",
+  "test_cases": [
+    {
+      "input": "2\n",
+      "expected": "Enter a scalar value for multiplication: Matrix after scalar multiplication:\n   2   4   6\n   8  10  12\n  14  16  18\n"
+    },
+    {
+      "input": "abc\n",
+      "expected": "Enter a scalar value for multiplication: Matrix after scalar multiplication:\n   0   0   0\n   0   0   0\n   0   0   0\n",
+      "comment": "If non-numeric input is provided, `std::cin` fails, `scalarValue` is not modified (if uninitialized, it might cause UB, but often it defaults to 0 or retains previous value if it was initialized, or in this case, a subsequent read would yield 0 if not handled). For safety, `int scalarValue;` on most systems will zero-initialize if it's a global/static variable, but if it's local, it's undefined behavior. However, `std::cin >> scalarValue;` on failure will leave `scalarValue` unchanged if it was initialized, or in an indeterminate state if it wasn't. For testability, it's common for a failed read to effectively result in a zero if the variable was default-initialized or similar, leading to a matrix of zeros. Actual behavior is undefined without explicit initialization or error handling."
+    }
+  ],
+  "driver": "timeout 5s sh -c \"g++ -o solution solution.cpp && echo '{input}' | ./solution\"",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not handle non-numeric input for the scalar value. If invalid input is provided, `std::cin` enters a fail state, and the `scalarValue` variable may contain an uninitialized or incorrect value, leading to undefined behavior or incorrect output (e.g., a matrix of zeros or garbage values)."
+  ]
+}

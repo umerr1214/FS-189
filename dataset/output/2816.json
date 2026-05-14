@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Car` class that uses composition to include an `Engine` object. The `Engine` class should have `power` (int) and `type` (string). The `Car` class should have `make` (string) and `model` (string), and a `start()` method that internally calls a `startEngine()` method of its `Engine` object.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "\n<<< Initiating vehicle startup procedure >>>\nVehicle: Tesla Model 3\nChecking pre-start conditions...\nAll systems report ready for engine engagement.\n--- Engine starting sequence initiated ---\nEngine Type: Electric\nEngine Power: 283 HP\nEngine components checked. All systems nominal.\nEngine is now running.\n--- Engine starting sequence completed ---\nTesla Model 3 has now successfully started.\nPowered by a Electric engine with 283 horsepower.\n<<< Vehicle startup procedure concluded >>>\n\n----------------------------------------\n\n<<< Initiating vehicle startup procedure >>>\nVehicle: Ford Mustang\nChecking pre-start conditions...\nAll systems report ready for engine engagement.\n--- Engine starting sequence initiated ---\nEngine Type: V8 Gasoline\nEngine Power: 450 HP\nEngine components checked. All systems nominal.\nEngine is now running.\n--- Engine starting sequence completed ---\nFord Mustang has now successfully started.\nPowered by a V8 Gasoline engine with 450 horsepower.\n<<< Vehicle startup procedure concluded >>>\n"
+    }
+  ],
+  "driver": "int main() {\n    Car myCar(\"Tesla\", \"Model 3\", 283, \"Electric\");\n    myCar.start();\n\n    std::cout << \"\\n----------------------------------------\\n\" << std::endl;\n\n    Car anotherCar(\"Ford\", \"Mustang\", 450, \"V8 Gasoline\");\n    anotherCar.start();\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The Car::start() method is excessively verbose. It prints multiple introductory and concluding messages that add little value and duplicate information (like engine type and power) that is already conveyed by the Engine::startEngine() method. This redundancy makes the code less readable, harder to maintain, and slightly less efficient due to unnecessary string operations and output."
+  ]
+}

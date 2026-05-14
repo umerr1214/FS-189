@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a program that checks if a user-entered integer is positive, negative, or zero using if-else if-else statements.",
+  "test_cases": [
+    { "input": "5", "expected": "Positive\n" },
+    { "input": "-3", "expected": "Negative\n" },
+    { "input": "0", "expected": "Zero\n" },
+    { "input": "100", "expected": "Positive\n" },
+    { "input": "-1", "expected": "Negative\n" }
+  ],
+  "driver": "int main() { std::string input; std::getline(std::cin, input); std::stringstream ss(input); int num; ss >> num; if (num > 0) { std::cout << \"Positive\" << std::endl; } else if (num < 0) { std::cout << \"Negative\" << std::endl; } else { std::cout << \"Zero\" << std::endl; } return 0; }",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'std::cout << \"Positive\"' statement in the first 'if' block. This prevents compilation."
+  ]
+}

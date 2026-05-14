@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program to generate and print the Nth term of the Fibonacci sequence. The program should take N as input from the user. (e.g., N=7 should output 8, for 1, 1, 2, 3, 5, 8, 13, ...)",
+  "test_cases": [
+    { "input": "7", "expected": "8\n" },
+    { "input": "10", "expected": "55\n" },
+    { "input": "1", "expected": "1\n" },
+    { "input": "0", "expected": "0\n" },
+    { "input": "-5", "expected": "0\n" },
+    { "input": "50", "expected": "-298632863\n" }
+  ],
+  "driver": "// This is a placeholder for a C++ driver. In a real testing environment,\n// this would involve compiling the student's code (e.g., to 'solution.exe'),\n// then for each test case, piping the input to the executable's stdin\n// and capturing its stdout/stderr.\n// Example:\n// std::string input_str = \"7\";\n// std::string command = \"echo \\\"\" + input_str + \"\\\" | ./solution.exe\";\n// std::string output = execute_shell_command(command); // Function to run shell command and get output\n// assert(output == \"8\\n\");\nint main_driver_placeholder() {\n    // The actual testing framework would compile and run the submitted C++ file's main function.\n    // It would redirect standard input for the 'N' value and capture standard output.\n    // For example, if the user's code is in 'user_code.cpp':\n    // 1. Compile: g++ user_code.cpp -o user_code_exec\n    // 2. Run with input \"7\": echo \"7\" | ./user_code_exec\n    // 3. Capture output.\n    std::cout << \"Test driver executed successfully (placeholder).\" << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program uses 'int' for Fibonacci numbers, which can lead to integer overflow for N values greater than approximately 46. For N=50, it produces an incorrect negative result.",
+    "The program handles non-positive input (N <= 0) by returning 0, which is not robust error handling. The problem statement implies N should be a positive integer for 'Nth term'."
+  ]
+}

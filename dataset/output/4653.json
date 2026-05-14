@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that reads a string from the user and prints its reverse. Use `std::string` for string manipulation.",
+  "test_cases": [
+    { "input": "hello", "expected": "olleh" },
+    { "input": "world", "expected": "dlrow" },
+    { "input": "A", "expected": "A" },
+    { "input": "", "expected": "" },
+    { "input": "racecar", "expected": "racecar" },
+    { "input": "12345", "expected": "54321" },
+    { "input": "hello world", "expected": "dlrow olleh" }
+  ],
+  "driver": "int main() {\n    std::string input_str;\n    std::getline(std::cin, input_str);\n    std::reverse(input_str.begin(), input_str.end());\n    std::cout << input_str << std::endl;\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

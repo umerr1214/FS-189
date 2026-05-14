@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that declares and initializes a 3x3 integer matrix (2D array) with any values. Then, print the matrix in a formatted way (e.g., each row on a new line).",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "   1   2   3\n  10  20  30\n 100 200 300\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The code uses hardcoded dimensions (e.g., '3') directly in loops instead of using constants or deriving them from the array, making it less robust to changes in matrix size.",
+    "The use of `std::setw(4)` provides a fixed width for printing. While it works for the current values, it's not robust for larger numbers (e.g., 5-digit integers) which would break the desired alignment."
+  ]
+}

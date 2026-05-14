@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Write a function `concatenateStrings` that takes two C-style strings (char arrays) as input and prints their combined string. (Assume the destination array has enough space).",
+  "test_cases": [
+    { "input": "s1=\"Hello\", s2=\" World\"", "expected": "Hello World" },
+    { "input": "s1=\"\", s2=\"World\"", "expected": "World" },
+    { "input": "s1=\"Hello\", s2=\"\"", "expected": "Hello" },
+    { "input": "s1=\"\", s2=\"\"", "expected": "" },
+    { "input": "s1=nullptr, s2=\"World\"", "expected": "Program crash (segmentation fault)" }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cstdio>\n\nvoid concatenateStrings(const char* s1, const char* s2) {\n    size_t len1 = strlen(s1);\n    size_t len2 = strlen(s2);\n\n    char* buffer = new char[len1 + len2 + 1];\n\n    strcpy(buffer, s1);\n    strcat(buffer, s2);\n\n    printf(\"%s\\n\", buffer);\n\n    delete[] buffer;\n}\n\nint main() {\n    concatenateStrings(\"Hello\", \" World\");\n    concatenateStrings(\"\", \"World\");\n    concatenateStrings(\"Hello\", \"\");\n    concatenateStrings(\"\", \"\");\n    // This call is expected to crash the program\n    concatenateStrings(nullptr, \"World\"); \n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The function does not include checks for `nullptr` input strings (`s1` or `s2`).",
+    "Passing a `nullptr` to C-style string functions like `strlen`, `strcpy`, or `strcat` results in undefined behavior, typically a segmentation fault.",
+    "A robust implementation should validate inputs to prevent crashes."
+  ]
+}

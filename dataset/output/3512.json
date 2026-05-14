@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that declares a 1D integer array and initializes it. Then, calculate and print the sum of all elements in the array using pointer arithmetic instead of array indexing.",
+  "test_cases": [
+    { "input": "", "expected": "Sum of array elements: 150\n" }
+  ],
+  "driver": "g++ -o {file_name_no_ext} {file_name}.cpp && ./{file_name_no_ext}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The pointer increment logic `current_ptr = arr + (current_ptr - arr + 1);` is unnecessarily complex and less efficient than a direct `current_ptr++;`. It involves pointer subtraction, integer addition, and pointer addition in each iteration, making it harder to read and potentially less optimized by the compiler compared to a simple increment."
+  ]
+}

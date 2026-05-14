@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `NotificationSystem` class. Overload its constructor to accept different notification types (e.g., `enum NotificationType { SMS, EMAIL, PUSH }`). Also, overload a `send` method to handle sending messages of different content types (e.g., `std::string`, `int`).",
+  "test_cases": [
+    { "input": "Create SMS notifier and send string message", "expected": "Sending SMS notification: Hello via SMS!\n" },
+    { "input": "Create EMAIL notifier and send int message", "expected": "Sending EMAIL notification with ID: 12345\n" }
+  ],
+  "driver": "int main() {\n    NotificationSystem smsNotifier(SMS);\n    smsNotifier.send(\"Hello via SMS!\");\n\n    NotificationSystem emailNotifier(EMAIL);\n    emailNotifier.send(12345);\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition 'NotificationSystem'."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private members for `title`, `author`, and `isbn` (string types). Provide public methods to set and retrieve these details, and a method `displayBookDetails()` to print all information.",
+  "test_cases": [
+    {
+      "input": "Create a Book object, set its title to 'The C++ Programming Language', author to 'Bjarne Stroustrup', and attempt to set ISBN to '978-0321992789'. Then display its details.",
+      "expected": "Title: The C++ Programming Language\nAuthor: Bjarne Stroustrup\nISBN: 978-0321992789\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Book {\nprivate:\n    std::string title;\n    std::string author;\n    std::string isbn;\n\npublic:\n    void setTitle(const std::string& t) { title = t; }\n    void setAuthor(const std::string& a) { author = a; }\n    void setISBN(const std::strin& i) { isbn = i; } // SYNTAX ERROR\n\n    std::string getTitle() const { return title; }\n    std::string getAuthor() const { return author; }\n    std::string getISBN() const { return isbn; }\n\n    void displayBookDetails() const {\n        std::cout << \"Title: \" << title << std::endl;\n        std::cout << \"Author: \" << author << std::endl;\n        std::cout << \"ISBN: \" << isbn << std::endl;\n    }\n};\n\nint main() {\n    Book book1;\n    book1.setTitle(\"The C++ Programming Language\");\n    book1.setAuthor(\"Bjarne Stroustrup\");\n    book1.setISBN(\"978-0321992789\");\n    book1.displayBookDetails();\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

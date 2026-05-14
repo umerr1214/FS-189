@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "In a C++ program, prompt the user to enter two integers. Using the ternary operator, determine and print which of the two integers is larger.",
+  "test_cases": [
+    { "input": "10\n5", "expected": "The larger integer is: 10\n" },
+    { "input": "5\n10", "expected": "The larger integer is: 10\n" },
+    { "input": "7\n7", "expected": "Both integers are equal: 7\n" }
+  ],
+  "driver": "To run this program, compile it using a C++ compiler (e.g., `g++ 5153.cpp -o 5153`). Then execute the compiled program (e.g., `./5153`). The program will prompt you to enter two integers. Provide the integers separated by a space or on separate lines, then press Enter.",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The ternary operator `(num1 < num2) ? num1 : num2` incorrectly determines the smaller integer instead of the larger one.",
+    "For unequal numbers, the program prints the smaller integer while claiming it is 'The larger integer is:', leading to incorrect output."
+  ]
+}

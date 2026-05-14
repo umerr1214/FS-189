@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `Logger` class with overloaded `log` methods. One `log` method should take a `std::string` message, another an `int` error code, and a third a `char` severity level. Each should print an appropriate formatted message.",
+  "test_cases": [
+    { "input": "logger.log(\"System initialization complete.\");", "expected": "[INFO] Message: System initialization complete.\n" },
+    { "input": "logger.log(101);", "expected": "[ERROR] Code: 101\n" },
+    { "input": "logger.log('I');", "expected": "[LOGICAL_ERROR] Severity: I\n" },
+    { "input": "logger.log('E');", "expected": "[LOGICAL_ERROR] Severity: E\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Logger {\npublic:\n    void log(const std::string& message) {\n        std::cout << \"[INFO] Message: \" << message << std::endl;\n    }\n\n    void log(int errorCode) {\n        std::cout << \"[ERROR] Code: \" << errorCode << std::endl;\n    }\n\n    void log(char severityLevel) {\n        std::string severityStr = \"LOGICAL_ERROR\";\n        std::cout << \"[\" << severityStr << \"] Severity: \" << severityLevel << std::endl;\n    }\n};\n\nint main() {\n    Logger logger;\n    logger.log(\"System initialization complete.\");\n    logger.log(101);\n    logger.log('I');\n    logger.log('E');\n    logger.log(\"User authentication failed.\");\n    logger.log(403);\n    logger.log('D');\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `log(char severityLevel)` method has a logical error. It always prints \"LOGICAL_ERROR\" as the severity prefix, regardless of the input `severityLevel` character. It fails to provide an 'appropriate formatted message' as per the question for severity levels."
+  ]
+}

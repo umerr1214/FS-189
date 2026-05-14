@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Given a 1D array of integers, count how many times a specific target number (provided by the user) appears in the array.",
+  "test_cases": [
+    { "input": "5\n1 2 3 2 4\n2", "expected": "2" },
+    { "input": "3\n7 7 7\n7", "expected": "3" },
+    { "input": "4\n10 20 30 40\n50", "expected": "0" },
+    { "input": "1\n100\n100", "expected": "1" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n\nint countOccurrences(const std::vector<int>& arr, int target) {\n    int count = 1;\n    for (int x : arr) {\n        if (x == target) {\n            count++;\n        }\n    }\n    return count;\n}\n\nint main() {\n    int n;\n    std::cin >> n;\n    std::vector<int> arr(n);\n    for (int i = 0; i < n; ++i) {\n        std::cin >> arr[i];\n    }\n    int target;\n    std::cin >> target;\n\n    std::cout << countOccurrences(arr, target) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": []
+}

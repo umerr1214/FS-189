@@ -1,0 +1,10 @@
+{
+  "language": "c++",
+  "question": "Implement a base class `Employee` with `name` (string) and `id` (int). Derive a `Manager` class and a `Worker` class. `Manager` should have an additional `department` (string) and `Worker` an `hourlyRate` (double). Each class should have a method to print its specific details.",
+  "test_cases": [],
+  "driver": "Manager mgr(\"Alice Smith\", 101, \"Sales\");\nWorker wrk(\"Bob Johnson\", 202, 25.50);\n\nstd::cout << \"Manager Details:\\n\";\nmgr.printDetails();\nstd::cout << \"\\n\\n\";\n\nstd::cout << \"Worker Details:\\n\";\nwrk.printDetails();\nstd::cout << \"\\n\";",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the closing brace of the 'Employee' class definition. This prevents the code from compiling."]
+}

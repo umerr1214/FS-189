@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter the radius of a circle (as a floating-point number), then calculates and prints its area and circumference. Use `M_PI` for pi if available, or define it as `3.14159`.",
+  "test_cases": [
+    { "input": "5.0", "expected": "Enter the radius of the circle: Area Is: 78.53975\nCircumference Is: 31.41590\n" },
+    { "input": "10.0", "expected": "Enter the radius of the circle: Area Is: 314.15900\nCircumference Is: 62.83180\n" },
+    { "input": "1.0", "expected": "Enter the radius of the circle: Area Is: 3.14159\nCircumference Is: 6.28318\n" }
+  ],
+  "driver": "void run_test() { solve(); }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses uninformative variable names ('r', 'a', 'c') making the code harder to understand.",
+    "Pi is defined locally within the function instead of using a global constant or M_PI from cmath, which can be less efficient if the function is called multiple times.",
+    "Lacks comments explaining the purpose of variables or calculations.",
+    "Output messages are slightly inconsistent ('Area Is:' vs 'Circumference Is:')."
+  ]
+}

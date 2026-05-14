@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `Student` class with `name` (string) and `studentID` (int) as private members. Implement a default constructor that initializes `name` to \"Unknown\" and `studentID` to 0, and a parameterized constructor that takes both `name` and `studentID`. Also, implement a destructor that prints a message indicating when a `Student` object is being destroyed, e.g., 'Student [name] with ID [id] destroyed.'",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial active students: 0\nAfter global student: 1\nStudent Charlie with ID 103 destroyed.\nStudent Bob with ID 102 destroyed.\nAfter function call: 2\nStudent David with ID 104 destroyed.\nStudent Alice with ID 101 destroyed.\nStudent GlobalStudent with ID 999 destroyed.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\nclass Student {\nprivate:\n    std::string name;\n    int studentID;\n    static int activeStudentsCount;\n\npublic:\n    Student() : name(\"Unknown\"), studentID(0) {\n        activeStudentsCount++;\n    }\n\n    Student(const std::string& n, int id) : name(n), studentID(id) {\n        activeStudentsCount++;\n    }\n\n    ~Student() {\n        std::cout << \"Student \" << name << \" with ID \" << studentID << \" destroyed.\" << std::endl;\n        activeStudentsCount--;\n    }\n\n    std::string getName() const { return name; }\n    int getStudentID() const { return studentID; }\n\n    static int getActiveStudentsCount() {\n        return activeStudentsCount;\n    }\n};\n\nint Student::activeStudentsCount = 0;\n\nvoid createAndDestroyStudents() {\n    Student s1(\"Alice\", 101);\n    {\n        Student s2(\"Bob\", 102);\n        Student s3(\"Charlie\", 103);\n    }\n    Student s4(\"David\", 104);\n}\n\nint main() {\n    std::cout << \"Initial active students: \" << Student::getActiveStudentsCount() << std::endl;\n    Student globalStudent(\"GlobalStudent\", 999);\n    std::cout << \"After global student: \" << Student::getActiveStudentsCount() << std::endl;\n\n    createAndDestroyStudents();\n\n    std::cout << \"After function call: \" << Student::getActiveStudentsCount() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The class introduces a non-thread-safe static counter (`activeStudentsCount`) that is incremented and decremented in constructors and the destructor without any synchronization mechanisms (e.g., `std::mutex` or `std::atomic`). This design makes the class non-robust for concurrent usage, as it will lead to race conditions and potentially incorrect counts if `Student` objects are created or destroyed simultaneously across multiple threads."
+  ]
+}

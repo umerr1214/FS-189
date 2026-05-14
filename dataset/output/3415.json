@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a function template `T get_absolute_value(T val)` that takes a value of any numeric type (e.g., `int`, `float`, `double`) and returns its absolute value. Demonstrate with at least two different data types.",
+  "test_cases": [
+    { "input": "", "expected": "Absolute value of -10 (int): 10\nAbsolute value of 5 (int): 5\nAbsolute value of 0 (int): 0\nAbsolute value of -2147483648 (int): -2147483648\nAbsolute value of -123456789012345 (long long): 123456789012345\nAbsolute value of -9223372036854775808 (long long): -9223372036854775808\nAbsolute value of -3.140 (float): 3.140\n" }
+  ],
+  "driver": "g++ -std=c++17 -o 3415 3415.cpp && ./3415",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The custom implementation of get_absolute_value has a robustness issue for the most negative integral type (e.g., INT_MIN, LLONG_MIN). Negating these values results in integer overflow, which is undefined behavior and yields an incorrect mathematical absolute value (often returning the original negative value)."
+  ]
+}

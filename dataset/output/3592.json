@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Print a multiplication table for a user-specified number (e.g., if user enters 5, print 5x1 to 5x10) using a `for` loop.",
+  "test_cases": [
+    {
+      "input": "5\n",
+      "expected": "Enter a number: 5 x 1 = 5\n5 x 2 = 10\n5 x 3 = 15\n5 x 4 = 20\n5 x 5 = 25\n5 x 6 = 30\n5 x 7 = 35\n5 x 8 = 40\n5 x 9 = 45\n5 x 10 = 50\n"
+    },
+    {
+      "input": "7\n",
+      "expected": "Enter a number: 7 x 1 = 7\n7 x 2 = 14\n7 x 3 = 21\n7 x 4 = 28\n7 x 5 = 35\n7 x 6 = 42\n7 x 7 = 49\n7 x 8 = 56\n7 x 9 = 63\n7 x 10 = 70\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// Placeholder for the user's solution function.\n// In a real test, the user's compiled 'solve()' would be linked here.\n// For this driver to be 'valid C++ code', we provide an empty definition.\nvoid solve() {\n    // The actual user solution logic would go here.\n    // For the purpose of making this driver compilable and runnable independently,\n    // this is an empty placeholder.\n    // A real testing system would replace or link the actual 'solve' function.\n    std::cout << \"Placeholder solve() called. No actual multiplication table printed.\" << std::endl;\n}\n\n// This function simulates running the 'solve' function with redirected I/O.\nstd::string execute_solution(const std::string& input_str) {\n    std::stringstream ss_input(input_str);\n    std::stringstream ss_output;\n\n    // Save original cin/cout buffers\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n\n    // Redirect cin/cout\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    // Call the user's solution function\n    solve();\n\n    // Restore original cin/cout buffers\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    return ss_output.str();\n}\n\nint main() {\n    // This main function is part of the driver, not the user's solution.\n    // It demonstrates how 'execute_solution' would be used with test cases.\n    // In a full test harness, this would iterate through the JSON's test_cases.\n    std::cout << \"Driver executing test cases (simulated).\" << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after a statement, causing a compilation error."]
+}

@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that asks the user to input a number representing a day of the week (1 for Monday, 2 for Tuesday, etc.). Use a `switch` statement to print the corresponding day name.",
+  "test_cases": [
+    { "input": "1", "expected": "Monday\n" },
+    { "input": "4", "expected": "Thursday\n" },
+    { "input": "8", "expected": "Invalid day number.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\nint main() {\n    std::string input_str;\n    std::getline(std::cin, input_str);\n\n    std::stringstream ss(input_str);\n    int dayNum;\n    ss >> dayNum;\n\n    switch (dayNum) {\n        case 1: std::cout << \"Monday\"; break;\n        case 2: std::cout << \"Tuesday\"; break;\n        case 3: std::cout << \"Wednesday\"; break;\n        case 4: std::cout << \"Thursday\"; break;\n        case 5: std::cout << \"Friday\"; break;\n        case 6: std::cout << \"Saturday\"; break;\n        case 7: std::cout << \"Sunday\"; break;\n        default: std::cout << \"Invalid day number.\"; break;\n    }\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The program reads the day number into a 'char' variable, but the 'switch' statement uses integer literals for its cases (e.g., 'case 1'). When a user inputs '1', 'cin >> char_var' stores the ASCII value of '1' (which is 49), not the integer value 1. This causes valid inputs to incorrectly fall into the default case because the char's ASCII value does not match the integer case labels."
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that takes an integer from the user and reverses the digits of that number. For example, if the input is 12345, the output should be 54321.",
+  "test_cases": [
+    { "input": "12345", "expected": "54321" },
+    { "input": "0", "expected": "0" },
+    { "input": "-123", "expected": "-321" },
+    { "input": "100", "expected": "1" },
+    { "input": "1000000009", "expected": "9000000001" },
+    { "input": "2147483647", "expected": "7463847412" }
+  ],
+  "driver": "#include <iostream>\n\n// Assuming the student's code provides the reverseNumber function\nextern int reverseNumber(int n);\n\nint main() {\n    int num;\n    if (!(std::cin >> num)) {\n        return 1; // Error reading input\n    }\n    int result = reverseNumber(num);\n    std::cout << result << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not handle potential integer overflow when the reversed number exceeds the maximum value of `int` (or falls below `int` minimum). For example, input `1000000009` should result in `9000000001`, but the program will produce an incorrect, truncated/wrapped value due to `int` overflow. Similarly for `2147483647` (INT_MAX), its reversed value `7463847412` overflows, leading to an incorrect result."
+  ]
+}

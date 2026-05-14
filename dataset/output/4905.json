@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Book` with members `title` (`std::string`), `author` (`std::string`), and `publicationYear` (int). Write a program that declares an array of three `Book` structs, prompts the user to enter details for each book, and then prints the details of all books.",
+  "test_cases": [
+    {
+      "input": "The Hitchhiker's Guide to the Galaxy\nDouglas Adams\n1979\nPride and Prejudice\nJane Austen\ninvalid_year\n1813\n1984\nGeorge Orwell\n2000\n",
+      "expected": "Enter details for three books:\n\n--- Book 1 ---\nEnter title: Enter author: Enter publication year: \n--- Book 2 ---\nEnter title: Enter author: Enter publication year: Invalid input. Please enter a number for the year.\nEnter publication year: \n--- Book 3 ---\nEnter title: Enter author: Enter publication year: \n\n--- Details of all books ---\n\nBook 1:\nTitle: The Hitchhiker's Guide to the Galaxy\nAuthor: Douglas Adams\nPublication Year: 1979\n\nBook 2:\nTitle: Pride and Prejudice\nAuthor: Jane Austen\nPublication Year: 1813\n\nBook 3:\nTitle: 1984\nAuthor: George Orwell\nPublication Year: 2000\n"
+    }
+  ],
+  "driver": "g++ -o solution 4905.cpp && ./solution",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a program that reads an integer from the user and calculates the sum of its digits. For example, if the input is 123, the output should be 6 (1+2+3). Use a `while` loop.",
+  "test_cases": [
+    { "input": "123", "expected": "6" },
+    { "input": "45", "expected": "9" },
+    { "input": "-123", "expected": "6" },
+    { "input": "-5", "expected": "5" },
+    { "input": "0", "expected": "0" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\nint main() {\n    int number;\n    std::cin >> number;\n\n    int sum = 0;\n    int tempNumber = number;\n\n    if (tempNumber < 0) {\n        tempNumber = -tempNumber;\n    }\n\n    while (tempNumber > 0) {\n        int digit = tempNumber % 10;\n        sum += digit;\n        tempNumber /= 10;\n    }\n\n    std::cout << sum << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": []
+}

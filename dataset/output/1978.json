@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Implement a `StringWrapper` class that manages a C-style string (`char*`) dynamically allocated on the heap. Provide a copy constructor that performs a deep copy to prevent dangling pointers.",
+  "test_cases": [
+    { "input": "", "expected": "Program is expected to fail compilation." }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- StringWrapper Test (Syntax Error) ---\" << std::endl;\n    StringWrapper s1(\"Hello World\");\n    std::cout << \"s1: \";\n    s1.print();\n    StringWrapper s2 = s1;\n    std::cout << \"s2 (copy of s1): \";\n    s2.print();\n    std::cout << \"\\n--- End Test ---\" << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing closing brace '}' for the StringWrapper class definition, leading to a compilation error."]
+}

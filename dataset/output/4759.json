@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a program that dynamically allocates a 1D array of integers of a size specified by the user. Fill the array with user input, print its contents, and then deallocate the memory.",
+  "test_cases": [
+    {
+      "input": "5\n1\n2\n3\n4\n5",
+      "expected": "Enter the size of the array: Enter 5 integers:\nElement 0: Element 1: Element 2: Element 3: Element 4: \nArray contents: 1 2 3 4 5 \n"
+    },
+    {
+      "input": "abc\n1\n2\n3",
+      "expected": "Enter the size of the array: Enter 0 integers:\n\nArray contents: \n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\n// Assume the submitted code has a void solve() function that uses std::cin and std::cout\nextern void solve(); // Declare the solve function from the submitted code\n\n// Function to run solve() with custom input and capture output\nstd::string run_test(const std::string& input) {\n    std::stringstream ss_in(input);\n    std::stringstream ss_out;\n\n    // Redirect cin and cout\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::streambuf* old_cerr = std::cerr.rdbuf(); // Also redirect cerr for robustness\n\n    std::cin.rdbuf(ss_in.rdbuf());\n    std::cout.rdbuf(ss_out.rdbuf());\n    std::cerr.rdbuf(ss_out.rdbuf()); // Redirect cerr to capture error messages\n\n    solve(); // Call the user's solution\n\n    // Restore cin and cout\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n    std::cerr.rdbuf(old_cerr);\n\n    return ss_out.str();\n}\n\nint main() {\n    // This driver is illustrative. The actual testing system would iterate through\n    // the 'test_cases' array, call run_test for each, and compare outputs.\n    // For demonstration purposes, we'll just show how it could be used.\n    // The primary execution for evaluation will use the run_test function with inputs from 'test_cases'.\n    std::cout << \"Driver setup complete. Test cases will be executed by an external harness.\" << std::endl;\n    return 0;\n}\n",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Lack of input validation for array size: The program does not check if the user-provided size is a positive integer. Invalid input (e.g., non-numeric or negative) can lead to undefined behavior or unexpected program flow.",
+    "Does not handle cin failure state: If `std::cin` fails to read an integer (e.g., user inputs text), the error state is not cleared, and subsequent `std::cin` operations will also fail, leading to incorrect or no array filling.",
+    "Does not explicitly handle potential memory allocation failure (std::bad_alloc) which can occur if the requested array size is too large."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop an `Employee` class (with `name`, `id`). Then, create a `Department` class that *aggregates* multiple `Employee` objects using a `std::vector` of pointers to `Employee`. Demonstrate that `Employee` objects can exist independently of the `Department`.",
+  "test_cases": [
+    {
+      "input": "N/A (program fails to compile)",
+      "expected": "N/A (program fails to compile)"
+    }
+  ],
+  "driver": "The `main` function directly demonstrates the class usage and aggregation.",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'emp1.display()' function call in the `main` function, leading to a compilation error."
+  ]
+}

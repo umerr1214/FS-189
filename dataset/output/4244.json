@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function template `find_maximum` that takes two arguments of any comparable data type and returns the larger of the two. Test it with at least two different data types (e.g., int and double).",
+  "test_cases": [
+    { "input": "num1 = 5, num2 = 10", "expected": "Maximum of 5 and 10 (int): 10" },
+    { "input": "val1 = 3.14, val2 = 2.718", "expected": "Maximum of 3.14 and 2.718 (double): 3.14" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\ntemplate <typename T>\nT find_maximum(T arg1, T arg2) {\n    T max_value_result;\n    if (arg1 > arg2) {\n        max_value_result = arg1;\n    } else if (arg2 > arg1) {\n        max_value_result = arg2;\n    } else {\n        max_value_result = arg1;\n    }\n    return max_value_result;\n}\n\nint main() {\n    int num1 = 5;\n    int num2 = 10;\n    int max_int = find_maximum(num1, num2);\n    std::cout << \"Maximum of \" << num1 << \" and \" << num2 << \" (int): \" << max_int << std::endl;\n\n    double val1 = 3.14;\n    double val2 = 2.718;\n    double max_double = find_maximum(val1, val2);\n    std::cout << \"Maximum of \" << val1 << \" and \" << val2 << \" (double): \" << max_double << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The function template `find_maximum` passes arguments by value (`T arg1, T arg2`). For large or complex user-defined data types, this can lead to unnecessary copies and reduced efficiency. Passing by `const` reference (`const T&`) is generally preferred for generic templates to avoid such copies.",
+    "The conditional logic inside `find_maximum` uses an overly verbose `if-else if-else` structure for a simple maximum comparison. A more concise and readable approach would be a direct `if-else` statement or a ternary operator."
+  ]
+}

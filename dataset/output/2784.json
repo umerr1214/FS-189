@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `Logger` class with overloaded `log` methods. One `log` method should take a `std::string` message, another an `int` error code, and a third a `char` severity level. Each should print an appropriate formatted message.",
+  "test_cases": [
+    { "input": "logger.log(\"System initialization complete.\");", "expected": "[INFO] Message: System initialization complete.\n" },
+    { "input": "logger.log(101);", "expected": "[ERROR] Code: 101\n" },
+    { "input": "logger.log('I');", "expected": "[ERROR] Code: 73\n" },
+    { "input": "logger.log('E');", "expected": "[ERROR] Code: 69\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Logger {\npublic:\n    void log(const std::string& message) {\n        std::cout << \"[INFO] Message: \" << message << std::endl;\n    }\n\n    void log(int errorCode) {\n        std::cout << \"[ERROR] Code: \" << errorCode << std::endl;\n    }\n};\n\nint main() {\n    Logger logger;\n    logger.log(\"System initialization complete.\");\n    logger.log(101);\n    logger.log('I');\n    logger.log('E');\n    logger.log(\"User authentication failed.\");\n    logger.log(403);\n    logger.log('D');\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `Logger` class is missing the overloaded `log` method that specifically takes a `char` severity level, as explicitly required by the question. When a `char` is passed to `log`, it implicitly converts to an `int` and calls `log(int)`, leading to incorrect logging of severity levels as integer error codes (e.g., 'I' becomes 73)."
+  ]
+}

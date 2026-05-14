@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Person` with `protected` data members `name` (string) and `age` (int). Derive a `Student` class from `Person`. Implement a method in `Student` to display both its own specific details and the inherited `name` and `age`.",
+  "test_cases": [
+    { "input": "Bob Johnson\n22\nS45678\nPhysics", "expected": "Enter N: Enter A: Enter ID: Enter M: ###Details###\nN: Bob Johnson\nA: 22\nID: S45678\nM: Physics\n##############\n" }
+  ],
+  "driver": "// The test harness will compile and run the submitted C++ file directly, providing input via stdin and capturing stdout.",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Poor readability due to cryptic class names (P, S), data member names (nm, ag, sID, mjr), and method names (shwDts).",
+    "Inefficient string handling: constructors pass `std::string` by value instead of `const std::string&`, causing unnecessary string copies.",
+    "Excessive use of `std::endl` which flushes the output buffer on each call, potentially reducing efficiency compared to using `\\n`."
+  ]
+}

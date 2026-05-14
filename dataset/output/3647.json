@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement matrix addition for two 3x3 integer matrices. Populate the matrices with example data and print the resulting sum matrix.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Sum Matrix:\n10 10 10 \n10 10 10 \n10 10 10 \n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Inner loop condition 'j < 2' instead of 'j < 3', resulting in the last column of the sum matrix being incorrect (uninitialized or garbage values)."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `swapNumbers` that takes two integer arguments by reference and swaps their values. Demonstrate its usage in `main` by taking two numbers from the user, swapping them, and printing their new values.",
+  "test_cases": [
+    { "input": "10 20", "expected": "Enter two integers: Before swap: a = 10, b = 20\nAfter swap: a = 20, b = 10\n" },
+    { "input": "123 456", "expected": "Enter two integers: Before swap: a = 123, b = 456\nAfter swap: a = 456, b = 123\n" }
+  ],
+  "driver": "",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program lacks input validation. If the user enters non-integer input (e.g., characters or words), the `std::cin` operation will fail, leaving the variables 'a' and 'b' potentially uninitialized or with incorrect values. The program then proceeds to use these potentially invalid values, leading to undefined behavior or unexpected output without any error message or recovery mechanism."
+  ]
+}

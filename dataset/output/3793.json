@@ -1,0 +1,25 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter a sentence (as `std::string`) and then counts and displays the number of occurrences of a specific character (also input by the user) within that sentence.",
+  "test_cases": [
+    {
+      "input": "Hello World\no",
+      "expected": "The character 'o' appears 1 times in the sentence.\n"
+    },
+    {
+      "input": "This is a test sentence\ns",
+      "expected": "The character 's' appears 2 times in the sentence.\n"
+    },
+    {
+      "input": "Long sentence with many words\nw",
+      "expected": "The character 'w' appears 0 times in the sentence.\n"
+    }
+  ],
+  "driver": "g++ -o solution 3793.cpp && echo \"<input>\" | ./solution",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program uses `std::cin >> sentence;` to read the sentence. This operator stops reading at the first whitespace character, meaning that only the first word of a multi-word sentence will be stored. This is a significant robustness issue as it does not correctly handle the user's intended input for a 'sentence'."
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function named `is_prime` that accepts an integer as input and returns `true` if the number is prime, and `false` otherwise. Use this function in your `main` program to print all prime numbers between 1 and 100.",
+  "test_cases": [
+    { "input": "2", "expected": "true" },
+    { "input": "4", "expected": "false" },
+    { "input": "7", "expected": "true" },
+    { "input": "9", "expected": "false" },
+    { "input": "25", "expected": "false" },
+    { "input": "49", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nextern bool is_prime(int n);\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        try {\n            int n = std::stoi(line);\n            if (is_prime(n)) {\n                std::cout << \"true\" << std::endl;\n            } else {\n                std::cout << \"false\" << std::endl;\n            }\n        } catch (const std::invalid_argument& e) {\n            std::cerr << \"Invalid input: \" << line << std::endl;\n            return 1;\n        } catch (const std::out_of_range& e) {\n            std::cerr << \"Input out of range: \" << line << std::endl;\n            return 1;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `is_prime` function contains a logical flaw: for numbers greater than 3, it only checks divisibility by 2 and 3. This causes composite numbers like 25, 35, 49, etc., to be incorrectly identified as prime because they are not divisible by 2 or 3."
+  ]
+}

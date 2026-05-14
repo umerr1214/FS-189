@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Vehicle` base class with protected attributes `speed` and `fuelType`. Derive `Car` and `Motorcycle` classes, adding specific attributes like `numDoors` for `Car` and `hasSidecar` for `Motorcycle`.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "Initial Car speed: 60\nVehicle accelerating. Speed: 70\nCar honking! Beep beep!\nCar speed after accelerate: 70, Fuel: Gasoline, Doors: 4\nInitial Motorcycle speed: 80\nVehicle accelerating. Speed: 90\nMotorcycle doing a wheelie!\nMotorcycle speed after accelerate: 90, Fuel: Petrol, Sidecar: Yes"
+    }
+  ],
+  "driver": "    Car myCar(60, \"Gasoline\", 4);\n    std::cout << \"Initial Car speed: \" << myCar.getSpeed() << std::endl;\n    myCar.accelerate();\n    myCar.honk();\n    std::cout << \"Car speed after accelerate: \" << myCar.getSpeed() << \", Fuel: \" << myCar.getFuelType() << \", Doors: \" << myCar.getNumDoors() << std::endl;\n\n    Motorcycle myBike(80, \"Petrol\", true);\n    std::cout << \"Initial Motorcycle speed: \" << myBike.getSpeed() << std::endl;\n    myBike.accelerate();\n    myBike.wheelie();\n    std::cout << \"Motorcycle speed after accelerate: \" << myBike.getSpeed() << \", Fuel: \" << myBike.getFuelType() << \", Sidecar: \" << (myBike.getHasSidecar() ? \"Yes\" : \"No\") << std::endl;",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

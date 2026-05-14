@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Calculate the power of a number (base raised to exponent) without using the `pow()` function. Both base and exponent are positive integers entered by the user.",
+  "test_cases": [
+    { "input": "2\n10\n", "expected": "Result: 1024\n" },
+    { "input": "3\n7\n", "expected": "Result: 2187\n" },
+    { "input": "5\n8\n", "expected": "Result: 390625\n" },
+    { "input": "2\n30\n", "expected": "Result: 1073741824\n" },
+    { "input": "7\n12\n", "expected": "Result: 13841287201\n" },
+    { "input": "10\n18\n", "expected": "Result: 1000000000000000000\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\nvoid solve(); // Forward declaration of the user's solution function\n\nint main() {\n    solve();\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Explain the purpose and usage of `public`, `private`, and `protected` access specifiers using a simple example with a base class `MyClass` and a derived class `DerivedClass`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Base constructor done.\nDerived constructor done.\nReadability/Efficiency Issue Example: Access Specifiers\n\n*** MC Obj Access from main ***\n  Public: 11\n  Protected and Private members are inaccessible directly.\n  Private (via getter): 33\n  MC Public: 11\n  MC Private (via getter): 33\n  MC Public: 111\n  MC Private (via getter): 333\n\n--- DC Access ---\n  Can get mc_p_mem: 111\n  Can get mc_prot_mem: 222\n  Cannot directly get mc_priv_mem (compile-time error).\n  DC's own public: 444\n\n*** DC Obj Access from main ***\n  Inherited Public: 111\n  Derived Public: 444\n  Inherited Protected and Private are inaccessible directly.\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Readability: Cryptic variable names (`mc_p_mem`, `mc_prot_mem`, `mc_priv_mem`, `dc_p_mem`, `mc_obj`, `dc_obj`) make the code hard to understand.",
+    "Readability: Inconsistent use of `std::endl` and `\\n`, and mixing `std::cout` with `printf` makes the output less uniform and code style inconsistent.",
+    "Readability: Lack of meaningful comments or overly generic comments.",
+    "Readability: Inconsistent formatting (e.g., long lines, inconsistent brace placement, lack of blank lines) reduces code clarity.",
+    "Readability: Member functions (`show_mc_data`, `get_mc_priv`, `show_dc_access`) are missing the `const` qualifier where appropriate, indicating a potential design flaw and reducing readability of intent.",
+    "Efficiency: Excessive use of `std::endl` which flushes the buffer on each call, potentially leading to performance overhead, especially in loops or heavy I/O operations. Using `\\n` is generally more efficient when an immediate flush is not required."
+  ]
+}

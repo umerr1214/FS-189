@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Create a `ResourceHandler` class that simulates acquiring a resource in its constructor (e.g., printing 'Resource acquired.') and releasing it in its destructor (e.g., printing 'Resource released.').",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Program started.\nResource acquired. Current active resources: 1 This resource is now ready for use.\nPerforming some action using the resource.\n\nEntering function demonstrateResourceUsage()...\n  Inside demonstrateResourceUsage()...\nResource acquired. Current active resources: 2 This resource is now ready for use.\nPerforming some action using the resource.\n  Exiting demonstrateResourceUsage().\nResource released. Remaining active resources: 1 This resource is no longer active.\nExited function demonstrateResourceUsage().\n\n--- Entering nested block scope ---\nResource acquired. Current active resources: 2 This resource is now ready for use.\nPerforming some action using the resource.\n--- Exiting nested block scope ---\nResource released. Remaining active resources: 1 This resource is no longer active.\n\nProgram finished.\nResource released. Remaining active resources: 0 This resource is no longer active.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// The class definition and global 'g_resource_count' would be provided.\n\nvoid demonstrateResourceUsage() {\n    std::cout << \"  Inside demonstrateResourceUsage()...\" << std::endl;\n    ResourceHandler handler_in_func;\n    handler_in_func.performAction();\n    std::cout << \"  Exiting demonstrateResourceUsage().\" << std::endl;\n}\n\nint main() {\n    std::cout << \"Program started.\" << std::endl;\n    ResourceHandler main_handler;\n    main_handler.performAction();\n    std::cout << \"\\nEntering function demonstrateResourceUsage()...\" << std::endl;\n    demonstrateResourceUsage();\n    std::cout << \"Exited function demonstrateResourceUsage().\" << std::endl;\n    {\n        std::cout << \"\\n--- Entering nested block scope ---\" << std::endl;\n        ResourceHandler nested_handler;\n        nested_handler.performAction();\n        std::cout << \"--- Exiting nested block scope ---\" << std::endl;\n    }\n    std::cout << \"\\nProgram finished.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses a global variable `g_resource_count` to track resource state. This reduces encapsulation, introduces mutable global state, and is not thread-safe, making the class less reusable and harder to reason about.",
+    "Excessive and redundant comments that state the obvious (e.g., explaining `iostream` or `main` function purpose), cluttering the code and making it harder to read.",
+    "Unnecessary use of `std::flush` after every output statement. While `std::endl` also flushes, explicit `std::flush` after every `std::cout` segment can be less efficient than allowing the buffer to fill up or using `std::endl` once per logical line.",
+    "Output messages are split into two `std::cout` statements for each action (e.g., `Resource acquired...` and `This resource is now ready...`), making the output less concise and potentially less efficient due to multiple stream operations for a single logical message."
+  ]
+}

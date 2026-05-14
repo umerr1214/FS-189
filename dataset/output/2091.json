@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Develop a `ResourceLogger` class that dynamically allocates a C-style string in its constructor to store a log message. Implement a destructor that deallocates this memory and prints a message indicating the resource is freed. Demonstrate its usage by creating an object and letting it go out of scope.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Entering main scope...\nResourceLogger created with message: Hello, this is a valid log message.\nResourceLogger created with message: This message will be freed when exiting its scope.\nInside nested scope.\nResource freed: This message will be freed when exiting its scope.\nResourceLogger created with an empty message (nullptr input handled).\nExiting main scope...\nResource freed: \nResource freed: Hello, this is a valid log message.\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"Entering main scope...\" << std::endl;\n\n    ResourceLogger logger1(\"Hello, this is a valid log message.\");\n\n    { \n        ResourceLogger logger2(\"This message will be freed when exiting its scope.\");\n        std::cout << \"Inside nested scope.\" << std::endl;\n    } \n\n    ResourceLogger logger3(nullptr);\n\n    std::cout << \"Exiting main scope...\" << std::endl;\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

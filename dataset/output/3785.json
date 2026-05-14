@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that reads a single word (as `std::string`) from the user and checks if it is a palindrome (reads the same forwards and backwards). The check should be case-sensitive.",
+  "test_cases": [
+    { "input": "madam", "expected": "The word \"madam\" is a palindrome." },
+    { "input": "hello", "expected": "The word \"hello\" is not a palindrome." },
+    { "input": "racecar", "expected": "The word \"racecar\" is a palindrome." },
+    { "input": "level", "expected": "The word \"level\" is a palindrome." },
+    { "input": "Madam", "expected": "The word \"Madam\" is not a palindrome." },
+    { "input": "a", "expected": "The word \"a\" is a palindrome." },
+    { "input": "", "expected": "The word \"\" is a palindrome." }
+  ],
+  "driver": "std::string word; std::cin >> word; if (isPalindrome(word)) { std::cout << \"The word \\\"\" << word << \"\\\" is a palindrome.\" << std::endl; } else { std::cout << \"The word \\\"\" << word << \"\\\" is not a palindrome.\" << std::endl; }",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'isPalindrome' function contains a logical error: it reverses the input string but then compares the reversed string to itself (word == word), which always evaluates to true. As a result, the program incorrectly reports all words as palindromes."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Develop a `BankAccount` class with a private `balance` (double) attribute. Provide public methods `deposit(double amount)`, `withdraw(double amount)`, and `getBalance()`. Ensure `deposit` only accepts positive amounts, and `withdraw` only proceeds if sufficient funds are available and the withdrawal amount is positive. Both `deposit` and `withdraw` methods should return a boolean indicating success or failure.",
+  "test_cases": [
+    { "input": "Initial balance 100.55; Deposit 20.33; Withdraw 10.11;", "expected": "Initial: 100.55\nAfter deposit 20.33: 120.88\nAfter withdraw 10.11: 110.77" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include <string>\n\n// The BankAccount class definition would typically be linked or included here.\n\nint main() {\n    std::cout << std::fixed << std::setprecision(2);\n    BankAccount account(100.55);\n    std::cout << \"Initial: \" << account.getBalance() << std::endl;\n    account.deposit(20.33);\n    std::cout << \"After deposit 20.33: \" << account.getBalance() << std::endl;\n    account.withdraw(10.11);\n    std::cout << \"After withdraw 10.11: \" << account.getBalance() << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The `getBalance()` method returns an `int` instead of a `double`, causing a loss of precision for the balance, which is stored as a `double` internally. This violates the semantic requirement for handling double-precision currency values."]
+}

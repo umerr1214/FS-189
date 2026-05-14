@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that reads 5 integer values into a one-dimensional array. After reading, find and display the second largest element present in the array.",
+  "test_cases": [
+    { "input": "10 20 30 40 50", "expected": "40" },
+    { "input": "50 40 30 50 20", "expected": "40" },
+    { "input": "10 10 10 10 10", "expected": "10" },
+    { "input": "50 50 50 40 30", "expected": "40" },
+    { "input": "-10 -20 -5 -15 -25", "expected": "-10" },
+    { "input": "5 4 3 2 1", "expected": "4" },
+    { "input": "10 -5 20 0 15", "expected": "15" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n#include <algorithm>\n#include <limits>\n\n// user_main function (from the submitted code) is expected to be available.\n// It reads from std::cin and writes to std::cout.\n\nstd::string run_user_code(const std::string& input) {\n    std::stringstream ss_in(input);\n    std::stringstream ss_out;\n\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n\n    std::cin.rdbuf(ss_in.rdbuf());\n    std::cout.rdbuf(ss_out.rdbuf());\n\n    user_main(); // Call the user's solution entry point\n\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    return ss_out.str();\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

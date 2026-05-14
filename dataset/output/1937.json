@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Modify the `Book` class to include a destructor. The destructor should print a message indicating the title of the book object that is being destroyed.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book 'The Great Gatsby' created.\nBook 'The Great Gatsby' is being destroyed.\nBook '1984' created.\nBook '1984' is being destroyed.\nEnd of main scope.\n"
+    }
+  ],
+  "driver": "void run_test() {\n    {\n        Book b1(\"The Great Gatsby\");\n    }\n    {\n        Book b2(\"1984\");\n    }\n    std::cout << \"End of main scope.\" << std::endl;\n}\n\nint main() {\n    run_test();\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The destructor prints a generic message ('A book is being destroyed.') instead of the specific title of the book object that is being destroyed, as required by the question."
+  ]
+}

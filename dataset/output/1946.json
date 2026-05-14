@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Shape` with a pure virtual function `double calculateArea()`. Create a derived class `Circle` that has a `radius` member and implements `calculateArea()`.",
+  "test_cases": [
+    { "input": "5.0", "expected": "Circle with radius 5.00000 has area: 78.53975\n" },
+    { "input": "0.0", "expected": "Circle with radius 0.00000 has area: 0.00000\n" },
+    { "input": "10.0", "expected": "Circle with radius 10.00000 has area: 314.15900\n" },
+    { "input": "-2.0", "expected": "Circle with radius -2.00000 has area: 12.56636\n" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <memory>\n#include <iomanip>\n#include <cmath>\n\n// (Shape and Circle class definitions would be here)\n\nint main() {\n    std::vector<double> test_radii = {5.0, 0.0, 10.0, -2.0};\n    std::cout << std::fixed << std::setprecision(5);\n\n    for (double r : test_radii) {\n        std::unique_ptr<Shape> circle = std::make_unique<Circle>(r);\n        std::cout << \"Circle with radius \" << r << \" has area: \" << circle->calculateArea() << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `calculateArea` method uses `std::pow(radius, 2.0)` which is less efficient than `radius * radius` for squaring. A magic number `3.14159` is used for PI instead of a named constant like `M_PI` or `std::numbers::pi`, reducing readability and precision."
+  ]
+}

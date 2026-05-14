@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Implement a `User` class with private `username` and `password`. The `userID` should be a unique integer automatically assigned using a static member counter in the constructor. Provide public getters for `username` and `userID`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Creating Users ---\nNew User with long name 'john_doe_username' assigned ID: 5001\n\nRetrieved User One - Name: john_doe_username, ID: 5001\n\nNew User with long name 'jane_smith_account' assigned ID: 5002\n\nRetrieved User Two - Name: jane_smith_account, ID: 5002\n\nNew User with long name 'guest_user' assigned ID: 5003\n\nRetrieved User Three - Name: guest_user, ID: 5003\n\n--- All Users Processed ---\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Creating Users ---\" << std::endl;\n    User user_one(\"john_doe_username\", \"super_secret_password\");\n    std::cout << \"Retrieved User One - Name: \" << user_one.get_the_user_name() << \", ID: \" << user_one.get_the_user_identifier() << std::endl << std::endl;\n\n    User user_two(\"jane_smith_account\", \"another_top_secret\");\n    std::cout << \"Retrieved User Two - Name: \" << user_two.get_the_user_name() << \", ID: \" << user_two.get_the_user_identifier() << std::endl << std::endl;\n\n    User user_three(\"guest_user\", \"temp_pass\");\n    std::cout << \"Retrieved User Three - Name: \" << user_three.get_the_user_name() << \", ID: \" << user_three.get_the_user_identifier() << std::endl << std::endl;\n\n    std::cout << \"--- All Users Processed ---\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The constructor takes `std::string` parameters by value (`p_username`, `p_password`), leading to unnecessary copies when the constructor is called. It should ideally take them by `const std::string&` and use `std::move` or initializer list for efficiency.",
+    "The getter `get_the_user_name()` returns `std::string` by value, causing an unnecessary copy of the `username` string. It should return `const std::string&` to avoid this.",
+    "Verbose and inconsistent naming conventions are used (e.g., `the_user_name_string`, `static_next_user_id_counter`, `get_the_user_name()`, `get_the_user_identifier()`), which reduces readability.",
+    "Excessive use of `std::endl` which flushes the output buffer on each call, potentially impacting performance in larger applications. Using `\\n` is generally preferred for simple newlines."
+  ]
+}

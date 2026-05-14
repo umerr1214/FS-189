@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Modify the `Book` class (from Q1) to include a default constructor (initializes with empty strings), a parameterized constructor, and a copy constructor. Demonstrate creating objects using all three types of constructors.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book 1 (Default): Title: N/A, Author: N/A\nBook 2 (Parameterized): Title: The Great Gatsby, Author: F. Scott Fitzgerald\nBook 3 (Copy of Book 2): Title: The Great Gatsby, Author: F. Scott Fitzgerald\nBook 4 (Copy of Book 1): Title: N/A, Author: N/A\n"
+    }
+  ],
+  "driver": "int main() {\n    Book book1;\n    std::cout << \"Book 1 (Default): \";\n    book1.display();\n    Book book2(\"The Great Gatsby\", \"F. Scott Fitzgerald\");\n    std::cout << \"Book 2 (Parameterized): \";\n    book2.display();\n    Book book3 = book2;\n    std::cout << \"Book 3 (Copy of Book 2): \";\n    book3.display();\n    Book book4(book1);\n    std::cout << \"Book 4 (Copy of Book 1): \";\n    book4.display();\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Default constructor initializes with 'N/A' instead of strictly 'empty strings' as requested, which is a deviation from specification.",
+    "Copy constructor takes its argument by value (`Book other`) instead of by const reference (`const Book& other`), leading to an unnecessary copy of the 'other' object and potential performance overhead, reducing robustness in resource management for large objects."
+  ]
+}

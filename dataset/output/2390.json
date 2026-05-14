@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Develop a `Logger` class that prints 'Logger created.' when an object is constructed and 'Logger destroyed.' when it is destructed. Demonstrate its usage in `main`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Starting main function, creating first logger object...\nMyLoggingSystemObject created.\nStatus: Object initialized.\nFirst logger object is active.\nMyLoggingSystemObject destroyed.\nFirst logger object has been destroyed.\n\nCreating second logger object using new/delete...\nMyLoggingSystemObject created.\nStatus: Object initialized.\nSecond logger object created via pointer.\nMyLoggingSystemObject destroyed.\nSecond logger object explicitly destroyed.\n\nMain function finished.\n"
+    }
+  ],
+  "driver": "",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The class name `MyLoggingSystemObject` is verbose and less concise than `Logger`.",
+    "The `internal_debug_message_buffer` member variable and `print_status_report` method are unnecessary for the core requirement and add clutter, reducing readability.",
+    "Consistent use of `std::endl` instead of `\\n` for output. While correct, `std::endl` flushes the output buffer, which can be less efficient in performance-critical logging scenarios compared to `\\n`.",
+    "The `main` function unnecessarily uses raw `new` and `delete` for a simple object, which is less idiomatic and more error-prone than relying on RAII and stack-based objects in modern C++."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that performs matrix addition for two 3x3 integer matrices. The program should prompt the user to enter elements for both matrices and then display the resultant sum matrix.",
+  "test_cases": [
+    {
+      "input": "1 2 3 4 5 6 7 8 9\n9 8 7 6 5 4 3 2 1\n",
+      "expected": "Enter 9 numbers for the first 3x3 matrix:\nEnter 9 numbers for the second 3x3 matrix:\nThe sum matrix is:\n10 10 10 \n10 10 10 \n10 10 10 \n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Variable names (m1, m2, s) are not descriptive, making the code harder to understand.",
+    "Matrix dimensions (3) are hardcoded throughout the code instead of using named constants, making it less maintainable if dimensions need to change.",
+    "Input prompts are generic ('Enter 9 numbers') rather than specific for each element (e.g., 'A[0][0]:'), which can be confusing for the user.",
+    "Lack of modularity; all logic is within `main`, which could be separated into functions for better organization and readability."
+  ]
+}

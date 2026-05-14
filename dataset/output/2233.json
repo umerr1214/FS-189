@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Design a `BankAccount` class with `accountNumber` (string, read-only after creation) and `balance` (double, private). Implement public methods `deposit(amount)` and `withdraw(amount)` with appropriate validation (e.g., non-negative amounts, sufficient balance for withdrawal).",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "Created account: , Balance: 0.00\nDeposited 100.00 to account . New balance: 100.00\nDeposited 50.00 to account . New balance: 150.00\nWithdrew 75.00 from account . New balance: 75.00\nWithdrawal failed for account : Insufficient balance. Current balance: 75.00, requested: 500.00\nDeposit failed for account : Amount must be positive.\nWithdrawal failed for account : Amount must be positive.\nDeposited 25.00 to account . New balance: 100.00\nWithdrew 100.00 from account . New balance: 0.00\n\nFinal state for account : Balance: 0.00\n\nCreated account: ACC789, Balance: 0.00\nDeposited 1000.00 to account ACC789. New balance: 1000.00\nWithdrew 500.00 from account ACC789. New balance: 500.00\nDeposited 250.00 to account ACC789. New balance: 750.00\nWithdrew 750.00 from account ACC789. New balance: 0.00\nWithdrawal failed for account ACC789: Insufficient balance. Current balance: 0.00, requested: 1.00\n\nFinal state for account ACC789: Balance: 0.00\n"
+    }
+  ],
+  "driver": "int main() { ... }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The constructor allows an empty string for accountNumber, which might be an invalid state for a real bank account system.",
+    "The deposit method accepts negative amounts and converts them to positive using std::abs(). This hides invalid input instead of rejecting it, which is poor robustness. A robust system should reject invalid inputs explicitly.",
+    "The withdraw method uses a direct floating-point comparison (balance >= amount) which can be susceptible to precision issues when the balance is very close to the withdrawal amount.",
+    "The withdraw method does not explicitly handle NaN or infinity values for the 'amount' parameter, which could lead to undefined or unexpected behavior."
+  ]
+}

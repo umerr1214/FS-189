@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a function `swapValues(int* ptr1, int* ptr2)` that takes two integer pointers as arguments and swaps the values they point to. Demonstrate this function by swapping two variables in your `main` function.",
+  "test_cases": [
+    { "input": "", "expected": "Before swap: val1 = 10, val2 = 20\nAfter swap: val1 = 20, val2 = 10\nBefore swap: val3 = -5, val4 = 0\nAfter swap: val3 = 0, val4 = -5\nAttempting to swap val5 with a null pointer:\nError: Cannot swap with a null pointer.\nAfter attempted swap with nullptr: val5 = 100\n" }
+  ],
+  "driver": "/* The provided main function serves as the driver. */",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

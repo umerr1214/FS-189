@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class that encapsulates attributes like `title`, `author`, and `isbn` (all strings). Include a constructor to initialize these attributes and a `displayInfo()` method to print all book details.",
+  "test_cases": [
+    { "input": "", "expected": "Title: The Hitchhiker's Guide to the Galaxy\nAuthor: Douglas Adams\nISBN: 978-0345391803\n---\nTitle: 1984\nAuthor: George Orwell\nISBN: 978-0451524935\n" }
+  ],
+  "driver": "int main() {\n    Book book1(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\");\n    book1.displayInfo();\n    std::cout << \"---\" << std::endl;\n    Book book2(\"1984\", \"George Orwell\", \"978-0451524935\");\n    book2.displayInfo();\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The constructor parameters shadow the member variables, leading to the member variables being default-constructed (empty) and not initialized with the provided arguments. The assignments inside the constructor assign parameters to themselves."]
+}

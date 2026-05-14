@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Implement a `Circle` class with a private `radius` (double). The constructor should initialize the radius. Provide a public method `setRadius()` that only accepts positive values. Include public methods `getArea()` and `getCircumference()`.",
+  "test_cases": [
+    { "input": "Circle c(5.0); c.getArea(); c.getCircumference();", "expected": "Area: 78.5398163397, Circumference: 31.4159265359 (Actual output for circumference will be wrong)" },
+    { "input": "Circle c(10.0); c.getArea(); c.getCircumference();", "expected": "Area: 314.1592653590, Circumference: 62.8318530718 (Actual output for circumference will be wrong)" }
+  ],
+  "driver": "A main function that creates Circle objects, sets radii, and prints area and circumference to demonstrate the incorrect circumference calculation.",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The `getCircumference()` method uses the formula for area (M_PI * radius * radius) instead of the correct formula for circumference (2 * M_PI * radius)."]
+}

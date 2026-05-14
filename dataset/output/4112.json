@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a function `reverseArray(int arr[], int size)` that reverses the order of elements in a 1D integer array in-place. Demonstrate by initializing an array, printing it, calling the function, and printing the reversed array.",
+  "test_cases": [
+    { "input": "{1, 2, 3, 4, 5}", "expected": "Original array 1: [1, 2, 3, 4, 5]\nReversed array 1: [5, 4, 3, 2, 1]\n\n" },
+    { "input": "{10, 20, 30, 40}", "expected": "Original array 2: [10, 20, 30, 40]\nReversed array 2: [40, 30, 20, 10]\n\n" },
+    { "input": "{100}", "expected": "Original array 3: [100]\nReversed array 3: [100]\n\n" },
+    { "input": "{}", "expected": "Original array 4: []\nReversed array 4: []\n\n" }
+  ],
+  "driver": "void printArray(const int arr[], int size) {\n    std::cout << \"[\";\n    for (int i = 0; i < size; ++i) {\n        std::cout << arr[i] << (i == size - 1 ? \"\" : \", \");\n    }\n    std::cout << \"]\";\n}\n\nint main() {\n    // Test case 1 (odd size)\n    int arr1[] = {1, 2, 3, 4, 5};\n    int size1 = sizeof(arr1) / sizeof(arr1[0]);\n    std::cout << \"Original array 1: \";\n    printArray(arr1, size1);\n    std::cout << std::endl;\n    reverseArray(arr1, size1);\n    std::cout << \"Reversed array 1: \";\n    printArray(arr1, size1);\n    std::cout << std::endl << std::endl;\n\n    // Test case 2 (even size)\n    int arr2[] = {10, 20, 30, 40};\n    int size2 = sizeof(arr2) / sizeof(arr2[0]);\n    std::cout << \"Original array 2: \";\n    printArray(arr2, size2);\n    std::cout << std::endl;\n    reverseArray(arr2, size2);\n    std::cout << \"Reversed array 2: \";\n    printArray(arr2, size2);\n    std::cout << std::endl << std::endl;\n\n    // Test case 3 (single element)\n    int arr3[] = {100};\n    int size3 = sizeof(arr3) / sizeof(arr3[0]);\n    std::cout << \"Original array 3: \";\n    printArray(arr3, size3);\n    std::cout << std::endl;\n    reverseArray(arr3, size3);\n    std::cout << \"Reversed array 3: \";\n    printArray(arr3, size3);\n    std::cout << std::endl << std::endl;\n\n    // Test case 4 (empty array)\n    int arr4[] = {};\n    int size4 = 0;\n    std::cout << \"Original array 4: \";\n    printArray(arr4, size4);\n    std::cout << std::endl;\n    reverseArray(arr4, size4);\n    std::cout << \"Reversed array 4: \";\n    printArray(arr4, size4);\n    std::cout << std::endl << std::endl;\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `reverseArray` function has a time complexity of O(N^2) due to the nested loops, where N is the size of the array. This is inefficient compared to the optimal O(N) two-pointer approach for in-place array reversal.",
+    "The inner loop repeatedly shifts elements, which adds unnecessary overhead. A simpler two-pointer swap approach is more efficient and generally more readable for this task."
+  ]
+}

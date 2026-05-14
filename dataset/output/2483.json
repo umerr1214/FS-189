@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Design a `SecretAgent` class where the agent's `codename` is public, `trueIdentity` is private, and `missionBriefing` is protected. Show how these access levels restrict or permit access from outside and from a derived class `Handler`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Outside Access (from main) ---\nAgent Codename: Phoenix\nMain can see Agent Codename: Phoenix\nHint for Agent's Identity: First letter is 'J'\nMain cannot directly access True Identity (private).\nMain cannot directly access Mission Briefing (protected).\n\n--- Handler Accessing Agent Info ---\nHandler can see Codename: Viper\nHandler attempts to access Mission Briefing.\nMission briefing details are handled internally by the agent's class.\nHandler cannot directly access True Identity (private).\n"
+    }
+  ],
+  "driver": "int main() { SecretAgent agent1(\"Phoenix\", \"John Doe\", \"Infiltrate organization X.\"); Handler handler1(\"Viper\", \"Jane Smith\", \"Extract target Y.\", \"Alpha7\"); std::cout << \"--- Outside Access (from main) ---\" << std::endl; agent1.displayCodename(); std::cout << \"Main can see Agent Codename: \" << agent1.codename << std::endl; agent1.revealAgentHint(); std::cout << \"Main cannot directly access True Identity (private).\" << std::endl; std::cout << \"Main cannot directly access Mission Briefing (protected).\" << std::endl; handler1.accessAgentInfo(); return 0; }",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    {
+      "message": "The `SecretAgent::revealAgentHint` method provides a public 'hint' about the private `trueIdentity`, which, while not direct access, logically weakens the intended privacy. Additionally, the `Handler::accessAgentInfo` method claims to access the mission briefing but only prints a generic message instead of demonstrating the actual protected member access, making the demonstration of protected access incomplete or misleading."
+    }
+  ]
+}

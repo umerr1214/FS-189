@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Check if three given side lengths `a`, `b`, and `c` can form a valid triangle. A triangle is valid if the sum of any two sides is greater than the third side.",
+  "test_cases": [
+    { "input": "3 4 5", "expected": "true" },
+    { "input": "1 2 5", "expected": "false" },
+    { "input": "5 12 13", "expected": "true" },
+    { "input": "1 1 1", "expected": "true" },
+    { "input": "10 1 1", "expected": "false" },
+    { "input": "0 0 0", "expected": "false" },
+    { "input": "1 2 0", "expected": "false" },
+    { "input": "-1 2 2", "expected": "false" },
+    { "input": "7 7 7", "expected": "true" },
+    { "input": "1 10 1", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\nextern bool isValidTriangle(int a, int b, int c);\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        std::stringstream ss(line);\n        int a, b, c;\n        if (ss >> a >> b >> c) {\n            std::cout << (isValidTriangle(a, b, c) ? \"true\" : \"false\") << std::endl;\n        } else {\n            std::cout << \"false\" << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The code is overly verbose and uses many unnecessary intermediate boolean variables and if-else statements to evaluate simple conditions. For example, `if (sideA <= 0) { allSidesArePositive = false; }` could be combined with similar checks into a single boolean expression. The final conditions could also be combined into a single `return` statement. This verbosity reduces readability and introduces minor inefficiencies due to redundant branching and variable assignments."
+  ]
+}

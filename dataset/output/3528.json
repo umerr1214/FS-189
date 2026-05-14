@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that reads a temperature in Celsius (as a `float`) from the user. Convert this temperature to Fahrenheit using the formula `F = C * 9/5 + 32` and print the result. Pay attention to integer division.",
+  "test_cases": [
+    { "input": "25.0", "expected": "The temperature in Fahrenheit is: 77.0\n" }
+  ],
+  "driver": "g++ -std=c++17 -Wall -Wextra 3528.cpp -o 3528 && ./3528",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": []
+}

@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Calculate the Body Mass Index (BMI) given user input for weight in kilograms and height in meters. The formula for BMI is weight / (height * height). Display the result to two decimal places.",
+  "test_cases": [
+    { "input": "70\n1.75", "expected": "Your BMI is: 22.86\n" },
+    { "input": "50\n1.60", "expected": "Your BMI is: 19.53\n" }
+  ],
+  "driver": "g++ -o solution 3275.cpp && ./solution",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    {
+      "line": 20,
+      "column": 18,
+      "message": "BMI calculation is incorrect due to operator precedence. It calculates weight / height * height instead of weight / (height * height)."
+    }
+  ]
+}

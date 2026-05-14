@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a simple menu-driven program that allows the user to choose between calculating the area of a circle, square, or triangle. Use a `switch` statement to handle the user's choice and prompt for necessary dimensions.",
+  "test_cases": [
+    {
+      "input": "3\n10\n5\n1\n3\n4\n",
+      "expected": "\n--- Area Calculator Menu ---\n1. Calculate Area of Circle\n2. Calculate Area of Square\n3. Calculate Area of Triangle\n4. Exit\nEnter your choice: Enter base of the triangle: Enter height of the triangle: Area of triangle: 50.0000000\n--- Area Calculator Menu ---\n1. Calculate Area of Circle\n2. Calculate Area of Square\n3. Calculate Area of Triangle\n4. Exit\nEnter your choice: Enter radius of the circle: Area of circle: 28.2743100\n--- Area Calculator Menu ---\n1. Calculate Area of Circle\n2. Calculate Area of Square\n3. Calculate Area of Triangle\n4. Exit\nEnter your choice: Exiting program. Goodbye!\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n#include <algorithm>\n\n// Assume the user's main function is renamed to 'solution_main' for testing.\n// It will be linked against this driver.\nextern int solution_main();\n\n// Helper function to capture output and provide input\nstd::string run_program_with_input(const std::string& input_str) {\n    std::stringstream ss_input(input_str);\n    std::stringstream ss_output;\n\n    // Save original streambufs\n    std::streambuf* old_cin_buf = std::cin.rdbuf();\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n\n    // Redirect cin and cout\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    // Call the user's main function (renamed for testing)\n    solution_main();\n\n    // Restore original streambufs\n    std::cin.rdbuf(old_cin_buf);\n    std::cout.rdbuf(old_cout_buf);\n\n    return ss_output.str();\n}\n\n// The actual test runner main function\nint main() {\n    // This main function would iterate through test cases defined in the JSON.\n    // For example:\n    // std::string input = \"3\\n10\\n5\\n1\\n3\\n4\\n\";\n    // std::string expected_output_part = \"Area of triangle: 25.0000000\\nArea of circle: 28.2743100\\nExiting program. Goodbye!\\n\";\n    // std::string actual_output = run_program_with_input(input);\n    //\n    // if (actual_output.find(expected_output_part) != std::string::npos) {\n    //     std::cout << \"Test passed!\" << std::endl;\n    // } else {\n    //     std::cout << \"Test failed!\" << std::endl;\n    //     std::cout << \"Actual:\\n\" << actual_output << std::endl;\n    // }\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The formula for calculating the area of a triangle is incorrect. It calculates `base * height` instead of `0.5 * base * height`."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that prompts the user for a numeric score (0-100). Assign and print a letter grade based on the following scale: 90-100 A, 80-89 B, 70-79 C, 60-69 D, below 60 F. Use `if-else if-else` statements.",
+  "test_cases": [
+    { "input": "95\n", "expected": "Enter a numeric score (0-100): The letter grade is: A\n" },
+    { "input": "85\n", "expected": "Enter a numeric score (0-100): The letter grade is: B\n" },
+    { "input": "75\n", "expected": "Enter a numeric score (0-100): The letter grade is: C\n" },
+    { "input": "65\n", "expected": "Enter a numeric score (0-100): The letter grade is: D\n" },
+    { "input": "55\n", "expected": "Enter a numeric score (0-100): The letter grade is: F\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <streambuf>\n#include <functional>\n\n// The student's code is assumed to define an 'int student_main()' function.\n// This driver will call that function for testing.\n\n// Utility to capture stdout\nstd::string capture_stdout(std::function<int()> func) {\n    std::stringstream ss;\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n    func(); // Call the student's main logic\n    std::cout.rdbuf(old_cout);\n    return ss.str();\n}\n\n// Utility to set stdin\nvoid set_stdin(const std::string& input) {\n    std::stringstream ss_in(input);\n    std::cin.rdbuf(ss_in.rdbuf());\n}\n\n// Main test driver function\nint main() {\n    // This is a simplified driver. In a full system, test cases would be\n    // iterated here. For demonstration, we just show the utilities.\n    // The actual testing platform will use these utilities to run\n    // student_main with various inputs and capture outputs.\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The program prints only the letter grade without the descriptive prefix 'The letter grade is: ', deviating from the implied user-friendly output format."]
+}

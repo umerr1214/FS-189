@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Model a `Library` class that manages a collection of `Book` objects (from Q1) using a simple array or vector (without using STL directly for management, just as storage). Implement methods to add a book and display all books.",
+  "test_cases": [
+    {
+      "input": "Add: The Hobbit, J.R.R. Tolkien, 1937\nAdd: 1984, George Orwell, 1949\nAdd: Brave New World, Aldous Huxley, 1932\nDisplay\nAdd: Foundation, Isaac Asimov, 1951\nAdd: Dune, Frank Herbert, 1965\nAdd: Neuromancer, William Gibson, 1984\nDisplay",
+      "expected": "--- Library Books ---\nTitle: The Hobbit, Author: J.R.R. Tolkien, Year: 1937\nTitle: 1984, Author: George Orwell, Year: 1949\nTitle: Brave New World, Author: Aldous Huxley, Year: 1932\n---------------------\nLibrary is full. Cannot add more books.\n--- Library Books ---\nTitle: The Hobbit, Author: J.R.R. Tolkien, Year: 1937\nTitle: 1984, Author: George Orwell, Year: 1949\nTitle: Brave New World, Author: Aldous Huxley, Year: 1932\nTitle: Foundation, Author: Isaac Asimov, Year: 1951\nTitle: Dune, Frank Herbert, Year: 1965\n---------------------\n"
+    }
+  ],
+  "driver": "int main() {\n    Library myLibrary(5); // Capacity of 5 books\n\n    myLibrary.addBook(Book(\"The Hobbit\", \"J.R.R. Tolkien\", 1937));\n    myLibrary.addBook(Book(\"1984\", \"George Orwell\", 1949));\n    myLibrary.addBook(Book(\"Brave New World\", \"Aldous Huxley\", 1932));\n\n    myLibrary.displayAllBooks();\n\n    myLibrary.addBook(Book(\"Foundation\", \"Isaac Asimov\", 1951));\n    myLibrary.addBook(Book(\"Dune\", \"Frank Herbert\", 1965));\n    myLibrary.addBook(Book(\"Neuromancer\", \"William Gibson\", 1984));\n\n    myLibrary.displayAllBooks();\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The 'addBook' method does not properly check for library capacity before adding a book, leading to an out-of-bounds write (undefined behavior) when more books than 'capacity' are added. The check 'if (numBooks > capacity)' is performed *after* the assignment, which is too late."
+  ]
+}

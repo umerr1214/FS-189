@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Point2D` class with private `x` and `y` coordinates (int). Overload the binary `+` operator to add two `Point2D` objects. The result should be a new `Point2D` object where its `x` is the sum of the input `x`s and its `y` is the sum of the input `y`s.",
+  "test_cases": [
+    { "input": "Point2D p1(1, 2); Point2D p2(3, 4);", "expected": "(1, 2) + (3, 4) = (4, 6)" },
+    { "input": "Point2D p3(-5, 10); Point2D p4(2, -7);", "expected": "(-5, 10) + (2, -7) = (-3, 3)" },
+    { "input": "Point2D p5(0, 0); Point2D p1(1, 2);", "expected": "(0, 0) + (1, 2) = (1, 2)" },
+    { "input": "Point2D p6(100000, 200000); Point2D p7(300000, 400000);", "expected": "(100000, 200000) + (300000, 400000) = (400000, 600000)" }
+  ],
+  "driver": "Point2D p1(1, 2); Point2D p2(3, 4); Point2D p3(-5, 10); Point2D p4(2, -7); Point2D p5(0, 0); Point2D p6(100000, 200000); Point2D p7(300000, 400000); Point2D* sum1 = p1 + p2; std::cout << \"(\" << p1.getX() << \", \" << p1.getY() << \") + (\" << p2.getX() << \", \" << p2.getY() << \") = (\" << sum1->getX() << \", \" << sum1->getY() << \")\" << std::endl; Point2D* sum2 = p3 + p4; std::cout << \"(\" << p3.getX() << \", \" << p3.getY() << \") + (\" << p4.getX() << \", \" << p4.getY() << \") = (\" << sum2->getX() << \", \" << sum2->getY() << \")\" << std::endl; Point2D* sum3 = p5 + p1; std::cout << \"(\" << p5.getX() << \", \" << p5.getY() << \") + (\" << p1.getX() << \", \" << p1.getY() << \") = (\" << sum3->getX() << \", \" << sum3->getY() << \")\" << std::endl; Point2D* sum4 = p6 + p7; std::cout << \"(\" << p6.getX() << \", \" << p6.getY() << \") + (\" << p7.getX() << \", \" << p7.getY() << \") = (\" << sum4->getX() << \", \" << sum4->getY() << \")\" << std::endl; /* In a real test, 'delete sum1; delete sum2; delete sum3; delete sum4;' would be added here to avoid leaks. */",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The overloaded binary `+` operator returns a dynamically allocated `Point2D*` object. This design choice shifts memory management responsibility to the caller, leading to potential memory leaks if the returned pointer is not explicitly `delete`d. While the arithmetic is correct, the resource management is not robust, especially for frequent operations or in complex systems."]
+}

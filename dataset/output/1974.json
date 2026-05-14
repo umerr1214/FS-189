@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Student` class with `name` (string), `studentID` (int), and `gpa` (double). Include a static member `totalStudents` to keep track of the total number of `Student` objects created.",
+  "test_cases": [
+    {
+      "input": "Create two student objects: Alice (ID 101, GPA 3.8) and Bob (ID 102, GPA 3.5).",
+      "expected": "Total students created: 2\nName: Alice, ID: 101, GPA: 3.8\nName: Bob, ID: 102, GPA: 3.5"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Student {\npublic:\n    std::string name;\n    int studentID;\n    double gpa;\n    static int totalStudents;\n\n    Student(std::string n, int id, double g) : name(n), studentID(id), gpa(g) {\n        totalStudents++;\n    }\n\n    void display() const {\n        std::cout << \"Name: \" << name << \", ID: \" << studentID << \", GPA: \" << gpa << std::endl;\n    }\n};\n\nint Student::totalStudents = 0;\n\nint main() {\n    Student s1(\"Alice\", 101, 3.8);\n    Student s2(\"Bob\", 102, 3.5);\n\n    std::cout << \"Total students created: \" << Student::totalStudents << std::endl;\n\n    s1.display();\n    s2.display();\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The static member `Student::totalStudents` is declared inside the class but not defined (initialized) outside the class in the global scope. This leads to a linker error because the compiler sees the declaration but the linker cannot find the actual memory allocation for the static member."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Modify the `Shape` hierarchy (from previous questions) to make `Shape` an abstract base class. This means `Shape` should have a pure virtual function `calculateArea()`. Demonstrate that `Shape` objects cannot be instantiated directly and that any derived concrete class (`Circle`, `Rectangle`) must provide an implementation for `calculateArea()`.",
+  "test_cases": [
+    { "input": "", "expected": "Demonstrating Shape hierarchy (Correct Version).\n\nAttempting to create a Shape object (will fail at compile time if uncommented):\n// Shape myAbstractShape; // This line would cause a compile error.\n\nInstantiating concrete derived classes:\nCircle with radius 5.0000: Area = 78.5398\nRectangle with width 4.0000, height 6.0000: Area = 24.0000\n\nDemonstrating polymorphism with std::unique_ptr<Shape>:\nCalculated area: 153.9380\nCalculated area: 50.0000\nCalculated area: 19.6350\nCalculated area: 27.0000\nCalculated area: 0.0000\n" }
+  ],
+  "driver": "int main() { /* The provided main function acts as the driver */ return 0; }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

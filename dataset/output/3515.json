@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Define a C++ `struct Book` with members `std::string title`, `std::string author`, and `int publicationYear`. In `main`, create an array of 3 `Book` structs, populate their details, and then iterate through the array to print the details of each book.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book 1:\n  Title: The Hitchhiker's Guide to the Galaxy\n  Author: Douglas Adams\n  Year: 1979\n\nBook 2:\n  Title: Pride and Prejudice\n  Author: Jane Austen\n  Year: 1813\n\n"
+    }
+  ],
+  "driver": "g++ -o solution solution.cpp && ./solution",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    {
+      "line": 30,
+      "column": 23,
+      "message": "Loop condition 'i < 2' prevents the third book from being processed. It should be 'i < 3'."
+    }
+  ]
+}

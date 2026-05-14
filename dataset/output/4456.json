@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Prompt the user to enter a monetary value (e.g., 123.456). Print this value formatted to two decimal places, prefixed with a dollar sign (e.g., $123.46).",
+  "test_cases": [
+    { "input": "123.456", "expected": "$123.46" },
+    { "input": "99.9", "expected": "$99.90" },
+    { "input": "0.001", "expected": "$0.00" },
+    { "input": "5", "expected": "$5.00" },
+    { "input": "12345.6789", "expected": "$12345.68" },
+    { "input": "0.999", "expected": "$1.00" }
+  ],
+  "driver": "int main() {\n    double value;\n    std::cout << \"Enter a monetary value: \";\n    std::cin >> value;\n    std::cout << \"$\" << std::fixed std::setprecision(2) << value << std::endl;\n    return 0;\n}",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing '<<' operator between 'std::fixed' and 'std::setprecision(2)' in the output statement, causing a compilation error.",
+    "Expected an expression before 'std::setprecision'."
+  ]
+}

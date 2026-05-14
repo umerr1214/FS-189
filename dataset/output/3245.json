@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Logger` with a `void logMessage(string msg)` method. Create a `ConsoleLogger` derived class that provides its own `void logMessage(string msg)` method. Demonstrate that calling `logMessage` on a `ConsoleLogger` object hides the base class method without `virtual`.",
+  "test_cases": [],
+  "driver": "int main() {\n    ConsoleLogger cl;\n    std::cout << \"Calling logMessage(\\\"string\\\") on ConsoleLogger object:\" << std::endl;\n    cl.logMessage(\"Hello from ConsoleLogger\");\n\n    std::cout << \"\\nCalling logMessage(int) on ConsoleLogger object:\" << std::endl;\n    cl.logMessage(123);\n\n    std::cout << \"\\nCalling logMessage via base pointer (static dispatch):\" << std::endl;\n    Logger* basePtr = &cl;\n    basePtr->logMessage(\"Hello via base ptr\");\n    basePtr->logMessage(456);\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The use of 'using Logger::logMessage;' in ConsoleLogger prevents the demonstration of method hiding for overloaded base methods, as it brings all base overloads into the derived class scope. The program should demonstrate hiding, not prevent it."
+  ]
+}

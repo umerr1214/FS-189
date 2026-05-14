@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Illustrate hierarchical inheritance: Create a base class `Animal` with a `sound()` method. Derive `Dog` and `Cat` from `Animal`. Each derived class should override the `sound()` method to print its specific sound.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating hierarchical inheritance with polymorphism ---\nWoof!\nMeow!\nGeneric animal sound.\n\n--- Direct object calls for comparison ---\nWoof!\nMeow!\nGeneric animal sound.\n"
+    }
+  ],
+  "driver": "main",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

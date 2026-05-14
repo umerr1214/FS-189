@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Refactor the `Shape` class to be an abstract base class with a pure virtual `double calculateArea()` method. Ensure `Circle` and `Rectangle` properly implement this method and create instances of them.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Circle Area: 78.539816\nRectangle Area: 20.0" }
+  ],
+  "driver": "The main function creates instances of Circle and Rectangle, then prints their calculated areas.",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The `calculateArea()` method in the `Rectangle` class incorrectly computes the perimeter (2 * (length + width)) instead of the area (length * width)."]
+}

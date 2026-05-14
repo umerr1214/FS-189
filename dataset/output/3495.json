@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter a C-style string (character array). Then, count and print the total number of vowels (a, e, i, o, u, case-insensitive) present in the string.",
+  "test_cases": [
+    { "input": "Hello World\n", "expected": "Enter a C-style string: Total number of vowels: 3\n" },
+    { "input": "Programming in Cpp\n", "expected": "Enter a C-style string: Total number of vowels: 4\n" },
+    { "input": "AEIOUaeiou\n", "expected": "Enter a C-style string: Total number of vowels: 10\n" },
+    { "input": "Rhythm\n", "expected": "Enter a C-style string: Total number of vowels: 0\n" },
+    { "input": "\n", "expected": "Enter a C-style string: Total number of vowels: 0\n" },
+    { "input": "12345!@#$\n", "expected": "Enter a C-style string: Total number of vowels: 0\n" },
+    { "input": "a\n", "expected": "Enter a C-style string: Total number of vowels: 1\n" },
+    { "input": "This is a rather long string to test the buffer handling capability of the program. It should still count vowels correctly without overflowing.\n", "expected": "Enter a C-style string: Warning: Input was too long and might have been truncated.\nTotal number of vowels: 23\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <limits> \n\nextern int main(); \n\nint run_solution(const std::string& input, std::string& output) {\n    std::streambuf* old_cin_buf = std::cin.rdbuf();\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n    std::streambuf* old_cerr_buf = std::cerr.rdbuf();\n\n    std::istringstream iss(input);\n    std::ostringstream oss_out;\n    std::ostringstream oss_err;\n\n    std::cin.rdbuf(iss.rdbuf());\n    std::cout.rdbuf(oss_out.rdbuf());\n    std::cerr.rdbuf(oss_err.rdbuf());\n\n    int return_code;\n    try {\n        return_code = main();\n    } catch (const std::exception& e) {\n        oss_err << \"An unexpected C++ exception occurred: \" << e.what() << \"\\n\";\n        return_code = -1;\n    } catch (...) {\n        oss_err << \"An unknown exception occurred during execution.\\n\";\n        return_code = -1;\n    }\n\n    std::cin.rdbuf(old_cin_buf);\n    std::cout.rdbuf(old_cout_buf);\n    std::cerr.rdbuf(old_cerr_buf);\n\n    output = oss_err.str() + oss_out.str();\n    \n    return return_code;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

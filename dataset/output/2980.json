@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Implement a `Counter` class with a private integer `count`. Provide public methods `increment()`, `decrement()`, and `getCount()`. Ensure that `count` cannot go below zero. Demonstrate its usage.",
+  "test_cases": [
+    { "input": "", "expected": "Initial count: 0\nAfter 2 increments: 2\nAfter 1 decrement: 1\nAfter 2 more decrements: 0\nAfter 3 increments: 3\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nint main() {\n    Counter c;\n    std::cout << \"Initial count: \" << c.getCount() << std::endl;\n\n    c.increment();\n    c.increment();\n    std::cout << \"After 2 increments: \" << c.getCount() << std::endl;\n\n    c.decrement();\n    std::cout << \"After 1 decrement: \" << c.getCount() << std::endl;\n\n    c.decrement();\n    c.decrement(); \n    std::cout << \"After 2 more decrements: \" << c.getCount() << std::endl;\n\n    c.increment();\n    c.increment();\n    c.increment();\n    std::cout << \"After 3 increments: \" << c.getCount() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter a word (using `std::string`), then reverses the string and prints the reversed word.",
+  "test_cases": [
+    { "input": "example", "expected": "elpmaxe" },
+    { "input": "madam", "expected": "madam" }
+  ],
+  "driver": "int main() {\n    std::string word;\n    std::cout << \"Enter a word: \";\n    std::cin >> word;\n    std::reverse(word.begin(), word.end());\n    std::cout << \"Reversed word: \" << word << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": []
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a simple menu-driven program for a basic task list (e.g., Add Task, View Tasks, Exit). Use a `do-while` loop to keep displaying the menu until the user chooses to exit.",
+  "test_cases": [
+    { "input": "1\nBuy groceries\n2\n3\n", "expected": "\nTask List Menu:\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: Enter task description: Task added!\n\n--- Your Tasks ---\n1. Buy groceries\n------------------\n\nTask List Menu:\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: Exiting program. Goodbye!\n" }
+  ],
+  "driver": "int main() { /* The code itself is the main program */ return 0; }",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'std::cout << \"Task added!\\n\"' on line 42. This will cause a compilation error."
+  ]
+}

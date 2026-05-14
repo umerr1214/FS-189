@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that asks the user to input an integer and then determines whether the number is positive, negative, or zero, printing an appropriate message.",
+  "test_cases": [
+    { "input": "7", "expected": "Please enter an integer: The number is positive.\n" },
+    { "input": "-3", "expected": "Please enter an integer: The number is negative.\n" },
+    { "input": "0", "expected": "Please enter an integer: The number is zero.\n" },
+    { "input": "1000000", "expected": "Please enter an integer: The number is positive.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <limits>\n\nint main() {\n    std::string inputs[] = {\"7\", \"-3\", \"0\", \"1000000\"};\n    for (const std::string& input : inputs) {\n        std::stringstream ss(input);\n        std::streambuf* old_cin = std::cin.rdbuf();\n        std::cin.rdbuf(ss.rdbuf());\n        \n        // The student's program's main function would be called here\n        // and its stdout captured for comparison with expected output.\n        \n        std::cin.rdbuf(old_cin);\n        std::cin.clear();\n        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\\n');\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["The code uses an unnecessary string variable `classification_message` to store the output message, which is less efficient than printing directly. The nested 'if-else' structure for determining negative or zero is less readable and slightly less efficient than a direct 'else if' statement."]
+}

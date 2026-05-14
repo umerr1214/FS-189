@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "For a `Rectangle` class with `width` and `height` (double), implement a `getArea()` method that is declared as `const`. Demonstrate that this method can be called on a `const` `Rectangle` object and does not modify object state.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Mutable Rect Dims: 7.50x3.00 Area: 22.50\nConst Rect Dims: 12.00x5.00 Area: 60.00\nZero Width Rect Dims: 0.00x10.00 Area: 0.00\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <iomanip>\n\nclass Rectangle {\nprivate:\n    double width_val;\n    double height_val;\n\npublic:\n    Rectangle(double w, double h) : width_val(w), height_val(h) {}\n\n    double getArea() const {\n        double temp_result = width_val * height_val;\n        return temp_result;\n    }\n\n    double getWidth() const { return width_val; }\n    double getHeight() const { return height_val; }\n};\n\nint main() {\n    std::cout << std::fixed << std::setprecision(2);\n\n    Rectangle myRect(7.5, 3.0);\n    std::cout << \"Mutable Rect Dims: \" << myRect.getWidth() << \"x\" << myRect.getHeight() << \" Area: \" << myRect.getArea() << std::endl;\n\n    const Rectangle constMyRect(12.0, 5.0);\n    std::cout << \"Const Rect Dims: \" << constMyRect.getWidth() << \"x\" << constMyRect.getHeight() << \" Area: \" << constMyRect.getArea() << std::endl;\n\n    const Rectangle zeroRect(0.0, 10.0);\n    std::cout << \"Zero Width Rect Dims: \" << zeroRect.getWidth() << \"x\" << zeroRect.getHeight() << \" Area: \" << zeroRect.getArea() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `getArea()` method uses an unnecessary intermediate variable (`temp_result`) which slightly reduces conciseness and introduces a minor, though negligible, inefficiency for a simple calculation. A direct `return width_val * height_val;` would be more readable and efficient.",
+    "The member variable names `width_val` and `height_val` are slightly less clear than simply `width` and `height`.",
+    "The output format in `main` is functional but could be more descriptive for better readability."
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Vehicle` with private members `brand` (string) and `year` (int). Implement a constructor and a public method `displayInfo()`. Derive a `Car` class and a `Motorcycle` class from `Vehicle`. Each derived class should add one specific private attribute (e.g., `numDoors` for `Car`, `hasSidecar` for `Motorcycle`) and override `displayInfo()` to include its specific attribute.",
+  "test_cases": [
+    {
+      "input": "Car(\"Toyota\", 2020, 4)\nMotorcycle(\"Harley-Davidson\", 2022, true)",
+      "expected": "Car Info (Logical Error): Brand: Toyota, Year: 2020, Doors: 4\nMotorcycle Info (Correct): Brand: Harley-Davidson, Year: 2022, Has Sidecar: Yes\n",
+      "actual_output_pattern": "Car Info \\(Logical Error\\): Car with Doors: 4\\nMotorcycle Info \\(Correct\\): Brand: Harley-Davidson, Year: 2022, Has Sidecar: Yes\\n"
+    },
+    {
+      "input": "Car(\"Honda\", 2018, 2)",
+      "expected": "Another Car Info (Logical Error): Brand: Honda, Year: 2018, Doors: 2\n",
+      "actual_output_pattern": "Another Car Info \\(Logical Error\\): Car with Doors: 2\\n"
+    }
+  ],
+  "driver": "int main() {\n    Car myCar(\"Toyota\", 2020, 4);\n    std::cout << \"Car Info (Logical Error): \";\n    myCar.displayInfo();\n\n    Motorcycle myMotorcycle(\"Harley-Davidson\", 2022, true);\n    std::cout << \"Motorcycle Info (Correct): \";\n    myMotorcycle.displayInfo();\n\n    Car anotherCar(\"Honda\", 2018, 2);\n    std::cout << \"Another Car Info (Logical Error): \";\n    anotherCar.displayInfo();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `Car::displayInfo()` method does not call `Vehicle::displayInfo()`, leading to the omission of `brand` and `year` information in the output for Car objects. This violates the requirement to include all information."
+  ]
+}

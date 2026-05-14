@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design a `Logger` class. It should have a `private static int logCount` to track the total number of log messages created across all `Logger` objects. Increment `logCount` in the constructor. Implement a `public static void displayTotalLogs()` method to show the current value of `logCount`.",
+  "test_cases": [
+    { "input": "Create 3 Logger objects, then attempt to directly access logCount, then display total logs.", "expected": "Current logs (attempted direct access): 3\nTotal logs: 3\n" }
+  ],
+  "driver": "Logger l1;\nLogger l2;\nLogger l3;\nstd::cout << \"Current logs (attempted direct access): \" << Logger::logCount << std::endl;\nLogger::displayTotalLogs();",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["Attempt to access a private static member (Logger::logCount) directly from outside the class, violating encapsulation rules. This results in a compile-time error."]
+}

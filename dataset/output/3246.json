@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Logger` with a `void logMessage(string msg)` method. Create a `ConsoleLogger` derived class that provides its own `void logMessage(string msg)` method. Demonstrate that calling `logMessage` on a `ConsoleLogger` object hides the base class method without `virtual`.",
+  "test_cases": [],
+  "driver": "int main() {\n    ConsoleLogger cl;\n    std::cout << \"Demonstrating method hiding:\\n\" << std::endl;\n    \n    std::cout << \"Calling logMessage(\\\"string\\\") on ConsoleLogger object:\" << std::endl;\n    cl.logMessage(\"This calls ConsoleLogger's string method.\");\n\n    std::cout << \"\\nAttempting to call logMessage(int) on ConsoleLogger object:\" << std::endl;\n    cl.logMessage(123);\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "No matching function for call to 'ConsoleLogger::logMessage(int)'. The ConsoleLogger's logMessage(string) method hides all Logger base class methods named logMessage, including Logger::logMessage(int)."
+  ]
+}

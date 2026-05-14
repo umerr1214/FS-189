@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "For a `Counter` class with a single private integer member `count`, overload the prefix `++` operator. This operator should increment `count` and then return the modified `Counter` object (by reference).",
+  "test_cases": [
+    { "input": "5", "expected": "6" },
+    { "input": "0 (after two increments)", "expected": "2" },
+    { "input": "-3", "expected": "-2" },
+    { "input": "100", "expected": "101" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n\nclass Counter {\nprivate:\n    int count;\npublic:\n    Counter(int c = 0) : count(c) {}\n    int getCount() const { return count; }\n\n    const Counter& operator++() {\n        ++count;\n        return *this;\n    }\n};\n\nint main() {\n    std::cout << \"Running tests for Counter prefix increment operator (Robustness Issue):\" << std::endl;\n\n    Counter c1(5);\n    ++c1;\n    std::cout << \"Test 1: Initial count: 5, after ++: \" << c1.getCount() << std::endl;\n\n    Counter c2(0);\n    ++c2;\n    ++c2;\n    std::cout << \"Test 2: Initial count: 0, after two ++: \" << c2.getCount() << std::endl;\n\n    Counter c3(-3);\n    ++c3;\n    std::cout << \"Test 3: Initial count: -3, after ++: \" << c3.getCount() << std::endl;\n\n    Counter c4(100);\n    ++c4;\n    std::cout << \"Test 4: Initial count: 100, after ++: \" << c4.getCount() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The prefix increment operator returns 'const Counter&' instead of 'Counter&'. While it correctly increments the object, returning a const reference prevents chained prefix increments (e.g., `++(++c)`), or further modification of the returned reference, which is a common and expected use case for prefix increment, thereby limiting its robustness and utility in expressions."]
+}

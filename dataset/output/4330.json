@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Calculate the sum of all integers from 1 to a user-specified positive integer 'n' using a 'for' loop.",
+  "test_cases": [
+    { "input": "5", "expected": "15" },
+    { "input": "1", "expected": "1" },
+    { "input": "10", "expected": "55" }
+  ],
+  "driver": "int main() { int n; std::cin >> n; long long sum = 0; if (n <= 0) { return 1; } for (int i = 1; i <= n; ++i) { sum += i; } std::cout << sum << std::endl; return 0; }",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'std::cout << \"Enter a positive integer n: \"'"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that reads integer elements into a 3x3 two-dimensional array (matrix) from the user. After input, print the sum of elements for each individual row of the matrix.",
+  "test_cases": [
+    {
+      "input": "1 2 3 4 5 6 7 8 9",
+      "expected": "Sum of row 0: 6\nSum of row 1: 15\nSum of row 2: 24\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\nint main() {\n    // This driver code conceptually represents how a test case would be defined\n    // and validated. In a real testing environment, the user's submitted program\n    // would be compiled and executed with the 'input' provided below, and its\n    // standard output would be captured and compared against the 'expected' string.\n\n    // Test input for the user's program\n    std::string input = \"1 2 3 4 5 6 7 8 9\";\n\n    // Expected output if the user's program is correct\n    std::string expected = \"Sum of row 0: 6\\nSum of row 1: 15\\nSum of row 2: 24\\n\";\n\n    // For demonstration, we simply output what the test harness would feed\n    // and what it expects.\n    // A real harness would execute the user's code like:\n    // system(\"./user_solution_executable < input_file.txt > output_file.txt\");\n    // Then read output_file.txt and compare with 'expected'.\n\n    std::cout << \"Test Input:\\n\" << input << std::endl;\n    std::cout << \"Expected Output:\\n\" << expected << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'std::endl' in line 10, causing a compilation error."
+  ]
+}

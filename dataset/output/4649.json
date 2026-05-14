@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that reads a string from the user and prints its reverse. Use `std::string` for string manipulation.",
+  "test_cases": [
+    { "input": "hello", "expected": "olleh" },
+    { "input": "world", "expected": "dlrow" },
+    { "input": "a", "expected": "a" },
+    { "input": "", "expected": "" },
+    { "input": "racecar", "expected": "racecar" }
+  ],
+  "driver": "The program reads a string from stdin and prints its reverse to stdout. The driver will execute the compiled program, provide input via stdin, and capture stdout for comparison with expected output.",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The program reads the string but prints it as is, failing to reverse it before printing."]
+}

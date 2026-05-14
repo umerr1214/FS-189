@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a C-style string function `strConcatenate` that takes two character arrays (C-strings) as input and appends the second string to the first. Assume the first array has enough space.",
+  "test_cases": [
+    { "input": "(\"Hello\", \" World\")", "expected": "Hello World" },
+    { "input": "(\"First\", \" Second\")", "expected": "First Second" },
+    { "input": "(\"Base\", \"\")", "expected": "Base" },
+    { "input": "(\"\", \"Append\")", "expected": "Append" }
+  ],
+  "driver": "#include <iostream>\n\n// The strConcatenate function would be inserted here by the system for testing\n\nint main() {\n    char buffer1[100] = \"Hello\";\n    const char* src1 = \" World\";\n    strConcatenate(buffer1, src1);\n    std::cout << \"Test 1 Output: \\\"\" << buffer1 << \"\\\"\" << std::endl;\n\n    char buffer2[100] = \"First\";\n    const char* src2 = \" Second\";\n    strConcatenate(buffer2, src2);\n    std::cout << \"Test 2 Output: \\\"\" << buffer2 << \"\\\"\" << std::endl;\n\n    char buffer3[100] = \"Base\";\n    const char* src3 = \"\";\n    strConcatenate(buffer3, src3);\n    std::cout << \"Test 3 Output: \\\"\" << buffer3 << \"\\\"\" << std::endl;\n\n    char buffer4[100] = \"\";\n    const char* src4 = \"Append\";\n    strConcatenate(buffer4, src4);\n    std::cout << \"Test 4 Output: \\\"\" << buffer4 << \"\\\"\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": "The concatenated string is not null-terminated. This leads to undefined behavior when the string is printed or processed by other C-string functions, often resulting in garbage characters or reading beyond the intended buffer."
+}

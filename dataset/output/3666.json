@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a function `void incrementValue(int* ptr)` that takes an integer pointer as an argument and increments the value it points to by one. Demonstrate its use with an integer variable from `main`.",
+  "test_cases": [
+    { "input": "", "expected": "Original value: 10\nIncremented value: 11\n" }
+  ],
+  "driver": "int main() {\n    int value = 10;\n    std::cout << \"Original value: \" << value << std::endl;\n    incrementValue(&value);\n    std::cout << \"Incremented value: \" << value << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The function reassigns its local pointer variable 'ptr' to new memory instead of modifying the value at the original address, leading to no change in the caller's variable and a memory leak."
+  ]
+}

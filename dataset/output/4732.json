@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Write a program that takes a sentence (std::string) and a character from the user, then counts and displays how many times that character appears in the sentence.",
+  "test_cases": [
+    { "input": "programming\ng", "expected": "The character 'g' appears 2 times." },
+    { "input": "hello world\no", "expected": "The character 'o' appears 2 times." }
+  ],
+  "driver": "std::string sentence; char targetChar; std::getline(std::cin, sentence); std::cin >> targetChar;",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after std::cout statement on line 9."]
+}

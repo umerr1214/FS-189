@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a program that prompts the user to enter three distinct integer numbers. Sort these three numbers in ascending order and print them. You must achieve this using only `if-else` statements, without using arrays or any sorting algorithms.",
+  "test_cases": [
+    { "input": "10 5 15", "expected": "Enter three distinct integer numbers:\nNumber 1: Number 2: Number 3: Sorted numbers: 5 10 15\n" },
+    { "input": "30 10 20", "expected": "Enter three distinct integer numbers:\nNumber 1: Number 2: Number 3: Sorted numbers: 10 20 30\n" },
+    { "input": "10 a 20", "expected": "Enter three distinct integer numbers:\nNumber 1: Number 2: Number 3: Sorted numbers: 0 0 10\n" },
+    { "input": "5 5 10", "expected": "Enter three distinct integer numbers:\nNumber 1: Number 2: Number 3: Sorted numbers: 5 5 10\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> test_cases = {\n        {\"10 5 15\", \"Enter three distinct integer numbers:\\nNumber 1: Number 2: Number 3: Sorted numbers: 5 10 15\\n\"},\n        {\"30 10 20\", \"Enter three distinct integer numbers:\\nNumber 1: Number 2: Number 3: Sorted numbers: 10 20 30\\n\"},\n        {\"10 a 20\", \"Enter three distinct integer numbers:\\nNumber 1: Number 2: Number 3: Sorted numbers: 0 0 10\\n\"},\n        {\"5 5 10\", \"Enter three distinct integer numbers:\\nNumber 1: Number 2: Number 3: Sorted numbers: 5 5 10\\n\"}\n    };\n\n    for (size_t i = 0; i < test_cases.size(); ++i) {\n        std::cout << \"Running test case \" << i + 1 << \":\\n\";\n        std::cout << \"Input: \\\"\" << test_cases[i].first << \"\\\"\\n\";\n        std::cout << \"Expected Output: \\\"\" << test_cases[i].second << \"\\\"\\n\";\n        std::cout << \"--------------------\\n\";\n        // In a real test environment, you would execute the user's program here,\n        // feeding test_cases[i].first to stdin and comparing stdout with test_cases[i].second.\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Input validation for non-integer input is missing. If non-integer data is entered, the program may exhibit undefined behavior (e.g., printing uninitialized values like 0) or get stuck.",
+    "The program does not explicitly enforce or re-prompt for distinct numbers as required by the prompt; it sorts non-distinct numbers without any warning."
+  ]
+}

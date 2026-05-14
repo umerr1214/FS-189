@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Extend the `Animal` hierarchy (from Q14) to use virtual functions for the `sound()` method. Create a `Zoo` class that takes a `Animal*` and calls its `sound()` method, showcasing polymorphic behavior.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Zoo is open for business!\nAdding Max to the zoo.\nAdding Luna to the zoo.\nAdding Charlie to the zoo.\n\n--- All animals in the zoo are making sounds! ---\nMax barks: Woof! Woof!\nLuna meows: Meow!\nCharlie barks: Woof! Woof!\n--- End of animal sounds ---\n\nProgram ending. Unique pointers will clean up automatically.\nZoo is closing. All animals will be automatically destroyed.\nAnimal Charlie destroyed.\nCharlie (Dog) destroyed.\nAnimal Luna destroyed.\nLuna (Cat) destroyed.\nAnimal Max destroyed.\nMax (Dog) destroyed.\n"
+    }
+  ],
+  "driver": "",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

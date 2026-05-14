@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Concatenate two C-style strings (character arrays) into a third C-style string without using any standard library string functions like `strcat`.",
+  "test_cases": [
+    { "input": "str1 = \"Hello\", str2 = \"World\"", "expected": "\"HelloWorld\"" },
+    { "input": "str1 = \"Open\", str2 = \"AI\"", "expected": "\"OpenAI\"" },
+    { "input": "str1 = \"\", str2 = \"Test\"", "expected": "\"Test\"" },
+    { "input": "str1 = \"Test\", str2 = \"\"", "expected": "\"Test\"" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n\n// Assume getLength and concatenate functions are defined elsewhere for this driver to compile\n\nstruct TestCase {\n    const char* s1;\n    const char* s2;\n    const char* expected;\n    char buffer[10]; // Buffer for the result, too small for \"HelloWorld\"\n};\n\nint main() {\n    std::vector<TestCase> testCases = {\n        {\"Hello\", \"World\", \"HelloWorld\", \"\"}, // Total length 10, needs 11 bytes. Will cause overflow.\n        {\"Open\", \"AI\", \"OpenAI\", \"\"},         // Total length 6, needs 7 bytes. Fits.\n        {\"\", \"Test\", \"Test\", \"\"},             // Total length 4, needs 5 bytes. Fits.\n        {\"Test\", \"\", \"Test\", \"\"},             // Total length 4, needs 5 bytes. Fits.\n        {\"A\", \"B\", \"AB\", \"\"}                  // Total length 2, needs 3 bytes. Fits.\n    };\n\n    bool all_passed = true;\n    for (size_t i = 0; i < testCases.size(); ++i) {\n        // Reset buffer for each test case\n        for (int k = 0; k < 10; ++k) testCases[i].buffer[k] = '\\0';\n\n        concatenate(testCases[i].buffer, testCases[i].s1, testCases[i].s2);\n\n        std::string actual_str(testCases[i].buffer);\n        std::string expected_str(testCases[i].expected);\n\n        if (actual_str == expected_str) {\n            std::cout << \"Test Case \" << i + 1 << \" Passed: \\\"\" << testCases[i].s1 << \"\\\" + \\\"\" << testCases[i].s2 << \"\\\" -> \\\"\" << actual_str << \"\\\"\" << std::endl;\n        } else {\n            std::cout << \"Test Case \" << i + 1 << \" Failed: \\\"\" << testCases[i].s1 << \"\\\" + \\\"\" << testCases[i].s2 << \"\\\"\" << std::endl;\n            std::cout << \"  Expected: \\\"\" << expected_str << \"\\\"\" << std::endl;\n            std::cout << \"  Actual:   \\\"\" << actual_str << \"\\\"\" << std::endl;\n            all_passed = false;\n        }\n    }\n\n    if (all_passed) {\n        std::cout << \"\\nAll test cases passed!\" << std::endl;\n    } else {\n        std::cout << \"\\nSome test cases failed.\" << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `TestCase` struct declares a fixed-size buffer `char buffer[10]` which is too small to hold the concatenated result of \"Hello\" and \"World\" (10 characters + null terminator = 11 bytes). This leads to a buffer overflow when `concatenate` writes past the allocated memory, causing undefined behavior, memory corruption, or crashes for the first test case."
+  ]
+}

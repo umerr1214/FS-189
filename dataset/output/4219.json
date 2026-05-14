@@ -1,0 +1,26 @@
+{
+  "language": "c++",
+  "question": "Design a simple calculator program in C++ that takes two numbers and an operator (+, -, *, /) from the user. Use a `switch` statement to perform the chosen operation and display the result. Handle division by zero.",
+  "test_cases": [
+    {
+      "input": "10\n+\n5\n",
+      "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 15\n"
+    },
+    {
+      "input": "10\n/\n0\n",
+      "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Error: Division by zero is not allowed.\n"
+    },
+    {
+      "input": "abc\n+\n5\n",
+      "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Error: Invalid operator or input stream error.\n"
+    }
+  ],
+  "driver": "int main() {\n  // This is a conceptual driver. In an actual testing environment,\n  // the input string from 'test_cases[i].input' would be piped to\n  // the standard input of the compiled C++ program, and its standard output\n  // would be captured and compared with 'test_cases[i].expected'.\n  // For example, on a Unix-like system: `./your_program < input.txt`\n  // The main function of the provided C++ file is executed directly.\n  return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not check the state of `std::cin` after attempting to read numeric input. If non-numeric input is provided for `num1`, `std::cin` enters a fail state. Subsequent `std::cin` operations for `op` and `num2` will then fail immediately without reading new input, leaving `op` as its default initialized value ('\\0') and `num2` as 0.0. This leads to the default case of the switch statement being hit, reporting an 'Invalid operator' error, without clearly indicating the actual root cause (invalid numeric input).",
+    "Lack of proper input validation and error handling for numeric inputs can lead to unexpected behavior or incorrect results when users provide malformed data."
+  ]
+}

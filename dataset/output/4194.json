@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user for a positive integer `n` (representing the height). Using nested loops, print a solid pyramid pattern of asterisks `*` with `n` rows.",
+  "test_cases": [
+    { "input": "3", "expected": "  *\n ***\n*****\n" },
+    { "input": "5", "expected": "    *\n   ***\n  *****\n *******\n*********\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\n// The user's original `main` function is typically renamed, e.g., `user_main`\n// in an evaluation environment to be called by a driver.\nextern int user_main(); // Declare the user's main function\n\nint main() {\n    // For each test case defined in 'test_cases' array:\n    // 1. Prepare input: std::stringstream ss_input(test_case.input);\n    // 2. Redirect std::cin: std::cin.rdbuf(ss_input.rdbuf());\n    // 3. Prepare output capture: std::stringstream ss_output;\n    // 4. Redirect std::cout: std::cout.rdbuf(ss_output.rdbuf());\n    // 5. Execute user's code: user_main();\n    // 6. Restore std::cin and std::cout.\n    // 7. Compare ss_output.str() with test_case.expected.\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The program misinterprets 'n' as the number of iterations for the outer loop. The problem asks for a pyramid of 'n' rows (height 'n'), but the outer loop `for (int i = 0; i <= n; ++i)` iterates `n+1` times. This results in a pyramid that is one row taller than specified by the input 'n'.",
+    "For input `3`, the program outputs 4 rows:\n  *\n ***\n*****\n*******\nExpected:\n  *\n ***\n*****"
+  ]
+}

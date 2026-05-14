@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that repeatedly prompts the user to enter an integer between 1 and 10 (inclusive) until a valid input is provided. Use a `do-while` loop for input validation.",
+  "test_cases": [
+    { "input": "0\n11\n5\n", "expected": "Thank you! You entered: 5\n" },
+    { "input": "hello\n7\n", "expected": "Thank you! You entered: 7\n" },
+    { "input": "10\n", "expected": "Thank you! You entered: 10\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <fstream>\n#include <sstream>\n#include <cstdlib> // For system()\n#include <cstdio>  // For popen, pclose, remove\n\nstd::string exec_and_capture(const std::string& cmd, const std::string& input_str) {\n    std::string result = \"\";\n    std::string input_filename = \"temp_input_driver.txt\";\n    std::ofstream input_file(input_filename);\n    input_file << input_str;\n    input_file.close();\n\n    std::string full_cmd = cmd + \" < \" + input_filename;\n\n    FILE* pipe = popen(full_cmd.c_str(), \"r\");\n    if (!pipe) return \"ERROR: Failed to open pipe.\";\n    char buffer[128];\n    while (!feof(pipe)) {\n        if (fgets(buffer, 128, pipe) != NULL)\n            result += buffer;\n    }\n    pclose(pipe);\n\n    remove(input_filename.c_str());\n    return result;\n}\n\nint main() {\n    std::cout << \"Driver: Compiling solution.cpp...\\n\";\n    if (system(\"g++ solution.cpp -o solution_exec\") != 0) {\n        std::cerr << \"Driver: Compilation of solution.cpp failed.\\n\";\n        return 1;\n    }\n\n    // Test case for Readability/Efficiency: out of range, then valid\n    std::string test_input = \"0\\n5\\n\";\n    std::string expected_output_part = \"Thank you! You entered: 5\\n\";\n\n    std::cout << \"Driver: Running solution with input '\" << test_input.substr(0, test_input.length()-1) << \"'\\n\";\n    std::string actual_output = exec_and_capture(\"./solution_exec\", test_input);\n\n    std::cout << \"Driver: --- Program Output ---\\n\" << actual_output;\n    std::cout << \"Driver: --- End Program Output ---\\n\";\n\n    if (actual_output.find(expected_output_part) != std::string::npos) {\n        std::cout << \"Driver: Test case PASSED (output contains expected part).\\n\";\n    } else {\n        std::cout << \"Driver: Test case FAILED.\\n\";\n    }\n\n    std::cout << \"Driver: Cleaning up...\\n\";\n    system(\"rm -f solution_exec\");\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses multiple `if` statements for range checks (`num < 1`, `num > 10`) instead of a single combined condition (`num < 1 || num > 10` or `!(num >= 1 && num <= 10)`), making the code slightly more verbose.",
+    "Error messages are slightly less precise (e.g., 'That's not an integer' instead of 'Invalid input. Please enter an integer.')."
+  ]
+}

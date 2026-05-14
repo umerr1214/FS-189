@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `StringWrapper` class that manages a dynamically allocated character array to store a string. Implement a copy constructor for `StringWrapper` that performs a deep copy of the character array to ensure independent memory management between copied objects.",
+  "test_cases": [
+    { "input": "N/A", "expected": "s1: Hello\ns2: Hello\ns_empty: \ns_copy_empty: \ns3: Hello\n" }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n\n// The StringWrapper class would be placed here\n\nint main() {\n    StringWrapper s1(\"Hello\");\n    StringWrapper s2 = s1; // Calls the faulty copy constructor\n\n    std::cout << \"s1: \" << s1.getString() << std::endl;\n    std::cout << \"s2: \" << s2.getString() << std::endl;\n\n    StringWrapper s_empty(\"\");\n    StringWrapper s_copy_empty = s_empty; // UB here, strcpy to 0-sized array\n\n    std::cout << \"s_empty: \" << s_empty.getString() << std::endl;\n    std::cout << \"s_copy_empty: \" << s_copy_empty.getString() << std::endl;\n\n    StringWrapper s3(\"World\");\n    s3 = s1; // Calls correct assignment operator\n\n    std::cout << \"s1: \" << s1.getString() << std::endl;\n    std::cout << \"s2: \" << s2.getString() << std::endl;\n    std::cout << \"s3: \" << s3.getString() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "In the copy constructor, the memory allocation `new char[length]` does not account for the null terminator. This causes a buffer overflow when `strcpy` is called for non-empty strings, as `strcpy` attempts to write `length + 1` characters into a `length`-sized buffer. For empty strings (where `length` is 0), `new char[0]` is allocated, and `strcpy` to this zero-sized buffer results in undefined behavior (likely a crash)."
+  ]
+}

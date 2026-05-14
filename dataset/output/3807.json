@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that initializes a 3x3 integer matrix with hardcoded values, then calculates and prints the sum of elements for each row and each column separately.",
+  "test_cases": [
+    { "input": "", "expected": "Calculating row sums:\nRow 0 sum: 6\nRow 1 sum: 15\nRow 2 sum: 24\nCalculating column sums:\nColumn 0 sum: 12\nColumn 1 sum: 15\nColumn 2 sum: 18\n" }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

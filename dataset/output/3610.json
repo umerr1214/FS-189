@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a function `bool isPrime(int num)` that returns `true` if `num` is prime and `false` otherwise. Use this function to print all prime numbers up to a user-specified limit.",
+  "test_cases": [
+    { "input": "10", "expected": "Compilation Error" },
+    { "input": "20", "expected": "Compilation Error" }
+  ],
+  "driver": "#include <iostream>\n\n// This driver is for a program that would print primes up to a limit.\n// However, the submitted code contains a syntax error and will not compile.\n// The driver's purpose here is to define the structure for how test cases\n// would typically be run if the code were compilable.\nint main() {\n    std::cout << \"This program is expected to fail compilation due to a Syntax Error.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Typo in 'return' keyword: 'retun' instead of 'return' inside isPrime function."
+  ]
+}

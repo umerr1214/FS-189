@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Animal` with a private `species` attribute and a parameterized constructor that initializes it. Create a derived class `Dog` with an additional private `name` attribute. The `Dog` constructor must correctly call the `Animal` base class constructor to initialize the `species` and then initialize its own `name`. Include a `makeSound()` method in both classes.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Animal makes a sound. Species: Elephant\nWoof! My name is Snoopy. Species: Beagle.\nWoof! My name is Frank. Species: Dachshund.\nAnimal makes a sound. Species: Parrot\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <memory> // For std::unique_ptr\n\nclass Animal {\nprivate:\n    std::string species;\n\npublic:\n    // Parameterized constructor using initializer list and const reference for efficiency\n    Animal(const std::string& s) : species(s) {}\n\n    // Virtual method for polymorphic behavior and const-correctness\n    virtual void makeSound() const {\n        std::cout << \"Animal makes a sound. Species: \" << species << std::endl;\n    }\n\n    // Protected getter for derived classes to access species, maintaining encapsulation\nprotected:\n    const std::string& getSpecies() const { return species; }\n};\n\nclass Dog : public Animal {\nprivate:\n    std::string name;\n\npublic:\n    // Parameterized constructor: correctly calls base constructor and initializes its own attribute\n    // Uses const references and initializer list for efficiency and correctness\n    Dog(const std::string& species_val, const std::string& name_val)\n        : Animal(species_val), name(name_val) {\n        // Constructor body is empty as all initialization is done in the initializer list\n    }\n\n    // Override base class method for polymorphic behavior and const-correctness\n    void makeSound() const override {\n        std::cout << \"Woof! My name is \" << name << \". Species: \" << getSpecies() << \".\" << std::endl;\n    }\n};\n\nint main() {\n    // Test case 1: Base class object\n    Animal genericAnimal(\"Elephant\");\n    genericAnimal.makeSound();\n\n    // Test case 2: Derived class object\n    Dog myDog(\"Beagle\", \"Snoopy\");\n    myDog.makeSound();\n\n    // Test case 3: Polymorphic behavior using smart pointers for proper memory management\n    // std::unique_ptr ensures automatic memory deallocation\n    std::unique_ptr<Animal> polyAnimal = std::make_unique<Dog>(\"Dachshund\", \"Frank\");\n    polyAnimal->makeSound(); // Correctly calls Dog::makeSound due to virtual function\n\n    std::unique_ptr<Animal> anotherAnimal = std::make_unique<Animal>(\"Parrot\");\n    anotherAnimal->makeSound(); // Calls Animal::makeSound\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

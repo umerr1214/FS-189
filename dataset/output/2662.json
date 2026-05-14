@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Revisit the `Shape` hierarchy (with `Shape` as an abstract base class, and derived `Circle`/`Rectangle`). Demonstrate the importance of a virtual destructor in the `Shape` base class. Create a `Shape` pointer that points to a dynamically allocated `Circle` or `Rectangle` object, and then `delete` it through the `Shape` pointer. Explain the consequences if the base class destructor were not virtual.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation error: missing semicolon after class definition." }
+  ],
+  "driver": "int main() {\n    std::cout << \"Demonstrating virtual destructor:\\n\";\n\n    Shape* s1 = new Circle();\n    s1->draw();\n    delete s1;\n\n    std::cout << \"\\n\";\n\n    Shape* s2 = new Rectangle();\n    s2->draw();\n    delete s2;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the closing brace of the 'Shape' class definition. This is a syntax error that prevents the program from compiling."
+  ]
+}

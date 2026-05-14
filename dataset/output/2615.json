@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `Point` class with private integer members `x` and `y`. Provide public getter methods (`getX()`, `getY()`) to retrieve the coordinate values and public setter methods (`setX(int val)`, `setY(int val)`) to modify them. The setters should include basic validation, ensuring coordinates cannot be set to negative values.",
+  "test_cases": [
+    { "input": "Point p; p.setX(10); p.setY(20);", "expected": "Point coordinates: (10, 20)" },
+    { "input": "Point p; p.setX(10); p.setY(20); p.setX(-5); p.setY(15);", "expected": "Point coordinates: (0, 15)" },
+    { "input": "Point p; p.setX(10); p.setY(20); p.setX(30); p.setY(-10);", "expected": "Point coordinates: (30, 0)" }
+  ],
+  "driver": "int main() {\n    Point p;\n    p.setX(10);\n    p.setY(20);\n    std::cout << \"Point coordinates: (\" << p.getX() << \", \" << p.getY() << \")\\n\";\n\n    p.setX(-5); // Logical error: should be (0, 15), but will be (-5, 15)\n    p.setY(15);\n    std::cout << \"Point coordinates: (\" << p.getX() << \", \" << p.getY() << \")\\n\";\n\n    p.setX(30);\n    p.setY(-10); // Logical error: should be (30, 0), but will be (30, -10)\n    std::cout << \"Point coordinates: (\" << p.getX() << \", \" << p.getY() << \")\\n\";\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": []
+}

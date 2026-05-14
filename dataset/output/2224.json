@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `Student` class with private `name` (string) and `id` (int). Implement both a default constructor (initializing `name` to 'Unknown' and `id` to 0) and a parameterized constructor (taking `name` and `id`).",
+  "test_cases": [
+    { "input": "No direct input", "expected": "Student 1 Name: Unknown, ID: 0\nStudent 2 Name: Alice, ID: 101" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// Assuming Student class is defined above\n\nint main() {\n    Student s1;\n    Student s2(\"Alice\", 101);\n\n    std::cout << \"Student 1 Name: \" << s1.getName() << \", ID: \" << s1.getId() << std::endl;\n    std::cout << \"Student 2 Name: \" << s2.getName() << \", ID: \" << s2.getId() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the declaration of 'std::string name;' in the Student class."]
+}

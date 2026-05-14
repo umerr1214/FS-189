@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "For the `Point` class (from Q7), overload the stream insertion operator `<<` to enable printing `Point` objects directly to `std::cout` in the format `(x, y)`. Make this an external friend function.",
+  "test_cases": [
+    { "input": "Point p1(10, 20);", "expected": "Point 1: (10, 20)\n" },
+    { "input": "Point p_default;", "expected": "Default Point: (<undefined_x>, <undefined_y>)\n" },
+    { "input": "Point p2(-5, 0);", "expected": "Point 2: (-5, 0)\n" }
+  ],
+  "driver": "int main() {\n    Point p1(10, 20);\n    Point p_default; // x and y are uninitialized\n    Point p2(-5, 0);\n\n    std::cout << \"Point 1: \" << p1 << std::endl;\n    std::cout << \"Default Point: \" << p_default << std::endl; // Robustness issue: UB\n    std::cout << \"Point 2: \" << p2 << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The default constructor for the `Point` class (`Point() {}`) leaves its member variables `x` and `y` uninitialized. When an object created with this default constructor is streamed (e.g., `std::cout << p_default;`), accessing `p_default.x` and `p_default.y` results in Undefined Behavior (UB), leading to unpredictable and potentially garbage output. This makes the `Point` class and its stream insertion operator non-robust for default-constructed objects."
+  ]
+}

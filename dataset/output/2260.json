@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `ResourceHandler` class that allocates dynamic memory for an integer array of a given size in its constructor. Implement a destructor to correctly deallocate this memory and print a message indicating destruction.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "ResourceHandler: Allocated memory for 5 integers.\nResourceHandler: Data filled.\nResourceHandler: Deallocated memory.\nProgram finished.\n"
+    }
+  ],
+  "driver": "int main() {\n    {\n        ResourceHandler handler(5);\n        handler.fillData();\n    } \n    std::cout << \"Program finished.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the class definition of `ResourceHandler`."]
+}

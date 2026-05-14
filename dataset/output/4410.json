@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Declare and initialize a 3x3 integer 2D array (matrix). Calculate and print the sum of all elements in the entire matrix.",
+  "test_cases": [
+    { "input": "", "expected": "Sum of all elements: 420\n" }
+  ],
+  "driver": "int main_wrapper() {\n    int matrix[3][3] = {\n        {10, 20, 30},\n        {40, 50, 60},\n        {70, 80, 90}\n    };\n    int correct_sum = 0;\n    for (int i = 0; i < 3; ++i) {\n        for (int j = 0; j < 3; ++j) {\n            correct_sum += matrix[i][j];\n        }\n    }\n    std::cout << \"Sum of all elements: \" << correct_sum << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The matrix is declared as 'int matrix[2][2]', but the problem specifies a 3x3 matrix. Furthermore, the loops attempt to iterate through a 3x3 structure ('i < 3', 'j < 3'), leading to out-of-bounds array access (e.g., matrix[2][0], matrix[0][2], etc.). This results in undefined behavior, which could manifest as crashes, incorrect sums, or unpredictable output, failing to meet the problem's requirements for a 3x3 matrix sum. The correct sum for a 3x3 matrix with the implicitly expected values (or similar values summing to 420) should be 420."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Employee` with private members `name` and `employeeId`. Derive two classes, `Manager` and `Engineer`. `Manager` should add a `department` member, and `Engineer` should add a `specialization` member. Implement a `displayInfo()` method in each class.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Displaying Staff Information ---\nName: John Doe, ID: 101\nName: Jane Smith, ID: 202, Department: HR\nName: Peter Jones, ID: 303, Specialization: AI\nName: Alice Wonderland, ID: 404\nName: Bob The Builder, ID: 505, Department: Construction\nName: Charlie Chaplin, ID: 606, Specialization: Comedy\n"
+    }
+  ],
+  "driver": "See main() function in the code.",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Global `using namespace std;` directive pollutes the global namespace, reducing readability and increasing potential for name collisions.",
+    "Constructors pass `std::string` arguments by value, causing unnecessary string copies and reducing efficiency. They should be passed by `const std::string&`.",
+    "`displayInfo()` methods in derived classes (Manager, Engineer) do not call the base class `Employee::displayInfo()` method. Instead, they duplicate the logic of printing inherited `name` and `employeeId` using getters, leading to redundant code and making maintenance harder.",
+    "Getters (`getName`, `getId`) and `displayInfo()` methods are not marked `const`, which is a best practice for methods that do not modify object state and improves type safety.",
+    "Variable names in `main` (e.g., `staff`, `p`) are short and not descriptive, hindering readability."
+  ]
+}

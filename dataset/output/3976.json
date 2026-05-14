@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ function `rotateArrayRight` that takes a 1D integer array and its size. The function should shift all elements one position to the right, moving the last element to the first position. Demonstrate with an example.",
+  "test_cases": [
+    { "input": "{1, 2, 3, 4, 5}, size=5", "expected": "5 1 2 3 4" },
+    { "input": "{10}, size=1", "expected": "10" },
+    { "input": "{}, size=0", "expected": "" },
+    { "input": "{1, 2}, size=2", "expected": "2 1" }
+  ],
+  "driver": "int main() {\n    int arr1[] = {1, 2, 3, 4, 5};\n    int size1 = sizeof(arr1) / sizeof(arr1[0]);\n    rotateArrayRight(arr1, size1);\n    for (int i = 0; i < size1; ++i) {\n        std::cout << arr1[i] << (i == size1 - 1 ? \"\" : \" \");\n    }\n    std::cout << std::endl;\n\n    int arr2[] = {10};\n    int size2 = sizeof(arr2) / sizeof(arr2[0]);\n    rotateArrayRight(arr2, size2);\n    for (int i = 0; i < size2; ++i) {\n        std::cout << arr2[i] << (i == size2 - 1 ? \"\" : \" \");\n    }\n    std::cout << std::endl;\n\n    int arr3[] = {1, 2};\n    int size3 = sizeof(arr3) / sizeof(arr3[0]);\n    rotateArrayRight(arr3, size3);\n    for (int i = 0; i < size3; ++i) {\n        std::cout << arr3[i] << (i == size3 - 1 ? \"\" : \" \");\n    }\n    std::cout << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after variable declaration 'int lastElement = arr[size - 1]'."]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter an integer `num`. Using nested `for` loops, generate and print the multiplication table (from 1 to 10) for the given number `num`.",
+  "test_cases": [
+    {
+      "input": "7",
+      "expected": "Enter an integer: 7 x 1 = 7\n7 x 2 = 14\n7 x 3 = 21\n7 x 4 = 28\n7 x 5 = 35\n7 x 6 = 42\n7 x 7 = 49\n7 x 8 = 56\n7 x 9 = 63\n7 x 10 = 70\n"
+    }
+  ],
+  "driver": "#include <iostream>\nint main() {\n    // The actual test execution involves compiling the user's code as a standalone executable\n    // and piping input/capturing output. This 'driver' is a conceptual placeholder.\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

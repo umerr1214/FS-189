@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a program that takes a day number (1-7) as input and prints the corresponding day name (e.g., 1 for Monday, 2 for Tuesday) using a switch statement.",
+  "test_cases": [
+    { "input": "1", "expected": "Kindly enter a numeric value for the day (from 1 to 7): \nThe selected day is indeed Monday.\n" },
+    { "input": "4", "expected": "Kindly enter a numeric value for the day (from 1 to 7): \nThe selected day is indeed Thursday.\n" },
+    { "input": "7", "expected": "Kindly enter a numeric value for the day (from 1 to 7): \nThe selected day is indeed Sunday.\n" },
+    { "input": "0", "expected": "Kindly enter a numeric value for the day (from 1 to 7): \nRegrettably, the provided day number is outside the acceptable range of 1 to 7.\n" },
+    { "input": "8", "expected": "Kindly enter a numeric value for the day (from 1 to 7): \nRegrettably, the provided day number is outside the acceptable range of 1 to 7.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <utility> // For std::pair\n\nint main() {\n    std::cout << \"This C++ driver is designed to orchestrate test cases.\" << std::endl;\n    std::cout << \"It would typically compile the target C++ program, then for each test case:\" << std::endl;\n    std::cout << \"  1. Provide the 'input' string to the program's standard input.\" << std::endl;\n    std::cout << \"  2. Capture the program's standard output.\" << std::endl;\n    std::cout << \"  3. Compare the captured output with the 'expected' output.\" << std::endl;\n    std::cout << \"The actual test data (inputs and expected outputs) would be read from the JSON configuration.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The output statements are overly verbose and less concise than necessary, reducing readability. For example, 'The selected day is indeed Monday.' could simply be 'Monday'.",
+    "Repeated use of `std::endl` flushes the output buffer on each print, which can be less efficient than using `\\n` (newline character) for simple console output. While not a major performance bottleneck for this small program, it's a common efficiency consideration."
+  ]
+}

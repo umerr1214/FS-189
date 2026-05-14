@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a recursive C++ function `int fibonacci(int n)` that calculates the Nth Fibonacci number (where F(0)=0, F(1)=1, F(n)=F(n-1)+F(n-2)). In `main`, ask the user for an integer `N` and print the `N`th Fibonacci number.",
+  "test_cases": [
+    { "input": "0", "expected": "The 0th Fibonacci number is: 0\n" },
+    { "input": "1", "expected": "The 1th Fibonacci number is: 1\n" },
+    { "input": "10", "expected": "The 10th Fibonacci number is: 55\n" },
+    { "input": "30", "expected": "The 30th Fibonacci number is: 832040\n" },
+    { "input": "45", "expected": "The 45th Fibonacci number is: 1134903170\n" },
+    { "input": "-5", "expected": "Error: N must be a non-negative integer.\n" }
+  ],
+  "driver": "int main() {\n    int N;\n    std::cin >> N;\n    if (N < 0) {\n        std::cerr << \"Error: N must be a non-negative integer.\" << std::endl;\n        return 1;\n    }\n    int result = fibonacci(N);\n    std::cout << \"The \" << N << \"th Fibonacci number is: \" << result << std::endl;\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

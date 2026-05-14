@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that initializes a 1D array of integers, then finds and prints the second largest element in that array.",
+  "test_cases": [
+    { "input": "[10, 5, 20, 15, 25]", "expected": "20" },
+    { "input": "[1, 2]", "expected": "1" },
+    { "input": "[7, 7, 7, 7]", "expected": "No second largest element" },
+    { "input": "[5]", "expected": "No second largest element" },
+    { "input": "[]", "expected": "No second largest element" },
+    { "input": "[50, 30, 40, 10, 20]", "expected": "40" },
+    { "input": "[-1, -5, -2, -10]", "expected": "-2" },
+    { "input": "[20, 10, 20]", "expected": "10" },
+    { "input": "[50, 30, 40, 50]", "expected": "40" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n#include <algorithm>\n#include <sstream>\n#include <limits>\n\n// Forward declaration of the student's function\nstd::string findSecondLargest(const std::vector<int>& arr);\n\nint main() {\n    std::vector<std::pair<std::vector<int>, std::string>> test_cases = {\n        {{10, 5, 20, 15, 25}, \"20\"},\n        {{1, 2}, \"1\"},\n        {{7, 7, 7, 7}, \"No second largest element\"},\n        {{5}, \"No second largest element\"},\n        {{}, \"No second largest element\"},\n        {{50, 30, 40, 10, 20}, \"40\"},\n        {{-1, -5, -2, -10}, \"-2\"},\n        {{20, 10, 20}, \"10\"}, // Specific test for logical error case\n        {{50, 30, 40, 50}, \"40\"}  // Specific test for logical error case\n    };\n\n    for (size_t i = 0; i < test_cases.size(); ++i) {\n        const auto& test_input = test_cases[i].first;\n        const std::string& expected_output = test_cases[i].second;\n\n        std::string actual_output;\n        try {\n            actual_output = findSecondLargest(test_input);\n        } catch (const std::exception& e) {\n            actual_output = \"Runtime Error: \" + std::string(e.what());\n        } catch (...) {\n            actual_output = \"Runtime Error: Unknown exception\";\n        }\n\n        // In a real testing environment, results would be captured and compared.\n        // For this dataset, we just demonstrate the testing logic.\n        // std::cout << \"Test \" << i + 1 << \": \";\n        // if (actual_output == expected_output) {\n        //     std::cout << \"PASSED\";\n        // } else {\n        //     std::cout << \"FAILED (Expected: \\\"\" << expected_output << \"\\\", Actual: \\\"\" << actual_output << \"\\\")\";\n        // }\n        // std::cout << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The logic for finding the second largest element fails to correctly handle arrays where the largest element appears multiple times. The 'else if (x > secondLargest)' condition does not ensure 'x < largest', which can lead to 'secondLargest' being incorrectly updated to a value equal to 'largest' when a duplicate of 'largest' is encountered. This results in the program reporting 'No second largest element' when a distinct second largest element actually exists (e.g., for input {20, 10, 20}, it outputs 'No second largest element' instead of '10')."]
+}

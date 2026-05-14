@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a function `calculateAverage(int arr[], int size)` that takes a 1D integer array and its size as input. The function should calculate and return the average of all elements in the array. In `main`, prompt the user for 10 integers, store them in an array, and then call this function to display their average.",
+  "test_cases": [
+    { "input": "1 2 3 4 5 6 7 8 9 10", "expected": "The average of the elements is: 5.50" },
+    { "input": "10 20 30 40 50 60 70 80 90 100", "expected": "The average of the elements is: 55.00" },
+    { "input": "1 1 1 1 1 1 1 1 1 2", "expected": "The average of the elements is: 1.10" }
+  ],
+  "driver": "This program requires user input for 10 integers. A driver would simulate this input by feeding the numbers to stdin.",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'calculateAverage' function is declared to return an 'int', and it performs integer division ('sum / size'). This truncates any fractional part of the average, leading to an incorrect result for non-integer averages. The function should return a 'double' and explicitly cast 'sum' to 'double' before division to ensure floating-point arithmetic."
+  ]
+}

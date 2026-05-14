@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `void transposeMatrix(int original[3][3], int transposed[3][3])` that takes a 3x3 integer matrix and stores its transpose in another 3x3 matrix. In `main`, populate an original matrix from user input, call the function, and then print both the original and transposed matrices.",
+  "test_cases": [
+    {
+      "input": "1 2 3 4 5 6 7 8 9",
+      "expected": "Original Matrix:\n1 2 3\n4 5 6\n7 8 9\n\nTransposed Matrix:\n1 4 7\n2 5 8\n3 6 9\n"
+    }
+  ],
+  "driver": "#include <iostream>\n\n// Declaration of the function to be tested\nvoid transposeMatrix(int original[3][3], int transposed[3][3]);\n\nvoid printMatrixDriver(const int matrix[3][3], const char* title) {\n    std::cout << title << std::endl;\n    for (int i = 0; i < 3; ++i) {\n        for (int j = 0; j < 3; ++j) {\n            std::cout << matrix[i][j] << (j == 2 ? \"\" : \" \");\n        }\n        std::cout << std::endl;\n    }\n}\n\nint main() {\n    int original_driver[3][3] = {\n        {10, 11, 12},\n        {13, 14, 15},\n        {16, 17, 18}\n    };\n    int transposed_driver[3][3];\n\n    // Call the user's transposeMatrix function\n    transposeMatrix(original_driver, transposed_driver);\n\n    printMatrixDriver(original_driver, \"Driver Test - Original Matrix (Hardcoded):\");\n    std::cout << std::endl;\n    printMatrixDriver(transposed_driver, \"Driver Test - Transposed Matrix (Hardcoded):\");\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": []
+}

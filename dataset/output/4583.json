@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `void addNumbers(int* ptr1, int* ptr2, int* sumPtr)` that takes pointers to two integers and a pointer to a third integer, then calculates the sum of the first two and stores it at the location pointed to by `sumPtr`. Demonstrate its usage in `main`.",
+  "test_cases": [
+    { "input": "N/A (hardcoded inputs)", "expected": "The sum of 5 and 10 is: 15\nThe sum of 0 and 0 is: 0\nThe sum of -3 and 7 is: 4" }
+  ],
+  "driver": "The main function directly demonstrates the usage with hardcoded values and prints the output.",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `addNumbers` function incorrectly calculates the difference (*ptr1 - *ptr2) instead of the sum (*ptr1 + *ptr2)."
+  ]
+}

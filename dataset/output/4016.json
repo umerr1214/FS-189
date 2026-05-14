@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function template `findMax` that takes two arguments of any comparable data type (e.g., `int`, `double`, `char`) and returns the larger of the two values. Demonstrate its usage with at least two different data types in the `main` function.",
+  "test_cases": [
+    { "input": "findMax(10, 20)", "expected": "20" },
+    { "input": "findMax(3.14, 2.71)", "expected": "3.14" },
+    { "input": "findMax('a', 'z')", "expected": "z" },
+    { "input": "findMax(MyData(10, \"Object1\"), MyData(20, \"Object2\"))", "expected": "{20, Object2 (copied)}" },
+    { "input": "findMax(std::string(\"apple\"), std::string(\"banana\"))", "expected": "banana" }
+  ],
+  "driver": "int main() {\n    int maxInt = findMax(10, 20);\n    std::cout << \"Max of 10 and 20 (int): \" << maxInt << std::endl;\n    double maxDouble = findMax(3.14, 2.71);\n    std::cout << \"Max of 3.14 and 2.71 (double): \" << maxDouble << std::endl;\n    char maxChar = findMax('a', 'z');\n    std::cout << \"Max of 'a' and 'z' (char): \" << maxChar << std::endl;\n\n    std::cout << \"\\n--- MyData Example (expect copy constructor calls) ---\" << std::endl;\n    class MyData {\n    public:\n        int value;\n        std::string name;\n        MyData(int v, std::string n) : value(v), name(std::move(n)) {}\n        MyData(const MyData& other) : value(other.value), name(other.name + \" (copied)\") {\n            std::cout << \"MyData Copy Constructor: \" << name << std::endl;\n        }\n        MyData(MyData&& other) noexcept : value(other.value), name(std::move(other.name)) {}\n        MyData& operator=(const MyData& other) {\n            if (this != &other) { value = other.value; name = other.name + \" (assigned)\"; }\n            return *this;\n        }\n        bool operator>(const MyData& other) const { return value > other.value; }\n    };\n    std::ostream& operator<<(std::ostream& os, const MyData& md) { os << \"{\" << md.value << \", \" << md.name << \"}\"; return os; }\n\n    MyData d1(10, \"Object1\");\n    MyData d2(20, \"Object2\");\n    MyData maxMyData = findMax(d1, d2);\n    std::cout << \"Max of MyData: \" << maxMyData << std::endl;\n    std::cout << \"--- End MyData Example ---\\n\" << std::endl;\n\n    std::string s1 = \"apple\";\n    std::string s2 = \"banana\";\n    std::string maxString = findMax(s1, s2);\n    std::cout << \"Max of \\\"\" << s1 << \"\\\" and \\\"\" << s2 << \"\\\" (string): \" << maxString << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The function template takes arguments by value (`T val1, T val2`), leading to unnecessary copies for complex or large data types (e.g., `std::string` or custom classes). For optimal performance and to avoid overhead, arguments should be passed by `const T&`. Additionally, using an `if-else` block for a simple `max` comparison is less concise and slightly less readable than the equivalent ternary operator (`(a > b) ? a : b`)."
+  ]
+}

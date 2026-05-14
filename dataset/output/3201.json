@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design an `Engine` class with a `string type` and `int horsepower`. Then create a `Car` class that uses an `Engine` object as a private member, demonstrating composition.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Car Make: Tesla\n  Engine Type: Electric, Horsepower: 500\nCar Make: Porsche\n  Engine Type: Flat-6, Horsepower: 450\nError creating car3: Engine horsepower cannot be negative.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <stdexcept>\n#include <sstream>\n\n// Engine class definition\nclass Engine {\nprivate:\n    std::string type_;\n    int horsepower_;\n\npublic:\n    Engine(const std::string& type, int horsepower)\n        : type_(type) {\n        if (horsepower < 0) {\n            throw std::invalid_argument(\"Engine horsepower cannot be negative.\");\n        }\n        horsepower_ = horsepower;\n    }\n\n    const std::string& getType() const {\n        return type_;\n    }\n\n    int getHorsepower() const {\n        return horsepower_;\n    }\n\n    std::string getInfo() const {\n        std::stringstream ss;\n        ss << \"Engine Type: \" << type_ << \", Horsepower: \" << horsepower_;\n        return ss.str();\n    }\n};\n\n// Car class definition\nclass Car {\nprivate:\n    std::string make_;\n    Engine engine_;\n\npublic:\n    Car(const std::string& make, const std::string& engine_type, int engine_hp)\n        : make_(make), engine_(engine_type, engine_hp) {\n    }\n\n    void displayCarInfo() const {\n        std::cout << \"Car Make: \" << make_ << std::endl;\n        std::cout << \"  \" << engine_.getInfo() << std::endl;\n    }\n};\n\nint main() {\n    Car car1(\"Tesla\", \"Electric\", 500);\n    car1.displayCarInfo();\n\n    Car car2(\"Porsche\", \"Flat-6\", 450);\n    car2.displayCarInfo();\n\n    try {\n        Car car3(\"BrokenCar\", \"V4\", -100);\n        car3.displayCarInfo();\n    } catch (const std::invalid_argument& e) {\n        std::cout << \"Error creating car3: \" << e.what() << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that reads an integer from the user and checks whether it is positive, negative, or zero.",
+  "test_cases": [
+    { "input": "5\n", "expected": "The number is positive.\n" },
+    { "input": "-3\n", "expected": "The number is negative.\n" },
+    { "input": "0\n", "expected": "The number is zero.\n" }
+  ],
+  "driver": "```cpp\n#include <iostream>\n\nint main() {\n    // This driver is designed for a program that would compile and run.\n    // For a Syntax Error, the user's program will fail to compile.\n    // A real testing system would report a compilation error before running test cases.\n    std::cout << \"Compilation failed due to a syntax error in the user's code.\" << std::endl;\n    return 1;\n}\n```",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after 'std::endl' on line 7."]
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a function `findMinPointer(const int* arr, int size)` that takes a constant pointer to the beginning of an integer array and its size. The function should return a pointer to the element with the minimum value in the array. Demonstrate by finding and printing the minimum value of a user-defined array.",
+  "test_cases": [
+    { "input": "Array: {5, 2, 9, 1, 7}", "expected": "Minimum value: 1", "actual_output_if_run": "Minimum value: 1" },
+    { "input": "Array: {}", "expected": "Empty array is empty or null.", "actual_output_if_run": "Undefined Behavior (e.g., crash, garbage output)" },
+    { "input": "Array: nullptr (size 5)", "expected": "Null array is empty or null.", "actual_output_if_run": "Undefined Behavior (e.g., crash, garbage output)" }
+  ],
+  "driver": "#include <iostream>\n\nconst int* findMinPointer(const int* arr, int size) {\n    if (arr == nullptr || size <= 0) {\n        return nullptr;\n    }\n    const int* minPtr = arr;\n    for (int i = 1; i < size; ++i) {\n        if (arr[i] < *minPtr) {\n            minPtr = &arr[i];\n        }\n    }\n    return minPtr;\n}\n\nint main() {\n    int myArray[] = {5, 2, 9, 1, 7};\n    int size = sizeof(myArray) / sizeof(myArray[0]);\n\n    const int* minValPtr = findMinPointer(myArray, size);\n    if (minValPtr != nullptr) {\n        std::cout << \"Minimum value: \" << *minValPtr << std::endl;\n    } else {\n        std::cout << \"Array is empty or null.\" << std::endl;\n    }\n\n    int singleElementArray[] = {42};\n    int singleSize = 1;\n    const int* minSingle = findMinPointer(singleElementArray, singleSize);\n    if (minSingle != nullptr) {\n        std::cout << \"Minimum value (single element): \" << *minSingle << std::endl;\n    } else {\n        std::cout << \"Single element array is empty or null.\" << std::endl;\n    }\n\n    int emptyArray[] = {};\n    int emptySize = 0;\n    const int* minEmpty = findMinPointer(emptyArray, emptySize);\n    if (minEmpty != nullptr) {\n        std::cout << \"Minimum value (empty array): \" << *minEmpty << std::endl;\n    } else {\n        std::cout << \"Empty array is empty or null.\" << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The 'findMinPointer' function initializes 'minPtr' by attempting to access 'arr[0]' directly, without first checking if the array is empty (size <= 0) or if 'arr' itself is a null pointer. This leads to undefined behavior: out-of-bounds access for an empty array or null pointer dereference if 'arr' is nullptr. The program might crash or produce unpredictable results at runtime for such inputs."]
+}

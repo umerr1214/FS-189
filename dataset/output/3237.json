@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define a `Product` class with `id`, `name`, and `price`. Create an array of `Product` objects, populate it with data, and then iterate through the array to display details of each product.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Product Details (Correct Version) ---\nID: 101, Name: Laptop, Price: $1200.50\nID: 102, Name: Mouse, Price: $25.00\nID: 103, Name: Keyboard, Price: $75.99\n"
+    }
+  ],
+  "driver": "void run_test_case() { main(); }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

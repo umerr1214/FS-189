@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Temperature` class with a private `celsiusValue`. Provide public methods `setCelsius(double c)` and `getFahrenheit()` (which converts Celsius to Fahrenheit).",
+  "test_cases": [
+    { "input": "0.0", "expected": "32.00" },
+    { "input": "25.0", "expected": "77.00" },
+    { "input": "100.0", "expected": "212.00" },
+    { "input": "-10.0", "expected": "14.00" }
+  ],
+  "driver": "Temperature temp;\ntemp.setCelsius(0.0);\nstd::cout << std::fixed << std::setprecision(2) << temp.getFahrenheit() << std::endl;\ntemp.setCelsius(25.0);\nstd::cout << std::fixed << std::setprecision(2) << temp.getFahrenheit() << std::endl;\ntemp.setCelsius(100.0);\nstd::cout << std::fixed << std::setprecision(2) << temp.getFahrenheit() << std::endl;\ntemp.setCelsius(-10.0);\nstd::cout << std::fixed << std::setprecision(2) << temp.getFahrenheit() << std::endl;",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the class definition of 'Temperature'."]
+}

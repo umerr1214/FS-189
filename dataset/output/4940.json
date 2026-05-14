@@ -1,0 +1,33 @@
+{
+  "language": "c++",
+  "question": "Implement a simple menu-driven calculator in C++ that allows the user to choose between addition, subtraction, multiplication, and division for two numbers. Use a switch statement to handle the operations.",
+  "test_cases": [
+    {
+      "input": "1\n10\n5\n",
+      "expected": "Menu:\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\nEnter your choice: Enter first number: Enter second number: The result of addition is: 15\n\nMenu:\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\nEnter your choice: "
+    },
+    {
+      "input": "4\n10\n0\n",
+      "expected": "Menu:\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\nEnter your choice: Enter first number: Enter second number: Error: Division by zero is not allowed.\n\nMenu:\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\nEnter your choice: "
+    },
+    {
+      "input": "5\n",
+      "expected": "Menu:\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\nEnter your choice: Invalid option selected. Please choose between 1 and 4.\n\nMenu:\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\nEnter your choice: "
+    },
+    {
+      "input": "1\na\n10\n5\n",
+      "expected": "Menu:\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\nEnter your choice: Enter first number: Invalid number input. Returning to menu.\nMenu:\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\nEnter your choice: Enter first number: Enter second number: The result of addition is: 15\n\nMenu:\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\nEnter your choice: "
+    }
+  ],
+  "driver": "The program is compiled and executed. Test inputs are fed to stdin, and the stdout is captured and compared against expected outputs. The program is expected to continue processing until the provided input stream is exhausted.",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Excessive use of 'goto' statements for control flow, making the code harder to follow.",
+    "Poor and abbreviated variable names (e.g., 'n1', 'n2', 'c', 'res') reduce readability.",
+    "Unnecessary include of <string> header.",
+    "Repetitive input prompts and error messages, could be refactored into functions.",
+    "Unreachable return statement due to infinite loop with 'goto'."
+  ]
+}

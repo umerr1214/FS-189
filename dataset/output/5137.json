@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a C++ `struct Book` with members `std::string title` and `double price`. Create an array of 3 `Book` structs. Prompt the user to enter the title and price for each book. After input, iterate through the array to find and print the details (title and price) of the book with the highest price.",
+  "test_cases": [
+    {
+      "input": "The Great Gatsby\n15.99\n1984\n12.50\nTo Kill a Mockingbird\n18.75\n",
+      "expected": "Enter details for 3 books:\nBook 1 Title: Book 1 Price: Book 2 Title: Book 2 Price: Book 3 Title: Book 3 Price: \nBook with the highest price:\nTitle: To Kill a Mockingbird\nPrice: 18.75\n"
+    }
+  ],
+  "driver": "g++ -o {file_name} {file_name}.cpp && {file_name}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program lacks robust input validation for numerical inputs (price). If the user enters non-numeric data for the price, `std::cin` will enter a fail state, causing subsequent input operations to fail or behave unpredictably (e.g., `std::getline` might read empty strings or be skipped, potentially leading to an infinite loop or incorrect data). There are no `cin.clear()` and `cin.ignore()` calls to recover from such errors."
+  ]
+}

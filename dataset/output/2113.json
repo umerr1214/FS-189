@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Using the `Shape` hierarchy from a previous problem, demonstrate runtime polymorphism. Create an array of `Shape` pointers, store instances of `Rectangle` and `Circle` in it, and then iterate through the array to call `calculateArea()` on each object.",
+  "test_cases": [
+    { "input": "", "expected": "Calculating areas (Robustness Issue - Memory Leak):\nArea: 50.0\nArea: 153.93804002589985\nArea: 28.0\nArea: 19.634954084936207\n" }
+  ],
+  "driver": "int main() {\n    // The main function of the C++ file serves as the driver.\n    // No external driver code is needed as the program self-demonstrates.\n    // The output will be captured directly from stdout.\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["Memory leak due to forgetting to delete dynamically allocated Shape objects. The `std::vector<Shape*>` holds raw pointers, but the objects they point to are never deallocated, leading to resource exhaustion over time."]
+}

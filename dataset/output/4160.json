@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a function template `printArray(const T arr[], int size)` that can print the elements of any 1D array, regardless of its data type (`int`, `double`, `char`, etc.). Demonstrate its use with an array of integers and an array of doubles.",
+  "test_cases": [
+    { "input": "int arr[] = {10, 20, 30}; printArray(arr, 3);", "expected": "Array elements: 10 20 30 \n" },
+    { "input": "double arr[] = {1.1, 2.2, 3.3, 4.4}; printArray(arr, 4);", "expected": "Array elements: 1.1 2.2 3.3 4.4 \n" },
+    { "input": "char arr[] = {'a', 'b', 'c'}; printArray(arr, 3);", "expected": "Array elements: a b c \n" },
+    { "input": "int arr_empty[] = {}; printArray(arr_empty, 0);", "expected": "Array elements: \n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <iomanip>\n\n// The printArray template function will be placed here by the evaluation system.\n\nint main() {\n    // Test case 1: int array\n    int intArray[] = {10, 20, 30};\n    printArray(intArray, 3);\n\n    // Test case 2: double array\n    double doubleArray[] = {1.1, 2.2, 3.3, 4.4};\n    printArray(doubleArray, 4);\n\n    // Test case 3: char array\n    char charArray[] = {'a', 'b', 'c'};\n    printArray(charArray, 3);\n\n    // Test case 4: empty array\n    int emptyArray[] = {};\n    printArray(emptyArray, 0);\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The logic for printing elements with proper spacing is split into an initial `if` block for the first element and a subsequent `for` loop for the rest. This makes the code less readable and more verbose than a single `for` loop with a conditional space print (e.g., `if (i > 0) std::cout << ' ';`).",
+    "An unnecessary intermediate variable `first_val` is used to print the first element, which adds verbosity without improving clarity.",
+    "Using `std::endl` at the end of the `printArray` function instead of `\\n` can lead to minor efficiency issues. `std::endl` forces a flush of the output buffer, which is often not necessary and can be slower than simply printing a newline character `\\n`."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Shape` with a pure virtual function `double calculateArea()`. Create a derived class `Circle` that has a `radius` member and implements `calculateArea()`.",
+  "test_cases": [
+    { "input": "5.0", "expected": "Area of circle with radius 5.0: 78.5398" },
+    { "input": "10.0", "expected": "Area of circle with radius 10.0: 314.1593" },
+    { "input": "0.0", "expected": "Area of circle with radius 0.0: 0.0000" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n\n// Assume Shape and Circle classes are defined above\n\nint main() {\n    std::cout.precision(4);\n    std::cout << std::fixed;\n\n    // Test Case 1: Circle with radius 5.0\n    Circle c1(5.0);\n    std::cout << \"Area of circle with radius 5.0: \" << c1.calculateArea() << std::endl;\n\n    // Test Case 2: Circle with radius 10.0\n    Circle c2(10.0);\n    std::cout << \"Area of circle with radius 10.0: \" << c2.calculateArea() << std::endl;\n\n    // Test Case 3: Circle with radius 0.0\n    Circle c3(0.0);\n    std::cout << \"Area of circle with radius 0.0: \" << c3.calculateArea() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": []
+}

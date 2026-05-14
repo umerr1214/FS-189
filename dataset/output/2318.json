@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a `PrivateData` class that has a private integer member `value`. Declare an external `friend` function `displayPrivateValue(const PrivateData& obj)` that can access and print `obj.value`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Private Value: 123\n"
+    }
+  ],
+  "driver": "int main() {\n    PrivateData myData(123);\n    displayPrivateValue(myData);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Poor and inconsistent indentation throughout the code, making it difficult to read.",
+    "Use of uninformative variable names like `o` for the `PrivateData` object in the friend function and `myData` in `main`.",
+    "The `displayPrivateValue` function uses multiple `std::cout` statements and `std::endl` for a simple print, which could be more concisely written as `std::cout << \"Private Value: \" << o.value << '\\n';`. Using `std::endl` also forces a flush, which can be less efficient than printing `\\n`."
+  ]
+}

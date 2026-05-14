@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that asks the user to input a number representing a day of the week (1 for Monday, 2 for Tuesday, etc.). Use a `switch` statement to print the corresponding day name.",
+  "test_cases": [
+    { "input": "1", "expected": "Enter a number representing the day of the week (1 for Monday, 2 for Tuesday, etc.): Monday\n" },
+    { "input": "2", "expected": "Enter a number representing the day of the week (1 for Monday, 2 for Tuesday, etc.): Tuesday\n" },
+    { "input": "3", "expected": "Enter a number representing the day of the week (1 for Monday, 2 for Tuesday, etc.): Wednesday\n" },
+    { "input": "4", "expected": "Enter a number representing the day of the week (1 for Monday, 2 for Tuesday, etc.): Thursday\n" },
+    { "input": "5", "expected": "Enter a number representing the day of the week (1 for Monday, 2 for Tuesday, etc.): Friday\n" },
+    { "input": "6", "expected": "Enter a number representing the day of the week (1 for Monday, 2 for Tuesday, etc.): Saturday\n" },
+    { "input": "7", "expected": "Enter a number representing the day of the week (1 for Monday, 2 for Tuesday, etc.): Sunday\n" },
+    { "input": "0", "expected": "Enter a number representing the day of the week (1 for Monday, 2 for Tuesday, etc.): Invalid input. Please enter a number between 1 and 7.\n" },
+    { "input": "8", "expected": "Enter a number representing the day of the week (1 for Monday, 2 for Tuesday, etc.): Invalid input. Please enter a number between 1 and 7.\n" },
+    { "input": "-5", "expected": "Enter a number representing the day of the week (1 for Monday, 2 for Tuesday, etc.): Invalid input. Please enter a number between 1 and 7.\n" }
+  ],
+  "driver": "g++ -o program program.cpp && ./program",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Calculate the Body Mass Index (BMI) given user input for weight in kilograms and height in meters. The formula for BMI is weight / (height * height). Display the result to two decimal places.",
+  "test_cases": [
+    { "input": "70\n1.75", "expected": "Your BMI is: 22.86" },
+    { "input": "85\n1.80", "expected": "Your BMI is: 26.23" },
+    { "input": "50\n1.60", "expected": "Your BMI is: 19.53" },
+    { "input": "0\n1.70", "expected": "Error: Weight and height must be positive values.\n" },
+    { "input": "70\n0", "expected": "Error: Weight and height must be positive values.\n" }
+  ],
+  "driver": "The driver would compile and run the C++ code. For each test case, it would feed the 'input' string to the program's stdin and capture its stdout/stderr. The captured output would then be compared against the 'expected' output.",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

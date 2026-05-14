@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ function `swapNumbers(int* ptr1, int* ptr2)` that takes two integer pointers as arguments and swaps the values they point to. Demonstrate its usage in `main` with two integer variables.",
+  "test_cases": [
+    { "input": "5 10", "expected": "Initial: a = 5, b = 10\nSwapped: a = 10, b = 5\n" },
+    { "input": "-10 20", "expected": "Initial: a = -10, b = 20\nSwapped: a = 20, b = -10\n" },
+    { "input": "0 0", "expected": "Initial: a = 0, b = 0\nSwapped: a = 0, b = 0\n" }
+  ],
+  "driver": "#include <iostream>\n\n// The swapNumbers function implementation will be prepended by the test harness.\n// void swapNumbers(int* ptr1, int* ptr2);\n\nint main() {\n    int a, b;\n    if (!(std::cin >> a >> b)) {\n        return 1; // Error reading input\n    }\n    std::cout << \"Initial: a = \" << a << \", b = \" << b << std::endl;\n    swapNumbers(&a, &b);\n    std::cout << \"Swapped: a = \" << a << \", b = \" << b << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The function does not handle nullptr inputs, which can lead to a segmentation fault or other undefined behavior if a null pointer is passed. A robust implementation would check for null pointers before dereferencing."
+  ]
+}

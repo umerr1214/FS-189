@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Define an abstract base class `Animal` with a pure virtual `void makeSound()` method. Derive concrete classes `Dog` and `Cat` from `Animal`, and each should provide its specific implementation for the `makeSound()` method.",
+  "test_cases": [
+    { "input": "", "expected": "Woof! Woof!\nMeow! Purr.\nWoof! Woof!\nWoof! Woof!\nMeow! Purr.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// Abstract base class Animal\nclass Animal {\npublic:\n    virtual void makeSound() = 0;\n    virtual ~Animal() = default;\n};\n\n// Concrete class Dog\nclass Dog : public Animal {\npublic:\n    void makeSound() override {\n        std::stringstream ss;\n        ss << \"Woof\";\n        ss << \"! \";\n        ss << \"Woof!\";\n        std::cout << ss.str() << std::endl;\n    }\n};\n\n// Concrete class Cat\nclass Cat : public Animal {\npublic:\n    void makeSound() override {\n        std::cout << \"Meow\";\n        std::cout << \"!\";\n        std::cout << \" Purr.\";\n        std::cout << std::endl;\n    }\n};\n\nAnimal* createAnimal(const std::string& type) {\n    if (type == \"dog\") {\n        return new Dog();\n    } else if (type == \"cat\") {\n        return new Cat();\n    } else {\n        return nullptr;\n    }\n}\n\nint main() {\n    std::vector<Animal*> zoo;\n\n    Animal* animal1 = createAnimal(\"dog\");\n    if (animal1) { zoo.push_back(animal1); }\n    Animal* animal2 = createAnimal(\"cat\");\n    if (animal2) { zoo.push_back(animal2); }\n    Animal* animal3 = createAnimal(\"dog\");\n    if (animal3) { zoo.push_back(animal3); }\n\n    for (Animal* animal : zoo) {\n        animal->makeSound();\n    }\n\n    for (Animal* animal : zoo) {\n        delete animal;\n    }\n    zoo.clear();\n\n    Dog directDog;\n    Cat directCat;\n    directDog.makeSound();\n    directCat.makeSound();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `makeSound` methods in `Dog` and `Cat` use slightly inefficient string building techniques (e.g., `stringstream` for simple concatenation, multiple `std::cout` calls) instead of direct string literals or single `std::cout` statements.",
+    "The `createAnimal` factory function, while functional, uses raw pointers and manual `new`/`delete` management, which is less readable and more error-prone than using smart pointers (e.g., `std::unique_ptr`).",
+    "The `main` function's object management with `std::vector<Animal*>` and manual cleanup is verbose and susceptible to memory leaks if `delete` calls are missed, reducing readability and robustness."
+  ]
+}

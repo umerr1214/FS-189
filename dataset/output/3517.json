@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a C++ `struct Book` with members `std::string title`, `std::string author`, and `int publicationYear`. In `main`, create an array of 3 `Book` structs, populate their details, and then iterate through the array to print the details of each book.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book 1: Title: The Hitchhiker's Guide to the Galaxy, Author: Douglas Adams, Year: 1979\nBook 2: Title: 1984, Author: George Orwell, Year: 0\nBook 3: Title: Pride and Prejudice, Author: Jane Austen, Year: 1813\n"
+    }
+  ],
+  "driver": "",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not validate the `publicationYear` member. An invalid year (like 0 in one of the entries) is accepted and printed without any warning or handling, which is a robustness issue against potentially bad data."
+  ]
+}

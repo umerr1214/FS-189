@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `DynamicIntegerArray` class that manages a dynamically allocated array of integers. Its constructor should take an integer `size` and allocate memory for an array of that size. Implement a destructor that correctly deallocates the dynamically allocated memory to prevent memory leaks.",
+  "test_cases": [
+    {
+      "input": "DynamicIntegerArray arr(5); arr.set(0, 10); arr.set(4, 50); arr.print(); std::cout << arr.get(0) << std::endl; std::cout << arr.get(4) << std::endl;",
+      "expected": "Array contents: [10, 0, 0, 0, 50]\nElement at index 0: 10\nElement at index 4: 50"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <stdexcept>\n\nclass DynamicIntegerArray {\nprivate:\n    int* data;\n    int arraySize;\n\npublic:\n    DynamicIntegerArray(int size) {\n        if (size < 0) {\n            throw std::invalid_argument(\"Array size cannot be negative.\");\n        }\n        arraySize = size;\n        data = neew int[arraySize]; // Syntax error: misspelled 'new'\n        for (int i = 0; i < arraySize; ++i) {\n            data[i] = 0;\n        }\n    }\n\n    ~DynamicIntegerArray() {\n        delete[] data;\n        data = nullptr;\n    }\n\n    int size() const {\n        return arraySize;\n    }\n\n    int get(int index) const {\n        if (index < 0 || index >= arraySize) {\n            throw std::out_of_range(\"Index out of bounds.\");\n        }\n        return data[index];\n    }\n\n    void set(int index, int value) {\n        if (index < 0 || index >= arraySize) {\n            throw std::out_of_range(\"Index out of bounds.\");\n        }\n        data[index] = value;\n    }\n\n    void print() const {\n        std::cout << \"[\";\n        for (int i = 0; i < arraySize; ++i) {\n            std::cout << data[i] << (i == arraySize - 1 ? \"\" : \", \");\n        }\n        std::cout << \"]\" << std::endl;\n    }\n};\n\nint main() {\n    try {\n        DynamicIntegerArray arr(5);\n        arr.set(0, 10);\n        arr.set(4, 50);\n        std::cout << \"Array contents: \";\n        arr.print();\n        std::cout << \"Element at index 0: \" << arr.get(0) << std::endl;\n        std::cout << \"Element at index 4: \" << arr.get(4) << std::endl;\n    } catch (const std::exception& e) {\n        std::cerr << \"Error: \" << e.what() << std::endl;\n    }\n\n    try {\n        DynamicIntegerArray arr0(0);\n        std::cout << \"Array of size 0 created.\" << std::endl;\n        arr0.print();\n    } catch (const std::exception& e) {\n        std::cerr << \"Error: \" << e.what() << std::endl;\n    }\n\n    try {\n        DynamicIntegerArray arrNeg(-1);\n        std::cout << \"Array of negative size created (should not happen).\" << std::endl;\n    } catch (const std::invalid_argument& e) {\n        std::cerr << \"Caught expected error for negative size: \" << e.what() << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Misspelled keyword 'new' as 'neew' in the constructor's memory allocation, preventing compilation."]
+}

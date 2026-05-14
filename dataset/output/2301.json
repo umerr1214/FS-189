@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "For the `Point` class (from Q7), overload the stream insertion operator `<<` to enable printing `Point` objects directly to `std::cout` in the format `(x, y)`. Make this an external friend function.",
+  "test_cases": [
+    { "input": "Point p1(10, 20);", "expected": "Point 1: (10, 20)\n" },
+    { "input": "Point p2(-5, 0);", "expected": "Point 2: (-5, 0)\n" },
+    { "input": "Point p3(1000, -2000);", "expected": "Point 3: (1000, -2000)\n" },
+    { "input": "Point p4;", "expected": "Point 4 (default): (0, 0)\n" },
+    { "input": "Chained output: Point p1, p2, p3;", "expected": "Chained output: (10, 20), (-5, 0), (1000, -2000)\n" }
+  ],
+  "driver": "int main() {\n    Point p1(10, 20);\n    Point p2(-5, 0);\n    Point p3(1000, -2000);\n    Point p4; // Default constructed (0,0)\n\n    std::cout << \"Point 1: \" << p1 << std::endl;\n    std::cout << \"Point 2: \" << p2 << std::endl;\n    std::cout << \"Point 3: \" << p3 << std::endl;\n    std::cout << \"Point 4 (default): \" << p4 << std::endl;\n\n    // Test chaining\n    std::cout << \"Chained output: \" << p1 << \", \" << p2 << \", \" << p3 << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

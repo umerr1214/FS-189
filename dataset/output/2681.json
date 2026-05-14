@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `Student` class with private members `studentName` (string), `studentID` (int), and `grade` (char). Implement a default constructor, a parameterized constructor, and public `get` methods for all members. Also, add a `printStudentDetails()` method.",
+  "test_cases": [
+    { "input": "No direct input, uses hardcoded Student objects.", "expected": "Default Student Details:\nName: N/A\nID: 0\nGrade: F\n\nParameterized Student Details:\nName: Alice Smith\nID: 101\nGrade: A\n\nAnother Student Details:\nName: Bob Johnson\nID: 205\nGrade: B\n", "actual_output_pattern": "Default Student Details:\nName: N/A\nID: 0\nGrade: 0\n\nParameterized Student Details:\nName: Alice Smith\nID: 101\nGrade: 101\n\nAnother Student Details:\nName: Bob Johnson\nID: 205\nGrade: 205\n" }
+  ],
+  "driver": "int main() {\n    Student s1;\n    std::cout << \"Default Student Details:\" << std::endl;\n    s1.printStudentDetails();\n    std::cout << std::endl;\n\n    Student s2(\"Alice Smith\", 101, 'A');\n    std::cout << \"Parameterized Student Details:\" << std::endl;\n    s2.printStudentDetails();\n    std::cout << std::endl;\n\n    Student s3(\"Bob Johnson\", 205, 'B');\n    std::cout << \"Another Student Details:\" << std::endl;\n    s3.printStudentDetails();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The printStudentDetails() method incorrectly prints the studentID value where the grade should be displayed. It prints the integer ID instead of the character grade."
+  ]
+}

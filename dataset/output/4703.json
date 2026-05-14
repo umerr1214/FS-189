@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a program that asks the user to input a temperature in Celsius and converts it to Fahrenheit, then prints the result. The formula is F = C * 9/5 + 32.",
+  "test_cases": [
+    { "input": "25", "expected": "Temperature in Fahrenheit: 77.0" },
+    { "input": "10", "expected": "Temperature in Fahrenheit: 50.0" },
+    { "input": "0", "expected": "Temperature in Fahrenheit: 32.0" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\nint main() {\n    // This driver executes the student's program directly.\n    // Input will be provided via stdin for each test case.\n    // Output will be captured from stdout.\n    std::cout << \"Driver ready to execute student's main function.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The expression '9 / 5' uses integer division, which evaluates to 1 instead of 1.8, leading to incorrect Fahrenheit conversion."]
+}

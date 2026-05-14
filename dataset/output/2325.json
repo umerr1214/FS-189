@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `Person` base class with `name` (string) and `age` (int). Derive a `Teacher` class that adds `subject` (string) and `salary` (double). Demonstrate how the `Teacher` constructor should call the `Person` base class constructor to initialize inherited members.",
+  "test_cases": [
+    {
+      "input": "No direct input, output is from hardcoded objects.",
+      "expected": "--- Correct Version Demonstration ---\nPerson Name: Alice Smith, Age: 30\n\nPerson Name: Bob Johnson, Age: 45\nSubject: Computer Science, Salary: $85000.75\n\nWarning: Age cannot be negative. Setting to 0.\nPerson Name: Eve Brown, Age: 0\n\nWarning: Salary cannot be negative. Setting to 0.0.\nPerson Name: David Lee, Age: 50\nSubject: Mathematics, Salary: $0\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Correct Version Demonstration ---\" << std::endl;\n    Person person1(\"Alice Smith\", 30);\n    person1.displayPersonInfo();\n    std::cout << std::endl;\n    Teacher teacher1(\"Bob Johnson\", 45, \"Computer Science\", 85000.75);\n    teacher1.displayTeacherInfo();\n    std::cout << std::endl;\n    Person person2(\"Eve Brown\", -10);\n    person2.displayPersonInfo();\n    std::cout << std::endl;\n    Teacher teacher2(\"David Lee\", 50, \"Mathematics\", -5000.00);\n    teacher2.displayTeacherInfo();\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

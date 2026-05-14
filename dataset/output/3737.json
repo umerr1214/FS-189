@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter three distinct integers and then identifies and prints the largest among them using if-else if-else statements.",
+  "test_cases": [
+    { "input": "10 20 5", "expected": "Enter three distinct integers: The largest number is: 20\n" },
+    { "input": "5 10 20", "expected": "Enter three distinct integers: The largest number is: 20\n" },
+    { "input": "7 3 9", "expected": "Enter three distinct integers: The largest number is: 9\n" },
+    { "input": "100 50 75", "expected": "Enter three distinct integers: The largest number is: 100\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// This is a conceptual driver. In a real evaluation system,\n// the user's program would be compiled and executed as a separate process,\n// with stdin and stdout redirected for testing.\n\n// Example of how to redirect I/O for testing within a single process (if main logic is extractable):\n/*\nvoid run_user_program_logic(const std::string& input_str, std::string& output_str) {\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n\n    std::istringstream iss(input_str);\n    std::ostringstream oss;\n\n    std::cin.rdbuf(iss.rdbuf());\n    std::cout.rdbuf(oss.rdbuf());\n\n    // Assuming the main logic is extracted into a function like 'user_main_logic'\n    // user_main_logic(); \n    \n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    output_str = oss.str();\n}\n\nint main() {\n    // Test cases would be iterated here, calling run_user_program_logic\n    // and comparing output_str with expected results.\n    return 0;\n}\n*/\n\n// For a complete program, typical execution involves:\n// 1. Compiling the user's code: g++ -o program_name program.cpp\n// 2. Running with input redirection: ./program_name < input.txt > output.txt\n// 3. Comparing output.txt with the expected output.",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    {
+      "line": 10,
+      "column": 12,
+      "message": "The condition 'num2 > num1' is insufficient to determine if num2 is the largest. It should also check 'num2 > num3'. For input '5 10 20', it incorrectly identifies 10 as largest instead of 20."
+    }
+  ]
+}

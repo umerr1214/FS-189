@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Declare and initialize a 3x3 integer 2D array (matrix). Calculate and print the sum of all elements in the entire matrix.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation Error" }
+  ],
+  "driver": "// No driver needed as the code has a syntax error and won't compile.",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'std::endl' on line 20, leading to a compilation error."
+  ]
+}

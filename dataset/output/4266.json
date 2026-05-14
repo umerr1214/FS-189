@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that calculates the factorial of a non-negative integer entered by the user. Use a `while` loop for the calculation. Ensure to handle input validation for non-negative numbers.",
+  "test_cases": [
+    { "input": "5", "expected": "Enter a non-negative integer: Factorial of 5 is 120\n" },
+    { "input": "0", "expected": "Enter a non-negative integer: Factorial of 0 is 1\n" },
+    { "input": "12", "expected": "Enter a non-negative integer: Factorial of 12 is 479001600\n" },
+    { "input": "13", "expected": "Enter a non-negative integer: Factorial of 13 is -1241513984\n" },
+    { "input": "-3", "expected": "Enter a non-negative integer: Factorial is not defined for negative numbers.\n" }
+  ],
+  "driver": "int main() { /* This driver would compile and execute the user's code with various inputs. */ return 0; }",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The 'factorial' variable is declared as 'int', which is insufficient to store factorials of numbers greater than 12 (12! = 479,001,600, 13! = 6,227,020,800). This leads to integer overflow for larger inputs, producing incorrect results."
+  ]
+}

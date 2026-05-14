@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that takes 10 integer values from the user and stores them in a one-dimensional array. After reading all inputs, find and print the largest and smallest elements present in the array.",
+  "test_cases": [
+    {
+      "input": "1 2 3 4 5 6 7 8 9 10",
+      "expected": "Please enter 10 integer values:\nEnter integer 1: Enter integer 2: Enter integer 3: Enter integer 4: Enter integer 5: Enter integer 6: Enter integer 7: Enter integer 8: Enter integer 9: Enter integer 10: Largest element in the array: 10\nSmallest element in the array: 1\n"
+    },
+    {
+      "input": "-5 -1 -10 -2 -8 -3 -7 -4 -9 -6",
+      "expected": "Please enter 10 integer values:\nEnter integer 1: Enter integer 2: Enter integer 3: Enter integer 4: Enter integer 5: Enter integer 6: Enter integer 7: Enter integer 8: Enter integer 9: Enter integer 10: Largest element in the array: -1\nSmallest element in the array: -10\n"
+    },
+    {
+      "input": "10 0 -5 20 -15 30 5 -20 15 25",
+      "expected": "Please enter 10 integer values:\nEnter integer 1: Enter integer 2: Enter integer 3: Enter integer 4: Enter integer 5: Enter integer 6: Enter integer 7: Enter integer 8: Enter integer 9: Enter integer 10: Largest element in the array: 30\nSmallest element in the array: -20\n"
+    }
+  ],
+  "driver": "g++ -std=c++17 -o solution solution.cpp && ./solution",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

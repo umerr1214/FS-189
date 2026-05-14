@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a simple `Timer` class with private integer members `hours`, `minutes`, and `seconds`. Provide a public method `displayTime()` that prints the current time in `HH:MM:SS` format.",
+  "test_cases": [
+    { "input": "Timer t1(10, 5, 30); t1.displayTime();", "expected": "10:05:30" },
+    { "input": "Timer t2(0, 0, 0); t2.displayTime();", "expected": "00:00:00" },
+    { "input": "Timer t3(23, 59, 59); t3.displayTime();", "expected": "23:59:59" },
+    { "input": "Timer t4(1, 2, 3); t4.displayTime();", "expected": "01:02:03" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\n// The Timer class would be inserted here.\n\nint main() {\n    Timer t1(10, 5, 30);\n    std::cout << \"Timer 1: \";\n    t1.displayTime();\n    std::cout << std::endl;\n\n    Timer t2(0, 0, 0);\n    std::cout << \"Timer 2: \";\n    t2.displayTime();\n    std::cout << std::endl;\n\n    Timer t3(23, 59, 59);\n    std::cout << \"Timer 3: \";\n    t3.displayTime();\n    std::cout << std::endl;\n\n    Timer t4(1, 2, 3);\n    std::cout << \"Timer 4: \";\n    t4.displayTime();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the class definition, which is required in C++."
+  ]
+}

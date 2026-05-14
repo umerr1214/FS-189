@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Define a `Circle` class with a `radius` attribute. Implement a default constructor setting radius to 0, a parameterized constructor setting radius to a given value, and a copy constructor.",
+  "test_cases": [
+    { "input": "Default constructor", "expected": "Circle c1 (default): Radius = 0.0000000000, Area = 0.0000000000" },
+    { "input": "Parameterized constructor with 5.0", "expected": "Circle c2 (param 5.0): Radius = 5.0000000000, Area = 78.5398163397" },
+    { "input": "Parameterized constructor with -3.0", "expected": "Circle c3 (param -3.0): Radius = -3.0000000000, Area = 28.2743338823" },
+    { "input": "Copy constructor from c2", "expected": "Circle c4 (copy of c2): Radius = 5.0000000000, Area = 78.5398163397" },
+    { "input": "Copy constructor from c3", "expected": "Circle c5 (copy of c3): Radius = -3.0000000000, Area = 28.2743338823" }
+  ],
+  "driver": "See main function in .cpp file. It instantiates Circle objects using all three constructors and prints their radius and area.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The parameterized constructor does not validate the input for `radius`, allowing negative values to be set. While mathematically `(-r)^2` is positive, a negative radius is physically meaningless for a circle. This can lead to misleading results from methods like `getArea()` which will calculate a positive area for a negative radius. A robust implementation would either prevent negative radii (e.g., by clamping to 0 or throwing an exception) or clearly indicate an invalid state."
+  ]
+}

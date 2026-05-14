@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `swap_integers` that takes two integer pointers as arguments and swaps the values pointed to by these pointers. Demonstrate its usage in `main` by swapping two integer variables.",
+  "test_cases": [
+    {
+      "input": "Initial values: val1 = 200, val2 = 10",
+      "expected": "After swap:\nval1 = 10, val2 = 200"
+    },
+    {
+      "input": "Initial values: val3 = -150, val4 = 50",
+      "expected": "After swap:\nval3 = 50, val4 = -150"
+    }
+  ],
+  "driver": "#include <iostream>\n\nvoid swap_integers(int* a, int* b);\n\nint main() {\n    int v1 = 200;\n    int v2 = 10;\n    swap_integers(&v1, &v2);\n    std::cout << v1 << \" \" << v2 << std::endl;\n    \n    int v3 = -150;\n    int v4 = 50;\n    swap_integers(&v3, &v4);\n    std::cout << v3 << \" \" << v4 << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": []
+}

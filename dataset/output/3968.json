@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `analyzeArray` that takes an integer array and its size as input. The function should also take two reference parameters, `minVal` and `maxVal`. It should find the minimum and maximum elements in the array and store them in `minVal` and `maxVal` respectively. Demonstrate with an example array.",
+  "test_cases": [
+    { "input": "6\n10 4 20 5 15 8", "expected": "Min: 4, Max: 20" },
+    { "input": "1\n42", "expected": "Min: 42, Max: 42" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <sstream>\n#include <limits>\n\n// The analyzeArray function will be inserted here by the evaluation system.\n\nint main() {\n    std::string line;\n    int test_case_num = 0;\n    while (std::getline(std::cin, line)) {\n        test_case_num++;\n        std::stringstream ss_size(line);\n        int size;\n        ss_size >> size;\n\n        std::vector<int> arr_vec;\n        if (size > 0) {\n            if (!std::getline(std::cin, line)) break;\n            std::stringstream ss_elements(line);\n            int val;\n            for (int i = 0; i < size; ++i) {\n                if (!(ss_elements >> val)) break;\n                arr_vec.push_back(val);\n            }\n        }\n        \n        const int* arr_ptr = arr_vec.empty() ? nullptr : arr_vec.data();\n        int minVal = 0;\n        int maxVal = 0;\n\n        std::cout << \"Test Case \" << test_case_num << \":\" << std::endl;\n        std::cout << \"Input Array: {\";\n        for (int i = 0; i < arr_vec.size(); ++i) {\n            std::cout << arr_vec[i] << (i == arr_vec.size() - 1 ? \"\" : \", \");\n        }\n        std::cout << \"}, Size: \" << size << std::endl;\n\n        analyzeArray(arr_ptr, size, minVal, maxVal);\n\n        std::cout << \"Min: \" << minVal << \", Max: \" << maxVal << std::endl;\n        \n        if (std::cin.peek() == '\\n') {\n            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\\n');\n        }\n    }\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `analyzeArray` function uses two separate loops to find the minimum and maximum values, which is less efficient than finding both in a single pass.",
+    "Redundant iteration over the array, leading to O(2N) complexity instead of O(N)."
+  ]
+}

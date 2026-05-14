@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create an `Employee` class with `name` and `employeeID`. Then create a `Department` class that uses aggregation to manage a collection of `Employee` objects (e.g., using a `std::vector`). Implement methods in `Department` to add an employee and to list all employees within that department.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "Listing employees in HR department:\nDepartment: Human Resources\nID: 101, Name: Alice\nID: 102, Name: Bob\n\nListing employees in Sales department:\nDepartment: Sales\nID: 103, Name: Charlie\n"
+    }
+  ],
+  "driver": "int main() {\n    Employee* emp1 = new Employee(\"Alice\", 101);\n    Employee* emp2 = new Employee(\"Bob\", 102);\n    Employee* emp3 = new Employee(\"Charlie\", 103);\n\n    Department hr(\"Human Resources\");\n    hr.addEmployee(emp1);\n    hr.addEmployee(emp2);\n\n    std::cout << \"Listing employees in HR department:\" << std::endl;\n    hr.listEmployees();\n\n    Department sales(\"Sales\");\n    sales.addEmployee(emp3);\n\n    std::cout << \"\\nListing employees in Sales department:\" << std::endl;\n    sales.listEmployees();\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `Department` class uses aggregation by storing raw pointers (`Employee*`) to `Employee` objects. However, its destructor is empty and does not `delete` these dynamically allocated `Employee` objects. This design implies `Department` takes ownership of the aggregated objects but fails to manage their lifetime, leading to a memory leak when a `Department` object is destroyed and the `Employee` objects it points to are not explicitly deleted elsewhere."
+  ]
+}

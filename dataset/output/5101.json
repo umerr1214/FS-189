@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that prompts the user to enter their first name (as a string), age (as an integer), and height in meters (as a double). After receiving all inputs, print a formatted sentence summarizing this information (e.g., 'Hello [Name], you are [Age] years old and [Height] meters tall.').",
+  "test_cases": [
+    { "input": "Alice\n30\n1.75", "expected": "Enter your first name: Enter your age: Enter your height in meters: Hello Alice, you are 30 years old and 1.75 meters tall.\n" },
+    { "input": "Bob\nfifty\n1.80", "expected": "Enter your first name: Enter your age: Enter your height in meters: Hello Bob, you are 0 years old and 0 meters tall.\n" },
+    { "input": "Charlie\n25\nshort", "expected": "Enter your first name: Enter your age: Enter your height in meters: Hello Charlie, you are 25 years old and 0 meters tall.\n" }
+  ],
+  "driver": "g++ -o solution 5101.cpp && ./solution",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program lacks input validation for numeric types (age and height). If the user enters non-numeric input, `std::cin` enters a fail state, and the variables (age, height) may retain their default initialized values (0) or contain garbage, leading to incorrect output without any error message or retry mechanism. Subsequent `std::cin` operations might also fail or behave unexpectedly."
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Explain the necessity of a virtual destructor in a polymorphic base class. Provide a simple C++ code structure with a `Base` class and a `Derived` class, illustrating a scenario where a non-virtual destructor leads to a memory leak and how a virtual destructor solves it.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Scenario: Memory Leak with Non-Virtual Destructor ---\nBase constructor called.\nDerived constructor called. Allocated 1048576 bytes for m_resource.\nBase is doing something specific.\nAttempting to delete Base pointer...\nBase destructor called.\nDeletion complete. Notice 'Derived destructor called' was missing.\nRobustness Issue: 1048576 bytes allocated by Derived class were leaked.\nThis unmanaged memory can lead to resource exhaustion or program instability over time.\n"
+    }
+  ],
+  "driver": "// The main function directly demonstrates the concept.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Memory leak due to non-virtual destructor in polymorphic base class.",
+    "Derived class's allocated resources are not deallocated when deleting through a base pointer, leading to resource exhaustion over time.",
+    "The program demonstrates a fundamental design flaw in polymorphic class hierarchies."
+  ]
+}

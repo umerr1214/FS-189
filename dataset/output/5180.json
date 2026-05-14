@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ function template `T findMax(T val1, T val2)` that accepts two values of any data type (`T`) and returns the larger of the two. Demonstrate its usage in `main` by finding the maximum of two integers and two floating-point numbers.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Maximum value of 10 and 20 is: 20\nMaximum value of 15.5 and 15 is: 15.5\nMaximum value of 5 and 5 is: 5\n"
+    }
+  ],
+  "driver": "int main() {\n    // ... (main function content) ...\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `findMaximumValue` function template uses overly verbose names for the template parameter (`TypeParameterForComparison`), function (`findMaximumValue`), and its parameters (`firstInputVal`, `secondInputVal`). This reduces readability.",
+    "The implementation uses an unnecessarily complex `if-else if-else` structure with redundant boolean variables (`isFirstValueStrictlyGreater`, `isSecondValueStrictlyGreater`) and comparisons.",
+    "A simple ternary operator (`return (val1 > val2) ? val1 : val2;`) would achieve the same result with significantly better conciseness and clarity, avoiding redundant checks and temporary variables (`finalResultHolder`).",
+    "The `else if (isSecondValueStrictlyGreater)` branch is redundant; if the first value is not greater, the second value must be greater or equal, so a simple `else` would suffice."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a program that takes a character input from the user. Check if the character is an uppercase vowel (A, E, I, O, U) using a `switch` statement, and print whether it is or not.",
+  "test_cases": [
+    { "input": "A", "expected": "It is an uppercase vowel.\n" },
+    { "input": "B", "expected": "It is not an uppercase vowel.\n" },
+    { "input": "E", "expected": "It is an uppercase vowel.\n" },
+    { "input": "Z", "expected": "It is not an uppercase vowel.\n" },
+    { "input": "U", "expected": "It is an uppercase vowel.\n" }
+  ],
+  "driver": "int main() { char input_char; std::cin >> input_char; switch (input_char) { case 'A': case 'E': case 'I': case 'O': case 'U': std::cout << \"It is an uppercase vowel.\\n\"; break; default: std::cout << \"It is not an uppercase vowel.\\n\"; break; } return 0; }",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing closing brace for main function, leading to compilation error."]
+}

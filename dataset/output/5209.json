@@ -1,0 +1,29 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `void doubleArrayElements(int* arr, int size)` that takes a pointer to the first element of an integer array and its size. The function should iterate through the array using pointer arithmetic and double the value of each element. Test it with a sample array in `main`.",
+  "test_cases": [
+    {
+      "input": "int arr1[] = {1, 2, 3, 4, 5}, size1 = 5",
+      "expected": "Original array 1: 1 2 3 4 5 \nDoubled array 1: 2 4 6 8 10 \n"
+    },
+    {
+      "input": "int arr2[] = {}, size2 = 0",
+      "expected": "Original array 2 (empty): (empty or invalid size array)\nDoubled array 2 (empty): (empty or invalid size array)\n"
+    },
+    {
+      "input": "int arr3[] = {10}, size3 = 1",
+      "expected": "Original array 3: 10 \nDoubled array 3: 20 \n"
+    },
+    {
+      "input": "nullptr, size = 5",
+      "expected": "Attempting to double a nullptr array with size 5...\nRuntime Error / Crash (e.g., Segmentation Fault)"
+    }
+  ],
+  "driver": "#include <iostream>\n\n// Placeholder for the function under test\nvoid doubleArrayElements(int* arr, int size);\n\n// Helper function to print an array (safe for nullptr)\nvoid printArray(const char* label, int* arr, int size) {\n    std::cout << label;\n    if (arr == nullptr) {\n        std::cout << \"(nullptr array)\";\n    } else if (size <= 0) {\n        std::cout << \"(empty or invalid size array)\";\n    } else {\n        for (int i = 0; i < size; ++i) {\n            std::cout << arr[i] << \" \";\n        }\n    }\n    std::cout << std::endl;\n}\n\nint main() {\n    // Test Case 1: Standard array\n    int arr1[] = {1, 2, 3, 4, 5};\n    int size1 = sizeof(arr1) / sizeof(arr1[0]);\n    printArray(\"Original array 1: \", arr1, size1);\n    doubleArrayElements(arr1, size1);\n    printArray(\"Doubled array 1: \", arr1, size1);\n    std::cout << std::endl;\n\n    // Test Case 2: Empty array (size = 0)\n    int arr2[] = {};\n    int size2 = 0;\n    printArray(\"Original array 2 (empty): \", arr2, size2);\n    doubleArrayElements(arr2, size2);\n    printArray(\"Doubled array 2 (empty): \", arr2, size2);\n    std::cout << std::endl;\n\n    // Test Case 3: Array with one element\n    int arr3[] = {10};\n    int size3 = sizeof(arr3) / sizeof(arr3[0]);\n    printArray(\"Original array 3: \", arr3, size3);\n    doubleArrayElements(arr3, size3);\n    printArray(\"Doubled array 3: \", arr3, size3);\n    std::cout << std::endl;\n\n    // Test Case 4: Robustness Issue Trigger - nullptr array pointer with positive size\n    std::cout << \"Attempting to double a nullptr array with size 5...\" << std::endl;\n    doubleArrayElements(nullptr, 5); // This line will likely crash the program\n    std::cout << \"This line should not be reached if the crash occurs.\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The function does not handle `nullptr` for the array pointer (`arr`). If `arr` is `nullptr` and `size > 0`, dereferencing `*(arr + i)` will lead to a runtime crash (e.g., segmentation fault), indicating a lack of robustness for invalid inputs."
+  ]
+}

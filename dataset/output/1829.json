@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Shape` with a `protected` member `color` (string) and a public method `displayColor()`. Derive a class `ColoredCircle` from `Shape`. Demonstrate how `ColoredCircle` can directly access and modify the `protected` `color` member, and then use `displayColor()` to confirm the change.",
+  "test_cases": [
+    { "input": "", "expected": "Initial: Color: blue\nAfter change attempt: Color: red\n" }
+  ],
+  "driver": "// The main function is part of the provided code.",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The 'changeColor' method in 'ColoredCircle' has a logical error. It assigns the 'newColor' to a local variable 'tempColor' instead of updating the protected 'color' member of the base class 'Shape'. As a result, the color remains unchanged."]
+}

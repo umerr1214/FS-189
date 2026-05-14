@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a `Circle` class with a `radius` attribute. Implement a default constructor setting radius to 0, a parameterized constructor setting radius to a given value, and a copy constructor.",
+  "test_cases": [
+    { "input": "Default constructor", "expected": "Circle c1 (default): Radius = 0.0000000000, Area = 0.0000000000" },
+    { "input": "Parameterized constructor with 5.0", "expected": "Circle c2 (param 5.0): Radius = 5.0000000000, Area = 78.5398163397" },
+    { "input": "Copy constructor from c2", "expected": "Circle c3 (copy of c2): Radius = 5.0000000000, Area = 78.5398163397" },
+    { "input": "Parameterized constructor with 10.0", "expected": "Circle c4 (param 10.0): Radius = 10.0000000000, Area = 314.1592653590" }
+  ],
+  "driver": "See main function in .cpp file. It instantiates Circle objects using all three constructors and prints their radius and area.",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The constructors (default, parameterized, and copy) do not utilize member initializer lists. While for a primitive type like `double` this has minimal efficiency impact (default initialization followed by assignment), it is a less efficient and less idiomatic C++ practice, especially for complex member objects where it leads to unnecessary default construction and assignment. It also slightly impacts readability by separating member declaration from their initial value. Additionally, the explicit use of `this->` for member access within simple member functions, while not incorrect, is often considered verbose and can reduce readability without adding significant clarity in this context."
+  ]
+}

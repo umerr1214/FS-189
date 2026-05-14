@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create an `Employee` class with `name` and `employeeID`. Then create a `Department` class that uses aggregation to manage a collection of `Employee` objects (e.g., using a `std::vector`). Implement methods in `Department` to add an employee and to list all employees within that department.",
+  "test_cases": [
+    {
+      "input": "N/A (input handled by main function)",
+      "expected": "--- Adding Employees to IT Department ---\nSuccessfully added employee: Sarah Connor (ID: 301)\nSuccessfully added employee: John Doe (ID: 302)\nSuccessfully added employee: Jane Smith (ID: 303)\nAttempting to add Sarah Connor again (ID 301)...\nError: Employee with ID 301 already exists in IT Department. Not added.\nSuccessfully added employee: Mike Ross (ID: 304)\n\n--- Listing Employees in IT Department ---\nEmployees in IT Department:\n  ID: 301, Name: Sarah Connor\n  ID: 302, Name: John Doe\n  ID: 303, Name: Jane Smith\n  ID: 304, Name: Mike Ross\n\n--- Listing Employees in Empty Department ---\nEmployees in Empty Department:\n  (No employees in this department.)\n\n"
+    }
+  ],
+  "driver": "int main() {\n    Department itDept(\"IT Department\");\n\n    std::cout << \"--- Adding Employees to IT Department ---\" << std::endl;\n    itDept.addEmployee(Employee(\"Sarah Connor\", 301));\n    itDept.addEmployee(Employee(\"John Doe\", 302));\n    itDept.addEmployee(Employee(\"Jane Smith\", 303));\n    std::cout << \"Attempting to add Sarah Connor again (ID 301)...\" << std::endl;\n    itDept.addEmployee(Employee(\"Sarah Connor\", 301));\n    itDept.addEmployee(Employee(\"Mike Ross\", 304));\n    std::cout << std::endl;\n\n    std::cout << \"--- Listing Employees in IT Department ---\" << std::endl;\n    itDept.listAllEmployees();\n    std::cout << std::endl;\n\n    Department emptyDept(\"Empty Department\");\n    std::cout << \"--- Listing Employees in Empty Department ---\" << std::endl;\n    emptyDept.listAllEmployees();\n    std::cout << std::endl;\n    \n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

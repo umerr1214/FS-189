@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `swapValues(int& a, int& b)` that takes two integer references and swaps their values. Demonstrate its usage in a `main` function by swapping two user-defined integers.",
+  "test_cases": [
+    { "input": "5 10\n", "expected": "Enter first integer: Enter second integer: Before swap: a = 5, b = 10\nAfter swap: a = 10, b = 5\n" },
+    { "input": "20 7\n", "expected": "Enter first integer: Enter second integer: Before swap: a = 20, b = 7\nAfter swap: a = 7, b = 20\n" }
+  ],
+  "driver": "#include <iostream>\n\nvoid swapValues(int& a, int& b);\n\nint main() {\n    int num1, num2;\n    std::cin >> num1 >> num2;\n    std::cout << \"Before swap: a = \" << num1 << \", b = \" << num2 << std::endl;\n    swapValues(num1, num2);\n    std::cout << \"After swap: a = \" << num1 << \", b = \" << num2 << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "error: expected ';' before '}' token"
+  ]
+}

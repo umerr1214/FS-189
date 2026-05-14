@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Define a struct named `Point` with two integer members, `x` and `y`. Write a function `distance` that takes two `Point` structs as input and returns the Euclidean distance between them.",
+  "test_cases": [
+    { "input": "Point p1={0,0}, p2={3,4}", "expected": "5.0000000000" },
+    { "input": "Point p1={1,1}, p2={-2,-3}", "expected": "5.0000000000" },
+    { "input": "Point p1={10,20}, p2={10,20}", "expected": "0.0000000000" },
+    { "input": "Point p1={-5,5}, p2={5,-5}", "expected": "14.1421353817" },
+    { "input": "Point p1={100000,0}, p2={0,0}", "expected": "100000.0000000000" },
+    { "input": "Point p1={100000,200000}, p2={0,0}", "expected": "223606.7968750000" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <iomanip>\n#include <cmath>\n\nstruct Point {\n    int x;\n    int y;\n};\n\n// The distance function would be inserted here\n\nint main() {\n    std::vector<std::pair<Point, Point>> test_inputs = {\n        {{0, 0}, {3, 4}},\n        {{1, 1}, {-2, -3}},\n        {{10, 20}, {10, 20}},\n        {{-5, 5}, {5, -5}},\n        {{100000, 0}, {0, 0}},\n        {{100000, 200000}, {0, 0}}\n    };\n\n    for (const auto& pair : test_inputs) {\n        Point p1 = pair.first;\n        Point p2 = pair.second;\n        float dist = distance(p1, p2);\n        std::cout << \"Distance between (\" << p1.x << \", \" << p1.y << \") and (\"\n                  << p2.x << \", \" << p2.y << \") is: \"\n                  << std::fixed << std::setprecision(10) << dist << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The function uses `float` for calculations and return type, which offers less precision than `double` and can lead to minor inaccuracies, especially with larger numbers.",
+    "It uses `std::pow(value, 2)` instead of `value * value` for squaring. `std::pow` is a more general and computationally heavier function than simple multiplication, leading to a slight efficiency reduction.",
+    "Variable names like `dX`, `dY`, `sq1`, `sq2`, `total_sq`, `res` are not as descriptive as they could be, hindering readability."
+  ]
+}

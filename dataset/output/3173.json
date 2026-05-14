@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a `Shape` base class with a `virtual void draw()` method. Derive `Circle` and `Rectangle` classes, each providing their own implementation of `draw()`. Demonstrate polymorphism by calling `draw()` on an array of `Shape*`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Drawing a Circle with radius X.\nDrawing a Rectangle with width Y and height Z.\nDrawing a Circle with radius X.\nShape destructor called.\nShape destructor called.\nShape destructor called.\n"
+    }
+  ],
+  "driver": "int main() {\n    std::vector<Shape*> shapes;\n    shapes.push_back(new Circle());\n    shapes.push_back(new Rectangle());\n    shapes.push_back(new Circle());\n    for (const auto& shape : shapes) {\n        shape->draw();\n    }\n    // Memory leak here, objects are not deleted\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The program suffers from a memory leak because the dynamically allocated `Circle` and `Rectangle` objects are never `delete`d. The `main` function allocates memory using `new` but does not free it.",
+    "The `draw` methods in `Circle` and `Rectangle` print generic information ('radius X', 'width Y and height Z') rather than actual specific values, which deviates from a robust implementation, although it correctly demonstrates polymorphism."
+  ]
+}

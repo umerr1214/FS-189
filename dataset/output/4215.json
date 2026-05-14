@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that performs matrix addition for two 3x3 integer matrices. The program should prompt the user to enter elements for both matrices and then display the resultant sum matrix.",
+  "test_cases": [
+    {
+      "input": "1 2 3 4 5 6 7 8 9\n9 8 7 6 5 4 3 2 1\n",
+      "expected": "Enter elements for Matrix A (3x3):\nMatrix A[0][0]: Matrix A[0][1]: Matrix A[0][2]: Matrix A[1][0]: Matrix A[1][1]: Matrix A[1][2]: Matrix A[2][0]: Matrix A[2][1]: Matrix A[2][2]: Enter elements for Matrix B (3x3):\nMatrix B[0][0]: Matrix B[0][1]: Matrix B[0][2]: Matrix B[1][0]: Matrix B[1][1]: Matrix B[1][2]: Matrix B[2][0]: Matrix B[2][1]: Matrix B[2][2]: \nMatrix A:\n1\t2\t3\t\n4\t5\t6\t\n7\t8\t9\t\n\nMatrix B:\n9\t8\t7\t\n6\t5\t4\t\n3\t2\t1\t\n\nSum Matrix:\n10\t10\t10\t\n10\t10\t10\t\n10\t10\t10\t\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that takes three integer side lengths of a triangle as input and determines if it is an equilateral, isosceles, or scalene triangle. Assume valid triangle inequalities are met.",
+  "test_cases": [
+    { "input": "3 3 3", "expected": "Equilateral" },
+    { "input": "3 4 3", "expected": "Isosceles" },
+    { "input": "5 5 5", "expected": "Equilateral" },
+    { "input": "4 4 5", "expected": "Isosceles" },
+    { "input": "3 4 5", "expected": "Scalene" },
+    { "input": "7 8 9", "expected": "Scalene" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// The classifyTriangle function is assumed to be available from the user's code.\n// Its signature: std::string classifyTriangle(int a, int b, int c);\n\nint main() {\n    std::vector<std::string> inputs = {\n        \"3 3 3\",\n        \"3 4 3\",\n        \"5 5 5\",\n        \"4 4 5\",\n        \"3 4 5\",\n        \"7 8 9\"\n    };\n    std::vector<std::string> expected_outputs = {\n        \"Equilateral\",\n        \"Isosceles\",\n        \"Equilateral\",\n        \"Isosceles\",\n        \"Scalene\",\n        \"Scalene\"\n    };\n\n    for (size_t i = 0; i < inputs.size(); ++i) {\n        int s1, s2, s3;\n        std::istringstream iss(inputs[i]);\n        iss >> s1 >> s2 >> s3;\n        std::string result = classifyTriangle(s1, s2, s3);\n        std::cout << \"Input: \" << inputs[i] << \", Result: \" << result << \", Expected: \" << expected_outputs[i] << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The condition for 'Isosceles' is semantically over-specified. After checking for 'Equilateral', it's implicitly known that not all three sides are equal. Therefore, explicitly checking 'a != c', 'b != a', or 'c != b' in the Isosceles condition is redundant. A simpler condition like '(a == b || b == c || a == c)' would suffice to capture non-equilateral isosceles triangles in this if-else if structure, indicating a slight misunderstanding of concise conditional logic."
+  ]
+}

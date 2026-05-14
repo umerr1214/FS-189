@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Employee` with private members `name` and `employeeId`. Derive two classes, `Manager` and `Engineer`. `Manager` should add a `department` member, and `Engineer` should add a `specialization` member. Implement a `displayInfo()` method in each class.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Employee default constructor called.\n--- Displaying default-constructed Employee ---\nName: , ID: 0\n\n--- Displaying initialized objects ---\nEmployee parameterized constructor called for John Doe.\nEmployee parameterized constructor called for Jane Smith.\nManager parameterized constructor called for Jane Smith.\nEmployee parameterized constructor called for Peter Jones.\nEngineer parameterized constructor called for Peter Jones.\nName: John Doe, ID: 101\nName: Jane Smith, ID: 202, Department: HR\nName: Peter Jones, ID: 303, Specialization: AI\n"
+    }
+  ],
+  "driver": "See main() function in the code.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program provides default constructors that initialize members to default/potentially invalid states (e.g., `employeeId` to 0, empty strings) without explicit validation or clear indication of an 'invalid' object state.",
+    "Calling `displayInfo()` on a default-constructed object displays these potentially invalid values without warning or error handling, which can be misleading and indicates a lack of robustness in handling uninitialized or partially initialized objects."
+  ]
+}

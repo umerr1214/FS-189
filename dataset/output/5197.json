@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `void transposeMatrix(int original[3][3], int transposed[3][3])` that takes a 3x3 integer matrix and stores its transpose in another 3x3 matrix. In `main`, populate an original matrix from user input, call the function, and then print both the original and transposed matrices.",
+  "test_cases": [
+    {
+      "input": "1 2 3 4 5 6 7 8 9",
+      "expected": "Original Matrix:\n1 2 3\n4 5 6\n7 8 9\nTransposed Matrix:\n1 4 7\n2 5 8\n3 6 9\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n\n// Assuming the user's code is compiled into an executable named 'solution'\n// This driver is illustrative and would typically involve process execution.\n\nint main() {\n    std::cout << \"Running test case...\\n\";\n    std::string input_str = \"1 2 3 4 5 6 7 8 9\";\n    std::string expected_output = \"Original Matrix:\\n1 2 3\\n4 5 6\\n7 8 9\\nTransposed Matrix:\\n1 4 7\\n2 5 8\\n3 6 9\\n\";\n\n    std::cout << \"Input provided:\\n\" << input_str << \"\\n\";\n    std::cout << \"Expected output:\\n\" << expected_output << \"\\n\";\n    // In a real environment, you would execute the compiled program with input_str\n    // redirected to stdin and capture stdout to compare with expected_output.\n    // Example (conceptual): \n    // system(\"echo \\\"\" + input_str + \"\\\" | ./solution > output.txt\");\n    // std::string actual_output = read_file(\"output.txt\");\n    // if (actual_output == expected_output) { std::cout << \"Test Passed\\n\"; }\n    // else { std::cout << \"Test Failed\\n\"; }\n\n    // For robustness test, one might provide invalid input like \"1 a 3 ...\"\n    // and check if the program crashes or loops infinitely.\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Input validation is missing. If non-integer input is provided, `std::cin` will enter a fail state, causing subsequent reads to fail and potentially populating the matrix with default values (0) or entering an infinite loop if not handled."
+  ]
+}

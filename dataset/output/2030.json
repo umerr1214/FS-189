@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Define an abstract base class `Animal` with a pure virtual method `void makeSound()`. Implement two derived classes, `Dog` and `Cat`, each overriding `makeSound()` to print their respective sounds.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Animal Sounds ---\nWoof! (via string return)\nMeow! (via string return)\nWoof! (via string return)\n--- End Sounds ---\nAll animals have successfully produced their sounds as strings and been manually deallocated from memory.\n"
+    }
+  ],
+  "driver": "int main() { Animal* animalPtr1 = new Dog(); Animal* animalPtr2 = new Cat(); Animal* animalPtr3 = new Dog(); std::vector<Animal*> myAnimals; myAnimals.push_back(animalPtr1); myAnimals.push_back(animalPtr2); myAnimals.push_back(animalPtr3); std::cout << \"--- Animal Sounds ---\" << std::endl; processAnimalsAndMakeSounds(myAnimals); std::cout << \"--- End Sounds ---\" << std::endl; for (Animal* animal : myAnimals) { delete animal; } std::cout << \"All animals have successfully produced their sounds as strings and been manually deallocated from memory.\" << std::endl; return 0; }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `makeSound` method (renamed to `getSound`) returns a `std::string` instead of directly printing to `std::cout`. This introduces unnecessary string creation and copying overhead, making it less efficient than directly printing within the method as implied by the question's requirement to 'print their respective sounds'.",
+    "The `main` function uses raw pointers (`new`/`delete`) for object management in a `std::vector`, which is less readable and more prone to memory leaks compared to using smart pointers like `std::unique_ptr` for managing dynamically allocated polymorphic objects.",
+    "The use of an extra helper function `processAnimalsAndMakeSounds` for a simple iteration and print adds an unnecessary layer of indirection and complexity, reducing overall readability for this straightforward task."
+  ]
+}

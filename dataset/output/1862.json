@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Create a `Date` class with private attributes `day`, `month`, and `year` (all integers). Implement a `const` member function `displayDate()` that prints the date. Demonstrate that this `const` method can be called safely on both `const` and non-`const` `Date` objects.",
+  "test_cases": [
+    {
+      "input": "Date(15, 7, 2023)\nDate(1, 1, 2024)",
+      "expected": "Non-const object demonstration: The current date is: 7/15/2023\nConst object demonstration: The current date is: 1/1/2024\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The constructor uses direct assignment in its body instead of a member initializer list, which can be less efficient for complex objects and less idiomatic C++.",
+    "The displayDate() function uses multiple `std::cout` statements for a single line of output, which is less efficient and less readable than chaining them.",
+    "Attribute names like `date_day_attribute` are overly verbose and reduce readability.",
+    "Variable names in `main` like `non_const_date_object` and `example_day` are excessively verbose, hindering readability."
+  ]
+}

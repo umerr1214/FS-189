@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Shape` with a `virtual double calculateArea() = 0;` pure virtual function. Derive a `Rectangle` class from `Shape`, adding `length` and `width` attributes, and implement the `calculateArea()` method for a rectangle.",
+  "test_cases": [
+    { "input": "10.0 5.0", "expected": "Area of rectangle: 50.00\n" },
+    { "input": "2.5 4.0", "expected": "Area of rectangle: 10.00\n" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\n// Assumes Shape and Rectangle classes are defined in the user's code\n// and Rectangle implements calculateArea correctly.\n\nint main() {\n    double l, w;\n    std::cout << std::fixed << std::setprecision(2);\n    while (std::cin >> l >> w) {\n        Rectangle rect(l, w);\n        std::cout << \"Area of rectangle: \" << rect.calculateArea() << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The calculateArea method in Rectangle incorrectly calculates area as length + width instead of length * width."
+  ]
+}

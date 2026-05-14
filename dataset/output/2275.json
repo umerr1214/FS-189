@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a `Car` class that uses composition to include an `Engine` object as a private member. The `Engine` class should have `horsepower` (int) and `fuelType` (string). Implement a `Car` constructor that initializes its `Engine` and a method `Car::start()` that calls an `Engine::start()` method.",
+  "test_cases": [
+    {
+      "input": "Hardcoded in `main` function.",
+      "expected": "Engine object created with 150 HP and fuel type 'Gasoline'.\nCar constructed.\nCar is attempting to start...\nEngine with 150 HP and fuel type 'Gasoline' started.\n---\nEngine object created with 0 HP and fuel type 'Electric'.\nCar constructed.\nCar is attempting to start...\nEngine with 0 HP and fuel type 'Electric' started.\n---\nEngine object created with -50 HP and fuel type ''.\nCar constructed.\nCar is attempting to start...\nEngine with -50 HP and fuel type '' started.\n"
+    }
+  ],
+  "driver": "int main() {\n    // Test Case 1: Car with valid engine\n    Car myCar(150, \"Gasoline\");\n    myCar.start();\n    std::cout << \"---\" << std::endl;\n\n    // Test Case 2: Car with invalid horsepower (0 HP) - Robustness Issue\n    // The engine starts, but a 0 HP engine isn't truly \"started\" or functional.\n    Car brokenCar(0, \"Electric\");\n    brokenCar.start();\n    std::cout << \"---\" << std::endl;\n\n    // Test Case 3: Car with negative horsepower and empty fuel type - Robustness Issue\n    // The engine still reports starting, which is misleading.\n    Car reallyBrokenCar(-50, \"\");\n    reallyBrokenCar.start();\n    std::cout << \"---\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Engine::start()` method does not validate the engine's state (e.g., `horsepower` being non-positive or `fuelType` being empty) before reporting that the engine has started. This can lead to misleading output and implies functionality for an invalid engine configuration.",
+    "The `Car` class allows construction of an `Engine` with invalid parameters (like 0 or negative horsepower, or empty fuel type) without any validation or error handling, which makes the system less robust."
+  ]
+}

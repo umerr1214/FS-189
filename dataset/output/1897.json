@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Model a `Course` class that aggregates `Student` objects. The `Course` class should have a `courseName` (string) and maintain a collection (e.g., `std::vector`) of `Student` objects. Implement methods to add a student to the course and display all enrolled students.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Testing Robustness Issue: Duplicate Students ---\nAdded student: Alice Smith (ID: 101) to C++ Programming.\nAdded student: Bob Johnson (ID: 102) to C++ Programming.\n\n--- Course: C++ Programming ---\nEnrolled Students (2):\n  - ID: 101, Name: Alice Smith\n  - ID: 102, Name: Bob Johnson\n---------------------------------\n\nAttempting to add Alice Smith (ID: 101) again...\nAdded student: Alice Smith (ID: 101) to C++ Programming.\n\n--- Course: C++ Programming ---\nEnrolled Students (3):\n  - ID: 101, Name: Alice Smith\n  - ID: 102, Name: Bob Johnson\n  - ID: 101, Name: Alice Smith\n---------------------------------\nAdded student: Charlie Brown (ID: 103) to C++ Programming.\n\n--- Course: C++ Programming ---\nEnrolled Students (4):\n  - ID: 101, Name: Alice Smith\n  - ID: 102, Name: Bob Johnson\n  - ID: 101, Name: Alice Smith\n  - ID: 103, Name: Charlie Brown\n---------------------------------\n\n--- Course: Empty Course ---\n  No students enrolled.\n---------------------------------\n"
+    }
+  ],
+  "driver": "Self-contained in main function.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `addStudent` method does not prevent adding duplicate students (based on ID or other unique identifier) to the course, leading to redundant data and potential logical errors if uniqueness is implicitly expected."
+  ]
+}

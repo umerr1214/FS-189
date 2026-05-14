@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Parent` and a derived class `Child`. Add a constructor and a destructor to both classes, each printing a message indicating its creation or destruction. Demonstrate the order in which these constructors and destructors are called when a `Child` object is created and destroyed.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Creating Child object...\nParent Constructor called.\nChild Constructor called.\nChild object created.\nDestroying Child object...\nChild Destructor called.\nParent Destructor called.\nChild object destroyed.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n\nclass Parent {\npublic:\n    Parent() {\n        std::cout << \"Parent Constructor called.\\n\";\n    }\n    ~Parent() {\n        std::cout << \"Parent Destructor called.\\n\";\n    }\n};\n\nclass Child : public Parent {\npublic:\n    Child() {\n        std::cout << \"Child Constructor called.\\n\";\n    }\n    ~Child() {\n        std::cout << \"Child Destructor called.\\n\";\n    }\n};\n\nint main() {\n    std::cout << \"Creating Child object...\\n\";\n    Child c;\n    std::cout << \"Child object created.\\n\";\n    std::cout << \"Destroying Child object...\\n\";\n    std::cout << \"Child object destroyed.\\n\";\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The destructor for the 'Child' class is missing its print statement, failing to output a message indicating its destruction. This leads to an incomplete demonstration of the constructor/destructor call order."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Implement a `Vehicle` base class with `speed` (int) and `color` (string). Derive a `Car` class (adds `numDoors` int) and a `Motorcycle` class (adds `hasSidecar` bool). Demonstrate methods specific to each derived class.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Compilation Error: Missing semicolon after class 'Vehicle'."
+    }
+  ],
+  "driver": "g++ -o main 2044.cpp && ./main",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    {
+      "line": 16,
+      "column": 1,
+      "message": "Missing semicolon after class definition"
+    }
+  ]
+}

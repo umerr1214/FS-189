@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a `StringWrapper` class that manages a dynamically allocated character array to store a string. Implement a copy constructor for `StringWrapper` that performs a deep copy of the character array to ensure independent memory management between copied objects.",
+  "test_cases": [
+    { "input": "Default construction and subsequent copy", "expected": "s1 (default): (nullptr)\nAttempting to copy s1 (which has nullptr internal string)...\nProgram expected to crash or exhibit undefined behavior due to copying a StringWrapper with a nullptr internal string." },
+    { "input": "Copying 'Hello'", "expected": "s3: Hello\ns4 (copied from s3): Hello" },
+    { "input": "Copying an empty string", "expected": "s5: ''\ns6 (copied from s5): ''" }
+  ],
+  "driver": "int main() {\n    StringWrapper s1;\n    std::cout << \"s1 (default): \" << s1.c_str() << std::endl;\n    std::cout << \"Attempting to copy s1 (which has nullptr internal string)...\" << std::endl;\n    StringWrapper s2 = s1;\n    std::cout << \"s2 (copied from s1): \" << s2.c_str() << std::endl;\n\n    StringWrapper s3(\"Hello\");\n    StringWrapper s4 = s3;\n    std::cout << \"s3: \" << s3.c_str() << std::endl;\n    std::cout << \"s4 (copied from s3): \" << s4.c_str() << std::endl;\n\n    StringWrapper s5(\"\");\n    StringWrapper s6 = s5;\n    std::cout << \"s5: '\" << s5.c_str() << \"'\" << std::endl;\n    std::cout << \"s6 (copied from s5): '\" << s6.c_str() << \"'\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The default constructor initializes the internal `str` pointer to `nullptr`. The copy constructor then attempts to call `std::strlen(other.str)` without checking if `other.str` is `nullptr`. This leads to dereferencing a `nullptr`, causing undefined behavior and typically a program crash when copying a default-constructed `StringWrapper` object."
+  ]
+}

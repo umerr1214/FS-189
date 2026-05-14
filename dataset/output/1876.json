@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `StudentGrade` class with private attributes `studentId` (int) and `score` (double). Use a constructor initialization list to initialize these members. Provide a public method `displayGrade()`.",
+  "test_cases": [
+    { "input": "StudentGrade student1(101, 85.5);\nstudent1.displayGrade();", "expected": "Student ID: 101\nScore: 85.5\n" },
+    { "input": "StudentGrade student2(102, 92.0);\nstudent2.displayGrade();", "expected": "Student ID: 102\nScore: 92.0\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass StudentGrade {\nprivate:\n    int studentId;\n    double score;\n\npublic:\n    StudentGrade(int id, double s) : studentId(id), score(s) {}\n\n    void displayGrade() {\n        std::cout << \"Student ID: \" << studentId << std::endl;\n        std::cout << \"Score: \" << score << std::endl;\n    }\n};\n\nint main() {\n    StudentGrade student1(101, 85.5);\n    student1.displayGrade();\n\n    StudentGrade student2(102, 92.0);\n    student2.displayGrade();\n\n    return 0;\n}",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'std::cout << \"Score: \" << score << std::endl' in the displayGrade() method, which causes a compilation error."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Timer` class with methods `start()`, `stop()`, and `reset()`. Each of these methods should return a reference to the `Timer` object itself (using `*this`), allowing for method chaining (e.g., `timer.start().reset().stop();`).",
+  "test_cases": [
+    { "input": "", "expected": "Timer created.\nTimer started. Current elapsed: 0 ms\nAfter 100ms. Current elapsed: 0 ms\nTimer stopped. Total elapsed: 100 ms\nAfter 50ms. Total elapsed (should be same): 100 ms\nTimer reset. Total elapsed: 0 ms\nChaining start().reset().stop(). Total elapsed: 0 ms\nTimer started for 200ms. Total elapsed: 200 ms\nTimer started for 50ms. Current elapsed: 200 ms\nTimer stopped. Total elapsed: 250 ms\n" }
+  ],
+  "driver": "#include <iostream>\n#include <chrono>\n#include <thread>\n\n// Assuming Timer class is defined here\n\nint main() {\n    Timer t;\n    std::cout << \"Timer created.\\n\";\n\n    t.start();\n    std::cout << \"Timer started. Current elapsed: \" << t.getElapsedTime() << \" ms\\n\";\n    std::this_thread::sleep_for(std::chrono::milliseconds(100));\n    std::cout << \"After 100ms. Current elapsed: \" << t.getElapsedTime() << \" ms\\n\";\n    t.stop();\n    std::cout << \"Timer stopped. Total elapsed: \" << t.getElapsedTime() << \" ms\\n\";\n\n    std::this_thread::sleep_for(std::chrono::milliseconds(50));\n    std::cout << \"After 50ms. Total elapsed (should be same): \" << t.getElapsedTime() << \" ms\\n\";\n\n    t.reset();\n    std::cout << \"Timer reset. Total elapsed: \" << t.getElapsedTime() << \" ms\\n\";\n\n    t.start().reset().stop(); // Chaining example\n    std::cout << \"Chaining start().reset().stop(). Total elapsed: \" << t.getElapsedTime() << \" ms\\n\";\n\n    t.start();\n    std::this_thread::sleep_for(std::chrono::milliseconds(200));\n    t.stop();\n    std::cout << \"Timer started for 200ms. Total elapsed: \" << t.getElapsedTime() << \" ms\\n\";\n\n    t.start();\n    std::this_thread::sleep_for(std::chrono::milliseconds(50));\n    t.cout << \"Timer started for 50ms. Current elapsed: \" << t.getElapsedTime() << \" ms\\n\";\n    t.stop();\n    std::cout << \"Timer stopped. Total elapsed: \" << t.getElapsedTime() << \" ms\\n\";\n\n    return 0;\n}",
+  "code_quality": 7,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Timer` class uses `std::chrono::high_resolution_clock` which is not guaranteed to be steady. For accurate duration measurements, `std::chrono::steady_clock` should be used to avoid potential issues from system clock adjustments.",
+    "The `getElapsedTime()` method has a logical flaw: when the timer is actively running, it only returns the accumulated duration from previously stopped segments, completely ignoring the time elapsed during the current active period. This leads to incorrect real-time reporting of the timer's state."
+  ]
+}

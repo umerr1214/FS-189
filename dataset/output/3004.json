@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `Resource` class that simulates managing a dynamic integer array. The constructor should allocate memory for a specified size, and the destructor should deallocate it. Include methods to `fillArray()` and `displayArray()`. Demonstrate its lifecycle to ensure proper memory management.",
+  "test_cases": [
+    { "input": "5", "expected": "Compilation failed due to syntax error." }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Resource Lifecycle Demonstration (Syntax Error) ---\" << std::endl;\n    {\n        Resource res(5);\n        if (res.getSize() > 0) {\n            res.fillArray();\n            res.displayArray();\n        }\n    } \n    std::cout << \"--- End of demonstration ---\" << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition for 'Resource'."
+  ]
+}

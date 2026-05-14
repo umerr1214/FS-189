@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Design a `Date` class with private members `day`, `month`, and `year` (all integers). Implement a parameterized constructor. Add a public method `isValidDate()` that returns `true` if the date is valid (e.g., month between 1-12, day within month's range, considering leap years for February), otherwise `false`.",
+  "test_cases": [
+    { "input": "15 6 2023", "expected": "Date 15/6/2023 is valid" },
+    { "input": "31 2 2024", "expected": "Date 31/2/2024 is invalid" },
+    { "input": "29 2 2024", "expected": "Date 29/2/2024 is valid" },
+    { "input": "31 4 2023", "expected": "Date 31/4/2023 is invalid" },
+    { "input": "0 1 2023", "expected": "Date 0/1/2023 is invalid" },
+    { "input": "29 2 1900", "expected": "Date 29/2/1900 is invalid" },
+    { "input": "29 2 2000", "expected": "Date 29/2/2000 is valid" },
+    { "input": "1 13 2023", "expected": "Date 1/13/2023 is invalid" },
+    { "input": "32 1 2023", "expected": "Date 32/1/2023 is invalid" },
+    { "input": "-5 5 2023", "expected": "Date -5/5/2023 is invalid" },
+    { "input": "1 -2 2023", "expected": "Date 1/-2/2023 is invalid" }
+  ],
+  "driver": "    Date d1(15, 6, 2023);  // Valid date\n    Date d2(31, 2, 2024);  // Invalid: February 2024 is a leap year (29 days max)\n    Date d3(29, 2, 2024);  // Valid: February 2024 is a leap year\n    Date d4(31, 4, 2023);  // Invalid: April has 30 days\n    Date d5(0, 1, 2023);   // Invalid: Day cannot be 0\n    Date d6(29, 2, 1900);  // Invalid: 1900 is not a leap year (divisible by 100 but not 400)\n    Date d7(29, 2, 2000);  // Valid: 2000 is a leap year (divisible by 400)\n    Date d8(1, 13, 2023);  // Invalid: Month out of range\n    Date d9(32, 1, 2023);  // Invalid: January has 31 days max\n    Date d10(-5, 5, 2023); // Invalid: Day cannot be negative\n    Date d11(1, -2, 2023); // Invalid: Month cannot be negative\n\n    std::cout << \"Date \" << d1.getDay() << \"/\" << d1.getMonth() << \"/\" << d1.getYear() << \" is \" << (d1.isValidDate() ? \"valid\" : \"invalid\") << std::endl;\n    std::cout << \"Date \" << d2.getDay() << \"/\" << d2.getMonth() << \"/\" << d2.getYear() << \" is \" << (d2.isValidDate() ? \"valid\" : \"invalid\") << std::endl;\n    std::cout << \"Date \" << d3.getDay() << \"/\" << d3.getMonth() << \"/\" << d3.getYear() << \" is \" << (d3.isValidDate() ? \"valid\" : \"invalid\") << std::endl;\n    std::cout << \"Date \" << d4.getDay() << \"/\" << d4.getMonth() << \"/\" << d4.getYear() << \" is \" << (d4.isValidDate() ? \"valid\" : \"invalid\") << std::endl;\n    std::cout << \"Date \" << d5.getDay() << \"/\" << d5.getMonth() << \"/\" << d5.getYear() << \" is \" << (d5.isValidDate() ? \"valid\" : \"invalid\") << std::endl;\n    std::cout << \"Date \" << d6.getDay() << \"/\" << d6.getMonth() << \"/\" << d6.getYear() << \" is \" << (d6.isValidDate() ? \"valid\" : \"invalid\") << std::endl;\n    std::cout << \"Date \" << d7.getDay() << \"/\" << d7.getMonth() << \"/\" << d7.getYear() << \" is \" << (d7.isValidDate() ? \"valid\" : \"invalid\") << std::endl;\n    std::cout << \"Date \" << d8.getDay() << \"/\" << d8.getMonth() << \"/\" << d8.getYear() << \" is \" << (d8.isValidDate() ? \"valid\" : \"invalid\") << std::endl;\n    std::cout << \"Date \" << d9.getDay() << \"/\" << d9.getMonth() << \"/\" << d9.getYear() << \" is \" << (d9.isValidDate() ? \"valid\" : \"invalid\") << std::endl;\n    std::cout << \"Date \" << d10.getDay() << \"/\" << d10.getMonth() << \"/\" << d10.getYear() << \" is \" << (d10.isValidDate() ? \"valid\" : \"invalid\") << std::endl;\n    std::cout << \"Date \" << d11.getDay() << \"/\" << d11.getMonth() << \"/\" << d11.getYear() << \" is \" << (d11.isValidDate() ? \"valid\" : \"invalid\") << std::endl;",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

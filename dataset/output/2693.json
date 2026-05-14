@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Enhance the `Rectangle` class by adding a destructor that prints a message like 'Rectangle object destroyed.' whenever an object goes out of scope.",
+  "test_cases": [
+    { "input": "", "expected": "Rectangle object destroyed.\nRectangle object destroyed.\nRectangle object destroyed.\n" }
+  ],
+  "driver": "int main() {\n    {\n        Rectangle r1;\n    }\n    Rectangle r2;\n    Rectangle* r_heap = new Rectangle();\n    // The expected output assumes r_heap would be deleted.\n    // delete r_heap;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "A Rectangle object is created on the heap using 'new' but its destructor is never called because 'delete' is not used. This results in a memory leak and the destructor message not being printed for this specific object, leading to incorrect total output."
+  ]
+}

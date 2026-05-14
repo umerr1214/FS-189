@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that presents a simple menu to the user (e.g., '1. Say Hello', '2. Say Goodbye', '3. Exit'). The program should continuously display the menu and process user choices until the user selects the 'Exit' option. Use a `do-while` loop for the menu.",
+  "test_cases": [
+    {
+      "input": "1\n2\n3\n",
+      "expected": "Menu:\n1. Say Hello\n2. Say Goodbye\n3. Exit\nEnter your choice: Hello!\n\nMenu:\n1. Say Hello\n2. Say Goodbye\n3. Exit\nEnter your choice: Goodbye!\n\nMenu:\n1. Say Hello\n2. Say Goodbye\n3. Exit\nEnter your choice: Exiting program.\n\n"
+    },
+    {
+      "input": "5\n1\n3\n",
+      "expected": "Menu:\n1. Say Hello\n2. Say Goodbye\n3. Exit\nEnter your choice: Invalid choice. Please try again.\n\nMenu:\n1. Say Hello\n2. Say Goodbye\n3. Exit\nEnter your choice: Hello!\n\nMenu:\n1. Say Hello\n2. Say Goodbye\n3. Exit\nEnter your choice: Exiting program.\n\n"
+    },
+    {
+      "input": "a\n3\n",
+      "expected": "Menu:\n1. Say Hello\n2. Say Goodbye\n3. Exit\nEnter your choice: Invalid choice. Please try again.\n\nMenu:\n1. Say Hello\n2. Say Goodbye\n3. Exit\nEnter your choice: Invalid choice. Please try again.\n\nMenu:\n1. Say Hello\n2. Say Goodbye\n3. Exit\nEnter your choice: Invalid choice. Please try again.\n\nMenu:\n1. Say Hello\n2. Say Goodbye\n3. Exit\nEnter your choice: Invalid choice. Please try again.\n\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n\n// Renamed student's main function to solution_main\nint solution_main();\n\nstd::string run_test(const std::string& input) {\n    std::stringstream ss_input(input);\n    std::stringstream ss_output;\n\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::streambuf* old_cerr = std::cerr.rdbuf();\n\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n    std::cerr.rdbuf(ss_output.rdbuf());\n\n    solution_main(); \n\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n    std::cerr.rdbuf(old_cerr);\n\n    return ss_output.str();\n}\n\nint main() {\n    return 0;\n}\n",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["Program enters an infinite loop when non-integer input is provided because `std::cin` enters a fail state and the input buffer is not cleared, causing `choice` to remain unchanged and the input operation to continuously fail without consuming input. This leads to repeated error messages and prevents program termination."]
+}

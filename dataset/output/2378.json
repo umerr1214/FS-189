@@ -1,0 +1,31 @@
+{
+  "language": "c++",
+  "question": "Create a `Point` class with private integer attributes `x` and `y`. Provide public methods `setCoordinates(int, int)` to modify them and `getDistanceToOrigin()` to calculate the Euclidean distance from (0,0).",
+  "test_cases": [
+    {
+      "input": "Point p; p.setCoordinates({3, 4});",
+      "expected": "Distance for (3, 4): 5.00"
+    },
+    {
+      "input": "Point p; p.setCoordinates({0, 0});",
+      "expected": "Distance for (0, 0): 0.00"
+    },
+    {
+      "input": "Point p; p.setCoordinates({-5, 12});",
+      "expected": "Distance for (-5, 12): 13.00"
+    },
+    {
+      "input": "Point p; p.setCoordinates({1});",
+      "expected": "Warning: Invalid coordinates vector size. Expected 2 elements.\nDistance for (1, 0): 1.00"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>   // For pow, sqrt\n#include <vector>  // For setCoordinates (efficiency/readability issue)\n#include <iomanip> // For std::fixed, std::setprecision\n\n// Readability Issue: Using 'using namespace std;' in global scope is generally bad practice in headers or large projects.\nusing namespace std;\n\nclass Point {\nprivate:\n    int x;\n    int y;\n\npublic:\n    // Constructor\n    Point(int _x = 0, int _y = 0) : x(_x), y(_y) {}\n\n    // Readability/Efficiency Issue: setCoordinates takes a std::vector<int>\n    // This is overly complex and less efficient than directly taking two int parameters\n    // for a simple task of setting two integer coordinates. It also adds error handling for vector size.\n    void setCoordinates(vector<int> coords) {\n        if (coords.size() == 2) {\n            this->x = coords[0];\n            this->y = coords[1];\n        } else {\n            // In a real scenario, this might throw an exception or return an error code.\n            // For this example, we'll print a warning and not modify coordinates.\n            cout << \"Warning: Invalid coordinates vector size. Expected 2 elements.\" << endl;\n        }\n    }\n\n    // Readability/Efficiency Issue: getDistanceToOrigin uses std::pow(base, exponent)\n    // Using pow(x, 2.0) is less efficient than simple multiplication (x*x) for integer squares\n    // as it involves floating-point operations and function call overhead.\n    double getDistanceToOrigin() {\n        double x_val_double = static_cast<double>(x);\n        double y_val_double = static_cast<double>(y);\n        \n        // Less efficient: using pow for squares\n        double sum_of_squares = pow(x_val_double, 2.0) + pow(y_val_double, 2.0);\n        return sqrt(sum_of_squares);\n    }\n};\n\nint main() {\n    // Set output precision for double values\n    cout << fixed << setprecision(2);\n\n    Point p1;\n    p1.setCoordinates({3, 4}); // Using initializer list for vector\n    cout << \"Distance for (3, 4): \" << p1.getDistanceToOrigin() << endl;\n\n    Point p2;\n    p2.setCoordinates({0, 0});\n    cout << \"Distance for (0, 0): \" << p2.getDistanceToOrigin() << endl;\n\n    Point p3;\n    p3.setCoordinates({-5, 12});\n    cout << \"Distance for (-5, 12): \" << p3.getDistanceToOrigin() << endl;\n\n    // Test case for invalid vector size in setCoordinates\n    Point p4;\n    p4.setCoordinates({1}); // Only one element, will trigger warning and not change y (remains 0)\n    cout << \"Distance for (1, 0): \" << p4.getDistanceToOrigin() << endl; // x=1, y=0 (initial value)\n    \n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `setCoordinates` method uses `std::vector<int>` to pass coordinates, which is over-engineered and less efficient for simply setting two integer attributes. Direct `int` parameters would be clearer and more efficient.",
+    "The `getDistanceToOrigin` method uses `std::pow(value, 2.0)` to calculate squares. For integer values, direct multiplication (`x * x`) is significantly more efficient and equally clear as `std::pow` involves floating-point conversions and function call overhead.",
+    "Using `using namespace std;` in the global scope can lead to name collisions and is generally considered bad practice in larger projects or header files, reducing readability and maintainability."
+  ]
+}

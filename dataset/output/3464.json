@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Define a C++ `struct Student` with members `std::string name`, `int id`, and `float score`. In `main`, declare a `Student` variable, prompt the user to input data for it, and then print the student's details.",
+  "test_cases": [
+    {
+      "input": "John\n1010\n85.5",
+      "expected": "Enter student name: \nEnter student ID: \nEnter student score: \n\n--- Student Details ---\nName: John\nID: 1010\nScore: 85.5\n"
+    },
+    {
+      "input": "Jane_Doe\n2020\n91.0",
+      "expected": "Enter student name: \nEnter student ID: \nEnter student score: \n\n--- Student Details ---\nName: Jane_Doe\nID: 2020\nScore: 91\n"
+    }
+  ],
+  "driver": "int main() {\n    // The program directly interacts with stdin/stdout, so no special driver needed.\n    // The test cases directly provide input and check output.\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses short, non-descriptive variable names (`nm`, `idx`, `scr` for struct members, `S` for the student variable), which significantly reduce code readability and maintainability.",
+    "Excessive use of `std::endl` unnecessarily flushes the output buffer on every line, which can be less efficient than using `\\n` for simple console output where immediate flushing is not critical.",
+    "The `using namespace std;` directive is used globally, which can lead to name collisions in larger projects and is generally discouraged in header files or large scopes."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a program that reads an integer score (0-100) from the user and prints 'Pass' if the score is 60 or above, otherwise prints 'Fail'.",
+  "test_cases": [
+    { "input": "75", "expected": "Pass" },
+    { "input": "45", "expected": "Fail" },
+    { "input": "60", "expected": "Pass" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <algorithm>\n\n// Assume the student's solution is a complete program with a main function.\n// This driver redirects stdin/stdout to capture the student's program behavior.\n\n// Forward declaration for the student's main function\n// In a real setup, this would be linked or compiled alongside.\nextern int student_main(); \n\nvoid run_test_case(const std::string& input_str, const std::string& expected_output_str) {\n    std::stringstream ss_input(input_str);\n    std::stringstream ss_output;\n    \n    // Redirect standard input and output\n    std::streambuf* old_cin_buf = std::cin.rdbuf();\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n    \n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    // Call the student's main function\n    student_main(); \n\n    // Restore standard input and output\n    std::cin.rdbuf(old_cin_buf);\n    std::cout.rdbuf(old_cout_buf);\n\n    std::string actual_output = ss_output.str();\n    \n    // Trim whitespace and newlines from actual output for robust comparison\n    actual_output.erase(std::remove_if(actual_output.begin(), actual_output.end(), ::isspace), actual_output.end());\n    \n    std::string trimmed_expected = expected_output_str;\n    trimmed_expected.erase(std::remove_if(trimmed_expected.begin(), trimmed_expected.end(), ::isspace), trimmed_expected.end());\n\n    // In a real test environment, you would compare actual_output with trimmed_expected\n    // and report success/failure. For this JSON, we just show the mechanism.\n}\n",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after 'std::cin >> score' statement. This will prevent compilation."]
+}

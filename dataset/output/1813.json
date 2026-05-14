@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Animal` with a virtual public method `makeSound()` that prints a generic sound. Derive `Dog` and `Cat` classes from `Animal`. Each derived class should override `makeSound()` to print its specific sound (e.g., \"Woof!\", \"Meow!\"). Demonstrate polymorphic behavior by calling `makeSound()` through a pointer to the base class `Animal`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Woof!\nMeow!\n--- Deleting objects ---\nAnimal destructor called.\nAnimal destructor called.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n// Assuming Animal, Dog, Cat classes are defined in the solution code\n\nint main() {\n    Animal* myDog = new Dog();\n    Animal* myCat = new Cat();\n\n    myDog->makeSound();\n    myCat->makeSound();\n\n    std::cout << \"--- Deleting objects ---\\n\";\n    // Deleting derived objects through base pointers without virtual destructor\n    // will only call the base class destructor, demonstrating the robustness issue.\n    delete myDog; \n    delete myCat; \n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing virtual destructor in the base class `Animal`. This leads to undefined behavior or resource leaks when derived objects are deleted through a base class pointer."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that declares a 2D matrix (e.g., 3x3), prompts the user for a scalar value, and then performs scalar multiplication on the matrix, printing the resulting matrix.",
+  "test_cases": [
+    {
+      "input": "5\n",
+      "expected": "Enter a scalar value: Result:\n   5  10  15\n  20  25  30\n  35  40  45\n"
+    }
+  ],
+  "driver": "timeout 5s sh -c \"g++ -o solution solution.cpp && echo '{input}' | ./solution\"",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Poor choice of variable names ('m', 's', 'r') makes the code less readable and harder to understand at a glance.",
+    "Matrix dimensions are hardcoded as '3' throughout the code instead of using named constants (e.g., `const int ROWS = 3;`), reducing flexibility and making maintenance difficult.",
+    "Lack of comments makes it harder for others (or the original author later) to understand the purpose of different sections.",
+    "Using `std::endl` in the inner loop for printing flushes the output buffer on each iteration, which is less efficient than using `\\n` for simple newlines, especially for larger matrices."
+  ]
+}

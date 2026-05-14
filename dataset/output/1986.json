@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create an `Engine` class with `horsepower` (int) and `fuelType` (string). Then, design a `Car` class that demonstrates composition by containing an `Engine` object as a member.",
+  "test_cases": [
+    { "input": "", "expected": "Car Model: Sedan X\nEngine: 150 HP, Petrol\nCar Model: SUV Y\nEngine: 40000 HP, Diesel\n" }
+  ],
+  "driver": "int main() {\n    Car myCar(\"Sedan X\", 150, \"Petrol\");\n    myCar.displayCarDetails();\n\n    Car anotherCar(\"SUV Y\", 40000, \"Diesel\");\n    anotherCar.displayCarDetails();\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The 'horsepower' member in the 'Engine' class is declared as 'short' instead of 'int'. While the code compiles, assigning a large integer value (e.g., 40000) to a 'short' leads to an integer overflow/truncation, resulting in incorrect horsepower values being stored and displayed. This is a semantic error because the data type chosen does not correctly represent the intended range of values."
+  ]
+}

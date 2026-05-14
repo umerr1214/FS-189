@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Document` with a virtual destructor. Derive a class `PdfDocument` from `Document`. Demonstrate the importance of the virtual destructor in `Document` when deleting a `PdfDocument` object via a `Document` pointer to prevent memory leaks or undefined behavior.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "INFO: Application starting. Creating polymorphic object instance.\nDEBUG_LOG: Entering BaseDocument_Class constructor function. Initialization started.\nDEBUG_LOG: DerivedPDF_Object constructor invoked. Dynamic memory allocation for internal_data_vector_ptr completed.\nDEBUG_LOG: DerivedPDF_Object::process_document_data() invoked. PDF-specific data handling initiated.\nINFO: Initiating object destruction process through base pointer.\nDEBUG_LOG: Commencing DerivedPDF_Object destructor execution. Releasing internal_data_vector_ptr resources.\nDEBUG_LOG: Executing BaseDocument_Class destructor sequence. Essential cleanup operations commencing.\nINFO: Application termination successful. All operations completed.\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"INFO: Application starting. Creating polymorphic object instance.\\n\";\n    BaseDocument_Class* p_base_doc_pointer = new DerivedPDF_Object();\n\n    p_base_doc_pointer->process_document_data();\n\n    std::cout << \"INFO: Initiating object destruction process through base pointer.\\n\";\n    delete p_base_doc_pointer;\n    p_base_doc_pointer = nullptr;\n\n    std::cout << \"INFO: Application termination successful. All operations completed.\\n\";\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Excessive and overly verbose logging output, hindering readability and clarity.",
+    "Non-standard and inconsistent naming conventions (e.g., `BaseDocument_Class`, `DerivedPDF_Object`, `p_base_doc_pointer`).",
+    "Using a raw pointer to `std::vector` (`std::vector<int>*`) instead of `std::vector<int>` directly or a smart pointer, adding unnecessary complexity and potential for misuse.",
+    "Unnecessary nulling of pointers after `delete` in local scope, which doesn't improve safety or correctness."
+  ]
+}

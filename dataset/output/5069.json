@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that reads a student's numerical score (an integer between 0 and 100). Based on the score, assign and print a letter grade using `if-else if-else` statements: A (90-100), B (80-89), C (70-79), D (60-69), F (0-59).",
+  "test_cases": [
+    { "input": "95", "expected": "Grade: A" },
+    { "input": "85", "expected": "Grade: B" },
+    { "input": "75", "expected": "Grade: C" },
+    { "input": "65", "expected": "Grade: D" },
+    { "input": "55", "expected": "Grade: F" },
+    { "input": "100", "expected": "Grade: A" },
+    { "input": "0", "expected": "Grade: F" },
+    { "input": "59", "expected": "Grade: F" },
+    { "input": "60", "expected": "Grade: D" },
+    { "input": "89", "expected": "Grade: B" },
+    { "input": "90", "expected": "Grade: A" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <functional>\n\nvoid run_grading_logic();\n\nstd::string execute_and_capture(const std::string& input_str) {\n    std::stringstream ss_in(input_str);\n    std::stringstream ss_out;\n\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n\n    std::cin.rdbuf(ss_in.rdbuf());\n    std::cout.rdbuf(ss_out.rdbuf());\n\n    try {\n        run_grading_logic();\n    } catch (const std::exception& e) {\n        ss_out << \"Error: \" << e.what() << std::endl;\n    }\n\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    std::string output = ss_out.str();\n    size_t pos = output.find(\"Enter student's score (0-100): \");\n    if (pos != std::string::npos) {\n        output.erase(pos, std::string(\"Enter student's score (0-100): \").length());\n    }\n    size_t first = output.find_first_not_of(\" \\n\\r\\t\");\n    size_t last = output.find_last_not_of(\" \\n\\r\\t\");\n    if (std::string::npos == first || std::string::npos == last) {\n        return \"\";\n    }\n    return output.substr(first, (last - first + 1));\n}\n\nint main() {\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": []
+}

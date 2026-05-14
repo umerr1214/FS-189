@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Implement a `Circle` class with a private `radius` (double). The constructor should initialize the radius. Provide a public method `setRadius()` that only accepts positive values. Include public methods `getArea()` and `getCircumference()`.",
+  "test_cases": [
+    { "input": "Circle c(5.0);", "expected": "Compilation Error: Missing semicolon in class definition." }
+  ],
+  "driver": "A main function attempting to instantiate the Circle class, which will fail to compile due to a syntax error in the class definition.",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the 'radius' member declaration within the 'Circle' class definition."]
+}

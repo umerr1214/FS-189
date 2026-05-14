@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Overload the `==` operator for the `Point` class (from a previous question) to compare two `Point` objects. It should return `true` if both `x` and `y` coordinates are identical, `false` otherwise.",
+  "test_cases": [
+    { "input": "Point(1,2) == Point(1,2)", "expected": "true" },
+    { "input": "Point(1,2) == Point(3,4)", "expected": "false" },
+    { "input": "Point(10,20) == Point(11,20) (first call) then Point(11,20) == Point(11,20) (second call on modified object)", "expected": "false then true" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Point {\npublic:\n    int x, y;\n    Point(int _x = 0, int _y = 0) : x(_x), y(_y) {}\n\n    bool operator==(const Point& other) {\n        this->x++;\n        return this->x == other.x && this->y == other.y;\n    }\n};\n\nvoid run_test(const std::string& name, Point p1_initial, const Point& p2) {\n    Point p1_copy = p1_initial;\n    std::cout << name << \": Point(\" << p1_copy.x << \",\" << p1_copy.y << \") == Point(\" << p2.x << \",\" << p2.y << \") -> \"\n              << (p1_copy == p2 ? \"true\" : \"false\") << std::endl;\n    std::cout << \"  (p1 after comparison: Point(\" << p1_copy.x << \",\" << p1_copy.y << \"))\" << std::endl;\n}\n\nint main() {\n    run_test(\"Test 1\", Point(1, 2), Point(1, 2));\n    run_test(\"Test 2\", Point(1, 2), Point(3, 4));\n\n    Point p_test(10, 20);\n    Point p_target(11, 20);\n\n    std::cout << \"\\nTest 3 (repeated comparison with side effect):\" << std::endl;\n    std::cout << \"  Initial p_test: (\" << p_test.x << \",\" << p_test.y << \")\" << std::endl;\n    std::cout << \"  p_test == p_target (1st call): \" << (p_test == p_target ? \"true\" : \"false\") << std::endl;\n    std::cout << \"  p_test after 1st call: (\" << p_test.x << \",\" << p_test.y << \")\" << std::endl;\n    std::cout << \"  p_test == p_target (2nd call): \" << (p_test == p_target ? \"true\" : \"false\") << std::endl;\n    std::cout << \"  p_test after 2nd call: (\" << p_test.x << \",\" << p_test.y << \")\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The '==' operator has a side effect: it modifies the 'x' coordinate of the left-hand operand (`this->x++`). Comparison operators should be 'const' and not modify object state, violating the principle of least astonishment and leading to inconsistent results."]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Playlist` class that contains a dynamically allocated array of `Song` objects. The `Song` class has `title` and `artist`. `Playlist` should manage adding and removing songs (demonstrating composition with dynamic memory).",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial playlist:\nPlaylist (4 songs):\n1. \"Song A\" by Artist 1\n2. \"Song B\" by Artist 2\n3. \"Song C\" by Artist 3\n4. \"Song D\" by Artist 4\n\nAttempting to remove \"Song B\"...\nPlaylist (3 songs):\n1. \"Song A\" by Artist 1\n2. \"Song C\" by Artist 3\n3. \"Song D\" by Artist 4\n\nAttempting to remove \"Song A\"...\nPlaylist (2 songs):\n1. \"Song C\" by Artist 3\n2. \"Song D\" by Artist 4\n\nAttempting to remove \"Non Existent Song\"...\nPlaylist (2 songs):\n1. \"Song C\" by Artist 3\n2. \"Song D\" by Artist 4\n\nAdding more songs...\nPlaylist (3 songs):\n1. \"Song C\" by Artist 3\n2. \"Song D\" by Artist 4\n3. \"Song E\" by Artist 5\n"
+    }
+  ],
+  "driver": "int main() {\n    Playlist myPlaylist;\n\n    myPlaylist.addSong(Song(\"Song A\", \"Artist 1\"));\n    myPlaylist.addSong(Song(\"Song B\", \"Artist 2\"));\n    myPlaylist.addSong(Song(\"Song C\", \"Artist 3\"));\n    myPlaylist.addSong(Song(\"Song D\", \"Artist 4\"));\n\n    std::cout << \"Initial playlist:\\n\";\n    myPlaylist.displayPlaylist();\n\n    std::cout << \"\\nAttempting to remove \\\"Song B\\\"...\\n\";\n    myPlaylist.removeSong(\"Song B\");\n    myPlaylist.displayPlaylist();\n\n    std::cout << \"\\nAttempting to remove \\\"Song A\\\"...\\n\";\n    myPlaylist.removeSong(\"Song A\");\n    myPlaylist.displayPlaylist();\n\n    std::cout << \"\\nAttempting to remove \\\"Non Existent Song\\\"...\\n\";\n    myPlaylist.removeSong(\"Non Existent Song\");\n    myPlaylist.displayPlaylist();\n\n    std::cout << \"\\nAdding more songs...\\n\";\n    myPlaylist.addSong(Song(\"Song E\", \"Artist 5\"));\n    myPlaylist.displayPlaylist();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The `removeSong` method incorrectly removes the last song in the playlist by simply decrementing `count`, instead of removing the specific song identified by `title`. This leads to an incorrect playlist state and order."]
+}

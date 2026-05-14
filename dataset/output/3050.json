@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Design a `Base` class with a `protected` integer member `data`. Create a `Derived` class that inherits from `Base`. Demonstrate how the `Derived` class can directly access and modify the `data` member, and explain why `data` cannot be accessed from a non-member function.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "--- Demonstrating Readability/Efficiency Issue ---\nBaseClassForDataManagement created with initial data: 5\nDerivedClassForExtendedDataManagement created.\n\nDerivedClassForExtendedDataManagement: Initiating data update process.\nCurrent protected data value: 5\nData interim value: 6\nData interim value: 7\nData interim value: 8\nProtected data successfully updated to: 8\nFinal verified data value: 8\nA separate function to show data: 8\n\nDerivedClassForExtendedDataManagement: Initiating data update process.\nCurrent protected data value: 8\nData interim value: 7\nData interim value: 6\nData interim value: 5\nData interim value: 4\nData interim value: 3\nData interim value: 2\nProtected data successfully updated to: 2\nFinal verified data value: 2\nA separate function to show data: 2\n\nNon-member function (attemptExternalDataAccess): Trying to access 'm_protected_data_member'.\nExplanation (verbose): The member 'm_protected_data_member' is declared as protected in the BaseClassForDataManagement.\nThis means it is only accessible within the BaseClassForDataManagement itself, its friend classes/functions, and any classes that publicly or protectedly inherit from BaseClassForDataManagement.\nSince attemptExternalDataAccess is a standalone, non-member function, it does not fall into these categories.\nTherefore, direct access like 'someDerivedObject.m_protected_data_member' is strictly disallowed by the C++ access control rules.\nTo interact with this data from outside, public member functions (like getters/setters) of the DerivedClassForExtendedDataManagement would be required.\n\nRe-confirming data state after all operations.\nA separate function to show data: 2\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Demonstrating Readability/Efficiency Issue ---\" << std::endl;\n\n    DerivedClassForExtendedDataManagement mySpecificDerivedObject(5);\n    mySpecificDerivedObject.updateAndDisplayProtectedData(8);\n    mySpecificDerivedObject.showCurrentDataState();\n\n    mySpecificDerivedObject.updateAndDisplayProtectedData(2);\n    mySpecificDerivedObject.showCurrentDataState();\n\n    attemptExternalDataAccess(mySpecificDerivedObject);\n\n    std::cout << \"\\nRe-confirming data state after all operations.\" << std::endl;\n    mySpecificDerivedObject.showCurrentDataState();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Class and member names are excessively long and verbose (e.g., `BaseClassForDataManagement`, `m_protected_data_member`, `DerivedClassForExtendedDataManagement`).",
+    "The `updateAndDisplayProtectedData` method modifies `data` inefficiently by incrementing/decrementing one by one in a loop, instead of a direct assignment (`data = targetValue;`).",
+    "There are excessive and redundant `std::cout` statements, particularly within the update loop and for verifying data, which reduces readability and clutters output.",
+    "The `showCurrentDataState` method is redundant as `updateAndDisplayProtectedData` already displays the final state.",
+    "Unnecessary include of `<vector>` which is not used in the code."
+  ]
+}

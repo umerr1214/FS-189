@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `calculate_circle_properties` that takes a `double` radius as input and, using pass-by-reference parameters, updates two `double` variables with the calculated area and circumference of the circle.",
+  "test_cases": [
+    { "input": "5.0", "expected": "Radius: 5.000000, Area: 78.539816, Circumference: 31.415927" },
+    { "input": "0.0", "expected": "Radius: 0.000000, Area: 0.000000, Circumference: 0.000000" },
+    { "input": "10.0", "expected": "Radius: 10.000000, Area: 314.159265, Circumference: 62.831853" },
+    { "input": "-2.5", "expected": "Radius: -2.500000, Area: 19.634954, Circumference: -15.707963" },
+    { "input": "-1.0", "expected": "Radius: -1.000000, Area: 3.141593, Circumference: -6.283185" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include <cmath>\n\n// Function definition will be inserted here by the evaluation system\nextern void calculate_circle_properties(double radius, double& area, double& circumference);\n\nint main() {\n    std::cout << std::fixed << std::setprecision(6);\n    double radius_val;\n    while (std::cin >> radius_val) {\n        double area = 0.0, circumference = 0.0;\n        calculate_circle_properties(radius_val, area, circumference);\n        std::cout << \"Radius: \" << radius_val << \", Area: \" << area << \", Circumference: \" << circumference << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The function does not handle non-positive radius values gracefully, leading to mathematically incorrect or nonsensical results (e.g., negative circumference) without any error indication or correction."]
+}

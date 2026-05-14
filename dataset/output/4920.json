@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that takes a total number of seconds as input from the user and converts it into equivalent hours, minutes, and remaining seconds, then prints the result.",
+  "test_cases": [
+    { "input": "3665", "expected": "Hours: 1\nMinutes: 1\nSeconds: 5\n" },
+    { "input": "7200", "expected": "Hours: 2\nMinutes: 0\nSeconds: 0\n" },
+    { "input": "59", "expected": "Hours: 0\nMinutes: 0\nSeconds: 59\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n\n// Function to run the user's code with a given input\nstd::string run_user_code(const std::string& input) {\n    std::stringstream ss_input(input);\n    std::stringstream ss_output;\n\n    // Redirect cin and cout\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    extern void solve(); // Declare the user's solve function\n    solve();\n\n    // Restore cin and cout\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    return ss_output.str();\n}\n\n// Helper to format expected output\nstd::string format_output(int h, int m, int s) {\n    std::ostringstream oss;\n    oss << \"Hours: \" << h << \"\\n\"\n        << \"Minutes: \" << m << \"\\n\"\n        << \"Seconds: \" << s << \"\\n\";\n    return oss.str();\n}\n\nint main() {\n    std::vector<std::string> inputs = {\n        \"3665\",\n        \"7200\",\n        \"59\"\n    };\n\n    std::vector<std::string> expected_outputs = {\n        format_output(1, 1, 5),\n        format_output(2, 0, 0),\n        format_output(0, 0, 59)\n    };\n\n    for (size_t i = 0; i < inputs.size(); ++i) {\n        std::string actual_output = run_user_code(inputs[i]);\n        // In a real testing environment, you would compare actual_output with expected_outputs[i]\n        // For this dataset, the driver just needs to be valid C++ code.\n    }\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": []
+}

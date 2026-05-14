@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create an `Employee` class with `name` and `employeeID`. Then create a `Department` class that uses aggregation to manage a collection of `Employee` objects (e.g., using a `std::vector`). Implement methods in `Department` to add an employee and to list all employees within that department.",
+  "test_cases": [
+    {
+      "input": "N/A (input handled by main function)",
+      "expected": "--- Adding Employees ---\nAdded employee: Alice Smith (ID: 101)\nAdded employee: Bob Johnson (ID: 102)\nAdded employee: Charlie Brown (ID: 103)\nAttempting to add duplicate ID 101 for David Lee...\nAdded employee: David Lee (ID: 101)\nAdded employee: Eve Davis (ID: 104)\n\n--- Listing Employees ---\nEmployees in Human Resources:\n  ID: 101, Name: Alice Smith\n  ID: 102, Name: Bob Johnson\n  ID: 103, Name: Charlie Brown\n  ID: 101, Name: David Lee\n  ID: 104, Name: Eve Davis\n\n--- Listing Employees in Empty Sales Department ---\nEmployees in Sales:\n"
+    }
+  ],
+  "driver": "int main() {\n    Department hrDept(\"Human Resources\");\n\n    std::cout << \"--- Adding Employees ---\" << std::endl;\n    hrDept.addEmployee(Employee(\"Alice Smith\", 101));\n    hrDept.addEmployee(Employee(\"Bob Johnson\", 102));\n    hrDept.addEmployee(Employee(\"Charlie Brown\", 103));\n    std::cout << \"Attempting to add duplicate ID 101 for David Lee...\" << std::endl;\n    hrDept.addEmployee(Employee(\"David Lee\", 101)); \n    hrDept.addEmployee(Employee(\"Eve Davis\", 104));\n    std::cout << std::endl;\n\n    std::cout << \"--- Listing Employees ---\" << std::endl;\n    hrDept.listAllEmployees();\n    std::cout << std::endl;\n\n    Department salesDept(\"Sales\");\n    std::cout << \"--- Listing Employees in Empty Sales Department ---\" << std::endl;\n    salesDept.listAllEmployees();\n    \n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `addEmployee` method does not check for duplicate `employeeID`s, leading to multiple employees with the same ID being added, which might violate business logic or lead to inconsistencies.",
+    "The `listAllEmployees` method for an empty department simply prints the header 'Employees in [Department Name]:' and then nothing, which is not a crash but could be improved with an explicit 'No employees found' message for better user experience/robustness."
+  ]
+}

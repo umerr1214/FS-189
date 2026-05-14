@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private attributes for `title`, `author`, and `isbn` (International Standard Book Number). Implement a parameterized constructor to initialize these attributes and a public method `displayDetails()` that prints all book information. Ensure data encapsulation.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "Book Details:\nTitle: The Hitchhiker's Guide to the Galaxy\nAuthor: Douglas Adams\nISBN: 978-0345391803\n---\nBook Details:\nTitle: 1984\nAuthor: George Orwell\nISBN: 978-0451524935\n---\nBook Details:\nTitle: \nAuthor: \nISBN: \n---\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// Assuming the Book class is defined above in the user's code\n\nint main() {\n    Book book1(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\");\n    book1.displayDetails();\n    std::cout << \"---\" << std::endl;\n\n    Book book2(\"1984\", \"George Orwell\", \"978-0451524935\");\n    book2.displayDetails();\n    std::cout << \"---\" << std::endl;\n\n    // Demonstrating the robustness issue: creating a book with empty details\n    Book book3(\"\", \"\", \"\");\n    book3.displayDetails();\n    std::cout << \"---\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The constructor allows empty strings for essential attributes (title, author, isbn) without providing default values or indicating an invalid state, which can lead to uninformative output when `displayDetails` is called.",
+    "The `displayDetails` method is not marked `const`, meaning it could theoretically modify the object's state, which is not appropriate for a method that only displays information."
+  ]
+}

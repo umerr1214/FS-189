@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Ask the user to enter their full name (which may include spaces). Read the entire line into an `std::string`. Then, print the full name back to the user and also display the total number of characters in the name.",
+  "test_cases": [
+    {
+      "input": "John Doe",
+      "expected": "Full Name: John Doe\nNumber of characters: 8\n"
+    },
+    {
+      "input": "Alice Wonderland",
+      "expected": "Full Name: Alice Wonderland\nNumber of characters: 16\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <streambuf>\n\n// The user's solve function will be extern here.\nvoid solve();\n\nstd::string run_and_capture(const std::string& input_str) {\n    std::stringstream ss_input(input_str);\n    std::stringstream ss_output;\n\n    std::streambuf* old_cin_buf = std::cin.rdbuf();\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    solve(); // Call the user's solution\n\n    std::cin.rdbuf(old_cin_buf);\n    std::cout.rdbuf(old_cout_buf);\n\n    return ss_output.str();\n}\n\nint main() {\n    // This driver is for demonstration. Actual compilation of 4132.cpp will fail due to syntax error.\n    // No direct test execution possible for syntax error without fixing it.\n    // The purpose is to demonstrate the error, not run tests.\n    std::cout << \"This driver would normally run test cases, but the provided C++ file contains a Syntax Error and cannot be compiled or executed.\\n\";\n    std::cout << \"Please fix the syntax error to run the tests.\\n\";\n    return 0;\n}\n",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the first `std::cout` statement printing the full name. This prevents the program from compiling."
+  ]
+}

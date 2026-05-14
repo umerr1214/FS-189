@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that uses nested `for` loops to print the following pattern of asterisks to the console, for a user-specified number of rows 'N':\n*\n**\n***\n****\n(For N=4)",
+  "test_cases": [
+    { "input": "4", "expected": "*\n**\n***\n****\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\n// This is a placeholder driver. In a real system, it would compile and run\n// the submitted C++ code with various inputs and capture outputs.\nint main() {\n    std::cout << \"This driver attempts to compile and run the user's code.\" << std::endl;\n    std::cout << \"For a syntax error, compilation is expected to fail.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the std::cin statement."]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Base` class with a `protected` integer member `data`. Create a `Derived` class that inherits from `Base`. Demonstrate how the `Derived` class can directly access and modify the `data` member, and explain why `data` cannot be accessed from a non-member function.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "--- Demonstrating Protected Member Access ---\nBase object created with data: 10\nDerived object created.\nDerived class method: 'displayDataFromDerived()'\nData value from Derived: 10\n\nDerived class method: 'accessAndModifyData(int newValue)'\nCurrent 'data' value (from Derived): 10\nModified 'data' value (from Derived): 25\nDerived class method: 'displayDataFromDerived()'\nData value from Derived: 25\n\nNon-member function: 'attemptNonMemberAccess(Derived& obj)'\nAttempting to access 'obj.data' directly...\nExplanation: 'data' is a protected member of the Base class.\nProtected members are accessible by member functions and friend functions/classes of Base, \nand by member functions and friend functions/classes of classes derived from Base (like Derived).\nHowever, 'attemptNonMemberAccess' is a standalone, non-member function. It is neither a member nor a friend of Base or Derived.\nTherefore, it cannot directly access 'obj.data'. It would need to use a public interface (like a getter/setter) provided by the Derived class (or Base, if it had one).\nFor example, to get the data, it would need: obj.getData() (if Derived provided one, or Base if it was public).\n\nNon-member function can access via public interface (if available):\nValue retrieved via public getter: 25\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Demonstrating Protected Member Access ---\" << std::endl;\n\n    Derived myDerivedObject(10);\n    myDerivedObject.displayDataFromDerived();\n\n    myDerivedObject.accessAndModifyData(25);\n    myDerivedObject.displayDataFromDerived();\n\n    attemptNonMemberAccess(myDerivedObject);\n\n    std::cout << \"\\nNon-member function can access via public interface (if available):\" << std::endl;\n    std::cout << \"Value retrieved via public getter: \" << myDerivedObject.getData() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

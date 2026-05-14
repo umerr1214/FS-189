@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `copyCString` that takes two C-style character arrays (pointers to char), `source` and `destination`, and copies the content of `source` to `destination`. Assume `destination` has sufficient capacity. Do not use `std::string` or library functions like `strcpy`. Demonstrate with example strings.",
+  "test_cases": [
+    { "input": "source1 = \"Hello, World!\"", "expected": "Destination 1 (unterminated): \"Hello, World!\" (followed by garbage characters until a null byte is found, or a crash)" },
+    { "input": "source2 = \"Short\"", "expected": "Destination 2 (unterminated): \"Short\" (followed by garbage characters until a null byte is found, or a crash)" },
+    { "input": "source3 = \"\"", "expected": "Destination 3 (unterminated): \"\" (may be empty if destination[0] is coincidentally null, otherwise undefined behavior)" }
+  ],
+  "driver": "The `main` function calls `copyCString` with various inputs and prints the results. Due to the semantic error, the output for `destination` strings will be undefined behavior (e.g., printing extra characters, memory access violations, or crashes).",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `copyCString` function fails to null-terminate the `destination` string. After copying all characters from `source` up to its null terminator, it does not place a null terminator (`'\\0'`) at the end of the `destination` buffer. This violates the semantic contract of C-strings, leading to undefined behavior when the string is subsequently accessed by functions expecting null-termination (e.g., `printf` with `%s`). This can manifest as printing garbage characters, memory access violations, or program crashes."
+  ]
+}

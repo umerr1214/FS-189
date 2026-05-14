@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a base class `Payment` with a pure virtual method `processPayment(double amount)`. Derive `CreditCardPayment` and `PayPalPayment` classes, each implementing `processPayment` differently (e.g., printing specific messages).",
+  "test_cases": [
+    { "input": "100.50", "expected": "Processing Credit Card payment of $100.50\n" },
+    { "input": "75.25", "expected": "Processing PayPal payment of $75.25\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// The user's code will be inserted here.\n\nint main() {\n    CreditCardPayment ccPayment;\n    ccPayment.processPayment(100.50);\n\n    PayPalPayment ppPayment;\n    ppPayment.processPayment(75.25);\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition for 'Payment'."
+  ]
+}

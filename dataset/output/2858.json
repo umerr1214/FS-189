@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a `Vehicle` base class with a virtual `void startEngine()` method. Derive `Car` and `Motorcycle` classes, each providing its own implementation for `startEngine()`. Demonstrate polymorphic behavior by calling `startEngine()` using `Vehicle` pointers.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "This program demonstrates polymorphic engine starting using C++ classes, but with overly verbose output and traditional pointer management.\n\nA new Vehicle object is being constructed right now.\nSpecifically, a Car object is being constructed, which is a type of Vehicle.\nA new Vehicle object is being constructed right now.\nAnd here, a Motorcycle object is being created, also a specific kind of Vehicle.\n\nNow, we shall proceed to call the startEngine() method on each vehicle using their base class pointers:\nThe Car's powerful engine is igniting with a mighty rumble! It's quite loud and impressive.\nThe Motorcycle's engine is sputtering to life, preparing for an exhilarating ride! Hear that distinctive sound?\n\nAll vehicles have attempted to start their engines. Now, for proper resource management, we must delete the dynamically allocated objects.\nThe general Vehicle object is now being destructed.\nThe Car object has finished its lifecycle and is now being destructed.\nThe general Vehicle object is now being destructed.\nThe Motorcycle object is now being disposed of, concluding its operational phase.\n\nThe program has successfully completed its task and cleaned up all resources. End of demonstration.\n"
+    }
+  ],
+  "driver": "",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Overly verbose `std::cout` messages make the output cluttered and harder to parse, reducing readability.",
+    "Using raw pointers (`new`/`delete`) instead of modern C++ smart pointers (`std::unique_ptr`, `std::shared_ptr`) increases the risk of memory leaks and makes resource management less robust and less readable. While correctly managed here, it's not the most efficient or idiomatic C++ approach for safety.",
+    "The `override` keyword is missing for derived `startEngine()` methods, which is a minor readability and safety issue as it doesn't explicitly state the intent to override and prevents compile-time checks for correct overriding."
+  ]
+}

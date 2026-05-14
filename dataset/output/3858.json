@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that allows the user to enter a series of non-zero integers. The program should stop taking input when the user enters 0 (sentinel value). After stopping, it should calculate and display the product of all entered non-zero numbers.",
+  "test_cases": [
+    { "input": "2\n3\n4\n0\n", "expected": "Enter a series of non-zero integers (enter 0 to stop):\nEnter number: Enter number: Enter number: Enter number: Product of non-zero numbers: 24\n" },
+    { "input": "50000\n50000\n0\n", "expected": "Enter a series of non-zero integers (enter 0 to stop):\nEnter number: Enter number: Enter number: Product of non-zero numbers: -1794967296\n" },
+    { "input": "100000\n100000\n0\n", "expected": "Enter a series of non-zero integers (enter 0 to stop):\nEnter number: Enter number: Enter number: Product of non-zero numbers: 1410065408\n" }
+  ],
+  "driver": "int main() {\n    long long product = 1;\n    int num;\n    std::cout << \"Enter a series of non-zero integers (enter 0 to stop):\\n\";\n    while (true) {\n        std::cout << \"Enter number: \";\n        std::cin >> num;\n        if (num == 0) {\n            break;\n        }\n        product *= num;\n    }\n    std::cout << \"Product of non-zero numbers: \" << product << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    {
+      "line": 6,
+      "column": 9,
+      "message": "The 'product' variable is declared as 'int'. For sufficiently large inputs, the product can exceed the maximum value an 'int' can hold (INT_MAX), leading to signed integer overflow, which is undefined behavior in C++. It should be 'long long' to accommodate a larger range of values."
+    }
+  ]
+}

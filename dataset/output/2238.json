@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a `Shape` base class with a `color` (string) attribute. Create a `Circle` derived class that adds a `radius` (double). Implement a constructor for `Circle` that initializes both `color` and `radius` by calling the base class constructor.",
+  "test_cases": [
+    {
+      "input": "Green, 7.5",
+      "expected": "Compilation Error: No matching constructor for base class 'Shape' found when constructing 'Circle'."
+    }
+  ],
+  "driver": "int main() {\n    Circle c(\"Green\", 7.5);\n    c.display();\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The 'Circle' constructor does not explicitly call a base class constructor in its initializer list. Since 'Shape' only has a parameterized constructor and no default constructor, this results in a semantic error (a compilation error) as the compiler cannot find a suitable default constructor for 'Shape' to implicitly call."
+  ]
+}

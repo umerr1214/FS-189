@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `int incrementPointerValue(int* ptr)` that takes an integer pointer, increments the value it points to by 5, and then returns the new value. Demonstrate its usage in `main`.",
+  "test_cases": [
+    { "input": "int myValue = 20; incrementPointerValue(&myValue);", "expected": "Original value: 20\nValue after increment: 25\nReturned new value: 25" },
+    { "input": "int anotherValue = -3; incrementPointerValue(&anotherValue);", "expected": "Original value: -3\nValue after increment: 2\nReturned new value: 2" }
+  ],
+  "driver": "#include <iostream>\n\n// The function to be tested\nint incrementPointerValue(int* ptr) {\n    int oldValue = *ptr;\n    *ptr = oldValue + 5;\n    return oldValue + 5;\n}\n\nint main() {\n    std::cout << \"Running test cases for Readability / Efficiency Issue...\\n\";\n\n    int myValue = 20;\n    std::cout << \"Original value: \" << myValue << std::endl;\n    int newValue = incrementPointerValue(&myValue);\n    std::cout << \"Value after increment: \" << myValue << std::endl;\n    std::cout << \"Returned new value: \" << newValue << std::endl;\n\n    std::cout << \"\\n\";\n\n    int anotherValue = -3;\n    std::cout << \"Original value: \" << anotherValue << std::endl;\n    newValue = incrementPointerValue(&anotherValue);\n    std::cout << \"Value after increment: \" << anotherValue << std::endl;\n    std::cout << \"Returned new value: \" << newValue << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The function uses an unnecessary temporary variable `oldValue` to store the dereferenced pointer's value before incrementing. The value could be incremented directly using `*ptr += 5;`. Additionally, `return oldValue + 5;` is functionally correct but less direct than simply `return *ptr;` after the increment, as `*ptr` already holds the new value. This introduces minor redundancy and reduces conciseness/readability."
+  ]
+}

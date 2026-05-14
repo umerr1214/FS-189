@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Ask the user to enter their full name (which may include spaces). Read the entire line into an `std::string`. Then, print the full name back to the user and also display the total number of characters in the name.",
+  "test_cases": [
+    { "input": "John Doe", "expected": "Please enter your full name: Your full name is: John Doe\nTotal characters: 8\n" },
+    { "input": "Alice Wonderland", "expected": "Please enter your full name: Your full name is: Alice Wonderland\nTotal characters: 16\n" },
+    { "input": "SingleWord", "expected": "Please enter your full name: Your full name is: SingleWord\nTotal characters: 10\n" },
+    { "input": " A Name With Leading Space", "expected": "Please enter your full name: Your full name is:  A Name With Leading Space\nTotal characters: 24\n" },
+    { "input": "", "expected": "Please enter your full name: Your full name is: \nTotal characters: 0\n" }
+  ],
+  "driver": "#include <iostream>\n#include <fstream>\n#include <string>\n#include <vector>\n#include <cstdio> // For remove()\n\n// This function simulates running the student's compiled program.\n// It assumes the student's code has been compiled into an executable named 'solution'.\nstd::string run_student_code(const std::string& input_str) {\n    const std::string input_filename = \"temp_input.txt\";\n    const std::string output_filename = \"temp_output.txt\";\n\n    // Write the input string to a temporary file\n    std::ofstream input_file(input_filename);\n    if (!input_file.is_open()) {\n        return \"ERROR: Could not create input file.\\n\";\n    }\n    input_file << input_str;\n    input_file.close();\n\n    // Execute the student's program, redirecting stdin from temp_input.txt\n    // and stdout to temp_output.txt\n    std::string command = \"./solution < \" + input_filename + \" > \" + output_filename;\n    int system_result = system(command.c_str());\n\n    // Read the output from the temporary output file\n    std::ifstream output_file(output_filename);\n    if (!output_file.is_open()) {\n        return \"ERROR: Could not open output file.\\n\";\n    }\n    std::string program_output;\n    std::string line;\n    while (std::getline(output_file, line)) {\n        program_output += line + \"\\n\";\n    }\n    output_file.close();\n\n    // Clean up temporary files\n    std::remove(input_filename.c_str());\n    std::remove(output_filename.c_str());\n    \n    // Check if the program execution itself failed (e.g., crash)\n    if (system_result != 0) {\n        return \"ERROR: Program exited with non-zero status. Output:\\n\" + program_output;\n    }\n\n    return program_output;\n}\n\nint main() {\n    // This main function would typically iterate through test cases\n    // and call run_student_code for each.\n    // The actual test cases are defined in the JSON structure.\n    // This driver code is just the utility function for execution.\n    // The external testing framework would use this `run_student_code` function.\n    std::cout << \"Driver ready to run student code.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program lacks error handling for the input stream. If `std::cin` is in a failed state (e.g., due to EOF), `std::getline` will fail silently, leading to an empty string being processed without user notification."
+  ]
+}

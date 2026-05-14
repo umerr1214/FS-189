@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Shape` with a public method `calculateArea()` that returns 0. Derive `Rectangle` and `Circle` classes, overriding `calculateArea()` to return their specific areas.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Rectangle (5x10) Area: 50.00\nCircle (radius 3) Area: 28.27\nRectangle (2.5x4) Area: 10.00\nCircle (radius 1.5) Area: 7.07\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <iomanip>\n\n#define MY_PI_VALUE 3.14159\n\nclass Shape {\npublic:\n    virtual double calculateArea() {\n        return 0;\n    }\n    virtual ~Shape() {}\n};\n\nclass Rectangle : public Shape {\nprivate:\n    double m_rect_width_val;\n    double m_rect_height_val;\n\npublic:\n    Rectangle(double w, double h) {\n        m_rect_width_val = w;\n        m_rect_height_val = h;\n    }\n\n    double calculateArea() {\n        double temp_w_storage = m_rect_width_val;\n        double temp_h_storage = m_rect_height_val;\n        double calculated_product = temp_w_storage * temp_h_storage;\n        return calculated_product;\n    }\n};\n\nclass Circle : public Shape {\nprivate:\n    double m_circle_radius_val;\n\npublic:\n    Circle(double r) {\n        m_circle_radius_val = r;\n    }\n\n    double calculateArea() {\n        double current_radius = m_circle_radius_val;\n        double radius_multiplied_by_itself = current_radius * current_radius;\n        return MY_PI_VALUE * radius_multiplied_by_itself;\n    }\n};\n\nint main() {\n    std::stringstream ss;\n    ss << std::fixed << std::setprecision(2);\n\n    Shape* rect1 = new Rectangle(5, 10);\n    Shape* circ1 = new Circle(3);\n    Shape* rect2 = new Rectangle(2.5, 4);\n    Shape* circ2 = new Circle(1.5);\n\n    ss << \"Rectangle (5x10) Area: \" << rect1->calculateArea() << std::endl;\n    ss << \"Circle (radius 3) Area: \" << circ1->calculateArea() << std::endl;\n    ss << \"Rectangle (2.5x4) Area: \" << rect2->calculateArea() << std::endl;\n    ss << \"Circle (radius 1.5) Area: \" << circ2->calculateArea() << std::endl;\n\n    delete rect1;\n    delete circ1;\n    delete rect2;\n    delete circ2;\n\n    std::cout << ss.str();\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The Shape::calculateArea() and derived methods are not marked `const` even though they do not modify the object's state.",
+    "Member variables in derived classes (`m_rect_width_val`, `m_rect_height_val`, `m_circle_radius_val`) have verbose and inconsistent naming conventions.",
+    "Constructors for `Rectangle` and `Circle` do not use initializer lists, which can be less efficient for complex members and less readable.",
+    "The `calculateArea()` methods in `Rectangle` and `Circle` use unnecessary temporary variables and intermediate steps, reducing readability and potentially efficiency.",
+    "The `MY_PI_VALUE` constant is defined using a preprocessor macro (`#define`) instead of a `const double` or `static const double`, which can lead to scope and type safety issues.",
+    "The `override` keyword is not used for derived class methods, which is good practice for clarity and compile-time error checking in modern C++."
+  ]
+}

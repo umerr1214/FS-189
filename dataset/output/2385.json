@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Implement a `Student` class with private members `studentID`, `name`, and `major`. Provide a constructor to set these values and public `getStudentID()`, `getName()`, `getMajor()` methods, but no direct setters for `studentID` or `name`.",
+  "test_cases": [
+    { "input": "No direct input, uses hardcoded values.", "expected": "Student 1 Details:\nID: 301\nName: Eva Green\nMajor: Biology\n\nStudent 2 Details:\nID: 302\nName: Frank White\nMajor: Chemistry\n\nStudent 3 Details:\nID: 303\nName: Grace Black\nMajor: Mathematics\n" }
+  ],
+  "driver": "See main() function in the C++ file. It creates three `Student` objects with different details and then prints their information using the public getter methods.",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a program that prompts the user for a non-negative integer and uses a `while` loop to count the number of digits in that integer.",
+  "test_cases": [
+    { "input": "123", "expected": "The number of digits is: 3\n" },
+    { "input": "0", "expected": "The number of digits is: 1\n" },
+    { "input": "-5", "expected": "The number of digits is: 0\n" },
+    { "input": "abc", "expected": "The number of digits is: 0\n" }
+  ],
+  "driver": "int main() { long long number; std::cin >> number; int digitCount = 0; if (number == 0) { digitCount = 1; } else { while (number > 0) { number /= 10; digitCount++; } } std::cout << \"The number of digits is: \" << digitCount << std::endl; return 0; }",
+  "code_quality": 7,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not handle non-numeric input gracefully. If `std::cin` fails (e.g., due to 'abc'), the `number` variable retains its indeterminate value (as it's uninitialized), leading to undefined behavior or incorrect output. The error state of `std::cin` is not cleared.",
+    "The program does not explicitly validate for non-negative input. If a negative number is entered (e.g., -5), the `while (number > 0)` loop will not execute, incorrectly reporting 0 digits. While the question specifies 'non-negative', a robust program would handle or inform the user about invalid input."
+  ]
+}

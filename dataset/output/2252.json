@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Create a `Calculator` class. Implement three overloaded `add` member functions: one that takes two integers, one that takes two doubles, and one that takes three integers.",
+  "test_cases": [
+    { "input": "calculatorInstance.add(5, 3)", "expected": "8" },
+    { "input": "calculatorInstance.add(-10, 7)", "expected": "-3" },
+    { "input": "calculatorInstance.add(0, 0)", "expected": "0" },
+    { "input": "calculatorInstance.add(5.5, 3.2)", "expected": "8.7" },
+    { "input": "calculatorInstance.add(-10.1, 7.5)", "expected": "-2.6" },
+    { "input": "calculatorInstance.add(0.0, 0.0)", "expected": "0.0" },
+    { "input": "calculatorInstance.add(1, 2, 3)", "expected": "6" },
+    { "input": "calculatorInstance.add(-1, -2, -3)", "expected": "-6" },
+    { "input": "calculatorInstance.add(10, -5, 2)", "expected": "7" }
+  ],
+  "driver": "#include <iostream>\n\nclass Calculator {\npublic:\n    int add(int firstNum, int secondNum) {\n        int sumOfTwo = firstNum + secondNum;\n        return sumOfTwo;\n    }\n    double add(double val1, double val2) {\n        return val1 + val2;\n    }\n    int add(int valA, int valB, int valC) {\n        int tempSum = add(valA, valB);\n        return add(tempSum, valC);\n    }\n};\n\nint main() {\n    Calculator calculatorInstance;\n    std::cout << calculatorInstance.add(5, 3) << std::endl;\n    std::cout << calculatorInstance.add(-10, 7) << std::endl;\n    std::cout << calculatorInstance.add(0, 0) << std::endl;\n    std::cout << calculatorInstance.add(5.5, 3.2) << std::endl;\n    std::cout << calculatorInstance.add(-10.1, 7.5) << std::endl;\n    std::cout << calculatorInstance.add(0.0, 0.0) << std::endl;\n    std::cout << calculatorInstance.add(1, 2, 3) << std::endl;\n    std::cout << calculatorInstance.add(-1, -2, -3) << std::endl;\n    std::cout << calculatorInstance.add(10, -5, 2) << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `add(int, int, int)` function is implemented inefficiently by calling `add(int, int)` twice. A direct sum (`return valA + valB + valC;`) would be more efficient and simpler to read.",
+    "The `add(int, int)` function uses an unnecessary intermediate variable (`sumOfTwo`) which slightly impacts readability and verbosity without providing any benefit."
+  ]
+}

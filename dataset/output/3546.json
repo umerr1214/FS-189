@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that takes a `std::string` as input from the user and checks if it is a palindrome (reads the same forwards and backwards, ignoring case and spaces is NOT required for this problem, exact match). Print 'Palindrome' or 'Not a palindrome'.",
+  "test_cases": [
+    { "input": "level", "expected": "Palindrome\n" },
+    { "input": "hello", "expected": "Not a palindrome\n" },
+    { "input": "Aba", "expected": "Not a palindrome\n" },
+    { "input": "race car", "expected": "Palindrome\n" },
+    { "input": "", "expected": "Palindrome\n" },
+    { "input": "aa", "expected": "Palindrome\n" },
+    { "input": "ab", "expected": "Not a palindrome\n" }
+  ],
+  "driver": "g++ -std=c++17 -O2 -Wall -Wextra -pedantic -o solution 3546.cpp && ./solution",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The program contains a semantic error by attempting to access `input_str[length - i]` instead of `input_str[length - 1 - i]`. This results in an out-of-bounds access when `i` is 0 (accessing `input_str[length]`), leading to undefined behavior. While it might compile and run, the results can be unpredictable or incorrect, especially with certain inputs or compiler optimizations."
+  ]
+}

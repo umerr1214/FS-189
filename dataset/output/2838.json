@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Develop a `BankAccount` class. It must have private data members for `accountNumber` (string) and `balance` (double). Provide public methods `deposit(double amount)`, `withdraw(double amount)`, and `getBalance()` to manage and access the balance safely.",
+  "test_cases": [
+    {
+      "input": "Create account '123456789' with 1000.0, deposit 200.0, withdraw 50.0",
+      "expected": "Account 123456789 balance: 9\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// BankAccount class definition would go here (with the error)\n\nint main() {\n    BankAccount myAccount(\"123456789\", 1000.0);\n    myAccount.deposit(200.0);\n    myAccount.withdraw(50.0);\n    std::cout << \"Account \" << myAccount.getAccountNumber() << \" balance: \" << myAccount.getBalance() << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": []
+}

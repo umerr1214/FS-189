@@ -1,0 +1,31 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that acts as a simple calculator. It should take two numbers (doubles) and an operator (+, -, *, /) as input from the user, then perform the operation using a `switch` statement and display the result. Handle division by zero.",
+  "test_cases": [
+    { "input": "abc\n+\n5\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Error: Invalid numeric input detected.\n" },
+    { "input": "10\n+\ndef\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Error: Invalid numeric input detected.\n" },
+    { "input": "10\n+\n5\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 15\n" },
+    { "input": "10\n%\n5\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Error: Invalid operator.\n" }
+  ],
+  "driver": "std::string input_str = R\"RAW(abc\n+\n5\n)RAW\"; std::istringstream iss(input_str); std::cin.rdbuf(iss.rdbuf());",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    {
+      "line": 10,
+      "column": 5,
+      "message": "Input stream state not checked immediately after reading 'num1'. If input fails, 'num1' might be uninitialized or 0, and subsequent reads might fail or produce incorrect results without proper error handling and stream clearing."
+    },
+    {
+      "line": 19,
+      "column": 5,
+      "message": "Input stream state not checked immediately after reading 'num2'. If input fails, 'num2' might be uninitialized or 0, and subsequent logic will operate on incorrect data."
+    },
+    {
+      "line": 24,
+      "column": 9,
+      "message": "Checking `std::cin.fail()` here is too late; the stream might already be in a fail state from previous reads ('num1', 'op', 'num2'), leading to potentially incorrect values being used in the switch statement before this check."
+    }
+  ]
+}

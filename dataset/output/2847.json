@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Shape` with a `virtual double calculateArea() = 0;` pure virtual function. Derive a `Rectangle` class from `Shape`, adding `length` and `width` attributes, and implement the `calculateArea()` method for a rectangle.",
+  "test_cases": [
+    { "input": "5.0 10.0", "expected": "50.00" },
+    { "input": "2.5 4.0", "expected": "10.00" },
+    { "input": "0.0 7.0", "expected": "0.00" },
+    { "input": "-3.0 5.0", "expected": "0.00" },
+    { "input": "3.0 -5.0", "expected": "0.00" },
+    { "input": "-3.0 -5.0", "expected": "0.00" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include <algorithm>\n\n// ... (Shape and Rectangle classes code) ...\n\nint main() {\n    double l, w;\n    while (std::cin >> l >> w) {\n        Rectangle rect(l, w);\n        std::cout << std::fixed << std::setprecision(2) << rect.calculateArea() << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

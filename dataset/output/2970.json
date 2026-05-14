@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private members for `title` (string), `author` (string), and `isbn` (string). Implement a public parameterized constructor to initialize these members and a public method `displayBookInfo()` to print all book details.",
+  "test_cases": [
+    { "input": "The Lord of the Rings,J.R.R. Tolkien,978-0618053267", "expected": "Title: The Lord of the Rings\nAuthor: J.R.R. Tolkien\nISBN: 978-0618053267\n" }
+  ],
+  "driver": "Book myBook(\"The Lord of the Rings\", \"J.R.R. Tolkien\", \"978-0618053267\");\nmyBook.displayBookInfo();",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The `displayBookInfo()` method is not declared `const`, even though it does not modify the object's state. This is a semantic oversight in C++ class design, as it limits the method's use with const objects and doesn't clearly convey its intent."]
+}

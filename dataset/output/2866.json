@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Design a `Complex` number class (with private `real` and `imaginary` double parts). Overload the binary `+` operator to enable addition of two `Complex` objects, returning a new `Complex` object.",
+  "test_cases": [
+    { "input": "", "expected": "c1 = 3 + 4i\nc2 = 1 + 2i\nc1 + c2 = 4 + 6i\n" }
+  ],
+  "driver": "Complex c1(3.0, 4.0);\nComplex c2(1.0, 2.0);\nComplex c3 = c1 + c2;\nstd::cout << \"c1 = \"; c1.print(); std::cout << std::endl;\nstd::cout << \"c2 = \"; c2.print(); std::cout << std::endl;\nstd::cout << \"c1 + c2 = \"; c3.print(); std::cout << std::endl;",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition 'Complex'.",
+    "Missing semicolon after 'std::endl' in main function.",
+    "Typo: 'retun' instead of 'return' keyword."
+  ]
+}

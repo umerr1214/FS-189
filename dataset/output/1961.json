@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Explain the purpose and usage of `public`, `private`, and `protected` access specifiers using a simple example with a base class `MyClass` and a derived class `DerivedClass`.",
+  "test_cases": [
+    { "input": "", "expected": "--- Access from main() ---\nmain(): Can access MyClass::public_var = 10\nMyClass::showPublic(): public_var = 10\n\n--- Access from DerivedClass ---\nDerivedClass::accessBaseMembers(): Can access MyClass::public_var = 10\nDerivedClass::accessBaseMembers(): Can access MyClass::protected_var = 30\nDerivedClass::accessBaseMembers(): Private members like private_var are also accessible through special methods (Logically flawed statement here).\n\nPurpose of access specifiers:\nPublic: Accessible from anywhere.\nPrivate: Accessible only from within the class itself.\nProtected: Accessible from within the class itself and from derived classes.\n" }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The program's output contains a logically incorrect statement in `DerivedClass::accessBaseMembers()` method, claiming that private members are accessible through special methods from derived classes. This misrepresents the fundamental rule that private members are strictly only accessible within their own class, not even by derived classes."
+  ]
+}

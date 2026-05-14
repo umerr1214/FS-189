@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a function `void increment_by_ten(int& value)` that takes an integer by reference and increments its value by 10. Demonstrate its usage by calling it with a variable and printing the variable's value before and after the call.",
+  "test_cases": [
+    {
+      "input": "my_value = 5",
+      "expected": "Before: 5\nAfter: 15\n"
+    }
+  ],
+  "driver": "#include <iostream>\n\nvoid increment_by_ten(int& value);\n\nint main() {\n    int my_value = 5;\n    std::cout << \"Before: \" << my_value << std::endl;\n    increment_by_ten(my_value);\n    std::cout << \"After: \" << my_value << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'std::endl' in main function, leading to a compilation error."
+  ]
+}

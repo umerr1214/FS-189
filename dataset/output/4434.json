@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Implement a recursive function `calculatePower` that takes a base (integer) and an exponent (non-negative integer) and returns the result of base raised to the power of exponent.",
+  "test_cases": [
+    { "input": "2, 3", "expected": "8" },
+    { "input": "5, 0", "expected": "1" },
+    { "input": "0, 5", "expected": "0" },
+    { "input": "3, 1", "expected": "3" },
+    { "input": "-2, 3", "expected": "-8" },
+    { "input": "-2, 2", "expected": "4" },
+    { "input": "7, 10", "expected": "282475249" },
+    { "input": "7, 12", "expected": "13841287201" },
+    { "input": "2, 31", "expected": "2147483648" }
+  ],
+  "driver": "#include <iostream>\n#include <limits>\n\nint calculatePower(int base, int exponent) {\n    if (exponent == 0) return 1;\n    if (base == 0) return 0;\n    return base * calculatePower(base, exponent - 1);\n}\n\nint main() {\n    std::cout << \"INT_MAX: \" << std::numeric_limits<int>::max() << std::endl;\n    std::cout << \"2^3 = \" << calculatePower(2, 3) << std::endl;\n    std::cout << \"5^0 = \" << calculatePower(5, 0) << std::endl;\n    std::cout << \"0^5 = \" << calculatePower(0, 5) << std::endl;\n    std::cout << \"3^1 = \" << calculatePower(3, 1) << std::endl;\n    std::cout << \"-2^3 = \" << calculatePower(-2, 3) << std::endl;\n    std::cout << \"-2^2 = \" << calculatePower(-2, 2) << std::endl;\n    std::cout << \"7^10 = \" << calculatePower(7, 10) << std::endl;\n    std::cout << \"7^12 = \" << calculatePower(7, 12) << std::endl;\n    std::cout << \"2^31 = \" << calculatePower(2, 31) << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The function `calculatePower` returns `int`, which can lead to integer overflow (undefined behavior) for large results (e.g., `7^12` or `2^31`) that exceed `std::numeric_limits<int>::max()`. A `long long` return type should be used to correctly handle such large values."]
+}

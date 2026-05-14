@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Given two 3x3 matrices, `A` and `B`, read their elements from the user, compute their sum, and store the result in a third matrix `C`. Print all three matrices in a clear format.",
+  "test_cases": [
+    {
+      "input": "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18",
+      "expected": "Input A:\nInput B:\n\nA:\n1 2 3 4 5 6 7 8 9 \n\nB:\n10 11 12 13 14 15 16 17 18 \n\nC:\n11 13 15 17 19 21 23 25 27 \n"
+    }
+  ],
+  "driver": "g++ -o solution solution.cpp && ./solution < input.txt",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Poor variable naming (e.g., 'a', 'b', 'c', 'i', 'j') significantly reduces code clarity.",
+    "Lack of clear formatting for matrix output makes it very difficult to read and interpret the matrices.",
+    "Magic number '3' is used directly throughout the code instead of a named constant, making it harder to modify or understand the matrix dimensions."
+  ]
+}

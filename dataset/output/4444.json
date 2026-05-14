@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a function `countWords` that takes an `std::string` sentence as input and returns the number of words in it (assuming words are separated by single spaces).",
+  "test_cases": [
+    { "input": "Hello world", "expected": "2" },
+    { "input": "One two three four", "expected": "4" },
+    { "input": "", "expected": "0" },
+    { "input": "   leading and trailing   ", "expected": "3" },
+    { "input": "single", "expected": "1" },
+    { "input": "  multiple   spaces  ", "expected": "2" },
+    { "input": "   ", "expected": "0" },
+    { "input": " Hello", "expected": "1" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <utility>\n\n// The countWords function definition will be inserted here by the evaluation system.\n\nint main() {\n    std::vector<std::pair<std::string, int>> testCases = {\n        {\"Hello world\", 2},\n        {\"One two three four\", 4},\n        {\"\", 0},\n        {\"   leading and trailing   \", 3},\n        {\"single\", 1},\n        {\"  multiple   spaces  \", 2},\n        {\"   \", 0},\n        {\" Hello\", 1}\n    };\n\n    for (const auto& tc : testCases) {\n        std::cout << countWords(tc.first) << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

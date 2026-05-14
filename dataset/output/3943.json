@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Implement a simple number guessing game. The program should generate a random number between 1 and 100, and the user has to guess it. Provide hints (higher/lower) after each incorrect guess and count the number of attempts.",
+  "test_cases": [
+    {
+      "input": "50\n25\n42\n",
+      "expected": "Welcome to the Number Guessing Game!\nI have generated a random number between 1 and 100.\nTry to guess it!\nAttempt 1: Enter your guess: Too high! Try again.\nAttempt 2: Enter your guess: Too low! Try again.\nAttempt 3: Enter your guess: Congratulations! You guessed the number 42 in 3 attempts.\n"
+    },
+    {
+      "input": "abc\n",
+      "expected": "Welcome to the Number Guessing Game!\nI have generated a random number between 1 and 100.\nTry to guess it!\nAttempt 1: Enter your guess: Invalid input. Please enter a number.\nAttempt 2: Enter your guess: Invalid input. Please enter a number.\nAttempt 3: Enter your guess: Invalid input. Please enter a number.\nAttempt 4: Enter your guess: Invalid input. Please enter a number.\nAttempt 5: Enter your guess: Invalid input. Please enter a number.\n"
+    }
+  ],
+  "driver": "g++ -o solution 3943.cpp && ./solution",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not handle non-numeric input robustly. If a user enters non-numeric characters, `std::cin.fail()` is set, but the error state is not cleared, and the bad input remains in the buffer. This causes an infinite loop of error messages and prompts without allowing further valid input.",
+    "The program gives a generic 'out of range' message for guesses outside 1-100 but doesn't explicitly prevent such guesses or guide the user back into the valid range effectively."
+  ]
+}

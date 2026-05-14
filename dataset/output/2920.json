@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Person` with `protected` data members `name` (string) and `age` (int). Derive a `Student` class from `Person`. Implement a method in `Student` to display both its own specific details and the inherited `name` and `age`.",
+  "test_cases": [
+    { "input": "", "expected": "Student Name: Alice Smith\nStudent Age: 20\nStudent ID: S12345\n" }
+  ],
+  "driver": "int main() {\n    Student s(\"Alice Smith\", 20, \"S12345\");\n    s.displayDetails();\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the class definition of 'Person'."]
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `Rectangle` class with `length` and `width` (both double). Implement a default constructor that initializes both to 0.0 and a parameterized constructor that takes two arguments to set `length` and `width`.",
+  "test_cases": [
+    { "input": "No direct input, object creation.", "expected": "Rectangle objects created. Cannot print members due to private access." }
+  ],
+  "driver": "int main() {\n    Rectangle r1;\n    // std::cout << \"Default Rectangle: Length = \" << r1.length << \", Width = \" << r1.width << std::endl; // This line would cause the error\n\n    Rectangle r2(10.5, 5.2);\n    // std::cout << \"Parameterized Rectangle: Length = \" << r2.length << \", Width = \" << r2.width << std::endl; // This line would cause the error\n\n    std::cout << \"Rectangle objects created. Cannot print members due to private access.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Attempt to access private member 'Rectangle::length' (and 'Rectangle::width') in 'main' function. Private members are not accessible from outside the class."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define an abstract base class `Animal` with a pure virtual method `void makeSound()`. Implement two derived classes, `Dog` and `Cat`, each overriding `makeSound()` to print their respective sounds.",
+  "test_cases": [
+    { "input": "", "expected": "Testing Dog sound: Woof!\nTesting Cat sound: Meow!\n" }
+  ],
+  "driver": "int main() {\n    Animal* myDog = new Dog();\n    Animal* myCat = new Cat();\n\n    std::cout << \"Testing Dog sound: \";\n    myDog->makeSound();\n\n    std::cout << \"Testing Cat sound: \";\n    myCat->makeSound();\n\n    delete myDog;\n    delete myCat;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'Dog::makeSound()' method incorrectly prints 'Meow!' instead of 'Woof!'.",
+    "The 'Cat::makeSound()' method incorrectly prints 'Woof!' instead of 'Meow!'."
+  ]
+}

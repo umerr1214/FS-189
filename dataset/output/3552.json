@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `int incrementPointerValue(int* ptr)` that takes an integer pointer, increments the value it points to by 5, and then returns the new value. Demonstrate its usage in `main`.",
+  "test_cases": [
+    { "input": "10", "expected": "15" },
+    { "input": "-3", "expected": "2" }
+  ],
+  "driver": "#include <iostream>\n\n// Assume incrementPointerValue function is defined here by the system.\n\nint main() {\n    // Test Case 1\n    int val1 = 10;\n    int expected_return1 = 15;\n    int expected_final_val1 = 15;\n    int actual_return1 = incrementPointerValue(&val1);\n    std::cout << \"Test 1 - Initial: \" << 10 << \", Expected Return: \" << expected_return1 << \", Actual Return: \" << actual_return1 << \", Final Value: \" << val1 << std::endl;\n\n    // Test Case 2\n    int val2 = -3;\n    int expected_return2 = 2;\n    int expected_final_val2 = 2;\n    int actual_return2 = incrementPointerValue(&val2);\n    std::cout << \"Test 2 - Initial: \" << -3 << \", Expected Return: \" << expected_return2 << \", Actual Return: \" << actual_return2 << \", Final Value: \" << val2 << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["In `main`, the `incrementPointerValue` function is called with an `int` variable (`myValue`) instead of an `int*` (address of `myValue`), leading to a type mismatch error during compilation (cannot convert 'int' to 'int*')."]
+}

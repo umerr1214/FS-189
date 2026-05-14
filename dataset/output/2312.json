@@ -1,0 +1,30 @@
+{
+  "language": "c++",
+  "question": "For a `Product` class with `id` (int), `name` (string), and `price` (double), implement three constructors: one that takes only `id`, one that takes `id` and `name`, and one that takes `id`, `name`, and `price`. Use constructor chaining where appropriate.",
+  "test_cases": [
+    {
+      "input": "Construct Product with ID 101.",
+      "expected": "ID: 101, Name: [N/A], Price: 0.00\n"
+    },
+    {
+      "input": "Construct Product with ID 102 and name 'Laptop'.",
+      "expected": "ID: 102, Name: Laptop, Price: 0.00\n"
+    },
+    {
+      "input": "Construct Product with ID 103, name 'Mouse', and price 25.50.",
+      "expected": "ID: 103, Name: Mouse, Price: 25.50\n"
+    },
+    {
+      "input": "Modify an existing Product's name and price (ID 200).",
+      "expected": "ID: 200, Name: Custom Product, Price: 99.99\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <iomanip> // For setprecision\n\nclass Product {\npublic:\n    int id;\n    std::string name;\n    double price;\n\n    // Constructor 1: Takes only id\n    Product(int id_val) {\n        this->id = id_val;          // Explicitly initialize id\n        this->name = \"\";             // Explicitly initialize name (redundant if chained)\n        this->price = 0.0;           // Explicitly initialize price (redundant if chained)\n    }\n\n    // Constructor 2: Takes id and name\n    Product(int id_val, std::string name_val) {\n        this->id = id_val;          // Redundant initialization\n        this->name = name_val;\n        this->price = 0.0;           // Explicitly initialize price (redundant if chained)\n    }\n\n    // Constructor 3: Takes id, name, and price\n    Product(int id_val, std::string name_val, double price_val) {\n        this->id = id_val;          // Redundant initialization\n        this->name = name_val;      // Redundant initialization\n        this->price = price_val;\n    }\n\n    void display() const {\n        std::cout << \"ID: \" << this->id\n                  << \", Name: \" << (this->name.empty() ? \"[N/A]\" : this->name)\n                  << \", Price: \" << std::fixed << std::setprecision(2) << this->price\n                  << std::endl;\n    }\n};\n\nint main() {\n    std::cout << \"Testing Product constructors (Readability/Efficiency Issue):\\n\";\n\n    Product p1(101); // Only ID\n    std::cout << \"Product 1: \";\n    p1.display();\n\n    Product p2(102, \"Laptop\"); // ID and Name\n    std::cout << \"Product 2: \";\n    p2.display();\n\n    Product p3(103, \"Mouse\", 25.50); // ID, Name, and Price\n    std::cout << \"Product 3: \";\n    p3.display();\n\n    Product p4_mod(200); // Only ID, then modify\n    p4_mod.name = \"Custom Product\";\n    p4_mod.price = 99.99;\n    std::cout << \"Product 4 (Modified): \";\n    p4_mod.display();\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Constructors do not use chaining, leading to redundant initialization logic and increased code verbosity.",
+    "Repeated member initializations across multiple constructors instead of delegating to a common constructor."
+  ]
+}

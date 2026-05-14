@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Using the `Shape` base class and `Circle` derived class (from previous questions), demonstrate runtime polymorphism by creating a `Shape*` pointer, assigning a `Circle` object to it, and calling `calculateArea()`.",
+  "test_cases": [
+    { "input": "N/A", "expected": "The result of area calculation is: 201.062 square units. Have a nice day!" }
+  ],
+  "driver": "int main() {\n    std::cout << \"Demonstrating Readability / Efficiency Issues:\" << std::endl;\n    std::cout << \"-----------------------------------------------\" << std::endl;\n\n    BaseShape_Abstract* my_poly_shape_ptr = new DerivedCircle_Obj(8.0);\n\n    std::cout << \"Attempting to calculate area using the polymorphic pointer...\" << std::endl;\n    std::cout << \"The result of area calculation is: \"\n              << std::fixed << std::setprecision(3)\n              << my_poly_shape_ptr->calculateArea_Method()\n              << \" square units. Have a nice day!\" << std::endl;\n\n    delete my_poly_shape_ptr;\n    my_poly_shape_ptr = nullptr;\n\n    std::cout << \"-----------------------------------------------\" << std::endl;\n    std::cout << \"Code functions correctly but is hard to read and has minor inefficiencies.\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses a macro for PI (`PI_APPROX`) instead of `M_PI` from `<cmath>` or `std::numbers::pi` (C++20), which is less type-safe and can lead to precision issues.",
+    "Class and method names are inconsistent and less readable (`BaseShape_Abstract`, `DerivedCircle_Obj`, `calculateArea_Method`).",
+    "Variable names are obfuscated (`r_val`, `input_r`, `temp_radius_holder`, `my_poly_shape_ptr`).",
+    "The `calculateArea_Method()` in both base and derived classes is missing the `const` qualifier, despite not modifying object state.",
+    "Uses `std::pow(temp_radius_holder, 2.0)` for squaring, which is less efficient than `radius * radius` and involves an unnecessary temporary variable (`temp_radius_holder`).",
+    "Output message is overly verbose."
+  ]
+}

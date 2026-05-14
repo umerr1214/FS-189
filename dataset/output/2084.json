@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Implement a `Car` class. Provide a default constructor, a parameterized constructor (taking `make`, `model`, `year`), and a copy constructor. Demonstrate the usage of all three constructors in `main`.",
+  "test_cases": [
+    { "input": "", "expected": "--- Demonstrating Constructors (Readability/Efficiency Issue) ---\nDefault constructor called (verbose).\nCar Info: Make=Default Make, Model=Default Model, Year=0.\n\nParameterized constructor called (inefficient string copies).\nCar Info: Make=Ford, Model=Focus, Year=2018.\n\nCopy constructor called (verbose).\nCar Info: Make=Ford, Model=Focus, Year=2018.\n\n" }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Demonstrating Constructors (Readability/Efficiency Issue) ---\" << std::endl;\n    Car myCar1;\n    myCar1.display();\n    std::cout << std::endl;\n    Car myCar2(\"Ford\", \"Focus\", 2018);\n    myCar2.display();\n    std::cout << std::endl;\n    Car myCar3 = myCar2;\n    myCar3.display();\n    std::cout << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Constructors do not use member initializer lists. This is a readability issue (less concise) and an efficiency issue for non-primitive types like `std::string`, as it results in default construction followed by assignment instead of direct initialization.",
+    "The parameterized constructor takes `std::string` parameters by `const&` and then copies them using assignment. While correct, it's often more efficient to take by value and use `std::move` to avoid an extra copy when an rvalue is passed, or use member initializer list for direct initialization.",
+    "Redundant use of `this->` in the default constructor for member assignments."
+  ]
+}

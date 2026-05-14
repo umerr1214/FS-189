@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that defines a class `Matrix` to represent a 2D matrix. Implement a constructor to initialize the matrix, a method to input values, and a method to add two matrices. Overload the `+` operator to perform matrix addition. Demonstrate the functionality in `main` by adding two matrices and displaying the result.",
+  "test_cases": [
+    {
+      "input": "1 2 3 4\n5\n11 12 13 14\n",
+      "expected": "Warning: Matrix created with non-positive dimensions (0x3). Setting to 0x0.\nCannot input values for an empty matrix.\n\nInput for Matrix 1 (2x2):\nEnter value for [0][0]: Enter value for [0][1]: Enter value for [1][0]: Enter value for [1][1]: \nInput for Matrix 2 (1x1):\nEnter value for [0][0]: \n\nAttempting to add M1 (2x2) and M2 (1x1):\nResult of mismatched addition (if program continues):\nCannot display an empty matrix.\n\nInput for Matrix 3 (2x2):\nEnter value for [0][0]: Enter value for [0][1]: Enter value for [1][0]: Enter value for [1][1]: \n\nAttempting to add M1 (2x2) and M3 (2x2):\nMatrix (2x2):\n12\t14\t\n16\t18\t\n"
+    }
+  ],
+  "driver": "g++ 5215.cpp -o 5215 && ./5215",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Constructor allows non-positive dimensions, creating an invalid matrix state.",
+    "operator+ does not validate matrix dimensions for compatibility, leading to potential out-of-bounds access (undefined behavior/crash) when adding matrices of different sizes, specifically if the 'other' matrix is smaller than 'this' matrix."
+  ]
+}

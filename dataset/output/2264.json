@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a `ResourceHandler` class that allocates dynamic memory for an integer array of a given size in its constructor. Implement a destructor to correctly deallocate this memory and print a message indicating destruction.",
+  "test_cases": [
+    { "input": "4", "expected": "ResourceHandler (ID 1) created for array of size 4. Memory allocated using malloc.\nID 1 Contents: [100, 0, 0, 0]\nResourceHandler (ID 1) for array of size 4 destroyed. Memory deallocated using free.\n" },
+    { "input": "0", "expected": "ResourceHandler (ID 2) created for array of size 0. No memory allocated.\nID 2 Contents: (empty/size 0)\nResourceHandler (ID 2) for array of size 0 destroyed. Memory deallocated using free.\n" }
+  ],
+  "driver": "int main() {\n    std::string line;\n    std::getline(std::cin, line);\n    unsigned int size = std::stoul(line);\n\n    ResourceHandler handler(size);\n    if (size > 0) {\n        handler.set_val_at_idx(0, 100);\n        handler.display_contents();\n    } else {\n        handler.display_contents(); // Also display for size 0\n    }\n\n    // The destructor will be called when 'handler' goes out of scope.\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses C-style `malloc` and `free` for dynamic memory management instead of C++ `new[]` and `delete[]`. This is less idiomatic C++ and requires explicit casting, reducing readability and increasing potential for errors (e.g., mismatching `malloc`/`free` with `new`/`delete`).",
+    "The variable names like `raw_data_ptr` and `array_length` are slightly less descriptive or standard than `data` and `size_t size` in modern C++.",
+    "The explicit `if (raw_data_ptr != nullptr)` check in the destructor for `free` is redundant as `free(nullptr)` is a no-op, adding unnecessary code and slightly reducing efficiency/readability.",
+    "Initialization loop uses pointer arithmetic (`*(raw_data_ptr + i) = 0;`) which is less clear than array indexing (`raw_data_ptr[i] = 0;`)."
+  ]
+}

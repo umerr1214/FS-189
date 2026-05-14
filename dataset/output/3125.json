@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Extend the `Student` class to include a default constructor that initializes members to default values and a parameterized constructor that accepts `name`, `id`, and `grade`.",
+  "test_cases": [
+    { "input": "N/A (default constructor)", "expected": "Name: , ID: 0, Grade: 0.0" },
+    { "input": "Alice, 101, 95.5", "expected": "Name: , ID: 0, Grade: 0.0" },
+    { "input": "Bob, 202, 88.0", "expected": "Name: , ID: 0, Grade: 0.0" }
+  ],
+  "driver": "int main() {\n    Student s1;\n    s1.display();\n\n    Student s2(\"Alice\", 101, 95.5);\n    s2.display();\n\n    Student s3(\"Bob\", 202, 88.0);\n    s3.display();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "Parameterized constructor uses parameter names that shadow member variables, leading to incorrect initialization of member variables. Members retain default-initialized values instead of taking parameter values."
+  ]
+}

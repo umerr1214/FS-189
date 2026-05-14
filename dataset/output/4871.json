@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that converts a given temperature from Celsius to Fahrenheit and vice versa. Ask the user to choose the conversion type and then input the temperature. Use appropriate data types for temperatures (which can be decimal).",
+  "test_cases": [
+    { "input": "1\n0", "expected": "0.00 Celsius is 32.00 Fahrenheit.\n" },
+    { "input": "2\n212", "expected": "212.00 Fahrenheit is 100.00 Celsius.\n" },
+    { "input": "2\n32", "expected": "32.00 Fahrenheit is 0.00 Celsius.\n" },
+    { "input": "1\n-10", "expected": "-10.00 Celsius is 14.00 Fahrenheit.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <fstream>\n#include <cstdlib>\n\n// This driver compiles the user's code, then runs it with specified inputs,\n// capturing the output.\n// NOTE: This is a simplified driver. In a real system, robust error handling,\n// sandboxing, and precise output comparison would be implemented.\n\nstd::string run_test(const std::string& input_str, int test_num) {\n    std::string input_filename = \"input_\" + std::to_string(test_num) + \".txt\";\n    std::string output_filename = \"output_\" + std::to_string(test_num) + \".txt\";\n    std::string executable_name = \"user_program\"; // Assuming the user's code is compiled to this\n\n    // 1. Write input to a file\n    std::ofstream input_file(input_filename);\n    input_file << input_str;\n    input_file.close();\n\n    // 2. Execute the user's program with input redirection and capture output\n    //    (Assumes user_program is already compiled)\n    std::string command = \"./\" + executable_name + \" < \" + input_filename + \" > \" + output_filename;\n    system(command.c_str());\n\n    // 3. Read the output\n    std::ifstream output_file(output_filename);\n    std::stringstream buffer;\n    buffer << output_file.rdbuf();\n    output_file.close();\n\n    // Clean up temp files (optional, but good practice)\n    remove(input_filename.c_str());\n    remove(output_filename.c_str());\n\n    return buffer.str();\n}\n\nint main() {\n    std::cout << \"Driver expects user's program to be compiled as 'user_program'.\\n\";\n    std::cout << \"It will create input_X.txt, run './user_program < input_X.txt > output_X.txt', and read output_X.txt.\\n\";\n    std::cout << \"Actual test execution logic would be embedded here, calling run_test for each case.\\n\";\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The formula for Fahrenheit to Celsius conversion is incorrect. It uses addition (temperature + 32.0) instead of subtraction (temperature - 32.0)."
+  ]
+}

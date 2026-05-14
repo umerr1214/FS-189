@@ -1,0 +1,24 @@
+{
+  "language": "c++",
+  "question": "Check if a given `std::string` is a palindrome, ignoring case and spaces. For example, 'Race car' should be considered a palindrome.",
+  "test_cases": [
+    { "input": "Race car", "expected": "true" },
+    { "input": "Madam", "expected": "true" },
+    { "input": "hello", "expected": "false" },
+    { "input": "", "expected": "true" },
+    { "input": "   ", "expected": "true" },
+    { "input": "A", "expected": "true" },
+    { "input": "Aa", "expected": "true" },
+    { "input": "A.A", "expected": "true" },
+    { "input": "No lemon, no melon", "expected": "true" },
+    { "input": "Was it a car or a cat I saw?", "expected": "true" },
+    { "input": "A Santa at NASA", "expected": "true" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <algorithm>\n#include <cctype>\n\nbool isPalindrome(const std::string& s) {\n    std::string filtered_s;\n    for (char c : s) {\n        if (!std::isspace(static_cast<unsigned char>(c))) {\n            filtered_s += std::tolower(static_cast<unsigned char>(c));\n        }\n    }\n\n    std::string reversed_s = filtered_s;\n    std::reverse(reversed_s.begin(), reversed_s.end());\n\n    return filtered_s == reversed_s;\n}\n\nint main() {\n    std::string input;\n    while (std::getline(std::cin, input)) {\n        if (input == \"__END_OF_INPUT__\") break;\n        std::cout << (isPalindrome(input) ? \"true\" : \"false\") << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The implementation creates a reversed copy of the filtered string (`reversed_s`) and then compares it with the original filtered string. A more efficient approach would be to use a two-pointer technique on the filtered string directly, which avoids the extra memory allocation and copy for `reversed_s` and can be more performant for very long strings."
+  ]
+}

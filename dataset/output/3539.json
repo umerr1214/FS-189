@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `int linearSearch(int arr[], int size, int target)` that performs a linear search on a 1D integer array. It should return the index of the `target` element if found, or -1 if not found. Test this function in `main` with a sample array and target values.",
+  "test_cases": [
+    { "input": "arr={10, 20, 30, 40, 50}, size=5, target=30", "expected": "2" },
+    { "input": "arr={10, 20, 30, 40, 50}, size=5, target=10", "expected": "0" },
+    { "input": "arr={10, 20, 30, 40, 50}, size=5, target=50", "expected": "4" },
+    { "input": "arr={10, 20, 30, 40, 50}, size=5, target=100", "expected": "-1" },
+    { "input": "arr={5}, size=1, target=5", "expected": "0" },
+    { "input": "arr={5}, size=1, target=10", "expected": "-1" },
+    { "input": "arr={}, size=0, target=10", "expected": "-1" }
+  ],
+  "driver": "#include <iostream>\n\n// The linearSearch function will be inserted here.\n\nint main() {\n    int arr1[] = {10, 20, 30, 40, 50};\n    int size1 = 5;\n    std::cout << linearSearch(arr1, size1, 30) << std::endl; // Expected: 2\n    std::cout << linearSearch(arr1, size1, 10) << std::endl; // Expected: 0\n    std::cout << linearSearch(arr1, size1, 50) << std::endl; // Expected: 4\n    std::cout << linearSearch(arr1, size1, 100) << std::endl; // Expected: -1\n\n    int arr2[] = {5};\n    int size2 = 1;\n    std::cout << linearSearch(arr2, size2, 5) << std::endl; // Expected: 0\n    std::cout << linearSearch(arr2, size2, 10) << std::endl; // Expected: -1\n\n    int arr3_data[] = {1, 2, 3}; // Dummy array, actual size is 0\n    int size3 = 0;\n    std::cout << linearSearch(arr3_data, size3, 10) << std::endl; // Expected: -1\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The linearSearch function returns 'i + 1' instead of the actual index 'i' when the target is found. This causes all found targets to return an index one greater than their actual position."]
+}

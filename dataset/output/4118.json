@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Write a program to perform matrix addition for two 2x2 integer matrices. Prompt the user to enter elements for both matrices. Store the result in a third 2x2 matrix and then print all three matrices in a clear format.",
+  "test_cases": [
+    {
+      "input": "1 2 3 4 5 6 7 8\n",
+      "expected": "Input for matrix 1:\nm1[0][0]: m1[0][1]: m1[1][0]: m1[1][1]: Input for matrix 2:\nm2[0][0]: m2[0][1]: m2[1][0]: m2[1][1]: \nMatrix 1:\n1 2 \n3 4 \n\nMatrix 2:\n5 6 \n7 8 \n\nResult Matrix:\n6 8 \n10 12 \n"
+    }
+  ],
+  "driver": "g++ -o solution solution.cpp && ./solution",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The code uses short, uninformative variable names (e.g., 'm1', 'm2', 'r', 'i', 'j') which reduces readability.",
+    "Lack of comments makes it harder to understand the purpose of different sections.",
+    "The output formatting for matrices uses single spaces instead of tabs, which is less visually clear and harder to read, especially with larger numbers.",
+    "Repetitive code structure for reading and printing matrices could be improved by using dedicated functions, enhancing modularity and maintainability."
+  ]
+}

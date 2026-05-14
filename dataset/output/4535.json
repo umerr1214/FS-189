@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a simple number guessing game. The program should choose a random number between 1 and 100, then prompt the user to guess it. Provide hints (too high/too low) and continue until the correct number is guessed. Use a `do-while` loop for the game logic.",
+  "test_cases": [
+    {
+      "input": "50\n20\n35\n30\n",
+      "expected": "Welcome to the Number Guessing Game!\nI have chosen a number between 1 and 100.\nGuess the number: Too low!\nGuess the number: Too high!\nGuess the number: Too low!\nGuess the number: Correct! You guessed it in 4 tries.\n"
+    }
+  ],
+  "driver": "g++ -o solution solution.cpp && ./solution",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The hints 'Too high!' and 'Too low!' are reversed in the conditional statements, leading to incorrect guidance for the user."
+  ]
+}

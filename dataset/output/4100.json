@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that declares a 1D integer array of size 5. Allow the user to input values into the array. After input, iterate through the array to find and print the largest and smallest elements.",
+  "test_cases": [
+    { "input": "10\n5\n20\n3\n15\n", "expected": "Largest: 20\nSmallest: 3\n" },
+    { "input": "-1\n-5\n-2\n-8\n-3\n", "expected": "Largest: -1\nSmallest: -8\n" },
+    { "input": "7\n7\n7\n7\n7\n", "expected": "Largest: 7\nSmallest: 7\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <limits>\n\n// Assuming the user's code is compiled into an executable, this driver\n// demonstrates how to feed input and capture output for testing.\n// For direct integration, the user's main logic would be wrapped in a function.\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> tests = {\n        {\"10\\n5\\n20\\n3\\n15\\n\", \"Largest: 20\\nSmallest: 3\\n\"},\n        {\"-1\\n-5\\n-2\\n-8\\n-3\\n\", \"Largest: -1\\nSmallest: -8\\n\"},\n        {\"7\\n7\\n7\\n7\\n7\\n\", \"Largest: 7\\nSmallest: 7\\n\"}\n    };\n\n    for (size_t i = 0; i < tests.size(); ++i) {\n        std::string input_str = tests[i].first;\n        std::string expected_output = tests[i].second;\n\n        // Redirect stdin\n        std::stringstream ss_input(input_str);\n        std::streambuf* old_cin = std::cin.rdbuf();\n        std::cin.rdbuf(ss_input.rdbuf());\n\n        // Redirect stdout\n        std::stringstream ss_output;\n        std::streambuf* old_cout = std::cout.rdbuf();\n        std::cout.rdbuf(ss_output.rdbuf());\n\n        // --- Call to user's main function would happen here ---\n        // In a real testing environment, the compiled user program would be executed\n        // as a separate process with redirected I/O.\n        // For this example, we'll just demonstrate the I/O redirection setup.\n\n        // Restore original cin/cout for the driver's own output\n        std::cin.rdbuf(old_cin);\n        std::cout.rdbuf(old_cout);\n\n        std::string actual_output = ss_output.str();\n\n        if (actual_output == expected_output) {\n            std::cout << \"Test \" << i << \" PASSED\\n\";\n        } else {\n            std::cout << \"Test \" << i << \" FAILED\\n\";\n            std::cout << \"Input: \" << input_str << \"\\n\";\n            std::cout << \"Expected: \" << expected_output << \"\\n\";\n            std::cout << \"Actual: \" << actual_output << \"\\n\";\n        }\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The program finds the largest and smallest elements by iterating through the array twice (one loop for max, one for min). A more efficient approach would be to find both in a single pass.",
+    "Using `std::endl` in output statements flushes the buffer, which can be less efficient than using `\\n` especially if done repeatedly (though minor for a few outputs).",
+    "Variable names like `ARY_SZ`, `mx_val`, `mn_val` could be more descriptive (e.g., `ARRAY_SIZE`, `maxValue`, `minValue`) to improve readability."
+  ]
+}

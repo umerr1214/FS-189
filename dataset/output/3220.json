@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Point` class with `x` and `y` coordinates. Provide two overloaded `getX()` methods: one `const` version and one non-`const` version. Explain when each would be called.",
+  "test_cases": [
+    {
+      "input": "Point p(10, 20); const Point cp(30, 40);",
+      "expected": "(Non-const getX() invoked) Non-const getX() called: 10\n(Const getX() invoked) Const getX() called: 30\nExplanation:\nThe non-const getX() method (int getX()) is called on mutable Point objects.\nIt can potentially modify the object's state (though it doesn't in this example).\nThe const getX() method (int getX() const) is called on const Point objects,\nor on objects accessed via const references/pointers.\nIt guarantees not to modify the object's state.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Point {\nprivate:\n    int x;\n    int y;\npublic:\n    Point(int _x, int _y) : x(_x), y(_y) {}\n\n    int getX() {\n        std::cout << \"(Non-const getX() invoked) \";\n        return x;\n    }\n\n    int getX() const {\n        std::cout << \"(Const getX() invoked) \";\n        return x;\n    }\n\n    void printExplanation() const {\n        std::cout << \"Explanation:\\n\";\n        std::cout << \"The non-const getX() method (int getX()) is called on mutable Point objects.\\n\";\n        std::cout << \"It can potentially modify the object's state (though it doesn't in this example).\\n\";\n        std::cout << \"The const getX() method (int getX() const) is called on const Point objects,\\n\";\n        std::cout << \"or on objects accessed via const references/pointers.\\n\";\n        std::cout << \"It guarantees not to modify the object's state.\\n\";\n    }\n};\n\nint main() {\n    Point p(10, 20);\n    const Point cp(30, 40);\n\n    std::cout << \"Non-const getX() called: \" << p.getX() << std::endl;\n    std::cout << \"Const getX() called: \" << cp.getX() << std::endl;\n\n    p.printExplanation();\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

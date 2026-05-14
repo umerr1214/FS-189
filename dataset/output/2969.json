@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private members for `title` (string), `author` (string), and `isbn` (string). Implement a public parameterized constructor to initialize these members and a public method `displayBookInfo()` to print all book details.",
+  "test_cases": [
+    { "input": "1984,George Orwell,978-0451524935", "expected": "Title: 978-0451524935\nAuthor: 978-0451524935\nISBN: 978-0451524935\n" }
+  ],
+  "driver": "Book myBook(\"1984\", \"George Orwell\", \"978-0451524935\");\nmyBook.displayBookInfo();",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The `displayBookInfo()` method incorrectly prints the ISBN for both the title and author fields, instead of their respective values."]
+}

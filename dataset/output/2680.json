@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `Student` class with private members `studentName` (string), `studentID` (int), and `grade` (char). Implement a default constructor, a parameterized constructor, and public `get` methods for all members. Also, add a `printStudentDetails()` method.",
+  "test_cases": [
+    { "input": "No direct input for this program.", "expected": "Compilation error due to missing semicolon." }
+  ],
+  "driver": "// The program is expected to fail compilation.\n// If it were to compile, a simple main function would instantiate Student objects and call printStudentDetails.\nint main() {\n    // This part of the driver is just for demonstration if the code were to compile.\n    // The actual code has a syntax error preventing compilation.\n    // Student s1;\n    // s1.printStudentDetails();\n    // Student s2(\"Bob\", 123, 'B');\n    // s2.printStudentDetails();\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the class definition of 'Student'."
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `countWords` that takes a C-style string (character array) as input and returns the number of words in it. Assume words are separated by single spaces and there are no leading or trailing spaces.",
+  "test_cases": [
+    { "input": "\"hello world\"", "expected": "2" },
+    { "input": "\"hello\"", "expected": "1" },
+    { "input": "\"one two three\"", "expected": "3" },
+    { "input": "\"\"", "expected": "0" },
+    { "input": "\"single\"", "expected": "1" },
+    { "input": "\"a b c d e\"", "expected": "5" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n#include <cstring>\n\n// Assume countWords function is defined above\n\nstruct TestCase {\n    const char* input;\n    int expected;\n};\n\nint main() {\n    std::vector<TestCase> testCases = {\n        {\"hello world\", 2},\n        {\"hello\", 1},\n        {\"one two three\", 3},\n        {\"\", 0},\n        {\"single\", 1},\n        {\"a b c d e\", 5}\n    };\n\n    for (const auto& tc : testCases) {\n        int result = countWords(const_cast<char*>(tc.input));\n        std::cout << \"Input: \\\"\" << (tc.input ? tc.input : \"nullptr\") << \"\\\", Expected: \" << tc.expected\n                  << \", Got: \" << result << \" -> \"\n                  << (result == tc.expected ? \"PASSED\" : \"FAILED\") << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The function incorrectly counts the number of spaces instead of the number of words. For a non-empty string with N words, there are N-1 spaces. The function should return `spaceCount + 1` for non-empty strings, and 0 for empty strings. For example, for \"hello\", it returns 0 (incorrect) instead of 1."
+  ]
+}

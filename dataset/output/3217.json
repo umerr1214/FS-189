@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Vehicle` base class and a `Car` derived class. Include simple print statements in the constructors of both classes to illustrate the order of constructor execution when a `Car` object is created.",
+  "test_cases": [
+    { "input": "", "expected": "Vehicle constructor\nCar constructor\nCar destructor\nVehicle destructor\n" }
+  ],
+  "driver": "int main() {\n    Car myCar;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Vehicle` base class is missing a `virtual` destructor. This is a critical robustness issue for polymorphic base classes. If a `Car` object were to be deleted through a `Vehicle*` pointer (e.g., `Vehicle* ptr = new Car(); delete ptr;`), only the `Vehicle` destructor would be called, leading to a memory leak or undefined behavior if the `Car` class manages its own resources in its destructor.",
+    "While the program correctly shows constructor order for a stack-allocated object, the class design is not robust for polymorphic usage."
+  ]
+}

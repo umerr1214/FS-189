@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that repeatedly prompts the user to enter an integer between 1 and 10 (inclusive) until a valid input is provided. Use a `do-while` loop for input validation.",
+  "test_cases": [
+    { "input": "0\n11\n5\n", "expected": "Enter an integer between 1 and 10 (inclusive): Input out of range. Please enter a number between 1 and 10.\nEnter an integer between 1 and 10 (inclusive): Input out of range. Please enter a number between 1 and 10.\nEnter an integer between 1 and 10 (inclusive): You entered: 5. Valid input!\n" },
+    { "input": "abc\n", "expected": "Enter an integer between 1 and 10 (inclusive): Invalid input. Please enter an integer.\nEnter an integer between 1 and 10 (inclusive): Invalid input. Please enter an integer.\nEnter an integer between 1 and 10 (inclusive): Invalid input. Please enter an integer.\n... (infinite loop due to uncleared buffer)" }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    {
+      "line": 13,
+      "column": 13,
+      "message": "After calling std::cin.clear() to reset the error state, the program fails to clear the invalid characters from the input buffer using std::cin.ignore() or similar. This leads to an infinite loop when non-integer input is provided, as std::cin repeatedly attempts to read the same invalid characters."
+    }
+  ]
+}

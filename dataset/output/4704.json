@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a program that asks the user to input a temperature in Celsius and converts it to Fahrenheit, then prints the result. The formula is F = C * 9/5 + 32.",
+  "test_cases": [
+    { "input": "25", "expected": "Temperature in Fahrenheit: 77.0" },
+    { "input": "37", "expected": "Temperature in Fahrenheit: 98.6" },
+    { "input": "-10", "expected": "Temperature in Fahrenheit: 14.0" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\nint main() {\n    // This driver executes the student's program directly.\n    // Input will be provided via stdin for each test case.\n    // Output will be captured from stdout.\n    std::cout << \"Driver ready to execute student's main function.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The Fahrenheit temperature, although correctly calculated as a double, is explicitly cast to an integer (int) before printing, leading to the loss of fractional precision and an inaccurate display of the temperature."]
+}

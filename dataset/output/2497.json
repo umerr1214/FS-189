@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a `Car` class that exhibits composition with an `Engine` class. The `Engine` should be created and destroyed along with the `Car` object. Demonstrate this lifetime management.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating Robustness Issue (Double Free) ---\nEngine ENG123 created.\nCar Sedan created with Engine ENG123.\nCar Sedan is driving.\nEngine ENG123 starting...\n\nAttempting to copy car1 to car2 (this will cause a robustness issue later).\nCar2 model: Sedan\nCar Sedan is driving.\nEngine ENG123 starting...\n\nLeaving scope. car2's destructor will be called, then car1's. This will attempt to delete the same engine pointer twice.\nCar Sedan destroying.\nEngine ENG123 destroyed.\nCar Sedan destroyed.\nCar Sedan destroying.\n<runtime error: double free or corruption>"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Demonstrating Robustness Issue (Double Free) ---\" << std::endl;\n    Car car1(\"Sedan\", \"ENG123\");\n    car1.drive();\n    std::cout << \"\\nAttempting to copy car1 to car2 (this will cause a robustness issue later).\" << std::endl;\n    Car car2 = car1;\n    std::cout << \"Car2 model: \" << car2.getModel() << std::endl;\n    car2.drive();\n    std::cout << \"\\nLeaving scope. car2's destructor will be called, then car1's. \"\n              << \"This will attempt to delete the same engine pointer twice.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing copy constructor and copy assignment operator for a class managing a raw pointer (`Engine*`). This leads to shallow copies when `Car` objects are copied, resulting in multiple `Car` objects owning the same `Engine` pointer, which causes a double-free error when their destructors are called.",
+    "Using raw pointers for resource management (`Engine*`) instead of C++ idiomatic RAII wrappers like `std::unique_ptr` or direct member composition, making the class prone to memory management errors."
+  ]
+}

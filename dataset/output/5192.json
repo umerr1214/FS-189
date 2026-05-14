@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that includes an overloaded function `void printArea(double radius)` to calculate and print the area of a circle, and another `void printArea(double length, double width)` to calculate and print the area of a rectangle. Test both versions in `main`.",
+  "test_cases": [
+    { "input": "5.0", "expected": "Circle has area: 78.5 units." },
+    { "input": "10.0", "expected": "Circle has area: 314 units." },
+    { "input": "4.0 6.0", "expected": "Rectangle has area: 24 units." },
+    { "input": "7.5 2.0", "expected": "Rectangle has area: 15 units." }
+  ],
+  "driver": "int main() {\n    printArea(5.0);\n    printArea(10.0);\n    printArea(4.0, 6.0);\n    printArea(7.5, 2.0);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Lack of comments to explain the purpose of functions or complex logic (though simple here).",
+    "Uses a hardcoded, low-precision value (3.14) for PI instead of `M_PI` from `<cmath>` or a `const double` with higher precision, affecting accuracy.",
+    "Variable names (r, len, wid, P, A) are terse and less descriptive than `radius`, `length`, `width`, `PI`, `area`.",
+    "Output messages are somewhat generic ('has area: X units.') rather than explicitly stating 'Circle area with radius X is Y' for better clarity."
+  ]
+}

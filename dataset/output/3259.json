@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Using the `Shape`, `Circle`, and `Rectangle` classes (with `calculateArea` from previous questions), create a collection (e.g., a simple array) of `Shape*`. Populate it with a mix of `Circle` and `Rectangle` objects, then iterate and call `calculateArea()` on each using base class pointers.",
+  "test_cases": [
+    { "input": "", "expected": "Calculating areas:\nArea: 78.53975\nArea: 24\nArea: 19.6349375\nArea: 21\nArea: 314.159\n" }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Memory leak: Dynamically allocated Shape objects (Circle and Rectangle) are not deallocated using 'delete' before the program terminates. This can lead to resource exhaustion in long-running applications."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Shape` base class with a `virtual void draw()` method. Derive `Circle` and `Rectangle` classes, each providing their own implementation of `draw()`. Demonstrate polymorphism by calling `draw()` on an array of `Shape*`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Drawing a Circle.\nDrawing a Rectangle.\n"
+    }
+  ],
+  "driver": "run_demo();",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

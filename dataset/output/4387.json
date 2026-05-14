@@ -1,0 +1,29 @@
+{
+  "language": "c++",
+  "question": "Print the following pattern using nested 'for' loops, where 'N' is a user-specified number of rows:\n*\n**\n***\n****\n(For N=4)",
+  "test_cases": [
+    {
+      "input": "4",
+      "expected": "*\n**\n***\n****\n"
+    },
+    {
+      "input": "0",
+      "expected": ""
+    },
+    {
+      "input": "-2",
+      "expected": ""
+    },
+    {
+      "input": "abc",
+      "expected": ""
+    }
+  ],
+  "driver": "int main() {\n    int N = 0; // Initialize N to 0, matching the C++ code.\n    std::string input_str;\n    std::getline(std::cin, input_str);\n    std::istringstream iss(input_str);\n    iss >> N;\n\n    // The original program doesn't clear the error state or ignore the rest of the line.\n    // If iss.fail() is true (e.g., for 'abc'), N remains 0, and the loops won't run.\n    // If N is negative (e.g., -2), the loops also won't run.\n    // This driver accurately reflects the program's behavior for various inputs.\n\n    for (int i = 1; i <= N; ++i) {\n        for (int j = 1; j <= i; ++j) {\n            std::cout << \"*\";\n        }\n        std::cout << '\\n';\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program lacks robust input validation. If the user enters non-integer input (e.g., 'abc'), std::cin will enter a fail state, and the value of 'N' will retain its initialized value of 0. The program then proceeds without providing any error message or guidance to the user, simply printing nothing. This is not a crash but a failure to handle invalid input gracefully. Additionally, it doesn't explicitly handle negative 'N' values, though the loop condition naturally causes no output for N < 1."
+  ]
+}

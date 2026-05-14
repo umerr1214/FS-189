@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `Complex` class with private `real` and `imaginary` parts (doubles). Implement multiple overloaded constructors: a default constructor (initializes both to 0), a constructor taking only the `real` part (imaginary is 0), and a constructor taking both `real` and `imaginary` parts.",
+  "test_cases": [
+    { "input": "Run the main function with default, single-real, and both-parts constructors.", "expected": "Complex: 0 + 0i\nComplex: 5 + 0i\nComplex: 3 + 4i\n" }
+  ],
+  "driver": "int main() {\n    Complex c1;\n    Complex c2(5.0);\n    Complex c3(3.0, 4.0);\n\n    c1.print();\n    c2.print();\n    c3.print();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The constructor `Complex(double r)` incorrectly initializes the `imaginary` part to `r` (the real value) instead of `0.0`. This leads to incorrect complex numbers when only the real part is provided, e.g., `Complex(5.0)` results in `5 + 5i` instead of `5 + 0i`."]
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `BankAccount` class. It should have a private `balance` (double). Implement public methods `deposit(double amount)` and `withdraw(double amount)`. Ensure `withdraw` prevents the balance from going negative and `deposit` prevents negative amounts.",
+  "test_cases": [
+    { "input": "INIT 100.00\nDEPOSIT 50.00\nGET_BALANCE", "expected": "150.00" },
+    { "input": "INIT 200.00\nWITHDRAW 75.00\nGET_BALANCE", "expected": "125.00" },
+    { "input": "INIT 50.00\nWITHDRAW 100.00\nGET_BALANCE", "expected": "50.00" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <iomanip>\n\nint main() {\n    std::string line;\n    BankAccount account; \n\n    while (std::getline(std::cin, line)) {\n        std::stringstream ss(line);\n        std::string command;\n        ss >> command;\n\n        if (command == \"INIT\") {\n            double initialBalance;\n            ss >> initialBalance;\n            account = BankAccount(initialBalance);\n        } else if (command == \"DEPOSIT\") {\n            double amount;\n            ss >> amount;\n            account.deposit(amount);\n        } else if (command == \"WITHDRAW\") {\n            double amount;\n            ss >> amount;\n            account.withdraw(amount);\n        } else if (command == \"GET_BALANCE\") {\n            std::cout << std::fixed << std::setprecision(2) << account.getBalance() << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the class definition of `BankAccount`."]
+}

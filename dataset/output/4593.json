@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that dynamically allocates a 1D array of integers of a size specified by the user. Fill the array with user-provided values, print all elements, and then deallocate the memory.",
+  "test_cases": [
+    {
+      "input": "3\n1\n2\n3\n",
+      "expected": "Enter the size of the array: Enter 3 integer values:\nEnter value for element 0: Enter value for element 1: Enter value for element 2: Array elements: 1 2 3\n"
+    },
+    {
+      "input": "-5\nabc\n0\n4\n10\n20\n30\n40\n",
+      "expected": "Enter the size of the array: Invalid input. Please enter a positive integer for the size: Invalid input. Please enter a positive integer for the size: Invalid input. Please enter a positive integer for the size: Enter 4 integer values:\nEnter value for element 0: Enter value for element 1: Enter value for element 2: Enter value for element 3: Array elements: 10 20 30 40\n"
+    },
+    {
+      "input": "2\nhello\n10\nworld\n20\n",
+      "expected": "Enter the size of the array: Enter 2 integer values:\nEnter value for element 0: Invalid input. Please enter an integer: Enter value for element 1: Invalid input. Please enter an integer: Array elements: 10 20\n"
+    }
+  ],
+  "driver": "// The program is expected to be compiled and run as a standalone executable.",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

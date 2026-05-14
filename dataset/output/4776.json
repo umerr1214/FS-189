@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that calculates the sum of all odd numbers between 1 and a user-specified positive integer 'N' (inclusive). Use a `for` loop for iteration.",
+  "test_cases": [
+    { "input": "5", "expected": "9" },
+    { "input": "10", "expected": "25" },
+    { "input": "1", "expected": "1" },
+    { "input": "400", "expected": "40000" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\n// This function represents the correct solution, used by the driver to compare.\n// The student's code would have their own implementation, possibly with errors.\nlong long calculateSumOfOddsCorrect(int N) {\n    if (N < 1) return 0; \n    long long sum = 0;\n    for (int i = 1; i <= N; i++) {\n        if (i % 2 != 0) {\n            sum += i;\n        }\n    }\n    return sum;\n}\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        std::stringstream ss(line);\n        int N;\n        if (ss >> N) {\n            std::cout << calculateSumOfOddsCorrect(N) << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": []
+}

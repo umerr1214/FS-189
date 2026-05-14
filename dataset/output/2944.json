@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `Coordinate` class with `x` and `y` integer members. Implement `getX()` and `getY()` as `const` member functions. Demonstrate how a `const` object of `Coordinate` can only call its `const` member functions.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation Error" }
+  ],
+  "driver": "#include <iostream>\n\nclass Coordinate {\nprivate:\n    int x_val;\n    int y_val;\n\npublic:\n    Coordinate(int x, int y) : x_val(x), y_val(y) {}\n\n    int getX() const {\n        return x_val;\n    }\n\n    int getY() const {\n        return y_val;\n    }\n\n    void setX(int newX) {\n        x_val = newX;\n    }\n};\n\nint main() {\n    const Coordinate c(10, 20);\n    std::cout << \"Const object c.getX(): \" << c.getX() << std::endl;\n    std::cout << \"Const object c.getY(): \" << c.getY() << std::endl;\n    // c.setX(30); // This line would cause a semantic error if uncommented.\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'return y_val' in Coordinate::getY()"
+  ]
+}

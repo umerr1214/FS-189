@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Counter` class with an integer `count` member. Overload the prefix increment (`++prefix`) and postfix decrement (`postfix--`) operators. The prefix increment should return a reference to the modified object, while postfix decrement should return a temporary object before decrementing.",
+  "test_cases": [
+    {
+      "input": "Initial: 10, then ++ (prefix), then -- (postfix). Another counter initial: 0, then ++(++). Another counter initial: 5, then (c--).getCount() + (++c).getCount().",
+      "expected": "Initial c1: 10\nAfter ++c1: 11\nc1_ref count: 11\nAfter c1-- (returned value): 11\nAfter c1-- (original c1): 10\nInitial c2: 0\nAfter ++(++c2): 2\nInitial c3: 5\nResult of (c3--).getCount() + (++c3).getCount(): 10\nFinal c3: 5\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\nclass Counter {\nprivate:\n    int count;\n\npublic:\n    Counter(int initial = 0) : count(initial) {}\n\n    Counter& operator++() {\n        ++count;\n        return *this;\n    }\n\n    Counter operator--(int) {\n        Counter temp = *this;\n        --count;\n        return temp;\n    }\n\n    int getCount() const {\n        return count;\n    }\n};\n\nint main() {\n    std::stringstream ss;\n\n    Counter c1(10);\n    ss << \"Initial c1: \" << c1.getCount() << std::endl;\n\n    Counter& c1_ref = ++c1;\n    ss << \"After ++c1: \" << c1.getCount() << std::endl;\n    ss << \"c1_ref count: \" << c1_ref.getCount() << std::endl;\n\n    Counter c1_old_value = c1--;\n    ss << \"After c1-- (returned value): \" << c1_old_value.getCount() << std::endl;\n    ss << \"After c1-- (original c1): \" << c1.getCount() << std::endl;\n\n    Counter c2(0);\n    ss << \"Initial c2: \" << c2.getCount() << std::endl;\n\n    ++(++c2);\n    ss << \"After ++(++c2): \" << c2.getCount() << std::endl;\n\n    Counter c3(5);\n    ss << \"Initial c3: \" << c3.getCount() << std::endl;\n    int result = (c3--).getCount() + (++c3).getCount();\n    ss << \"Result of (c3--).getCount() + (++c3).getCount(): \" << result << std::endl;\n    ss << \"Final c3: \" << c3.getCount() << std::endl;\n\n    std::cout << ss.str();\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

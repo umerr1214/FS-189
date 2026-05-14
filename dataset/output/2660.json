@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Create two classes, `DataHolder` and `Processor`. `DataHolder` has a private integer member `value`. Implement a function `processData(DataHolder& dh)` which needs to access and modify `DataHolder`'s private `value`. Declare `processData` as a `friend` function of the `DataHolder` class to enable this access.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial status: Contained value: 10\nOperation performed: Value adjusted.\nFinal status: Contained value: 11\nAnother initial status: Contained value: 99\nOperation performed: Value adjusted.\nAnother final status: Contained value: 100\n"
+    }
+  ],
+  "driver": "// The main function in the provided C++ code serves as the driver.\n// It demonstrates the usage of DH_Container and OperativeUnit with the friend function.",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The code uses obscure and non-standard naming conventions for classes (`DH_Container`, `OperativeUnit`), members (`val_data`), and methods (`show_val`, `perform_operation`), significantly hindering readability.",
+    "The `perform_operation` function contains an unnecessary `for` loop (`for (int i = 0; i < 1; ++i)`) to increment a value once, which is inefficient and verbose. A simple `++` operator would be more efficient and readable.",
+    "The assignment `dh.val_data = dh.val_data + 1;` is unnecessarily verbose compared to `dh.val_data++;`, impacting readability and conciseness.",
+    "Includes redundant and unhelpful comments (e.g., `/* This is a constructor for the DH_Container class. */`), which clutter the code without adding value."
+  ]
+}

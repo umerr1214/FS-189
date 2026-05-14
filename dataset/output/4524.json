@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program to check if a given integer is a palindrome. A number is a palindrome if it reads the same forwards and backwards (e.g., 121, 12321).",
+  "test_cases": [
+    { "input": "121", "expected": "true" },
+    { "input": "12321", "expected": "true" },
+    { "input": "123", "expected": "false" },
+    { "input": "0", "expected": "true" },
+    { "input": "10", "expected": "false" },
+    { "input": "-121", "expected": "false" },
+    { "input": "1000000007", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n\n// The student's code will be inserted here.\n\nint main() {\n    std::ios_base::sync_with_stdio(false);\n    std::cin.tie(NULL);\n    int num;\n    while (std::cin >> num) {\n        if (isPalindrome(num)) {\n            std::cout << \"true\\n\";\n        } else {\n            std::cout << \"false\\n\";\n        }\n    }\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The 'reversedNum' variable is declared as 'int'. For sufficiently large input numbers (e.g., 1000000007, whose reverse is 7000000001), reversing the number can lead to an integer overflow, as the reversed value exceeds the maximum capacity of an 'int' (std::numeric_limits<int>::max()). This results in undefined behavior and incorrect palindrome checks for such inputs. 'reversedNum' should be declared as 'long long' to prevent overflow."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that prompts the user to enter their first name (as a string), age (as an integer), and height in meters (as a double). After receiving all inputs, print a formatted sentence summarizing this information (e.g., 'Hello [Name], you are [Age] years old and [Height] meters tall.').",
+  "test_cases": [
+    { "input": "David\n40\n1.65", "expected": "Enter your first name: Enter your age: Enter your height in meters: Hello David, you are 40 years old and 1.65 meters tall.\n" },
+    { "input": "Eve\n22\n1.70", "expected": "Enter your first name: Enter your age: Enter your height in meters: Hello Eve, you are 22 years old and 1.70 meters tall.\n" }
+  ],
+  "driver": "g++ -o solution 5102.cpp && ./solution",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The program uses overly verbose variable names ('usersFirstName', 'usersAgeInYears', 'usersHeightInMeters') which, while descriptive, can reduce readability. The output statement is broken into multiple `std::cout` calls, which is less efficient and less readable than chaining the `<<` operator. Additionally, using `std::endl` explicitly flushes the output buffer, which can be less efficient than using `\\n` for simple newlines in performance-critical applications."
+  ]
+}

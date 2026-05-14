@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create an `Employee` class with `name` and `id`. Design a `Team` class that manages an array of `Employee` pointers to represent team members. Demonstrate adding employees to the team without the team owning their memory.",
+  "test_cases": [
+    {
+      "input": "Employee emp1(\"Alice\", 101);\nEmployee emp2(\"Bob\", 102);\nEmployee emp3(\"Charlie\", 103);\n\nTeam devTeam(\"Development\");\ndevTeam.addEmployee(emp1);\ndevTeam.addEmployee(emp2);\ndevTeam.addEmployee(emp3);\ndevTeam.displayTeam();\n\nTeam qaTeam(\"QA\");\nqaTeam.addEmployee(Employee(\"David\", 104));\nqaTeam.displayTeam();",
+      "expected": "--- Development Team (Attempting to display dangling pointers) ---\nEmployee: Alice (ID: 101)\nEmployee: Bob (ID: 102)\nEmployee: Charlie (ID: 103)\n\n--- QA Team (Attempting to display dangling pointers) ---\nEmployee: David (ID: 104)\n"
+    }
+  ],
+  "driver": "void run_test_cases() {\n    Employee emp1(\"Alice\", 101);\n    Employee emp2(\"Bob\", 102);\n    Employee emp3(\"Charlie\", 103);\n\n    Team devTeam(\"Development\");\n    devTeam.addEmployee(emp1);\n    devTeam.addEmployee(emp2);\n    devTeam.addEmployee(emp3);\n\n    std::cout << \"--- Development Team (Attempting to display dangling pointers) ---\\n\";\n    devTeam.displayTeam();\n    std::cout << \"\\n\";\n\n    Team qaTeam(\"QA\");\n    qaTeam.addEmployee(Employee(\"David\", 104));\n    std::cout << \"--- QA Team (Attempting to display dangling pointers) ---\\n\";\n    qaTeam.displayTeam();\n    std::cout << \"\\n\";\n}\n\nint main() {\n    run_test_cases();\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `Team::addEmployee` method takes an `Employee` object by value. A pointer to this temporary object is then stored in the `members` vector. When the temporary `Employee` object is destroyed at the end of `addEmployee`, the stored pointer becomes dangling, leading to undefined behavior upon subsequent access (e.g., in `displayTeam`)."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that takes three integer numbers as input from the user. Determine and print the largest among the three numbers using `if-else if-else` statements.",
+  "test_cases": [
+    { "input": "10 20 5", "expected": "The largest number is: 20\n" },
+    { "input": "7 3 9", "expected": "The largest number is: 9\n" },
+    { "input": "15 15 10", "expected": "The largest number is: 15\n" }
+  ],
+  "driver": "#include <iostream>\n\nint main() {\n    int n1, n2, n3;\n    // This driver simulates how an input would be provided to the student's program.\n    // The student's program is expected to read from std::cin and print to std::cout.\n    // The actual test system would pipe input to the student's compiled executable.\n    if (std::cin >> n1 >> n2 >> n3) {\n        // We don't have the student's logic here, as their code is a full program.\n        // This driver is just a placeholder for the environment setup.\n        std::cout << \"Test input processed by driver (conceptually): \" << n1 << \" \" << n2 << \" \" << n3 << std::endl;\n    } else {\n        std::cerr << \"Driver failed to read input.\" << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'std::cout << \"The largest number is: \" << largest' statement."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that uses a `do-while` loop to continuously prompt the user to enter a positive integer. The loop should only terminate when a valid positive integer (greater than 0) is provided.",
+  "test_cases": [
+    {
+      "input": "-5\n0\n10\n",
+      "expected": "Enter a positive integer: Invalid input. Please enter a positive integer.\nEnter a positive integer: Invalid input. Please enter a positive integer.\nEnter a positive integer: You entered: 10. This is a valid positive integer.\n"
+    },
+    {
+      "input": "abc\n5\n",
+      "expected": "Enter a positive integer: Invalid input. Please enter a positive integer.\nEnter a positive integer: Invalid input. Please enter a positive integer.\nEnter a positive integer: Invalid input. Please enter a positive integer.\nEnter a positive integer: Invalid input. Please enter a positive integer.\nEnter a positive integer: Invalid input. Please enter a positive integer.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n#include <limits>\n\nint user_main();\n\nstd::string run_test(const std::string& input) {\n    std::stringstream ss_input(input);\n    std::stringstream ss_output;\n\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    user_main();\n\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    return ss_output.str();\n}\n\nint main() {\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not handle non-numeric input gracefully. If the user enters characters instead of numbers, std::cin enters a fail state, causing an infinite loop of prompts and error messages without allowing further input."
+  ]
+}

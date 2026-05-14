@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Implement a `Calculator` class with an overloaded public method `add`. It should be able to: 1) add two integers, 2) add three integers, and 3) add two double-precision numbers. Demonstrate calling each version of the `add` method.",
+  "test_cases": [
+    { "input": "", "expected": "Adding two integers (10, 20): 30\nAdding two integers (-5, 15): 10\nAdding three integers (1, 2, 3): 6\nAdding three integers (100, -50, 20): 70\nAdding two doubles (10.5, 20.3): 30.8\nAdding two doubles (-2.5, 7.0): 4.5\n" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\n/**\n * @brief A Calculator class providing overloaded addition methods.\n */\nclass Calculator3069 {\npublic:\n    /**\n     * @brief Adds two integers.\n     * @param num1 The first integer operand.\n     * @param num2 The second integer operand.\n     * @return The sum of num1 and num2.\n     */\n    int add(int num1, int num2) {\n        return num1 + num2;\n    }\n\n    /**\n     * @brief Adds three integers.\n     * @param num1 The first integer operand.\n     * @param num2 The second integer operand.\n     * @param num3 The third integer operand.\n     * @return The sum of num1, num2, and num3.\n     */\n    int add(int num1, int num2, int num3) {\n        return num1 + num2 + num3;\n    }\n\n    /**\n     * @brief Adds two double-precision numbers.\n     * @param dbl1 The first double operand.\n     * @param dbl2 The second double operand.\n     * @return The sum of dbl1 and dbl2.\n     */\n    double add(double dbl1, double dbl2) {\n        return dbl1 + dbl2;\n    }\n};\n\nint main() {\n    Calculator3069 calculator;\n\n    std::cout << \"Adding two integers (10, 20): \" << calculator.add(10, 20) << std::endl;\n    std::cout << \"Adding two integers (-5, 15): \" << calculator.add(-5, 15) << std::endl;\n\n    std::cout << \"Adding three integers (1, 2, 3): \" << calculator.add(1, 2, 3) << std::endl;\n    std::cout << \"Adding three integers (100, -50, 20): \" << calculator.add(100, -50, 20) << std::endl;\n\n    std::cout << std::fixed << std::setprecision(1);\n    std::cout << \"Adding two doubles (10.5, 20.3): \" << calculator.add(10.5, 20.3) << std::endl;\n    std::cout << \"Adding two doubles (-2.5, 7.0): \" << calculator.add(-2.5, 7.0) << std::endl;\n    std::cout << std::setprecision(6);\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

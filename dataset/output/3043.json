@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a multi-level inheritance hierarchy: `Person` -> `Employee` -> `Manager`. Each class should have a parameterized constructor. `Person` should have `name`, `Employee` should add `employeeId` and `salary`, and `Manager` should add `department`. Demonstrate the constructor chain by creating a `Manager` object.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Creating a Manager object...\nPerson constructor called for: Alice Smith\nEmployee constructor called for ID: 101, Salary: 75000.5\nManager constructor called for Department: Sales\n\nManager Details:\nName: Alice Smith, Employee ID: 101, Salary: 75000.5, Department: Sales\n"
+    }
+  ],
+  "driver": "",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": []
+}

@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Employee` with `name` (string) and `salary` (double). Derive two classes: `Manager` (adds `department` string) and `Engineer` (adds `specialization` string). Implement constructors for all classes.",
+  "test_cases": [
+    { "input": "Manager(\"Alice\", 75000.0, \"HR\")", "expected": "Manager - Name: Alice, Salary: 75000\n  Department: HR" },
+    { "input": "Engineer(\"Bob\", 60000.0, \"Software\")", "expected": "Engineer - Name: Bob, Salary: 60000\n  Specialization: Software" }
+  ],
+  "driver": "int main() {\n    Manager m(\"Alice\", 75000.0, \"HR\");\n    Engineer e(\"Bob\", 60000.0, \"Software\");\n\n    std::cout << \"Manager details:\" << std::endl;\n    m.display();\n\n    std::cout << \"\\nEngineer details:\" << std::endl;\n    e.display();\n\n    // Check for the logical error: Manager's department\n    if (m.department == \"HR\") {\n        std::cout << \"\\nTest Passed: Manager's department is correctly set.\" << std::endl;\n    } else {\n        std::cout << \"\\nTest Failed: Manager's department is incorrectly set to '\" << m.department << \"'. Expected 'HR'.\" << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The Manager constructor always initializes the 'department' member to 'General' instead of using the provided 'd' parameter."]
+}

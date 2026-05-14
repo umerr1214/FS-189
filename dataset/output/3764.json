@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `swapNumbers` that takes two integer arguments by reference and swaps their values. Demonstrate its usage in `main` by taking two numbers from the user, swapping them, and printing their new values.",
+  "test_cases": [
+    { "input": "100 200", "expected": "Enter two numbers: Before swap: _a = 100, _b = 200\nAfter swap: _a = 200, _b = 100\n" },
+    { "input": "-5 10", "expected": "Enter two numbers: Before swap: _a = -5, _b = 10\nAfter swap: _a = 10, _b = -5\n" }
+  ],
+  "driver": "",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `swapNumbers` function uses an arithmetic swap which is generally less readable and can cause integer overflow if the sum of `x` and `y` exceeds `INT_MAX`. The `main` function uses cryptic variable names (`_a`, `_b`) and has inconsistent formatting (e.g., spacing around operators and stream insertions), which significantly reduces code readability. The input prompt is also vague."
+  ]
+}

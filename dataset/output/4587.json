@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `void addNumbers(int* ptr1, int* ptr2, int* sumPtr)` that takes pointers to two integers and a pointer to a third integer, then calculates the sum of the first two and stores it at the location pointed to by `sumPtr`. Demonstrate its usage in `main`.",
+  "test_cases": [
+    { "input": "", "expected": "The sum of 15 and 25 is: 40\nThe sum of -10 and 5 is: -5\nThe sum of 0 and 100 is: 100\n" }
+  ],
+  "driver": "    int num1 = 15;\n    int num2 = 25;\n    int result = 0;\n\n    addNumbers(&num1, &num2, &result);\n\n    std::cout << \"The sum of \" << num1 << \" and \" << num2 << \" is: \" << result << std::endl;\n\n    int valA = -10;\n    int valB = 5;\n    int sumResult = 0;\n    addNumbers(&valA, &valB, &sumResult);\n    std::cout << \"The sum of \" << valA << \" and \" << valB << \" is: \" << sumResult << std::endl;\n\n    int zero = 0;\n    int positive = 100;\n    int zeroSum = 0;\n    addNumbers(&zero, &positive, &zeroSum);\n    std::cout << \"The sum of \" << zero << \" and \" << positive << \" is: \" << zeroSum << std::endl;\n\n    return 0;",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

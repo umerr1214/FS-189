@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Implement a `Logger` class. Its constructor should print 'Logger initialized' and its destructor should print 'Logger destroyed'. Demonstrate how the constructor and destructor are automatically called when a `Logger` object enters and exits scope.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Main application execution begins.\n\n>>> Entering explicit block scope 1 <<<\nLoggerClassForDemonstration initialized (using printf).\nLOG_ENTRY: Message from inside block 1.\n>>> Exiting explicit block scope 1 <<<\nLoggerClassForDemonstration destroyed (using printf).\n--- Starting a scoped activity ---\n\nLoggerClassForDemonstration initialized (using printf).\nLOG_ENTRY: This message is from within the activity scope.\n--- Ending a scoped activity ---\n\nLoggerClassForDemonstration destroyed (using printf).\nLoggerClassForDemonstration initialized (using printf).\nLOG_ENTRY: Final message before main exits.\n\nMain application execution concludes.\nLoggerClassForDemonstration destroyed (using printf).\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The code mixes C-style I/O (`printf`) with C++ streams (`std::cout`), which can reduce readability and consistency in a C++ program. It's generally better to stick to one style.",
+    "The use of `std::endl` instead of `\\n` for simple newlines in `main` and `writeLogEntry` is less efficient. `std::endl` flushes the output buffer, which is often unnecessary for every newline and can impact performance, especially in high-volume logging.",
+    "The class name `LoggerClassForDemonstration` is overly verbose. A simpler name like `Logger` would suffice and improve readability.",
+    "Excessive empty newlines printed by `std::endl` and `\\n` combinations (e.g., `\\n\" << std::endl`) leads to cluttered output."
+  ]
+}

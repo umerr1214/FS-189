@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Develop a `BankAccount` class where `balance` (double) is private. Provide public methods `deposit(double amount)`, `withdraw(double amount)`, and `getBalance()`. Ensure `withdraw` checks for sufficient funds.",
+  "test_cases": [
+    {
+      "input": "init 150\ndeposit 75\nwithdraw 100\nwithdraw 200\ndeposit -10\nwithdraw 0\nwithdraw -50\nget_balance\ninit -20\nget_balance",
+      "expected": "Account initialized with balance: 150.00\nOperation: Deposit. Amount: 75.00. Current Balance After Deposit: 225.00\n\nWithdrawal Successful. Amount: 100.00. New Balance: 125.00\nFunds insufficient for 200.00. Available: 125.00\nDeposit amount must be positive. No action taken.\n\nWithdrawal amount must be positive. No action.\nWithdrawal amount must be positive. No action.\nCurrent balance: 125.00\nInitial balance cannot be negative, set to 0.00.\nAccount initialized with balance: 0.00\nCurrent balance: 0.00\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <iomanip>\n// Assuming BankAccount class is defined in the context (from the .cpp file)\n\nint main() {\n    std::string command;\n    double amount;\n    BankAccount* account = nullptr;\n\n    while (std::cin >> command) {\n        if (command == \"init\") {\n            std::cin >> amount;\n            if (account) {\n                delete account;\n            }\n            account = new BankAccount(amount);\n            std::cout << \"Account initialized with balance: \" << std::fixed << std::setprecision(2) << account->getBalance() << std::endl;\n        } else if (command == \"deposit\") {\n            std::cin >> amount;\n            if (account) {\n                account->deposit(amount);\n            } else {\n                std::cout << \"Error: Account not initialized.\" << std::endl;\n            }\n        } else if (command == \"withdraw\") {\n            std::cin >> amount;\n            if (account) {\n                account->withdraw(amount);\n            } else {\n                std::cout << \"Error: Account not initialized.\" << std::endl;\n            }\n        } else if (command == \"get_balance\") {\n            if (account) {\n                std::cout << \"Current balance: \" << std::fixed << std::setprecision(2) << account->getBalance() << std::endl;\n            } else {\n                std::cout << \"Error: Account not initialized.\" << std::endl;\n            }\n        } else {\n            std::cout << \"Unknown command: \" << command << std::endl;\n        }\n    }\n\n    if (account) {\n        delete account;\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The member variable `current_account_balance` uses an overly verbose name, impacting readability.",
+    "Parameter names like `deposit_amount_value` and `withdrawal_request_amount` are excessively verbose, reducing code clarity.",
+    "The `deposit` method uses `std::endl << std::endl;` which flushes the output stream multiple times, leading to minor efficiency loss.",
+    "The `withdraw` method uses an unnecessary `operation_successful_flag` boolean variable.",
+    "The `withdraw` method creates a `potential_new_balance` temporary variable and uses `std::stringstream` for simple output, which is less efficient than direct `std::cout` streaming.",
+    "The `getBalance` method is missing the `const` qualifier, which is a common best practice for accessor methods that do not modify the object's state, impacting its usability in `const` contexts."
+  ]
+}

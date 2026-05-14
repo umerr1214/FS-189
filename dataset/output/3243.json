@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design a `Wallet` class with a private `balance`. Implement `deposit(amount)` and `withdraw(amount)` public methods. Ensure `deposit` only accepts positive amounts and `withdraw` only proceeds if sufficient funds are available.",
+  "test_cases": [
+    { "input": "Initial balance: 0\nDeposited 100. New balance: 100\nDeposited 50. New balance: 150\nError: Deposit amount must be positive. Received: 0\nError: Deposit amount must be positive. Received: -20\nBalance after deposits: 150\nWithdrew 30. New balance: 120\nInsufficient funds to withdraw 150. Current balance: 120\nWithdrew 120. New balance: 0\nError: Withdraw amount must be positive. Received: 0\nError: Withdraw amount must be positive. Received: -10\nBalance after withdrawals: 0\nDeposited 200. New balance: 200\nFinal balance: 200", "expected": "Initial balance: 0\nDeposited 100. New balance: 100\nDeposited 50. New balance: 150\nError: Deposit amount must be positive. Received: 0\nError: Deposit amount must be positive. Received: -20\nBalance after deposits: 150\nWithdrew 30. New balance: 120\nInsufficient funds to withdraw 150. Current balance: 120\nWithdrew 120. New balance: 0\nError: Withdraw amount must be positive. Received: 0\nError: Withdraw amount must be positive. Received: -10\nBalance after withdrawals: 0\nDeposited 200. New balance: 200\nFinal balance: 200" }
+  ],
+  "driver": "int main() {\n    Wallet myWallet;\n\n    std::cout << \"Initial balance: \" << myWallet.getBalance() << std::endl;\n\n    myWallet.deposit(100);\n    myWallet.deposit(50);\n    myWallet.deposit(0);\n    myWallet.deposit(-20);\n    std::cout << \"Balance after deposits: \" << myWallet.getBalance() << std::endl;\n\n    myWallet.withdraw(30);\n    myWallet.withdraw(150);\n    myWallet.withdraw(120);\n    myWallet.withdraw(0);\n    myWallet.withdraw(-10);\n    std::cout << \"Balance after withdrawals: \" << myWallet.getBalance() << std::endl;\n\n    myWallet.deposit(200);\n    std::cout << \"Final balance: \" << myWallet.getBalance() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

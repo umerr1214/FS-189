@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define an abstract base class `Animal` with a pure virtual `void makeSound()` method. Derive concrete classes `Dog` and `Cat` from `Animal`, and each should provide its specific implementation for the `makeSound()` method.",
+  "test_cases": [
+    { "input": "call Dog::makeSound()", "expected": "Woof!\n" },
+    { "input": "call Cat::makeSound()", "expected": "Meow!\n" }
+  ],
+  "driver": "    Dog myDog;\n    // The following line is commented out as it would cause a compilation error\n    // due to the syntax error in the Cat class definition.\n    // Cat myCat;\n\n    myDog.makeSound();\n    // myCat.makeSound();",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'std::cout << \"Meow!\" << std::endl' in the Cat::makeSound() method definition."
+  ]
+}

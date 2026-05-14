@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Given two 3x3 matrices, `A` and `B`, read their elements from the user, compute their sum, and store the result in a third matrix `C`. Print all three matrices in a clear format.",
+  "test_cases": [
+    {
+      "input": "1 2 3 4 5 6 7 8 9 9 8 7 6 5 4 3 2 1",
+      "expected": "Enter elements for Matrix A (3x3):\nEnter elements for Matrix B (3x3):\n\nMatrix A:\n1 2 3\n4 5 6\n7 8 9\n\nMatrix B:\n9 8 7\n6 5 4\n3 2 1\n\nMatrix C (Sum):\n10 10 10\n10 10 10\n10 10 10\n"
+    }
+  ],
+  "driver": "int main() { return main_user_code(); }",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["Array out-of-bounds write: The loop for reading Matrix A iterates from i=0 to i=3 (inclusive), attempting to write to A[3][j] which is outside the allocated bounds of a 3x3 matrix (indices 0-2). This leads to undefined behavior and potential memory corruption."]
+}

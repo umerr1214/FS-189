@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `StudentGrade` class with private attributes `studentId` (int) and `score` (double). Use a constructor initialization list to initialize these members. Provide a public method `displayGrade()`.",
+  "test_cases": [
+    { "input": "No direct input, constructor parameters are used.", "expected": "Displaying student1's grade (invalid score):\nStudent ID: 101\nScore: -5\n\nDisplaying student2's grade (invalid score):\nStudent ID: 102\nScore: 105\n\nDisplaying student3's grade (valid score):\nStudent ID: 103\nScore: 88.5" }
+  ],
+  "driver": "StudentGrade student1(101, -5.0);\nstd::cout << \"Displaying student1's grade (invalid score):\" << std::endl;\nstudent1.displayGrade();\nstd::cout << std::endl;\nStudentGrade student2(102, 105.0);\nstd::cout << \"Displaying student2's grade (invalid score):\" << std::endl;\nstudent2.displayGrade();\nstd::cout << std::endl;\nStudentGrade student3(103, 88.5);\nstd::cout << \"Displaying student3's grade (valid score):\" << std::endl;\nstudent3.displayGrade();",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `StudentGrade` class constructor and methods do not include any validation for the `score` attribute. It allows scores outside a typical valid range (e.g., negative scores or scores greater than 100) to be set and displayed without any error handling or warning, potentially leading to incorrect data representation or calculations downstream."
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program to concatenate two one-dimensional integer arrays into a third array. The program should take the sizes and elements of the first two arrays from the user, then populate and print the concatenated array.",
+  "test_cases": [
+    {
+      "input": "3\n1 2 3\n2\n4 5\n",
+      "expected": "Concatenated array: 1 2 3 4 5\n"
+    },
+    {
+      "input": "0\n0\n",
+      "expected": "Concatenated array: \n"
+    },
+    {
+      "input": "4\n10 20 30 40\n3\n50 60 70\n",
+      "expected": "Concatenated array: 10 20 30 40 50 60 70\n"
+    },
+    {
+      "input": "1\n100\n1\n200\n",
+      "expected": "Concatenated array: 100 200\n"
+    }
+  ],
+  "driver": "g++ -o program program.cpp && ./program",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Readability: Variable names like 's1', 's2', 'arrA', 'arrB', 'resArr', 't_sz' are cryptic and reduce code readability. More descriptive names would improve understanding.",
+    "Efficiency: The program uses raw C-style arrays (`new`/`delete`) and manual loops for copying. While functional, `std::vector` combined with `std::copy` or `std::vector::insert` would be more idiomatic C++, safer (RAII), and often more efficient/concise.",
+    "Readability: The entire logic is contained within the `main` function. Breaking down tasks like 'get array elements', 'concatenate arrays', and 'print array' into separate functions would improve modularity and readability.",
+    "Readability: Lack of comments explaining different sections of the code or complex logic. While this program is relatively simple, good commenting practice enhances maintainability."
+  ]
+}

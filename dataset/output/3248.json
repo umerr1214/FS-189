@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Logger` with a `void logMessage(string msg)` method. Create a `ConsoleLogger` derived class that provides its own `void logMessage(string msg)` method. Demonstrate that calling `logMessage` on a `ConsoleLogger` object hides the base class method without `virtual`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Method Hiding Demo (Inefficient/Unreadable) ---\nDerived logger output: First message from derived.\nBase logger msg: Second message from base via pointer.\nBase logger msg: Third message from base via reference.\n--- End Demo ---"
+    }
+  ],
+  "driver": "int main() {\n    ConsoleLogger clObj;\n    Logger* lPtr = &clObj;\n    Logger& lRef = clObj;\n\n    std::cout << \"--- Method Hiding Demo (Inefficient/Unreadable) ---\" << std::endl;\n\n    clObj.logMessage(\"First message from derived.\");\n    lPtr->logMessage(\"Second message from base via pointer.\");\n    lRef.logMessage(\"Third message from base via reference.\");\n\n    std::cout << \"--- End Demo ---\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `logMessage` methods in both `Logger` and `ConsoleLogger` pass the `msg` parameter by value (`std::string msg`). This causes an unnecessary copy of the string object for every call, which is inefficient. It should be passed by constant reference (`const std::string& msg`) to avoid copies.",
+    "In `ConsoleLogger::logMessage`, `std::stringstream` is used for simple string concatenation. For basic string appending, direct `std::string` concatenation using the `+` operator is generally more efficient and readable than `std::stringstream`.",
+    "Variable names like `clObj`, `lPtr`, `lRef`, `ss`, and `_m` are not very descriptive, which negatively impacts code readability and makes it harder to understand their purpose at a glance.",
+    "The code lacks comments to explain the purpose of classes, methods, or complex logic, making it less readable for others (or the author in the future)."
+  ]
+}

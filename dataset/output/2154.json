@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Develop a `Person` class with `name` (public), `address` (protected), and `phone` (private). Create a derived class `Student` that tries to access all three members. Demonstrate which members are accessible from `Student` and from a non-member function.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Student Access Attempt ---\nStudent Name (public): Alice Smith (Accessible)\nStudent Address (protected): 123 Main St (Accessible)\nStudent Phone (private): Access attempt failed (Inaccessible)\n\n--- Non-Member Function Access Attempt ---\nNon-member Name (public): Alice Smith (Accessible)\nNon-member Address (protected): Access attempt failed (Inaccessible)\nNon-member Phone (private): Access attempt failed (Inaccessible)"
+    }
+  ],
+  "driver": "int main() {\n    Student s(\"Alice Smith\", \"123 Main St\", \"555-1234\");\n    s.displayStudentInfo();\n    demonstrateNonMemberAccess(s);\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Attempt to access private member 'phone' from derived class 'Student'. Private members are not accessible even to derived classes.",
+    "Attempt to access protected member 'address' from a non-member function. Protected members are accessible to derived classes but not to arbitrary non-member functions.",
+    "Attempt to access private member 'phone' from a non-member function. Private members are only accessible from within the class itself."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function `concatenateStrings` that takes two C-style strings (char arrays) as input and prints their combined string. (Assume the destination array has enough space).",
+  "test_cases": [
+    { "input": "s1=\"Hello\", s2=\" World\"", "expected": "Hello World" },
+    { "input": "s1=\"\", s2=\"World\"", "expected": "World" },
+    { "input": "s1=\"Hello\", s2=\"\"", "expected": "Hello" },
+    { "input": "s1=\"\", s2=\"\"", "expected": "" },
+    { "input": "s1=\"Programming is fun!\", s2=\" Let's learn C++.\"", "expected": "Programming is fun! Let's learn C++." },
+    { "input": "s1=\"Path: C:\\\\Users\\\\\", s2=\"Documents\\\\file.txt\"", "expected": "Path: C:\\Users\\Documents\\file.txt" }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cstdio>\n\nvoid concatenateStrings(const char* s1, const char* s2) {\n    size_t len1 = strlen(s1);\n    size_t len2 = strlen(s2);\n\n    char* buffer = new char[len1 + len2 + 1];\n\n    strcpy(buffer, s1);\n    strcat(buffer, s2);\n\n    printf(\"%s\\n\", buffer);\n\n    delete[] buffer;\n}\n\nint main() {\n    concatenateStrings(\"Hello\", \" World\");\n    concatenateStrings(\"\", \"World\");\n    concatenateStrings(\"Hello\", \"\");\n    concatenateStrings(\"\", \"\");\n    concatenateStrings(\"Programming is fun!\", \" Let's learn C++.\");\n    concatenateStrings(\"Path: C:\\\\Users\\\\\", \"Documents\\\\file.txt\");\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

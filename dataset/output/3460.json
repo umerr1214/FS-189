@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a C++ `struct Student` with members `std::string name`, `int id`, and `float score`. In `main`, declare a `Student` variable, prompt the user to input data for it, and then print the student's details.",
+  "test_cases": [
+    { "input": "Alice Wonderland\n101\n95.5", "expected": "Compilation Error: Missing semicolon after struct definition." }
+  ],
+  "driver": "N/A - self-contained program.",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

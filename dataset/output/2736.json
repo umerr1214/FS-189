@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a base class `Employee` with `name` (string) and `id` (int). Derive a `Manager` class and a `Worker` class. `Manager` should have an additional `department` (string) and `Worker` an `hourlyRate` (double). Each class should have a method to print its specific details.",
+  "test_cases": [
+    {
+      "input": "N/A (object creation and polymorphic method call)",
+      "expected": "Details via Employee pointers (Semantic Error - expected derived, got base):\nEmployee: Alice Smith, ID: 101, Department: Sales\nEmployee: Bob Johnson, ID: 202, Hourly Rate: 25.5\n\nDirect calls (correct behavior):\nEmployee: Alice Smith, ID: 101, Department: Sales\nEmployee: Bob Johnson, ID: 202, Hourly Rate: 25.5\n"
+    }
+  ],
+  "driver": "Manager mgr(\"Alice Smith\", 101, \"Sales\");\nWorker wrk(\"Bob Johnson\", 202, 25.50);\n\nstd::vector<Employee*> employees;\nemployees.push_back(&mgr);\nemployees.push_back(&wrk);\n\nstd::cout << \"Details via Employee pointers (Semantic Error - expected derived, got base):\\n\";\nfor (const auto& emp_ptr : employees) {\n    emp_ptr->printDetails();\n    std::cout << \"\\n\";\n}\nstd::cout << \"\\n\";\n\nstd::cout << \"Direct calls (correct behavior):\\n\";\nmgr.printDetails();\nstd::cout << \"\\n\";\nwrk.printDetails();\nstd::cout << \"\\n\";",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The `printDetails` method in the base `Employee` class is not declared `virtual`. When `printDetails` is called through a base class pointer (`Employee*`) pointing to a derived object (`Manager` or `Worker`), static binding occurs, and `Employee::printDetails` is always invoked instead of the intended derived class's version. This prevents polymorphic behavior and leads to incorrect output when trying to print specific details of derived objects via base pointers."]
+}

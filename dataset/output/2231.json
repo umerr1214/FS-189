@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `BankAccount` class with `accountNumber` (string, read-only after creation) and `balance` (double, private). Implement public methods `deposit(amount)` and `withdraw(amount)` with appropriate validation (e.g., non-negative amounts, sufficient balance for withdrawal).",
+  "test_cases": [
+    { "input": "BankAccount myAccount(\"ACC12345\", 1000.0);\nmyAccount.deposit(200.0);\nmyAccount.withdraw(500.0);\nmyAccount.withdraw(800.0);\nmyAccount.deposit(-50.0);\nmyAccount.withdraw(-100.0);", "expected": "Account Number: ACC12345\nInitial Balance: 1000\nDeposited 200. New balance: 1200\nWithdrew 500. New balance: 700\nInsufficient balance for withdrawal.\nDeposited -50. New balance: 650\nWithdrawal amount must be positive.\nFinal Balance: 650" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nint main() {\n    BankAccount myAccount(\"ACC12345\", 1000.0);\n\n    std::cout << \"Account Number: \" << myAccount.getAccountNumber() << std::endl;\n    std::cout << \"Initial Balance: \" << myAccount.getBalance() << std::endl;\n\n    myAccount.deposit(200.0);\n    myAccount.withdraw(500.0);\n    myAccount.withdraw(800.0); // Should fail\n    myAccount.deposit(-50.0);  // Logical error: this will incorrectly reduce balance\n    myAccount.withdraw(-100.0); // Should fail due to negative amount\n\n    std::cout << \"Final Balance: \" << myAccount.getBalance() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `deposit` method lacks proper validation for non-negative amounts. It allows negative `amount` values, which incorrectly reduces the account balance instead of rejecting the 'deposit'."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Illustrate the use of `private`, `protected`, and `public` access specifiers by creating a `BaseClass` with members of each type and a `DerivedClass` that attempts to access them. Explain which accesses are permitted.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Compilation Error: Missing semicolon after class definition."
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"Demonstrating C++ Access Specifiers (Syntax Error Example)\\n\" << std::endl;\n\n    BaseClass baseObj;\n    baseObj.displayBaseMembers();\n\n    DerivedClass derivedObj;\n    derivedObj.accessBaseMembers();\n\n    std::cout << \"\\nFrom main() function:\" << std::endl;\n    std::cout << \"  Accessing baseObj.publicMember (allowed): \" << baseObj.publicMember << std::endl;\n    std::cout << \"  Attempting to access baseObj.protectedMember directly: NOT PERMITTED\" << std::endl;\n    std::cout << \"  Attempting to access baseObj.privateMember directly: NOT PERMITTED\" << std::endl;\n    std::cout << \"  Accessing baseObj.privateMember via public getter (allowed): \" << baseObj.getPrivateMember() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after BaseClass definition, leading to a compilation error."]
+}

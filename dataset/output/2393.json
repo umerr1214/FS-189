@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a `Circle` class with a `radius` attribute. Implement a default constructor setting radius to 0, a parameterized constructor setting radius to a given value, and a copy constructor.",
+  "test_cases": [
+    { "input": "", "expected": "Radius: 0\nRadius: 5.5\nRadius: 5.5\n" }
+  ],
+  "driver": "int main() {\n    Circle c1;\n    Circle c2(5.5);\n    Circle c3 = c2;\n\n    c1.printRadius();\n    c2.printRadius();\n    c3.printRadius();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": []
+}

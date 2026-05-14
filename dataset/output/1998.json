@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Employee` with `name` (string) and `salary` (double). Derive two classes: `Manager` (adds `department` string) and `Engineer` (adds `specialization` string). Implement constructors for all classes.",
+  "test_cases": [
+    { "input": "Manager(\"Alice\", 75000.0, \"HR\") passed to printEmployeeDetails", "expected": "Details from printEmployeeDetails (sliced):\nName: Alice, Salary: 75000" },
+    { "input": "Engineer(\"Bob\", 60000.0, \"Software\") passed to printEmployeeDetails", "expected": "Details from printEmployeeDetails (sliced):\nName: Bob, Salary: 60000" }
+  ],
+  "driver": "int main() {\n    Manager m(\"Alice\", 75000.0, \"HR\");\n    Engineer e(\"Bob\", 60000.0, \"Software\");\n\n    std::cout << \"--- Original Objects ---\" << std::endl;\n    m.display();\n    e.display();\n\n    std::cout << \"\\n--- Sliced Objects ---\" << std::endl;\n    // Semantic error: object slicing occurs here\n    printEmployeeDetails(m);\n    printEmployeeDetails(e);\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["Object slicing occurs when derived class objects (Manager, Engineer) are passed by value to the 'printEmployeeDetails' function which expects an 'Employee' object. This results in the loss of derived-specific data and behavior."]
+}

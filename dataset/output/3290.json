@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Create a simple menu-driven program that allows the user to choose between calculating the area of a circle, square, or triangle. Use a `switch` statement to handle the user's choice and prompt for necessary dimensions.",
+  "test_cases": [
+    { "input": "1\n5\n4", "expected": "\nArea Calc:\n1. Circ\n2. Sq\n3. Tri\n4. Ex\nCh: Rad: Area: 78.53975\nArea Calc:\n1. Circ\n2. Sq\n3. Tri\n4. Ex\nCh: Bye.\n" },
+    { "input": "2\n4\n4", "expected": "\nArea Calc:\n1. Circ\n2. Sq\n3. Tri\n4. Ex\nCh: Side: Area: 16\nArea Calc:\n1. Circ\n2. Sq\n3. Tri\n4. Ex\nCh: Bye.\n" },
+    { "input": "3\n6\n8\n4", "expected": "\nArea Calc:\n1. Circ\n2. Sq\n3. Tri\n4. Ex\nCh: Base: Hgt: Area: 24\nArea Calc:\n1. Circ\n2. Sq\n3. Tri\n4. Ex\nCh: Bye.\n" },
+    { "input": "5\n4", "expected": "\nArea Calc:\n1. Circ\n2. Sq\n3. Tri\n4. Ex\nCh: Bad choice.\nArea Calc:\n1. Circ\n2. Sq\n3. Tri\n4. Ex\nCh: Bye.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n\n// Assuming the student's main function is renamed to student_main for testing.\n// The actual test cases would be passed to this driver function or system.\nint student_main(); \n\nstruct TestCase {\n    std::string input;\n    std::string expected;\n};\n\n// This main function serves as a template for how test cases would be run.\nint main() {\n    // This vector 'test_cases' would be populated by the test harness from the JSON data.\n    // For this example, we'll use a placeholder and assume external population.\n    std::vector<TestCase> test_cases; // Actual test cases from JSON will be populated here.\n\n    // Example: For the JSON above, 'test_cases' would contain:\n    // test_cases.push_back({\"1\\n5\\n4\", \"\\nArea Calc:...\"});\n    // test_cases.push_back({\"2\\n4\\n4\", \"\\nArea Calc:...\"});\n    // test_cases.push_back({\"3\\n6\\n8\\n4\", \"\\nArea Calc:...\"});\n    // test_cases.push_back({\"5\\n4\", \"\\nArea Calc:...\"});\n\n    std::string output_buffer;\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n\n    for (const auto& test_case : test_cases) {\n        std::istringstream iss(test_case.input);\n        std::cin.rdbuf(iss.rdbuf());\n\n        std::ostringstream oss;\n        std::cout.rdbuf(oss.rdbuf());\n\n        // Call the student's main function.\n        try {\n            student_main(); \n        } catch (const std::exception& e) {\n            // Handle potential crashes/exceptions\n        }\n\n        output_buffer = oss.str();\n        // In a real testing environment, output_buffer would be compared to test_case.expected\n        // using a robust comparison function that handles whitespace and floating point differences.\n        // For this dataset generation, we simply demonstrate the setup.\n    }\n\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses 'goto' statement for the main program loop, which is generally discouraged as it can make code harder to follow and maintain.",
+    "Variable names are cryptic and not descriptive (e.g., 'c', 'r', 's', 'b', 'h', 'P'), reducing code readability.",
+    "Menu prompts and messages are abbreviated and less user-friendly.",
+    "Lack of comments to explain the purpose of variables or complex sections, hindering understanding."
+  ]
+}

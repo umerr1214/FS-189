@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private members for `title` (string), `author` (string), and `isbn` (string). Implement a public parameterized constructor to initialize these members and a public method `displayBookInfo()` to print all book details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Title: The Martian\nAuthor: Andy Weir\nISBN: 978-0553448138\n"
+    }
+  ],
+  "driver": "int main() {\n    Book book1(\"The Martian\", \"Andy Weir\", \"978-0553448138\");\n    book1.displayBookInfo();\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The code suffers from readability and efficiency issues. Member variable names (`_t`, `_a`, `_i`) are not descriptive. The constructor passes `std::string` parameters by value and then assigns them, leading to an unnecessary copy operation for each string. The `displayBookInfo` method uses `std::endl` on every line, which flushes the output buffer unnecessarily and can be less efficient than using `\\n`."
+  ]
+}

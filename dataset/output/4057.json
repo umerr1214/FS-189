@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that calculates the factorial of a non-negative integer entered by the user. Use a `for` loop to perform the calculation. Handle invalid input (negative numbers) by printing an error message.",
+  "test_cases": [
+    { "input": "0\n", "expected": "Enter a non-negative integer: Factorial of 0 = 1\n" },
+    { "input": "1\n", "expected": "Enter a non-negative integer: Factorial of 1 = 1\n" },
+    { "input": "5\n", "expected": "Enter a non-negative integer: Factorial of 5 = 120\n" },
+    { "input": "10\n", "expected": "Enter a non-negative integer: Factorial of 10 = 3628800\n" },
+    { "input": "20\n", "expected": "Enter a non-negative integer: Factorial of 20 = 2432902008176640000\n" },
+    { "input": "-5\n", "expected": "Enter a non-negative integer: Error: Please enter a non-negative integer.\n" },
+    { "input": "21\n", "expected": "Enter a non-negative integer: Factorial of 21 = -1067051877990119424\n" },
+    { "input": "abc\n", "expected": "Enter a non-negative integer: Error: Invalid input. Please enter an integer.\n" }
+  ],
+  "driver": "std::string run_solution(const std::string& input) {\n    std::stringstream ss_input(input);\n    std::stringstream ss_output;\n\n    std::streambuf* old_cin_buf = std::cin.rdbuf();\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    // The user's 'main' function would be executed here by the test harness.\n    // For example, if main was renamed to `_user_main` by the test system:\n    // _user_main();\n    main(); // Call the actual main function of the user's program\n\n    std::cin.rdbuf(old_cin_buf);\n    std::cout.rdbuf(old_cout_buf);\n\n    return ss_output.str();\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Integer overflow for large valid inputs (e.g., >20) leading to incorrect, wrapped-around results.",
+    "Input stream failure due to non-numeric input is not fully recovered (cin.clear() and cin.ignore() missing), potentially affecting subsequent input operations."
+  ]
+}

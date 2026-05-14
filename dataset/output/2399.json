@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `ResourceHandler` class that simulates acquiring a resource in its constructor (e.g., printing 'Resource acquired.') and releasing it in its destructor (e.g., printing 'Resource released.').",
+  "test_cases": [
+    { "input": "", "expected": "Resource acquired.\nResource released.\n" }
+  ],
+  "driver": "int main() {\n    ResourceHandler rh;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The constructor and destructor messages are logically swapped. The constructor prints 'Resource released.' instead of 'Resource acquired.', and the destructor prints 'Resource acquired.' instead of 'Resource released.'. The program compiles and runs, but the output does not match the intended behavior."
+  ]
+}

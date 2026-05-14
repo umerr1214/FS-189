@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a function `calculateAverage(int arr[], int size)` that takes a 1D integer array and its size as input. The function should calculate and return the average of all elements in the array. In `main`, prompt the user for 10 integers, store them in an array, and then call this function to display their average.",
+  "test_cases": [
+    { "input": "250000000 250000000 250000000 250000000 250000000 250000000 250000000 250000000 250000000 250000000", "expected": "250000000.00" }
+  ],
+  "driver": "#include <iostream>\n\ndouble calculateAverage(int arr[], int size) {\n    int sum_int = 0;\n    for (int i = 0; i < size; ++i) {\n        sum_int += arr[i];\n    }\n    return static_cast<double>(sum_int) / size;\n}\n\nint main() {\n    int test_arr1[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};\n    std::cout.precision(2);\n    std::cout << std::fixed << calculateAverage(test_arr1, 10) << std::endl;\n\n    int test_arr2[] = {250000000, 250000000, 250000000, 250000000, 250000000, 250000000, 250000000, 250000000, 250000000, 250000000};\n    std::cout << std::fixed << calculateAverage(test_arr2, 10) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 7,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["Integer overflow occurs when summing large numbers (e.g., 10 * 2.5 * 10^8) because 'sum_int' is an 'int', leading to an incorrect negative average. The sum should be stored in a 'long long' to prevent overflow."]
+}

@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter their name (as a string), age (as an integer), and height (in meters as a double). Store these values in appropriate variables and then print them back to the console in a formatted sentence.",
+  "test_cases": [
+    {
+      "input": "Alice Wonderland\n30\n1.657",
+      "expected": "Enter your name: \nEnter your age: \nEnter your height (m): \nGreetings, Alice Wonderland! You are 30 years old and 1.66 meters tall.\n"
+    },
+    {
+      "input": "Bob The Builder\n50\n2.011",
+      "expected": "Enter your name: \nEnter your age: \nEnter your height (m): \nGreetings, Bob The Builder! You are 50 years old and 2.01 meters tall.\n"
+    }
+  ],
+  "driver": "extern int student_main_logic();\n\nstd::string run_and_capture_output(const std::string& input) {\n    std::streambuf* old_cin_buf = std::cin.rdbuf();\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n\n    std::istringstream iss(input);\n    std::ostringstream oss;\n\n    std::cin.rdbuf(iss.rdbuf());\n    std::cout.rdbuf(oss.rdbuf());\n\n    student_main_logic(); \n\n    std::cin.rdbuf(old_cin_buf);\n    std::cout.rdbuf(old_cout_buf);\n\n    return oss.str();\n}\n\nint main() {\n    // This main function is part of the test driver and would typically\n    // iterate through test cases, calling run_and_capture_output for each.\n    // The actual test cases and their expected outputs are defined in the JSON.\n    std::cout << \"Test driver for student_main_logic initialized.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Use of short, uninformative variable names (n, a, h) reduces code readability.",
+    "Overuse of std::endl for prompts; using '\\n' is generally more efficient as std::endl also flushes the output buffer, which is often unnecessary for simple prompts.",
+    "Using C-style printf for output instead of C++ idiomatic std::cout. While functional, printf is less type-safe and requires an extra step (n.c_str()) for std::string."
+  ]
+}

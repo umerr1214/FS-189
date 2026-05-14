@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Develop a `Temperature` class with a private `double value` and a private `char unit` ('C' for Celsius or 'F' for Fahrenheit). Provide public setter methods `setValue(double val)` and `setUnit(char u)`. The `setValue` method should validate that the temperature is above absolute zero (-273.15 C or -459.67 F), and `setUnit` should only accept 'C' or 'F'.",
+  "test_cases": [
+    { "input": "25 C", "expected": "--- Test Case: Valid Celsius ---\nTemperature: 25 C\n" },
+    { "input": "77 F", "expected": "--- Test Case: Valid Fahrenheit ---\nTemperature: 77 F\n" },
+    { "input": "-274 C", "expected": "--- Test Case: Invalid Celsius (below absolute zero) ---\nRobustness Warning: Celsius value -274 is below absolute zero (-273.15 C). Setting value anyway.\nTemperature: -274 C\n" },
+    { "input": "-460 F", "expected": "--- Test Case: Invalid Fahrenheit (below absolute zero) ---\nRobustness Warning: Fahrenheit value -460 is below absolute zero (-459.67 F). Setting value anyway.\nTemperature: -460 F\n" },
+    { "input": "10 K", "expected": "--- Test Case: Invalid Unit 'K' ---\nRobustness Warning: Invalid unit 'K'. Setting unit anyway, which might lead to inconsistent state.\nTemperature: 10 K\n" },
+    { "input": "-300 X", "expected": "--- Test Case: Invalid Value and Unit ---\nRobustness Warning: Invalid unit 'X'. Setting unit anyway, which might lead to inconsistent state.\nRobustness Warning: Unknown unit 'X'. Assuming Celsius for absolute zero check. Setting value anyway.\n(Assumed C) Value -300 is below absolute zero. Setting value anyway.\nTemperature: -300 X\n" }
+  ],
+  "driver": "void run_test_case(const std::string& description, double val, char unit) {\n    std::cout << \"--- Test Case: \" << description << \" ---\\n\";\n    Temperature temp; // Defaults to 0 C\n    temp.setUnit(unit); // Set unit first (may set invalid unit due to robustness issue)\n    temp.setValue(val); // Then set value (validation depends on potentially invalid unit)\n    temp.display();\n    std::cout << \"\\n\";\n}\n\nint main() {\n    run_test_case(\"Valid Celsius\", 25.0, 'C');\n    run_test_case(\"Valid Fahrenheit\", 77.0, 'F');\n    run_test_case(\"Invalid Celsius (below absolute zero)\", -274.0, 'C');\n    run_test_case(\"Invalid Fahrenheit (below absolute zero)\", -460.0, 'F');\n    run_test_case(\"Invalid Unit 'K'\", 10.0, 'K');\n    run_test_case(\"Invalid Value and Unit\", -300.0, 'X');\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The setValue method allows setting values below absolute zero, printing only a warning.",
+    "The setUnit method allows setting invalid units, printing only a warning, leading to an inconsistent or invalid object state.",
+    "The setValue method attempts to validate using a potentially invalid unit, leading to unreliable behavior."
+  ]
+}

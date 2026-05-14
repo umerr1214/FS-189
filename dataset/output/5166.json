@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `int linearSearch(const int arr[], int size, int target)` that performs a linear search on an integer array. It should return the index of the `target` element if found, or -1 if not found. Test this function in `main` with a sample array and user-provided target.",
+  "test_cases": [
+    { "input": "30", "expected": "Array: {10, 20, 30, 40, 50}\nEnter target element to search: Target 30 found at index 2\n" },
+    { "input": "50", "expected": "Array: {10, 20, 30, 40, 50}\nEnter target element to search: Target 50 found at index 4\n" },
+    { "input": "60", "expected": "Array: {10, 20, 30, 40, 50}\nEnter target element to search: Target 60 not found in the array.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\n// The linearSearch function from the user's code will be inserted here.\n// int linearSearch(const int arr[], int size, int target) { ... }\n\nint main_test() {\n    const int sampleArr[] = {10, 20, 30, 40, 50};\n    int size = sizeof(sampleArr) / sizeof(sampleArr[0]);\n\n    std::vector<std::pair<int, std::string>> tests = {\n        {30, \"Array: {10, 20, 30, 40, 50}\\nEnter target element to search: Target 30 found at index 2\\n\"},\n        {50, \"Array: {10, 20, 30, 40, 50}\\nEnter target element to search: Target 50 found at index 4\\n\"},\n        {60, \"Array: {10, 20, 30, 40, 50}\\nEnter target element to search: Target 60 not found in the array.\\n\"}\n    };\n\n    for (const auto& test : tests) {\n        int target = test.first;\n        std::cout << \"Array: {10, 20, 30, 40, 50}\" << std::endl;\n        std::cout << \"Enter target element to search: \";\n        int index = linearSearch(sampleArr, size, target);\n        if (index != -1) {\n            std::cout << \"Target \" << target << \" found at index \" << index << std::endl;\n        } else {\n            std::cout << \"Target \" << target << \" not found in the array.\" << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The loop condition `i <= size` in `linearSearch` causes an out-of-bounds array access when `i` becomes equal to `size`. Valid array indices are from `0` to `size - 1`."]
+}

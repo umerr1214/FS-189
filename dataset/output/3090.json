@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Design a `Fraction` class with private members `numerator` and `denominator` (integers). Overload the binary `*` operator as a non-member (friend) function to multiply two `Fraction` objects, returning a new `Fraction` object. Simplify the resulting fraction if possible.",
+  "test_cases": [
+    { "input": "Fraction f1(1, 2); Fraction f2(3, 4); Fraction f3 = f1 * f2; f3.print();", "expected": "3/8" },
+    { "input": "Fraction f4(2, 3); Fraction f5(3, 2); Fraction f6 = f4 * f5; f6.print();", "expected": "1/1" },
+    { "input": "Fraction f7(0, 5); Fraction f8(10, 2); Fraction f9 = f7 * f8; f9.print();", "expected": "0/1" }
+  ],
+  "driver": "#include <iostream>\n#include <numeric>\n#include <cmath>\n\n// Assuming Fraction class and operator* are defined here\n\nint main() {\n    Fraction f1(1, 2);\n    Fraction f2(3, 4);\n    Fraction f3 = f1 * f2;\n    f1.print();\n    std::cout << \" * \";\n    f2.print();\n    std::cout << \" = \";\n    f3.print();\n    std::cout << std::endl;\n\n    Fraction f4(2, 3);\n    Fraction f5(3, 2);\n    Fraction f6 = f4 * f5;\n    f4.print();\n    std::cout << \" * \";\n    f5.print();\n    std::cout << \" = \";\n    f6.print();\n    std::cout << std::endl;\n\n    Fraction f7(0, 5);\n    Fraction f8(10, 2);\n    Fraction f9 = f7 * f8;\n    f7.print();\n    std::cout << \" * \";\n    f8.print();\n    std::cout << \" = \";\n    f9.print();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The binary `*` operator is overloaded as a member function (`Fraction::operator*`) instead of a non-member (friend) function, which was explicitly required by the question. While it compiles and functions correctly for `Fraction * Fraction`, it violates the specified design requirement for the operator's implementation."
+  ]
+}

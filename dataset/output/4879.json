@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that prompts the user for a numeric score (0-100). Assign and print a letter grade based on the following scale: 90-100 A, 80-89 B, 70-79 C, 60-69 D, below 60 F. Use `if-else if-else` statements.",
+  "test_cases": [
+    { "input": "95", "expected": "Enter a numeric score (0-100): A\n" },
+    { "input": "82", "expected": "Enter a numeric score (0-100): B\n" },
+    { "input": "55", "expected": "Enter a numeric score (0-100): F\n" },
+    { "input": "-10", "expected": "Enter a numeric score (0-100): F\n" },
+    { "input": "105", "expected": "Enter a numeric score (0-100): A\n" },
+    { "input": "abc", "expected": "Enter a numeric score (0-100): Invalid input. Please enter a numeric score.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n\nvoid user_solution_logic(); \n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        std::stringstream ss_input(line);\n        std::stringstream ss_output;\n        \n        std::streambuf* old_cin_buf = std::cin.rdbuf();\n        std::streambuf* old_cout_buf = std::cout.rdbuf();\n\n        std::cin.rdbuf(ss_input.rdbuf());\n        std::cout.rdbuf(ss_output.rdbuf());\n\n        user_solution_logic(); \n\n        std::cin.rdbuf(old_cin_buf);\n        std::cout.rdbuf(old_cout_buf);\n\n        std::cout << ss_output.str();\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The program does not validate if the entered score is within the 0-100 range. Scores outside this range (e.g., negative scores or scores above 100) are processed, leading to incorrect grade assignments (e.g., -10 results in 'F', 105 results in 'A')."]
+}

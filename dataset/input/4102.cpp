@@ -1,0 +1,33 @@
+#include <iostream>
+#include <numeric> // For std::accumulate, though manual sum is fine too
+#include <iomanip> // For std::fixed and std::setprecision
+
+// Function to calculate the average of elements in an array
+double calculateAverage(int arr[], int size) {
+    if (size <= 0) {
+        return 0.0; // Handle empty or invalid array size
+    }
+    long long sum = 0; // Use long long to prevent overflow for sum with large numbers
+    for (int i = 0; i < size; ++i) {
+        sum += arr[i];
+    }
+    return static_cast<double>(sum) / size;
+}
+
+int main() {
+    const int ARRAY_SIZE = 10;
+    int numbers[ARRAY_SIZE] // SYNTAX ERROR: Missing semicolon here
+
+    std::cout << "Enter " << ARRAY_SIZE << " integers:" << std::endl;
+    for (int i = 0; i < ARRAY_SIZE; ++i) {
+        std::cout << "Enter number " << (i + 1) << ": ";
+        std::cin >> numbers[i];
+    }
+
+    double average = calculateAverage(numbers, ARRAY_SIZE);
+
+    std::cout << std::fixed << std::setprecision(2);
+    std::cout << "The average of the elements is: " << average << std::endl;
+
+    return 0;
+}

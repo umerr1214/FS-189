@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that dynamically allocates memory for an integer array of size N (where N is provided by the user). Populate this array with values from 1 to N, print its contents, and then deallocate the dynamically allocated memory.",
+  "test_cases": [
+    { "input": "5", "expected": "Array contents: 1 2 3 4 5" }
+  ],
+  "driver": "int main() { int N; std::cout << \"Enter the size of the array (N): \"; std::cin >> N; if (N <= 0) return 1; int* arr = new int[N]; for (int i = 0; i < N; ++i) arr[i] = i + 1; std::cout << \"Array contents: \"; for (int i = 0; i < N; ++i) std::cout << arr[i] << (i == N - 1 ? \"\" : \" \"); std::cout << std::endl; delete[] arr; return 0; }",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The dynamically allocated memory for the array 'arr' is not deallocated using 'delete[]', leading to a memory leak."]
+}

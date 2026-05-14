@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Point` with `x` and `y` integer coordinates. Create an array of `Point` objects and find the point closest to the origin (0,0). Print its coordinates.",
+  "test_cases": [
+    { "input": "3\n1 1\n2 2\n-1 -1", "expected": "1 1" },
+    { "input": "4\n1 2\n-3 4\n0 0\n5 5", "expected": "0 0" },
+    { "input": "0", "expected": "No points provided." },
+    { "input": "5\n10 10\n-1 -1\n3 4\n0 0\n-2 2", "expected": "0 0" },
+    { "input": "2\n5 0\n-4 0", "expected": "-4 0" },
+    { "input": "2\n3 4\n-3 -4", "expected": "3 4" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream>\n\n// This driver assumes the solution's main function is renamed to `solution_main`\n// for testing purposes to avoid symbol conflicts. The actual solution file\n// should contain a `main` function.\n\nextern int solution_main(); // Forward declaration for the solution's main\n\nstd::string run_solution(const std::string& input) {\n    std::istringstream iss(input);\n    std::ostringstream oss;\n\n    // Redirect cin and cout\n    std::streambuf* old_cin = std::cin.rdbuf(iss.rdbuf());\n    std::streambuf* old_cout = std::cout.rdbuf(oss.rdbuf());\n\n    solution_main(); // Call the solution's main function\n\n    // Restore cin and cout\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    return oss.str();\n}\n\nint main() {\n    // In a real test harness, this would iterate through test_cases\n    // and compare outputs. For this JSON field, it just shows the mechanism.\n    // Example of how it would be used:\n    // std::string output = run_solution(\"3\\n1 1\\n2 2\\n-1 -1\");\n    // std::cout << output << std::endl; // Should print \"1 1\"\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

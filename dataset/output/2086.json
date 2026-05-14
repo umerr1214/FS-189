@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a `ResourceLogger` class that dynamically allocates a C-style string in its constructor to store a log message. Implement a destructor that deallocates this memory and prints a message indicating the resource is freed. Demonstrate its usage by creating an object and letting it go out of scope.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Compilation Error: The program contains a syntax error (missing semicolon) that prevents it from compiling successfully."
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"Entering main scope.\" << std::endl;\n    {\n        ResourceLogger myLogger(\"Main scope log message\");\n    }\n    std::cout << \"Exiting inner scope.\" << std::endl;\n    func();\n    std::cout << \"Exiting main scope.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after `std::endl` in `main` function before the opening brace of the inner scope, leading to a compilation error."
+  ]
+}

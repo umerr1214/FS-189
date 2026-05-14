@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a function template `printArray(const T arr[], int size)` that can print the elements of any 1D array, regardless of its data type (`int`, `double`, `char`, etc.). Demonstrate its use with an array of integers and an array of doubles.",
+  "test_cases": [
+    { "input": "int intArray[] = {1, 2, 3, 4, 5};", "expected": "Integer array: 1 2 3 4 \n" },
+    { "input": "double doubleArray[] = {1.1, 2.2, 3.3, 4.4};", "expected": "Double array: 1.1 2.2 3.3 \n" },
+    { "input": "char charArray[] = {'a'};", "expected": "Char array: \n" }
+  ],
+  "driver": "int main() {\n    int intArray[] = {1, 2, 3, 4, 5};\n    int intSize = sizeof(intArray) / sizeof(intArray[0]);\n    std::cout << \"Integer array: \";\n    printArray(intArray, intSize);\n\n    double doubleArray[] = {1.1, 2.2, 3.3, 4.4};\n    int doubleSize = sizeof(doubleArray) / sizeof(doubleArray[0]);\n    std::cout << \"Double array: \";\n    printArray(doubleArray, doubleSize);\n\n    char charArray[] = {'a'};\n    int charSize = sizeof(charArray) / sizeof(charArray[0]);\n    std::cout << \"Char array: \";\n    printArray(charArray, charSize);\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The loop condition `i < size - 1` causes an off-by-one error, preventing the last element of the array from being printed. For arrays of size 1, nothing is printed."]
+}

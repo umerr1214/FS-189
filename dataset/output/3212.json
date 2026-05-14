@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Create three classes: `Base`, `Derived` (inheriting `Base`), and `External`. In `Base`, declare `public`, `protected`, and `private` members. Demonstrate the accessibility of these members from `Derived` and `External` classes respectively.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "The program should output verbose constructor messages, followed by detailed accessibility demonstrations for Base, Derived, and External classes. The logical flow of accessibility (which members are accessible/inaccessible) should be correct, but the output will be cluttered and hard to parse due to excessively long identifiers and overly descriptive messages."
+    }
+  ],
+  "driver": "int main() { return main_function_for_program_execution(); }",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Excessively long and verbose identifiers (e.g., `TheFundamentalBaseClassForAccessibilityDemonstration`, `m_public_integer_data_member_of_the_base_class_for_general_purpose_use`) severely hamper readability and make the code difficult to follow.",
+    "Inconsistent and overly verbose commenting, along with non-standard formatting, detracts from code clarity.",
+    "The unnecessary wrapping of the `main` function (`main_function_for_program_execution` called by `main`) adds an unneeded layer of indirection and complexity.",
+    "Overly descriptive and redundant output messages make it difficult to quickly grasp the essential information."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Implement a `Printer` class with overloaded `print` methods that can display a `string`, an `int`, a `double`, and a `bool` value to the console.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "String: Hello, C++!\nInt: 123\nDouble: 45.68\nBool: true\nString: \nInt: -5\nDouble: 0.00\nBool: false\n"
+    }
+  ],
+  "driver": "int main() {\n    Printer p;\n    p.print(\"Hello, C++!\");\n    p.print(123);\n    p.print(45.6789);\n    p.print(true);\n    p.print(\"\");\n    p.print(-5);\n    p.print(0.0);\n    p.print(false);\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `print` method for `std::string` takes the string by value, causing an unnecessary copy and reducing efficiency, especially for large strings. It should be passed by `const&`.",
+    "All `print` methods use `std::endl`, which flushes the output buffer on each call. Using `\\n` instead would be more efficient when flushing is not immediately required.",
+    "The `print` method for `double` values applies fixed precision (`std::fixed`, `std::setprecision(2)`) unnecessarily, which can reduce readability if varying precision is desired and adds minor overhead. It should ideally print with default precision unless specified.",
+    "The `print` methods are not declared as `const`, even though they do not modify the object's state. This is a design/readability concern."
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Implement a `Rectangle` class with private `width` and `height` (double). Provide a parameterized constructor to set initial dimensions, ensuring both are positive. If invalid, default to 1.0. Also, add a `calculateArea()` and `calculatePerimeter()` method.",
+  "test_cases": [
+    { "input": "Rectangle(5.0, 10.0)", "expected": "Input: (5.00, 10.00) -> Area: 50.00, Perimeter: 30.00" },
+    { "input": "Rectangle(-2.0, 8.0)", "expected": "Input: (-2.00, 8.00) -> Area: 8.00, Perimeter: 18.00" },
+    { "input": "Rectangle(7.0, -3.0)", "expected": "Input: (7.00, -3.00) -> Area: 7.00, Perimeter: 16.00" },
+    { "input": "Rectangle(-4.0, -6.0)", "expected": "Input: (-4.00, -6.00) -> Area: 1.00, Perimeter: 4.00" },
+    { "input": "Rectangle(0.0, 9.0)", "expected": "Input: (0.00, 9.00) -> Area: 9.00, Perimeter: 20.00" },
+    { "input": "Rectangle(6.0, 0.0)", "expected": "Input: (6.00, 0.00) -> Area: 6.00, Perimeter: 14.00" },
+    { "input": "Rectangle(0.0, 0.0)", "expected": "Input: (0.00, 0.00) -> Area: 1.00, Perimeter: 4.00" },
+    { "input": "Rectangle(1000.0, 2000.0)", "expected": "Input: (1000.00, 2000.00) -> Area: 2000000.00, Perimeter: 6000.00" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream>\n#include <iomanip>\n\nint main() {\n    std::vector<std::pair<double, double>> test_inputs = {\n        {5.0, 10.0},\n        {-2.0, 8.0},\n        {7.0, -3.0},\n        {-4.0, -6.0},\n        {0.0, 9.0},\n        {6.0, 0.0},\n        {0.0, 0.0},\n        {1000.0, 2000.0}\n    };\n\n    for (const auto& p : test_inputs) {\n        Rectangle rect(p.first, p.second);\n        std::cout << std::fixed << std::setprecision(2);\n        std::cout << \"Input: (\" << p.first << \", \" << p.second << \") -> \";\n        std::cout << \"Area: \" << rect.calculateArea() << \", \";\n        std::cout << \"Perimeter: \" << rect.calculatePerimeter() << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

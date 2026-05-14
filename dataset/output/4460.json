@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Prompt the user to enter a monetary value (e.g., 123.456). Print this value formatted to two decimal places, prefixed with a dollar sign (e.g., $123.46).",
+  "test_cases": [
+    { "input": "123.456", "expected": "Enter monetary value: $123.46\n" },
+    { "input": "0.999", "expected": "Enter monetary value: $1.00\n" },
+    { "input": "100", "expected": "Enter monetary value: $100.00\n" },
+    { "input": "123.45", "expected": "Enter monetary value: $123.45\n" }
+  ],
+  "driver": "The user's C++ code is compiled and executed. Input is provided via standard input (stdin) and output is captured from standard output (stdout) for comparison with expected results. For floating-point output, exact string matching is used after formatting.",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The program uses C-style `printf` for output formatting instead of C++ iostream manipulators (`std::fixed`, `std::setprecision`). While functional, this is generally considered less idiomatic and potentially less type-safe in modern C++ compared to using iostreams.",
+    "The variable name `val` is not very descriptive; a more explicit name like `monetaryValue` or `amount` would improve code readability."
+  ]
+}

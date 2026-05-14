@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ function `swapNumbers(int* ptr1, int* ptr2)` that takes two integer pointers as arguments and swaps the values they point to. Demonstrate its usage in `main` with two integer variables.",
+  "test_cases": [
+    { "input": "int a = 5; int b = 10; swapNumbers(&a, &b);", "expected": "a = 10, b = 5", "actual": "a = 10, b = 10" },
+    { "input": "int x = 100; int y = 200; swapNumbers(&x, &y);", "expected": "x = 200, y = 100", "actual": "x = 200, y = 200" }
+  ],
+  "driver": "#include <iostream>\n\nvoid swapNumbers(int* ptr1, int* ptr2);\n\nint main() {\n    int x_val = 5;\n    int y_val = 10;\n    std::cout << \"Before swap: x = \" << x_val << \", y = \" << y_val << std::endl;\n    swapNumbers(&x_val, &y_val);\n    std::cout << \"After swap: x = \" << x_val << \", y = \" << y_val << std::endl;\n\n    int p_val = 100;\n    int q_val = 200;\n    std::cout << \"Before swap: p = \" << p_val << \", q = \" << q_val << std::endl;\n    swapNumbers(&p_val, &q_val);\n    std::cout << \"After swap: p = \" << p_val << \", q = \" << q_val << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The `swapNumbers` function attempts to swap values without a temporary variable. The sequence `*ptr1 = *ptr2; *ptr2 = *ptr1;` causes the value originally at `*ptr1` to be overwritten by `*ptr2` in the first step. Then, `*ptr2` is assigned the *new* value of `*ptr1` (which is the original `*ptr2`'s value), resulting in both `*ptr1` and `*ptr2` holding the original value of `*ptr2`."]
+}

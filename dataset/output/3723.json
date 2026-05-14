@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter the length and width of a rectangle (as floating-point numbers), then calculates and displays its area and perimeter with appropriate labels.",
+  "test_cases": [
+    {
+      "input": "10.5\n6.0\n",
+      "expected": "Enter the length of the rectangle: Enter the width of the rectangle: \n--- Rectangle Properties ---\nLength:    10.50\nWidth:     6.00\nArea:      63.00\nPerimeter: 33.00\n"
+    },
+    {
+      "input": "abc\n-5.0\n7.0\nxyz\n3.0\n",
+      "expected": "Enter the length of the rectangle: Invalid input. Please enter a positive floating-point number for length.\nEnter the length of the rectangle: Invalid input. Please enter a positive floating-point number for length.\nEnter the length of the rectangle: Enter the width of the rectangle: Invalid input. Please enter a positive floating-point number for width.\nEnter the width of the rectangle: \n--- Rectangle Properties ---\nLength:    7.00\nWidth:     3.00\nArea:      21.00\nPerimeter: 20.00\n"
+    },
+    {
+      "input": "1.23\n4.56\n",
+      "expected": "Enter the length of the rectangle: Enter the width of the rectangle: \n--- Rectangle Properties ---\nLength:    1.23\nWidth:     4.56\nArea:      5.61\nPerimeter: 11.58\n"
+    }
+  ],
+  "driver": "int main() { float length, width; while (true) { std::cout << \"Enter the length of the rectangle: \"; std::cin >> length; if (std::cin.fail() || length <= 0) { std::cout << \"Invalid input. Please enter a positive floating-point number for length.\\n\"; std::cin.clear(); std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\\n'); } else { break; } } while (true) { std::cout << \"Enter the width of the rectangle: \"; std::cin >> width; if (std::cin.fail() || width <= 0) { std::cout << \"Invalid input. Please enter a positive floating-point number for width.\\n\"; std::cin.clear(); std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\\n'); } else { break; } } float area = length * width; float perimeter = 2 * (length + width); std::cout << \"\\n--- Rectangle Properties ---\\n\"; std::cout << \"Length:    \" << std::fixed << std::setprecision(2) << length << std::endl; std::cout << \"Width:     \" << std::fixed << std::setprecision(2) << width << std::endl; std::cout << \"Area:      \" << std::fixed << std::setprecision(2) << area << std::endl; std::cout << \"Perimeter: \" << std::fixed << std::setprecision(2) << perimeter << std::endl; return 0; }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

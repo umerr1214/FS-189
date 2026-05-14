@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create two classes, `Box` (with private `length`) and `Container` (with private `volume`). Declare a non-member function `compareSizes(Box b, Container c)` as a friend to both classes, allowing it to access their private members and print a comparison.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Comparing Box (length: 10) and Container (volume: 20):\nBox's length is less than Container's volume.\nComparing Box (length: 30) and Container (volume: 15):\nBox's length is greater than Container's volume.\nComparing Box (length: 25) and Container (volume: 25):\nBox's length is equal to Container's volume.\nComparing Box (length: 0) and Container (volume: 10):\nBox's length is less than Container's volume.\nComparing Box (length: -5) and Container (volume: 5):\nBox's length is less than Container's volume.\nComparing Box (length: 10) and Container (volume: -20):\nBox's length is greater than Container's volume.\n"
+    }
+  ],
+  "driver": "int main() {\n    Box box1(10);\n    Container cont1(20);\n    compareSizes(box1, cont1);\n\n    Box box2(30);\n    Container cont2(15);\n    compareSizes(box2, cont2);\n\n    Box box3(25);\n    Container cont3(25);\n    compareSizes(box3, cont3);\n\n    Box box4(0);\n    Container cont4(10);\n    compareSizes(box4, cont4);\n\n    Box box5(-5);\n    Container cont5(5);\n    compareSizes(box5, cont5);\n\n    Box box6(10);\n    Container cont6(-20);\n    compareSizes(box6, cont6);\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program allows non-positive values for Box length and Container volume in constructors, which for physical dimensions can be considered invalid input. The `compareSizes` function treats these values purely numerically without providing a robust interpretation or warning for such semantically invalid inputs, potentially leading to misleading comparisons for real-world objects."
+  ]
+}

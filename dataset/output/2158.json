@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Course` class (with `name`, `code`). Then, create a `Department` class that uses aggregation to manage a collection of `Course` objects (e.g., using `std::vector`). Implement methods to add a course and list all courses in the department.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "Department: Computer Science\n  - CS101: Introduction to C++\n  - CS201: Data Structures\n  - CS301: Algorithms\nDepartment: Mathematics\n  - MA101: Calculus I\n"
+    }
+  ],
+  "driver": "int main() {\n    Department csDept(\"Computer Science\");\n    Course c1(\"Introduction to C++\", \"CS101\");\n    Course c2(\"Data Structures\", \"CS201\");\n    Course c3(\"Algorithms\", \"CS301\");\n    csDept.addCourse(c1);\n    csDept.addCourse(c2);\n    csDept.addCourse(c3);\n    csDept.listCourses();\n    Department mathDept(\"Mathematics\");\n    Course m1(\"Calculus I\", \"MA101\");\n    mathDept.addCourse(m1);\n    mathDept.listCourses();\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the 'Course' class definition, leading to a compilation error (e.g., 'expected ';' after class definition' or similar)."
+  ]
+}

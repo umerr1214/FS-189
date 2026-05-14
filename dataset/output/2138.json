@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Implement a `Point` class with private integer members `x` and `y`. Overload the binary `+` operator to add two `Point` objects, returning a new `Point` object whose coordinates are the sum of the corresponding coordinates.",
+  "test_cases": [
+    {
+      "input": "Point p1(1, 2); Point p2(3, 4); Point p3 = operator+(p1, p2); Point p4(0, 0); Point p5(-1, -5); Point p6 = operator+(p4, p5);",
+      "expected": "--- Readability / Efficiency Issue Test ---\nTest Case 1: (1, 2) + (3, 4) = (4, 6)\nTest Case 2: (0, 0) + (-1, -5) = (-1, -5)\n"
+    }
+  ],
+  "driver": "#include <iostream>\n\nclass Point {\npublic:\n    int x;\n    int y;\n    Point(int _x = 0, int _y = 0) {\n        x = _x;\n        y = _y;\n    }\n};\n\nPoint operator+(Point p1, Point p2) {\n    Point result_point;\n    result_point.x = p1.x + p2.x;\n    result_point.y = p1.y + p2.y;\n    return result_point;\n}\n\nint main() {\n    std::cout << \"--- Readability / Efficiency Issue Test ---\" << std::endl;\n    Point p1(1, 2);\n    Point p2(3, 4);\n    Point p3 = operator+(p1, p2);\n    std::cout << \"Test Case 1: \";\n    std::cout << \"(\" << p1.x << \", \" << p1.y << \") + \";\n    std::cout << \"(\" << p2.x << \", \" << p2.y << \") = \";\n    std::cout << \"(\" << p3.x << \", \" << p3.y << \")\" << std::endl;\n    Point p4(0, 0);\n    Point p5(-1, -5);\n    Point p6 = operator+(p4, p5);\n    std::cout << \"Test Case 2: \";\n    std::cout << \"(\" << p4.x << \", \" << p4.y << \") + \";\n    std::cout << \"(\" << p5.x << \", \" << p5.y << \") = \";\n    std::cout << \"(\" << p6.x << \", \" << p6.y << \")\" << std::endl;\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The Point class members 'x' and 'y' are public, breaking encapsulation and reducing maintainability.",
+    "The overloaded '+' operator takes Point objects by value, causing unnecessary copies and potential performance overhead.",
+    "The operator implementation could be more concise and efficient by directly constructing the result Point using an initializer list."
+  ]
+}

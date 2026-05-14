@@ -1,0 +1,33 @@
+{
+  "language": "c++",
+  "question": "Write a function `void find_max_min(const int* arr, int size, int* max_val, int* min_val)` that finds the maximum and minimum values in an array and returns them through pointer parameters.",
+  "test_cases": [
+    {
+      "input": "Array: {5, 2, 9, 1, 7}, Size: 5",
+      "expected": "Max: 9, Min: 1"
+    },
+    {
+      "input": "Array: {42}, Size: 1",
+      "expected": "Max: 42, Min: 42"
+    },
+    {
+      "input": "Empty Array, Size: 0",
+      "expected": "Max: 0, Min: 0"
+    },
+    {
+      "input": "Array: {-5, -2, -9, -1, -7}, Size: 5",
+      "expected": "Max: -1, Min: -9"
+    },
+    {
+      "input": "Null Array Pointer, Size: 10",
+      "expected": "Max: 0, Min: 0"
+    }
+  ],
+  "driver": "g++ -std=c++11 -o solution 3386.cpp && ./solution 1\n./solution 2\n./solution 3\n./solution 4\n./solution 5",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `find_max_min` function iterates over the array twice (one complete pass to find the maximum, and another complete pass to find the minimum). This makes the solution less efficient (O(2N)) than a single-pass approach (O(N)) that finds both values concurrently. While functionally correct, this design choice impacts performance for larger arrays."
+  ]
+}

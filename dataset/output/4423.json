@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Book` with `title` (std::string) and `pages` (int). Create an array of 2 `Book` structs, populate their data, and print the title of the book with more pages.",
+  "test_cases": [
+    { "input": "", "expected": "Book Beta\n" }
+  ],
+  "driver": "// No specific driver needed as input is hardcoded in the C++ program itself.\n// The program will compile and run, printing the result to stdout.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The code implicitly handles the case where both books have the same number of pages by printing the title of the second book. The problem statement asks for 'the title of the book with more pages', which is ambiguous or undefined when pages are equal. A robust solution would explicitly handle this tie-breaking scenario (e.g., print a message, print both, or apply a specific tie-breaker rule) rather than implicitly selecting one."
+  ]
+}

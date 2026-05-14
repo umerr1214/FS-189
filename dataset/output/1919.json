@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private members `title`, `author`, and `isbn` (all strings). Provide public methods to set and get these values, ensuring basic encapsulation.",
+  "test_cases": [
+    { "input": "Set title 'The Great Gatsby', author 'F. Scott Fitzgerald', ISBN '978-0743273565'.", "expected": "Title: \nAuthor: F. Scott Fitzgerald\nISBN: 978-0743273565\n" }
+  ],
+  "driver": "Book myBook;\nmyBook.setTitle(\"The Great Gatsby\");\nmyBook.setAuthor(\"F. Scott Fitzgerald\");\nmyBook.setIsbn(\"978-0743273565\");\n\nstd::cout << \"Title: \" << myBook.getTitle() << std::endl;\nstd::cout << \"Author: \" << myBook.getAuthor() << std::endl;\nstd::cout << \"ISBN: \" << myBook.getIsbn() << std::endl;",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `setTitle` method contains a logical error where it assigns the input `t` to the `isbn` member instead of `title`, resulting in the `title` remaining unset and the `isbn` being potentially overwritten."
+  ]
+}

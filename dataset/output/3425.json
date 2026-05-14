@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that takes an integer year as input from the user and determines if it is a leap year. Print an appropriate message. (A leap year is divisible by 4, but not by 100 unless it is also divisible by 400).",
+  "test_cases": [
+    { "input": "2024", "expected": "2024 is a leap year." },
+    { "input": "2000", "expected": "2000 is a leap year." },
+    { "input": "1900", "expected": "1900 is a leap year." },
+    { "input": "2023", "expected": "2023 is not a leap year." },
+    { "input": "1800", "expected": "1800 is a leap year." }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The leap year condition is logically incorrect. It checks if a year is divisible by 4 OR divisible by 400. It misses the crucial 'but not by 100 unless it is also divisible by 400' part. Years divisible by 100 but not 400 (e.g., 1900, 1800) will be incorrectly classified as leap years because they are divisible by 4."
+  ]
+}

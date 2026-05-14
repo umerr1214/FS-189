@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Animal` with a virtual public method `makeSound()` that prints a generic sound. Derive `Dog` and `Cat` classes from `Animal`. Each derived class should override `makeSound()` to print its specific sound (e.g., \"Woof!\", \"Meow!\"). Demonstrate polymorphic behavior by calling `makeSound()` through a pointer to the base class `Animal`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Starting animal demonstration ---\nA new dog has joined the animal collection.\nA new cat has been added to the collection.\n\n--- All animals making their sounds ---\nCurrent animal says: Woof! Woof! I am a proud canine, making my distinct sound!\nCurrent animal says: Meow! Meow! As a feline, this is my characteristic vocalization!\n\n--- Initiating manual memory cleanup ---\nDog destructor called. The dog is no longer here.\nAnimal base destructor called, saying goodbye.\nCat destructor called. The cat has departed.\nAnimal base destructor called, saying goodbye.\n--- Finished manual memory cleanup ---\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n// Assuming Animal, Dog, Cat classes are defined in the solution code\n\nint main() {\n    std::cout << \"--- Starting animal demonstration ---\\n\";\n    std::vector<Animal*> animals;\n\n    Animal* animal1 = new Dog();\n    animals.push_back(animal1);\n    std::cout << \"A new dog has joined the animal collection.\\n\";\n\n    Animal* animal2 = new Cat();\n    animals.push_back(animal2);\n    std::cout << \"A new cat has been added to the collection.\\n\";\n\n    std::cout << \"\\n--- All animals making their sounds ---\\n\";\n    for (Animal* currentAnimal : animals) {\n        std::cout << \"Current animal says: \";\n        currentAnimal->makeSound();\n    }\n\n    std::cout << \"\\n--- Initiating manual memory cleanup ---\\n\";\n    for (Animal* animalPtr : animals) {\n        delete animalPtr; // Manual deletion, less efficient/safe than smart pointers\n    }\n    animals.clear(); // Clearing the vector after deleting pointers is redundant but included for verbosity\n    std::cout << \"--- Finished manual memory cleanup ---\\n\";\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Excessive and verbose output messages in `makeSound()` and destructors reduce readability.",
+    "Manual memory management using raw pointers and `new`/`delete` with `std::vector<Animal*>` is less safe and efficient than using smart pointers (`std::unique_ptr`).",
+    "The driver code is overly verbose with unnecessary `std::cout` statements for simple actions."
+  ]
+}

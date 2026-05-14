@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `ComplexNumber` class with private `real` and `imaginary` (double) parts. Overload the binary `+` operator to enable addition of two `ComplexNumber` objects, returning a new `ComplexNumber` object representing their sum.",
+  "test_cases": [
+    {
+      "input": "ComplexNumber c1(1.0, 2.0);\nComplexNumber c2(3.0, 4.0);\nComplexNumber c4(0.5, -1.5);\nComplexNumber c5(-2.0, 3.0);",
+      "expected": "c1: 1 + 2i\nc2: 3 + 4i\nc1 + c2: 4 + 6i\nc4: 0.5 - 1.5i\nc5: -2 + 3i\nc4 + c5: -1.5 + 1.5i\n"
+    }
+  ],
+  "driver": "int main() {\n    ComplexNumber c1(1.0, 2.0);\n    ComplexNumber c2(3.0, 4.0);\n    ComplexNumber c3 = c1 + c2;\n    std::cout << \"c1: \"; c1.display(); std::cout << std::endl;\n    std::cout << \"c2: \"; c2.display(); std::cout << std::endl;\n    std::cout << \"c1 + c2: \"; c3.display(); std::cout << std::endl;\n\n    ComplexNumber c4(0.5, -1.5);\n    ComplexNumber c5(-2.0, 3.0);\n    ComplexNumber c6 = c4 + c5;\n    std::cout << \"c4: \"; c4.display(); std::cout << std::endl;\n    std::cout << \"c5: \"; c5.display(); std::cout << std::endl;\n    std::cout << \"c4 + c5: \"; c6.display(); std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": []
+}

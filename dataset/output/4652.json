@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that reads a string from the user and prints its reverse. Use `std::string` for string manipulation.",
+  "test_cases": [
+    { "input": "hello", "expected": "olleh" },
+    { "input": "world", "expected": "dlrow" },
+    { "input": "A", "expected": "A" },
+    { "input": "", "expected": "" },
+    { "input": "racecar", "expected": "racecar" },
+    { "input": "12345", "expected": "54321" },
+    { "input": "hello world", "expected": "dlrow olleh" }
+  ],
+  "driver": "int main() {\n    std::string input_str;\n    std::getline(std::cin, input_str);\n    \n    std::string sReversed = \"\";\n    for (int i = input_str.length() - 1; i >= 0; --i) {\n        sReversed += input_str[i];\n    }\n    std::cout << sReversed << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inefficient string reversal method: manually building a new string character by character using `+=` in a loop, which can lead to multiple reallocations for large strings. `std::reverse` (from `<algorithm>`) provides an efficient in-place reversal.",
+    "Uses `using namespace std;` in the global scope, which can lead to name collisions and reduced readability in larger projects.",
+    "Variable names like `sInput` and `sReversed` are less descriptive than `userString` or `reversedString`."
+  ]
+}

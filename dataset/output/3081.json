@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `Point` class with private members `x` and `y` (integers). Overload the binary `+` operator as a member function to add two `Point` objects, returning a new `Point` object representing the sum of their coordinates.",
+  "test_cases": [
+    { "input": "Point p1(1, 2); Point p2(3, 4);", "expected": "Sum 1: (4, 6)\n" },
+    { "input": "Point p3(-5, 10); Point p4(7, -3);", "expected": "Sum 2: (2, 7)\n" },
+    { "input": "Point p5(0, 0); Point p6(100, -200);", "expected": "Sum 3: (100, -200)\n" },
+    { "input": "Point p7(1, 1); Point p8(2, 2); Point p9(3, 3); Point p_total = p7 + p8 + p9;", "expected": "Total Sum (p7+p8+p9): (6, 6)\n" }
+  ],
+  "driver": "int main() {\n    Point p1(1, 2);\n    Point p2(3, 4);\n    Point p_sum1 = p1 + p2;\n    std::cout << \"Sum 1: (\" << p_sum1.getX() << \", \" << p_sum1.getY() << \")\\n\";\n\n    Point p3(-5, 10);\n    Point p4(7, -3);\n    Point p_sum2 = p3 + p4;\n    std::cout << \"Sum 2: (\" << p_sum2.getX() << \", \" << p_sum2.getY() << \")\\n\";\n\n    Point p5(0, 0);\n    Point p6(100, -200);\n    Point p_sum3 = p5 + p6;\n    std::cout << \"Sum 3: (\" << p_sum3.getX() << \", \" << p_sum3.getY() << \")\\n\";\n\n    Point p7(1, 1);\n    Point p8(2, 2);\n    Point p9(3, 3);\n    Point p_total = p7 + p8 + p9;\n    std::cout << \"Total Sum (p7+p8+p9): (\" << p_total.getX() << \", \" << p_total.getY() << \")\\n\";\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

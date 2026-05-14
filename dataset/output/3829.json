@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `modifyValue` that takes an integer pointer as an argument and doubles the value pointed to by the pointer. Demonstrate its usage in `main` by creating an integer, passing its address, and printing the modified value.",
+  "test_cases": [
+    { "input": "val = 5;", "expected": "Test Case 1: 10\n" },
+    { "input": "val = 0;", "expected": "Test Case 2: 0\n" },
+    { "input": "val = -3;", "expected": "Test Case 3: -6\n" }
+  ],
+  "driver": "#include <iostream>\n\n// The modifyValue function will be prepended here by the evaluation system.\n\nint main() {\n    int val;\n\n    // Test Case 1\n    val = 5;\n    modifyValue(&val);\n    std::cout << \"Test Case 1: \" << val << std::endl;\n\n    // Test Case 2\n    val = 0;\n    modifyValue(&val);\n    std::cout << \"Test Case 2: \" << val << std::endl;\n\n    // Test Case 3\n    val = -3;\n    modifyValue(&val);\n    std::cout << \"Test Case 3: \" << val << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `modifyValue` function does not check if the input pointer `ptr` is `nullptr` before dereferencing it. Passing a `nullptr` to this function will lead to a runtime crash (e.g., segmentation fault) due to dereferencing a null pointer, which is undefined behavior. A robust implementation would include a `nullptr` check."
+  ]
+}

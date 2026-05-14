@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Declare an `int` variable, a `float` variable, and a `char` variable. Then declare a pointer for each of these data types. Assign the address of each variable to its corresponding pointer. Print the memory address stored in each pointer and the value pointed to by each pointer using the dereference operator.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Integer Variable ---\nAddress of integer_variable: <memory_address, e.g., 0x7ffee45e0a0c>\nValue pointed by integer_pointer: 100\n\n--- Float Variable ---\nAddress of float_variable: <memory_address, e.g., 0x7ffee45e0a08>\nValue pointed by float_pointer: 50.75\n\n--- Character Variable ---\nAddress of char_variable: <memory_address, e.g., 0x7ffee45e0a07>\nValue pointed by char_pointer: X\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

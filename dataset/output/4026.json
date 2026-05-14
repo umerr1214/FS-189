@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Develop a program that takes an integer from the user and determines if it is positive, negative, or zero. Print an appropriate message for each case.",
+  "test_cases": [
+    { "input": "5", "expected": "The number is positive.\n" },
+    { "input": "-3", "expected": "The number is negative.\n" },
+    { "input": "0", "expected": "The number is zero.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\n// Assume the user provides the function:\n// std::string check_number(int num);\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        std::istringstream iss(line);\n        int num;\n        if (iss >> num) {\n            std::cout << check_number(num) << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The variable 'num' is used without being initialized from user input, leading to undefined behavior."
+  ]
+}

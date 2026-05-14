@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a `Car` class that exhibits composition with an `Engine` class. The `Engine` should be created and destroyed along with the `Car` object. Demonstrate this lifetime management.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Compilation Error: Attempting to use a deleted function (Engine's copy constructor) when creating 'car2' from 'car1'."
+    }
+  ],
+  "driver": "int main() {\n    Car car1;\n    Car car2 = car1;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The Car class contains an Engine object, and the Engine class has its copy constructor and assignment operator explicitly deleted. Attempting to copy a Car object (e.g., `Car car2 = car1;`) implicitly invokes Car's copy constructor, which in turn tries to copy the Engine member. This results in a compilation error because Engine's copy constructor is deleted, making the Car class non-copyable due to its non-copyable member."
+  ]
+}

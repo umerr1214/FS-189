@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Modify the `Book` class (from Q1) to include a default constructor (initializes with empty strings), a parameterized constructor, and a copy constructor. Demonstrate creating objects using all three types of constructors.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book 1 (Default): Title: , Author: \nBook 2 (Parameterized): Title: 1984, Author: George Orwell\nBook 3 (Copy of Book 2): Title: 1984, Author: George Orwell\nBook 4 (Copy of Book 1): Title: , Author: \n"
+    }
+  ],
+  "driver": "int main() {\n    Book book1;\n    std::cout << \"Book 1 (Default): \";\n    book1.display();\n    Book book2(\"1984\", \"George Orwell\");\n    std::cout << \"Book 2 (Parameterized): \";\n    book2.display();\n    Book book3 = book2;\n    std::cout << \"Book 3 (Copy of Book 2): \";\n    book3.display();\n    Book book4(book1);\n    std::cout << \"Book 4 (Copy of Book 1): \";\n    book4.display();\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Constructors initialize `std::string` members in the constructor body using assignment instead of member initializer lists. This is less efficient because the `std::string` members are first default-constructed, then assigned, leading to redundant operations.",
+    "Unnecessary use of `this->` to access member variables within constructors and the `display` method, which adds verbosity without improving clarity or functionality."
+  ]
+}

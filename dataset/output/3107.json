@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `DataStore` class with a private integer member `secretValue`. Provide a public `getSecretValue()` method to access it and a public `setSecretValue(int value)` method to modify it. Demonstrate that `secretValue` cannot be accessed directly from outside the class, enforcing encapsulation.",
+  "test_cases": [
+    { "input": "", "expected": "Initial secret value: 0\nAttempted to set secret value to 42.\nCurrent secret value after setting: 0\n" }
+  ],
+  "driver": "    DataStore ds;\n\n    std::cout << \"Initial secret value: \" << ds.getSecretValue() << std::endl;\n\n    ds.setSecretValue(42);\n    std::cout << \"Attempted to set secret value to 42.\" << std::endl;\n\n    std::cout << \"Current secret value after setting: \" << ds.getSecretValue() << std::endl;\n\n    return 0;",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The 'setSecretValue' method contains a logical error where the parameter name 'secretValue' shadows the member variable 'this->secretValue'. The assignment 'secretValue = secretValue;' therefore assigns the parameter to itself, failing to update the class's private member."]
+}

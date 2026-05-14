@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that prompts the user to enter positive integers repeatedly until they enter a zero (0). After a zero is entered, calculate and display the sum of all the positive integers entered. Use a `while` loop for input.",
+  "test_cases": [
+    { "input": "5\n10\n0\n", "expected": "Sum of positive integers: 15\n" },
+    { "input": "1\n2\n3\n0\n", "expected": "Sum of positive integers: 6\n" },
+    { "input": "0\n", "expected": "Sum of positive integers: 0\n" }
+  ],
+  "driver": "run_test_case(\"5\\n10\\n0\\n\", \"Sum of positive integers: 15\\n\");\nrun_test_case(\"1\\n2\\n3\\n0\\n\", \"Sum of positive integers: 6\\n\");\nrun_test_case(\"0\\n\", \"Sum of positive integers: 0\\n\");",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["An assignment operator ('=') is used within the 'while' loop's condition instead of a comparison operator ('!=' or '=='). This assigns 0 to 'number' and makes the condition false, causing the loop to never execute and the sum to always be 0."]
+}

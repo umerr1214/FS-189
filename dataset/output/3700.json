@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a function template `T findMax(T a, T b)` that takes two arguments of any type `T` and returns the larger of the two. Demonstrate its use with `int`, `double`, and `char` data types.",
+  "test_cases": [
+    { "input": "", "expected": "Max of 5 and 10: 10\nMax of 3.14 and 2.71: 3.14\nMax of 'a' and 'z': z\n" }
+  ],
+  "driver": "valid C++ code to run test cases",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

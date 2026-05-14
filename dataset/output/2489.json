@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Model a `Library` class that maintains a collection of `Book` objects (from a previous question) using aggregation. Implement methods to `addBook()`, `removeBook()`, and `listAllBooks()`.",
+  "test_cases": [
+    {
+      "input": "myLibrary.addBook(Book(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", 1979));\nmyLibrary.addBook(Book(\"1984\", \"George Orwell\", 1949));\nmyLibrary.addBook(Book(\"Brave New World\", \"Aldous Huxley\", 1932));\nmyLibrary.addBook(Book(\"1984\", \"George Orwell\", 1949));\nmyLibrary.listAllBooks();\nmyLibrary.removeBook(\"1984\");\nmyLibrary.listAllBooks();\nmyLibrary.removeBook(\"1984\");\nmyLibrary.listAllBooks();",
+      "expected": "--- All Books (including duplicate) ---\nTitle: The Hitchhiker's Guide to the Galaxy, Author: Douglas Adams, Year: 1979\nTitle: 1984, Author: George Orwell, Year: 1949\nTitle: Brave New World, Author: Aldous Huxley, Year: 1932\nTitle: 1984, Author: George Orwell, Year: 1949\n\n--- Removing '1984' ---\nBook '1984' removed (or at least one instance).\n\n--- Books after removal attempt ---\nTitle: The Hitchhiker's Guide to the Galaxy, Author: Douglas Adams, Year: 1979\nTitle: Brave New World, Author: Aldous Huxley, Year: 1932\nTitle: 1984, Author: George Orwell, Year: 1949\n\n--- Attempting to remove the remaining '1984' ---\nBook '1984' removed (second instance).\n\n--- Final Book List ---\nTitle: The Hitchhiker's Guide to the Galaxy, Author: Douglas Adams, Year: 1979\nTitle: Brave New World, Author: Aldous Huxley, Year: 1932\n"
+    }
+  ],
+  "driver": "int main() {\n    Library myLibrary;\n\n    myLibrary.addBook(Book(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", 1979));\n    myLibrary.addBook(Book(\"1984\", \"George Orwell\", 1949));\n    myLibrary.addBook(Book(\"Brave New World\", \"Aldous Huxley\", 1932));\n    myLibrary.addBook(Book(\"1984\", \"George Orwell\", 1949)); // Adding a duplicate for testing logical error\n\n    std::cout << \"--- All Books (including duplicate) ---\" << std::endl;\n    myLibrary.listAllBooks();\n    std::cout << std::endl;\n\n    std::cout << \"--- Removing '1984' ---\" << std::endl;\n    // This call will only remove the first '1984' book due to the logical error.\n    if (myLibrary.removeBook(\"1984\")) {\n        std::cout << \"Book '1984' removed (or at least one instance).\" << std::endl;\n    } else {\n        std::cout << \"Book '1984' not found.\" << std::endl;\n    }\n    std::cout << std::endl;\n\n    std::cout << \"--- Books after removal attempt ---\" << std::endl;\n    myLibrary.listAllBooks();\n    std::cout << std::endl;\n\n    std::cout << \"--- Attempting to remove the remaining '1984' ---\" << std::endl;\n    if (myLibrary.removeBook(\"1984\")) {\n        std::cout << \"Book '1984' removed (second instance).\" << std::endl;\n    } else {\n        std::cout << \"Book '1984' not found.\" << std::endl;\n    }\n    std::cout << std::endl;\n\n    std::cout << \"--- Final Book List ---\" << std::endl;\n    myLibrary.listAllBooks();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `removeBook` method only removes the first occurrence of a book with a matching title, instead of all occurrences, which is a common expectation for removal by title."
+  ]
+}

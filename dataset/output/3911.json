@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function `calculateFactorial` that takes an integer `n` as input and returns its factorial. The main program should prompt the user for a number and display its factorial using this function. Handle negative inputs appropriately.",
+  "test_cases": [
+    { "input": "0", "expected": "The factorial of 0 is: 1\n" },
+    { "input": "5", "expected": "The factorial of 5 is: 120\n" },
+    { "input": "-3", "expected": "Factorial is not defined for negative numbers.\n" }
+  ],
+  "driver": "#include <iostream>\n\nlong long calculateFactorial(int n);\n\nint main() {\n    int num;\n    std::cin >> num;\n    long long fact = calculateFactorial(num);\n    if (fact == -1) {\n        std::cout << \"Factorial is not defined for negative numbers.\" << std::endl;\n    } else {\n        std::cout << \"The factorial of \" << num << \" is: \" << fact << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The base case for n=0 in the 'calculateFactorial' function incorrectly returns 0 instead of 1. This causes 0! to be reported as 0."
+  ]
+}

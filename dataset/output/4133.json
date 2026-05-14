@@ -1,0 +1,25 @@
+{
+  "language": "c++",
+  "question": "Ask the user to enter their full name (which may include spaces). Read the entire line into an `std::string`. Then, print the full name back to the user and also display the total number of characters in the name.",
+  "test_cases": [
+    {
+      "input": "John Doe",
+      "expected": "Please enter your full name: Full Name: John\nNumber of characters: 4\n"
+    },
+    {
+      "input": "Alice Wonderland",
+      "expected": "Please enter your full name: Full Name: Alice\nNumber of characters: 5\n"
+    },
+    {
+      "input": "SingleWordName",
+      "expected": "Please enter your full name: Full Name: SingleWordName\nNumber of characters: 14\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <streambuf>\n\n// The user's solve function will be extern here.\nvoid solve();\n\nstd::string run_and_capture(const std::string& input_str) {\n    std::stringstream ss_input(input_str);\n    std::stringstream ss_output;\n\n    std::streambuf* old_cin_buf = std::cin.rdbuf();\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    solve(); // Call the user's solution\n\n    std::cin.rdbuf(old_cin_buf);\n    std::cout.rdbuf(old_cout_buf);\n\n    return ss_output.str();\n}\n\nint main() {\n    // Test Case 1\n    std::string input1 = \"John Doe\\n\";\n    std::string expected1 = \"Please enter your full name: Full Name: John\\nNumber of characters: 4\\n\";\n    std::string actual1 = run_and_capture(input1);\n    if (actual1 == expected1) {\n        std::cout << \"Test Case 1 Passed\\n\";\n    } else {\n        std::cout << \"Test Case 1 Failed\\nExpected:\\n\" << expected1 << \"Actual:\\n\" << actual1 << \"\\n\";\n    }\n\n    // Test Case 2\n    std::string input2 = \"Alice Wonderland\\n\";\n    std::string expected2 = \"Please enter your full name: Full Name: Alice\\nNumber of characters: 5\\n\";\n    std::string actual2 = run_and_capture(input2);\n    if (actual2 == expected2) {\n        std::cout << \"Test Case 2 Passed\\n\";\n    } else {\n        std::cout << \"Test Case 2 Failed\\nExpected:\\n\" << expected2 << \"Actual:\\n\" << actual2 << \"\\n\";\n    }\n\n    // Test Case 3\n    std::string input3 = \"SingleWordName\\n\";\n    std::string expected3 = \"Please enter your full name: Full Name: SingleWordName\\nNumber of characters: 14\\n\";\n    std::string actual3 = run_and_capture(input3);\n    if (actual3 == expected3) {\n        std::cout << \"Test Case 3 Passed\\n\";\n    } else {\n        std::cout << \"Test Case 3 Failed\\nExpected:\\n\" << expected3 << \"Actual:\\n\" << actual3 << \"\\n\";\n    }\n\n    return 0;\n}\n",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The program uses `std::cin >> fullName;` to read the input. This operator stops reading at the first whitespace character, meaning it only captures the first word of the user's full name. The question requires reading the entire line, including spaces, which should be done using `std::getline(std::cin, fullName);`."
+  ]
+}

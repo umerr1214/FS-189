@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Library` class that uses aggregation to manage a collection of `Book` objects (from Q1). The `Library` class should store pointers (or references) to `Book` objects that are created and owned externally. Implement methods to `addBook(Book* book)` and `displayAllBooks()`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Books in Library:\nTitle: The Hitchhiker's Guide to the Galaxy, Author: Douglas Adams\nTitle: 1984, Author: George Orwell\n"
+    }
+  ],
+  "driver": "int main() {\n    Book book1(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\");\n    Book book2(\"1984\", \"George Orwell\");\n\n    Library myLibrary;\n    myLibrary.addBook(&book1);\n    myLibrary.addBook(&book2);\n\n    myLibrary.displayAllBooks();\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the closing brace of the `Library` class definition."
+  ]
+}

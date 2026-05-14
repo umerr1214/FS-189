@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Develop a `Logger` class that prints 'Logger created.' when an object is constructed and 'Logger destroyed.' when it is destructed. Demonstrate its usage in `main`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Entering main function.\nLogger created.\nLogger object 'myLogger' is active.\n\nEntering nested scope.\nLogger created.\nLogger object 'anotherLogger' is active.\nLogger destroyed.\nExited nested scope. 'anotherLogger' destroyed.\n\nExiting main function.\nLogger destroyed.\n"
+    }
+  ],
+  "driver": "",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

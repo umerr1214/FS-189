@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a `User` class with private `username` and `password`. The `userID` should be a unique integer automatically assigned using a static member counter in the constructor. Provide public getters for `username` and `userID`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "User alice created with ID: 1001\nUser1 - Username: alice, ID: 1001\nUser bob created with ID: 1002\nUser2 - Username: bob, ID: 1002\nUser  created with ID: 1003\nUser3 - Username: '', ID: 1003\nUser x created with ID: 1004\nUser4 - Username: 'x', ID: 1004\n"
+    }
+  ],
+  "driver": "int main() {\n    User user1(\"alice\", \"securepassword123\");\n    std::cout << \"User1 - Username: \" << user1.getUsername() << \", ID: \" << user1.getUserID() << std::endl;\n\n    User user2(\"bob\", \"another_pass\");\n    std::cout << \"User2 - Username: \" << user2.getUsername() << \", ID: \" << user2.getUserID() << std::endl;\n\n    User user3(\"\", \"\");\n    std::cout << \"User3 - Username: '\" << user3.getUsername() << \"', ID: \" << user3.getUserID() << std::endl;\n\n    User user4(\"x\", \"y\");\n    std::cout << \"User4 - Username: '\" << user4.getUsername() << \"', ID: \" << user4.getUserID() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 8,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `User` class constructor lacks input validation for `username` and `password`. It allows creating `User` objects with empty or very short credentials, which can lead to semantically invalid user accounts in a real-world application. A robust system would typically enforce minimum length or non-empty constraints for such critical data."
+  ]
+}

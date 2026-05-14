@@ -1,0 +1,31 @@
+{
+  "language": "c++",
+  "question": "Implement a `DynamicIntegerArray` class that manages a dynamically allocated array of integers. Its constructor should take an integer `size` and allocate memory for an array of that size. Implement a destructor that correctly deallocates the dynamically allocated memory to prevent memory leaks.",
+  "test_cases": [
+    {
+      "input": "5",
+      "expected": "--- Test Case 1: Normal Allocation ---\nDynamicIntegerArray of size 5 created.\nArray contents: [10, 20, 30, 40, 50]\nDynamicIntegerArray of size 5 destroyed.\n"
+    },
+    {
+      "input": "0",
+      "expected": "--- Test Case 2: Zero Size Allocation ---\nDynamicIntegerArray of size 0 created.\nArray contents: []\nError: Index out of bounds!\nDynamicIntegerArray of size 0 destroyed.\n"
+    },
+    {
+      "input": "-5",
+      "expected": "--- Test Case 3: Negative Size Allocation (Robustness Issue) ---\nCaught expected std::bad_alloc due to negative size: std::bad_alloc\n"
+    },
+    {
+      "input": "3",
+      "expected": "--- Test Case 4: Out of Bounds Access ---\nDynamicIntegerArray of size 3 created.\nArray contents: [1, 2, 3]\nError: Index out of bounds!\nAccessing arr[3]: -1\nError: Index out of bounds!\nAccessing arr[-1]: -1\nDynamicIntegerArray of size 3 destroyed.\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Test Case 1: Normal Allocation ---\" << std::endl;\n    {\n        DynamicIntegerArray arr(5);\n        for (int i = 0; i < arr.getSize(); ++i) {\n            arr[i] = (i + 1) * 10;\n        }\n        std::cout << \"Array contents: \";\n        arr.print();\n    }\n    std::cout << std::endl;\n\n    std::cout << \"--- Test Case 2: Zero Size Allocation ---\" << std::endl;\n    {\n        DynamicIntegerArray arr(0);\n        std::cout << \"Array contents: \";\n        arr.print();\n        arr[0] = 99;\n    }\n    std::cout << std::endl;\n\n    std::cout << \"--- Test Case 3: Negative Size Allocation (Robustness Issue) ---\" << std::endl;\n    {\n        try {\n            DynamicIntegerArray arr(-5);\n            std::cout << \"Array size: \" << arr.getSize() << std::endl;\n            arr.print();\n        } catch (const std::bad_alloc& e) {\n            std::cout << \"Caught expected std::bad_alloc due to negative size: \" << e.what() << std::endl;\n        } catch (...) {\n            std::cout << \"Caught unexpected exception during negative size allocation.\" << std::endl;\n        }\n    }\n    std::cout << std::endl;\n\n    std::cout << \"--- Test Case 4: Out of Bounds Access ---\" << std::endl;\n    {\n        DynamicIntegerArray arr(3);\n        arr[0] = 1; arr[1] = 2; arr[2] = 3;\n        std::cout << \"Array contents: \";\n        arr.print();\n        std::cout << \"Accessing arr[3]: \" << arr[3] << std::endl;\n        std::cout << \"Accessing arr[-1]: \" << arr[-1] << std::endl;\n    }\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 7,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The constructor does not handle negative array sizes gracefully; `new int[size]` with a negative size leads to Undefined Behavior (often `std::bad_alloc` or a crash).",
+    "The constructor does not catch `std::bad_alloc` for memory allocation failures, making the class non-robust to out-of-memory conditions.",
+    "The `operator[]` returns a static dummy value on out-of-bounds access instead of throwing an `std::out_of_range` exception, which is less robust and can mask errors."
+  ]
+}

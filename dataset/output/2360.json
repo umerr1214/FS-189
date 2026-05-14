@@ -1,0 +1,24 @@
+{
+  "language": "c++",
+  "question": "Design a `ShoppingCart` class that uses composition to manage a collection of `Item` objects. The `Item` class (separate class) should have `name` (string), `price` (double), and `quantity` (int). `ShoppingCart` should have methods to `addItem(Item item)` and `calculateTotal()`.",
+  "test_cases": [
+    {
+      "input": "Add Book (15.99, 2), Pen Set (8.50, 1), Notebook (3.25, 3), Eraser (1.00, 5). Calculate total.",
+      "expected": "55.23"
+    },
+    {
+      "input": "Create empty cart. Calculate total.",
+      "expected": "0.0"
+    }
+  ],
+  "driver": "int main() {\n    ShoppingCart myCart;\n\n    myCart.addItem(Item(\"Book\", 15.99, 2));\n    myCart.addItem(Item(\"Pen Set\", 8.50, 1));\n    myCart.addItem(Item(\"Notebook\", 3.25, 3));\n    myCart.addItem(Item(\"Eraser\", 1.00, 5));\n    std::cout << myCart.calculateTotal() << std::endl;\n\n    ShoppingCart anotherCart;\n    std::cout << anotherCart.calculateTotal() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "**Readability:** The `Item` class uses non-descriptive variable names (`nm`, `prc`, `qty`) instead of `name`, `price`, `quantity`, making the code harder to understand.",
+    "**Efficiency:** The `addItem(Item item_to_add)` method passes the `Item` object by value, which involves an unnecessary copy. It then performs another copy when `push_back` is called. Using `const Item&` or `Item&&` would be more efficient.",
+    "**Efficiency:** The `ShoppingCart` uses `std::list` to store items. While functional, `std::vector` is generally more cache-friendly and efficient for iteration, especially for a shopping cart where items are typically iterated over to calculate a total.",
+    "**Readability:** The `calculateTotal` method uses a verbose traditional iterator-based loop (`for (std::list<Item>::iterator it = items_list.begin(); ...)`). A range-based for loop (`for (const auto& item : items_list)`) or `std::accumulate` would be more concise and readable."
+  ]
+}

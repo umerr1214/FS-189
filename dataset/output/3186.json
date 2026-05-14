@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a `MyString` class that mimics `std::string` by managing a dynamically allocated C-style character array. Provide a deep copy constructor for `MyString`.",
+  "test_cases": [
+    { "input": "", "expected": "s1: First String\ns2: First String\ns3: Another\ns4: Another\n" }
+  ],
+  "driver": "int main() {\n    MyString s1(\"First String\");\n    MyString s2 = s1;\n\n    std::cout << \"s1: \";\n    s1.print();\n    std::cout << std::endl;\n\n    std::cout << \"s2: \";\n    s2.print();\n    std::cout << std::endl;\n\n    MyString s3(\"Another\");\n    MyString s4(s3);\n\n    std::cout << \"s3: \";\n    s3.print();\n    std::cout << std::endl;\n\n    std::cout << \"s4: \";\n    s4.print();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The copy constructor implements a shallow copy instead of a deep copy. It copies the 'data' pointer directly, causing multiple MyString objects to share ownership of the same dynamically allocated memory. This leads to a double-free error when the destructors are called for these shared objects, resulting in undefined behavior and likely program crashes."
+  ]
+}

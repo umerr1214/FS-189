@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Calculate the sum of all integers from 1 to a user-specified positive integer 'n' using a 'for' loop.",
+  "test_cases": [
+    { "input": "5", "expected": "Enter a positive integer n: The sum of integers from 1 to 5 is: 15\n" },
+    { "input": "1", "expected": "Enter a positive integer n: The sum of integers from 1 to 1 is: 1\n" },
+    { "input": "10", "expected": "Enter a positive integer n: The sum of integers from 1 to 10 is: 55\n" },
+    { "input": "0", "expected": "Enter a positive integer n: The sum of integers from 1 to 0 is: 0\n" },
+    { "input": "-3", "expected": "Enter a positive integer n: The sum of integers from 1 to -3 is: 0\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <streambuf>\n\n// This function redirects std::cin, std::cout, and std::cerr\n// to stringstreams to capture output and provide input programmatically.\n// It assumes the user's solution is contained within a `main` function\n// that can be called directly. In a real testing environment, \n// the user's `main` might be renamed (e.g., to `solution_main`) to avoid conflicts\n// with the driver's `main` function, or the solution would be run as a separate process.\nstd::string run_solution_and_capture_output(const std::string& input_str) {\n    std::stringstream ss_input(input_str);\n    std::stringstream ss_output;\n\n    // Save original streambufs\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::streambuf* old_cerr = std::cerr.rdbuf();\n\n    // Redirect cin, cout, cerr\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n    std::cerr.rdbuf(ss_output.rdbuf()); // Capture stderr as well\n\n    // Call the user's main function\n    // Note: If compiling the driver and solution together, the solution's main\n    // might need to be renamed (e.g., `solution_main`) to avoid linker errors.\n    // For this context, we assume `main()` can be called or is appropriately linked.\n    int return_code = main(); \n\n    // Restore original streambufs\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n    std::cerr.rdbuf(old_cerr);\n    \n    return ss_output.str();\n}\n\nint main() {\n    // This main function is for the driver itself, not the solution.\n    // The test_cases will be populated by the JSON generator.\n    // The actual comparison logic would happen in the evaluation system.\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not validate if the input 'n' is a positive integer as specified in the question. For non-positive inputs (e.g., 0 or negative numbers), it proceeds without error, resulting in a sum of 0. While mathematically correct for an empty range, this does not explicitly handle the 'positive integer' constraint, making the program less robust to unexpected user input."
+  ]
+}

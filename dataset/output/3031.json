@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a base class `Shape` with a pure virtual method `calculateArea()` that returns a double. Create two derived classes, `Rectangle` (with `length` and `width`) and `Circle` (with `radius`). Implement the `calculateArea()` method in each derived class. Demonstrate creating objects of derived classes and calling their `calculateArea()` method.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Demonstrating Robustness Issue (negative inputs):\nRectangle (length=-5.0, width=4.0) Area: -20.00\nCircle (radius=-3.0) Area: 28.27\nRectangle (length=5.0, width=4.0) Area: 20.00\nCircle (radius=3.0) Area: 28.27\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include <cmath> // For M_PI\n\n// The classes Shape, Rectangle, Circle are assumed to be defined in the solution code.\n\nint main() {\n    std::cout << std::fixed << std::setprecision(2);\n\n    // Create a Rectangle object\n    Rectangle rect(5.0, 4.0);\n    std::cout << \"Rectangle Area: \" << rect.calculateArea() << std::endl;\n\n    // Create a Circle object\n    Circle circ(3.0);\n    std::cout << \"Circle Area: \" << circ.calculateArea() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not validate input dimensions (length, width, radius). Negative values are accepted and used in area calculations, leading to nonsensical results (e.g., negative area for a rectangle or a circle with a physically impossible negative radius)."
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter their name (as a single word) and their age. Then, print a greeting message displaying both pieces of information.",
+  "test_cases": [
+    { "input": "Bob\n30", "expected": "Hello, Bob! You are 25 years old.\n" },
+    { "input": "Charlie\n45", "expected": "Hello, Charlie! You are 25 years old.\n" }
+  ],
+  "driver": "g++ -o 4319 4319.cpp && ./4319",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The program reads the user's age but then prints a hardcoded value (25) instead of the actual age entered by the user."]
+}

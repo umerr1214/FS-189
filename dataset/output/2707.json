@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a `BankAccount` class with private members `accountNumber` (int) and `balance` (double). Implement a constructor that initializes these members, ensuring the initial `balance` cannot be negative. Provide public `deposit` and `withdraw` methods, with `withdraw` checking for sufficient funds.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "Account 101 created with initial balance: 1000\nDeposited 200. New balance: 1200\nWithdrew 150. New balance: 1050\n\n--- Testing Robustness Issues ---\nAccount 102 created with initial balance: -500\nAccount 2 balance after creation: -500\nWarning: Depositing a negative amount (-100) will decrease balance.\nDeposited -100. New balance: -600\nAccount 2 balance after negative deposit: -600\nInsufficient funds to withdraw 200. Current balance: -600\nInsufficient funds to withdraw 50. Current balance: -600\nAccount 2 final balance: -600\n\nAccount 103 created with initial balance: 0\nAccount 3 initial balance: 0\nWarning: Depositing a negative amount (-50) will decrease balance.\nDeposited -50. New balance: -50\nInsufficient funds to withdraw 10. Current balance: -50\nAccount 3 final balance: -50\n"
+    }
+  ],
+  "driver": "int main() {\n    BankAccount account1(101, 1000.0); \n    account1.deposit(200.0);\n    account1.withdraw(150.0);\n\n    std::cout << \"\\n--- Testing Robustness Issues ---\\n\";\n\n    BankAccount account2(102, -500.0); \n    std::cout << \"Account 2 balance after creation: \" << account2.getBalance() << std::endl;\n\n    account2.deposit(-100.0); \n    std::cout << \"Account 2 balance after negative deposit: \" << account2.getBalance() << std::endl;\n\n    account2.withdraw(200.0); \n    account2.withdraw(50.0); \n    std::cout << \"Account 2 final balance: \" << account2.getBalance() << std::endl;\n\n    BankAccount account3(103, 0.0);\n    std::cout << \"\\nAccount 3 initial balance: \" << account3.getBalance() << std::endl;\n    account3.deposit(-50.0); \n    account3.withdraw(10.0); \n    std::cout << \"Account 3 final balance: \" << account3.getBalance() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Constructor allows initial balance to be negative, violating the requirement 'ensuring the initial `balance` cannot be negative'.",
+    "The `deposit` method allows negative amounts to be 'deposited', effectively performing a withdrawal. A robust deposit method should only accept positive amounts."
+  ]
+}

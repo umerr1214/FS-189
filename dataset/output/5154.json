@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "In a C++ program, prompt the user to enter two integers. Using the ternary operator, determine and print which of the two integers is larger.",
+  "test_cases": [
+    { "input": "10\n5", "expected": "The larger integer is: 10\n" },
+    { "input": "5\n10", "expected": "The larger integer is: 10\n" },
+    { "input": "7\n7", "expected": "Both integers are equal: 7\n" }
+  ],
+  "driver": "To run this program, compile it using a C++ compiler (e.g., `g++ 5154.cpp -o 5154`). Then execute the compiled program (e.g., `./5154`). The program will prompt you to enter two integers. Provide the integers separated by a space or on separate lines, then press Enter.",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The program correctly determines and prints the larger integer but fails to use the required ternary operator, opting for an if-else statement instead. This violates a specific constraint of the problem statement."
+  ]
+}

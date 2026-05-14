@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter the length and width of a rectangle. Calculate and print both the area and the perimeter of the rectangle, ensuring to use appropriate data types for real-world measurements.",
+  "test_cases": [
+    {
+      "input": "12.3\n4.5\n",
+      "expected": "Enter length of the rectangle: Enter width of the rectangle: \n--- Rectangle Dimensions ---\nLength: 12.30\nWidth: 4.50\nArea: 55.35\nPerimeter: 33.60\n"
+    },
+    {
+      "input": "abc\n10.0\n5.0\n",
+      "expected": "Enter length of the rectangle: Invalid input. Please enter a numeric value for length.\nEnter length of the rectangle: Enter width of the rectangle: \n--- Rectangle Dimensions ---\nLength: 10.00\nWidth: 5.00\nArea: 50.00\nPerimeter: 30.00\n"
+    },
+    {
+      "input": "-5.0\n10.0\n5.0\n",
+      "expected": "Enter length of the rectangle: Length must be a positive value. Please try again.\nEnter length of the rectangle: Enter width of the rectangle: \n--- Rectangle Dimensions ---\nLength: 10.00\nWidth: 5.00\nArea: 50.00\nPerimeter: 30.00\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\n// This is a placeholder driver. In a real testing environment,\n// the student's main function would be compiled and executed directly.\n// Input would be provided via stdin redirection, and output captured from stdout.\n// For example: `./student_program < input.txt > output.txt`\n// The 'test_cases' in the JSON describe the expected input/output interaction.\nint main() {\n    std::cout << \"This program is a placeholder driver.\" << std::endl;\n    std::cout << \"The actual student solution (a C++ program with a main function)\" << std::endl;\n    std::cout << \"would be compiled and run, with input provided via standard input\" << std::endl;\n    std::cout << \"and output captured from standard output.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

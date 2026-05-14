@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Prompt the user to enter a monetary value (e.g., 123.456). Print this value formatted to two decimal places, prefixed with a dollar sign (e.g., $123.46).",
+  "test_cases": [
+    { "input": "123.456", "expected": "Enter monetary value: $123.46\n" },
+    { "input": "0.999", "expected": "Enter monetary value: $1.00\n" },
+    { "input": "100", "expected": "Enter monetary value: $100.00\n" },
+    { "input": "abc", "expected": "Enter monetary value: $0.00\n" }
+  ],
+  "driver": "The user's C++ code is compiled and executed. Input is provided via standard input (stdin) and output is captured from standard output (stdout) for comparison with expected results. For floating-point output, exact string matching is used after formatting.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not handle non-numeric input gracefully. If `std::cin` fails to read a double (e.g., when 'abc' is entered), the program proceeds with the default-initialized value (0.0) for the `value` variable, leading to incorrect output ($0.00) instead of indicating an input error."
+  ]
+}

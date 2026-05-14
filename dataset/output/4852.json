@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that declares an array of 5 integers and initializes it. Then, ask the user to enter a number to search for. If the number is found in the array, print its index (position); otherwise, print a 'not found' message.",
+  "test_cases": [
+    { "input": "30\n", "expected": "2\n" },
+    { "input": "15\n", "expected": "not found\n" },
+    { "input": "10\n", "expected": "0\n" }
+  ],
+  "driver": "",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'std::cin >> searchNum'."
+  ]
+}

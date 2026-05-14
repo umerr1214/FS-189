@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Calculate the Body Mass Index (BMI) given user input for weight in kilograms and height in meters. The formula for BMI is weight / (height * height). Display the result to two decimal places.",
+  "test_cases": [
+    { "input": "70\n1.75", "expected": "Your BMI is: 22.86" },
+    { "input": "70\n0", "expected": "Your BMI is: inf" },
+    { "input": "0\n0", "expected": "Your BMI is: nan" }
+  ],
+  "driver": "The driver would compile and run the C++ code. For each test case, it would feed the 'input' string to the program's stdin and capture its stdout. The captured stdout would then be compared against the 'expected' output.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not handle the case where height is zero, leading to division by zero. This results in 'inf' or 'nan' output for BMI, which is not user-friendly and indicates a lack of robustness.",
+    "Input validation for positive weight and height is missing."
+  ]
+}

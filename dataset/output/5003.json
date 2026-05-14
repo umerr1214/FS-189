@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `searchMatrix` that takes a 2D integer array (e.g., a 3x4 matrix), its dimensions, and an integer `target` value as input. The function should return `true` if `target` is found in the matrix, `false` otherwise.",
+  "test_cases": [
+    { "input": "matrix = {{1,2,3},{4,5,6},{7,8,9}}, rows = 3, cols = 3, target = 5", "expected": "true" },
+    { "input": "matrix = {{1,2,3},{4,5,6},{7,8,9}}, rows = 3, cols = 3, target = 10", "expected": "false" },
+    { "input": "matrix = {{1,2,3},{4,5,6},{7,8,9}}, rows = 3, cols = 3, target = 1", "expected": "true" },
+    { "input": "matrix = {{1,2,3},{4,5,6},{7,8,9}}, rows = 3, cols = 3, target = 9", "expected": "true" },
+    { "input": "matrix = {{1}}, rows = 1, cols = 1, target = 1", "expected": "true" },
+    { "input": "matrix = {{1}}, rows = 1, cols = 1, target = 2", "expected": "false" },
+    { "input": "matrix = {{1,2,3,4},{5,6,7,8}}, rows = 2, cols = 4, target = 7", "expected": "true" },
+    { "input": "matrix = {{1,2,3,4},{5,6,7,8}}, rows = 2, cols = 4, target = 9", "expected": "false" }
+  ],
+  "driver": "#include <vector>\n#include <iostream>\n\n// Assumes searchMatrix function is defined externally.\nextern bool searchMatrix(std::vector<std::vector<int>>& matrix, int rows, int cols, int target);\n\nint main() {\n    std::vector<std::vector<int>> matrix1 = {{1,2,3},{4,5,6},{7,8,9}};\n    int rows1 = 3, cols1 = 3;\n    std::cout << (searchMatrix(matrix1, rows1, cols1, 5) ? \"true\" : \"false\");\n    std::cout << (searchMatrix(matrix1, rows1, cols1, 10) ? \"true\" : \"false\");\n    std::cout << (searchMatrix(matrix1, rows1, cols1, 1) ? \"true\" : \"false\");\n    std::cout << (searchMatrix(matrix1, rows1, cols1, 9) ? \"true\" : \"false\");\n\n    std::vector<std::vector<int>> matrix2 = {{1},{2},{3}};\n    int rows2 = 3, cols2 = 1;\n    std::cout << (searchMatrix(matrix2, rows2, cols2, 2) ? \"true\" : \"false\");\n    std::cout << (searchMatrix(matrix2, rows2, cols2, 4) ? \"true\" : \"false\");\n\n    std::vector<std::vector<int>> matrix3 = {{1,2,3,4},{5,6,7,8}};\n    int rows3 = 2, cols3 = 4;\n    std::cout << (searchMatrix(matrix3, rows3, cols3, 7) ? \"true\" : \"false\");\n    std::cout << (searchMatrix(matrix3, rows3, cols3, 9) ? \"true\" : \"false\");\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The function contains a logical error where it only checks the first element of each row (matrix[i][0]) instead of iterating through all columns in each row. This causes it to miss target values not located in the first column."]
+}

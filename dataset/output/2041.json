@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "For the `ComplexNumber` class, overload the `<<` (insertion) operator to enable printing `ComplexNumber` objects to an output stream in the format `real + imaginaryi` (e.g., `3.0 + 4.5i`).",
+  "test_cases": [
+    { "input": "3.0,4.5", "expected": "3.0 + 4.5i" },
+    { "input": "1.0,-2.0", "expected": "1.0 - 2.0i" },
+    { "input": "0.0,5.0", "expected": "0.0 + 5.0i" },
+    { "input": "7.0,0.0", "expected": "7.0 + 0.0i" },
+    { "input": "0.0,0.0", "expected": "0.0 + 0.0i" },
+    { "input": "-2.5,-3.0", "expected": "-2.5 - 3.0i" }
+  ],
+  "driver": "std::vector<std::pair<double, double>> inputs = {{3.0, 4.5}, {1.0, -2.0}, {0.0, 5.0}, {7.0, 0.0}, {0.0, 0.0}, {-2.5, -3.0}};\nfor (const auto& p : inputs) {\n    ComplexNumber c(p.first, p.second);\n    std::cout << c << std::endl;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The overloaded '<<' operator does not robustly handle complex numbers with negative imaginary parts. Instead of printing 'real - abs(imaginary)i' for `1.0 - 2.0i`, it prints '1.0 + -2.0i'. This format deviates from standard mathematical notation and can be confusing, indicating poor handling of a common valid input case."
+  ]
+}

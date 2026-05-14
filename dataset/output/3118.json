@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Student` class with private member variables for `name`, `id`, and `grade`. Implement public `getter` and `setter` methods for all members.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial State:\nName: \nID: 0\nGrade: 0.0\n\nSetting values...\nCurrent State:\nName: Alice\nID: 101\nGrade: 95.5\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nint main() {\n    Student s;\n    std::cout << \"Initial State:\" << std::endl;\n    std::cout << \"Name: \" << s.getName() << std::endl;\n    std::cout << \"ID: \" << s.getId() << std::endl;\n    std::cout << \"Grade: \" << s.getGrade() << std::endl;\n\n    std::cout << \"\\nSetting values...\" << std::endl;\n    s.setName(\"Alice\");\n    s.setId(101);\n    s.setGrade(95.5);\n\n    std::cout << \"Current State:\" << std::endl;\n    std::cout << \"Name: \" << s.getName() << std::endl;\n    std::cout << \"ID: \" << s.getId() << std::endl;\n    std::cout << \"Grade: \" << s.getGrade() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the declaration of the 'name' member variable inside the Student class. The line 'std::string name' should be 'std::string name;'"
+  ]
+}

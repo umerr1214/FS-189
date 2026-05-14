@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Counter` class with an integer `count` member. Overload the prefix increment (`++prefix`) and postfix decrement (`postfix--`) operators. The prefix increment should return a reference to the modified object, while postfix decrement should return a temporary object before decrementing.",
+  "test_cases": [
+    {
+      "input": "Initial: 5, then ++, then --, then direct set to 10, then ++. Another counter initial: 0, then -- (postfix).",
+      "expected": "Initial c1: 5\nAfter ++c1: 6\nAfter c1-- (original): 5\nAfter direct c1.count = 10: 10\nAfter ++c1 (after direct modification): 11\nInitial c2: 0\nc2-- returned: 0\nAfter c2-- (original c2): -1\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\nclass Counter {\npublic:\n    int count;\n\n    Counter(int initial = 0) : count(initial) {}\n\n    Counter& operator++() {\n        ++count;\n        return *this;\n    }\n\n    Counter operator--(int) {\n        Counter temp = *this;\n        --count;\n        return temp;\n    }\n\n    int getCount() const {\n        return count;\n    }\n};\n\nint main() {\n    std::stringstream ss;\n\n    Counter c1(5);\n    ss << \"Initial c1: \" << c1.getCount() << std::endl;\n\n    ++c1;\n    ss << \"After ++c1: \" << c1.getCount() << std::endl;\n\n    c1--;\n    ss << \"After c1-- (original): \" << c1.getCount() << std::endl;\n\n    c1.count = 10;\n    ss << \"After direct c1.count = 10: \" << c1.getCount() << std::endl;\n\n    ++c1;\n    ss << \"After ++c1 (after direct modification): \" << c1.getCount() << std::endl;\n\n    Counter c2(0);\n    ss << \"Initial c2: \" << c2.getCount() << std::endl;\n\n    Counter temp_c2 = c2--;\n    ss << \"c2-- returned: \" << temp_c2.getCount() << std::endl;\n    ss << \"After c2-- (original c2): \" << c2.getCount() << std::endl;\n\n    std::cout << ss.str();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The 'count' member is declared public, which breaks encapsulation and allows external code to directly modify the counter's state, bypassing the intended operator logic. This makes the class less robust to misuse and harder to maintain."]
+}

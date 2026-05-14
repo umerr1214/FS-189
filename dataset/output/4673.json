@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Create a function `doubleValue` that takes an integer by reference and modifies its value by multiplying it by 2.",
+  "test_cases": [
+    { "input": "5", "expected": "10" },
+    { "input": "-3", "expected": "-6" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream>\n\n// The doubleValue function will be inserted here by the system.\n\nint main() {\n    std::stringstream ss_output;\n    std::vector<int> inputs = {5, -3};\n    \n    for (int val : inputs) {\n        int temp = val;\n        doubleValue(temp);\n        ss_output << temp << std::endl;\n    }\n    std::cout << ss_output.str();\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": []
+}

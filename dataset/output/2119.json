@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a base class `Vehicle` with a virtual method `startEngine()` that prints a generic message. Derive `Car` and `Motorcycle` classes, each overriding `startEngine()` to print a specific message for their vehicle type.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Testing Vehicle ---\nVehicle engine starting...\nVehicle destructor called.\n--- Testing Car ---\nCar engine starting, vroom vroom!\nVehicle destructor called.\n--- Testing Motorcycle ---\nMotorcycle engine starting, revving up!\nVehicle destructor called.\n--- Testing direct Car object ---\nCar engine starting, vroom vroom!\nCar destructor called.\nVehicle destructor called.\n--- Testing direct Motorcycle object ---\nMotorcycle engine starting, revving up!\nMotorcycle destructor called.\nVehicle destructor called.\n"
+    }
+  ],
+  "driver": "See `main` function in C++ code.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The base class `Vehicle` lacks a `virtual` destructor. When derived class objects are deleted through a base class pointer, only the base class destructor is called, leading to potential memory leaks or partial object destruction for derived class-specific resources. This is a common robustness flaw in polymorphic class hierarchies."
+  ]
+}

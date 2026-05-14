@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private members for `title` (string), `author` (string), and `isbn` (string). Implement a public parameterized constructor to initialize these members and a public method `displayBookInfo()` to print all book details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Title: The Martian\nAuthor: Andy Weir\nISBN: \n"
+    }
+  ],
+  "driver": "int main() {\n    Book book1(\"The Martian\", \"Andy Weir\", \"\");\n    book1.displayBookInfo();\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The constructor does not validate input strings, allowing essential fields like title or ISBN to be empty. While the program doesn't crash, it permits the creation of 'invalid' `Book` objects from a business logic perspective, which can lead to incomplete or misleading output. A robust design would either validate and reject empty strings or provide default values/handle them appropriately."
+  ]
+}

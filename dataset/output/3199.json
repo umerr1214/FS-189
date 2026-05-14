@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design an `Engine` class with a `string type` and `int horsepower`. Then create a `Car` class that uses an `Engine` object as a private member, demonstrating composition.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Car Make: Toyota\n  Engine Type: V6, Horsepower: 280\nCar Make: Ford\n  Engine Type: V8, Horsepower: -350\nCar Make: Honda\n  Engine Type: , Horsepower: 150\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// Engine class definition\nclass Engine {\nprivate:\n    std::string type;\n    int horsepower;\n\npublic:\n    Engine(std::string engineType, int hp) {\n        this->type = engineType;\n        this->horsepower = hp;\n    }\n\n    std::string getType() {\n        return type;\n    }\n\n    int getHorsepower() {\n        return horsepower;\n    }\n\n    std::string getInfo() {\n        std::stringstream ss;\n        ss << \"Engine Type: \" << type << \", Horsepower: \" << horsepower;\n        return ss.str();\n    }\n};\n\n// Car class definition\nclass Car {\nprivate:\n    std::string make;\n    Engine engine;\n\npublic:\n    Car(std::string carMake, std::string engineType, int engineHp)\n        : make(carMake), engine(engineType, engineHp) {\n    }\n\n    void displayCarInfo() {\n        std::cout << \"Car Make: \" << make << std::endl;\n        std::cout << \"  \" << engine.getInfo() << std::endl;\n    }\n};\n\nint main() {\n    Car car1(\"Toyota\", \"V6\", 280);\n    car1.displayCarInfo();\n\n    Car car2(\"Ford\", \"V8\", -350);\n    car2.displayCarInfo();\n\n    Car car3(\"Honda\", \"\", 150);\n    car3.displayCarInfo();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The Engine class constructor and Car class constructor do not validate input for horsepower (allows negative values) or engine type (allows empty strings), which can lead to unexpected behavior or invalid states in a real-world application.",
+    "Getters (`getType`, `getHorsepower`) are not marked `const`, which is a minor robustness and design oversight as they do not modify the object state."
+  ]
+}

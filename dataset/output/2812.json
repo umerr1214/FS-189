@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design a `Car` class that uses composition to include an `Engine` object. The `Engine` class should have `power` (int) and `type` (string). The `Car` class should have `make` (string) and `model` (string), and a `start()` method that internally calls a `startEngine()` method of its `Engine` object.",
+  "test_cases": [
+    { "input": "", "expected": "Car Toyota Camry attempting to start.\nEngine (Gasoline, 180 HP) starting...\nCar started!\n\nCar Tesla Model 3 attempting to start.\nEngine (Electric, 450 HP) starting...\nCar started!" }
+  ],
+  "driver": "// Standard C++ main function to create Car objects and call start()\nint main() {\n    Car myCar(\"Toyota\", \"Camry\", 180, \"Gasoline\");\n    myCar.start();\n\n    std::cout << std::endl;\n\n    Car electricCar(\"Tesla\", \"Model 3\", 450, \"Electric\");\n    electricCar.start();\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

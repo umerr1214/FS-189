@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Student` that contains `char name[50]`, `int studentID`, and `float GPA`. Create an array of 2 `Student` objects. Allow the user to input data for each student. Finally, print the details of both students.",
+  "test_cases": [
+    {
+      "input": "Alice\n101\n3.5\nBob\n102\n3.8\n",
+      "expected": "Enter details for Student 1:\nName (single word): Student ID: GPA: Enter details for Student 2:\nName (single word): Student ID: GPA: \n--- Student Details ---\nStudent 1:\n  Name: Alice\n  ID: 101\n  GPA: 3.5\nStudent 2:\n  Name: Alice\n  ID: 101\n  GPA: 3.5\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": []
+}

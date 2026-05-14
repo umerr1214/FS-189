@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "For the `ComplexNumber` class, overload the `<<` (insertion) operator to enable printing `ComplexNumber` objects to an output stream in the format `real + imaginaryi` (e.g., `3.0 + 4.5i`).",
+  "test_cases": [
+    { "input": "3.0,4.5", "expected": "3.0 + 4.5i" },
+    { "input": "1.0,-2.0", "expected": "1.0 - 2.0i" },
+    { "input": "0.0,5.0", "expected": "0.0 + 5.0i" },
+    { "input": "7.0,0.0", "expected": "7.0 + 0.0i" },
+    { "input": "0.0,0.0", "expected": "0.0 + 0.0i" },
+    { "input": "-2.5,-3.0", "expected": "-2.5 - 3.0i" }
+  ],
+  "driver": "std::vector<std::pair<double, double>> inputs = {{3.0, 4.5}, {1.0, -2.0}, {0.0, 5.0}, {7.0, 0.0}, {0.0, 0.0}, {-2.5, -3.0}};\nfor (const auto& p : inputs) {\n    ComplexNumber c(p.first, p.second);\n    std::cout << c << std::endl;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The overloaded '<<' operator uses a `std::stringstream` to construct the output string before writing it to the `std::ostream`. This introduces unnecessary overhead and reduces efficiency compared to directly streaming the components to the `std::ostream`. It also makes the code less concise and harder to read."
+  ]
+}

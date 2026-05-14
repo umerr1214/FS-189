@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `printArrayElements(int* arr, int size)` that takes a pointer to an integer array and its size, then prints all elements of the array. Demonstrate its use by passing an array from `main`.",
+  "test_cases": [
+    { "input": "int arr[] = {10, 20, 30, 40, 50}; int size = 5;", "expected": "10 20 30 40 50 \n" },
+    { "input": "int arr[] = {}; int size = 0;", "expected": "\n" },
+    { "input": "int* arr = nullptr; int size = 3;", "expected": "CRASH / Undefined Behavior (A robust solution would handle this, e.g., print an error or nothing)\n" },
+    { "input": "int arr[] = {1, 2, 3}; int size = -2;", "expected": "\n (A robust solution would handle this, e.g., print an error or nothing)\n" }
+  ],
+  "driver": "#include <iostream>\n\nvoid printArrayElements(int* arr, int size);\n\nint main() {\n    std::cout << \"Test 1: Valid array: \";\n    int myArr[] = {10, 20, 30, 40, 50};\n    int arrSize = sizeof(myArr) / sizeof(myArr[0]);\n    printArrayElements(myArr, arrSize);\n\n    std::cout << \"Test 2: Empty array (size 0): \";\n    int emptyArr[] = {};\n    int emptyArrSize = 0;\n    printArrayElements(emptyArr, emptyArrSize);\n\n    // The following tests demonstrate the robustness issues.\n    // In a real testing environment, these might be run in isolation or with crash detection.\n\n    std::cout << \"Test 3: Null pointer (expected crash/undefined behavior): \";\n    int* nullArr = nullptr;\n    int nullArrSize = 3;\n    printArrayElements(nullArr, nullArrSize); // This call is expected to cause a crash\n\n    std::cout << \"Test 4: Negative size (expected no output, but invalid input): \";\n    int anotherArr[] = {1, 2, 3};\n    int negativeSize = -2;\n    printArrayElements(anotherArr, negativeSize);\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Function does not handle null pointer input for `arr`. Dereferencing `nullptr` leads to undefined behavior/crash.",
+    "Function does not explicitly validate `size` input (e.g., for negative values). While the loop condition `i < size` handles `size <= 0` by not iterating, it's not explicitly robust against invalid inputs like negative sizes."
+  ]
+}

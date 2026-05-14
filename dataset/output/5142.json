@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that asks the user for the desired size of an integer array. Dynamically allocate an array of that size using `new`. Populate the array with sequential numbers starting from 0 (e.g., if size is 5, elements are 0, 1, 2, 3, 4). Print the array elements, then deallocate the memory using `delete[]`.",
+  "test_cases": [
+    { "input": "5", "expected": "Array elements: 0 1 2 3 4 \n" }
+  ],
+  "driver": "int main_test() {\n    int size;\n    std::cin >> size;\n\n    if (size <= 0) {\n        std::cout << \"Array size must be positive.\" << std::endl;\n        return 1;\n    }\n\n    int* arr = new int[size];\n\n    for (int i = 0; i < size; ++i) {\n        arr[i] = i;\n    }\n\n    std::cout << \"Array elements: \";\n    for (int i = 0; i < size; ++i) {\n        std::cout << arr[i] << \" \";\n    }\n    std::cout << std::endl;\n\n    // The semantic error (memory leak) is the absence of delete[] arr;\n\n    return 0;\n}\n\nint main() {\n    // For semantic errors like memory leaks, the program's output might be correct,\n    // but underlying resource management is flawed. Tools like Valgrind would detect this.\n    return main_test();\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The dynamically allocated memory for the array 'arr' is not deallocated using 'delete[]', leading to a memory leak. The program fails to release system resources after they are no longer needed."
+  ]
+}

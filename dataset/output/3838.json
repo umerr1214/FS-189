@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a C++ `struct` called `Product` with members `id` (int), `name` (std::string), and `price` (double). Write a program that creates an array of 2 `Product` structs, prompts the user to input data for each product, and then prints details for the product with the highest price.",
+  "test_cases": [
+    {
+      "input": "1\nLaptop Pro\n1200.50\n2\nGaming Mouse\n25.00\n",
+      "expected": "Enter details for Product 1:\nID: Name: Price: Enter details for Product 2:\nID: Name: Price: \nProduct with the highest price:\nID: 1\nName: Laptop Pro\nPrice: 1200.5\n"
+    }
+  ],
+  "driver": "int main() { /* Your program logic here */ return 0; }",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the 'Product' struct definition, preventing compilation."
+  ]
+}

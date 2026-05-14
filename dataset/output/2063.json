@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "In an inheritance scenario, where `Base` has `privateData`, `protectedData`, and `publicData`, demonstrate how these members can (or cannot) be accessed by a `Derived` class and by a non-member function.",
+  "test_cases": [
+    { "input": "", "expected": "The program should compile and run. However, the output messages for `privateData` access from `Derived` and `protectedData` access from a non-member function are logically incorrect, as they imply direct access while actually using public getter methods. The demonstration misrepresents the true access mechanisms." }
+  ],
+  "driver": "int main() {\n    Base b(10, 20, 30);\n    Derived d(100, 200, 300);\n\n    b.displayBasePublic();\n    d.accessMembers();\n    nonMemberFunction(b);\n    nonMemberFunction(d);\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The output statements for `privateData` access from `Derived` and `protectedData` access from a non-member function logically misrepresent the access type, claiming 'direct' access when public getter methods are used."
+  ]
+}

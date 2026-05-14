@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that acts as a simple calculator. It should take two numbers (doubles) and an operator (+, -, *, /) as input from the user, then perform the operation using a `switch` statement and display the result. Handle division by zero.",
+  "test_cases": [
+    { "input": "10\n+\n5\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 15\n" },
+    { "input": "20\n/\n4\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 5\n" },
+    { "input": "10\n/\n0\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Error: Division by zero is not allowed.\n" },
+    { "input": "abc\n10\n+\n5\n", "expected": "Enter first number: Invalid input. Please enter a valid number.\nEnter first number: Enter operator (+, -, *, /): Enter second number: Result: 15\n" },
+    { "input": "10\nx\n+\n5\n", "expected": "Enter first number: Enter operator (+, -, *, /): Invalid operator. Please use +, -, *, or /.\nEnter operator (+, -, *, /): Enter second number: Result: 15\n" },
+    { "input": "10\n+\ndef\n5\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Invalid input. Please enter a valid number.\nEnter second number: Result: 15\n" }
+  ],
+  "driver": "g++ -o a.out 3759.cpp && echo \"$input\" | ./a.out",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

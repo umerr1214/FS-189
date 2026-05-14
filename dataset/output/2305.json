@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design an abstract base class `Animal` with a pure virtual method `makeSound()` (returning void). Create two concrete derived classes, `Dog` and `Cat`, that implement `makeSound()` to print their respective sounds ('Woof!' and 'Meow!').",
+  "test_cases": [
+    { "input": "", "expected": "--- Creating Animals ---\nDog constructor called.\nCat constructor called.\n\n--- Animals Making Sounds ---\nWoof!\nMeow!\n\n--- Deleting Animals ---\nAnimal destructor called.\nAnimal destructor called.\n\n--- Program End ---\n" }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Creating Animals ---\" << std::endl;\n    Animal* myDog = new Dog();\n    Animal* myCat = new Cat();\n\n    std::cout << \"\\n--- Animals Making Sounds ---\" << std::endl;\n    myDog->makeSound();\n    myCat->makeSound();\n\n    std::cout << \"\\n--- Deleting Animals ---\" << std::endl;\n    delete myDog;\n    delete myCat;\n\n    std::cout << \"\\n--- Program End ---\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 7,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["Missing virtual destructor in base class `Animal`. When deleting derived objects through a base class pointer, only the base class destructor is invoked, leading to undefined behavior and potential resource leaks (e.g., the `Dog` and `Cat` destructors are not called in this example)."]
+}

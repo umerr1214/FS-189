@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Define a class `Vehicle` with `public` member `brand` (string), `protected` member `model` (string), and `private` member `year` (int). Demonstrate how to access and modify these members: directly for `brand`, through a derived class method for `model`, and through a public getter/setter for `year` within the `Vehicle` class itself.",
+  "test_cases": [
+    { "input": "", "expected": "Original Vehicle Info:\nBrand: Toyota\nModel: Camry\nYear: 2020\n----------------------\nModified brand directly: Honda\n----------------------\nModified year via setter: 1900\n----------------------\nOriginal Car Info:\nBrand (from Car): Ford\nModel (from Car): Focus\nYear (from Car via getter): 2018\n----------------------\nModified model via derived class method: Brand (from Car): Ford\nModel (from Car): Mustang\nYear (from Car via getter): 2018\n----------------------\n" }
+  ],
+  "driver": "// The main function in 2537.cpp acts as the driver. No separate driver needed.",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    {
+      "line": 21,
+      "column": 9,
+      "message": "The `setYear` method incorrectly sets the year to a fixed value (1900) instead of the provided `newYear` parameter, leading to incorrect year modification."
+    }
+  ]
+}

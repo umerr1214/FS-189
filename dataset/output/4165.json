@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a function template `getLarger(T val1, T val2)` that accepts two arguments of the same comparable type `T` and returns the larger of the two. Demonstrate this template function with at least two different data types (e.g., `int` and `double`).",
+  "test_cases": [
+    { "input": "10, 25 (int)", "expected": "25" },
+    { "input": "3.14, 2.718 (double)", "expected": "3.14" },
+    { "input": "\"apple\", \"banana\" (const char*)", "expected": "The output will be either \"apple\" or \"banana\" depending on the memory addresses of the string literals, as `getLarger` compares pointers, not string content." },
+    { "input": "\"zebra\", \"aardvark\" (const char*)", "expected": "The output will be either \"zebra\" or \"aardvark\" depending on the memory addresses of the string literals, as `getLarger` compares pointers, not string content." }
+  ],
+  "driver": "#include <iostream>\n\ntemplate <typename T>\nT getLarger(T val1, T val2) {\n    return val1 > val2 ? val1 : val2;\n}\n\nint main() {\n    int int1 = 10; int int2 = 25;\n    std::cout << getLarger(int1, int2) << std::endl;\n\n    double double1 = 3.14; double double2 = 2.718;\n    std::cout << getLarger(double1, double2) << std::endl;\n\n    const char* str1 = \"apple\"; const char* str2 = \"banana\";\n    std::cout << getLarger(str1, str2) << std::endl;\n\n    const char* str3 = \"zebra\"; const char* str4 = \"aardvark\";\n    std::cout << getLarger(str3, str4) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The function template `getLarger` compares pointer addresses instead of the pointed-to values when `T` is a C-style string (`char*` or `const char*`), leading to unexpected results for string content comparison. This can be misleading for users expecting lexicographical comparison."]
+}

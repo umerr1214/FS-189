@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that uses nested `for` loops to print the following pattern of asterisks to the console, for a user-specified number of rows 'N':\n*\n**\n***\n****\n(For N=4)",
+  "test_cases": [
+    { "input": "4", "expected": "*\n**\n***\n****\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\n// This is a placeholder driver. In a real system, it would compile and run\n// the submitted C++ code with various inputs and capture outputs.\nint main() {\n    std::cout << \"This driver executes the compiled user program.\" << std::endl;\n    std::cout << \"It would typically read input from a test case, pass it to the program,\"<< std::endl;\n    std::cout << \"and capture the program's standard output for comparison with expected output.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The inner loop condition `j <= N` is incorrect; it should be `j <= i` to print a triangle pattern. This results in a square pattern of asterisks."]
+}

@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Design a `ShoppingCart` class that uses composition to manage a collection of `Item` objects. The `Item` class (separate class) should have `name` (string), `price` (double), and `quantity` (int). `ShoppingCart` should have methods to `addItem(Item item)` and `calculateTotal()`.",
+  "test_cases": [
+    {
+      "input": "Add Laptop (1200.0, 1), Wireless Mouse (25.0, 2), Keyboard (75.0, 1), USB Hub (15.50, 3), Defective Charger (-5.0, 1), Expired Candy (2.0, -10). Calculate total.",
+      "expected": "1371.5"
+    },
+    {
+      "input": "Create empty cart. Calculate total.",
+      "expected": "0.0"
+    }
+  ],
+  "driver": "int main() {\n    ShoppingCart myCart;\n\n    myCart.addItem(Item(\"Laptop\", 1200.0, 1));\n    Item mouse(\"Wireless Mouse\", 25.0, 2);\n    myCart.addItem(mouse);\n    myCart.addItem(Item(\"Keyboard\", 75.0, 1));\n    myCart.addItem(Item(\"USB Hub\", 15.50, 3));\n    myCart.addItem(Item(\"Defective Charger\", -5.0, 1));\n    myCart.addItem(Item(\"Expired Candy\", 2.0, -10));\n    std::cout << myCart.calculateTotal() << std::endl;\n\n    ShoppingCart emptyCart;\n    std::cout << emptyCart.calculateTotal() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a program that asks the user to input a temperature in Celsius and converts it to Fahrenheit, then prints the result. The formula is F = C * 9/5 + 32.",
+  "test_cases": [
+    { "input": "25", "expected": "Enter temperature in Celsius: Temperature in Fahrenheit: 77.00\n" },
+    { "input": "0", "expected": "Enter temperature in Celsius: Temperature in Fahrenheit: 32.00\n" },
+    { "input": "abc", "expected": "Enter temperature in Celsius: Temperature in Fahrenheit: 32.00\n" },
+    { "input": "-10", "expected": "Enter temperature in Celsius: Temperature in Fahrenheit: 14.00\n" }
+  ],
+  "driver": "g++ -o solution 4705.cpp && echo \"$input\" | ./solution",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not handle non-numeric input gracefully. If the user enters text instead of a number, std::cin will fail, the variable 'celsius' might not be updated (or default to 0 if not explicitly initialized), and the program will proceed with an incorrect value, leading to a wrong result without any error message or retry mechanism.",
+    "The lack of input validation makes the program vulnerable to unexpected behavior or incorrect output for invalid user input."
+  ]
+}

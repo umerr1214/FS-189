@@ -1,0 +1,10 @@
+{
+  "language": "c++",
+  "question": "Declare an `int` variable, a `float` variable, and a `char` variable. Then declare a pointer for each of these data types. Assign the address of each variable to its corresponding pointer. Print the memory address stored in each pointer and the value pointed to by each pointer using the dereference operator.",
+  "test_cases": [],
+  "driver": "",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The 'char_ptr' is explicitly assigned 'nullptr' and then subsequently dereferenced, leading to undefined behavior (e.g., a segmentation fault) at runtime."]
+}

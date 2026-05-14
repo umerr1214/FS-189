@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "For the `Point2D` class (from Q7) with private `x` and `y` coordinates, overload the stream insertion operator `<<` to enable printing `Point2D` objects directly to `std::cout` in the format \"(x, y)\".",
+  "test_cases": [
+    { "input": "Point2D p1(1, 2);", "expected": "(1, 2)\n" },
+    { "input": "Point2D p2(10, 20);", "expected": "(10, 20)\n" },
+    { "input": "Point2D p3(-5, 0);", "expected": "(-5, 0)\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\nclass Point2D {\nprivate:\n    int x;\n    int y;\npublic:\n    Point2D(int _x = 0, int _y = 0) : x(_x), y(_y) {}\n    \n    friend std::ostream& operator<<(std::ostream& os, const Point2D& p);\n};\n\nstd::ostream& operator<<(std::ostream& os, const Point2D& p) {\n    os << \"(\" << p.x << \", \" << p.y << \")\";\n    return os;\n}\n\nint main() {\n    Point2D p1(1, 2);\n    Point2D p2(10, 20);\n    Point2D p3(-5, 0);\n\n    std::cout << p1 << std::endl;\n    std::cout << p2 << std::endl;\n    std::cout << p3 << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

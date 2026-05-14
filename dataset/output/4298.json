@@ -1,0 +1,31 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function `is_palindrome` that takes a `std::string` as input and returns `true` if the string is a palindrome (reads the same forwards and backward, case-sensitive), and `false` otherwise. Test it with several example strings.",
+  "test_cases": [
+    { "input": "", "expected": "true" },
+    { "input": "a", "expected": "true" },
+    { "input": "racecar", "expected": "true" },
+    { "input": "hello", "expected": "false" },
+    { "input": "madam", "expected": "true" },
+    { "input": "A", "expected": "true" },
+    { "input": "Racecar", "expected": "false" },
+    { "input": "level", "expected": "true" },
+    { "input": "algorithm", "expected": "false" },
+    { "input": "abba", "expected": "true" },
+    { "input": "abcba", "expected": "true" },
+    { "input": "ab", "expected": "false" },
+    { "input": "aa", "expected": "true" },
+    { "input": " ", "expected": "true" },
+    { "input": "!@!", "expected": "true" },
+    { "input": "!@#", "expected": "false" },
+    { "input": "Able was I ere I saw Elba", "expected": "false" }
+  ],
+  "driver": "void run_test(const std::string& input, bool expected, int& passed_count, int& total_count) {\n    total_count++;\n    bool result = is_palindrome(input);\n    std::cout << \"Input: \\\"\" << input << \"\\\", Expected: \" << (expected ? \"true\" : \"false\")\n              << \", Got: \" << (result ? \"true\" : \"false\");\n    if (result == expected) {\n        std::cout << \" [PASSED]\\n\";\n        passed_count++;\n    } else {\n        std::cout << \" [FAILED]\\n\";\n    }\n}\n\nint main() {\n    int passed_count = 0;\n    int total_count = 0;\n\n    std::cout << \"Testing is_palindrome function (Readability/Efficiency Issue: String copy and reverse)\\n\";\n\n    run_test(\"\", true, passed_count, total_count);\n    run_test(\"a\", true, passed_count, total_count);\n    run_test(\"racecar\", true, passed_count, total_count);\n    run_test(\"hello\", false, passed_count, total_count);\n    run_test(\"madam\", true, passed_count, total_count);\n    run_test(\"A\", true, passed_count, total_count);\n    run_test(\"Racecar\", false, passed_count, total_count);\n    run_test(\"level\", true, passed_count, total_count);\n    run_test(\"algorithm\", false, passed_count, total_count);\n    run_test(\"abba\", true, passed_count, total_count);\n    run_test(\"abcba\", true, passed_count, total_count);\n    run_test(\"ab\", false, passed_count, total_count);\n    run_test(\"aa\", true, passed_count, total_count);\n    run_test(\" \", true, passed_count, total_count);\n    run_test(\"!@!\", true, passed_count, total_count);\n    run_test(\"!@#\", false, passed_count, total_count);\n    run_test(\"Able was I ere I saw Elba\", false, passed_count, total_count);\n\n    std::cout << \"\\n--- Test Summary ---\\n\";\n    std::cout << \"Passed: \" << passed_count << \" / \" << total_count << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The function creates a reversed copy of the input string, which incurs O(N) additional space complexity and O(N) time for copying.",
+    "A more efficient approach would be to use two pointers (one from each end) to compare characters in-place, achieving O(1) space complexity."
+  ]
+}

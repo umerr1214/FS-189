@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a `Product` class with private members `id` (int), `name` (string), and `price` (double). Implement a single constructor that uses default arguments to allow creating `Product` objects either with all attributes provided, or with only `id` and `name` (default `price` to 0.0), or with no arguments (default `id` to 0, `name` to \"Unnamed\", `price` to 0.0).",
+  "test_cases": [
+    { "input": "Product p1;", "expected": "P1: 0, Unnamed, 0.0" },
+    { "input": "Product p2(101, \"Laptop\");", "expected": "P2: 101, Laptop, 0.0" },
+    { "input": "Product p3(102, \"Mouse\", 25.50);", "expected": "P3: 102, Mouse, 25.5" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <iomanip>\n\nclass Product {\nprivate:\n    int id;\n    std::string name;\n    double price;\npublic:\n    Product(int id = 0, std::string name = \"Unnamed\", double price = 0.0) :\n        id(id), name(name), price(price) {}\n\n    int getId() const { return id; }\n    std::string getName() const { return name; }\n    double getPrice() const { return price; }\n};\n\nint main() {\n    std::stringstream ss;\n    ss << std::fixed << std::setprecision(1);\n\n    Product p1;\n    ss << \"P1: \" << p1.getId() << \", \" << p1.getName() << \", \" << p1.getPrice() << std::endl;\n\n    Product p2(101, \"Laptop\");\n    ss << \"P2: \" << p2.getId() << \", \" << p2.getName() << \", \" << p2.getPrice() << std::endl;\n\n    Product p3(102, \"Mouse\", 25.50);\n    ss << \"P3: \" << p3.getId() << \", \" << p3.getName() << \", \" << p3.getPrice() << std::endl;\n\n    std::cout << ss.str();\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The constructor for the `Product` class is declared as private, making it inaccessible from `main` or any external code. This violates C++ access rules, preventing the creation of `Product` objects and resulting in a compilation error."
+  ]
+}

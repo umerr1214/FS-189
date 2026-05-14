@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Develop a program that reads a student's numerical score (0-100) and assigns a letter grade (A: 90-100, B: 80-89, C: 70-79, D: 60-69, F: 0-59) using `if-else if` statements.",
+  "test_cases": [
+    { "input": "95", "expected": "Grade: A" },
+    { "input": "82", "expected": "Grade: B" },
+    { "input": "70", "expected": "Grade: C" },
+    { "input": "65", "expected": "Grade: D" },
+    { "input": "55", "expected": "Grade: F" },
+    { "input": "100", "expected": "Grade: A" },
+    { "input": "0", "expected": "Grade: F" },
+    { "input": "101", "expected": "Grade: ?" },
+    { "input": "-5", "expected": "Grade: ?" }
+  ],
+  "driver": "int main() {\n    int score;\n    std::cin >> score;\n    char grade;\n    if (score >= 90 && score <= 100) {\n        grade = 'A';\n    } else if (score >= 80 && score <= 89) {\n        grade = 'B';\n    } else if (score >= 70 && score <= 79) {\n        grade = 'C';\n    } else if (score >= 60 && score <= 69) {\n        grade = 'D';\n    } else if (score >= 0 && score <= 59) {\n        grade = 'F';\n    }\n    std::cout << \"Grade: \" << grade << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": []
+}

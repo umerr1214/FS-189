@@ -1,0 +1,64 @@
+{
+  "language": "c++",
+  "question": "Concatenate two C-style strings (character arrays) into a third C-style string without using any standard library string functions like `strcat`.",
+  "test_cases": [
+    { "input": "Hello\nWorld", "expected": "HelloWorld" },
+    { "input": "C++\nProgramming", "expected": "C++Programming" },
+    { "input": "\nEmptyFirst", "expected": "EmptyFirst" },
+    { "input": "FirstOnly\n", "expected": "FirstOnly" },
+    { "input": "LongStringExample\nAnotherLongStringExample", "expected": "LongStringExampleAnotherLongStringExample" }
+  ],
+  "driver": "
+#include <iostream>
+#include <vector>
+#include <string>
+
+// Assuming concatenate_strings_inefficient is defined in the student's code
+
+// Helper to split input for driver
+void splitString(const std::string& s, std::string& s1, std::string& s2) {
+    size_t newlinePos = s.find('\\n');
+    if (newlinePos != std::string::npos) {
+        s1 = s.substr(0, newlinePos);
+        s2 = s.substr(newlinePos + 2);
+    } else {
+        s1 = s;
+        s2 = \"\";
+    }
+}
+
+int main() {
+    std::vector<std::pair<std::string, std::string>> testInputs = {
+        {\"Hello\\nWorld\", \"HelloWorld\"},
+        {\"C++\\nProgramming\", \"C++Programming\"},
+        {\"\\nEmptyFirst\", \"EmptyFirst\"},
+        {\"FirstOnly\\n\", \"FirstOnly\"},
+        {\"LongStringExample\\nAnotherLongStringExample\", \"LongStringExampleAnotherLongStringExample\"}
+    };
+
+    for (const auto& test : testInputs) {
+        std::string s1_str, s2_str;
+        splitString(test.first, s1_str, s2_str);
+
+        size_t buffer_size = s1_str.length() + s2_str.length() + 1;
+        char* dest_buffer = new char[buffer_size];
+
+        concatenate_strings_inefficient(dest_buffer, s1_str.c_str(), s2_str.c_str());
+
+        if (std::string(dest_buffer) == test.second) {
+            std::cout << \"Test Passed: '\" << dest_buffer << \"' == '\" << test.second << \"'\\n\";
+        } else {
+            std::cout << \"Test Failed: Expected '\" << test.second << \"', Got '\" << dest_buffer << \"'\\n\";
+        }
+        delete[] dest_buffer;
+    }
+    return 0;
+}
+",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `concatenate_strings_inefficient` function has an efficiency issue. After copying `source_one` to `target_buffer`, the code redundantly re-iterates from the beginning of `target_buffer` using `while (*current_dest_ptr != '\\0')` to find the null terminator before copying `source_two`. The index `i` (or a pointer equivalent) from the first copying loop already correctly points to the start position for the second string. This unnecessary iteration makes the function less efficient, especially for very long `source_one` strings. While functionally correct, it's not optimal."
+  ]
+}

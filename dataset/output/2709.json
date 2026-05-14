@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `BankAccount` class with private members `accountNumber` (int) and `balance` (double). Implement a constructor that initializes these members, ensuring the initial `balance` cannot be negative. Provide public `deposit` and `withdraw` methods, with `withdraw` checking for sufficient funds.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "Account 2001 created with balance: 1000\nDeposited 200. New balance: 1200\nFailed to deposit -50 (as expected). Current balance: 1200\nWithdrew 150. New balance: 1050\nFailed to withdraw 2000 (insufficient funds, as expected). Current balance: 1050\nFailed to withdraw -100 (as expected). Current balance: 1050\n\n--- Testing constructor with negative initial balance ---\nAccount 2002 created with balance: 0\nDeposited 100. New balance: 100\nWithdrew 50. New balance: 50\n"
+    }
+  ],
+  "driver": "int main() {\n    BankAccount acc1(2001, 1000.0);\n    std::cout << \"Account \" << acc1.getAccountNumber() << \" created with balance: \" << acc1.getBalance() << std::endl;\n\n    if (acc1.deposit(200.0)) {\n        std::cout << \"Deposited 200. New balance: \" << acc1.getBalance() << std::endl;\n    } else {\n        std::cout << \"Deposit failed.\" << std::endl;\n    }\n\n    if (acc1.deposit(-50.0)) {\n        std::cout << \"Deposited -50. New balance: \" << acc1.getBalance() << std::endl;\n    } else {\n        std::cout << \"Failed to deposit -50 (as expected). Current balance: \" << acc1.getBalance() << std::endl;\n    }\n\n    if (acc1.withdraw(150.0)) {\n        std::cout << \"Withdrew 150. New balance: \" << acc1.getBalance() << std::endl;\n    } else {\n        std::cout << \"Withdrawal failed.\" << std::endl;\n    }\n\n    if (acc1.withdraw(2000.0)) {\n        std::cout << \"Withdrew 2000. New balance: \" << acc1.getBalance() << std::endl;\n    } else {\n        std::cout << \"Failed to withdraw 2000 (insufficient funds, as expected). Current balance: \" << acc1.getBalance() << std::endl;\n    }\n\n    if (acc1.withdraw(-100.0)) {\n        std::cout << \"Withdrew -100. New balance: \" << acc1.getBalance() << std::endl;\n    } else {\n        std::cout << \"Failed to withdraw -100 (as expected). Current balance: \" << acc1.getBalance() << std::endl;\n    }\n\n    std::cout << \"\\n--- Testing constructor with negative initial balance ---\\n\";\n    BankAccount acc2(2002, -500.0);\n    std::cout << \"Account \" << acc2.getAccountNumber() << \" created with balance: \" << acc2.getBalance() << std::endl;\n    acc2.deposit(100.0);\n    std::cout << \"Deposited 100. New balance: \" << acc2.getBalance() << std::endl;\n    acc2.withdraw(50.0);\n    std::cout << \"Withdrew 50. New balance: \" << acc2.getBalance() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

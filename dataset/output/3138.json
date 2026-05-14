@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `FileManager` class that dynamically allocates a character array (e.g., for a file path) in its constructor. Implement a destructor to properly deallocate this memory.",
+  "test_cases": [
+    { "input": "", "expected": "--- Starting Semantic Error Demonstration (Double Free) ---\nInside demonstrateDoubleFree function.\nFileManager created for: original.txt (address: <some_address_1>)\nCurrent file path: original.txt\nFileManager created for: original.txt (address: <some_address_1>)\nCurrent file path: original.txt\nExiting demonstrateDoubleFree function. Destructors will be called.\nFileManager destroying path: original.txt (address: <some_address_1>)\nFileManager destroying path: original.txt (address: <some_address_1>)\n--- Double Free Demonstration Finished ---\nFileManager created for: safe.log (address: <some_address_2>)\nCurrent file path: safe.log\nFileManager destroying path: safe.log (address: <some_address_2>)\n" }
+  ],
+  "driver": "void demonstrateDoubleFree() {\n    std::cout << \"Inside demonstrateDoubleFree function.\" << std::endl;\n    FileManager fm1(\"original.txt\");\n    fm1.printPath();\n    FileManager fm2 = fm1; \n    fm2.printPath();\n    std::cout << \"Exiting demonstrateDoubleFree function. Destructors will be called.\" << std::endl;\n}\n\nint main() {\n    std::cout << \"--- Starting Semantic Error Demonstration (Double Free) ---\" << std::endl;\n    demonstrateDoubleFree();\n    std::cout << \"--- Double Free Demonstration Finished ---\" << std::endl;\n    FileManager fm_safe(\"safe.log\");\n    fm_safe.printPath();\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The class manages dynamic memory (raw pointer `filePath`) but does not define a copy constructor or copy assignment operator. The implicitly generated copy constructor performs a shallow copy, leading to two `FileManager` objects pointing to the same dynamically allocated memory. When these objects are destroyed, the destructor attempts to deallocate the same memory twice, resulting in a 'double free' error, which is undefined behavior."]
+}

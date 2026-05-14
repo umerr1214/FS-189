@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `MathOperations` class with three overloaded `add` methods: one that takes two integers, one that takes two doubles, and one that takes three integers. Demonstrate calling each version of the `add` method.",
+  "test_cases": [
+    {
+      "input": "Hardcoded values:\nadd(10, 20)\nadd(3.5, 2.5)\nadd(1, 2, 3)",
+      "expected": "Adding two integers (10 + 20): 30\nAdding two doubles (3.5 + 2.5): 6.0\nAdding three integers (1 + 2 + 3): 6"
+    }
+  ],
+  "driver": "The `main` function creates an instance of `MathOperations` and calls each of the three overloaded `add` methods with appropriate arguments, printing their results to standard output.",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

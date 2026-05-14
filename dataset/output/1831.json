@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Shape` with a `protected` member `color` (string) and a public method `displayColor()`. Derive a class `ColoredCircle` from `Shape`. Demonstrate how `ColoredCircle` can directly access and modify the `protected` `color` member, and then use `displayColor()` to confirm the change.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial state:\nColor: [Not Set]\nAfter setting color to Blue:\nColor: Blue\nAfter setting color to an empty string:\nColor: [Not Set]\n"
+    }
+  ],
+  "driver": "int main() {\n    ColoredCircle myCircle(5.0);\n    std::cout << \"Initial state:\" << std::endl;\n    myCircle.displayColor();\n    myCircle.setColor(\"Blue\");\n    std::cout << \"After setting color to Blue:\" << std::endl;\n    myCircle.displayColor();\n    myCircle.setColor(\"\");\n    std::cout << \"After setting color to an empty string:\" << std::endl;\n    myCircle.displayColor();\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Shape` class's `displayColor` method explicitly checks for an empty `color` string and prints '[Not Set]', indicating an expectation that `color` should typically hold a meaningful value. However, the default constructors for both `Shape` and `ColoredCircle` do not ensure `color` is initialized to a non-empty string, leading to this 'not set' state upon object creation. While `std::string` handles empty states gracefully, explicitly reporting '[Not Set]' highlights a potential robustness concern if a meaningful color is always implicitly required. Furthermore, allowing `color` to be set to an empty string later might lead to the same 'not set' message, which could be confusing or mask an intended 'no color' state versus an uninitialized state."
+  ]
+}

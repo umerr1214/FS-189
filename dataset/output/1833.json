@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Shape` with a `protected` member `color` (string) and a public method `displayColor()`. Derive a class `ColoredCircle` from `Shape`. Demonstrate how `ColoredCircle` can directly access and modify the `protected` `color` member, and then use `displayColor()` to confirm the change.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial color:\nColor: Red\nAfter updating color to Green:\nColor: Green\nAnother circle's color:\nColor: Yellow\n"
+    }
+  ],
+  "driver": "int main() {\n    ColoredCircle myCircle(5.0, \"Red\");\n    std::cout << \"Initial color:\" << std::endl;\n    myCircle.displayColor();\n    myCircle.updateColor(\"Green\");\n    std::cout << \"After updating color to Green:\" << std::endl;\n    myCircle.displayColor();\n    const ColoredCircle anotherCircle(10.0, \"Yellow\");\n    std::cout << \"Another circle's color:\" << std::endl;\n    anotherCircle.displayColor();\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

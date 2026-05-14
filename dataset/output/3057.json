@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Extend the `Shape` hierarchy (from Q11). Add a `virtual` destructor to the `Shape` base class. Demonstrate polymorphic behavior by storing `Rectangle` and `Circle` objects in a `std::vector` of `Shape*` pointers and then deleting them to ensure correct destructors are called.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Creating shapes ---\nConstructing Shape: Rectangle\n  Constructing Rectangle (10x5)\nConstructing Shape: Circle\n  Constructing Circle (r=7.5)\nConstructing Shape: Rectangle\n  Constructing Rectangle (3x8)\n-----------------------\n\n--- Drawing shapes ---\nDrawing a Rectangle: 10x5\nDrawing a Circle: radius 7.5\nDrawing a Rectangle: 3x8\n----------------------\n\n--- Deleting shapes polymorphically ---\n  Destructing Rectangle (Rectangle)\nDestructing Shape: Rectangle\n  Destructing Circle (Circle)\nDestructing Shape: Circle\n  Destructing Rectangle (Rectangle)\nDestructing Shape: Rectangle\n---------------------------------------\n\nProgram finished successfully.\n"
+    }
+  ],
+  "driver": "The `main` function serves as the driver, demonstrating shape creation, drawing, and polymorphic deletion.",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

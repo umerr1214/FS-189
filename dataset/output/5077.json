@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that takes a positive integer `N` from the user. Using a `for` loop, calculate and display the sum of all even numbers between 1 and `N` (inclusive).",
+  "test_cases": [
+    { "input": "5", "expected": "The sum of even numbers between 1 and 5 is: 6" },
+    { "input": "10", "expected": "The sum of even numbers between 1 and 10 is: 30" },
+    { "input": "-3", "expected": "The sum of even numbers between 1 and -3 is: 0" },
+    { "input": "0", "expected": "The sum of even numbers between 1 and 0 is: 0" },
+    { "input": "abc", "expected": "The sum of even numbers between 1 and 0 is: 0" }
+  ],
+  "driver": "// No specific driver needed as the program handles I/O itself.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not validate if the input N is a positive integer as explicitly stated in the problem, simply proceeding with any integer value.",
+    "The program does not handle non-integer input gracefully. If the user enters non-numeric characters, `std::cin` will fail, `N` might be uninitialized or zero, and the program will continue with potentially incorrect values without informing the user."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that initializes a 3x3 integer matrix with hardcoded values, then calculates and prints the sum of elements for each row and each column separately.",
+  "test_cases": [
+    { "input": "", "expected": "Calculating row sums:\nRow 0 sum: 6\nRow 1 sum: 15\nRow 2 sum: 24\nCalculating column sums:\nColumn 0 sum: 12\nColumn 1 sum: 15\nColumn 2 sum: 18\n" }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Poor variable names like 'm', 'r', 'c', 'rs', and 'cs' significantly reduce readability.",
+    "The program iterates over the matrix twice (once for row sums, once for column sums) which is less efficient than calculating both in a single pass or storing intermediate results. This leads to redundant computations.",
+    "The logic for calculating row sums and column sums is duplicated, which could be refactored into helper functions or a single, more efficient loop structure.",
+    "Inconsistent use of `std::endl` and `\\n` for newlines."
+  ]
+}

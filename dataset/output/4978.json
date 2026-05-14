@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that reads 5 integer values into a one-dimensional array. After reading, find and display the second largest element present in the array.",
+  "test_cases": [
+    { "input": "10 20 30 40 50", "expected": "The second largest element is: 40\n" }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'std::cout << \"Enter 5 integers: \"' on line 9, before the 'for' loop. This will cause a compilation error."
+  ]
+}

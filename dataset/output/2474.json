@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Implement a `Fraction` class with `numerator` and `denominator`. Overload the `*` operator to multiply two `Fraction` objects and return a new `Fraction` object.",
+  "test_cases": [
+    { "input": "frc f_one(1, 2); frc f_two(3, 4); frc f_three = f_one * f_two; f_three.p_val();", "expected": "3/8\n" },
+    { "input": "frc f_four(5, 10); frc f_five(2, 3); frc f_six = f_four * f_five; f_six.p_val();", "expected": "1/3\n" },
+    { "input": "frc f_seven(2, -3); frc f_eight(1, 2); frc f_nine = f_seven * f_eight; f_nine.p_val();", "expected": "-1/3\n" },
+    { "input": "frc f_ten(0, 5); frc f_eleven(7, 8); frc f_twelve = f_ten * f_eleven; f_twelve.p_val();", "expected": "0/1\n" },
+    { "input": "frc f_a(123456789, 987654321); frc f_b(246813579, 753951824); frc f_c = f_a * f_b; f_c.p_val();", "expected": "30510255376526011/744594326577889504\n" }
+  ],
+  "driver": "int main() {\n    frc f_one(1, 2); frc f_two(3, 4); frc f_three = f_one * f_two; f_three.p_val();\n    frc f_four(5, 10); frc f_five(2, 3); frc f_six = f_four * f_five; f_six.p_val();\n    frc f_seven(2, -3); frc f_eight(1, 2); frc f_nine = f_seven * f_eight; f_nine.p_val();\n    frc f_ten(0, 5); frc f_eleven(7, 8); frc f_twelve = f_ten * f_eleven; f_twelve.p_val();\n    frc f_a(123456789, 987654321); frc f_b(246813579, 753951824); frc f_c = f_a * f_b; f_c.p_val();\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["The code exhibits several readability and efficiency issues. Readability suffers from poor naming conventions (e.g., `frc` for class, `num`, `den` for members, `p_val()` for print method, `othr` for parameter, `get_gcd_val` for GCD function, `temp_val`, `r_n`, `r_d` for local variables). The `operator*` is inefficient as it passes the `Fraction` object by value instead of `const&`, causing unnecessary copying. Furthermore, the simplification and sign normalization logic is duplicated and embedded directly within the `operator*` and `get_gcd_val` function, rather than being encapsulated in a private helper method or consistently applied in the constructor, making the code less modular and harder to maintain."]
+}

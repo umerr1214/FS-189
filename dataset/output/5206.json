@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `void doubleArrayElements(int* arr, int size)` that takes a pointer to the first element of an integer array and its size. The function should iterate through the array using pointer arithmetic and double the value of each element. Test it with a sample array in `main`.",
+  "test_cases": [
+    { "input": "[1, 2, 3, 4, 5]", "expected": "[2, 4, 6, 8, 10]" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <sstream>\n\n// The user's submitted function `doubleArrayElements` will be placed here.\n\nint main() {\n    std::vector<int> test_arr_vec = {1, 2, 3, 4, 5};\n    int size = test_arr_vec.size();\n    \n    int* arr_ptr = test_arr_vec.data();\n\n    doubleArrayElements(arr_ptr, size);\n\n    std::stringstream ss;\n    ss << \"[\";\n    for (int i = 0; i < size; ++i) {\n        ss << arr_ptr[i];\n        if (i < size - 1) {\n            ss << \", \";\n        }\n    }\n    ss << \"]\";\n    std::cout << ss.str();\n\n    return 0;\n}",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after variable declaration `int size = sizeof(arr) / sizeof(arr[0])` in `main` function."]
+}

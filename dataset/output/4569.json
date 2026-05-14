@@ -1,0 +1,31 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program to count the frequency of each distinct element in a 1D array of integers. Print each element and its count.",
+  "test_cases": [
+    {
+      "input": "1 2 2 3 1 4",
+      "expected": "1 2\n2 2\n3 1\n4 1\n"
+    },
+    {
+      "input": "5 5 5 5 5",
+      "expected": "5 5\n"
+    },
+    {
+      "input": "10 20 30 40 50",
+      "expected": "10 1\n20 1\n30 1\n40 1\n50 1\n"
+    },
+    {
+      "input": "7 1 7 1 7 -2 0",
+      "expected": "-2 1\n0 1\n1 2\n7 3\n"
+    },
+    {
+      "input": "",
+      "expected": ""
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream>\n#include <algorithm>\n#include <map>\n#include <unordered_map>\n\n// Function signature will vary slightly based on implementation\nvoid countElementFrequencies(const std::vector<int>& elements);\n\nint main() {\n    std::string line;\n    std::getline(std::cin, line);\n\n    std::stringstream ss(line);\n    int num;\n    std::vector<int> arr;\n    while (ss >> num) {\n        arr.push_back(num);\n    }\n\n    // Redirect cout to a stringstream to capture output\n    std::stringstream buffer;\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::cout.rdbuf(buffer.rdbuf());\n\n    countElementFrequencies(arr);\n\n    std::cout.rdbuf(old_cout); // Restore cout\n    std::cout << buffer.str(); // Print captured output\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

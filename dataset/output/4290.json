@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Define a C++ struct named `Point` with two integer members, `x` and `y`, representing coordinates. Write a function `get_distance` that takes two `Point` structs as input and returns the Euclidean distance between them as a `double`.",
+  "test_cases": [
+    { "input": "0 0\n3 4", "expected": "5.000000" },
+    { "input": "0 0\n1 1", "expected": "1.414214" },
+    { "input": "0 0\n2 1", "expected": "2.236068" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\n// Assuming Point struct and get_distance function are defined above\n\nint main() {\n    Point p1, p2;\n    std::cin >> p1.x >> p1.y;\n    std::cin >> p2.x >> p2.y;\n    // The driver explicitly casts to double for output to demonstrate the issue, \n    // but the function itself returns an int.\n    std::cout << std::fixed << std::setprecision(6) << static_cast<double>(get_distance(p1, p2)) << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `get_distance` function is declared to return `int` instead of `double`, causing the computed Euclidean distance to be truncated to an integer before being returned. This loses precision and violates the problem statement."
+  ]
+}

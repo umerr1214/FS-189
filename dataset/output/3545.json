@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that takes a `std::string` as input from the user and checks if it is a palindrome (reads the same forwards and backwards, ignoring case and spaces is NOT required for this problem, exact match). Print 'Palindrome' or 'Not a palindrome'.",
+  "test_cases": [
+    { "input": "level", "expected": "Palindrome\n" },
+    { "input": "hello", "expected": "Not a palindrome\n" },
+    { "input": "Aba", "expected": "Palindrome\n" },
+    { "input": "race car", "expected": "Palindrome\n" },
+    { "input": "", "expected": "Palindrome\n" },
+    { "input": "Madam", "expected": "Palindrome\n" }
+  ],
+  "driver": "g++ -std=c++17 -O2 -Wall -Wextra -pedantic -o solution 3545.cpp && ./solution",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The program incorrectly ignores case when checking for a palindrome, violating the 'exact match' requirement of the problem. For example, 'Aba' is identified as a palindrome."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private attributes for `title`, `author`, and `isbn`. Implement a public constructor to initialize these attributes and a `displayDetails()` method to print all book information.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book Details:\nTitle: The Hitchhiker's Guide to the Galaxy\nAuthor: Douglas Adams\nISBN: 978-0345391803\n---\nBook Details:\nTitle: Pride and Prejudice\nAuthor: Jane Austen\nISBN: 978-0141439518\n---\nBook Details:\nTitle: Empty Title\nAuthor: \nISBN: No ISBN\n"
+    }
+  ],
+  "driver": "int main() {\n    Book book1(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\");\n    book1.displayDetails();\n    std::cout << \"---\\n\";\n\n    Book book2(\"Pride and Prejudice\", \"Jane Austen\", \"978-0141439518\");\n    book2.displayDetails();\n    std::cout << \"---\\n\";\n\n    Book book3(\"Empty Title\", \"\", \"No ISBN\");\n    book3.displayDetails();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The constructor `Book(const char* t, const char* a, const char* i)` implicitly relies on `std::string(const char*)`. This constructor is vulnerable if `nullptr` is passed for any of the `char*` arguments, leading to undefined behavior or a crash. A robust implementation would explicitly check for `nullptr` before assignment or, preferably, use `std::string` parameters directly to leverage `std::string`'s safe construction."
+  ]
+}

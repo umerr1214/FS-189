@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a `StringWrapper` class that manages a dynamically allocated C-style character array (char*). Write a copy constructor that performs a deep copy of the string data, ensuring independent memory management for copied objects.",
+  "test_cases": [
+    { "input": "HelloLeak", "expected": "HelloLeak" },
+    { "input": "WorldLeak", "expected": "WorldLeak" },
+    { "input": "Loop0", "expected": "Loop0" }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <string>\n\nclass StringWrapper {\nprivate:\n    char* data;\n    size_t length;\n\npublic:\n    StringWrapper(const char* str = \"\") {\n        if (str == nullptr) {\n            str = \"\";\n        }\n        length = strlen(str);\n        data = new char[length + 1];\n        strcpy(data, str);\n        std::cout << \"Constructor: \" << data << std::endl;\n    }\n\n    ~StringWrapper() {\n        // delete[] data;\n        std::cout << \"Destructor called for: \" << (data ? data : \"nullptr\") << \" (memory not freed)\" << std::endl;\n    }\n\n    StringWrapper(const StringWrapper& other) {\n        length = other.length;\n        data = new char[length + 1];\n        strcpy(data, other.data);\n        std::cout << \"Copy Constructor: \" << data << std::endl;\n    }\n\n    StringWrapper& operator=(const StringWrapper& other) {\n        if (this == &other) {\n            return *this;\n        }\n        delete[] data;\n        length = other.length;\n        data = new char[length + 1];\n        strcpy(data, other.data);\n        std::cout << \"Copy Assignment: \" << data << std::endl;\n        return *this;\n    }\n\n    const char* c_str() const {\n        return data;\n    }\n    size_t size() const {\n        return length;\n    }\n};\n\nint main() {\n    std::cout << \"--- Testing StringWrapper with Robustness Issues ---\" << std::endl;\n\n    StringWrapper s1(\"HelloLeak\");\n    StringWrapper s2 = s1;\n    std::cout << \"s1: \" << s1.c_str() << \", s2: \" << s2.c_str() << std::endl;\n\n    StringWrapper s3(\"WorldLeak\");\n    StringWrapper s4;\n    s4 = s3;\n    std::cout << \"s3: \" << s3.c_str() << \", s4: \" << s4.c_str() << std::endl;\n\n    std::cout << \"\\nCreating and destroying several StringWrapper objects (expect memory leaks):\" << std::endl;\n    for (int i = 0; i < 5; ++i) {\n        StringWrapper temp(\"Loop\" + std::to_string(i));\n        StringWrapper temp_copy = temp;\n        std::cout << \"  Temp \" << i << \": \" << temp.c_str() << \", Copy \" << i << \": \" << temp_copy.c_str() << std::endl;\n    }\n\n    std::cout << \"\\nEnd of main. Memory leaks are expected due to the missing `delete[] data;` in the destructor.\" << std::endl;\n    std::cout << \"Additionally, the constructor and copy constructor are vulnerable to `nullptr` input strings for `strlen` and `strcpy`.\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Memory leak in destructor: `delete[] data;` is missing.",
+    "Constructor and copy constructor do not robustly handle `nullptr` input strings for `strlen` and `strcpy`, leading to undefined behavior or crashes if `nullptr` is passed."
+  ]
+}

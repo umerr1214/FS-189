@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a `StudentGrade` class with private attributes `studentId` (int) and `score` (double). Use a constructor initialization list to initialize these members. Provide a public method `displayGrade()`.",
+  "test_cases": [
+    { "input": "No direct input, constructor parameters are used.", "expected": "Displaying student1's grade:\nStudent ID: 201\nScore: 75.5\n\nDisplaying student2's grade:\nStudent ID: 202\nScore: 92" }
+  ],
+  "driver": "StudentGrade student1(201, 75.5);\nstd::cout << \"Displaying student1's grade:\" << std::endl;\nstudent1.displayGrade();\nstd::cout << std::endl;\nStudentGrade student2(202, 92.0);\nstd::cout << \"Displaying student2's grade:\" << std::endl;\nstudent2.displayGrade();",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The constructor parameters `i` and `s` are less descriptive than they could be, reducing readability.",
+    "The `displayGrade` method uses `std::endl` which flushes the output buffer on each call. Using `\\n` instead would be more efficient, especially in performance-critical applications, as it avoids unnecessary flushes.",
+    "The header `<vector>` is included but not used, leading to slightly increased compile times and unnecessary dependencies."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Modify the `BankAccount` class to enforce strict encapsulation for `balance`. Add public `getBalance()` and `setBalance()` methods, but make `setBalance()` private or `protected` if it's only intended for internal class use, otherwise add input validation.",
+  "test_cases": [
+    { "input": "Initial balance: 100.0, Set balance to: 250.0", "expected": "--- Test 1: Valid initial, valid set ---\nInitial balance set by constructor: 100\nCurrent balance (after constructor): 100\nAttempting to set balance to: 250\nBalance after set: 250\nExpected balance after set: 250\nTest PASSED\n\n" },
+    { "input": "Initial balance: 50.0, Set balance to: -100.0", "expected": "--- Test 2: Valid initial, negative set (robustness issue in setBalance) ---\nInitial balance set by constructor: 50\nCurrent balance (after constructor): 50\nAttempting to set balance to: -100\nBalance after set: 0\nExpected balance after set: 0\nTest PASSED\n\n" },
+    { "input": "Initial balance: -200.0, Set balance to: 300.0", "expected": "--- Test 3: Negative initial (robustness issue in constructor), valid set ---\nInitial balance set by constructor: -200\nCurrent balance (after constructor): -200\nAttempting to set balance to: 300\nBalance after set: 300\nExpected balance after set: 300\nTest PASSED\n\n" },
+    { "input": "Initial balance: -50.0, Set balance to: -75.0", "expected": "--- Test 4: Negative initial (constructor) & negative set (setBalance) ---\nInitial balance set by constructor: -50\nCurrent balance (after constructor): -50\nAttempting to set balance to: -75\nBalance after set: 0\nExpected balance after set: 0\nTest PASSED\n\n" }
+  ],
+  "driver": "void runTestCase(const std::string& description, double initial_val_for_constructor, double set_val, double expected_after_set) {\n    std::cout << \"--- \" << description << \" ---\" << std::endl;\n    BankAccount account(initial_val_for_constructor);\n    std::cout << \"Initial balance set by constructor: \" << initial_val_for_constructor << std::endl;\n    std::cout << \"Current balance (after constructor): \" << account.getBalance() << std::endl;\n\n    std::cout << \"Attempting to set balance to: \" << set_val << std::endl;\n    account.setBalance(set_val);\n    std::cout << \"Balance after set: \" << account.getBalance() << std::endl;\n    std::cout << \"Expected balance after set: \" << expected_after_set << std::endl;\n    \n    if (account.getBalance() == expected_after_set) {\n        std::cout << \"Test PASSED\" << std::endl;\n    } else {\n        std::cout << \"Test FAILED\" << std::endl;\n    }\n    std::cout << std::endl;\n}\n\nint main() {\n    runTestCase(\"Test 1: Valid initial, valid set\", 100.0, 250.0, 250.0);\n    runTestCase(\"Test 2: Valid initial, negative set (robustness issue in setBalance)\", 50.0, -100.0, 0.0);\n    runTestCase(\"Test 3: Negative initial (robustness issue in constructor), valid set\", -200.0, 300.0, 300.0);\n    runTestCase(\"Test 4: Negative initial (constructor) & negative set (setBalance)\", -50.0, -75.0, 0.0);\n    \n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `BankAccount` constructor allows initialization with a negative balance, violating typical bank account constraints and leading to an invalid initial state.",
+    "The `setBalance` method, when given a negative value, silently 'corrects' it to 0.0 instead of rejecting the input or providing explicit feedback (e.g., returning a boolean, throwing an exception). This 'fail-soft' approach can hide bugs in calling code that might expect invalid operations to be clearly signaled."
+  ]
+}

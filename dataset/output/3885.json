@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that asks the user for a year and determines whether it is a leap year or not. (Leap year rules: divisible by 4, but not by 100 unless also divisible by 400).",
+  "test_cases": [
+    { "input": "2000", "expected": "Enter a year: 2000 is a leap year.\n" },
+    { "input": "1900", "expected": "Enter a year: 1900 is not a leap year.\n" },
+    { "input": "2004", "expected": "Enter a year: 2004 is a leap year.\n" },
+    { "input": "2001", "expected": "Enter a year: 2001 is not a leap year.\n" },
+    { "input": "1600", "expected": "Enter a year: 1600 is a leap year.\n" },
+    { "input": "1800", "expected": "Enter a year: 1800 is not a leap year.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n\n// This function represents the user's core logic.\n// The testing framework will link this function from the user's compiled code.\nextern void solve_leap_year_problem();\n\nstd::string run_test_case(const std::string& input_str) {\n    std::stringstream ss_input(input_str);\n    std::stringstream ss_output;\n\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    solve_leap_year_problem(); // Call the user's core logic function\n\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    return ss_output.str();\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

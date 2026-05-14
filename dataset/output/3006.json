@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `Resource` class that simulates managing a dynamic integer array. The constructor should allocate memory for a specified size, and the destructor should deallocate it. Include methods to `fillArray()` and `displayArray()`. Demonstrate its lifecycle to ensure proper memory management.",
+  "test_cases": [
+    { "input": "5", "expected": "--- Resource Lifecycle Demonstration (Semantic Error - Memory Leak) ---\nArray filled.\nArray elements: 1 2 3 4 5\nResource of size 5 (NOT) deallocated.\n--- End of demonstration ---\n" }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Resource Lifecycle Demonstration (Semantic Error - Memory Leak) ---\" << std::endl;\n    {\n        Resource res(5);\n        if (res.getSize() > 0) {\n            res.fillArray();\n            res.displayArray();\n        }\n    } \n    std::cout << \"--- End of demonstration ---\" << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The destructor of the Resource class fails to deallocate the dynamically allocated memory for 'data', leading to a memory leak."
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Design a class `MathOperations` with overloaded public methods named `multiply`. One `multiply` method should take two integers as arguments and return their product. Another `multiply` method should take three double values as arguments and return their product.",
+  "test_cases": [
+    { "input": "5, 10", "expected": "50" },
+    { "input": "-3, 7", "expected": "-21" },
+    { "input": "0, 100", "expected": "0" },
+    { "input": "30000, 40000", "expected": "1200000000" },
+    { "input": "1.5, 2.0, 3.0", "expected": "9.0" },
+    { "input": "-0.5, 4.0, 2.5", "expected": "-5.0" },
+    { "input": "10.0, 0.1, 5.0", "expected": "5.0" },
+    { "input": "NaN, 2.0, 3.0", "expected": "nan" },
+    { "input": "1.0e-10, 2.0e-10, 3.0e-10", "expected": "6.000000e-30" }
+  ],
+  "driver": "MathOperations math_ops;\n\nstd::cout << std::fixed << std::setprecision(1);\n\nstd::cout << \"Testing multiply(int, int):\\n\";\nstd::cout << \"5 * 10 = \" << math_ops.multiply(5, 10) << \"\\n\";\nstd::cout << \"-3 * 7 = \" << math_ops.multiply(-3, 7) << \"\\n\";\nstd::cout << \"0 * 100 = \" << math_ops.multiply(0, 100) << \"\\n\";\nstd::cout << \"30000 * 40000 = \" << math_ops.multiply(30000, 40000) << \"\\n\";\n\nstd::cout << \"\\nTesting multiply(double, double, double):\\n\";\nstd::cout << \"1.5 * 2.0 * 3.0 = \" << math_ops.multiply(1.5, 2.0, 3.0) << \"\\n\";\nstd::cout << \"-0.5 * 4.0 * 2.5 = \" << math_ops.multiply(-0.5, 4.0, 2.5) << \"\\n\";\nstd::cout << \"10.0 * 0.1 * 5.0 = \" << math_ops.multiply(10.0, 0.1, 5.0) << \"\\n\";\ndouble nan_val = std::numeric_limits<double>::quiet_NaN();\nstd::cout << \"NaN * 2.0 * 3.0 = \" << math_ops.multiply(nan_val, 2.0, 3.0) << \"\\n\";\n\nstd::cout << std::scientific << std::setprecision(6);\nstd::cout << \"1.0e-10 * 2.0e-10 * 3.0e-10 = \" << math_ops.multiply(1.0e-10, 2.0e-10, 3.0e-10) << \"\\n\";\nstd::cout << std::fixed << std::setprecision(1);",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `multiply(int, int)` method returns `int`, which is susceptible to overflow for large products. A more robust solution might use `long long` or implement overflow checking.",
+    "The `multiply(double, double, double)` method does not explicitly check for `NaN` (Not a Number) inputs. While `NaN` propagates naturally, explicit handling might be desired for robust error management or specific application requirements."
+  ]
+}

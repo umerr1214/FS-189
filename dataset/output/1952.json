@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Write a `Calculator` class with overloaded `add` methods: one taking two integers, another taking two doubles, and a third taking three integers. Each method should return the sum.",
+  "test_cases": [
+    { "input": "myCalc.add(5, 7)", "expected": "12" },
+    { "input": "myCalc.add(3.14, 2.71)", "expected": "5.85" },
+    { "input": "myCalc.add(10, 20, 30)", "expected": "60" },
+    { "input": "myCalc.add(0.1, 0.2)", "expected": "0.30" },
+    { "input": "myCalc.add(-5, 10, -2)", "expected": "3" }
+  ],
+  "driver": "Calculator myCalc;\nstd::cout << std::fixed << std::setprecision(2);\nstd::cout << myCalc.add(5, 7) << std::endl;\nstd::cout << myCalc.add(3.14, 2.71) << std::endl;\nstd::cout << myCalc.add(10, 20, 30) << std::endl;\nstd::cout << myCalc.add(0.1, 0.2) << std::endl;\nstd::cout << myCalc.add(-5, 10, -2) << std::endl;",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The integer `add` methods (two and three integers) use `std::vector` and `std::accumulate` for simple addition, which introduces unnecessary overhead and reduces efficiency compared to direct arithmetic operations.",
+    "Variable names like `valA`, `valB`, `d1`, `d2`, `listOfInts`, and `myCalc` are generic or cryptic, reducing code readability.",
+    "The `add(double, double)` method uses an unnecessary intermediate variable `result_of_addition` for a simple return, adding verbosity without benefit."
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "language": "c++",
+  "question": "Implement a `MathOperations` class with three overloaded `add` methods: one that takes two integers, another that takes three integers, and a third that takes two double-precision floating-point numbers. Each method should return the sum of its arguments.",
+  "test_cases": [
+    { "input": "5, 7", "expected": "12" },
+    { "input": "-10, 3", "expected": "-7" },
+    { "input": "0, 0", "expected": "0" },
+    { "input": "1000000, 2000000", "expected": "3000000" },
+    { "input": "2000000000, 2000000000", "expected": "-294967296" },
+    { "input": "std::numeric_limits<int>::max(), 1", "expected": "-2147483648" },
+    { "input": "1, 2, 3", "expected": "6" },
+    { "input": "-5, 0, 5", "expected": "0" },
+    { "input": "100000, 200000, 300000", "expected": "600000" },
+    { "input": "1000000000, 1000000000, 1000000000", "expected": "-1294967296" },
+    { "input": "std::numeric_limits<int>::max(), 1, 1", "expected": "-2147483647" },
+    { "input": "1.5, 2.5", "expected": "4.000000" },
+    { "input": "-3.0, 1.2", "expected": "-1.800000" },
+    { "input": "0.0, 0.0", "expected": "0.000000" },
+    { "input": "123.456, 789.012", "expected": "912.468000" },
+    { "input": "0.000001, 0.000002", "expected": "0.000003" },
+    { "input": "std::numeric_limits<double>::max(), std::numeric_limits<double>::max()", "expected": "inf" }
+  ],
+  "driver": "std::string run_test_cases() {\n    std::stringstream ss;\n    MathOperations math;\n\n    // Test add(int, int)\n    ss << math.add(5, 7) << std::endl;\n    ss << math.add(-10, 3) << std::endl;\n    ss << math.add(0, 0) << std::endl;\n    ss << math.add(1000000, 2000000) << std::endl;\n    ss << math.add(2000000000, 2000000000) << std::endl; \n    ss << math.add(std::numeric_limits<int>::max(), 1) << std::endl;\n\n    // Test add(int, int, int)\n    ss << math.add(1, 2, 3) << std::endl;\n    ss << math.add(-5, 0, 5) << std::endl;\n    ss << math.add(100000, 200000, 300000) << std::endl;\n    ss << math.add(1000000000, 1000000000, 1000000000) << std::endl;\n    ss << math.add(std::numeric_limits<int>::max(), 1, 1) << std::endl;\n\n    // Test add(double, double)\n    ss << std::fixed << std::setprecision(6); \n    ss << math.add(1.5, 2.5) << std::endl;\n    ss << math.add(-3.0, 1.2) << std::endl;\n    ss << math.add(0.0, 0.0) << std::endl;\n    ss << math.add(123.456, 789.012) << std::endl;\n    ss << math.add(0.000001, 0.000002) << std::endl;\n    ss << math.add(std::numeric_limits<double>::max(), std::numeric_limits<double>::max()) << std::endl;\n\n    return ss.str();\n}\n\nint main() {\n    std::cout << run_test_cases();\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

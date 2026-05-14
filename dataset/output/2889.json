@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a `StringWrapper` class that dynamically allocates memory for a `char*` to store a string. Provide a constructor, a destructor, and a proper copy constructor to ensure deep copying of the string data.",
+  "test_cases": [
+    { "input": "StringWrapper s0;", "expected": "s0 (default): \"\", Length: 0" },
+    { "input": "StringWrapper s1(\"Test\");", "expected": "s1: \"Test\", Length: 4" },
+    { "input": "StringWrapper s_empty(\"\");", "expected": "s_empty: \"\", Length: 0" },
+    { "input": "StringWrapper s_null_explicit(nullptr);", "expected": "s_null_explicit: \"\", Length: 0" },
+    { "input": "StringWrapper s2 = StringWrapper(\"Copy Me\");", "expected": "s2: \"Copy Me\", Length: 7" },
+    { "input": "StringWrapper s3(\"A\"); StringWrapper s4 = s3;", "expected": "s3: \"A\", s4: \"A\" (deep copy confirmed by independent memory management)" }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Testing Correct StringWrapper Implementation ---\" << std::endl;\n\n    StringWrapper s0;\n    std::cout << \"s0 (default): \\\"\" << s0.getString() << \"\\\", Length: \" << s0.getLength() << std::endl;\n\n    StringWrapper s1(\"Hello C++ World!\");\n    std::cout << \"s1: \\\"\" << s1.getString() << \"\\\", Length: \" << s1.getLength() << std::endl;\n\n    StringWrapper s_empty(\"\");\n    std::cout << \"s_empty: \\\"\" << s_empty.getString() << \"\\\", Length: \" << s_empty.getLength() << std::endl;\n\n    StringWrapper s_null_explicit(nullptr);\n    std::cout << \"s_null_explicit: \\\"\" << s_null_explicit.getString() << \"\\\", Length: \" << s_null_explicit.getLength() << std::endl;\n\n    StringWrapper s2 = s1; \n    std::cout << \"s2 (copy of s1): \\\"\" << s2.getString() << \"\\\", Length: \" << s2.getLength() << std::endl;\n\n    std::cout << \"\\nVerifying deep copy independence:\" << std::endl;\n    StringWrapper s3(\"Original String\");\n    StringWrapper s4 = s3; \n    std::cout << \"s3: \\\"\" << s3.getString() << \"\\\", s4: \\\"\" << s4.getString() << \"\\\"\" << std::endl;\n    {\n        StringWrapper temp_s(\"Temporary String\");\n        StringWrapper copied_temp = temp_s;\n        std::cout << \"Inside block - temp_s: \\\"\" << temp_s.getString() << \"\\\", copied_temp: \\\"\" << copied_temp.getString() << \"\\\"\" << std::endl;\n    } \n\n    std::cout << \"End of main. All StringWrapper objects will be destructed properly.\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

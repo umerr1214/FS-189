@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Develop a simple console-based calculator program that takes two numbers and an operator (+, -, *, /) from the user and performs the corresponding operation using a `switch` statement.",
+  "test_cases": [
+    { "input": "10\n+\n5", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 10 + 5 = 15\n" },
+    { "input": "10\n/\n0", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 10 / 0 = inf\n" },
+    { "input": "20\n-\n7", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 20 - 7 = 13\n" },
+    { "input": "5\n%\n2", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Error: Invalid operator entered.\n" }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not handle division by zero gracefully, leading to 'inf' or 'nan' output instead of an explicit error message.",
+    "No input validation for non-numeric input for numbers."
+  ]
+}

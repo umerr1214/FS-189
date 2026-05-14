@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Person` with `protected` data members `name` (string) and `age` (int). Derive a `Student` class from `Person`. Implement a method in `Student` to display both its own specific details and the inherited `name` and `age`.",
+  "test_cases": [
+    { "input": "Charlie Brown\n30\nS78901\nMathematics", "expected": "Enter Person's Name: Enter Person's Age: Enter Student ID: Enter Student Major: --- Student Details ---\nName: Charlie Brown\nAge: 30\nStudent ID: S78901\nMajor: Mathematics\n-----------------------\n" },
+    { "input": "David Lee\ntwenty-five\n25\nS00102\nArt History", "expected": "Enter Person's Name: Enter Person's Age: Invalid age. Please enter a non-negative integer.\nEnter Person's Age: Enter Student ID: Enter Student Major: --- Student Details ---\nName: David Lee\nAge: 25\nStudent ID: S00102\nMajor: Art History\n-----------------------\n" }
+  ],
+  "driver": "// The test harness will compile and run the submitted C++ file directly, providing input via stdin and capturing stdout.",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

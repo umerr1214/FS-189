@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter the length and width of a rectangle. Calculate and print both the area and the perimeter of the rectangle, ensuring to use appropriate data types for real-world measurements.",
+  "test_cases": [
+    {
+      "input": "7.5\n3.0\n",
+      "expected": "Input length: Input width: Area result: 22.50\nPerimeter result: 21.00\n"
+    },
+    {
+      "input": "15.25\n8.75\n",
+      "expected": "Input length: Input width: Area result: 133.44\nPerimeter result: 48.00\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\n// This is a placeholder driver. In a real testing environment,\n// the student's main function would be compiled and executed directly.\n// Input would be provided via stdin redirection, and output captured from stdout.\n// For example: `./student_program < input.txt > output.txt`\n// The 'test_cases' in the JSON describe the expected input/output interaction.\nint main() {\n    std::cout << \"This program is a placeholder driver.\" << std::endl;\n    std::cout << \"The actual student solution (a C++ program with a main function)\" << std::endl;\n    std::cout << \"would be compiled and run, with input provided via standard input\" << std::endl;\n    std::cout << \"and output captured from standard output.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The code uses single-letter, non-descriptive variable names (l, w, a, p), which significantly reduces readability and makes it harder to understand the purpose of each variable without prior knowledge or careful deduction. More descriptive names like 'length', 'width', 'area', and 'perimeter' would improve clarity.",
+    "Lack of comments for a program, even a simple one, reduces maintainability and understanding for others reading the code."
+  ]
+}

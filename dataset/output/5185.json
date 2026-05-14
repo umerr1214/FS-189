@@ -1,0 +1,25 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter two floating-point numbers. Calculate their sum and store it as a `float`. Calculate their product and explicitly cast it to an `int` before storing. Print both the float sum and the integer product.",
+  "test_cases": [
+    {
+      "input": "10.5 2.0",
+      "expected": "Sum: 12.500000\nProduct (int): 21\n"
+    },
+    {
+      "input": "5.5 invalid_text",
+      "expected": "Error: Invalid input for second number. Please enter a valid floating-point number.\n"
+    },
+    {
+      "input": "0.1 0.2",
+      "expected": "Sum: 0.300000\nProduct (int): 0\n"
+    }
+  ],
+  "driver": "C++ driver code (conceptual):\n#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <iomanip>\n\n// This C++ driver is conceptual. In an actual testing environment,\n// it would automate the process of running the submitted solution\n// with various inputs and comparing its output against expected results.\n\n// For a program that reads from stdin and writes to stdout,\n// a typical test harness would:\n// 1. Compile the user's solution (e.g., to 'a.out').\n// 2. For each test case:\n//    a. Redirect the 'input' string from the test case to 'a.out's stdin.\n//       Example: `echo \"10.5 2.0\" | ./a.out`\n//    b. Capture 'a.out's stdout.\n//    c. Compare the captured stdout with the 'expected' string from the test case.\n\n// The 'test_cases' array in this JSON provides the specific inputs and expected outputs.\n// This C++ snippet simply illustrates the *structure* of a program that *could*\n// perform such testing if it had system execution capabilities.\nint main() {\n    std::cout << \"This is a conceptual driver. It demonstrates how a test harness\" << std::endl;\n    std::cout << \"would provide input to the solution program and compare its output.\" << std::endl;\n    std::cout << \"Refer to the 'test_cases' for specific input/output pairs.\" << std::endl;\n    return 0;\n}\n",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not validate user input for the second number. If non-numeric input is provided, `std::cin` fails, and the program proceeds using an uninitialized variable for the second number, leading to undefined behavior and potentially incorrect results."
+  ]
+}

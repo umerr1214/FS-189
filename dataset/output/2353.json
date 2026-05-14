@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `Vehicle` base class with a public method `startEngine()` that prints 'Vehicle engine started.' Derive a `Car` class and implement its own `startEngine()` method that prints 'Car engine started with a roar!'. Demonstrate calling `startEngine()` using both a `Vehicle` object and a `Car` object, showing method hiding (non-virtual overriding).",
+  "test_cases": [
+    { "input": "", "expected": "Vehicle engine starting with pre-flight checks...\nCar engine started with a roar!\nVehicle engine starting with pre-flight checks...\nVehicle engine started.\n" }
+  ],
+  "driver": "",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The use of a global mutable variable (`global_vehicle_pre_check_active`) to influence the behavior of `Vehicle::startEngine` introduces a robustness issue. Global state makes the class less self-contained, harder to test, and prone to unexpected side effects or race conditions in larger or multi-threaded applications. A more robust design would encapsulate such state within the `Vehicle` class or pass necessary information as method arguments, ensuring predictable behavior."
+  ]
+}

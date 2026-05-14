@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a C-style string copy function, `myStrcpy`, in C++. This function should take two character pointers: one for the destination array and one for the source array. It should copy the content of the source string to the destination using pointer arithmetic, without using `strcpy` or `std::string`.",
+  "test_cases": [
+    { "input": "Hello, World!", "expected": "Hello, World!" },
+    { "input": "", "expected": "" },
+    { "input": "Test", "expected": "Test" },
+    { "input": "123 Go! ABC", "expected": "123 Go! ABC" }
+  ],
+  "driver": "#include <iostream>\n#include <cstring> // For strcmp to verify\n\n// Correct and efficient implementation of myStrcpy\nvoid myStrcpy(char* dest, const char* src) {\n    // This is the idiomatic and most efficient C-style string copy\n    // using pointer arithmetic. It copies characters one by one\n    // and stops when the null terminator ('\\0') is copied.\n    while (*dest++ = *src++);\n}\n\nint main() {\n    std::cout << \"--- Testing Correct Version of myStrcpy ---\\n\\n\";\n\n    // Test Case 1: Normal copy\n    char dest1[50];\n    const char* src1 = \"Hello, World!\";\n    myStrcpy(dest1, src1);\n    std::cout << \"Test 1: Normal copy\\n\";\n    std::cout << \"  Source: \\\"\" << src1 << \"\\\"\\n\";\n    std::cout << \"  Dest:   \\\"\" << dest1 << \"\\\"\\n\";\n    std::cout << \"  Expected: \\\"\" << src1 << \"\\\"\\n\";\n    std::cout << \"  Result: \" << (std::strcmp(dest1, src1) == 0 ? \"PASS\" : \"FAIL\") << \"\\n\\n\";\n\n    // Test Case 2: Empty string\n    char dest2[10];\n    const char* src2 = \"\";\n    myStrcpy(dest2, src2);\n    std::cout << \"Test 2: Empty string\\n\";\n    std::cout << \"  Source: \\\"\" << src2 << \"\\\"\\n\";\n    std::cout << \"  Dest:   \\\"\" << dest2 << \"\\\"\\n\";\n    std::cout << \"  Expected: \\\"\" << src2 << \"\\\"\\n\";\n    std::cout << \"  Result: \" << (std::strcmp(dest2, src2) == 0 ? \"PASS\" : \"FAIL\") << \"\\n\\n\";\n\n    // Test Case 3: Short string\n    char dest3[20];\n    const char* src3 = \"Test\";\n    myStrcpy(dest3, src3);\n    std::cout << \"Test 3: Short string\\n\";\n    std::cout << \"  Source: \\\"\" << src3 << \"\\\"\\n\";\n    std::cout << \"  Dest:   \\\"\" << dest3 << \"\\\"\\n\";\n    std::cout << \"  Expected: \\\"\" << src3 << \"\\\"\\n\";\n    std::cout << \"  Result: \" << (std::strcmp(dest3, src3) == 0 ? \"PASS\" : \"FAIL\") << \"\\n\\n\";\n\n    // Test Case 4: String with numbers/symbols\n    char dest4[30];\n    const char* src4 = \"123 Go! ABC\";\n    myStrcpy(dest4, src4);\n    std::cout << \"Test 4: String with numbers/symbols\\n\";\n    std::cout << \"  Source: \\\"\" << src4 << \"\\\"\\n\";\n    std::cout << \"  Dest:   \\\"\" << dest4 << \"\\\"\\n\";\n    std::cout << \"  Expected: \\\"\" << src4 << \"\\\"\\n\";\n    std::cout << \"  Result: \" << (std::strcmp(dest4, src4) == 0 ? \"PASS\" : \"FAIL\") << \"\\n\\n\";\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

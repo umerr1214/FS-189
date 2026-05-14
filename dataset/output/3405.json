@@ -1,0 +1,26 @@
+{
+  "language": "c++",
+  "question": "Check if a given `std::string` is a palindrome, ignoring case and spaces. For example, 'Race car' should be considered a palindrome.",
+  "test_cases": [
+    { "input": "Race car", "expected": "true" },
+    { "input": "Madam", "expected": "true" },
+    { "input": "hello", "expected": "false" },
+    { "input": "", "expected": "true" },
+    { "input": "   ", "expected": "true" },
+    { "input": "A", "expected": "true" },
+    { "input": "Aa", "expected": "true" },
+    { "input": "A.A", "expected": "true" },
+    { "input": "No lemon, no melon", "expected": "true" },
+    { "input": "Was it a car or a cat I saw?", "expected": "true" },
+    { "input": "A Santa at NASA", "expected": "true" },
+    { "input": "Eva, can I see bees in a cave?", "expected": "true" },
+    { "input": "12321", "expected": "true" },
+    { "input": "123 321", "expected": "true" },
+    { "input": "not a palindrome", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <algorithm>\n#include <cctype>\n\nbool isPalindrome(const std::string& s) {\n    std::string filtered_s;\n    filtered_s.reserve(s.length());\n\n    for (char c : s) {\n        if (!std::isspace(static_cast<unsigned char>(c))) {\n            filtered_s += std::tolower(static_cast<unsigned char>(c));\n        }\n    }\n\n    if (filtered_s.empty()) {\n        return true;\n    }\n\n    int left = 0;\n    int right = filtered_s.length() - 1;\n\n    while (left < right) {\n        if (filtered_s[left] != filtered_s[right]) {\n            return false;\n        }\n        left++;\n        right--;\n    }\n\n    return true;\n}\n\nint main() {\n    std::string input;\n    while (std::getline(std::cin, input)) {\n        if (input == \"__END_OF_INPUT__\") break;\n        std::cout << (isPalindrome(input) ? \"true\" : \"false\") << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

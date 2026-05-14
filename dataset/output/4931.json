@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that takes three integer side lengths of a triangle as input and determines if it is an equilateral, isosceles, or scalene triangle. Assume valid triangle inequalities are met.",
+  "test_cases": [
+    { "input": "3 3 3", "expected": "Equilateral" },
+    { "input": "3 4 3", "expected": "Isosceles" },
+    { "input": "5 5 5", "expected": "Equilateral" },
+    { "input": "4 4 5", "expected": "Isosceles" },
+    { "input": "3 4 5", "expected": "Scalene" },
+    { "input": "7 8 9", "expected": "Scalene" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// The classifyTriangle function is assumed to be available from the user's code.\n// Its signature: std::string classifyTriangle(int a, int b, int c);\n\nint main() {\n    std::vector<std::string> inputs = {\n        \"3 3 3\",\n        \"3 4 3\",\n        \"5 5 5\",\n        \"4 4 5\",\n        \"3 4 5\",\n        \"7 8 9\"\n    };\n    std::vector<std::string> expected_outputs = {\n        \"Equilateral\",\n        \"Isosceles\",\n        \"Equilateral\",\n        \"Isosceles\",\n        \"Scalene\",\n        \"Scalene\"\n    };\n\n    for (size_t i = 0; i < inputs.size(); ++i) {\n        int s1, s2, s3;\n        std::istringstream iss(inputs[i]);\n        iss >> s1 >> s2 >> s3;\n        std::string result = classifyTriangle(s1, s2, s3);\n        std::cout << \"Input: \" << inputs[i] << \", Result: \" << result << \", Expected: \" << expected_outputs[i] << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The order of conditions in the if-else if chain is incorrect. The check for 'Isosceles' (a == b || b == c || a == c) precedes the check for 'Equilateral' (a == b && b == c). Since an equilateral triangle also satisfies the isosceles condition, it will be misclassified as 'Isosceles'. The 'Equilateral' branch will never be reached for valid equilateral inputs."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter the radius of a circle, then calculates and prints its area. Use a constant for Pi (e.g., 3.14159).",
+  "test_cases": [
+    {
+      "input": "5",
+      "expected": "The area of the circle is: 78.53975\n"
+    }
+  ],
+  "driver": "g++ -std=c++17 -o solution 4468.cpp && echo \"5\" | ./solution",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

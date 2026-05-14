@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `copyCString` that takes two C-style character arrays (pointers to char), `source` and `destination`, and copies the content of `source` to `destination`. Assume `destination` has sufficient capacity. Do not use `std::string` or library functions like `strcpy`. Demonstrate with example strings.",
+  "test_cases": [
+    { "input": "Hello, World!", "expected": "Hello, World!" },
+    { "input": "", "expected": "" },
+    { "input": "Short", "expected": "Short" }
+  ],
+  "driver": "#include <iostream>\n\n// The function to be tested\nvoid copyCString(const char* source, char* destination) {\n    int len = 0;\n    while (source[len] != '\\0') {\n        len++;\n    }\n    for (int i = 0; i <= len; ++i) {\n        destination[i] = source[i];\n    }\n}\n\nint main() {\n    char dest1[50];\n    char dest2[50];\n    char dest3[50];\n\n    const char* src1 = \"Hello, World!\";\n    copyCString(src1, dest1);\n    std::cout << \"Source: \\\"\" << src1 << \"\\\"\" << std::endl;\n    std::cout << \"Destination (Readability/Efficiency): \\\"\" << dest1 << \"\\\"\" << std::endl;\n\n    const char* src2 = \"\";\n    copyCString(src2, dest2);\n    std::cout << \"Source: \\\"\" << src2 << \"\\\"\" << std::endl;\n    std::cout << \"Destination (Readability/Efficiency): \\\"\" << dest2 << \"\\\"\" << std::endl;\n\n    const char* src3 = \"Short\";\n    copyCString(src3, dest3);\n    std::cout << \"Source: \\\"\" << src3 << \"\\\"\" << std::endl;\n    std::cout << \"Destination (Readability/Efficiency): \\\"\" << dest3 << \"\\\"\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The function is inefficient as it performs two passes over the source string: one to calculate its length and another to copy the characters.",
+    "A more efficient and idiomatic C-style string copy would involve a single pass, copying characters and checking for the null terminator simultaneously.",
+    "The use of separate loops for length calculation and copying, while correct, can be less readable than a single, concise loop often seen in C-string manipulation."
+  ]
+}

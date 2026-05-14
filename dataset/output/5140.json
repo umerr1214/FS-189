@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that asks the user for the desired size of an integer array. Dynamically allocate an array of that size using `new`. Populate the array with sequential numbers starting from 0 (e.g., if size is 5, elements are 0, 1, 2, 3, 4). Print the array elements, then deallocate the memory using `delete[]`.",
+  "test_cases": [
+    { "input": "5", "expected": "Compilation Error: 'cout' was not declared in this scope" }
+  ],
+  "driver": "// No driver needed for a compilation error, as the code will not build.\n// The purpose is to check if the code compiles successfully.",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing 'std::' prefix for standard library objects like 'cout', 'cin', and 'endl'. This results in 'undeclared identifier' compilation errors as the 'std' namespace is not implicitly used."
+  ]
+}

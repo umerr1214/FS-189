@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Calculate the average of elements in a 1D array of 5 floating-point numbers. Get the array elements from the user.",
+  "test_cases": [
+    {
+      "input": "1.0\n2.0\n3.0\n4.0\n5.0\n",
+      "expected": "Enter 5 floating numbers:\nNum 1: Num 2: Num 3: Num 4: Num 5: The average is: 3.00\n"
+    }
+  ],
+  "driver": "The program interacts directly with the user via standard input/output. Test cases represent the sequence of user inputs and the final expected output.",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Poor variable names ('a', 's', 'x') reduce readability.",
+    "Uses magic numbers (e.g., '5') instead of a named constant for array size.",
+    "Lack of comments to explain code sections.",
+    "Slightly less efficient by using a separate loop for summation instead of accumulating during input (negligible for small arrays but indicates a missed optimization opportunity)."
+  ]
+}

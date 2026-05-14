@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Implement a `Box` class with a constructor that takes `length` and `width` as arguments. Provide a default argument for `width` so that if only `length` is provided, `width` defaults to the same value as `length` (creating a square base).",
+  "test_cases": [
+    { "input": "Box(10.0, 5.0)", "expected": "A new Box object has been created with initial dimensions.\nFirst Box Details:\n  Length: 10\n  Width: 5\n  Calculated Area: 50\n\n" },
+    { "input": "Box(7.0)", "expected": "A new Box object has been created with initial dimensions.\nSecond Box Details:\n  Length: 7\n  Width (defaulted): 7\n  Calculated Area: 49\n\n" },
+    { "input": "Box(12.5, 2.0)", "expected": "A new Box object has been created with initial dimensions.\nThird Box Details:\n  Length: 12.5\n  Width: 2\n  Calculated Area: 25\n\n" }
+  ],
+  "driver": "    std::cout << \"--- Starting Box Demonstrations ---\" << std::endl << std::endl; \n\n    Box first_example_box(10.0, 5.0); \n    std::cout << \"First Box Details:\" << std::endl;\n    std::cout << \"  Length: \" << first_example_box.get_box_object_length_dimension_value() << std::endl; \n    std::cout << \"  Width: \" << first_example_box.get_box_object_width_dimension_value() << std::endl;   \n    std::cout << \"  Calculated Area: \" << first_example_box.get_box_object_area_calculation_result() << std::endl << std::endl;\n\n    Box second_example_box(7.0); \n    std::cout << \"Second Box Details:\" << std::endl;\n    std::cout << \"  Length: \" << second_example_box.get_box_object_length_dimension_value() << std::endl;\n    std::cout << \"  Width (defaulted): \" << second_example_box.get_box_object_width_dimension_value() << std::endl;\n    std::cout << \"  Calculated Area: \" << second_example_box.get_box_object_area_calculation_result() << std::endl << std::endl;\n\n    Box third_example_box(12.5, 2.0); \n    std::cout << \"Third Box Details:\" << std::endl;\n    std::cout << \"  Length: \" << third_example_box.get_box_object_length_dimension_value() << std::endl;\n    std::cout << \"  Width: \" << third_example_box.get_box_object_width_dimension_value() << std::endl;\n    std::cout << \"  Calculated Area: \" << third_example_box.get_box_object_area_calculation_result() << std::endl << std::endl;\n\n    std::cout << \"--- Box Demonstrations Complete ---\" << std::endl; ",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The class uses overly verbose and unclear member variable names (e.g., `m_box_object_length_dimension`).",
+    "The constructor implements the default argument logic using an `if` condition and a magic number `0.0` as a sentinel, which is less robust and readable than using `std::numeric_limits<double>::quiet_NaN()` or an overloaded constructor, and can lead to incorrect behavior if a width of 0.0 is genuinely intended.",
+    "Redundant `this->` qualifiers are used throughout the class methods, impacting readability.",
+    "The `main` function and constructor excessively use `std::endl`, which can be less efficient than `'\n'` due to flushing the output buffer on each call."
+  ]
+}

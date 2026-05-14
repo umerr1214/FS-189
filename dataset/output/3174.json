@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a `Shape` base class with a `virtual void draw()` method. Derive `Circle` and `Rectangle` classes, each providing their own implementation of `draw()`. Demonstrate polymorphism by calling `draw()` on an array of `Shape*`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Drawing a Circle (Derived).\nDrawing a Rectangle (Derived).\nDrawing a Circle (Derived).\n"
+    }
+  ],
+  "driver": "int main() {\n    std::vector<Shape*> shapes;\n    shapes.push_back(new Circle());\n    shapes.push_back(new Rectangle());\n    shapes.push_back(new Circle());\n    for (const auto& shape : shapes) {\n        shape->draw();\n    }\n    for (const auto& shape : shapes) {\n        delete shape;\n    }\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `draw()` method in the base class `Shape` is not declared `virtual`. This means that when `draw()` is called through a pointer to the base class (`Shape*`), static binding occurs, and `Shape::draw()` is always invoked, rather than the overridden methods in `Circle` or `Rectangle`. This breaks the intended polymorphic behavior.",
+    "The `override` keyword was incorrectly used in the derived classes without the base class method being virtual. To allow compilation and demonstrate the semantic error at runtime, the `override` keyword was removed from `Circle::draw()` and `Rectangle::draw()` in the provided C++ file."
+  ]
+}

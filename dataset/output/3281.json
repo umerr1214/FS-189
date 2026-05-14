@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Determine if a given character entered by the user is an uppercase letter, a lowercase letter, a digit, or a special character. Print the category.",
+  "test_cases": [
+    { "input": "A", "expected": "Category: Uppercase Letter" },
+    { "input": "g", "expected": "Category: Lowercase Letter" },
+    { "input": "5", "expected": "Category: Digit" },
+    { "input": "$", "expected": "Category: Special Character" },
+    { "input": "0", "expected": "Category: Special Character" },
+    { "input": "9", "expected": "Category: Special Character" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// Assuming getCategory(char ch) is defined in the solution.cpp file\n// and is linked with this driver.\n\nint main() {\n    char input_char;\n    // Read character from standard input (provided by the testing framework)\n    if (std::cin >> input_char) {\n        // Call the solution's function and print the result in the format expected by the solution's main\n        std::cout << \"Category: \" << getCategory(input_char) << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The digit classification logic `ch > '0' && ch < '9'` incorrectly excludes the characters '0' and '9'. As a result, '0' and '9' are misclassified as 'Special Character' instead of 'Digit'."
+  ]
+}

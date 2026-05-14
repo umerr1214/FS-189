@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "In a C++ program, declare an integer variable and initialize it. Then, declare a pointer and make it point to this integer variable. Using only the pointer, modify the value of the integer variable. Finally, print both the new value of the integer variable and its memory address.",
+  "test_cases": [
+    { "input": "", "expected": "New value of myVar: 25\nAddress of myVar: <ADDRESS>\n" }
+  ],
+  "driver": "int main() { solution(); return 0; }",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Attempted to assign an integer literal (25) directly to a pointer variable 'ptr' (type 'int*'). This is a type mismatch; a pointer expects an address, not an integer value. The correct operation to modify the value pointed to would be '*ptr = 25;', or to make the pointer point to a different integer variable, 'ptr = &anotherVar;'."
+  ]
+}

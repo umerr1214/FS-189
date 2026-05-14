@@ -1,0 +1,26 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter two floating-point numbers. Calculate their sum and store it as a `float`. Calculate their product and explicitly cast it to an `int` before storing. Print both the float sum and the integer product.",
+  "test_cases": [
+    {
+      "input": "10.5\n2.5\n",
+      "expected": "Enter the first floating-point number: Enter the second floating-point number: Sum (float): 13.00\nProduct (int): 26\n"
+    },
+    {
+      "input": "3.14\n2.0\n",
+      "expected": "Enter the first floating-point number: Enter the second floating-point number: Sum (float): 5.14\nProduct (int): 6\n"
+    },
+    {
+      "input": "-5.5\n1.0\n",
+      "expected": "Enter the first floating-point number: Enter the second floating-point number: Sum (float): -4.50\nProduct (int): -5\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The sum is calculated using subtraction (num1 - num2) instead of addition (num1 + num2).",
+    "The product is calculated by summing the two numbers (num1 + num2) and then casting to int, instead of multiplying them (num1 * num2) and casting to int."
+  ]
+}

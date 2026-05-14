@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter the length and width of a rectangle (as floating-point numbers), then calculates and displays its area and perimeter with appropriate labels.",
+  "test_cases": [
+    {
+      "input": "7.5\n3.0\n",
+      "expected": "Enter the length of the rectangle: Enter the width of the rectangle: \n--- Calculation Results ---\nArea: 22.50\nPerimeter: 21.00\n"
+    },
+    {
+      "input": "1.0\n1.0\n",
+      "expected": "Enter the length of the rectangle: Enter the width of the rectangle: \n--- Calculation Results ---\nArea: 1.00\nPerimeter: 4.00\n"
+    },
+    {
+      "input": "12.34\n5.67\n",
+      "expected": "Enter the length of the rectangle: Enter the width of the rectangle: \n--- Calculation Results ---\nArea: 69.97\nPerimeter: 36.02\n"
+    }
+  ],
+  "driver": "int main() { float l, w; std::cout << \"Enter the length of the rectangle: \"; std::cin >> l; std::cout << \"Enter the width of the rectangle: \"; std::cin >> w; float a = l * w; float p = l + w + l + w; std::cout << \"\\n--- Calculation Results ---\\n\"; std::cout << \"Area: \" << std::fixed << std::setprecision(2) << a << std::endl; std::cout << \"Perimeter: \" << std::fixed << std::setprecision(2) << p << std::endl; return 0; }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["Poorly chosen variable names (e.g., l, w, a, p) reduce readability", "Perimeter calculation is less efficient and readable (l+w+l+w instead of 2*(l+w))", "Lack of comments explaining the purpose of variables or complex logic"]
+}

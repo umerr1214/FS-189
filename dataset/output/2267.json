@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `Player` class with `name` (public string), `health` (protected int), and `score` (private int). Create a `Wizard` class inheriting from `Player`. In `Wizard`, demonstrate accessing `name` directly and modifying `health` through a member function.",
+  "test_cases": [
+    { "input": "", "expected": "Wizard Name: Gandalf\nWizard Health: 100\nGandalf casts a spell!\nGandalf's health modified to: 10\nWizard Name: Gandalf\nWizard Health: 10\n" }
+  ],
+  "driver": "// The main function already serves as a driver for demonstration\nint main() {\n    Wizard gandalf(\"Gandalf\", 100, 500);\n    gandalf.displayWizardInfo();\n    gandalf.castSpell();\n    gandalf.displayWizardInfo();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'modifyHealth' function in the 'Wizard' class incorrectly assigns the 'amount' directly to 'health' instead of adding it, leading to an unintended health value."
+  ]
+}

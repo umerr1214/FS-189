@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that reads a sentence (using `std::string`) from the user. Count how many vowels (a, e, i, o, u, case-insensitive) are present in the sentence and print the total count.",
+  "test_cases": [
+    { "input": "Hello World", "expected": "Vowel count: 3\n" },
+    { "input": "Programming is fun", "expected": "Vowel count: 5\n" },
+    { "input": "AEIOUaeiou", "expected": "Vowel count: 5\n" },
+    { "input": "Rhythm", "expected": "Vowel count: 0\n" },
+    { "input": "", "expected": "Vowel count: 0\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <cctype>\n\n// Assumes the user's solution provides the countVowels function\n// int countVowels(const std::string& sentence);\n\nint main() {\n    std::vector<std::pair<std::string, int>> tests = {\n        {\"Hello World\", 3},\n        {\"Programming is fun\", 5},\n        {\"AEIOUaeiou\", 10},\n        {\"Rhythm\", 0},\n        {\"\", 0}\n    };\n\n    for (const auto& test : tests) {\n        int actual_count = countVowels(test.first);\n        if (actual_count == test.second) {\n            // std::cout << \"Test passed for '\" << test.first << \"'\\n\";\n        } else {\n            // std::cout << \"Test failed for '\" << test.first << \"'. Expected: \" << test.second << \", Got: \" << actual_count << \"\\n\";\n        }\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": []
+}

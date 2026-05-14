@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Calculate the area and perimeter of a circle given its radius, which is entered by the user. Use `const` for PI.",
+  "test_cases": [
+    { "input": "5.0", "expected": "Please enter the radius of the circle: Calculated Area: 78.53982\nCalculated Perimeter: 31.41593\n" },
+    { "input": "1.0", "expected": "Please enter the radius of the circle: Calculated Area: 3.14159\nCalculated Perimeter: 6.28319\n" },
+    { "input": "-2.0\n3.0", "expected": "Please enter the radius of the circle: Radius must be a positive number.\nPlease enter a valid radius: Calculated Area: 28.27433\nCalculated Perimeter: 18.84956\n" },
+    { "input": "abc\n0.0\n7.0", "expected": "Please enter the radius of the circle: Radius must be a positive number.\nPlease enter a valid radius: Radius must be a positive number.\nPlease enter a valid radius: Calculated Area: 153.93804\nCalculated Perimeter: 43.98230\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// This C++ code serves as a conceptual driver description.\n// In an automated testing environment, for each test case:\n// 1. The input string (e.g., '5.0') would be fed to the standard input of the compiled user program.\n// 2. The standard output of the user program would be captured.\n// 3. The captured output would be compared against the 'expected' string.\n// Example: For input '5.0', the program should output lines containing 'Area: 78.53975' and 'Perimeter: 31.41590'.\n\nint main() {\n    std::cout << \"This C++ code serves as a conceptual driver description.\" << std::endl;\n    std::cout << \"In an automated testing environment, for each test case:\" << std::endl;\n    std::cout << \"1. The input string (e.g., '5.0') would be fed to the standard input of the compiled user program.\" << std::endl;\n    std::cout << \"2. The standard output of the user program would be captured.\" << std::endl;\n    std::cout << \"3. The captured output would be compared against the 'expected' string.\" << std::endl;\n    std::cout << \"Example: For input '5.0', the program should output lines containing 'Area: 78.53975' and 'Perimeter: 31.41590'.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

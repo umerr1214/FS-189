@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Player` class with `name` (public string), `health` (protected int), and `score` (private int). Create a `Wizard` class inheriting from `Player`. In `Wizard`, demonstrate accessing `name` directly and modifying `health` through a member function.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Initial State ---\nWizard Name: Gandalf\nCurrent Health: 100\nScore (via getter): 1500\n\n--- Healing ---\nGandalf's health changed by 20. New health: 120\nWizard Name: Gandalf\nCurrent Health: 120\nScore (via getter): 1500\n\n--- Damaging ---\nGandalf's health changed by -50. New health: 70\nWizard Name: Gandalf\nCurrent Health: 70\nScore (via getter): 1500\n\n--- Another Wizard ---\nWizard Name: Merlin\nCurrent Health: 80\nScore (via getter): 1200\nMerlin's health changed by 10. New health: 90\nWizard Name: Merlin\nCurrent Health: 90\nScore (via getter): 1200\n\n"
+    }
+  ],
+  "driver": "// Driver code\nint main() {\n    // Test Case 1: Initial creation and display\n    Wizard gandalf(\"Gandalf\", 100, 1500);\n    std::cout << \"--- Initial State ---\" << std::endl;\n    gandalf.displayWizardInfo();\n    std::cout << std::endl;\n\n    // Test Case 2: Modifying health (healing)\n    std::cout << \"--- Healing ---\" << std::endl;\n    gandalf.changeHealth(20);\n    gandalf.displayWizardInfo();\n    std::cout << std::endl;\n\n    // Test Case 3: Modifying health (damage)\n    std::cout << \"--- Damaging ---\" << std::endl;\n    gandalf.changeHealth(-50);\n    gandalf.displayWizardInfo();\n    std::cout << std::endl;\n\n    // Test Case 4: Another Wizard instance\n    Wizard merlin(\"Merlin\", 80, 1200);\n    std::cout << \"--- Another Wizard ---\" << std::endl;\n    merlin.displayWizardInfo();\n    merlin.changeHealth(10);\n    merlin.displayWizardInfo();\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

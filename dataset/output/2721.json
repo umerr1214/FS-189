@@ -1,0 +1,35 @@
+{
+  "language": "c++",
+  "question": "Create a `Temperature` class with a private `celsius` (double) member. Provide a public `setCelsius()` method that validates input (e.g., must be >= absolute zero). Implement public `getFahrenheit()` and `getKelvin()` methods to convert and return the temperature.",
+  "test_cases": [
+    {
+      "input": "25.0",
+      "expected": "--- Valid Temperature (Room Temp) ---\nAttempting to set Celsius to: 25.0 C\nTemperature set successfully.\nCurrent Temperature:\n  Celsius:    25.00 C\n  Fahrenheit: 77.00 F\n  Kelvin:     298.15 K\n"
+    },
+    {
+      "input": "-273.15",
+      "expected": "--- Absolute Zero ---\nAttempting to set Celsius to: -273.15 C\nTemperature set successfully.\nCurrent Temperature:\n  Celsius:    -273.15 C\n  Fahrenheit: -459.67 F\n  Kelvin:     0.00 K\n"
+    },
+    {
+      "input": "-300.0",
+      "expected": "--- Below Absolute Zero (Invalid Input) ---\nAttempting to set Celsius to: -300.0 C\nError: Temperature -300.0 C is below absolute zero (-273.15 C). Value not set; current temperature remains unchanged.\nFailed to set temperature (input invalid). Internal state remains unchanged.\nCurrent Temperature:\n  Celsius:    -273.15 C\n  Fahrenheit: -459.67 F\n  Kelvin:     0.00 K\n"
+    },
+    {
+      "input": "100.0",
+      "expected": "--- Valid Temperature (Boiling Point) ---\nAttempting to set Celsius to: 100.0 C\nTemperature set successfully.\nCurrent Temperature:\n  Celsius:    100.00 C\n  Fahrenheit: 212.00 F\n  Kelvin:     373.15 K\n"
+    },
+    {
+      "input": "-273.16",
+      "expected": "--- Slightly Below Absolute Zero (Invalid Input) ---\nAttempting to set Celsius to: -273.16 C\nError: Temperature -273.16 C is below absolute zero (-273.15 C). Value not set; current temperature remains unchanged.\nFailed to set temperature (input invalid). Internal state remains unchanged.\nCurrent Temperature:\n  Celsius:    100.00 C\n  Fahrenheit: 212.00 F\n  Kelvin:     373.15 K\n"
+    },
+    {
+      "input": "Temperature invalid_init_temp(-400.0);",
+      "expected": "--- Testing constructor with an invalid initial value ---\nWarning: Initial temperature -400.0 C is invalid. Temperature set to default 0.0 C.\nAfter invalid constructor init, current temp:\n  Celsius:    0.00 C\n  Fahrenheit: 32.00 F\n  Kelvin:     273.15 K\n"
+    }
+  ],
+  "driver": "// The `run_test_correct` function and `main` function provided in the C++ file serve as the driver.\n// It creates a Temperature object, initializes it with a valid value (or handles invalid initial values gracefully via the constructor),\n// and then calls `setCelsius` with various inputs (valid and invalid).\n// It displays the current temperature in Celsius, Fahrenheit, and Kelvin after each attempt,\n// demonstrating correct validation and state management.",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

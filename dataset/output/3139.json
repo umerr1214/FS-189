@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a `FileManager` class that dynamically allocates a character array (e.g., for a file path) in its constructor. Implement a destructor to properly deallocate this memory.",
+  "test_cases": [
+    { "input": "", "expected": "Output will show FileManager creation and deallocation messages, including memory addresses. The critical part is the double-free error when objects are copied, which will likely manifest as a runtime crash (e.g., 'double free or corruption') or other undefined behavior when the destructors of the copied objects are called." }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Robustness Issue: Missing Rule of Three (3139) ---\\n\";\n\n    FileManager fm1(\"initial/path/file1.txt\");\n    fm1.displayPath();\n\n    std::cout << \"\\nCreating fm2 as a copy of fm1 (shallow copy occurs):\\n\";\n    FileManager fm2 = fm1; // Default copy constructor called\n    fm2.displayPath();\n\n    std::cout << \"\\nPassing fm1 to a function by value (another shallow copy occurs):\\n\";\n    processFileManager(fm1); // Default copy constructor called for function parameter\n\n    std::cout << \"\\n--- Using a block scope to control destruction order for another pair ---\\n\";\n    {\n        FileManager block_fm(\"block/scope/file.log\");\n        block_fm.displayPath();\n\n        FileManager block_fm_copy = block_fm; // Shallow copy\n        block_fm_copy.displayPath();\n\n        std::cout << \"Exiting block scope. block_fm_copy and block_fm will be destroyed.\\n\";\n    } \n\n    std::cout << \"\\nMain function ending. fm2 and fm1 will be destroyed.\\n\";\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `FileManager` class manages a dynamically allocated `char*` but does not implement a copy constructor or a copy assignment operator. This leads to default shallow copies being performed when objects are copied.",
+    "Shallow copies result in multiple `FileManager` objects pointing to the same dynamically allocated memory. When these objects are destroyed, the destructor attempts to `delete[]` the same memory multiple times, causing a double-free error and undefined behavior/crashes.",
+    "This violates the Rule of Three/Five, making the class non-robust in scenarios involving object copying, passing by value, or returning by value."
+  ]
+}

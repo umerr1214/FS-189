@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `swap_integers` that takes two integer pointers as arguments and swaps the values pointed to by these pointers. Demonstrate its usage in `main` by swapping two integer variables.",
+  "test_cases": [
+    {
+      "input": "Initial values: val1 = 100, val2 = 200",
+      "expected": "After swap:\nval1 = 200, val2 = 100"
+    }
+  ],
+  "driver": "#include <iostream>\n\nvoid swap_integers(int* a, int* b);\n\nint main() {\n    int v1 = 5;\n    int v2 = 10;\n    swap_integers(&v1, &v2);\n    std::cout << v1 << \" \" << v2 << std::endl;\n    return 0;\n}",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

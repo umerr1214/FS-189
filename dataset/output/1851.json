@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design an abstract base class `GeometricShape` with a pure virtual function `getArea()` (returning double) and a non-virtual function `getName()` (returning string). Derive `Rectangle` and `Triangle` classes from `GeometricShape`, implementing the `getArea()` function specifically for each shape.",
+  "test_cases": [
+    { "input": "Rectangle(5.0, 4.0)", "expected": "Rectangle Area: 20.0" },
+    { "input": "Triangle(6.0, 3.0)", "expected": "Triangle Area: 9.0" },
+    { "input": "Rectangle(10.5, 2.5)", "expected": "Rectangle Area: 26.25" },
+    { "input": "Triangle(7.0, 8.0)", "expected": "Triangle Area: 28.0" },
+    { "input": "Rectangle(-5.0, 4.0)", "expected": "Warning: Rectangle dimensions must be positive. Setting to 0 for invalid inputs.\nRectangle Area: 0.0" },
+    { "input": "Triangle(0.0, 10.0)", "expected": "Warning: Triangle dimensions must be positive. Setting to 0 for invalid inputs.\nTriangle Area: 0.0" },
+    { "input": "Rectangle(-2.0, -3.0)", "expected": "Warning: Rectangle dimensions must be positive. Setting to 0 for invalid inputs.\nRectangle Area: 0.0" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <memory>\n\nclass GeometricShape {\npublic:\n    virtual double getArea() const = 0;\n    std::string getName() const {\n        return name_;\n    }\n    virtual ~GeometricShape() = default;\nprotected:\n    std::string name_;\n};\n\nclass Rectangle : public GeometricShape {\npublic:\n    Rectangle(double width, double height) : width_(width), height_(height) {\n        if (width_ <= 0 || height_ <= 0) {\n            std::cerr << \"Warning: Rectangle dimensions must be positive. Setting to 0 for invalid inputs.\" << std::endl;\n            width_ = (width_ <= 0) ? 0 : width_;\n            height_ = (height_ <= 0) ? 0 : height_;\n        }\n        name_ = \"Rectangle\";\n    }\n    double getArea() const override {\n        return width_ * height_;\n    }\nprivate:\n    double width_;\n    double height_;\n};\n\nclass Triangle : public GeometricShape {\npublic:\n    Triangle(double base, double height) : base_(base), height_(height) {\n        if (base_ <= 0 || height_ <= 0) {\n            std::cerr << \"Warning: Triangle dimensions must be positive. Setting to 0 for invalid inputs.\" << std::endl;\n            base_ = (base_ <= 0) ? 0 : base_;\n            height_ = (height_ <= 0) ? 0 : height_;\n        }\n        name_ = \"Triangle\";\n    }\n    double getArea() const override {\n        return 0.5 * base_ * height_;\n    }\nprivate:\n    double base_;\n    double height_;\n};\n\nint main() {\n    std::vector<std::unique_ptr<GeometricShape>> shapes;\n    shapes.push_back(std::make_unique<Rectangle>(5.0, 4.0));\n    shapes.push_back(std::make_unique<Triangle>(6.0, 3.0));\n    shapes.push_back(std::make_unique<Rectangle>(10.5, 2.5));\n    shapes.push_back(std::make_unique<Triangle>(7.0, 8.0));\n    shapes.push_back(std::make_unique<Rectangle>(-5.0, 4.0));\n    shapes.push_back(std::make_unique<Triangle>(0.0, 10.0));\n    shapes.push_back(std::make_unique<Rectangle>(-2.0, -3.0));\n\n    for (const auto& shape : shapes) {\n        std::cout << shape->getName() << \" Area: \" << shape->getArea() << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

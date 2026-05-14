@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `bool isPalindrome(int num)` that accepts an integer and returns `true` if it's a palindrome (reads the same forwards and backwards, e.g., 121) and `false` otherwise. In `main`, prompt the user for an integer and use this function to check and print the result.",
+  "test_cases": [
+    { "input": "121", "expected": "121 is a palindrome." },
+    { "input": "123", "expected": "123 is not a palindrome." },
+    { "input": "-121", "expected": "-121 is not a palindrome." },
+    { "input": "0", "expected": "0 is a palindrome." },
+    { "input": "1001", "expected": "1001 is a palindrome." }
+  ],
+  "driver": "int main() {\n    std::cout << \"Enter an integer: \";\n    int number;\n    std::cin >> number;\n    if (isPalindrome(number)) {\n        std::cout << number << \" is a palindrome.\" << std::endl;\n    } else {\n        std::cout << number << \" is not a palindrome.\" << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `isPalindrome` function converts the integer to a string to perform the palindrome check. This approach is generally less efficient than a purely numerical reversal method, especially for larger numbers, due to the overhead of string conversion, memory allocation for strings, and string manipulation.",
+    "Variable names like 'n' for input and 's', 'r' for string and reversed string, while functional, could be more descriptive (e.g., `originalString`, `reversedString`) to enhance readability."
+  ]
+}

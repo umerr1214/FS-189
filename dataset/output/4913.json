@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter the radius of a sphere, then calculates and displays its volume. Use the formula V = (4/3) * PI * r^3. Assume PI = 3.14159.",
+  "test_cases": [
+    { "input": "2.0\n", "expected": "The volume of the sphere is: 33.51029\n" },
+    { "input": "5.0\n", "expected": "The volume of the sphere is: 523.59833\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <iomanip>\n\n// Forward declaration of the user's solution entry point.\n// We assume the user's 'main' function has been renamed to '_user_main' for testing.\nextern int _user_main();\n\n// This function redirects standard input/output to string streams\n// and executes the user's solution.\nstd::string run_user_solution(const std::string& input_str) {\n    std::stringstream ss_input(input_str);\n    std::stringstream ss_output;\n\n    // Save original cin/cout buffers\n    std::streambuf* old_cin_buf = std::cin.rdbuf();\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n\n    // Redirect cin to read from ss_input\n    std::cin.rdbuf(ss_input.rdbuf());\n    // Redirect cout to write to ss_output\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    _user_main(); // Call the user's solution\n\n    // Restore original cin/cout buffers\n    std::cin.rdbuf(old_cin_buf);\n    std::cout.rdbuf(old_cout_buf);\n\n    return ss_output.str();\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The calculation of volume uses integer division (4/3) which evaluates to 1, instead of floating-point division (4.0/3.0). This leads to an incorrect volume calculation."]
+}

@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "For the `Book` class (from Q1), overload the stream insertion operator (`<<`) to enable printing `Book` objects directly to `std::cout` in a formatted way (e.g., 'Title: ... Author: ... ISBN: ...').",
+  "test_cases": [
+    { "input": "Book(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\")", "expected": "Title: The Hitchhiker's Guide to the Galaxy Author: Douglas Adams ISBN: 978-0345391803\n" },
+    { "input": "Book(\"1984\", \"George Orwell\", \"978-0451524935\")", "expected": "Title: 1984 Author: George Orwell ISBN: 978-0451524935\n" }
+  ],
+  "driver": "int main() {\n    Book book1(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\");\n    std::cout << book1 << std::endl;\n\n    Book book2(\"1984\", \"George Orwell\", \"978-0451524935\");\n    std::cout << book2 << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    {
+      "line": 31,
+      "column": 1,
+      "message": "The stream insertion operator `operator<<` is declared to return `std::ostream&` but does not include a return statement. This leads to undefined behavior if the return value is used (e.g., for chaining operations)."
+    }
+  ]
+}

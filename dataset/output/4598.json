@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program to concatenate two C-style strings (character arrays) into a third C-style string without using standard library functions like `strcat`.",
+  "test_cases": [
+    { "input": "Hello,World", "expected": "HelloWorld" },
+    { "input": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", "expected": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" },
+    { "input": ",EmptyFirst", "expected": "EmptyFirst" },
+    { "input": "EmptySecond,", "expected": "EmptySecond" },
+    { "input": "Short,LongerStringForTestingInefficiency", "expected": "ShortLongerStringForTestingInefficiency" }
+  ],
+  "driver": "extern void my_strcat_inefficient(char* dest, const char* src1, const char* src2);\n\n#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <cstring>\n\n// Helper to parse comma-separated input\nvoid parse_input(const std::string& input_str, std::string& src1, std::string& src2) {\n    std::stringstream ss(input_str);\n    std::string segment;\n    std::vector<std::string> parts;\n\n    while(std::getline(ss, segment, ',')) {\n        parts.push_back(segment);\n    }\n\n    src1 = parts[0];\n    src2 = parts[1];\n}\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> test_data = {\n        { \"Hello\", \"World\" },\n        { \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\" },\n        { \"\", \"EmptyFirst\" },\n        { \"EmptySecond\", \"\" },\n        { \"Short\", \"LongerStringForTestingInefficiency\" }\n    };\n\n    for (size_t i = 0; i < test_data.size(); ++i) {\n        std::string src1_str = test_data[i].first;\n        std::string src2_str = test_data[i].second;\n        std::string expected_output = src1_str + src2_str;\n\n        // Determine required buffer size\n        size_t buffer_size = src1_str.length() + src2_str.length() + 1;\n        char* dest_buffer = new char[buffer_size];\n        std::memset(dest_buffer, 0, buffer_size); // Initialize to ensure clean state\n        \n        // Call the student's function\n        my_strcat_inefficient(dest_buffer, src1_str.c_str(), src2_str.c_str());\n\n        std::cout << \"Test Case \" << i + 1 << \":\\n\";\n        std::cout << \"  Input src1: \\\"\" << src1_str << \"\\\"\\n\";\n        std::cout << \"  Input src2: \\\"\" << src2_str << \"\\\"\\n\";\n        std::cout << \"  Expected:   \\\"\" << expected_output << \"\\\"\\n\";\n        std::cout << \"  Actual:     \\\"\" << dest_buffer << \"\\\"\\n\";\n\n        if (std::string(dest_buffer) == expected_output) {\n            std::cout << \"  Result: PASSED\\n\";\n        } else {\n            std::cout << \"  Result: FAILED\\n\";\n        }\n        std::cout << std::endl;\n\n        delete[] dest_buffer;\n    }\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `my_strcat_inefficient` function exhibits poor efficiency. Specifically, within the loop that appends `src2` to `dest`, it repeatedly re-scans the `dest` string to find its current null terminator (`while (dest[current_dest_len] != '\\0')`).",
+    "This repeated scanning makes the time complexity of the append operation approximately O(length(src2)^2) in the worst case, instead of the optimal O(length(src2)). The overall complexity becomes O(length(src1) + length(src2)^2) instead of O(length(src1) + length(src2)).",
+    "A more efficient approach would be to maintain a single pointer to the current end of `dest` and increment it as characters are copied, avoiding redundant scans."
+  ]
+}

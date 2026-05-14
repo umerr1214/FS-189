@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a function `doubleValue` that takes an integer by reference and modifies its value by multiplying it by 2.",
+  "test_cases": [
+    { "input": "5", "expected": "10" },
+    { "input": "-3", "expected": "-6" },
+    { "input": "0", "expected": "0" },
+    { "input": "100", "expected": "200" },
+    { "input": "-50", "expected": "-100" },
+    { "input": "1000000", "expected": "2000000" },
+    { "input": "-1000000", "expected": "-2000000" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\nvoid doubleValue(int& val);\n\nvoid run_test(int input_val, int expected_val, const std::string& description) {\n    int current_val = input_val;\n    doubleValue(current_val);\n    std::cout << \"Test Case: \" << description << \"\\n\";\n    std::cout << \"  Initial Value: \" << input_val << \"\\n\";\n    std::cout << \"  Expected Value: \" << expected_val << \"\\n\";\n    std::cout << \"  Actual Value after doubleValue: \" << current_val << \"\\n\";\n    if (current_val == expected_val) {\n        std::cout << \"  Result: PASSED\\n\\n\";\n    } else {\n        std::cout << \"  Result: FAILED\\n\\n\";\n    }\n}\n\nint main() {\n    run_test(5, 10, \"Positive value\");\n    run_test(-3, -6, \"Negative value\");\n    run_test(0, 0, \"Zero value\");\n    run_test(100, 200, \"Another positive value\");\n    run_test(-50, -100, \"Another negative value\");\n    run_test(1000000, 2000000, \"Large positive value\");\n    run_test(-1000000, -2000000, \"Large negative value\");\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["The function uses a bit shift `val = val << 1;` to multiply by 2. While functionally correct and often seen as a micro-optimization, `val *= 2;` or `val = val * 2;` is generally more readable and idiomatic for arithmetic operations in C++. Modern compilers typically optimize `* 2` to a bit shift, so there's usually no real efficiency gain, making the bit shift potentially less readable for developers unfamiliar with bitwise operations without a clear performance benefit."]
+}

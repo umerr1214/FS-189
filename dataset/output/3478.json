@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function `calculateAverage(float arr[], int size)` that takes a 1D float array and its size, then returns the average of its elements. In `main`, create a float array, pass it to the function, and print the calculated average.",
+  "test_cases": [
+    { "input": "Array: {10.0, 20.0, 30.0}, Size: 3", "expected": "The average is: 20.0" }
+  ],
+  "driver": "float testArray[] = {10.0f, 20.0f, 30.0f}; int testSize = 3; float result = calculateAverage(testArray, testSize); std::cout << \"The average is: \" << result << std::endl;",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

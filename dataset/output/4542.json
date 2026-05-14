@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `int calculateGCD(int a, int b)` that takes two integers as input and returns their greatest common divisor (GCD) using the Euclidean algorithm. Demonstrate its usage in `main`.",
+  "test_cases": [
+    { "input": "48 18", "expected": "6" },
+    { "input": "-48 18", "expected": "6" },
+    { "input": "48 -18", "expected": "6" },
+    { "input": "-48 -18", "expected": "6" },
+    { "input": "0 0", "expected": "0" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream>\n\n// The calculateGCD function would be included here from the user's code.\n\nint calculateGCD(int a, int b) {\n    while (b != 0) {\n        int temp = b;\n        b = a % b;\n        a = temp;\n    }\n    return a;\n}\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> tests = {\n        {\"48 18\", \"6\"},\n        {\"-48 18\", \"6\"},\n        {\"48 -18\", \"6\"},\n        {\"-48 -18\", \"6\"},\n        {\"0 0\", \"0\"}\n    };\n\n    for (const auto& test : tests) {\n        std::stringstream ss(test.first);\n        int a, b;\n        ss >> a >> b;\n        int result = calculateGCD(a, b);\n        std::cout << \"Input: (\" << a << \", \" << b << \"), Expected: \" << test.second << \", Got: \" << result << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The implementation of `calculateGCD` does not explicitly handle negative input numbers by taking their absolute values (e.g., using `std::abs`). While the Euclidean algorithm itself can work with negative numbers, the 'greatest common divisor' is mathematically defined as a positive integer. For inputs like `(-48, 18)`, the function might return `-6`, which is a common divisor but not the *greatest* common divisor (which is `6`). The code's behavior for negative inputs semantically deviates from the common mathematical definition of GCD."
+  ]
+}

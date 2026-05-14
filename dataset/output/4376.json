@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Create a function `findMin` that takes a 1D integer array and its size, then returns the smallest value found within that array.",
+  "test_cases": [
+    { "input": "[5, 2, 8, 1, 9], size: 5", "expected": "1" },
+    { "input": "[-10, -3, -15, -7], size: 4", "expected": "-15" },
+    { "input": "[0, -5, 10, 3, -1], size: 5", "expected": "-5" },
+    { "input": "[7], size: 1", "expected": "7" },
+    { "input": "[4, 4, 4, 4], size: 4", "expected": "4" },
+    { "input": "[], size: 0", "expected": "0" }
+  ],
+  "driver": "See C++ main function for driver details, which calls `findMin` with various inputs and prints results.",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The function uses `std::sort` on a copied array to find the minimum element, which has a time complexity of O(N log N). A more efficient and simpler approach would be a single linear scan (O(N)) without copying the array.",
+    "It unnecessarily includes `<algorithm>` and `<vector>` for a task that can be accomplished with basic arithmetic and loops.",
+    "The handling of an empty array by returning '0' is arbitrary and not semantically correct for finding the 'minimum' when no elements exist."
+  ]
+}

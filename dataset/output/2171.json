@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a custom `MyString` class that dynamically allocates memory for a C-style string. Provide a deep copy constructor and a deep copy assignment operator (`operator=`). Demonstrate how these are crucial to avoid shallow copies and dangling pointers when copying `MyString` objects.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "s1 String: Hello, Address: <address1>\ns2 (copy of s1) String: Hello, Address: <address2>\ns3 String: World, Address: <address3>\ns3 (assigned s1) String: Hello, Address: <address4>\n(Program might exhibit undefined behavior or crash due to buffer overflow after printing these lines)\n"
+    }
+  ],
+  "driver": "int main() {\n    MyString s1(\"Hello\"); // String length 5. Allocates 5 bytes. strcpy writes 6 bytes ('H','e','l','l','o','\\0'). Buffer overflow.\n    std::cout << \"s1 \"; s1.print();\n\n    MyString s2 = s1; // Calls copy constructor, same error\n    std::cout << \"s2 (copy of s1) \"; s2.print();\n\n    MyString s3(\"World\"); // String length 5. Allocates 5 bytes. strcpy writes 6 bytes. Buffer overflow.\n    std::cout << \"s3 \"; s3.print();\n\n    s3 = s1; // Calls copy assignment operator, same error\n    std::cout << \"s3 (assigned s1) \"; s3.print();\n\n    // Due to the buffer overflows, subsequent operations or destructor calls might crash or show corrupted data.\n    // For example, changing s1 could corrupt memory adjacent to s1's data.\n    // s1.m_data[0] = 'h'; // This might cause a crash or further corruption depending on memory layout\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "Buffer overflow in copy constructor and copy assignment operator: `new char[strlen(str)]` is used instead of `new char[strlen(str) + 1]`, failing to allocate space for the null terminator. This leads to `strcpy` writing past the allocated memory boundary."
+  ]
+}

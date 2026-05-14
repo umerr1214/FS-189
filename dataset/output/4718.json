@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Calculate the sum of all elements in an integer array using pointer arithmetic instead of array indexing.",
+  "test_cases": [
+    { "input": "{}", "expected": "0" },
+    { "input": "{5}", "expected": "5" },
+    { "input": "{1, 2, 3, 4, 5}", "expected": "15" },
+    { "input": "{-1, -2, 3}", "expected": "0" },
+    { "input": "{10, -5, 20, -15}", "expected": "10" },
+    { "input": "{100, 200, 300, 400, 500}", "expected": "1500" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream>\n#include <numeric>\n#include <stdexcept>\n\n// The calculateSum function will be inserted here by the evaluation system.\n// int calculateSum(int* arr, int size);\n\n// Helper function to parse input string into a vector<int> and size.\n// This function handles \"{...}\" formats.\nstd::pair<std::vector<int>, int> parseInput(const std::string& input_str) {\n    std::vector<int> arr_vec;\n    int size = 0;\n\n    std::string s = input_str;\n    if (s.empty() || s == \"{}\") {\n        return {arr_vec, 0};\n    }\n\n    // Remove brackets if present\n    if (s.front() == '{' && s.back() == '}') {\n        s = s.substr(1, s.length() - 2);\n    }\n    \n    std::stringstream ss(s);\n    std::string segment;\n    while(std::getline(ss, segment, ',')) {\n        try {\n            arr_vec.push_back(std::stoi(segment));\n        } catch (const std::invalid_argument& e) {\n            std::cerr << \"Warning: Invalid number format in input segment: '\" << segment << \"'\" << std::endl;\n        }\n    }\n    size = arr_vec.size();\n    return {arr_vec, size};\n}\n\nint main() {\n    // The actual input strings and expected outputs from the JSON test_cases will be used.\n    // For this hardcoded driver example, we'll iterate through a representative set.\n    // In a real testing environment, the 'input' and 'expected' values from the JSON\n    // 'test_cases' array would be dynamically processed.\n\n    std::vector<std::string> inputs_to_process = {\n        \"{}\",\n        \"{5}\",\n        \"{1, 2, 3, 4, 5}\",\n        \"{-1, -2, 3}\",\n        \"{10, -5, 20, -15}\",\n        \"{100, 200, 300, 400, 500}\"\n    };\n\n    for (const std::string& input_str : inputs_to_process) {\n        auto parsed_input = parseInput(input_str);\n        std::vector<int> arr_vec = parsed_input.first;\n        int size = parsed_input.second;\n\n        int* arr_ptr = nullptr;\n        if (!arr_vec.empty()) {\n            arr_ptr = arr_vec.data();\n        }\n\n        int result = calculateSum(arr_ptr, size);\n        std::cout << result << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses 'goto' statements for loop control, which significantly reduces readability and maintainability. Standard 'for' or 'while' loops are preferred for such constructs.",
+    "The use of 'currentIndex' as an integer index, despite using pointer arithmetic for access, adds a slight cognitive overhead without a clear benefit over direct pointer iteration."
+  ]
+}

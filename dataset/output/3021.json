@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `BankAccount` class with private members `accountNumber` (string), `ownerName` (string), and `balance` (double). Provide public methods `deposit(double amount)` and `withdraw(double amount)` to modify the balance, ensuring withdrawals do not result in a negative balance. Include a `getBalance()` method.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial balance: $1000.00\nDeposited $250.00. New balance: $1250.00\nWithdrew $300.00. New balance: $950.00\nFailed to withdraw $1000.00 (insufficient funds). Current balance: $950.00\nFailed to deposit $0.00 (invalid amount). Current balance: $950.00\nFailed to withdraw $-50.00 (invalid amount). Current balance: $950.00\nWithdrew $50.00. New balance: $900.00\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <iomanip>\n#include <utility>\n\n// The class definition will be inserted here by the system.\n\nint main() {\n    BankAccount myAccount(\"12345\", \"Alice Wonderland\", 1000.0);\n\n    std::cout << std::fixed << std::setprecision(2);\n\n    std::cout << \"Initial balance: $\" << myAccount.getBalance() << std::endl;\n\n    if (myAccount.deposit(250.0)) {\n        std::cout << \"Deposited $250.00. New balance: $\" << myAccount.getBalance() << std::endl;\n    } else {\n        std::cout << \"Failed to deposit $250.00.\" << std::endl;\n    }\n\n    if (myAccount.withdraw(300.0)) {\n        std::cout << \"Withdrew $300.00. New balance: $\" << myAccount.getBalance() << std::endl;\n    } else {\n        \n        std::cout << \"Failed to withdraw $300.00.\" << std::endl;\n    }\n\n    if (myAccount.withdraw(1000.0)) {\n        std::cout << \"Withdrew $1000.00. New balance: $\" << myAccount.getBalance() << std::endl;\n    } else {\n        std::cout << \"Failed to withdraw $1000.00 (insufficient funds). Current balance: $\" << myAccount.getBalance() << std::endl;\n    }\n\n    if (myAccount.deposit(0.0)) {\n        std::cout << \"Deposited $0.00. New balance: $\" << myAccount.getBalance() << std::endl;\n    } else {\n        std::cout << \"Failed to deposit $0.00 (invalid amount). Current balance: $\" << myAccount.getBalance() << std::endl;\n    }\n\n    if (myAccount.withdraw(-50.0)) {\n        std::cout << \"Withdrew $-50.00. New balance: $\" << myAccount.getBalance() << std::endl;\n    } else {\n        std::cout << \"Failed to withdraw $-50.00 (invalid amount). Current balance: $\" << myAccount.getBalance() << std::endl;\n    }\n\n    if (myAccount.withdraw(50.0)) {\n        std::cout << \"Withdrew $50.00. New balance: $\" << myAccount.getBalance() << std::endl;\n    } else {\n        std::cout << \"Failed to withdraw $50.00.\" << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

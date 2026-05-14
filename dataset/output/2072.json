@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private members for `title`, `author`, and `isbn` (string types). Provide public methods to set and retrieve these details, and a method `displayBookDetails()` to print all information.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book Details:\n  Title: The C++ Programming Language\n  Author: Bjarne Stroustrup\n  ISBN: 978-0321563842\n"
+    }
+  ],
+  "driver": "Book myBook;\nmyBook.setTitle(\"The C++ Programming Language\");\nmyBook.setAuthor(\"Bjarne Stroustrup\");\nmyBook.setISBN(\"978-0321563842\");\nmyBook.displayBookDetails();",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Setters pass `std::string` parameters by value, leading to inefficient string copying. They should ideally take `const std::string&` or `std::string&&`.",
+    "Getter methods are not declared `const`, which is a design flaw that reduces code safety and flexibility.",
+    "Excessive and unnecessary use of the `this->` keyword makes the code more verbose and slightly less readable."
+  ]
+}

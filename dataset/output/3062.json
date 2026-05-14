@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Animal` with a virtual public method `makeSound()` that prints a generic sound. Derive `Dog` and `Cat` classes from `Animal`, each overriding `makeSound()` to print their specific sound. Demonstrate calling `makeSound()` using a pointer to the `Animal` base class that points to objects of `Dog` and `Cat`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating Animal Sounds ---\nCreating a Dog object...\nCalling makeSound via Animal pointer:\nWoof!\nDog destroyed.\nAnimal destroyed.\nDog object destroyed.\n\nCreating a Cat object...\nCalling makeSound via Animal pointer:\nMeow!\nCat destroyed.\nAnimal destroyed.\nCat object destroyed.\n--- End of Demonstration ---\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Demonstrating Animal Sounds ---\" << std::endl;\n    Animal* animalPtr;\n\n    std::cout << \"Creating a Dog object...\" << std::endl;\n    Dog* specificDog = new Dog();\n    animalPtr = specificDog;\n    std::cout << \"Calling makeSound via Animal pointer:\" << std::endl;\n    animalPtr->makeSound();\n    delete animalPtr;\n    std::cout << \"Dog object destroyed.\" << std::endl;\n\n    std::cout << std::endl;\n\n    std::cout << \"Creating a Cat object...\" << std::endl;\n    Cat* specificCat = new Cat();\n    animalPtr = specificCat;\n    std::cout << \"Calling makeSound via Animal pointer:\" << std::endl;\n    animalPtr->makeSound();\n    delete animalPtr;\n    std::cout << \"Cat object destroyed.\" << std::endl;\n\n    std::cout << \"--- End of Demonstration ---\" << std::endl;\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `makeSound` methods in derived classes `Dog` and `Cat` do not use the `override` keyword, which reduces readability and makes the code less robust to future changes or refactoring.",
+    "Using `std::endl` frequently flushes the output buffer, which can be less efficient than using `\\n` for simple console output, especially in performance-critical applications.",
+    "The `main` function contains verbose and somewhat redundant output messages (e.g., 'Creating a Dog object...', 'Dog object destroyed.') that clutter the demonstration logic.",
+    "The `makeSound` methods could be declared `const` as they do not modify the object's state, improving clarity and allowing `const` objects/pointers to call them."
+  ]
+}

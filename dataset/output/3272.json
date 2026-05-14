@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Write a program that prompts the user to enter their first name, last name, and age. Then, print a greeting message displaying all the entered information in a formatted way.",
+  "test_cases": [
+    { "input": "Charlie\nBrown\n10", "expected": "Kindly input your initial name: Kindly input your concluding name: Kindly input your numeric age: \nGreetings, Charlie Brown! It has been observed that you are 10 years of age.\n" },
+    { "input": "Diana\nPrince\n25", "expected": "Kindly input your initial name: Kindly input your concluding name: Kindly input your numeric age: \nGreetings, Diana Prince! It has been observed that you are 25 years of age.\n" }
+  ],
+  "driver": "g++ -o solution {file_name} && ./solution",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["Uses C-style character arrays (`char[]`) instead of `std::string`, which is less safe and idiomatic C++.", "Employs C-style I/O functions (`printf`, `scanf`) instead of C++ streams (`std::cout`, `std::cin`), reducing readability and type safety.", "Variable names are too short and not descriptive (e.g., `a` for age).", "Using fixed-size buffers for names can lead to buffer overflows if input exceeds the allocated size, which is an inefficiency in memory management and a potential security risk."]
+}

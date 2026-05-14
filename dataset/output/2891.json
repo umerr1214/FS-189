@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `Timer` class with methods `start()`, `stop()`, and `reset()`. Each of these methods should return a reference to the `Timer` object itself (using `*this`), allowing for method chaining (e.g., `timer.start().reset().stop();`).",
+  "test_cases": [
+    { "input": "timer.start(); std::this_thread::sleep_for(std::chrono::milliseconds(100)); timer.stop(); timer.getElapsedTimeMs();", "expected": "~100" },
+    { "input": "timer.reset().start(); std::this_thread::sleep_for(std::chrono::milliseconds(50)); timer.stop(); timer.getElapsedTimeMs();", "expected": "~50" },
+    { "input": "timer.reset().start(); std::this_thread::sleep_for(std::chrono::milliseconds(75)); timer.stop(); timer.start(); std::this_thread::sleep_for(std::chrono::milliseconds(25)); timer.stop(); timer.getElapsedTimeMs();", "expected": "~100" }
+  ],
+  "driver": "int main() {\n    Timer timer;\n    std::cout << \"Initial time: \" << timer.getElapsedTimeMs() << \"ms\\n\";\n\n    timer.start();\n    std::this_thread::sleep_for(std::chrono::milliseconds(100));\n    timer.stop();\n    std::cout << \"After 100ms run: \" << timer.getElapsedTimeMs() << \"ms\\n\";\n\n    timer.reset().start();\n    std::this_thread::sleep_for(std::chrono::milliseconds(50));\n    timer.stop();\n    std::cout << \"After reset and 50ms run: \" << timer.getElapsedTimeMs() << \"ms\\n\";\n\n    timer.reset().start();\n    std::this_thread::sleep_for(std::chrono::milliseconds(75));\n    timer.stop();\n    timer.start();\n    std::this_thread::sleep_for(std::chrono::milliseconds(25));\n    timer.stop();\n    std::cout << \"After multiple runs (75ms + 25ms): \" << timer.getElapsedTimeMs() << \"ms\\n\";\n\n    timer.reset().start();\n    timer.start();\n    std::this_thread::sleep_for(std::chrono::milliseconds(10));\n    timer.stop();\n    timer.stop();\n    std::cout << \"After multiple start/stop (10ms): \" << timer.getElapsedTimeMs() << \"ms\\n\";\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The `stop()` method overwrites `_totalElapsedDuration` instead of accumulating it. This leads to incorrect total elapsed time when the timer is started and stopped multiple times, as only the duration of the last active run is stored."]
+}

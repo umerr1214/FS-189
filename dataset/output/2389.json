@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Develop a `Logger` class that prints 'Logger created.' when an object is constructed and 'Logger destroyed.' when it is destructed. Demonstrate its usage in `main`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Main started.\nLogger created.\nInside demonstrate_robustness_issue before destructor call.\nLogger destroyed.\nCaught exception from destructor: Critical error during Logger destruction!\nMain continuing after catching destructor exception.\nLogger created.\nThrowing an exception from main scope.\nCaught main exception: An exception from main scope.\nLogger destroyed.\n"
+    }
+  ],
+  "driver": "",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The destructor of the `Logger` class unconditionally throws an `std::runtime_error`. Throwing exceptions from destructors is generally discouraged, as it can lead to `std::terminate` if another exception is active during stack unwinding. This makes the class non-robust in error-handling scenarios, potentially causing program crashes rather than graceful error recovery.",
+    "The program is designed to call `std::terminate` in the second `try-catch` block due to a destructor throwing while another exception is active. This demonstrates a severe robustness flaw."
+  ]
+}

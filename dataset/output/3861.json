@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that allows the user to enter a series of non-zero integers. The program should stop taking input when the user enters 0 (sentinel value). After stopping, it should calculate and display the product of all entered non-zero numbers.",
+  "test_cases": [
+    { "input": "5\n2\n0\n", "expected": "Product of non-zero numbers: 10\n" },
+    { "input": "1\n-3\n4\n0\n", "expected": "Product of non-zero numbers: -12\n" },
+    { "input": "0\n", "expected": "Product of non-zero numbers: 1\n" },
+    { "input": "7\n1\n-1\n2\n0\n", "expected": "Product of non-zero numbers: -14\n" },
+    { "input": "10\n-2\n-3\n0\n", "expected": "Product of non-zero numbers: 60\n" },
+    { "input": "50000\n50000\n0\n", "expected": "Product of non-zero numbers: 2500000000\n" },
+    { "input": "abc\n0\n", "expected": "Product of non-zero numbers: 1\n" },
+    { "input": "10\ndef\n0\n", "expected": "Product of non-zero numbers: 10\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\nint main() {\n    std::string input;\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        input += line + \"\\n\";\n    }\n    \n    std::stringstream ss_input(input);\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::cin.rdbuf(ss_input.rdbuf());\n\n    std::stringstream ss_output;\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    // Call the student's main function\n    int result = main();\n\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    std::cout << ss_output.str();\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

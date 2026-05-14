@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that continuously prompts the user to enter integers until a negative number is entered. After a negative number is input, display the sum of all the positive numbers that were entered. Use a do-while loop.",
+  "test_cases": [
+    { "input": "10 20 30 -5", "expected": "Sum of positive numbers: 60\n" },
+    { "input": "5 0 15 -1", "expected": "Sum of positive numbers: 20\n" },
+    { "input": "100 200 300 -10", "expected": "Sum of positive numbers: 600\n" }
+  ],
+  "driver": "The program's `main` function is executed, and standard input is provided. The standard output is captured for comparison with the expected output.",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The program incorrectly adds all entered numbers (including zeros and the negative sentinel) to the sum, instead of only the positive numbers as specified in the question."
+  ]
+}

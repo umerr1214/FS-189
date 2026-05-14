@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter their name (as a string), age (as an integer), and height (in meters as a double). Store these values in appropriate variables and then print them back to the console in a formatted sentence.",
+  "test_cases": [
+    {
+      "input": "Alice\n25\n1.75\n",
+      "expected": "Hello Alice, you are 25 years old and 1.75 meters tall.\n"
+    }
+  ],
+  "driver": "g++ -o program program.cpp && ./program",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The program has a logical error where the 'age' and 'height' variables are swapped when printed in the final formatted sentence. This results in incorrect information being displayed to the user (e.g., '1.75 years old' instead of '25 years old')."
+  ]
+}

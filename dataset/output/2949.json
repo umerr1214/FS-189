@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `Coordinate` class with `x` and `y` integer members. Implement `getX()` and `getY()` as `const` member functions. Demonstrate how a `const` object of `Coordinate` can only call its `const` member functions.",
+  "test_cases": [
+    { "input": "", "expected": "Mutable Coordinate (initial): (10, 20)\nMutable Coordinate (after setX): (15, 20)\nFixed Coordinate (const object): (30, 40)\nFixed Coordinate X (using getX()): 30\nFixed Coordinate Y (using getY()): 40\nAttempting to call setX() on 'fixedCoord' (a const object) would result in a compile-time error, as expected.\n" }
+  ],
+  "driver": "int main() {\n    Coordinate mutableCoord(10, 20);\n    std::cout << \"Mutable Coordinate (initial): \";\n    mutableCoord.print();\n    std::cout << std::endl;\n    mutableCoord.setX(15);\n    std::cout << \"Mutable Coordinate (after setX): \";\n    mutableCoord.print();\n    std::cout << std::endl;\n    const Coordinate fixedCoord(30, 40);\n    std::cout << \"Fixed Coordinate (const object): \";\n    fixedCoord.print();\n    std::cout << std::endl;\n    std::cout << \"Fixed Coordinate X (using getX()): \" << fixedCoord.getX() << std::endl;\n    std::cout << \"Fixed Coordinate Y (using getY()): \" << fixedCoord.getY() << std::endl;\n    std::cout << \"Attempting to call setX() on 'fixedCoord' (a const object) would result in a compile-time error, as expected.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

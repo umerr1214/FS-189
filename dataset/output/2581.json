@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a `Car` class that demonstrates composition by containing an `Engine` object. The `Engine` class should have attributes like `horsepower` and `fuelType`. Ensure that when a `Car` object is created, its `Engine` is also created, and when the `Car` object is destroyed, its `Engine` object is automatically destroyed with it.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Creating Car1 ---\nEngine created: 300hp, Petrol\nCar created.\nCar Details: Engine - 300hp, Petrol\n\n--- Creating Car2 by copying Car1 (robustness issue expected) ---\nCar created.\nCar Details: Engine - 300hp, Petrol\n\n--- Car objects going out of scope ---\nCar destroyed.\nEngine destroyed: 300hp, Petrol\nCar destroyed.\nEngine destroyed: 300hp, Petrol\n// Program will likely crash here due to a double-free error or exhibit undefined behavior upon attempting to delete the same Engine object twice."
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Creating Car1 ---\" << std::endl;\n    Car car1(300, \"Petrol\");\n    car1.displayCarDetails();\n\n    std::cout << \"\\n--- Creating Car2 by copying Car1 (robustness issue expected) ---\" << std::endl;\n    Car car2 = car1; // Shallow copy\n    car2.displayCarDetails();\n\n    std::cout << \"\\n--- Car objects going out of scope ---\" << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Car` class uses a raw pointer (`Engine*`) for composition without implementing a custom copy constructor, copy assignment operator, or move constructor/assignment operator (violating the Rule of Three/Five). This leads to a shallow copy of the `engine` pointer when a `Car` object is copied, resulting in a double-free error and undefined behavior when both the original and copied `Car` objects are destroyed.",
+    "Using raw pointers for managing owned resources like `Engine` without proper resource management (e.g., smart pointers like `std::unique_ptr`) makes the class prone to memory leaks or corruption."
+  ]
+}

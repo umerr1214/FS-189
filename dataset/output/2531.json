@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Develop a `BankAccount` class with a private `balance` (double) attribute. Provide public methods `deposit(double amount)`, `withdraw(double amount)`, and `getBalance()`. Ensure `deposit` only accepts positive amounts, and `withdraw` only proceeds if sufficient funds are available and the withdrawal amount is positive. Both `deposit` and `withdraw` methods should return a boolean indicating success or failure.",
+  "test_cases": [
+    { "input": "Initial balance 50.0; Withdraw 100.0; Deposit 20.0; Withdraw 10.0;", "expected": "Initial: 50.00\nWithdraw 100: false\nBalance: 50.00\nDeposit 20: true\nBalance: 70.00\nWithdraw 10: true\nBalance: 60.00" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include <string>\n\n// The BankAccount class definition would typically be linked or included here.\n\nint main() {\n    std::cout << std::fixed << std::setprecision(2);\n    BankAccount account(50.0);\n    std::cout << \"Initial: \" << account.getBalance() << std::endl;\n    bool withdraw_success = account.withdraw(100.0);\n    std::cout << \"Withdraw 100: \" << (withdraw_success ? \"true\" : \"false\") << std::endl;\n    std::cout << \"Balance: \" << account.getBalance() << std::endl;\n    bool deposit_success = account.deposit(20.0);\n    std::cout << \"Deposit 20: \" << (deposit_success ? \"true\" : \"false\") << std::endl;\n    std::cout << \"Balance: \" << account.getBalance() << std::endl;\n    bool withdraw_again_success = account.withdraw(10.0);\n    std::cout << \"Withdraw 10: \" << (withdraw_again_success ? \"true\" : \"false\") << std::endl;\n    std::cout << \"Balance: \" << account.getBalance() << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The `withdraw` method does not correctly check for sufficient funds before proceeding with the withdrawal, allowing the balance to become negative."]
+}

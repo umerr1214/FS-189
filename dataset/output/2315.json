@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `PrivateData` class that has a private integer member `value`. Declare an external `friend` function `displayPrivateValue(const PrivateData& obj)` that can access and print `obj.value`.",
+  "test_cases": [
+    { "input": "", "expected": "Private value: 10\nPrivate value: 99\n" }
+  ],
+  "driver": "int main() {\n    PrivateData obj1(10);\n    displayPrivateValue(obj1);\n    PrivateData obj2(99);\n    displayPrivateValue(obj2);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The friend function 'displayPrivateValue' prints a hardcoded value (0) instead of the actual private member 'value' of the object."]
+}

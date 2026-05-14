@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Point` with `x` and `y` integer coordinates. Create an array of `Point` objects and find the point closest to the origin (0,0). Print its coordinates.",
+  "test_cases": [
+    { "input": "", "expected": "Closest point to origin: (0,0)\n" }
+  ],
+  "driver": "int main() { /* Your code */ }",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The comparison operator in the distance check is inverted ('>' instead of '<'), causing the program to find the point furthest from the origin instead of the closest."]
+}

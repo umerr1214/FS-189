@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Design a `BankAccount` class with `accountNumber` (string, read-only after creation) and `balance` (double, private). Implement public methods `deposit(amount)` and `withdraw(amount)` with appropriate validation (e.g., non-negative amounts, sufficient balance for withdrawal).",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "BankAccount object created with account number: ACC98765 and initial balance set to: 0.00\n\nOperation performed: Deposit\nAccount: ACC98765\nAmount deposited: 250.75\nNew balance after deposit: 250.75\n\nOperation performed: Withdrawal\nAccount: ACC98765\nAmount withdrawn: 100.50\nUpdated balance after withdrawal: 150.25\n\nATTENTION: Deposit operation failed!\nReason: The amount provided for deposit must be a strictly positive value.\nAttempted deposit amount was: -50.00\nCurrent balance remains: 150.25\n\nWARNING: Withdrawal operation could not be completed!\nExplanation: Insufficient funds available in account.\nAccount Number: ACC98765\nAvailable balance: 150.25\nRequested withdrawal amount: 300.00\n\nOperation performed: Deposit\nAccount: ACC98765\nAmount deposited: 500.00\nNew balance after deposit: 650.25\n\nERROR: Withdrawal amount must be greater than zero!\nInput received for withdrawal: 0.00\nNo changes made to account ACC98765. Balance: 650.25\n\nOperation performed: Withdrawal\nAccount: ACC98765\nAmount withdrawn: 650.25\nUpdated balance after withdrawal: 0.00\n\nSUMMARY REPORT:\nAccount Number: ACC98765\nFinal Account Balance: 0.00\nBankAccount object created with account number: ACC11223 and initial balance set to: 0.00\n\nOperation performed: Deposit\nAccount: ACC11223\nAmount deposited: 100.00\nNew balance after deposit: 100.00\n\nOperation performed: Withdrawal\nAccount: ACC11223\nAmount withdrawn: 10.00\nUpdated balance after withdrawal: 90.00\n\nOperation performed: Withdrawal\nAccount: ACC11223\nAmount withdrawn: 90.00\nUpdated balance after withdrawal: 0.00\n\nOperation performed: Deposit\nAccount: ACC11223\nAmount deposited: 1.00\nNew balance after deposit: 1.00\n\nSUMMARY REPORT FOR SECOND ACCOUNT:\nAccount Number: ACC11223\nFinal Account Balance: 1.00\n"
+    }
+  ],
+  "driver": "int main() { ... }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The constructor takes 'accountNumber' by value (std::string accNum_val) instead of by const reference (const std::string&), leading to an unnecessary copy. It also assigns in the body rather than using an initializer list, which can be less efficient.",
+    "The deposit and withdraw methods print verbose messages directly to std::cout using std::endl repeatedly. This couples the class to I/O, making it less reusable and harder to test. Using std::endl frequently also flushes the buffer, which can be less efficient than using '\\n'.",
+    "The deposit method uses a redundant boolean variable `isAmountValidAndPositive` and an overly explicit comparison (`== true`).",
+    "The withdraw method uses a nested if-else structure which could be flattened for better readability. It also uses an unnecessary temporary variable `currentAccountBalance`.",
+    "Repeated use of `std::fixed` and `std::setprecision` within methods, which is inefficient. It's better to set it once in main or use a dedicated output function/stream."
+  ]
+}

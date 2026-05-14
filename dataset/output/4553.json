@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `long long factorial(int n)` that calculates the factorial of a non-negative integer `n` iteratively (using a loop). Demonstrate calling this function from `main`.",
+  "test_cases": [
+    { "input": "5", "expected": "120" },
+    { "input": "0", "expected": "1" },
+    { "input": "1", "expected": "1" },
+    { "input": "3", "expected": "6" }
+  ],
+  "driver": "#include <iostream>\n\nlong long factorial(int n);\n\nint main() {\n    std::cout << factorial(5) << std::endl;\n    std::cout << factorial(0) << std::endl;\n    std::cout << factorial(1) << std::endl;\n    std::cout << factorial(3) << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The loop condition `i < n` in the `factorial` function causes it to calculate (n-1)! instead of n! for `n > 1`. It should be `i <= n` to include `n` in the multiplication."
+  ]
+}

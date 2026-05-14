@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a program that dynamically allocates a 1D array of integers of a size specified by the user. Fill the array with user input, print its contents, and then deallocate the memory.",
+  "test_cases": [
+    { "input": "3\n1\n2\n3\n", "expected": "Enter array size: \nEnter 3 integers:\nElement 1: \nElement 2: \nElement 3: \n\nArray contents:\n1 2 3 [garbage/crash] \n" },
+    { "input": "1\n99\n", "expected": "Enter array size: \nEnter 1 integers:\nElement 1: \n\nArray contents:\n99 [garbage/crash] \n" }
+  ],
+  "driver": "// The student's code is a complete program with a main function.",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    {
+      "line": 27,
+      "column": 26,
+      "message": "Off-by-one error in loop condition, accessing element out of bounds."
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Implement a simple number guessing game. The program should generate a random number between 1 and 100, and the user has to guess it. Provide hints (higher/lower) after each incorrect guess and count the number of attempts.",
+  "test_cases": [
+    {
+      "input": "50\n25\n42\n",
+      "expected": "Welcome to the Number Guessing Game!\nI have generated a random number between 1 and 100.\nCan you guess what it is?\nAttempt 1: Enter your guess (1-100): Too high! Try a lower number.\nAttempt 2: Enter your guess (1-100): Too low! Try a higher number.\nAttempt 3: Enter your guess (1-100): Congratulations! You guessed the number 42 in 3 attempts.\n"
+    },
+    {
+      "input": "hello\n0\n101\n42\n",
+      "expected": "Welcome to the Number Guessing Game!\nI have generated a random number between 1 and 100.\nCan you guess what it is?\nAttempt 1: Enter your guess (1-100): Invalid input. Please enter a whole number.\nAttempt 1: Enter your guess (1-100): Your guess is out of range. Please guess a number between 1 and 100.\nAttempt 1: Enter your guess (1-100): Your guess is out of range. Please guess a number between 1 and 100.\nAttempt 1: Enter your guess (1-100): Congratulations! You guessed the number 42 in 1 attempts.\n"
+    },
+    {
+      "input": "42\n",
+      "expected": "Welcome to the Number Guessing Game!\nI have generated a random number between 1 and 100.\nCan you guess what it is?\nAttempt 1: Enter your guess (1-100): Congratulations! You guessed the number 42 in 1 attempts.\n"
+    }
+  ],
+  "driver": "g++ -o solution 3945.cpp && ./solution",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Define a C++ struct `Point` with two integer members, `x` and `y`. Write a function `double calculateDistance(Point p1, Point p2)` that takes two `Point` objects and returns the Euclidean distance between them. Demonstrate creating `Point` objects and calculating their distance in `main`.",
+  "test_cases": [
+    { "input": "p1=(0,0), p2=(3,4)", "expected": "5.0" },
+    { "input": "p1=(1,1), p2=(1,1)", "expected": "0.0" },
+    { "input": "p1=(-1,-1), p2=(1,1)", "expected": "2.8284271247" },
+    { "input": "p1=(0,0), p2=(5,12)", "expected": "13.0" },
+    { "input": "p1=(10,20), p2=(13,24)", "expected": "5.0" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n#include <iomanip>\n\nstruct Point {\n    int x, y;\n};\n\nextern double calculateDistance(Point p1, Point p2);\n\nint main() {\n    std::cout << std::fixed << std::setprecision(10);\n    Point p1_test, p2_test;\n\n    p1_test = {0, 0}; p2_test = {3, 4};\n    std::cout << calculateDistance(p1_test, p2_test) << std::endl;\n\n    p1_test = {1, 1}; p2_test = {1, 1};\n    std::cout << calculateDistance(p1_test, p2_test) << std::endl;\n\n    p1_test = {-1, -1}; p2_test = {1, 1};\n    std::cout << calculateDistance(p1_test, p2_test) << std::endl;\n\n    p1_test = {0, 0}; p2_test = {5, 12};\n    std::cout << calculateDistance(p1_test, p2_test) << std::endl;\n\n    p1_test = {10, 20}; p2_test = {13, 24};\n    std::cout << calculateDistance(p1_test, p2_test) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The function returns the squared Euclidean distance instead of the actual Euclidean distance (missing std::sqrt call)."
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "language": "c++",
+  "question": "Design a basic ATM menu-driven program using a `switch` statement. The program should offer options for 'Deposit', 'Withdraw', and 'Check Balance'. For 'Deposit' and 'Withdraw', prompt for an amount and update a balance variable. For 'Check Balance', display the current balance. Include an 'Exit' option.",
+  "test_cases": [
+    {
+      "input": "1\n250.50\n",
+      "expected": "\n--- Welcome to the ATM ---\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit\n--------------------------\nEnter your choice: Enter amount to deposit: Deposit successful. New balance: $1250.50\n"
+    },
+    {
+      "input": "2\n100.25\n",
+      "expected": "\n--- Welcome to the ATM ---\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit\n--------------------------\nEnter your choice: Enter amount to withdraw: Withdrawal successful. New balance: $1150.25\n"
+    },
+    {
+      "input": "2\n1500.00\n",
+      "expected": "\n--- Welcome to the ATM ---\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit\n--------------------------\nEnter your choice: Enter amount to withdraw: Insufficient balance! Current balance: $1150.25\n"
+    },
+    {
+      "input": "1\n-50.00\n1\n75.00\n",
+      "expected": "\n--- Welcome to the ATM ---\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit\n--------------------------\nEnter your choice: Enter amount to deposit: Amount must be positive.\nEnter amount to deposit: Deposit successful. New balance: $1225.25\n"
+    },
+    {
+      "input": "2\n-20.00\n2\n25.00\n",
+      "expected": "\n--- Welcome to the ATM ---\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit\n--------------------------\nEnter your choice: Enter amount to withdraw: Amount must be positive.\nEnter amount to withdraw: Withdrawal successful. New balance: $1200.25\n"
+    },
+    {
+      "input": "3\n",
+      "expected": "\n--- Welcome to the ATM ---\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit\n--------------------------\nEnter your choice: Current Balance: $1200.25\n"
+    },
+    {
+      "input": "9\n",
+      "expected": "\n--- Welcome to the ATM ---\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit\n--------------------------\nEnter your choice: Choice must be between 1 and 4.\nEnter your choice: "
+    },
+    {
+      "input": "x\n",
+      "expected": "\n--- Welcome to the ATM ---\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit\n--------------------------\nEnter your choice: Invalid input. Please enter a number.\nEnter your choice: "
+    },
+    {
+      "input": "1\nabc\n1\n50.00\n",
+      "expected": "\n--- Welcome to the ATM ---\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit\n--------------------------\nEnter your choice: Enter amount to deposit: Invalid input. Please enter a valid amount.\nEnter amount to deposit: Deposit successful. New balance: $1050.00\n"
+    },
+    {
+      "input": "4\n",
+      "expected": "\n--- Welcome to the ATM ---\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit\n--------------------------\nEnter your choice: Thank you for using the ATM. Goodbye!\n"
+    }
+  ],
+  "driver": "// This driver expects the C++ solution to be compiled into an executable named 'solution'.\n// It will feed the 'input' from each test case to the 'solution' executable's stdin\n// and capture its stdout to compare with 'expected'.\n// Example execution (pseudo-code):\n// foreach test_case in test_cases:\n//   run_command(\"./solution\", stdin=test_case.input, stdout_capture=true)\n//   assert captured_stdout == test_case.expected\n#include <iostream>\nint main() {\n    std::cout << \"This is a placeholder driver. The actual test harness will execute the compiled C++ solution.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

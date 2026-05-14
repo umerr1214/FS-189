@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that continuously prompts the user to enter a positive integer until valid input is received. Use a `do-while` loop for input validation.",
+  "test_cases": [
+    { "input": "abc\n-5\n10\n", "expected": "Enter a positive integer: Invalid input. Please enter an integer: Input must be a positive integer. Try again.\nEnter a positive integer: You entered: 10\n" }
+  ],
+  "driver": "",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `std::cin.ignore` function is semantically misused. By specifying `1` as the count, it only extracts and discards a single character from the input buffer. For inputs like 'abc\\n', this leads to an infinite loop as only 'a' is ignored, then 'b' causes another failure, and so on. The intent was to clear the entire line, which requires `std::numeric_limits<std::streamsize>::max()`."
+  ]
+}

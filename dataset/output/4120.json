@@ -1,0 +1,10 @@
+{
+  "language": "c++",
+  "question": "Declare an `int` variable, a `float` variable, and a `char` variable. Then declare a pointer for each of these data types. Assign the address of each variable to its corresponding pointer. Print the memory address stored in each pointer and the value pointed to by each pointer using the dereference operator.",
+  "test_cases": [],
+  "driver": "",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the 'std::cout' statement for 'int_ptr's dereferenced value."]
+}

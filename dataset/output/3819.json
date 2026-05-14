@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that declares a `double` variable, initializes it with a decimal value, and then declares a pointer to that variable. Print the value of the variable using dereferencing the pointer, and print the memory address of the variable using both the address-of operator and the pointer itself.",
+  "test_cases": [
+    { "input": "", "expected": "Value: 3.1415926535\nAddress (using &): 0x<HEX_ADDRESS>\nAddress (using pointer): 0x<HEX_ADDRESS>\n" }
+  ],
+  "driver": "// The program is self-contained and runs directly.",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

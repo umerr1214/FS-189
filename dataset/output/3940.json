@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a simple number guessing game. The program should generate a random number between 1 and 100, and the user has to guess it. Provide hints (higher/lower) after each incorrect guess and count the number of attempts.",
+  "test_cases": [
+    {
+      "input": "50\n25\n75\n",
+      "expected": "3940.cpp:14:83: error: expected ';' before 'do'\n    std::cout << \"I have generated a number between 1 and 100. Try to guess it.\" << std::endl \n                                                                                  ^\n                                                                                  ;\n3940.cpp:16:5: error: 'do' statement with no accompanying 'while'\n    do {\n    ^~\n"
+    }
+  ],
+  "driver": "g++ 3940.cpp -o 3940 2>&1",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after `std::endl` on line 14, causing a compilation error."
+  ]
+}

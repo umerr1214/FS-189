@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that uses a `do-while` loop to repeatedly prompt the user to enter a positive integer. The loop should continue until a valid positive integer (greater than 0) is entered. Finally, print the valid number.",
+  "test_cases": [
+    { "input": "hello\n5\n", "expected": "Enter a positive integer: Enter a positive integer: Enter a positive integer: " },
+    { "input": "0\nworld\n10\n", "expected": "Enter a positive integer: Enter a positive integer: Enter a positive integer: Enter a positive integer: " }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <streambuf>\n\n// This driver redirects stdin and captures stdout for testing.\n// For semantic errors involving infinite loops due to input issues,\n// the expected output represents the repeated prompts before the program would effectively hang.\nstd::string run_program_with_input(const std::string& input) {\n    std::stringstream ss_in(input);\n    std::stringstream ss_out;\n\n    std::streambuf* old_cin_buf = std::cin.rdbuf();\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n\n    std::cin.rdbuf(ss_in.rdbuf());\n    std::cout.rdbuf(ss_out.rdbuf());\n\n    extern int main(); // Declare main to be callable\n    main(); // Call the program's main function\n\n    std::cin.rdbuf(old_cin_buf); // Restore original cin\n    std::cout.rdbuf(old_cout_buf); // Restore original cout\n\n    return ss_out.str();\n}\n",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The program does not handle invalid input types (e.g., non-integers). If `std::cin >> num` fails to read an integer, `std::cin` enters a fail state. Without clearing this state (using `std::cin.clear()`) and discarding the invalid input (using `std::cin.ignore()`), subsequent reads will immediately fail, causing an infinite loop if the loop condition `num <= 0` remains true."
+  ]
+}

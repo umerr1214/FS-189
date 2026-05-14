@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Write a program that takes a positive integer 'n' from the user and calculates the sum of all natural numbers from 1 to 'n' using a `for` loop.",
+  "test_cases": [
+    { "input": "1\n", "expected": "Enter a positive integer 'n': The sum of natural numbers from 1 to 1 is: 1\n" },
+    { "input": "5\n", "expected": "Enter a positive integer 'n': The sum of natural numbers from 1 to 5 is: 15\n" },
+    { "input": "10\n", "expected": "Enter a positive integer 'n': The sum of natural numbers from 1 to 10 is: 55\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n\nextern int _user_main(); \n\nstd::string execute_user_code(const std::string& input) {\n    std::stringstream ss_input(input);\n    std::stringstream ss_output;\n\n    std::streambuf* old_cin = std::cin.rdbuf(ss_input.rdbuf());\n    std::streambuf* old_cout = std::cout.rdbuf(ss_output.rdbuf());\n\n    _user_main(); \n\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    return ss_output.str();\n}\n",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    {
+      "line": 15,
+      "column": 23,
+      "message": "The loop condition 'i < n' causes the program to sum numbers from 1 to n-1, excluding 'n', leading to an incorrect total sum.",
+      "error_code": "L001"
+    }
+  ]
+}

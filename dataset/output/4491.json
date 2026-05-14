@@ -1,0 +1,24 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that takes a single character as input from the user and determines if it is a vowel (a, e, i, o, u, case-insensitive) or a consonant.",
+  "test_cases": [
+    { "input": "a", "expected": "'a' is a vowel." },
+    { "input": "E", "expected": "'E' is a vowel." },
+    { "input": "i", "expected": "'i' is a vowel." },
+    { "input": "O", "expected": "'O' is a vowel." },
+    { "input": "u", "expected": "'u' is a vowel." },
+    { "input": "B", "expected": "'B' is a consonant." },
+    { "input": "c", "expected": "'c' is a consonant." },
+    { "input": "D", "expected": "'D' is a consonant." },
+    { "input": "F", "expected": "'F' is a consonant." },
+    { "input": "g", "expected": "'g' is a consonant." },
+    { "input": "1", "expected": "'1' is not an alphabetic character." },
+    { "input": "$", "expected": "'$' is not an alphabetic character." },
+    { "input": " ", "expected": "' ' is not an alphabetic character." }
+  ],
+  "driver": "```cpp\n#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// Assuming the user's code is in a file named `solution.cpp`\n// and has a main function that takes input from stdin and prints to stdout.\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> test_cases = {\n        {\"a\", \"'a' is a vowel.\"},\n        {\"E\", \"'E' is a vowel.\"},\n        {\"i\", \"'i' is a vowel.\"},\n        {\"O\", \"'O' is a vowel.\"},\n        {\"u\", \"'u' is a vowel.\"},\n        {\"B\", \"'B' is a consonant.\"},\n        {\"c\", \"'c' is a consonant.\"},\n        {\"D\", \"'D' is a consonant.\"},\n        {\"F\", \"'F' is a consonant.\"},\n        {\"g\", \"'g' is a consonant.\"},\n        {\"1\", \"'1' is not an alphabetic character.\"},\n        {\"$", \"'$' is not an alphabetic character.\"},\n        {\" \", \"' ' is not an alphabetic character.\"}\n    };\n\n    for (const auto& tc : test_cases) {\n        // Simulate input\n        std::string input_str = tc.first;\n        std::cout << \"Running test with input: \" << input_str << std::endl;\n        // In a real scenario, you'd execute the compiled user program \n        // redirecting stdin/stdout. For this driver, we just print expectations.\n        // This is a placeholder as direct execution is not possible in this environment.\n        std::cout << \"Expected output: \" << tc.second << std::endl;\n        std::cout << \"---\\n\";\n    }\n\n    return 0;\n}\n```",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

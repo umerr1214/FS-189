@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Shape` with a pure virtual function `double calculateArea()`. Create a derived class `Circle` that has a `radius` member and implements `calculateArea()`.",
+  "test_cases": [
+    { "input": "5.0", "expected": "Circle with radius 5.0000 has area: 78.5398\n" },
+    { "input": "0.0", "expected": "Circle with radius 0.0000 has area: 0.0000\n" },
+    { "input": "10.0", "expected": "Circle with radius 10.0000 has area: 314.1593\n" },
+    { "input": "-2.0", "expected": "Circle with radius -2.0000 has area: 12.5664\n" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <memory>\n#include <iomanip>\n#include <cmath>\n\n// (Shape and Circle class definitions would be here)\n\nint main() {\n    std::vector<double> test_radii = {5.0, 0.0, 10.0, -2.0};\n    std::cout << std::fixed << std::setprecision(4);\n\n    for (double r : test_radii) {\n        std::unique_ptr<Shape> circle = std::make_unique<Circle>(r);\n        std::cout << \"Circle with radius \" << r << \" has area: \" << circle->calculateArea() << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Circle` class does not validate the `radius` input. A negative radius leads to a calculated positive area, which is physically meaningless and indicates a lack of robust input handling for invalid physical dimensions."
+  ]
+}

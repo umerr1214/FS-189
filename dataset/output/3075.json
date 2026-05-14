@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Printer` class with an overloaded public method `print`. This method should be able to print: 1) an integer, 2) a double, and 3) a C-style string (`const char*`). Demonstrate printing different data types using the same method name.",
+  "test_cases": [
+    {
+      "input": "No direct input, uses hardcoded calls.",
+      "expected": "--- Testing Correct Version ---\nPrinting an integer: 123456\nPrinting a double: 789.01234\nPrinting a C-style string: This is a C-style string.\nPrinting a C-style string: (null)\nPrinting a C-style string: \nPrinting an integer: 0\nPrinting a double: -1.23\n--- End Correct Version Test ---\n"
+    }
+  ],
+  "driver": "int main() {\n    Printer p;\n    std::cout << \"--- Testing Correct Version ---\" << '\\n';\n    p.print(123456);\n    p.print(789.01234);\n    p.print(\"This is a C-style string.\");\n    const char* null_string = nullptr;\n    p.print(null_string);\n    p.print(\"\");\n    p.print(0);\n    p.print(-1.23);\n    std::cout << \"--- End Correct Version Test ---\" << '\\n';\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

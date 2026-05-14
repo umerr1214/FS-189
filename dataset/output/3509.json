@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that declares a 1D integer array and initializes it. Then, calculate and print the sum of all elements in the array using pointer arithmetic instead of array indexing.",
+  "test_cases": [
+    { "input": "Hardcoded array: {1, 2, 3, 4, 5}", "expected": "Sum of array elements: 15" }
+  ],
+  "driver": "g++ -std=c++17 -Wall -Wextra -o program 3509.cpp && ./program",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The loop condition 'i < size - 1' incorrectly causes the program to sum only the first 'size - 1' elements instead of all 'size' elements. For the array {1, 2, 3, 4, 5}, the program calculates 10, but the correct sum is 15."]
+}

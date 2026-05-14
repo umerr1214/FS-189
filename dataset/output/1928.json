@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Create a `Rectangle` class with `length` and `width` (both double). Implement a default constructor that initializes both to 0.0 and a parameterized constructor that takes two arguments to set `length` and `width`.",
+  "test_cases": [
+    { "input": "Default constructor", "expected": "Default Rectangle: Length=0.00, Width=0.00, Area=0.00\n" },
+    { "input": "l=0.0, w=0.0", "expected": "Parameterized Rectangle: Length=0.00, Width=0.00, Area=0.00\n" },
+    { "input": "l=7.0, w=3.0", "expected": "Parameterized Rectangle: Length=7.00, Width=3.00, Area=21.00\n" },
+    { "input": "l=1.5, w=2.0", "expected": "Parameterized Rectangle: Length=1.50, Width=2.00, Area=3.00\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <iomanip>\n\nclass Rectangle {\npublic:\n    double the_rectangle_dimension_length;\n    double the_rectangle_dimension_width;\n\n    Rectangle() {\n        this->the_rectangle_dimension_length = 0.0;\n        this->the_rectangle_dimension_width = 0.0;\n    }\n\n    Rectangle(double input_l, double input_w) {\n        this->the_rectangle_dimension_length = input_l;\n        this->the_rectangle_dimension_width = input_w;\n    }\n\n    double get_the_length_value() const {\n        return this->the_rectangle_dimension_length;\n    }\n\n    double get_the_width_value() const {\n        return this->the_rectangle_dimension_width;\n    }\n\n    double calculate_the_area_of_this_rectangle() const {\n        return this->the_rectangle_dimension_length * this->the_rectangle_dimension_width;\n    }\n};\n\nstd::string testDefaultConstructor() {\n    std::ostringstream oss;\n    oss << std::fixed << std::setprecision(2);\n    Rectangle r_default;\n    oss << \"Default Rectangle: Length=\" << r_default.get_the_length_value() << \", Width=\" << r_default.get_the_width_value() << \", Area=\" << r_default.calculate_the_area_of_this_rectangle() << std::endl;\n    return oss.str();\n}\n\nstd::string testParameterizedConstructor(double l, double w) {\n    std::ostringstream oss;\n    oss << std::fixed << std::setprecision(2);\n    Rectangle r(l, w);\n    oss << \"Parameterized Rectangle: Length=\" << r.get_the_length_value() << \", Width=\" << r.get_the_width_value() << \", Area=\" << r.calculate_the_area_of_this_rectangle() << std::endl;\n    return oss.str();\n}\n\nint main() {\n    std::cout << testDefaultConstructor();\n    std::cout << testParameterizedConstructor(0.0, 0.0);\n    std::cout << testParameterizedConstructor(7.0, 3.0);\n    std::cout << testParameterizedConstructor(1.5, 2.0);\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The member variable names (e.g., `the_rectangle_dimension_length`) are excessively long and verbose, hindering readability.",
+    "The constructors do not use initializer lists, which is less efficient and less idiomatic C++ for member initialization.",
+    "Excessive and unnecessary use of `this->` pointer for member access, which can make the code more cluttered.",
+    "Method names are also overly verbose (e.g., `calculate_the_area_of_this_rectangle`), reducing clarity."
+  ]
+}

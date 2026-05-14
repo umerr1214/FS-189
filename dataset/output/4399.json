@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Declare an array of 4 integers. Initialize it with some values. Then, use a pointer to the first element to iterate through the array and print each element using pointer arithmetic.",
+  "test_cases": [
+    { "input": "", "expected": "Value: 10\nValue: 20\nValue: 30\nValue: 40\nValue: (undefined)\n" }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The loop condition `i <= 4` for an array of size 4 (indices 0-3) causes an out-of-bounds read when `i` is 4, leading to undefined behavior. The loop should iterate from `i = 0` to `i < 4`."
+  ]
+}

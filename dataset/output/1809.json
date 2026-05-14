@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Point2D` class with private `x` and `y` coordinates (int). Overload the binary `+` operator to add two `Point2D` objects. The result should be a new `Point2D` object where its `x` is the sum of the input `x`s and its `y` is the sum of the input `y`s.",
+  "test_cases": [
+    { "input": "Point2D p1(1, 2); Point2D p2(3, 4);", "expected": "(1, 2) + (3, 4) = (4, 6)" },
+    { "input": "Point2D p3(-5, 10); Point2D p4(2, -7);", "expected": "(-5, 10) + (2, -7) = (-3, 3)" },
+    { "input": "Point2D p5(0, 0); Point2D p1(1, 2);", "expected": "(0, 0) + (1, 2) = (1, 2)" },
+    { "input": "Point2D p6(100000, 200000); Point2D p7(300000, 400000);", "expected": "(100000, 200000) + (300000, 400000) = (400000, 600000)" }
+  ],
+  "driver": "Point2D p1_corr(1, 2); Point2D p2_corr(3, 4); Point2D p3_corr(-5, 10); Point2D p4_corr(2, -7); Point2D p5_corr(0, 0); Point2D p6_corr(100000, 200000); Point2D p7_corr(300000, 400000); Point2D sum1_corr = p1_corr + p2_corr; std::cout << \"(\" << p1_corr.getX() << \", \" << p1_corr.getY() << \") + (\" << p2_corr.getX() << \", \" << p2_corr.getY() << \") = (\" << sum1_corr.getX() << \", \" << sum1_corr.getY() << \")\" << std::endl; Point2D sum2_corr = p3_corr + p4_corr; std::cout << \"(\" << p3_corr.getX() << \", \" << p3_corr.getY() << \") + (\" << p4_corr.getX() << \", \" << p4_corr.getY() << \") = (\" << sum2_corr.getX() << \", \" << sum2_corr.getY() << \")\" << std::endl; Point2D sum3_corr = p5_corr + p1_corr; std::cout << \"(\" << p5_corr.getX() << \", \" << p5_corr.getY() << \") + (\" << p1_corr.getX() << \", \" << p1_corr.getY() << \") = (\" << sum3_corr.getX() << \", \" << sum3_corr.getY() << \")\" << std::endl; Point2D sum4_corr = p6_corr + p7_corr; std::cout << \"(\" << p6_corr.getX() << \", \" << p6_corr.getY() << \") + (\" << p7_corr.getX() << \", \" << p7_corr.getY() << \") = (\" << sum4_corr.getX() << \", \" << sum4_corr.getY() << \")\" << std::endl;",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

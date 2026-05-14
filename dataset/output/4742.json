@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Develop a program that reads a student's numerical score (0-100) and assigns a letter grade (A: 90-100, B: 80-89, C: 70-79, D: 60-69, F: 0-59) using `if-else if` statements.",
+  "test_cases": [
+    { "input": "95\n", "expected": "Enter student's numerical score (0-100): The letter grade is: A\n" },
+    { "input": "82\n", "expected": "Enter student's numerical score (0-100): The letter grade is: B\n" },
+    { "input": "70\n", "expected": "Enter student's numerical score (0-100): The letter grade is: C\n" },
+    { "input": "65\n", "expected": "Enter student's numerical score (0-100): The letter grade is: D\n" },
+    { "input": "45\n", "expected": "Enter student's numerical score (0-100): The letter grade is: F\n" },
+    { "input": "-5\n", "expected": "Enter student's numerical score (0-100): Invalid score entered. Score must be between 0 and 100.\n" },
+    { "input": "105\n", "expected": "Enter student's numerical score (0-100): Invalid score entered. Score must be between 0 and 100.\n" }
+  ],
+  "driver": "extern void grading_logic_4742(std::istream& in, std::ostream& out, std::ostream& err);\n\nstd::string run_test_case(const std::string& input) {\n    std::stringstream ss_input(input);\n    std::stringstream ss_output;\n    std::stringstream ss_error;\n\n    grading_logic_4742(ss_input, ss_output, ss_error);\n\n    // Combine output and error streams for expected behavior if both print to console\n    return ss_output.str();\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The grading logic uses deeply nested 'if-else' statements instead of a flat 'if-else if' chain, which negatively impacts readability and makes the code harder to follow. While functionally correct, it's not the most idiomatic or efficient way to structure such conditional logic in C++."
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Create a simple `MyString` class that dynamically allocates a character array for its string data. Implement a copy constructor for `MyString` to perform a deep copy, preventing shallow copy issues.",
+  "test_cases": [
+    { "input": "FirstString", "expected": "s1: FirstString, Length: 11\ns2: FirstString, Length: 11" },
+    { "input": "SecondString", "expected": "s3: SecondString, Length: 12" }
+  ],
+  "driver": "int main() {\n    MyString s1(\"FirstString\");\n    MyString s2 = s1;\n    MyString s3(\"SecondString\");\n\n    std::cout << \"s1: \" << s1.c_str() << \", Length: \" << s1.getLength() << std::endl;\n    std::cout << \"s2: \" << s2.c_str() << \", Length: \" << s2.getLength() << std::endl;\n    std::cout << \"s3: \" << s3.c_str() << \", Length: \" << s3.getLength() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The destructor uses `delete data;` instead of `delete[] data;` for a dynamically allocated character array. This is undefined behavior according to C++ standard, which can lead to memory leaks, heap corruption, or program crashes during object destruction."]
+}

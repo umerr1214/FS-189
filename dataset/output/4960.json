@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `isPerfect` that takes an integer as input and returns `true` if the number is a perfect number (a positive integer that is equal to the sum of its proper positive divisors, excluding the number itself), and `false` otherwise. (e.g., 6 = 1+2+3).",
+  "test_cases": [
+    { "input": "6", "expected": "true" },
+    { "input": "28", "expected": "true" },
+    { "input": "1", "expected": "false" },
+    { "input": "7", "expected": "false" },
+    { "input": "0", "expected": "false" },
+    { "input": "-6", "expected": "false" },
+    { "input": "12", "expected": "false" },
+    { "input": "496", "expected": "true" }
+  ],
+  "driver": "#include <iostream>\n\n// The isPerfect function will be inserted here\n\nint main() {\n    std::cout << \"Is 6 perfect? \" << (isPerfect(6) ? \"true\" : \"false\") << std::endl;\n    std::cout << \"Is 28 perfect? \" << (isPerfect(28) ? \"true\" : \"false\") << std::endl;\n    std::cout << \"Is 1 perfect? \" << (isPerfect(1) ? \"true\" : \"false\") << std::endl;\n    std::cout << \"Is 7 perfect? \" << (isPerfect(7) ? \"true\" : \"false\") << std::endl;\n    std::cout << \"Is 0 perfect? \" << (isPerfect(0) ? \"true\" : \"false\") << std::endl;\n    std::cout << \"Is -6 perfect? \" << (isPerfect(-6) ? \"true\" : \"false\") << std::endl;\n    std::cout << \"Is 12 perfect? \" << (isPerfect(12) ? \"true\" : \"false\") << std::endl;\n    std::cout << \"Is 496 perfect? \" << (isPerfect(496) ? \"true\" : \"false\") << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon in for loop declaration."
+  ]
+}

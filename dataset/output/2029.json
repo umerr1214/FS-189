@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define an abstract base class `Animal` with a pure virtual method `void makeSound()`. Implement two derived classes, `Dog` and `Cat`, each overriding `makeSound()` to print their respective sounds.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Animals making sounds:\nWoof! (holding Max's favorite bone)\nMeow! (playing with Lucy's yarn ball)\nWoof! (holding Buddy's chew toy)\n\nAttempting to delete animals...\nDeletion process complete (potential resource leak).\n"
+    }
+  ],
+  "driver": "int main() { std::vector<Animal*> animals; animals.push_back(new Dog(\"Max's favorite bone\")); animals.push_back(new Cat(\"Lucy's yarn ball\")); animals.push_back(new Dog(\"Buddy's chew toy\")); std::cout << \"Animals making sounds:\" << std::endl; for (Animal* animal : animals) { animal->makeSound(); } std::cout << std::endl; std::cout << \"Attempting to delete animals...\" << std::endl; for (Animal* animal : animals) { delete animal; } std::cout << \"Deletion process complete (potential resource leak).\" << std::endl; return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The abstract base class `Animal` is missing a virtual destructor. This is a critical robustness issue in polymorphic hierarchies. When derived class objects (like `Dog` or `Cat`) are deleted through a base class pointer (`Animal*`), only the base class destructor is called. This leads to undefined behavior and potential resource leaks if derived classes manage their own resources (e.g., dynamically allocated memory, file handles, `std::string` members that might have complex cleanup logic, etc.), as their specific destructors are never invoked."
+  ]
+}

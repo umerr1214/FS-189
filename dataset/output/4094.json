@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Define a function `swapValues(int* ptr1, int* ptr2)` that takes two integer pointers as arguments and swaps the values they point to. Demonstrate this function by swapping two variables in your `main` function.",
+  "test_cases": [
+    { "input": "", "expected": "Before swap: val1 = 10, val2 = 20\nAfter swap: val1 = 20, val2 = 10\nBefore swap: val3 = -5, val4 = 0\nAfter swap: val3 = 0, val4 = -5\nBefore swap: val5 = 100, val6 = 200\nAfter swap: val5 = 200, val6 = 100\n" }
+  ],
+  "driver": "/* The provided main function serves as the driver. */",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `swapValues` function uses an arithmetic swap method. While functionally correct for most `int` values, it is generally less readable than using a temporary variable. Furthermore, it has a potential for integer overflow if the sum of the two values exceeds `INT_MAX`, leading to incorrect results in such edge cases."
+  ]
+}

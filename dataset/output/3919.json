@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that generates and prints the first `n` terms of the Fibonacci sequence, where `n` is an integer provided by the user. (The sequence starts 0, 1, 1, 2, 3, ...)",
+  "test_cases": [
+    { "input": "0", "expected": "" },
+    { "input": "1", "expected": "0\n" },
+    { "input": "2", "expected": "0 1\n" },
+    { "input": "10", "expected": "0 1 1 2 3 5 8 13 21 34\n" },
+    { "input": "-5", "expected": "" },
+    { "input": "48", "expected": "0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368 75025 121393 196418 317811 514229 832040 1346269 2178309 3524578 5702887 9227465 14930352 24157817 39088169 63245986 102334155 165579141 267913296 433492437 701405733 1134898170 1836311903 -1323752723\n" }
+  ],
+  "driver": "int main() { /* The student's program is expected to read an integer 'n' from stdin and print the Fibonacci sequence to stdout. A test harness would execute the student's compiled program for each test case, piping the 'input' string to stdin and capturing stdout to compare with 'expected'. */ return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Integer overflow for large Fibonacci numbers due to using 'int' type. For n=48, the 47th term (F_47 = 2,971,215,073) overflows a 32-bit signed int, resulting in a negative value.",
+    "Lack of explicit error handling or user feedback for negative input 'n'. The program silently exits without informing the user about invalid input."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Write a recursive function `int fibonacci(int n)` that calculates the Nth Fibonacci number (where F(0)=0, F(1)=1).",
+  "test_cases": [
+    { "input": "0", "expected": "0" },
+    { "input": "1", "expected": "1" },
+    { "input": "5", "expected": "5" },
+    { "input": "10", "expected": "55" },
+    { "input": "20", "expected": "6765" },
+    { "input": "30", "expected": "832040" },
+    { "input": "-1", "expected": "-1" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n\n// The fibonacci function will be placed here by the evaluation system\n\nint main() {\n    std::vector<int> test_inputs = {0, 1, 2, 3, 5, 10, 20, 30};\n    for (int n : test_inputs) {\n        std::cout << \"fibonacci(\" << n << \") = \" << fibonacci(n) << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The recursive implementation is highly inefficient for larger values of 'n' due to redundant calculations. It has an exponential time complexity (O(2^n)).",
+    "Many subproblems are recomputed multiple times, leading to poor performance. This is a classic example where memoization or dynamic programming significantly improves efficiency while retaining the recursive structure."
+  ]
+}

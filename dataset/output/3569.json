@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Calculate the area and perimeter of a circle given its radius, which is entered by the user. Use `const` for PI.",
+  "test_cases": [
+    { "input": "5", "expected": "Area: 78.5398\nPerimeter: 31.4159\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <iomanip>\n#include <cmath>\n\n// This driver demonstrates how to read input and format output\n// for a single test case, reflecting the expected interaction.\nint main() {\n    double radius;\n    if (!(std::cin >> radius)) {\n        std::cerr << \"Invalid input for radius.\" << std::endl;\n        return 1;\n    }\n\n    const double PI_VAL = 3.14159;\n    double area = PI_VAL * radius * radius;\n    double perimeter = 2 * PI_VAL * radius;\n\n    std::cout << std::fixed << std::setprecision(4) << \"Area: \" << area << std::endl;\n    std::cout << std::fixed << std::setprecision(4) << \"Perimeter: \" << perimeter << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The formulas for calculating the area and perimeter of the circle are swapped, leading to incorrect results."
+  ]
+}

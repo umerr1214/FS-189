@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Implement a `StringWrapper` class that manages a dynamically allocated C-style character array (char*). Write a copy constructor that performs a deep copy of the string data, ensuring independent memory management for copied objects.",
+  "test_cases": [
+    { "input": "Hello World", "expected": "Compilation Error: Missing semicolon after class definition" },
+    { "input": "Another String", "expected": "Compilation Error: Missing semicolon after class definition" }
+  ],
+  "driver": "int main() {\n    // This program is expected to fail compilation due to a syntax error.\n    // The driver code below is illustrative and would not be executed.\n    std::cout << \"Attempting to create StringWrapper objects...\" << std::endl;\n    StringWrapper s1(\"Hello World\");\n    std::cout << \"s1 created.\" << std::endl;\n    s1.print();\n\n    StringWrapper s2 = s1; // Copy constructor\n    std::cout << \"s2 created via copy constructor.\" << std::endl;\n    s2.print();\n\n    StringWrapper s3;\n    s3 = \"Programming\"; // Assignment operator\n    std::cout << \"s3 assigned.\" << std::endl;\n    s3.print();\n\n    std::cout << \"Program would continue if compiled successfully.\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

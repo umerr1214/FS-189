@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Find the maximum and minimum elements in a 1D integer array without using any standard library functions like `std::min_element` or `std::max_element`.",
+  "test_cases": [
+    { "input": "1,2,3,4,5", "expected": "Min: 1, Max: 5" },
+    { "input": "-1,-2,-3,-4,-5", "expected": "Min: -5, Max: -1" },
+    { "input": "-10,0,100,-5", "expected": "Min: -10, Max: 100" },
+    { "input": "7", "expected": "Min: 7, Max: 7" },
+    { "input": "-15", "expected": "Min: -15, Max: -15" },
+    { "input": "0", "expected": "Min: 0, Max: 0" },
+    { "input": "", "expected": "Empty Array" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <sstream>\n#include <string>\n#include <utility> // For std::pair\n#include <limits> // For std::numeric_limits\n\n// Assume the solution function is defined as:\n// std::pair<int, int> findMinMax(int arr[], int size);\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        std::stringstream ss_input(line);\n        std::vector<int> arr_vec;\n        std::string segment;\n\n        if (line.empty()) {\n            // Treat empty line as empty array\n        } else {\n            // Parse comma-separated integers\n            while(std::getline(ss_input, segment, ',')) {\n                if (!segment.empty()) {\n                    arr_vec.push_back(std::stoi(segment));\n                }\n            }\n        }\n\n        std::pair<int, int> result = findMinMax(arr_vec.data(), arr_vec.size());\n        if (arr_vec.empty()) {\n            if (result.first == std::numeric_limits<int>::max() && result.second == std::numeric_limits<int>::min()) {\n                std::cout << \"Empty Array\" << std::endl;\n            } else {\n                // This branch should ideally not be reached if empty array is handled correctly by findMinMax\n                std::cout << \"Min: \" << result.first << \", Max: \" << result.second << std::endl;\n            }\n        } else {\n            std::cout << \"Min: \" << result.first << \", Max: \" << result.second << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The program iterates through the array twice, once to find the minimum and once to find the maximum. This is less efficient than finding both in a single pass.",
+    "The time complexity is O(N) + O(N) = O(2N), which can be optimized to O(N) by combining the loops into a single traversal."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design an abstract base class `GeometricShape` with a pure virtual function `getArea()` (returning double) and a non-virtual function `getName()` (returning string). Derive `Rectangle` and `Triangle` classes from `GeometricShape`, implementing the `getArea()` function specifically for each shape.",
+  "test_cases": [
+    { "input": "Rectangle dimensions: 5 4\nTriangle dimensions: 6 3", "expected": "Rectangle area: 20\nTriangle area: 9\n--- Deleting shapes via base pointers ---\nGeometricShape destructor called.\nGeometricShape destructor called.\n---------------------------------------" }
+  ],
+  "driver": "int main() {\n    GeometricShape* rect = new Rectangle(5, 4);\n    GeometricShape* tri = new Triangle(6, 3);\n\n    std::cout << rect->getName() << \" area: \" << rect->getArea() << std::endl;\n    std::cout << tri->getName() << \" area: \" << tri->getArea() << std::endl;\n\n    std::cout << \"\\n--- Deleting shapes via base pointers ---\" << std::endl;\n    delete rect;\n    delete tri;\n    std::cout << \"---------------------------------------\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The destructor of the base class `GeometricShape` is not declared virtual. This leads to undefined behavior or memory leaks when deleting derived class objects through a base class pointer (polymorphic deletion)."
+  ]
+}

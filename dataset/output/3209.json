@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create three classes: `Base`, `Derived` (inheriting `Base`), and `External`. In `Base`, declare `public`, `protected`, and `private` members. Demonstrate the accessibility of these members from `Derived` and `External` classes respectively.",
+  "test_cases": [
+    { "input": "", "expected": "--- Base Object direct access ---\nBase public_member_base: 1\n\n--- From Derived Class ---\nDerived can access public_member_base: 1\nBase public_member_base: 1\nDerived can access protected_member_base: 2\nBase protected_member_base (from Base): 2\nDerived CANNOT access private_member_base directly.\n\n--- From External Class ---\nExternal can access public_member_base: 1\nBase public_member_base: 1\nExternal CANNOT access protected_member_base directly.\nExternal CANNOT access private_member_base directly." }
+  ],
+  "driver": "int main() { Base baseObj; Derived derivedObj; External externalObj; baseObj.displayPublic(); derivedObj.accessBaseMembersFromDerived(); externalObj.accessBaseMembersFromExternal(baseObj); return 0; }",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The program incorrectly states that private members are accessible from Derived, and protected/private members are accessible from External, despite not actually demonstrating direct access. This misrepresents C++ accessibility rules."
+  ]
+}

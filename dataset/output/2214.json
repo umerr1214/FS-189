@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Define an abstract base class `Animal` with a pure virtual function `makeSound()`. Create two concrete derived classes, `Dog` and `Cat`, each implementing `makeSound()` to print their specific sound. Demonstrate that you cannot instantiate `Animal` directly, but can use `Animal` pointers to refer to `Dog` and `Cat` objects.",
+  "test_cases": [
+    { "input": "", "expected": "Instantiating Animal directly (violates problem requirement):\nGeneric animal sound.\n\nDemonstrating sounds via Animal pointers:\nWoof!\nMeow!\n" }
+  ],
+  "driver": "int main() { Animal myAnimal; std::cout << \"Instantiating Animal directly (violates problem requirement):\" << std::endl; myAnimal.makeSound(); Dog myDog; Cat myCat; Animal* animal1 = &myDog; Animal* animal2 = &myCat; std::cout << \"\\nDemonstrating sounds via Animal pointers:\" << std::endl; animal1->makeSound(); animal2->makeSound(); return 0; }",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `Animal::makeSound()` function is not declared as pure virtual (`= 0`), making `Animal` a concrete class rather than an abstract one. This allows direct instantiation of `Animal` objects, violating the problem's requirement."
+  ]
+}

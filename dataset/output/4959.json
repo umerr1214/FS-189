@@ -1,0 +1,31 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that continuously prompts the user to enter integers until a negative number is entered. After a negative number is input, display the sum of all the positive numbers that were entered. Use a do-while loop.",
+  "test_cases": [
+    {
+      "input": "1\n2\n3\n-4\n",
+      "expected": "Enter integers. The program will stop when a negative number is entered.\nOnly positive numbers will be summed.\nPlease enter an integer: Please enter an integer: Please enter an integer: Please enter an integer: The sum of all positive numbers entered is: 6\n"
+    },
+    {
+      "input": "100\n200\n-1\n",
+      "expected": "Enter integers. The program will stop when a negative number is entered.\nOnly positive numbers will be summed.\nPlease enter an integer: Please enter an integer: Please enter an integer: The sum of all positive numbers entered is: 300\n"
+    },
+    {
+      "input": "0\n5\n-1\n",
+      "expected": "Enter integers. The program will stop when a negative number is entered.\nOnly positive numbers will be summed.\nPlease enter an integer: Please enter an integer: Please enter an integer: The sum of all positive numbers entered is: 5\n"
+    },
+    {
+      "input": "-10\n",
+      "expected": "Enter integers. The program will stop when a negative number is entered.\nOnly positive numbers will be summed.\nPlease enter an integer: The sum of all positive numbers entered is: 0\n"
+    },
+    {
+      "input": "7\n0\n-3\n",
+      "expected": "Enter integers. The program will stop when a negative number is entered.\nOnly positive numbers will be summed.\nPlease enter an integer: Please enter an integer: Please enter an integer: The sum of all positive numbers entered is: 7\n"
+    }
+  ],
+  "driver": "int main() {\n    // The C++ program will be compiled and executed directly.\n    // Input will be piped to stdin, and stdout will be captured.\n    // No special driver code is needed beyond basic execution.\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

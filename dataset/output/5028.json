@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that reads a `std::string` from the user and checks if it is a palindrome (reads the same forwards and backwards, ignoring case and spaces is optional but for this problem, consider exact match).",
+  "test_cases": [
+    { "input": "madam", "expected": "false" },
+    { "input": "hello", "expected": "false" },
+    { "input": "racecar", "expected": "false" },
+    { "input": "", "expected": "true" },
+    { "input": "a", "expected": "true" },
+    { "input": "ab", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\nbool isPalindrome(const std::string& s); // Forward declaration\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        if (isPalindrome(line)) {\n            std::cout << \"true\" << std::endl;\n        } else {\n            std::cout << \"false\" << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    {
+      "line": 15,
+      "column": 23,
+      "message": "Array index 'len - i' is out of bounds. When 'i' is 0, 'len - i' evaluates to 'len', which attempts to access s[s.length()]. Valid indices are from 0 to s.length() - 1. This leads to undefined behavior."
+    }
+  ]
+}

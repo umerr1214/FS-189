@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Check if a given `std::string` is a palindrome, ignoring case and spaces. For example, 'Race car' should be considered a palindrome.",
+  "test_cases": [
+    { "input": "Race car", "expected": "true" },
+    { "input": "Madam", "expected": "true" },
+    { "input": "A man, a plan, a canal: Panama", "expected": "true" },
+    { "input": "hello", "expected": "false" },
+    { "input": "No lemon, no melon", "expected": "true" },
+    { "input": "12321", "expected": "true" },
+    { "input": "Was it a car or a cat I saw?", "expected": "true" },
+    { "input": "", "expected": "true" },
+    { "input": "  ", "expected": "true" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <algorithm>\n#include <cctype>\n\nbool isPalindrome(const std::string& s);\n\nint main() {\n    std::vector<std::pair<std::string, bool>> test_cases = {\n        {\"Race car\", true},\n        {\"Madam\", true},\n        {\"A man, a plan, a canal: Panama\", true},\n        {\"hello\", false},\n        {\"No lemon, no melon\", true},\n        {\"12321\", true},\n        {\"Was it a car or a cat I saw?\", true},\n        {\"\", true},\n        {\"  \", true},\n        {\"level\", true},\n        {\"world\", false}\n    };\n\n    for (const auto& tc : test_cases) {\n        bool result = isPalindrome(tc.first);\n        std::cout << \"Input: \\\"\" << tc.first << \"\\\", Expected: \" << (tc.second ? \"true\" : \"false\")\n                  << \", Got: \" << (result ? \"true\" : \"false\") << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": []
+}

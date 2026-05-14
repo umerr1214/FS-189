@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Write a program that prompts the user to enter their first name, last name, and age. Then, print a greeting message displaying all the entered information in a formatted way.",
+  "test_cases": [
+    { "input": "David\nLee\n45", "expected": "Enter your first name: Enter your last name: Enter your age: \n--- Your Information ---\nName:    David Lee\nAge:     45 years old\n------------------------\nGreeting: Hello, David! Welcome!\n" },
+    { "input": "Sarah\nConnor\n38", "expected": "Enter your first name: Enter your last name: Enter your age: \n--- Your Information ---\nName:    Sarah Connor\nAge:     38 years old\n------------------------\nGreeting: Hello, Sarah! Welcome!\n" }
+  ],
+  "driver": "g++ -o solution {file_name} && ./solution",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

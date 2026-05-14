@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that takes a positive integer 'N' as input from the user and calculates the sum of all odd numbers from 1 to N using a `while` loop.",
+  "test_cases": [
+    { "input": "5", "expected": "Enter a positive integer N: The sum of odd numbers from 1 to 5 is: 9" },
+    { "input": "10", "expected": "Enter a positive integer N: The sum of odd numbers from 1 to 10 is: 25" },
+    { "input": "0", "expected": "Enter a positive integer N: N must be a positive integer." }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n\n// Assuming the user's solution's main function is renamed to 'user_main'\n// and takes no arguments, interacting via global std::cin/std::cout.\nextern int user_main();\n\nstd::string run_test_case(const std::string& input) {\n    std::stringstream ss_in(input);\n    std::stringstream ss_out;\n\n    // Redirect cin and cout\n    std::streambuf* old_cin_buf = std::cin.rdbuf();\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n    std::cin.rdbuf(ss_in.rdbuf());\n    std::cout.rdbuf(ss_out.rdbuf());\n\n    // Call the user's main function\n    user_main();\n\n    // Restore cin and cout\n    std::cin.rdbuf(old_cin_buf);\n    std::cout.rdbuf(old_cout_buf);\n\n    // Trim trailing newline from output for consistent comparison\n    std::string output = ss_out.str();\n    if (!output.empty() && output.back() == '\\n') {\n        output.pop_back();\n    }\n    return output;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The program calculates the sum of all numbers from 1 to N instead of only odd numbers. The condition to check for odd numbers is missing inside the loop."
+  ]
+}

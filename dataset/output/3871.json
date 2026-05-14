@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter the length and width of a rectangle, then calculates and displays its area and perimeter.",
+  "test_cases": [
+    { "input": "10\n5", "expected": "Enter the length of the rectangle: Enter the width of the rectangle: Area: 50\nPerimeter: 30\n" },
+    { "input": "7.5\n3.2", "expected": "Enter the length of the rectangle: Enter the width of the rectangle: Area: 24\nPerimeter: 21.4\n" },
+    { "input": "-5\n10", "expected": "Enter the length of the rectangle: Enter the width of the rectangle: Area: -50\nPerimeter: 10\n" },
+    { "input": "0\n8", "expected": "Enter the length of the rectangle: Enter the width of the rectangle: Area: 0\nPerimeter: 16\n" }
+  ],
+  "driver": "int main() {\n    double length, width;\n    std::cin >> length >> width;\n    double area = length * width;\n    double perimeter = 2 * (length + width);\n    std::cout << \"Area: \" << area << \"\\nPerimeter: \" << perimeter << \"\\n\";\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Input validation for length and width is missing. Negative or zero dimensions are accepted, leading to geometrically incorrect results (e.g., negative area, non-zero perimeter for zero length/width)."
+  ]
+}

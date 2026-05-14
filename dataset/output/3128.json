@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Extend the `Student` class to include a default constructor that initializes members to default values and a parameterized constructor that accepts `name`, `id`, and `grade`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Student List ---\nStudent 1: Name: , ID: 0, Grade: 0.0\nStudent 2: Name: Alice Johnson, ID: 101, Grade: 95.5\nStudent 3: Name: Bob Smith, ID: 102, Grade: 88.0\nStudent 4: Name: Charlie Brown, ID: 103, Grade: 75.0\nStudent 5: Name: Diana Prince, ID: 104, Grade: 82.3\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <iomanip>\n\nclass Student {\nprivate:\n    std::string name;\n    int id;\n    double grade;\n\npublic:\n    Student() {\n        this->name = \"\";\n        this->id = 0;\n        this->grade = 0.0;\n    }\n\n    Student(std::string name_param, int id_param, double grade_param) {\n        this->name = name_param;\n        this->id = id_param;\n        this->grade = grade_param;\n    }\n\n    friend std::ostream& operator<<(std::ostream& os, const Student& s) {\n        os << \"Name: \" << s.name << \", ID: \" << s.id << \", Grade: \" << std::fixed << std::setprecision(1) << s.grade;\n        return os;\n    }\n};\n\nint main() {\n    std::vector<Student> students;\n\n    students.push_back(Student());\n    students.push_back(Student(\"Alice Johnson\", 101, 95.5));\n    students.push_back(Student(\"Bob Smith\", 102, 88.0));\n    students.push_back(Student(\"Charlie Brown\", 103, 75.0));\n    students.push_back(Student(\"Diana Prince\", 104, 82.3));\n\n    std::cout << \"--- Student List ---\" << std::endl;\n    for (size_t i = 0; i < students.size(); ++i) {\n        std::cout << \"Student \" << i + 1 << \": \" << students[i] << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Constructors assign member variables in the constructor body instead of using initializer lists, leading to less efficient initialization (default construction followed by assignment for string members).",
+    "Parameterized constructor passes `std::string` by value (`name_param`), incurring an unnecessary copy when `const std::string&` or `std::string&&` with `std::move` would be more efficient.",
+    "Unnecessary use of `this->` to refer to member variables when there is no ambiguity, reducing readability."
+  ]
+}

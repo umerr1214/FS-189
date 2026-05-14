@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function template `calculate_average` that accepts an array of any numeric type (e.g., `int`, `double`) and its size, then returns the average of all elements in the array. Ensure it works for different numeric types.",
+  "test_cases": [
+    { "input": "int_arr = {1, 2, 3, 4, 5}, size = 5", "expected": "3.00" },
+    { "input": "double_arr = {10.0, 20.5, 30.0, 40.5}, size = 4", "expected": "25.25" },
+    { "input": "int_arr_2 = {1, 2, 4}, size = 3", "expected": "2.33" },
+    { "input": "float_arr = {1.5f, 2.5f, 3.5f}, size = 3", "expected": "2.50" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\n// Assuming calculate_average template is defined elsewhere in the compilation unit\n\nint main() {\n    // Test case 1: int array\n    int int_arr[] = {1, 2, 3, 4, 5};\n    int int_size = sizeof(int_arr) / sizeof(int_arr[0]);\n    std::cout << \"Average of int_arr: \" << std::fixed << std::setprecision(2) << calculate_average(int_arr, int_size) << std::endl;\n\n    // Test case 2: double array\n    double double_arr[] = {10.0, 20.5, 30.0, 40.5};\n    int double_size = sizeof(double_arr) / sizeof(double_arr[0]);\n    std::cout << \"Average of double_arr: \" << std::fixed << std::setprecision(2) << calculate_average(double_arr, double_size) << std::endl;\n\n    // Test case 3: another int array with non-integer average\n    int int_arr_2[] = {1, 2, 4};\n    int int_size_2 = sizeof(int_arr_2) / sizeof(int_arr_2[0]);\n    std::cout << \"Average of int_arr_2: \" << std::fixed << std::setprecision(2) << calculate_average(int_arr_2, int_size_2) << std::endl;\n    \n    // Test case 4: float array\n    float float_arr[] = {1.5f, 2.5f, 3.5f};\n    int float_size = sizeof(float_arr) / sizeof(float_arr[0]);\n    std::cout << \"Average of float_arr: \" << std::fixed << std::setprecision(2) << calculate_average(float_arr, float_size) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["Integer division occurs when `T` is an integer type, leading to truncation of the fractional part of the average."]
+}

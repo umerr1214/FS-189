@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that takes a temperature in Celsius from the user and converts it to Fahrenheit, displaying the result. (Formula: F = C * 9/5 + 32)",
+  "test_cases": [
+    { "input": "25", "expected": "Temperature in Fahrenheit: 77.0" }
+  ],
+  "driver": "The test system will provide input to stdin and capture output from stdout.",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The formula uses integer division (9/5), which evaluates to 1 instead of 1.8, leading to an incorrect Fahrenheit conversion."]
+}

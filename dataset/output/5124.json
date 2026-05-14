@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that declares a 3x3 integer matrix. Prompt the user to enter values for each element of the matrix. After filling the matrix, calculate and print the sum of all elements in the matrix.",
+  "test_cases": [
+    { "input": "1\n2\n3\n4\n5\n6\n7\n8\n9\n", "expected": "Sum of all elements: 45\n" }
+  ],
+  "driver": "// The test driver will compile and run the user's C++ code.\n// It will feed the 'input' string to the program's stdin\n// and capture the program's stdout to compare with 'expected'.\n",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The loops for calculating the sum use incorrect bounds (i <= 3 and j <= 3). This attempts to access elements matrix[3][...] and matrix[...][3], which are outside the declared array bounds of a 3x3 matrix (valid indices are 0, 1, 2). This results in undefined behavior, potentially leading to a crash or the summation of garbage values from adjacent memory locations."
+  ]
+}

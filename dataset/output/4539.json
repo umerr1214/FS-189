@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Implement a simple number guessing game. The program should choose a random number between 1 and 100, then prompt the user to guess it. Provide hints (too high/too low) and continue until the correct number is guessed. Use a `do-while` loop for the game logic.",
+  "test_cases": [
+    { "input": "abc\n0\n101\n50\n25\n75\n60\n", "expected": "The program should gracefully handle 'abc' (non-numeric input), '0' (out-of-range), and '101' (out-of-range) inputs by printing appropriate error messages and re-prompting for a valid guess. Subsequent valid guesses should lead to the game's completion with hints." },
+    { "input": "invalid_input\n-5\n150\n42\n", "expected": "The program should correctly identify and handle 'invalid_input' (non-numeric), '-5' (out-of-range), and '150' (out-of-range) inputs by clearing the error state and prompting for a valid guess. If '42' is the correct number, the program should congratulate the user; otherwise, it should provide a hint and continue the game." }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// This is a placeholder driver. The actual test harness\n// would compile the student's code and run its main() function\n// with redirected input and captured output.\n// For example, to test with 'abc\\n50\\n' input:\n// 1. Compile student's code: g++ student_code.cpp -o student_app\n// 2. Run with input redirection: echo -e \"abc\\n50\\n\" | ./student_app\n// 3. Capture stdout and stderr for analysis.\nint main() {\n    std::cout << \"This driver outlines the testing process. It expects the student's program to read from stdin and write to stdout.\" << std::endl;\n    std::cout << \"Input for test cases would be fed to stdin (e.g., via pipe or file redirection).\" << std::endl;\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

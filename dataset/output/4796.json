@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that takes a C-style string (character array) as input. Implement a function to count the number of vowels (a, e, i, o, u, case-insensitive) present in the string and display the count.",
+  "test_cases": [
+    { "input": "Hello World!", "expected": "Number of vowels: 3" },
+    { "input": "Programming is FUN", "expected": "Number of vowels: 5" },
+    { "input": "AEIOUaeiou", "expected": "Number of vowels: 10" },
+    { "input": "Rhythm", "expected": "Number of vowels: 0" },
+    { "input": "", "expected": "Number of vowels: 0" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <cstring>\n#include <cctype>\n\n// The countVowels function, identical to the one in 4796.cpp for testing.\nint countVowels(const char* str) {\n    int count = 0;\n    if (str == nullptr) {\n        return 0;\n    }\n    for (int i = 0; str[i] != '\\0'; ++i) {\n        char currentChar = str[i];\n        if (currentChar == 'a' || currentChar == 'A' ||\n            currentChar == 'e' || currentChar == 'E' ||\n            currentChar == 'i' || currentChar == 'I' ||\n            currentChar == 'o' || currentChar == 'O' ||\n            currentChar == 'u' || currentChar == 'U') {\n            count++;\n        }\n    }\n    return count;\n}\n\nint main() {\n    std::vector<std::pair<const char*, int>> tests = {\n        {\"Hello World!\", 3},\n        {\"Programming is FUN\", 5},\n        {\"AEIOUaeiou\", 10},\n        {\"Rhythm\", 0},\n        {\"\", 0}\n    };\n\n    for (const auto& test : tests) {\n        char buffer[256]; \n        if (test.first != nullptr) {\n            strcpy(buffer, test.first);\n        } else {\n            buffer[0] = '\\0'; \n        }\n        \n        int result = countVowels(buffer);\n        std::cout << \"Number of vowels: \" << result << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": []
+}

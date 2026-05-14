@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a program that prompts the user for a non-negative integer and uses a `while` loop to count the number of digits in that integer.",
+  "test_cases": [
+    { "input": "123", "expected": "Please enter a non-negative integer: The number of digits is: 3\n" },
+    { "input": "0", "expected": "Please enter a non-negative integer: The number of digits is: 1\n" },
+    { "input": "9876543210", "expected": "Please enter a non-negative integer: The number of digits is: 10\n" },
+    { "input": "1000000000000000000", "expected": "Please enter a non-negative integer: The number of digits is: 19\n" },
+    { "input": "-5\n10", "expected": "Please enter a non-negative integer: Invalid input. Please enter a non-negative integer: The number of digits is: 2\n" },
+    { "input": "abc\n1234", "expected": "Please enter a non-negative integer: Invalid input. Please enter a non-negative integer: The number of digits is: 4\n" }
+  ],
+  "driver": "int main() { long long number; while (!(std::cin >> number) || number < 0) { std::cin.clear(); std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\\n'); } int digitCount = 0; if (number == 0) { digitCount = 1; } else { while (number > 0) { number /= 10; digitCount++; } } std::cout << \"The number of digits is: \" << digitCount << std::endl; return 0; }",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

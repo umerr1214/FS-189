@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function template `T findMax(T val1, T val2)` that returns the larger of two values of any data type `T`. Test it with at least two different data types (e.g., `int` and `double`).",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Max of 5 and 10 is: 10\nMax of 3.5 and 7.2 is: 7.2\n"
+    }
+  ],
+  "driver": "#include <iostream>\n\ntemplate <typename T>\nT findMax(T val1, T val2) {\n    return (val1 > val2) ? val1 : val2;\n}\n\nint main() {\n    int int_val1 = 5;\n    int int_val2 = 10;\n    int int_result = findMax(int_val1, int_val2);\n    std::cout << \"Max of \" << int_val1 << \" and \" << int_val2 << \" is: \" << int_result << std::endl;\n\n    double double_val1 = 3.5;\n    double double_val2 = 7.2;\n    double double_result = findMax(double_val1, double_val2);\n    std::cout << \"Max of \" << double_val1 << \" and \" << double_val2 << \" is: \" << double_result << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the variable declaration `int int_result = findMax(int_val1, int_val2)` in the `main` function."
+  ]
+}

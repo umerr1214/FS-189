@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a simple console-based calculator program that takes two numbers and an operator (+, -, *, /) from the user and performs the corresponding operation using a `switch` statement.",
+  "test_cases": [
+    { "input": "10\n+\n5\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 15\n" },
+    { "input": "8\n-\n2\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 10\n" },
+    { "input": "7\n*\n3\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 21\n" },
+    { "input": "10\n/\n2\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 5\n" }
+  ],
+  "driver": "The C++ program is compiled. For each test case, the 'input' string is fed to the program's stdin, and the program's stdout is captured and compared with the 'expected' string.",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The subtraction operation ('-') in the switch statement is incorrectly implemented, performing addition (num1 + num2) instead of subtraction (num1 - num2)."
+  ]
+}

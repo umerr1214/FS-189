@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that uses a `do-while` loop to repeatedly prompt the user to enter a positive integer. The loop should continue until a valid positive integer (greater than 0) is entered. Finally, print the valid number.",
+  "test_cases": [
+    { "input": "abc\n-5\n10\n", "expected": "Kindly enter an integer value that is positive: That was not a valid number. Please try again.\nKindly enter an integer value that is positive: The number must be greater than zero. Please try again.\nKindly enter an integer value that is positive: The valid positive integer you entered is: 10\n" },
+    { "input": "0\n1\n", "expected": "Kindly enter an integer value that is positive: The number must be greater than zero. Please try again.\nKindly enter an integer value that is positive: The valid positive integer you entered is: 1\n" }
+  ],
+  "driver": "g++ -o solution solution.cpp && ./solution",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The code uses an unnecessary boolean flag (`input_is_valid_flag`) to control the `do-while` loop, making the logic more verbose and less direct than a simple condition. The variable name `user_input_number_value` is overly verbose, and the prompt message is slightly wordy. The `if-else` structure inside the loop for validation is also more complex than needed, impacting readability and slightly reducing efficiency."
+  ]
+}

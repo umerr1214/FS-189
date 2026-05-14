@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Logger` class. It should have a `private static int logCount` to track the total number of log messages created across all `Logger` objects. Increment `logCount` in the constructor. Implement a `public static void displayTotalLogs()` method to show the current value of `logCount`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Creating 3 loggers...\nTotal log messages created: 3\n\nCreating 7 more loggers...\nTotal log messages created: 10\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\nclass Logger {\npublic:\n    Logger() {\n        logCount++;\n    }\n\n    static void displayTotalLogs() {\n        // Inefficient and less readable way to display an integer\n        std::string countStr = std::to_string(logCount);\n        std::cout << \"Total log messages created: \";\n        for (char c : countStr) {\n            std::cout << c;\n        }\n        std::cout << std::endl;\n    }\n\nprivate:\n    static int logCount;\n};\n\nint Logger::logCount = 0;\n\nint main() {\n    std::cout << \"Creating 3 loggers...\" << std::endl;\n    Logger l1;\n    Logger l2;\n    Logger l3;\n    Logger::displayTotalLogs();\n\n    std::cout << \"\\nCreating 7 more loggers...\" << std::endl;\n    for (int i = 0; i < 7; ++i) {\n        Logger l;\n    }\n    Logger::displayTotalLogs();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `displayTotalLogs` method converts the integer `logCount` to a `std::string` using `std::to_string` and then iterates through the string to print each character. This is less efficient and less readable than directly printing the integer using `std::cout << logCount;`. For simple integer output, direct printing is the idiomatic and most performant C++ approach, avoiding unnecessary string conversions and loops."
+  ]
+}

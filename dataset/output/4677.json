@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Create a function `doubleValue` that takes an integer by reference and modifies its value by multiplying it by 2.",
+  "test_cases": [
+    { "input": "5", "expected": "10" },
+    { "input": "-3", "expected": "-6" },
+    { "input": "0", "expected": "0" },
+    { "input": "100", "expected": "200" },
+    { "input": "-50", "expected": "-100" },
+    { "input": "1000000", "expected": "2000000" },
+    { "input": "-1000000", "expected": "-2000000" },
+    { "input": "715827882", "expected": "1431655764" },
+    { "input": "-715827882", "expected": "-1431655764" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <limits>\n\nvoid doubleValue(int& val);\n\nvoid run_test(int input_val, int expected_val, const std::string& description) {\n    int current_val = input_val;\n    doubleValue(current_val);\n    std::cout << \"Test Case: \" << description << \"\\n\";\n    std::cout << \"  Initial Value: \" << input_val << \"\\n\";\n    std::cout << \"  Expected Value: \" << expected_val << \"\\n\";\n    std::cout << \"  Actual Value after doubleValue: \" << current_val << \"\\n\";\n    if (current_val == expected_val) {\n        std::cout << \"  Result: PASSED\\n\\n\";\n    } else {\n        std::cout << \"  Result: FAILED\\n\\n\";\n    }\n}\n\nint main() {\n    run_test(5, 10, \"Positive value\");\n    run_test(-3, -6, \"Negative value\");\n    run_test(0, 0, \"Zero value\");\n    run_test(100, 200, \"Another positive value\");\n    run_test(-50, -100, \"Another negative value\");\n    run_test(1000000, 2000000, \"Large positive value\");\n    run_test(-1000000, -2000000, \"Large negative value\");\n    \n    // Using actual calculated values for numeric_limits to avoid runtime issues in driver string\n    run_test(std::numeric_limits<int>::max() / 3, (std::numeric_limits<int>::max() / 3) * 2, \"Value near INT_MAX/3\");\n    run_test(std::numeric_limits<int>::min() / 3, (std::numeric_limits<int>::min() / 3) * 2, \"Value near INT_MIN/3\");\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

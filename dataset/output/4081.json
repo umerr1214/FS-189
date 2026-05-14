@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a function `isPalindrome(int num)` that takes an integer as input and returns `true` if the number is a palindrome (reads the same forwards and backwards), and `false` otherwise. Demonstrate its usage by asking the user for a number and printing the result.",
+  "test_cases": [
+    { "input": "121", "expected": "121 is a palindrome." },
+    { "input": "123", "expected": "123 is not a palindrome." },
+    { "input": "0", "expected": "0 is a palindrome." },
+    { "input": "-121", "expected": "-121 is a palindrome." },
+    { "input": "-123", "expected": "-123 is not a palindrome." },
+    { "input": "10", "expected": "10 is not a palindrome." }
+  ],
+  "driver": "std::string get_output(int num) {\n    if (isPalindrome(num)) {\n        return std::to_string(num) + \" is a palindrome.\";\n    } else {\n        return std::to_string(num) + \" is not a palindrome.\";\n    }\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The function incorrectly handles negative numbers by converting them to their absolute value. For example, -121 is considered a palindrome because abs(-121) is 121, which is a palindrome. Standard definitions usually exclude the sign for palindrome checks or consider numbers with signs as non-palindromes."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Implement a `StringWrapper` class that manages a C-style string (`char*`) dynamically allocated on the heap. Provide a copy constructor that performs a deep copy to prevent dangling pointers.",
+  "test_cases": [
+    { "input": "StringWrapper s1(\"Test\"); StringWrapper s2 = s1; /* Check s1 and s2 content */", "expected": "Original string: Test\nCopied string: Test" },
+    { "input": "StringWrapper s_null(nullptr); StringWrapper s_copied_null = s_null; /* Check s_null and s_copied_null content */", "expected": "Null string: ''\nCopied null string: ''" }
+  ],
+  "driver": "valid C++ code to run test cases",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Member variable names (`internal_data_ptr`, `current_length`) are verbose and deviate from common C++ naming conventions, impacting readability.",
+    "Constructor performs manual length calculation and character-by-character copying, which is less efficient and more error-prone than using standard library functions like `strlen` and `strcpy`.",
+    "Copy constructor redundantly calls `strlen` on the source string's data when its length (`source_object.current_length`) is already available, leading to unnecessary computation.",
+    "Copy constructor also uses a manual loop for character-by-character copying instead of `strcpy`, which is less efficient.",
+    "Function names (`get_wrapped_string_value`) are overly verbose.",
+    "Excessive `std::cout` statements for debugging purposes are present in the class methods, cluttering the code and potentially affecting performance in a production environment."
+  ]
+}

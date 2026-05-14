@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `Department` class that holds a collection of `Professor` objects (aggregation). Implement methods to `hireProfessor()`, `fireProfessor()`, and `displayProfessors()`.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation Error: Typo in header name 'vecotr'. The program will not compile due to `No such file or directory` or similar error for `<vecotr>`." }
+  ],
+  "driver": "// No driver needed as the code will not compile due to a syntax error.",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Typo in include directive: `<vecotr>` instead of `<vector>`."
+  ]
+}

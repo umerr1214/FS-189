@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Modify the `BankAccount` class to enforce strict encapsulation for `balance`. Add public `getBalance()` and `setBalance()` methods, but make `setBalance()` private or `protected` if it's only intended for internal class use, otherwise add input validation.",
+  "test_cases": [
+    { "input": "", "expected": "Initial balance: 100\nBalance after setting to 250.50 via setBalance(): 250.5\nBalance after directly setting to -75.0: -75\nBalance after setting to 0.0 via setBalance(): 0\nInitial balance cannot be negative. Setting to 0.\nAnother account initial balance: 0\n" }
+  ],
+  "driver": "int main() {\n    BankAccount myAccount(100.0);\n    std::cout << \"Initial balance: \" << myAccount.getBalance() << std::endl;\n\n    myAccount.setBalance(250.50);\n    std::cout << \"Balance after setting to 250.50 via setBalance(): \" << myAccount.getBalance() << std::endl;\n\n    // Direct access to balance, bypassing validation\n    myAccount.balance = -75.0;\n    std::cout << \"Balance after directly setting to -75.0: \" << myAccount.getBalance() << std::endl;\n\n    myAccount.setBalance(0.0);\n    std::cout << \"Balance after setting to 0.0 via setBalance(): \" << myAccount.getBalance() << std::endl;\n\n    BankAccount anotherAccount(-10.0);\n    std::cout << \"Another account initial balance: \" << anotherAccount.getBalance() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": []
+}

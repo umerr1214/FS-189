@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `Logger` class with overloaded `log` methods. One `log` method should take a `std::string` message, another an `int` error code, and a third a `char` severity level. Each should print an appropriate formatted message.",
+  "test_cases": [
+    { "input": "", "expected": "[INFO] Message: System startup complete.\n[ERROR] Code: 200\n[SEVERITY] Level: I\n[INFO] Message: User 'guest' accessed public page.\n[ERROR] Code: 401\n[SEVERITY] Level: W\n[INFO] Message: Critical database connection failed.\n[ERROR] Code: 500\n[SEVERITY] Level: E\n" }
+  ],
+  "driver": "int main() {\n    Logger appLogger;\n    appLogger.log(\"System startup complete.\");\n    appLogger.log(200);\n    appLogger.log('I');\n    appLogger.log(\"User 'guest' accessed public page.\");\n    appLogger.log(401);\n    appLogger.log('W');\n    appLogger.log(\"Critical database connection failed.\");\n    appLogger.log(500);\n    appLogger.log('E');\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

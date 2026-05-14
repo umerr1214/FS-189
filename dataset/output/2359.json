@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Design a `ShoppingCart` class that uses composition to manage a collection of `Item` objects. The `Item` class (separate class) should have `name` (string), `price` (double), and `quantity` (int). `ShoppingCart` should have methods to `addItem(Item item)` and `calculateTotal()`.",
+  "test_cases": [
+    {
+      "input": "Add Laptop (1200.0, 1), Mouse (25.0, 2), Discount Voucher (-10.0, 1), Damaged Item (50.0, -1). Calculate total.",
+      "expected": "1190.0"
+    },
+    {
+      "input": "Create empty cart. Calculate total.",
+      "expected": "0.0"
+    }
+  ],
+  "driver": "int main() {\n    ShoppingCart cart;\n\n    cart.addItem(Item(\"Laptop\", 1200.0, 1));\n    cart.addItem(Item(\"Mouse\", 25.0, 2));\n    cart.addItem(Item(\"Discount Voucher\", -10.0, 1));\n    cart.addItem(Item(\"Damaged Item\", 50.0, -1));\n    std::cout << cart.calculateTotal() << std::endl;\n\n    ShoppingCart emptyCart;\n    std::cout << emptyCart.calculateTotal() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 7,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Item` class and `ShoppingCart::addItem` method lack input validation for `price` and `quantity`. Allowing negative prices or quantities can lead to conceptually incorrect total calculations (e.g., a negative total price for items in a cart).",
+    "The `calculateTotal` method directly sums `price * quantity` without checking if `price` or `quantity` are negative, which makes the total calculation mathematically correct but semantically flawed for a shopping cart context where prices and quantities are typically non-negative."
+  ]
+}

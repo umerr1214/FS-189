@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Student` with members `studentID` (int), `name` (`std::string`), and `gpa` (double). Write a program that creates an instance of `Student`, prompts the user to enter its details, and then prints all the student's information.",
+  "test_cases": [
+    {
+      "input": "101\nJohn Doe\n3.8",
+      "expected": "Enter student ID: Enter student name: Enter student GPA:\nStudent Information:\nID: 101\nName: John Doe\nGPA: 3.8\n"
+    }
+  ],
+  "driver": "g++ 4828.cpp -o 4828 && ./4828",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after struct definition, leading to compilation failure."
+  ]
+}

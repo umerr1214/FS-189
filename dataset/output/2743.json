@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Demonstrate multilevel inheritance by creating a `Vehicle` class, then derive `Car` from `Vehicle`, and finally `SportsCar` from `Car`. Add unique attributes and a simple `displayInfo` method at each level.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "SportsCar Info: Spoiler Height = 30 cm\n"
+    }
+  ],
+  "driver": "int main() {\n    SportsCar mySportsCar(100, 4, 30);\n    mySportsCar.displayInfo();\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing virtual destructors in base classes (Vehicle and Car), which can lead to memory leaks or undefined behavior when deleting derived objects through base class pointers.",
+    "The `SportsCar::displayInfo` method does not call its base class's `Car::displayInfo` method. This means that when `displayInfo` is called on a `SportsCar` object, information from `Vehicle` and `Car` levels is not displayed, leading to incomplete output and violating the spirit of demonstrating multilevel inheritance comprehensively."
+  ]
+}

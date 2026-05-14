@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private members `title`, `author`, and `isbn` (all strings). Provide public methods to set and get these values, ensuring basic encapsulation.",
+  "test_cases": [
+    { "input": "Set title '1984', author 'George Orwell', ISBN '978-0451524935'.", "expected": "Title: 1984\nAuthor: George Orwell\nISBN: 978-0451524935\n" }
+  ],
+  "driver": "Book myBook;\nmyBook.setTitle(\"1984\");\nmyBook.setAuthor(\"George Orwell\");\nmyBook.setIsbn(\"978-0451524935\");\n\nstd::cout << \"Title: \" << myBook.getTitle() << std::endl;\nstd::cout << \"Author: \" << myBook.getAuthor() << std::endl;\nstd::cout << \"ISBN: \" << myBook.getIsbn() << std::endl;",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition, causing a compilation error."
+  ]
+}

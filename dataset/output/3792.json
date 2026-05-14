@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter a sentence (as `std::string`) and then counts and displays the number of occurrences of a specific character (also input by the user) within that sentence.",
+  "test_cases": [
+    { "input": "a\nHello World", "expected": "The character 'a' appears 0 times in the sentence.\n" },
+    { "input": "z\nZebra Crossing", "expected": "The character 'z' appears 0 times in the sentence.\n" },
+    { "input": "p\napple pie", "expected": "The character 'p' appears 0 times in the sentence.\n" }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    {
+      "line": 31,
+      "column": 5,
+      "message": "After using `std::cin >> targetChar;`, a newline character is left in the input buffer. The subsequent `std::getline(std::cin, sentence);` reads this leftover newline immediately, causing the `sentence` variable to become empty or unexpectedly short, thereby skipping the actual sentence input from the user. This leads to an incorrect count, typically 0."
+    }
+  ]
+}

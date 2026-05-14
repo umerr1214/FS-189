@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Explain the purpose and usage of `public`, `private`, and `protected` access specifiers using a simple example with a base class `MyClass` and a derived class `DerivedClass`.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation error: missing semicolon after class definition." }
+  ],
+  "driver": "// No driver needed for syntax error, as it won't compile.",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the closing brace of 'MyClass' class definition."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `StringWrapper` class that manages a C-style string (`char*`) dynamically allocated on the heap. Provide a copy constructor that performs a deep copy to prevent dangling pointers.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- StringWrapper Test (Logical Error) ---\ns1: StringWrapper content: \"Short\"\ns2 (copy of s1): StringWrapper content: \"Short\"\n\n--- Longer String Test ---\ns3: StringWrapper content: \"LongerStringExample\"\ns4 (copy of s3): StringWrapper content: \"LongerStringExample\"\n\n--- End Test ---\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- StringWrapper Test (Logical Error) ---\" << std::endl;\n    StringWrapper s1(\"Short\");\n    std::cout << \"s1: \";\n    s1.print();\n    StringWrapper s2 = s1;\n    std::cout << \"s2 (copy of s1): \";\n    s2.print();\n    std::cout << \"\\n--- Longer String Test ---\" << std::endl;\n    StringWrapper s3(\"LongerStringExample\");\n    std::cout << \"s3: \";\n    s3.print();\n    StringWrapper s4 = s3;\n    std::cout << \"s4 (copy of s3): \";\n    s4.print();\n    std::cout << \"\\n--- End Test ---\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The copy constructor allocates `strlen(other.data)` bytes instead of `strlen(other.data) + 1`, leading to a buffer overflow when `strcpy` attempts to write the null terminator. This results in memory corruption or a crash."]
+}

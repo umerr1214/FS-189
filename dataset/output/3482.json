@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function `calculateAverage(float arr[], int size)` that takes a 1D float array and its size, then returns the average of its elements. In `main`, create a float array, pass it to the function, and print the calculated average.",
+  "test_cases": [
+    { "input": "float arr[] = {10.0f, 20.0f, 30.0f, 40.0f, 50.0f}; int size = 5;", "expected": "Average: 30" },
+    { "input": "float arr[] = {1.5f, 2.5f, 3.5f}; int size = 3;", "expected": "Average: 2.5" },
+    { "input": "float arr[] = {99.9f}; int size = 1;", "expected": "Average: 99.9" }
+  ],
+  "driver": "#include <iostream>\n#include <vector> // Not strictly necessary for fixed-size arrays, but useful for context\n\n// Function to calculate the average of a float array\nfloat calculateAverage(float a[], int n) { // Readability Issue: Poor variable names (a for arr, n for size)\n    float s = 0.0f; // Readability Issue: Poor variable name (s for sum)\n    int i = 0; // Readability Issue: Poor variable name (i for index/counter)\n    while (i < n) { // Efficiency/Readability Issue: Using while loop with manual increment, less idiomatic than for loop for array iteration\n        s = s + a[i]; // Efficiency Issue: Less efficient than s += a[i]\n        i++;\n    }\n    // Correctness: Assumes n > 0. If n == 0, it would lead to division by zero,\n    // but for 'Readability/Efficiency Issue' category with correctness=9, we assume valid inputs (n > 0).\n    return s / static_cast<float>(n); // Correct calculation, but overall style is suboptimal\n}\n\nint main() {\n    // Test case 1: Normal array\n    float data1[] = {10.0f, 20.0f, 30.0f, 40.0f, 50.0f};\n    int size1 = sizeof(data1) / sizeof(data1[0]);\n    std::cout << \"Array 1: {10.0, 20.0, 30.0, 40.0, 50.0}, Size: 5\" << std::endl;\n    std::cout << \"Average: \" << calculateAverage(data1, size1) << std::endl; // Expected: 30\n\n    std::cout << \"--------------------\" << std::endl;\n\n    // Test case 2: Different normal array\n    float data2[] = {1.5f, 2.5f, 3.5f};\n    int size2 = sizeof(data2) / sizeof(data2[0]);\n    std::cout << \"Array 2: {1.5, 2.5, 3.5}, Size: 3\" << std::endl;\n    std::cout << \"Average: \" << calculateAverage(data2, size2) << std::endl; // Expected: 2.5\n\n    std::cout << \"--------------------\" << std::endl;\n\n    // Test case 3: Single element array\n    float data3[] = {99.9f};\n    int size3 = sizeof(data3) / sizeof(data3[0]);\n    std::cout << \"Array 3: {99.9}, Size: 1\" << std::endl;\n    std::cout << \"Average: \" << calculateAverage(data3, size3) << std::endl; // Expected: 99.9\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": []
+}

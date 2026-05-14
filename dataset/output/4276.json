@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that reads a floating-point number from the user. Cast this floating-point number to an integer using explicit type casting and then print both the original number and the integer-converted number. Finally, calculate and print the difference between them.",
+  "test_cases": [
+    {
+      "input": "5.7",
+      "expected": "Enter a floating-point number: Original number: 5.7\nInteger-converted number: 5\nDifference: 0.7\n"
+    },
+    {
+      "input": "10.0",
+      "expected": "Enter a floating-point number: Original number: 10.0\nInteger-converted number: 10\nDifference: 0.0\n"
+    }
+  ],
+  "driver": "g++ -o solution 4276.cpp && echo \"5.7\" | ./solution",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'std::cin >> original_num'"
+  ]
+}

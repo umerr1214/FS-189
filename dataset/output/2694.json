@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Enhance the `Rectangle` class by adding a destructor that prints a message like 'Rectangle object destroyed.' whenever an object goes out of scope.",
+  "test_cases": [
+    { "input": "", "expected": "Rectangle object destroyed.\nRectangle object destroyed.\nRectangle object destroyed.\n" }
+  ],
+  "driver": "int main() {\n    {\n        Rectangle r1;\n        r1.~Rectangle();\n    }\n    Rectangle r2;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The destructor `~Rectangle()` is explicitly called on a stack-allocated object `r1`. This results in undefined behavior because the destructor will be invoked twice for the same object: once explicitly and once automatically when `r1` goes out of scope. While it might print the message twice, it's a misuse of language features."
+  ]
+}

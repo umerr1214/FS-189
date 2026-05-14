@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user for a positive integer `n` (representing the height). Using nested loops, print a solid pyramid pattern of asterisks `*` with `n` rows.",
+  "test_cases": [
+    {
+      "input": "0\n-2\nhello\n3",
+      "expected": "Enter the height of the pyramid (a positive integer): Height must be a positive integer. Please try again.\nEnter the height of the pyramid (a positive integer): Height must be a positive integer. Please try again.\nEnter the height of the pyramid (a positive integer): Invalid input. Please enter a number.\nEnter the height of the pyramid (a positive integer):    *\n  ***\n *****\n"
+    },
+    {
+      "input": "5",
+      "expected": "Enter the height of the pyramid (a positive integer):     *\n    ***\n   *****\n  *******\n *********\n"
+    }
+  ],
+  "driver": "int main() { /* The user's solution's main function will be executed. */ return 0; }",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

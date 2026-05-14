@@ -1,0 +1,10 @@
+{
+  "language": "c++",
+  "question": "Declare an `int` variable, a `float` variable, and a `char` variable. Then declare a pointer for each of these data types. Assign the address of each variable to its corresponding pointer. Print the memory address stored in each pointer and the value pointed to by each pointer using the dereference operator.",
+  "test_cases": [],
+  "driver": "",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["Instead of printing the memory address stored *in* the pointer (e.g., `int_ptr`), the code incorrectly prints the memory address *of* the pointer variable itself (e.g., `&int_ptr`)."]
+}

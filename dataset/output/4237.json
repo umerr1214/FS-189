@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a C++ struct named `Book` with members `title` (std::string), `author` (std::string), and `publication_year` (int). Create an array of three `Book` objects, prompt the user to enter details for each, and then print the details of all books.",
+  "test_cases": [
+    {
+      "input": "2000\nThe Great Gatsby\nF. Scott Fitzgerald\n1984\nNineteen Eighty-Four\nGeorge Orwell\n2005\nThe Hitchhiker's Guide to the Galaxy\nDouglas Adams\n",
+      "expected": "Enter details for three books:\n\nBook 1:\nEnter publication year: Enter title: Enter author:\nBook 2:\nEnter publication year: Enter title: Enter author:\nBook 3:\nEnter publication year: Enter title: Enter author:\n\n--- Book Details ---\n\nBook 1:\nTitle: \nAuthor: The Great Gatsby\nPublication Year: 2000\n\nBook 2:\nTitle: \nAuthor: Nineteen Eighty-Four\nPublication Year: 1984\n\nBook 3:\nTitle: \nAuthor: The Hitchhiker's Guide to the Galaxy\nPublication Year: 2005\n"
+    }
+  ],
+  "driver": "g++ -std=c++17 -o solution {filename} && ./solution",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Input buffer not properly cleared after numeric input (std::cin >> int), leading to skipped std::getline calls and shifted data (title becomes empty, author gets the intended title)."
+  ]
+}

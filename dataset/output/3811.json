@@ -1,0 +1,25 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that takes a 2x3 integer matrix as input from the user, transposes it (swaps rows and columns to make it 3x2), and then prints the original and transposed matrices in a clear format.",
+  "test_cases": [
+    {
+      "input": "1 2 3 4 5 6",
+      "expected": "Original Matrix:\n1 2 3\n4 5 6\n\nTransposed Matrix:\n1 4\n2 5\n3 6\n"
+    },
+    {
+      "input": "10 20 30 40 50 60",
+      "expected": "Original Matrix:\n10 20 30\n40 50 60\n\nTransposed Matrix:\n10 40\n20 50\n30 60\n"
+    },
+    {
+      "input": "1 2 three 4 5 6",
+      "expected": "Original Matrix:\n1 2 0\n0 0 0\n\nTransposed Matrix:\n1 0\n2 0\n0 0\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n\n// Forward declaration of the user's solution function\nvoid solve(); \n\nstd::string run_test(const std::string& input) {\n    std::stringstream ss_input(input);\n    std::stringstream ss_output;\n\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    solve();\n\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    return ss_output.str();\n}\n\nint main() {\n    // Example usage for a single test case\n    // std::cout << run_test(\"1 2 3 4 5 6\");\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program lacks input validation. If the user enters non-integer data or an incorrect number of inputs, `std::cin` will enter a fail state, causing subsequent reads to fail or produce incorrect values (often 0s) without proper error handling (e.g., `cin.clear()`, `cin.ignore()`). This makes the program non-robust to invalid user input."
+  ]
+}

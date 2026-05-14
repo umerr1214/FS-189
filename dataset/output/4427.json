@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Write a program that takes a positive integer from the user and determines if it is a prime number (divisible only by 1 and itself).",
+  "test_cases": [
+    { "input": "7", "expected": "7 is a prime number." },
+    { "input": "4", "expected": "4 is not a prime number." },
+    { "input": "2", "expected": "2 is a prime number." },
+    { "input": "1", "expected": "Please enter a positive integer." },
+    { "input": "9", "expected": "9 is not a prime number." },
+    { "input": "15", "expected": "15 is not a prime number." },
+    { "input": "21", "expected": "21 is not a prime number." }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\n// Assume isPrime(int n) is defined in the user's code.\n// The user's main function is ignored; this driver calls isPrime directly.\n\nextern bool isPrime(int n);\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        std::stringstream ss(line);\n        int num;\n        if (!(ss >> num)) {\n            std::cout << \"Invalid input.\" << std::endl;\n            continue;\n        }\n\n        if (num <= 0) {\n            std::cout << \"Please enter a positive integer.\" << std::endl;\n        } else {\n            if (isPrime(num)) {\n                std::cout << num << \" is a prime number.\" << std::endl;\n            } else {\n                std::cout << num << \" is not a prime number.\" << std::endl;\n            }\n        }\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `isPrime` function incorrectly classifies all odd numbers greater than 2 as prime, failing to check for odd composite divisors (e.g., 9, 15, 21 are incorrectly identified as prime)."
+  ]
+}

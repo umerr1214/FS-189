@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a function `isLeapYear` that takes an integer representing a year and returns true if it's a leap year, false otherwise. A leap year is divisible by 4, but not by 100 unless it is also divisible by 400.",
+  "test_cases": [
+    { "input": "2000", "expected": "true" },
+    { "input": "2004", "expected": "true" },
+    { "input": "1900", "expected": "false" },
+    { "input": "2100", "expected": "false" },
+    { "input": "1999", "expected": "false" },
+    { "input": "1600", "expected": "true" },
+    { "input": "1800", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n\n// The isLeapYear function will be inserted here\n\nint main() {\n    std::vector<std::pair<int, bool>> test_cases = {\n        {2000, true},\n        {2004, true},\n        {1900, false},\n        {2100, false},\n        {1999, false},\n        {1600, true},\n        {1800, false}\n    };\n\n    for (const auto& tc : test_cases) {\n        int year = tc.first;\n        bool expected = tc.second;\n        // The call to isLeapYear will fail compilation due to the syntax error\n        // bool result = isLeapYear(year);\n        // std::cout << \"Year: \" << year << \", Expected: \" << (expected ? \"true\" : \"false\")\n        //           << \", Got: \" << (result ? \"true\" : \"false\") << std::endl;\n        std::cout << \"Skipping test for year \" << year << \" due to compilation error.\" << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Typo in 'bool' keyword in function signature ('boo' instead of 'bool'), causing a compilation error."]
+}

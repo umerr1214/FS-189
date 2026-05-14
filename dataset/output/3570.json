@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Calculate the area and perimeter of a circle given its radius, which is entered by the user. Use `const` for PI.",
+  "test_cases": [
+    { "input": "5", "expected": "Area: 78.5398\nPerimeter: 31.4159\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <iomanip>\n#include <cmath>\n\n// This driver demonstrates how to read input and format output\n// for a single test case, reflecting the expected interaction.\nint main() {\n    double radius;\n    if (!(std::cin >> radius)) {\n        std::cerr << \"Invalid input for radius.\" << std::endl;\n        return 1;\n    }\n\n    const double PI_VAL = 3.14159;\n    double area = PI_VAL * radius * radius;\n    double perimeter = 2 * PI_VAL * radius;\n\n    std::cout << std::fixed << std::setprecision(4) << \"Area: \" << area << std::endl;\n    \n    std::cout << std::fixed << std::setprecision(4) << \"Perimeter: \" << perimeter << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Attempted to assign a new value to 'PI', which was declared as a 'const' variable. Constant variables cannot be modified after initialization."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Reverse a given integer number and print the reversed number. For example, if the input is 12345, the output should be 54321.",
+  "test_cases": [
+    { "input": "12345", "expected": "54321" },
+    { "input": "-123", "expected": "-321" },
+    { "input": "0", "expected": "0" },
+    { "input": "100", "expected": "1" },
+    { "input": "1000000009", "expected": "-294967295" },
+    { "input": "-2147483648", "expected": "0" }
+  ],
+  "driver": "#include <iostream>\n\n// The reverseNumber function is assumed to be provided by the user.\n// int reverseNumber(int num);\n\nint main() {\n    int num;\n    if (!(std::cin >> num)) {\n        return 1; // Input error\n    }\n    std::cout << reverseNumber(num) << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program suffers from integer overflow when reversing large numbers that exceed INT_MAX or fall below INT_MIN. For example, reversing 1000000009 incorrectly produces -294967295 instead of 9000000001 due to overflow of the 'reversed_num' variable.",
+    "The program incorrectly handles std::numeric_limits<int>::min() (-2147483648). Attempting to negate this value results in an overflow, causing 'num' to remain -2147483648, and the function subsequently returns 0, which is incorrect."
+  ]
+}

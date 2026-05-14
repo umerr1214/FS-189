@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Define a struct `Student` with members `id` (int), `name` (std::string), and `grade` (double). Create an array of 3 `Student` structs, populate their data, and then print the details of each student.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Student ID: 101\nName: Alice Smith\nGrade: 95.50\n\nStudent ID: 102\nName: Bob Johnson\nGrade: 88.75\n\nStudent ID: 103\nName: Charlie Brown\nGrade: 72.00"
+    }
+  ],
+  "driver": "// The program executes its logic directly in main and prints to stdout.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Memory leak: The dynamically allocated array `students` using `new Student[3]` is not deallocated with `delete[] students;`. This leads to a resource leak.",
+    "The program does not properly manage dynamically allocated memory, which can lead to system instability or performance degradation in long-running applications."
+  ]
+}

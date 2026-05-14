@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Develop a program that reads a student's numerical score (0-100) and assigns a letter grade (A: 90-100, B: 80-89, C: 70-79, D: 60-69, F: 0-59) using `if-else if` statements.",
+  "test_cases": [
+    { "input": "95\n", "expected": "Enter student's numerical score (0-100): The letter grade is: A\n" },
+    { "input": "82\n", "expected": "Enter student's numerical score (0-100): The letter grade is: B\n" },
+    { "input": "70\n", "expected": "Enter student's numerical score (0-100): The letter grade is: C\n" },
+    { "input": "65\n", "expected": "Enter student's numerical score (0-100): The letter grade is: D\n" },
+    { "input": "45\n", "expected": "Enter student's numerical score (0-100): The letter grade is: F\n" },
+    { "input": "-5\n", "expected": "Enter student's numerical score (0-100): The letter grade is: F\n" },
+    { "input": "105\n", "expected": "Enter student's numerical score (0-100): The letter grade is: A\n" }
+  ],
+  "driver": "extern void grading_logic_4741(std::istream& in, std::ostream& out, std::ostream& err);\n\nstd::string run_test_case(const std::string& input) {\n    std::stringstream ss_input(input);\n    std::stringstream ss_output;\n    std::stringstream ss_error;\n\n    grading_logic_4741(ss_input, ss_output, ss_error);\n\n    return ss_output.str();\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not validate if the input score is within the specified range of 0-100. It processes scores like -5 (assigning 'F') or 105 (assigning 'A') without indicating that these are invalid inputs, leading to potentially misleading results."
+  ]
+}

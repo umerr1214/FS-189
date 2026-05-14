@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private members `title`, `author`, and `isbn` (all strings). Provide public methods to set and get these values, ensuring basic encapsulation.",
+  "test_cases": [
+    { "input": "Set title 'To Kill a Mockingbird', author 'Harper Lee', ISBN '978-0061120084'.", "expected": "Title: To Kill a Mockingbird\nAuthor: Harper Lee\nISBN: 978-0061120084\n" }
+  ],
+  "driver": "Book myBook;\nmyBook.setTitle(\"To Kill a Mockingbird\");\nmyBook.setAuthor(\"Harper Lee\");\nmyBook.setIsbn(\"978-0061120084\");\n\nstd::cout << \"Title: \" << myBook.title << std::endl; // This line causes the error\nstd::cout << \"Author: \" << myBook.getAuthor() << std::endl;\nstd::cout << \"ISBN: \" << myBook.getIsbn() << std::endl;",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Attempting to access a private member ('title') directly from `main` (outside the class), which violates encapsulation and C++ access rules, leading to a compilation error."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that includes an overloaded function `void printArea(double radius)` to calculate and print the area of a circle, and another `void printArea(double length, double width)` to calculate and print the area of a rectangle. Test both versions in `main`.",
+  "test_cases": [
+    {
+      "input": "Calls printArea(10.0) and printArea(5.0, 10.0) in main.",
+      "expected": "Area of circle with radius 10.0000000000: 314.1592653590\nArea of rectangle with length 5.0000000000 and width 10.0000000000: 50.0000000000\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n#include <iomanip>\n\nvoid set_output_precision() {\n    std::cout << std::fixed << std::setprecision(10);\n}\n\n// Assumed correct printArea function definitions for driver context\nvoid printArea(double radius) {\n    set_output_precision();\n    double area = M_PI * radius * radius;\n    std::cout << \"Area of circle with radius \" << radius << \": \" << area << std::endl;\n}\n\nvoid printArea(double length, double width) {\n    set_output_precision();\n    double area = length * width;\n    std::cout << \"Area of rectangle with length \" << length << \" and width \" << width << \": \" << area << std::endl;\n}\n\nint main() {\n    printArea(10.0);\n    printArea(5.0, 10.0);\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the `std::cout` statement in the `printArea(double radius)` function definition."
+  ]
+}

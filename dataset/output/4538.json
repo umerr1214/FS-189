@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a simple number guessing game. The program should choose a random number between 1 and 100, then prompt the user to guess it. Provide hints (too high/too low) and continue until the correct number is guessed. Use a `do-while` loop for the game logic.",
+  "test_cases": [
+    { "input": "50\n25\n37\n42\n", "expected": "The game should proceed normally, providing hints and eventually congratulating the user for valid integer inputs. The specific number of attempts and the final secret number depend on the random seed, but the game flow should be correct." },
+    { "input": "1\n100\n50\n", "expected": "Another sequence of valid integer guesses should lead to a correct game completion, despite the underlying readability issues. The program functions correctly for expected inputs." }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// This is a placeholder driver. The actual test harness\n// would compile the student's code and run its main() function\n// with redirected input and captured output.\n// For example, to test with '50\\n25\\n' input:\n// 1. Compile student's code: g++ student_code.cpp -o student_app\n// 2. Run with input redirection: echo -e \"50\\n25\\n\" | ./student_app\n// 3. Capture stdout and stderr for analysis.\nint main() {\n    std::cout << \"This driver outlines the testing process. It expects the student's program to read from stdin and write to stdout.\" << std::endl;\n    std::cout << \"Input for test cases would be fed to stdin (e.g., via pipe or file redirection).\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The secret number is stored in a global variable (`SECRET_NUMBER_GLOBAL`), which is poor practice as it reduces encapsulation, makes the code harder to maintain, and can lead to unexpected side effects in larger programs. Variable names like `usr_g` for user guess and `cnt` for attempt count are not descriptive, hindering readability. Lack of sufficient comments also contributes to poor readability."
+  ]
+}

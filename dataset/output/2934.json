@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Design a `NotificationSystem` class. Overload its constructor to accept different notification types (e.g., `enum NotificationType { SMS, EMAIL, PUSH }`). Also, overload a `send` method to handle sending messages of different content types (e.g., `std::string`, `int`).",
+  "test_cases": [
+    { "input": "Create SMS notifier and send string message", "expected": "Sending SMS notification: Hello via SMS!\n" },
+    { "input": "Create EMAIL notifier and send int message", "expected": "Sending EMAIL notification with ID: 12345\n" },
+    { "input": "Attempt to send a double message (3.14159)", "expected": "Compilation Error: No matching function for call to 'NotificationSystem::send(double)'." }
+  ],
+  "driver": "int main() {\n    NotificationSystem smsNotifier(SMS);\n    smsNotifier.send(\"Hello via SMS!\");\n\n    NotificationSystem emailNotifier(EMAIL);\n    emailNotifier.send(12345);\n\n    emailNotifier.send(3.14159);\n\n    NotificationSystem pushNotifier(PUSH);\n    pushNotifier.send(\"Important update!\");\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "No matching function for call to 'NotificationSystem::send(double)'. The 'send' method is overloaded for 'std::string' and 'int', but not for 'double', leading to a semantic error during compilation."
+  ]
+}

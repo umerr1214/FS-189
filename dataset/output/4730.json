@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Define a struct `Student` with members `id` (int), `name` (std::string), and `grade` (double). Create an array of 3 `Student` structs, populate their data, and then print the details of each student.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Student ID: 101\nName: Alice Smith\nGrade: 95.50\n\nStudent ID: 102\nName: Bob Johnson\nGrade: 88.75\n\nStudent ID: 103\nName: Charlie Brown\nGrade: 72.00"
+    }
+  ],
+  "driver": "// The program executes its logic directly in main and prints to stdout.",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Readability issue: The code for initializing and printing student details is highly repetitive. A loop or a helper function would significantly improve conciseness and maintainability.",
+    "Efficiency issue (minor): Repeatedly setting `std::fixed` and `std::setprecision(2)` inside the print block for each student is unnecessary; it only needs to be set once for the stream.",
+    "Lack of comments: The code lacks comments explaining the purpose of different sections, which can hinder understanding for future readers."
+  ]
+}

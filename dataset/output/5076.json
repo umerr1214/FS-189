@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that takes a positive integer `N` from the user. Using a `for` loop, calculate and display the sum of all even numbers between 1 and `N` (inclusive).",
+  "test_cases": [
+    { "input": "10", "expected": "Sum of even numbers between 1 and 10 is: 30\n" },
+    { "input": "5", "expected": "Sum of even numbers between 1 and 5 is: 6\n" },
+    { "input": "1", "expected": "Sum of even numbers between 1 and 1 is: 0\n" },
+    { "input": "2", "expected": "Sum of even numbers between 1 and 2 is: 2\n" }
+  ],
+  "driver": "#include <iostream>\n\nint main() {\n    int N;\n    std::cin >> N;\n    int sum = 0;\n    for (int i = 2; i <= N; i += 2) {\n        sum += i;\n    }\n    std::cout << \"Sum of even numbers between 1 and \" << N << \" is: \" << sum << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": []
+}

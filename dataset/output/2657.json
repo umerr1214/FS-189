@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create two classes, `DataHolder` and `Processor`. `DataHolder` has a private integer member `value`. Implement a function `processData(DataHolder& dh)` which needs to access and modify `DataHolder`'s private `value`. Declare `processData` as a `friend` function of the `DataHolder` class to enable this access.",
+  "test_cases": [
+    { "input": "", "expected": "Initial value: 5\nProcessed value: 15\n" }
+  ],
+  "driver": "int main() {\n    DataHolder myData(5);\n    std::cout << \"Initial value: \" << myData.getValue() << std::endl;\n\n    processData(myData);\n\n    std::cout << \"Processed value: \" << myData.getValue() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The 'processData' function incorrectly sets 'value' to 0, instead of performing a dynamic or meaningful modification as implied by 'processing'."]
+}

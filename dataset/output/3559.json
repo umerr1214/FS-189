@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `void transposeMatrix(int matrix[3][3], int result[3][3])` that takes a 3x3 integer matrix and stores its transpose in another 3x3 matrix. In `main`, initialize a matrix, call the function, and print both the original and transposed matrices.",
+  "test_cases": [
+    { "input": "1 2 3\n4 5 6\n7 8 9", "expected": "Original Matrix:\n1 2 3 \n4 5 6 \n7 8 9 \n\nTransposed Matrix:\n1 4 7 \n2 5 8 \n3 6 9 \n\n" }
+  ],
+  "driver": "#include <iostream>\n#include <cstdio>\n\nvoid printMatrix(const int matrix[3][3], const char* name) {\n    printf(\"%s:\\n\", name);\n    for (int i = 0; i < 3; ++i) {\n        for (int j = 0; j < 3; ++j) {\n            printf(\"%d \", matrix[i][j]);\n        }\n        printf(\"\\n\");\n    }\n    printf(\"\\n\");\n}\n\nvoid transposeMatrix(int matrix[3][3], int result[3][3]) {\n    for (int i = 0; i < 3; ++i) {\n        for (int j = 0; j < 3; ++j) {\n            result[j][i] = matrix[i][j];\n        }\n    }\n    matrix[0][0] = 0; \n}\n\nint main() {\n    int originalMatrix[3][3] = {\n        {1, 2, 3},\n        {4, 5, 6},\n        {7, 8, 9}\n    };\n    int transposedMatrix[3][3];\n\n    printMatrix(originalMatrix, \"Original Matrix\");\n\n    transposeMatrix(originalMatrix, transposedMatrix);\n\n    printMatrix(transposedMatrix, \"Transposed Matrix\");\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The `transposeMatrix` function unintentionally modifies an element of the input `matrix` parameter (`matrix[0][0] = 0;`). While the transpose result stored in `result` is correct, modifying an input parameter that is not intended to be changed is a robustness issue, as it can lead to unexpected side effects or incorrect program state if the caller expects the original matrix to remain pristine after the function call."]
+}

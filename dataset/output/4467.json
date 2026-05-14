@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Given three distinct integer numbers, determine and print which of them is the middle value (neither the smallest nor the largest).",
+  "test_cases": [
+    { "input": "1 5 10", "expected": "5" },
+    { "input": "10 5 1", "expected": "5" },
+    { "input": "1 10 5", "expected": "5" },
+    { "input": "5 1 10", "expected": "5" },
+    { "input": "10 1 5", "expected": "5" },
+    { "input": "5 10 1", "expected": "5" },
+    { "input": "-1 -5 -10", "expected": "-5" },
+    { "input": "-10 -5 -1", "expected": "-5" },
+    { "input": "-5 0 5", "expected": "0" },
+    { "input": "100 -50 0", "expected": "0" }
+  ],
+  "driver": "The program reads three integers from standard input and prints the middle value to standard output. Test cases are executed by providing input to stdin and comparing stdout with expected output.",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

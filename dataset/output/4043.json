@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a simple calculator. The program should ask the user for two floating-point numbers and an operator (+, -, *, /). Using a `switch` statement, perform the corresponding operation and display the result. Handle division by zero.",
+  "test_cases": [
+    { "input": "10\n5\n+", "expected": "Result: 10 + 5 = 15\n" },
+    { "input": "20.5\n2.5\n-", "expected": "Result: 20.5 - 2.5 = 18\n" },
+    { "input": "7\n3\n*", "expected": "Result: 7 * 3 = 10\n" },
+    { "input": "10\n2\n/", "expected": "Result: 10 / 2 = 5\n" },
+    { "input": "5\n0\n/", "expected": "Error: Division by zero is not allowed.\n" },
+    { "input": "10\n2\nx", "expected": "Error: Invalid operator.\n" }
+  ],
+  "driver": "int main() {\n    // The main function of the submitted code handles user interaction.\n    // Test cases are designed to simulate stdin and check stdout.\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The multiplication operator '*' performs addition instead of multiplication, leading to incorrect results for multiplication operations."]
+}

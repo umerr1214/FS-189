@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Animal` with a private `species` attribute and a parameterized constructor that initializes it. Create a derived class `Dog` with an additional private `name` attribute. The `Dog` constructor must correctly call the `Animal` base class constructor to initialize the `species` and then initialize its own `name`. Include a `makeSound()` method in both classes.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "An bear makes a sound.\nBuddy the Canine barks.\nFido the Canine barks.\n"
+    }
+  ],
+  "driver": "int main() {\n    Animal genericAnimal(\"bear\");\n    genericAnimal.makeSound();\n\n    Dog myDog(\"Labrador\", \"Buddy\");\n    myDog.makeSound();\n\n    Animal* anotherDog = new Dog(\"Poodle\", \"Fido\");\n    anotherDog->makeSound();\n    delete anotherDog;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": []
+}

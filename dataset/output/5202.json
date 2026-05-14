@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that continuously reads positive integers from the user using a `while` loop. The loop should terminate when the user enters -1 (a sentinel value). After termination, calculate and print the average of all positive integers entered (excluding the -1).",
+  "test_cases": [
+    { "input": "10\n20\n30\n-1\n", "expected": "Average of positive integers: 20.00" },
+    { "input": "1\n2\n4\n-1\n", "expected": "Average of positive integers: 2.00" },
+    { "input": "5\n5\n5\n-1\n", "expected": "Average of positive integers: 5.00" },
+    { "input": "1\n1\n1\n1\n1\n-1\n", "expected": "Average of positive integers: 1.00" },
+    { "input": "10\n10\n11\n-1\n", "expected": "Average of positive integers: 10.00" },
+    { "input": "-1\n", "expected": "No positive integers were entered." }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <iomanip>\n\nint main() {\n    std::string input_data;\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        input_data += line + \"\\n\";\n    }\n\n    std::istringstream iss(input_data);\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::cin.rdbuf(iss.rdbuf());\n\n    std::ostringstream oss;\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::cout.rdbuf(oss.rdbuf());\n\n    // Placeholder for actual execution of the student's program.\n    // In a real evaluation environment, the student's compiled program\n    // would be executed with 'input_data' as stdin, and its stdout\n    // would be captured and compared against the 'expected' field.\n    std::cout << \"Driver would execute the compiled C++ program with provided input and capture output.\\n\";\n\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The program performs integer division (sum / count) to calculate the average. Even though 'sum' is 'long long' and 'average' is 'double', the division itself results in a 'long long' (integer) value, truncating any fractional part before it is assigned to the 'double' variable. This leads to an incorrect average for non-integer results."
+  ]
+}

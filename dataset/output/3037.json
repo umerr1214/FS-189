@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Vehicle` with private members `brand` (string) and `year` (int). Implement a constructor and a public method `displayInfo()`. Derive a `Car` class and a `Motorcycle` class from `Vehicle`. Each derived class should add one specific private attribute (e.g., `numDoors` for `Car`, `hasSidecar` for `Motorcycle`) and override `displayInfo()` to include its specific attribute.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Direct Objects ---\nBrand: Toyota, Year: 2020, Doors: 4.\nBrand: Harley-Davidson, Year: 2023, Has Sidecar: Yes.\n\n--- Polymorphic Objects (Issue Here) ---\nBrand: Honda, Year: 2018.\nBrand: BMW, Year: 2022.\n"
+    }
+  ],
+  "driver": "The main function in the provided C++ file acts as the driver.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The base class method 'displayInfo()' is not declared virtual. When derived class objects are accessed through base class pointers, the base class version of 'displayInfo()' is called instead of the derived class's overridden version, leading to incorrect polymorphic behavior (object slicing).",
+    "Derived class methods 'displayInfo()' do not use the 'override' keyword. While not strictly an error, it's good practice for clarity and compile-time checks when attempting to override a virtual function."
+  ]
+}

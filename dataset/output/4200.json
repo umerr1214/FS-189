@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function `count_vowels` that takes a C-style string (char array) as input and returns the total number of vowels (a, e, i, o, u, case-insensitive) present in the string.",
+  "test_cases": [
+    { "input": "Hello World", "expected": "3" },
+    { "input": "Programming", "expected": "3" },
+    { "input": "AEIOUaeiou", "expected": "10" },
+    { "input": "Rhythm", "expected": "0" },
+    { "input": "", "expected": "0" },
+    { "input": "c++", "expected": "0" },
+    { "input": "AaEeIiOoUu", "expected": "10" },
+    { "input": null, "expected": "0" }
+  ],
+  "driver": "void run_test(const char* input, int expected, const char* test_name) {\n    int result = count_vowels(input);\n    std::cout << \"Test: \" << test_name << \" (Input: \\\"\" << (input ? input : \"nullptr\") << \"\\\")\\n\";\n    std::cout << \"Expected: \" << expected << \", Got: \" << result;\n    if (result == expected) {\n        std::cout << \" - PASSED\\n\";\n    } else {\n        std::cout << \" - FAILED\\n\";\n    }\n    std::cout << \"--------------------------------\\n\";\n}\n\nint main() {\n    run_test(\"Hello World\", 3, \"Basic mixed case string\");\n    run_test(\"Programming\", 3, \"Another mixed case string\");\n    run_test(\"AEIOUaeiou\", 10, \"All vowels, mixed case\");\n    run_test(\"Rhythm\", 0, \"No vowels\");\n    run_test(\"\", 0, \"Empty string\");\n    run_test(\"c++\", 0, \"Non-vowel characters\");\n    run_test(\"AaEeIiOoUu\", 10, \"Pairs of mixed case vowels\");\n    run_test(nullptr, 0, \"Null string\");\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The character 'char' is directly passed to `std::tolower` without casting to `unsigned char`. If `char` is signed and contains negative values (e.g., for extended ASCII characters), this leads to undefined behavior according to the C++ standard for cctype functions."
+  ]
+}

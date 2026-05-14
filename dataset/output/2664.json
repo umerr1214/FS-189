@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Revisit the `Shape` hierarchy (with `Shape` as an abstract base class, and derived `Circle`/`Rectangle`). Demonstrate the importance of a virtual destructor in the `Shape` base class. Create a `Shape` pointer that points to a dynamically allocated `Circle` or `Rectangle` object, and then `delete` it through the `Shape` pointer. Explain the consequences if the base class destructor were not virtual.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Demonstrating virtual destructor with a SEMANTIC ERROR (memory leak in derived class):\n--- Deleting Circle via Shape pointer (will leak 'data') ---\nShape constructor\nCircle constructor (My Leaky Circle)\nDrawing a Circle: My Leaky Circle. Data size: 10\nCircle destructor (My Leaky Circle)\nShape destructor\n\n--- Deleting Rectangle via Shape pointer (correct) ---\nShape constructor\nRectangle constructor\nDrawing a Rectangle\nRectangle destructor\nShape destructor\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"Demonstrating virtual destructor with a SEMANTIC ERROR (memory leak in derived class):\\n\";\n\n    std::cout << \"--- Deleting Circle via Shape pointer (will leak 'data') ---\\n\";\n    Shape* s1 = new Circle(\"My Leaky Circle\", 10);\n    s1->draw();\n    delete s1;\n\n    std::cout << \"\\n--- Deleting Rectangle via Shape pointer (correct) ---\\n\";\n    Shape* s2 = new Rectangle();\n    s2->draw();\n    delete s2;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Although the base class 'Shape' has a virtual destructor, and derived destructors are called polymorphically, the derived class 'Circle' has a semantic error. It dynamically allocates memory for 'data' in its constructor but fails to deallocate this memory in its destructor. This leads to a memory leak for every 'Circle' object created, even when deleted polymorphically through a 'Shape' pointer."
+  ]
+}

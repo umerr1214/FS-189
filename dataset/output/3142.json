@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Implement a `Calculator` class with three overloaded `add` methods: one that adds two integers, one that adds two doubles, and one that adds three integers.",
+  "test_cases": [
+    { "input": "calc.add(5, 7)", "expected": "12" },
+    { "input": "calc.add(5.5, 7.2)", "expected": "12.7" },
+    { "input": "calc.add(1, 2, 3)", "expected": "6" }
+  ],
+  "driver": "#include <iostream>\n\nclass Calculator {\npublic:\n    int add(int a, int b) {\n        return a + b;\n    }\n\n    double add(double a, double b) {\n        return a + b;\n    }\n\n    int add(int a, int b, int c) {\n        return a + b + c;\n    }\n};\n\nint main() {\n    Calculator calc;\n    std::cout << calc.add(5, 7) << std::endl;\n    std::cout << calc.add(5.5, 7.2) << std::endl;\n    std::cout << calc.add(1, 2, 3) << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "error: expected ';' after class definition"
+  ]
+}

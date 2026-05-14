@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "For a `Rectangle` class with `width` and `height` (double), implement a `getArea()` method that is declared as `const`. Demonstrate that this method can be called on a `const` `Rectangle` object and does not modify object state.",
+  "test_cases": [
+    {
+      "input": "10.0 5.0",
+      "expected": "Compilation Error"
+    },
+    {
+      "input": "7.0 3.0",
+      "expected": "Compilation Error"
+    }
+  ],
+  "driver": "int main() {\n    Rectangle r1(10.0, 5.0);\n    const Rectangle const_r1(7.0, 3.0);\n\n    std::cout << \"Area of r1: \" << r1.getArea() << std::endl;\n    std::cout << \"Area of const_r1: \" << const_r1.getArea() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `getArea()` method is declared as `const`, but it attempts to modify a member variable (`width`). A `const` member function promises not to modify the object's state, and violating this promise is a semantic error that the compiler will catch."
+  ]
+}

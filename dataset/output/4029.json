@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Develop a program that takes an integer from the user and determines if it is positive, negative, or zero. Print an appropriate message for each case.",
+  "test_cases": [
+    { "input": "15", "expected": "Enter an integer: The number is positive.\n" },
+    { "input": "-8", "expected": "Enter an integer: The number is negative.\n" },
+    { "input": "0", "expected": "Enter an integer: The number is zero.\n" },
+    { "input": "hello\n10", "expected": "Enter an integer: Invalid input. Please enter an integer: The number is positive.\n" },
+    { "input": "3.14\n-5", "expected": "Enter an integer: Invalid input. Please enter an integer: The number is negative.\n" }
+  ],
+  "driver": "std::stringstream input_stream(\"{{input}}\"); std::stringstream output_stream; \n std::streambuf* old_cin = std::cin.rdbuf(); std::cin.rdbuf(input_stream.rdbuf()); \n std::streambuf* old_cout = std::cout.rdbuf(); std::cout.rdbuf(output_stream.rdbuf()); \n main(); \n std::cin.rdbuf(old_cin); std::cout.rdbuf(old_cout); \n return output_stream.str();",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

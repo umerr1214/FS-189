@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `NotificationSystem` class. Overload its constructor to accept different notification types (e.g., `enum NotificationType { SMS, EMAIL, PUSH }`). Also, overload a `send` method to handle sending messages of different content types (e.g., `std::string`, `int`).",
+  "test_cases": [
+    { "input": "Create SMS notifier and send string message", "expected": "Sending SMS notification: Hello via SMS!\n" },
+    { "input": "Create EMAIL notifier and send int message (12345)", "expected": "Sending EMAIL notification: Generic integer message\n" },
+    { "input": "Create PUSH notifier and send string message", "expected": "Sending PUSH notification: Important update!\n" },
+    { "input": "Create PUSH notifier and send int message (54321)", "expected": "Sending PUSH notification: Generic integer message\n" }
+  ],
+  "driver": "int main() {\n    NotificationSystem smsNotifier(SMS);\n    smsNotifier.send(\"Hello via SMS!\");\n\n    NotificationSystem emailNotifier(EMAIL);\n    emailNotifier.send(12345);\n\n    NotificationSystem pushNotifier(PUSH);\n    pushNotifier.send(\"Important update!\");\n    pushNotifier.send(54321);\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'send(int messageId)' method has a logical error: it prints a generic string 'Generic integer message' instead of the actual 'messageId' value."
+  ]
+}

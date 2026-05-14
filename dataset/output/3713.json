@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Calculate the power of a number (base raised to exponent) without using the `pow()` function. Both base and exponent are positive integers entered by the user.",
+  "test_cases": [
+    { "input": "2\n3", "expected": "8" },
+    { "input": "5\n1", "expected": "5" },
+    { "input": "10\n4", "expected": "10000" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\nint main() {\n    std::string line;\n    std::getline(std::cin, line);\n    int base = std::stoi(line);\n\n    std::getline(std::cin, line);\n    int exponent = std::stoi(line);\n\n    long long result = 1;\n    if (exponent < 0) {\n        std::cout << \"Exponent must be a positive integer.\" << std::endl;\n        return 1;\n    }\n    for (int i = 0; i < exponent; ++i) {\n        result *= base;\n    }\n    std::cout << result << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'result' variable is initialized to 0 instead of 1, causing all calculations to incorrectly produce 0."
+  ]
+}

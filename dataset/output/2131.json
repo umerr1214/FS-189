@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Logger` class with an overloaded `log` method. One `log` method should take a `const char*` message, another should take an `int` error code, and a third should take a `bool` status. Each should print an appropriate formatted message.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "[INFO] Message: Application started.\n[ERROR] Code: 101\n[STATUS] Success: true\n[INFO] Message: Processing data...\n[ERROR] Code: 200\n[STATUS] Success: false\n[INFO] Message: Shutdown initiated.\n[INFO] Message: (null)\n"
+    }
+  ],
+  "driver": "#include <sstream>\n#include <iostream>\n\n// Assume Logger class is defined in the main file\n\nint main() {\n    Logger logger;\n    std::stringstream ss;\n    std::streambuf* oldCout = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n\n    logger.log(\"Application started.\");\n    logger.log(101);\n    logger.log(true);\n    logger.log(\"Processing data...\");\n    logger.log(200);\n    logger.log(false);\n    logger.log(\"Shutdown initiated.\");\n    logger.log((const char*)nullptr); // Exposes robustness issue\n\n    std::cout.rdbuf(oldCout);\n    std::cout << ss.str();\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `log(const char* message)` method does not handle `nullptr` input gracefully. Directly printing a `nullptr` `const char*` can lead to undefined behavior or print a platform-dependent string like '(null)', which is not robust error handling. A check for `nullptr` should be performed before printing."
+  ]
+}

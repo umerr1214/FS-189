@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that uses nested `for` loops to print the following pattern of asterisks to the console, for a user-specified number of rows 'N':\n*\n**\n***\n****\n(For N=4)",
+  "test_cases": [
+    { "input": "4", "expected": "*\n**\n***\n****\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\n// This is a placeholder driver. In a real system, it would compile and run\n// the submitted C++ code with various inputs and capture outputs.\nint main() {\n    std::cout << \"This driver executes the compiled user program.\" << std::endl;\n    std::cout << \"It would typically read input from a test case, pass it to the program,\"<< std::endl;\n    std::cout << \"and capture the program's standard output for comparison with expected output.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The program reads the input for 'N' as a character (`char N_char`) and then incorrectly uses its ASCII value as the integer number of rows (`int N = N_char`). This leads to a pattern being printed for the ASCII value (e.g., 52 for '4') instead of the intended numeric value."]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a `Shape` base class with a `color` (string) attribute. Create a `Circle` derived class that adds a `radius` (double). Implement a constructor for `Circle` that initializes both `color` and `radius` by calling the base class constructor.",
+  "test_cases": [
+    {
+      "input": "Blue, 5.0",
+      "expected": "Compilation Error: Missing semicolon after class definition."
+    }
+  ],
+  "driver": "int main() {\n    Circle c(\"Blue\", 5.0);\n    c.display();\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the closing brace of the 'Shape' class definition, leading to a compilation error."
+  ]
+}

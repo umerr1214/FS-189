@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Box` class with a constructor that takes `length` and `width` as arguments. Provide a default argument for `width` so that if only `length` is provided, `width` defaults to the same value as `length` (creating a square base).",
+  "test_cases": [
+    { "input": "Box(10.0, 5.0)", "expected": "Box 1 (10.0x5.0): Length=10, Width=5, Area=50\n" },
+    { "input": "Box(7.5)", "expected": "Box 2 (7.5x7.5): Length=7.5, Width=7.5, Area=56.25\n" },
+    { "input": "Box(1.0, 1.0)", "expected": "Box 3 (1.0x1.0): Length=1, Width=1, Area=1\n" },
+    { "input": "Box(12.3)", "expected": "Box 4 (12.3x12.3): Length=12.3, Width=12.3, Area=151.29\n" }
+  ],
+  "driver": "    Box box1(10.0, 5.0); \n    Box box2(7.5);       \n    Box box3(1.0, 1.0);  \n    Box box4(12.3);      \n\n    std::cout << \"Box 1 (10.0x5.0): Length=\" << box1.getLength() << \", Width=\" << box1.getWidth() << \", Area=\" << box1.getArea() << '\\n';\n    std::cout << \"Box 2 (7.5x7.5): Length=\" << box2.getLength() << \", Width=\" << box2.getWidth() << \", Area=\" << box2.getArea() << '\\n';\n    std::cout << \"Box 3 (1.0x1.0): Length=\" << box3.getLength() << \", Width=\" << box3.getWidth() << \", Area=\" << box3.getArea() << '\\n';\n    std::cout << \"Box 4 (12.3x12.3): Length=\" << box4.getLength() << \", Width=\" << box4.getWidth() << \", Area=\" << box4.getArea() << '\\n';",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

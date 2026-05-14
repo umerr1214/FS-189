@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that reads integer elements into a 3x3 two-dimensional array (matrix) from the user. After input, print the sum of elements for each individual row of the matrix.",
+  "test_cases": [
+    {
+      "input": "1 2 3 4 5 6 7 8 9",
+      "expected": "Welcome! Please enter 9 integer elements for the 3x3 matrix.\nEnter element for matrix[0][0]: Enter element for matrix[0][1]: Enter element for matrix[0][2]: Enter element for matrix[1][0]: Enter element for matrix[1][1]: Enter element for matrix[1][2]: Enter element for matrix[2][0]: Enter element for matrix[2][1]: Enter element for matrix[2][2]: \n--- Matrix Elements ---\n1\t2\t3\t\n4\t5\t6\t\n7\t8\t9\t\n\n--- Sum of Elements for Each Row ---\nRow 0 Sum: 6\nRow 1 Sum: 15\nRow 2 Sum: 24\n"
+    },
+    {
+      "input": "1 2 3\n4 5 6\n7 8 9",
+      "expected": "Welcome! Please enter 9 integer elements for the 3x3 matrix.\nEnter element for matrix[0][0]: Enter element for matrix[0][1]: Enter element for matrix[0][2]: Enter element for matrix[1][0]: Enter element for matrix[1][1]: Enter element for matrix[1][2]: Enter element for matrix[2][0]: Enter element for matrix[2][1]: Enter element for matrix[2][2]: \n--- Matrix Elements ---\n1\t2\t3\t\n4\t5\t6\t\n7\t8\t9\t\n\n--- Sum of Elements for Each Row ---\nRow 0 Sum: 6\nRow 1 Sum: 15\nRow 2 Sum: 24\n"
+    },
+    {
+      "input": "1 2 invalid 3\n4 5 6\n7 8 9",
+      "expected": "Welcome! Please enter 9 integer elements for the 3x3 matrix.\nEnter element for matrix[0][0]: Enter element for matrix[0][1]: Enter element for matrix[0][2]: Invalid input. Please enter an integer.\nEnter element for matrix[0][2]: Enter element for matrix[1][0]: Enter element for matrix[1][1]: Enter element for matrix[1][2]: Enter element for matrix[2][0]: Enter element for matrix[2][1]: Enter element for matrix[2][2]: \n--- Matrix Elements ---\n1\t2\t3\t\n4\t5\t6\t\n7\t8\t9\t\n\n--- Sum of Elements for Each Row ---\nRow 0 Sum: 6\nRow 1 Sum: 15\nRow 2 Sum: 24\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\n// Assuming the user's code is in a function called 'main' or similar\n// For testing, we'll redirect stdin/stdout\n\nint main_test() {\n    // Original main function from the user's code\n    // Needs to be adapted if the user's code is not a direct main function\n    // For this problem, it's a simple console app, so we can just call main\n    return main();\n}\n\nint main() {\n    // This driver is a placeholder. In a real evaluation environment,\n    // standard input and output streams would be redirected for each test case.\n    // The 'input' string would be fed to stdin, and 'expected' would be compared with stdout.\n    std::cout << \"Driver for C++ program evaluation.\" << std::endl;\n    std::cout << \"This driver does not execute the user's code directly within itself.\";\n    std::cout << \"Instead, it describes how the testing harness would interact with the code.\";\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "For a `Book` class with `title` and `author`, overload the `<<` (insertion) operator to allow direct printing of `Book` objects to `std::cout` in a readable format.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book 1: Title: \"The Lord of the Rings\", Author: \"J.R.R. Tolkien\"\nBook 2: Title: \"Dune\", Author: \"Frank Herbert\"\nBook 3: Title: \"Foundation\", Author: \"Isaac Asimov\"; Another message.\nEmpty Book: Title: \"\", Author: \"\"\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <utility> // For std::move\n\nclass Book {\nprivate:\n    std::string title;\n    std::string author;\n\npublic:\n    // Constructor using std::move for efficiency\n    Book(std::string title, std::string author)\n        : title(std::move(title)), author(std::move(author)) {}\n\n    // Getter methods for title and author\n    const std::string& getTitle() const { return title; }\n    const std::string& getAuthor() const { return author; }\n\n    // Friend declaration: Allows the overloaded operator<< to access private members\n    friend std::ostream& operator<<(std::ostream& os, const Book& book);\n};\n\n// Correct overload of the << (insertion) operator for Book objects\n// Takes std::ostream& by non-const reference and const Book& by const reference.\n// Returns std::ostream& to allow chaining.\nstd::ostream& operator<<(std::ostream& os, const Book& book) {\n    // Prints in a clear, readable format using direct streaming and '\\n' for newlines\n    os << \"Title: \\\"\" << book.title << \"\\\", Author: \\\"\" << book.author << \"\\\"\";\n    return os;\n}\n\nint main() {\n    // Test case 1: Basic printing of a Book object\n    Book book1(\"The Lord of the Rings\", \"J.R.R. Tolkien\");\n    std::cout << \"Book 1: \" << book1 << '\\n';\n\n    // Test case 2: Printing another Book object\n    Book book2(\"Dune\", \"Frank Herbert\");\n    std::cout << \"Book 2: \" << book2 << '\\n';\n\n    // Test case 3: Demonstrating chaining of the operator<<\n    Book book3(\"Foundation\", \"Isaac Asimov\");\n    std::cout << \"Book 3: \" << book3 << \"; \" << \"Another message.\" << '\\n';\n\n    // Test case 4: Book with empty title/author to ensure robustness\n    Book book4(\"\", \"\");\n    std::cout << \"Empty Book: \" << book4 << '\\n';\n\n    return 0;\n}\n",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

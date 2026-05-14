@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Modify the `Shape` hierarchy (from previous questions) to make `Shape` an abstract base class. This means `Shape` should have a pure virtual function `calculateArea()`. Demonstrate that `Shape` objects cannot be instantiated directly and that any derived concrete class (`Circle`, `Rectangle`) must provide an implementation for `calculateArea()`.",
+  "test_cases": [
+    { "input": "", "expected": "Demonstrating Shape hierarchy with robustness issue (negative dimensions).\nCircle with radius -5.0000: Area = 78.5398\nRectangle with width -4.0000, height 6.0000: Area = -24.0000\nRectangle with width -3.0000, height -7.0000: Area = 21.0000\n\nDemonstrating with valid dimensions:\nCircle with radius 10.0000: Area = 314.1593\nRectangle with width 5.0000, height 8.0000: Area = 40.0000\n\nDemonstrating polymorphism:\nShape 1 area: 153.9380\nShape 2 area: 50.0000\nShape 3 area: 12.5664\n" }
+  ],
+  "driver": "int main() { /* The provided main function acts as the driver */ return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The code allows negative dimensions for `Circle` and `Rectangle` objects without proper validation or correction. This leads to geometrically incorrect area calculations (e.g., a positive area for a negative radius, or a positive area for two negative dimensions, or a negative area for one negative dimension). A robust solution would enforce non-negative dimensions (e.g., by taking absolute values, clamping to zero, or throwing an exception for invalid inputs)."
+  ]
+}

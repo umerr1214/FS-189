@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Check if three given side lengths `a`, `b`, and `c` can form a valid triangle. A triangle is valid if the sum of any two sides is greater than the third side.",
+  "test_cases": [
+    { "input": "3 4 5", "expected": "true" },
+    { "input": "1 2 3", "expected": "false" },
+    { "input": "1 1 10", "expected": "false" },
+    { "input": "5 12 13", "expected": "true" },
+    { "input": "2 2 2", "expected": "true" },
+    { "input": "10 1 1", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n\n// The isValidTriangle function will be inserted here.\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        std::stringstream ss(line);\n        int a, b, c;\n        if (!(ss >> a >> b >> c)) {\n            std::cerr << \"Invalid input format.\" << std::endl;\n            continue;\n        }\n        if (isValidTriangle(a, b, c)) {\n            std::cout << \"true\" << std::endl;\n        } else {\n            std::cout << \"false\" << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The function computes the correct boolean result in the 'is_valid' variable but then semantically misinterprets its purpose by always returning 'true' regardless of the computed value. The intended meaning of the function (to return the triangle's validity) is violated by the unconditional return statement."
+  ]
+}

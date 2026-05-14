@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create an `Employee` class with `name` and `id`. Design a `Team` class that manages an array of `Employee` pointers to represent team members. Demonstrate adding employees to the team without the team owning their memory.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Added employee Alice Johnson to team.\nAdded employee Bob Smith to team.\nAdded employee Charlie Brown to team.\nCannot add a null employee pointer to the team.\n\n--- Team Members ---\nEmployee ID: 101, Name: Alice Johnson\nEmployee ID: 102, Name: Bob Smith\nEmployee ID: 103, Name: Charlie Brown\n--------------------\nAdded employee Diana Prince to team.\n\n--- Team Members ---\nEmployee ID: 101, Name: Alice Johnson\nEmployee ID: 102, Name: Bob Smith\nEmployee ID: 103, Name: Charlie Brown\nEmployee ID: 104, Name: Diana Prince\n--------------------"
+    }
+  ],
+  "driver": "int main() {\n    Employee emp1(\"Alice Johnson\", 101);\n    Employee emp2(\"Bob Smith\", 102);\n    Employee emp3(\"Charlie Brown\", 103);\n\n    Team devTeam;\n\n    devTeam.addEmployee(&emp1);\n    devTeam.addEmployee(&emp2);\n    devTeam.addEmployee(&emp3);\n    devTeam.addEmployee(nullptr);\n\n    devTeam.displayTeam();\n\n    Employee* emp4 = new Employee(\"Diana Prince\", 104);\n    devTeam.addEmployee(emp4);\n    devTeam.displayTeam();\n\n    delete emp4;\n    emp4 = nullptr;\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

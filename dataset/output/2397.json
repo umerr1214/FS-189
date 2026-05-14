@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Define a `Circle` class with a `radius` attribute. Implement a default constructor setting radius to 0, a parameterized constructor setting radius to a given value, and a copy constructor.",
+  "test_cases": [
+    { "input": "Default constructor", "expected": "Circle c1 (default): Radius = 0.0000000000, Area = 0.0000000000" },
+    { "input": "Parameterized constructor with 5.0", "expected": "Circle c2 (param 5.0): Radius = 5.0000000000, Area = 78.5398163397" },
+    { "input": "Parameterized constructor with -3.0 (robustly handled)", "expected": "Circle c3 (param -3.0): Radius = 0.0000000000, Area = 0.0000000000" },
+    { "input": "Copy constructor from c2", "expected": "Circle c4 (copy of c2): Radius = 5.0000000000, Area = 78.5398163397" },
+    { "input": "Copy constructor from c3", "expected": "Circle c5 (copy of c3): Radius = 0.0000000000, Area = 0.0000000000" }
+  ],
+  "driver": "See main function in .cpp file. It instantiates Circle objects using all three constructors and prints their radius and area.",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `Logger` class. It should have a static member `logCount` (int) that keeps track of the total number of `Logger` objects ever created, and a static method `getTotalLogs()` to retrieve this count. Increment `logCount` in the constructor and decrement it (if applicable) in the destructor.",
+  "test_cases": [
+    { "input": "", "expected": "Initial log count: 0\nAfter l1 creation: 1\nAfter l2 creation: 2\nAfter l2 destruction: 1\nAfter l3 creation: 2" }
+  ],
+  "driver": "int main() {\n    std::cout << \"Initial log count: \" << Logger::getTotalLogs() << std::endl;\n    Logger l1;\n    std::cout << \"After l1 creation: \" << Logger::getTotalLogs() << std::endl;\n    {\n        Logger l2;\n        std::cout << \"After l2 creation: \" << Logger::getTotalLogs() << std::endl;\n    }\n    std::cout << \"After l2 destruction: \" << Logger::getTotalLogs() << std::endl;\n    Logger l3;\n    std::cout << \"After l3 creation: \" << Logger::getTotalLogs() << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The destructor incorrectly decrements logCount. The problem asks for 'total number of Logger objects *ever created*', which implies a monotonically increasing count. Decrementing causes logCount to track the number of *active* objects, not the total ever created."
+  ]
+}

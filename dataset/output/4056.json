@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that calculates the factorial of a non-negative integer entered by the user. Use a `for` loop to perform the calculation. Handle invalid input (negative numbers) by printing an error message.",
+  "test_cases": [
+    { "input": "5", "expected": "Factorial of 5 is 120\n" },
+    { "input": "10", "expected": "Factorial of 10 is 3628800\n" },
+    { "input": "13", "expected": "Factorial of 13 is 6227020800\n" },
+    { "input": "-4", "expected": "Error: Factorial is not defined for negative numbers.\n" }
+  ],
+  "driver": "int main() {\n    int num;\n    long long factorial = 1; // Using long long in driver for correct expected output\n\n    std::cin >> num;\n\n    if (num < 0) {\n        std::cout << \"Error: Factorial is not defined for negative numbers.\" << std::endl;\n    } else {\n        for (int i = 1; i <= num; ++i) {\n            factorial *= i;\n        }\n        std::cout << \"Factorial of \" << num << \" is \" << factorial << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `factorial` variable is declared as `int`. Factorials grow very rapidly, and an `int` (typically 32-bit) can only hold values up to 2,147,483,647. Factorial of 13 (13!) is 6,227,020,800, which exceeds the maximum value for a 32-bit `int`. This will lead to integer overflow and incorrect results for inputs like 13 or greater, although the code compiles and runs without syntax or obvious runtime errors (it produces undefined behavior)."
+  ]
+}

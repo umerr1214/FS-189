@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a `Time` class with private integer members `hours`, `minutes`, and `seconds`. Overload the constructor to allow creating `Time` objects in three ways: 1) no arguments (default to 00:00:00), 2) with only `hours` (minutes and seconds default to 0), and 3) with `hours`, `minutes`, and `seconds`. Ensure values are within valid ranges (e.g., minutes 0-59).",
+  "test_cases": [
+    { "input": "Time t1; t1.display();", "expected": "00:00:00\n" },
+    { "input": "Time t2(10); t2.display();", "expected": "10:00:00\n" },
+    { "input": "Time t3(1, 2, 3); t3.display();", "expected": "01:02:03\n" },
+    { "input": "Time t4(23, 59, 59); t4.display();", "expected": "23:59:59\n" },
+    { "input": "Time t5(25, 65, -10); t5.display();", "expected": "00:00:00\n" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\n// The user's Time class code will be inserted here.\n\nint main() {\n    Time t1;\n    std::cout << \"Default Time: \";\n    t1.display();\n\n    Time t2(10);\n    std::cout << \"Time with hours: \";\n    t2.display();\n\n    Time t3(1, 2, 3);\n    std::cout << \"Full Time (1,2,3): \";\n    t3.display();\n\n    Time t4(23, 59, 59);\n    std::cout << \"Full Time (23,59,59): \";\n    t4.display();\n\n    Time t5(25, 65, -10);\n    std::cout << \"Invalid Time: \";\n    t5.display();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["In the three-argument constructor `Time(int h, int m, int s)`, the `minutes` and `seconds` members are initialized with the swapped values of `s` and `m` respectively, leading to incorrect time representation."]
+}

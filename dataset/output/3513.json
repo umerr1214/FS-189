@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that declares a 1D integer array and initializes it. Then, calculate and print the sum of all elements in the array using pointer arithmetic instead of array indexing.",
+  "test_cases": [
+    { "input": "", "expected": "Sum of array elements: 150\n" }
+  ],
+  "driver": "g++ -o {file_name_no_ext} {file_name}.cpp && ./{file_name_no_ext}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Given two 3x3 matrices, `A` and `B`, read their elements from the user, compute their sum, and store the result in a third matrix `C`. Print all three matrices in a clear format.",
+  "test_cases": [
+    {
+      "input": "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18",
+      "expected": "Enter elements for Matrix A (3x3):\nEnter element A[0][0]: Enter element A[0][1]: Enter element A[0][2]: Enter element A[1][0]: Enter element A[1][1]: Enter element A[1][2]: Enter element A[2][0]: Enter element A[2][1]: Enter element A[2][2]: \nEnter elements for Matrix B (3x3):\nEnter element B[0][0]: Enter element B[0][1]: Enter element B[0][2]: Enter element B[1][0]: Enter element B[1][1]: Enter element B[1][2]: Enter element B[2][0]: Enter element B[2][1]: Enter element B[2][2]: \nMatrix A:\n   1   2   3\n   4   5   6\n   7   8   9\n\nMatrix B:\n  10  11  12\n  13  14  15\n  16  17  18\n\nMatrix C (Sum A + B):\n  11  13  15\n  17  19  21\n  23  25  27\n"
+    }
+  ],
+  "driver": "g++ -o solution solution.cpp && ./solution < input.txt",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

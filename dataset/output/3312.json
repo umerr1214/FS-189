@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Reverse a given integer number and print the reversed number. For example, if the input is 12345, the output should be 54321.",
+  "test_cases": [
+    { "input": "12345", "expected": "54321" },
+    { "input": "987", "expected": "789" },
+    { "input": "100", "expected": "1" },
+    { "input": "0", "expected": "0" },
+    { "input": "1000000009", "expected": "9000000001" }
+  ],
+  "driver": "#include <iostream>\n\n// Assuming the student's solution provides a function like:\n// int reverseNumber(int n);\n\nextern int reverseNumber(int n);\n\nint main() {\n    int num;\n    while (std::cin >> num) {\n        std::cout << reverseNumber(num) << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The code does not handle potential integer overflow. The 'reversed_n' variable is of type 'int', and if the reversed number exceeds the maximum value an 'int' can hold (INT_MAX), it will result in an integer overflow, leading to an incorrect or undefined value.",
+    "For example, when the input is 1000000009, the mathematically correct reversed number is 9000000001. However, since 9000000001 is greater than INT_MAX (typically 2,147,483,647 for a 32-bit signed int), the program will output an incorrect, overflowed value (e.g., a negative number) instead of 9000000001."
+  ]
+}

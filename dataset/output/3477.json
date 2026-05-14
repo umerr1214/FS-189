@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that reads a positive integer from the user and calculates the sum of its digits (e.g., for 123, the sum is 1+2+3=6). Use a `while` loop for the calculation.",
+  "test_cases": [
+    { "input": "123", "expected": "6" },
+    { "input": "4567", "expected": "22" },
+    { "input": "10", "expected": "1" },
+    { "input": "7", "expected": "7" },
+    { "input": "0", "expected": "0" }
+  ],
+  "driver": "#include <iostream>\n\nint main() {\n    // This driver demonstrates the expected input mechanism for a single test run.\n    // The student's program is expected to read a single integer from standard input,\n    // process it, and print its result to standard output.\n    // The actual test harness will provide specific inputs from the 'test_cases'\n    // array and compare the program's output with the 'expected' results.\n    int dummy_input;\n    std::cin >> dummy_input; // Simply reads an integer, simulating input for the student's program\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

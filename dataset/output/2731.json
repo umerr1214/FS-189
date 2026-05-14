@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Shape` with a public virtual method `calculateArea()` that returns 0. Derive two classes, `Square` and `Circle`, from `Shape`. Override `calculateArea()` in each derived class to return the correct area.",
+  "test_cases": [
+    { "input": "Square(5.0), Circle(3.0), Square(-4.0), Circle(-2.5)", "expected": "25.0000000000\n28.2743338823\n16.0000000000\n19.6349540849\n0.0000000000" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath> // For M_PI\n#include <iomanip> // For std::fixed, std::setprecision\n\n// Base class\nclass Shape {\npublic:\n    virtual double calculateArea() const {\n        return 0.0;\n    }\n    virtual ~Shape() = default;\n};\n\n// Derived class Square\nclass Square : public Shape {\nprivate:\n    double side;\npublic:\n    // Robustness issue: No input validation for 's'.\n    // A negative 's' will result in a mathematically positive but conceptually incorrect area.\n    Square(double s) : side(s) {}\n\n    double calculateArea() const override {\n        return side * side;\n    }\n};\n\n// Derived class Circle\nclass Circle : public Shape {\nprivate:\n    double radius;\npublic:\n    // Robustness issue: No input validation for 'r'.\n    // A negative 'r' will result in a mathematically positive but conceptually incorrect area.\n    Circle(double r) : radius(r) {}\n\n    double calculateArea() const override {\n        return M_PI * radius * radius;\n    }\n};\n\nint main() {\n    std::cout << std::fixed << std::setprecision(10);\n\n    // Demonstrating the robustness issue with negative dimensions\n    Square s1(5.0);\n    Circle c1(3.0);\n    Square s2(-4.0); // Invalid input, but program proceeds to calculate area\n    Circle c2(-2.5); // Invalid input, but program proceeds to calculate area\n\n    std::cout << s1.calculateArea() << std::endl;\n    std::cout << c1.calculateArea() << std::endl;\n    std::cout << s2.calculateArea() << std::endl; // Returns 16.0\n    std::cout << c2.calculateArea() << std::endl; // Returns M_PI * 6.25\n\n    Shape base_shape;\n    std::cout << base_shape.calculateArea() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": []
+}

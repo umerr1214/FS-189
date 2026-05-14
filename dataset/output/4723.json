@@ -1,0 +1,25 @@
+{
+  "language": "c++",
+  "question": "Create a function `isPrime` that takes an integer as input and returns `true` if it's a prime number, `false` otherwise.",
+  "test_cases": [
+    { "input": "0", "expected": "false" },
+    { "input": "1", "expected": "false" },
+    { "input": "2", "expected": "true" },
+    { "input": "3", "expected": "true" },
+    { "input": "4", "expected": "false" },
+    { "input": "5", "expected": "true" },
+    { "input": "6", "expected": "false" },
+    { "input": "7", "expected": "true" },
+    { "input": "13", "expected": "true" },
+    { "input": "25", "expected": "false" },
+    { "input": "97", "expected": "true" },
+    { "input": "100", "expected": "false" },
+    { "input": "-5", "expected": "false" },
+    { "input": "2147483647", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n#include <limits>\n\nbool isPrime(int n);\n\nint main() {\n    std::cout << (isPrime(0) ? \"true\" : \"false\") << std::endl;\n    std::cout << (isPrime(1) ? \"true\" : \"false\") << std::endl;\n    std::cout << (isPrime(2) ? \"true\" : \"false\") << std::endl;\n    std::cout << (isPrime(3) ? \"true\" : \"false\") << std::endl;\n    std::cout << (isPrime(4) ? \"true\" : \"false\") << std::endl;\n    std::cout << (isPrime(5) ? \"true\" : \"false\") << std::endl;\n    \n    std::cout << (isPrime(6) ? \"true\" : \"false\") << std::endl;\n    std::cout << (isPrime(7) ? \"true\" : \"false\") << std::endl;\n    std::cout << (isPrime(13) ? \"true\" : \"false\") << std::endl;\n    std::cout << (isPrime(25) ? \"true\" : \"false\") << std::endl;\n    std::cout << (isPrime(97) ? \"true\" : \"false\") << std::endl;\n    std::cout << (isPrime(100) ? \"true\" : \"false\") << std::endl;\n    std::cout << (isPrime(-5) ? \"true\" : \"false\") << std::endl;\n    std::cout << (isPrime(std::numeric_limits<int>::max()) ? \"true\" : \"false\") << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["Potential integer overflow in loop condition `i * i <= n` for very large inputs (e.g., INT_MAX). This leads to undefined behavior and incorrect results for large prime numbers.", "Does not handle negative numbers explicitly, although `n <= 1` correctly categorizes them as non-prime."]
+}

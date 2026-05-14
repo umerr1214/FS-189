@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Describe and demonstrate the order in which constructors and destructors are called when an object of a derived class is created and then goes out of scope, given a base class `Base` and a derived class `Derived`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Program Start: Creating Derived object...\nBase Constructor Called\nDerived Constructor Called\nDerived Destructor Called\nBase Destructor Called\nProgram End: Derived object went out of scope.\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"Program Start: Creating Derived object...\\n\";\n    { \n        Derived d;\n    } \n    std::cout << \"Program End: Derived object went out of scope.\\n\";\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The output messages for Base and Derived constructors are swapped, leading to an incorrect demonstration of the call order."
+  ]
+}

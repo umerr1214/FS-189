@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Count the number of words in a sentence entered by the user. Assume words are separated by single spaces and there are no leading or trailing spaces.",
+  "test_cases": [
+    { "input": "hello world", "expected": "2" },
+    { "input": "one", "expected": "1" },
+    { "input": "", "expected": "0" },
+    { "input": "hello  world", "expected": "2" },
+    { "input": " hello world", "expected": "2" },
+    { "input": "hello world ", "expected": "2" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// Forward declaration of the function implemented in the submitted C++ file\nint countWords(const std::string& sentence);\n\nint main() {\n    std::vector<std::pair<std::string, int>> test_cases = {\n        {\"hello world\", 2},\n        {\"one\", 1},\n        {\"\", 0},\n        {\"hello  world\", 2},\n        {\" hello world\", 2},\n        {\"hello world \", 2}\n    };\n\n    int passed_count = 0;\n    for (size_t i = 0; i < test_cases.size(); ++i) {\n        const std::string& input = test_cases[i].first;\n        int expected = test_cases[i].second;\n        int result = countWords(input);\n\n        if (result == expected) {\n            passed_count++;\n        }\n    }\n\n    std::cout << \"Passed: \" << passed_count << \"/\" << test_cases.size() << std::endl;\n\n    return (passed_count == test_cases.size() ? 0 : 1);\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The word counting logic assumes words are always separated by single spaces and fails to correctly handle multiple spaces between words.",
+    "The logic also produces incorrect counts for strings with leading or trailing spaces, as it simply counts all spaces and adds one."
+  ]
+}

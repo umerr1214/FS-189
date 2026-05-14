@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function `calculateFactorial` that takes an integer `n` as input and returns its factorial. The main program should prompt the user for a number and display its factorial using this function. Handle negative inputs appropriately.",
+  "test_cases": [
+    { "input": "0", "expected": "1" },
+    { "input": "5", "expected": "120" },
+    { "input": "-3", "expected": "-1" },
+    { "input": "10", "expected": "3628800" },
+    { "input": "20", "expected": "2432902008176640000" }
+  ],
+  "driver": "int main() { std::string line; while (std::getline(std::cin, line)) { std::stringstream ss(line); int n; ss >> n; long long result = calculateFactorial(n); std::cout << result << std::endl; } return 0; }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

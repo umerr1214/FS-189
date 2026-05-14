@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that dynamically allocates memory for an array of 5 integers using `new`, prompts the user to enter values for these integers, prints the values, and then deallocates the memory using `delete[]`.",
+  "test_cases": [
+    { "input": "1\n2\n3\n4\n5\n", "expected": "Compilation Error: Expected a semicolon before 'std::cout'." }
+  ],
+  "driver": "The program is intended to be compiled and run directly. Due to a syntax error, it will fail compilation.",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after dynamic allocation statement."]
+}

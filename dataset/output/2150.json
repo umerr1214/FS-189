@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "For the `Point` class (from a previous problem), overload the prefix increment `++` operator. It should increment both the `x` and `y` coordinates of the `Point` object and return a reference to the modified object.",
+  "test_cases": [
+    { "input": "(1,2)", "expected": "(2,3)" },
+    { "input": "(0,0)", "expected": "(1,1)" },
+    { "input": "(-5,10)", "expected": "(-4,11)" },
+    { "input": "(100,200)", "expected": "(101,201)" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <limits>\n\nclass Point {\npublic:\n    int x, y;\n\n    Point(int _x = 0, int _y = 0) : x(_x), y(_y) {}\n\n    Point& operator++() {\n        Point new_point_val(this->x + 1, this->y + 1);\n        this->x = new_point_val.x;\n        this->y = new_point_val.y;\n        return *this;\n    }\n\n    friend std::ostream& operator<<(std::ostream& os, const Point& p) {\n        os << \"(\" << p.x << \", \" << p.y << \")\";\n        return os;\n    }\n};\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        std::stringstream ss(line);\n        char paren, comma;\n        int x, y;\n        ss >> paren >> x >> comma >> y >> paren; // Read (x,y)\n        Point p(x, y);\n        ++p; // Apply prefix increment\n        std::cout << p << std::endl; // Print the result\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The implementation creates an unnecessary temporary `Point` object to calculate the new values, then assigns them back. This is less efficient (involves an extra constructor call and object creation) and less readable/idiomatic compared to directly incrementing the `x` and `y` members."
+  ]
+}

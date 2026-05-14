@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop an `Employee` class (with `name`, `id`). Then, create a `Department` class that *aggregates* multiple `Employee` objects using a `std::vector` of pointers to `Employee`. Demonstrate that `Employee` objects can exist independently of the `Department`.",
+  "test_cases": [
+    {
+      "input": "Create employees (Alice 101, Bob 102) and add them to HR department. Bob is created in a local scope, then accessed after its destruction.",
+      "expected": "Employee Alice (ID: 101) created.\nEmployee Bob (ID: 102) created.\nInside scope: Added Bob to HR.\nEmployee Bob (ID: 102) destroyed.\n\nAttempting to display HR employees after Bob is destroyed:\nDepartment: Human Resources\nEmployee: Alice (ID: 101)\nEmployee: Bob (ID: 102)\n\nEmployee 1 (Alice, ID 101) still exists independently:\nEmployee: Alice (ID: 101)\n\nEnd of program.\nEmployee Alice (ID: 101) destroyed."
+    }
+  ],
+  "driver": "The `main` function directly demonstrates the class usage and aggregation.",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The program exhibits a semantic error due to a dangling pointer. An `Employee` object ('Bob') is created on the stack within a limited scope. Its address is then added to the `Department`'s vector. When the scope ends, 'Bob' is destroyed, but the `Department` still holds a pointer to its former memory location. Later, when `hr.displayEmployees()` is called, it attempts to dereference this dangling pointer to 'Bob', leading to undefined behavior (likely a crash or corrupted output), even though the `expected` output shows the intended logical display."
+  ]
+}

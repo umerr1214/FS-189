@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Person` with `protected` members `firstName` and `lastName` (both strings). Create a derived class `Teacher` that has an additional `subject` (string) member. The `Teacher` constructor should correctly initialize `firstName` and `lastName` by calling the `Person` base class constructor, and then initialize its own `subject` member. Implement a method in `Teacher` to display the teacher's full name and subject.",
+  "test_cases": [
+    { "input": "", "expected": "Teacher: Alice Smith, Subject: Physics\nTeacher: Bob Johnson, Subject: Chemistry\nTeacher: Charlie Brown, Subject: History\n" }
+  ],
+  "driver": "int main_driver() {\n    std::stringstream ss;\n    std::streambuf* oldCout = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n\n    Teacher teacher1(\"Alice\", \"Smith\", \"Physics\");\n    teacher1.displayTeacherInfo();\n\n    Teacher teacher2(\"Bob\", \"Johnson\", \"Chemistry\");\n    teacher2.displayTeacherInfo();\n\n    // Demonstrating the semantic error: deleting a derived object via a base pointer\n    // when the base class destructor is not virtual. This will lead to the Teacher's\n    // destructor (and thus the deletion of 'grades') not being called, resulting in a memory leak.\n    Person* teacherPtr = new Teacher(\"Charlie\", \"Brown\", \"History\");\n    static_cast<Teacher*>(teacherPtr)->displayTeacherInfo(); // Call method to get output\n    delete teacherPtr; // This will only call Person::~Person(), leaking grades.\n\n    std::cout.rdbuf(oldCout);\n    std::cout << ss.str();\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["Base class destructor is not virtual, leading to potential undefined behavior (e.g., memory leaks) when deleting derived objects through base class pointers."]
+}

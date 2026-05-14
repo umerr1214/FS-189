@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Model a `Course` class that aggregates `Student` objects. The `Course` class should have a `courseName` (string) and maintain a collection (e.g., `std::vector`) of `Student` objects. Implement methods to add a student to the course and display all enrolled students.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Testing Correct Version ---\nSuccessfully added student: David Lee (ID: 301) to Advanced Algorithms.\nSuccessfully added student: Emily Chen (ID: 302) to Advanced Algorithms.\n\n--- Course: Advanced Algorithms ---\nEnrolled Students (2):\n  - ID: 301, Name: David Lee\n  - ID: 302, Name: Emily Chen\n---------------------------------\n\nAttempting to add David Lee (ID: 301) again...\nWarning: Student with ID 301 (David Lee) is already enrolled in Advanced Algorithms. Not added again.\n\n--- Course: Advanced Algorithms ---\nEnrolled Students (2):\n  - ID: 301, Name: David Lee\n  - ID: 302, Name: Emily Chen\n---------------------------------\nSuccessfully added student: Fiona Wang (ID: 303) to Advanced Algorithms.\n\n--- Course: Advanced Algorithms ---\nEnrolled Students (3):\n  - ID: 301, Name: David Lee\n  - ID: 302, Name: Emily Chen\n  - ID: 303, Name: Fiona Wang\n---------------------------------\n\n--- Course: Linear Algebra ---\n  No students enrolled.\n---------------------------------\n"
+    }
+  ],
+  "driver": "Self-contained in main function.",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

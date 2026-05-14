@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Implement a `ResourceHandler` class that allocates dynamic memory for an integer array of a given size in its constructor. Implement a destructor to correctly deallocate this memory and print a message indicating destruction.",
+  "test_cases": [
+    { "input": "3", "expected": "ResourceHandler (ID 1) created for array of size 3. Memory allocated.\nOriginal object: ID 1 Data: [10, 11, 12]\nCopied object (shallow copy of data pointer): ID 1 Data: [10, 11, 12]\nResourceHandler (ID 1) for array of size 3 destroyed. Memory deallocated.\n" }
+  ],
+  "driver": "int main() {\n    std::string line;\n    std::getline(std::cin, line);\n    size_t size = std::stoul(line);\n\n    { // Scope to ensure destruction\n        ResourceHandler r1(size);\n        r1.fill_data(10);\n        std::cout << \"Original object: \";\n        r1.print_data();\n\n        ResourceHandler r2 = r1; // Compiler-generated shallow copy\n        std::cout << \"Copied object (shallow copy of data pointer): \";\n        r2.print_data(); // Will show same data, same ID because instance_id is also copied.\n\n        // When r2 goes out of scope, it calls its destructor, freeing data.\n        // When r1 goes out of scope, it calls its destructor, attempting to free the SAME data again.\n    } // r2 and r1 are destroyed here\n\n    std::cerr << \"Expected: Program will likely crash due to double-free after the first destructor message.\\n\";\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The class lacks a user-defined copy constructor and copy assignment operator. The compiler-generated shallow copy leads to multiple ResourceHandler objects pointing to the same dynamically allocated memory.",
+    "When these objects are destroyed, the destructor attempts to deallocate the same memory multiple times, resulting in a double-free error and undefined behavior (likely a crash).",
+    "Violates the Rule of Three/Five, making the class unsafe for copying and potentially leading to resource leaks or corruption."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that asks the user to input an integer and then determines whether the number is positive, negative, or zero, printing an appropriate message.",
+  "test_cases": [
+    { "input": "5", "expected": "Please enter an integer: The number is positive.\n" },
+    { "input": "-10", "expected": "Please enter an integer: The number is negative.\n" },
+    { "input": "0", "expected": "Please enter an integer: The number is zero.\n" },
+    { "input": "abc", "expected": "Please enter an integer: The number is zero.\n" },
+    { "input": "123.45", "expected": "Please enter an integer: The number is zero.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <limits>\n\nint main() {\n    std::string inputs[] = {\"5\", \"-10\", \"0\", \"abc\", \"123.45\"};\n    for (const std::string& input : inputs) {\n        std::stringstream ss(input);\n        std::streambuf* old_cin = std::cin.rdbuf();\n        std::cin.rdbuf(ss.rdbuf());\n        \n        // The student's program's main function would be called here\n        // and its stdout captured for comparison with expected output.\n        // For this dataset generation, we assume the student's program\n        // is executed as a separate process for each test case.\n        \n        // Reset cin for the next iteration if running in the same process\n        std::cin.rdbuf(old_cin);\n        std::cin.clear(); // Clear error flags\n        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\\n'); // Discard remaining input\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The program does not handle invalid input gracefully. If the user enters non-integer input (e.g., 'abc', '123.45'), std::cin enters a fail state, and the program proceeds with the `number` variable retaining its default-initialized value (0 in this case), leading to incorrect output ('The number is zero.'). There is no input validation or error recovery."]
+}

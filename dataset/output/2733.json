@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Shape` with a public virtual method `calculateArea()` that returns 0. Derive two classes, `Square` and `Circle`, from `Shape`. Override `calculateArea()` in each derived class to return the correct area.",
+  "test_cases": [
+    { "input": "Square(5.0), Circle(3.0), Square(-4.0), Circle(-2.5)", "expected": "25.0000000000\n28.2743338823\n0.0000000000\n0.0000000000\n0.0000000000" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath> // For M_PI\n#include <iomanip> // For std::fixed, std::setprecision\n\n// Base class\nclass Shape {\npublic:\n    virtual double calculateArea() const {\n        return 0.0;\n    }\n    virtual ~Shape() = default; // Good practice for base classes with virtual methods\n};\n\n// Derived class Square\nclass Square : public Shape {\nprivate:\n    double side;\npublic:\n    Square(double s) : side(s) {\n        if (s < 0) { // Input validation for robustness\n            side = 0; // Set to a non-negative default\n        }\n    }\n\n    double calculateArea() const override { // Using override and const correctly\n        return side * side;\n    }\n};\n\n// Derived class Circle\nclass Circle : public Shape {\nprivate:\n    double radius;\npublic:\n    Circle(double r) : radius(r) {\n        if (r < 0) { // Input validation for robustness\n            radius = 0; // Set to a non-negative default\n        }\n    }\n\n    double calculateArea() const override { // Using override and const correctly\n        return M_PI * radius * radius;\n    }\n};\n\nint main() {\n    std::cout << std::fixed << std::setprecision(10); // For consistent output precision\n\n    Square s_pos(5.0);\n    Circle c_pos(3.0);\n    Square s_neg(-4.0); // Input validation handles negative side\n    Circle c_neg(-2.5); // Input validation handles negative radius\n\n    Shape* shapes[] = {&s_pos, &c_pos, &s_neg, &c_neg};\n\n    for (int i = 0; i < 4; ++i) {\n        std::cout << shapes[i]->calculateArea() << std::endl;\n    }\n\n    // Also include the base shape area\n    Shape base_shape;\n    std::cout << base_shape.calculateArea() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

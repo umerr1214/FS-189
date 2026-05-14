@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Circle` class with a private `radius`. Implement `getRadius()` as a `const` member function and `setRadius()` as a non-`const` member function. In `main`, create a `const Circle` object and demonstrate which methods it can call.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating const Circle object ---\nConst Circle radius: 5\nConst Circle area: 78.53981633974483\nNote: Calling setRadius() on a const Circle object is not allowed and would cause a compilation error.\n\n--- Demonstrating non-const Circle object ---\nMutable Circle initial radius: 10\nMutable Circle radius after setRadius(12.5): 12.5\nMutable Circle area: 490.87385212340517\nWarning: Attempted to set a negative radius (-4). Setting to 0 instead.\nMutable Circle radius after setRadius(-4.0): 0\nMutable Circle area: 0\n"
+    }
+  ],
+  "driver": "The main function serves as the driver.",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

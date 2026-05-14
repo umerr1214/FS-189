@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `Person` base class with `name` (string) and `age` (int). Derive a `Teacher` class that adds `subject` (string) and `salary` (double). Demonstrate how the `Teacher` constructor should call the `Person` base class constructor to initialize inherited members.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Compilation Error: Expected ';' after class definition" }
+  ],
+  "driver": "int main() {\n    // This driver will not compile due to the syntax error\n    // Teacher teacher1(\"Alice Smith\", 35, \"Mathematics\", 60000.0);\n    // teacher1.displayTeacher();\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the 'Person' class definition. C++ requires a semicolon after a class declaration."
+  ]
+}

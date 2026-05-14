@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a function `multiplyByTwo` that takes an integer pointer as an argument, dereferences it, and doubles the value at that memory address.",
+  "test_cases": [
+    { "input": "int num = 5; multiplyByTwo(&num);", "expected": "10" },
+    { "input": "int num = 10; multiplyByTwo(&num);", "expected": "20" }
+  ],
+  "driver": "#include <iostream>\n\nvoid multiplyByTwo(int* ptr);\n\nint main() {\n    int num1 = 5;\n    std::cout << \"Original value: \" << num1 << std::endl;\n    multiplyByTwo(&num1);\n    std::cout << \"After multiplyByTwo: \" << num1 << std::endl;\n\n    int num2 = 10;\n    std::cout << \"Original value: \" << num2 << std::endl;\n    multiplyByTwo(&num2);\n    std::cout << \"After multiplyByTwo: \" << num2 << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `multiplyByTwo` function multiplies the dereferenced value by 1 instead of 2, leading to the value remaining unchanged. The intended operation of doubling the value is not performed."
+  ]
+}

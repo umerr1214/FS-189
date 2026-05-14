@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a `Time` class with private attributes `hours`, `minutes`, and `seconds` (all integers). Overload the `==` operator to compare two `Time` objects for equality (i.e., they represent the exact same time).",
+  "test_cases": [
+    { "input": "Time t1(10, 30, 0); Time t2(10, 30, 0);", "expected": "t1 == t2: true" },
+    { "input": "Time t1(10, 30, 0); Time t3(10, 30, 1);", "expected": "t1 == t3: false" },
+    { "input": "Time t1(10, 30, 0); Time t5(10, 30, 15);", "expected": "t1 == t5: false" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// Time class definition would go here\n\nstd::string bool_to_string(bool b) {\n    return b ? \"true\" : \"false\";\n}\n\nint main() {\n    Time t1(10, 30, 0);\n    Time t2(10, 30, 0);\n    Time t3(10, 30, 1);\n    Time t5(10, 30, 15);\n\n    std::cout << \"t1 == t2: \" << bool_to_string(t1 == t2) << std::endl;\n    std::cout << \"t1 == t3: \" << bool_to_string(t1 == t3) << std::endl;\n    std::cout << \"t1 == t5: \" << bool_to_string(t1 == t5) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The overloaded '==' operator incorrectly compares only hours and minutes, ignoring seconds. This leads to false positives when two Time objects have different seconds but identical hours and minutes."]
+}

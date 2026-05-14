@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a simple number guessing game. The program should choose a random number between 1 and 100, then prompt the user to guess it. Provide hints (too high/too low) and continue until the correct number is guessed. Use a `do-while` loop for the game logic.",
+  "test_cases": [
+    {
+      "input": "50\n25\n10\n5\n1\n0\n",
+      "expected": "Welcome to the Number Guessing Game!\nI have chosen a number between 1 and 100.\nGuess the number: Too high!\nGuess the number: Too high!\nGuess the number: Too high!\nGuess the number: Too high!\nGuess the number: Too high!\nGuess the number: Correct! You guessed it in 6 tries.\n"
+    }
+  ],
+  "driver": "g++ -o solution solution.cpp && ./solution",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The random number generation `rand() % 100` produces numbers in the range [0, 99], violating the requirement for the number to be between 1 and 100. It can generate 0 but never 100."
+  ]
+}

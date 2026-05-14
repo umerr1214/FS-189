@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `Student` class with private `name` (string) and `id` (int). Implement both a default constructor (initializing `name` to 'Unknown' and `id` to 0) and a parameterized constructor (taking `name` and `id`).",
+  "test_cases": [
+    { "input": "No direct input", "expected": "Student 1 Name: Unknown, ID: 0\nStudent 2 Name: Charlie, ID: 303\nStudent 1 new ID: 999" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// Assuming Student class is defined above\n\nint main() {\n    Student s1;\n    Student s2(\"Charlie\", 303);\n\n    std::cout << \"Student 1 Name: \" << s1.getName() << \", ID: \" << s1.id << std::endl;\n    std::cout << \"Student 2 Name: \" << s2.getName() << \", ID: \" << s2.id << std::endl;\n\n    // Demonstrating the semantic error: direct modification possible\n    s1.id = 999;\n    std::cout << \"Student 1 new ID: \" << s1.id << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The 'id' member variable is declared as public instead of private, violating the encapsulation requirement specified in the problem statement."]
+}

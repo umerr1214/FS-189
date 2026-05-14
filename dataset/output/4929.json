@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that reads an integer from the user and determines whether it is positive, negative, or zero using if-else statements.",
+  "test_cases": [
+    { "input": "5", "expected": "Enter an integer: Positive\n" },
+    { "input": "-3", "expected": "Enter an integer: Negative\n" },
+    { "input": "0", "expected": "Enter an integer: Zero\n" },
+    { "input": "abc", "expected": "Enter an integer: Invalid input. Please enter an integer.\n" },
+    { "input": "100", "expected": "Enter an integer: Positive\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\n// Declare the student's solve function\nvoid solve();\n\nint main() {\n    // The testing infrastructure will redirect stdin and stdout.\n    // The student's solve() function is expected to read from std::cin and write to std::cout.\n    solve();\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

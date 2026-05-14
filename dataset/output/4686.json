@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Design a function template `findMax` that can compare and return the larger of two values of any data type (e.g., int, double, char).",
+  "test_cases": [
+    { "input": "int x=10, y=20; findMax(x, y);", "expected": "20" },
+    { "input": "double a=5.5, b=15.3; findMax(a, b);", "expected": "15.3" },
+    { "input": "findMax(5, 10);", "expected": "Compilation Error: Cannot bind rvalue to non-const lvalue reference." }
+  ],
+  "driver": "int i1 = 10, i2 = 20; double d1 = 5.5, d2 = 15.3; char c1 = 'a', c2 = 'z'; std::string s1 = \"apple\", s2 = \"banana\";\nstd::cout << findMax(i1, i2) << std::endl;\nstd::cout << findMax(d1, d2) << std::endl;\nstd::cout << findMax(c1, c2) << std::endl;\nstd::cout << findMax(s1, s2) << std::endl;\n// The following lines would cause a semantic error during compilation:\n// std::cout << findMax(5, 10) << std::endl;\n// std::cout << findMax(3.14, 2.71) << std::endl;",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `findMax` function template is defined to accept parameters by non-const lvalue references (`T&`). This causes a semantic error when attempting to call the function with rvalues (such as integer or double literals like `5` or `10`), as rvalues cannot bind to non-const lvalue references. The compiler will report an error during instantiation of the template for literal arguments."
+  ]
+}

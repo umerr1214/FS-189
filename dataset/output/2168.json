@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create an `Engine` class with a simple constructor and `start()` method. Implement a `Car` class that uses composition: a `Car` object should contain an `Engine` object as a member. Ensure the `Engine` is properly constructed and its `start()` method can be called through the `Car` object.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Car constructed.\nEngine Electric Motor constructed.\nCar starting its engine.\nEngine Electric Motor started.\nCar destructed.\n"
+    }
+  ],
+  "driver": "int main() {\n    Car myCar(\"Electric Motor\");\n    myCar.start();\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses dynamic allocation (raw pointer) for the Engine member in Car, requiring manual memory management (new/delete) in the constructor and destructor. This is less idiomatic, more verbose, and more error-prone than direct composition or using smart pointers (e.g., std::unique_ptr) in modern C++.",
+    "The explicit management of engine_ pointer adds unnecessary complexity and reduces readability compared to direct member composition."
+  ]
+}

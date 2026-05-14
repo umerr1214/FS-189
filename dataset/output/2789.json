@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Define a `Vector2D` class with `x` and `y` components (double). Overload the binary `+` operator to allow adding two `Vector2D` objects, returning a new `Vector2D` object that represents their sum.",
+  "test_cases": [
+    { "input": "Vector2D v1(1.0, 2.0); Vector2D v2(3.0, 4.0); Vector2D v3 = v1 + v2; v3.print();", "expected": "(4.0, 6.0)" },
+    { "input": "Vector2D v4(0.5, 1.5); Vector2D v5(2.5, 0.5); Vector2D v6 = v4 + v5; v6.print();", "expected": "(3.0, 2.0)" }
+  ],
+  "driver": "int main() {\n    Vector2D v1(1.0, 2.0);\n    Vector2D v2(3.0, 4.0);\n    Vector2D v3 = v1 + v2;\n    std::cout << \"Vector v1: \"; v1.print(); std::cout << std::endl;\n    std::cout << \"Vector v2: \"; v2.print(); std::cout << std::endl;\n    std::cout << \"v1 + v2 = \"; v3.print(); std::cout << std::endl;\n\n    Vector2D v4(0.5, 1.5);\n    Vector2D v5(2.5, 0.5);\n    Vector2D v6 = v4 + v5;\n    std::cout << \"v4 + v5 = \"; v6.print(); std::cout << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": []
+}

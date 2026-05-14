@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that initializes a 3x3 integer matrix with hardcoded values, then calculates and prints the sum of elements for each row and each column separately.",
+  "test_cases": [
+    { "input": "", "expected": "Row sums: 6 15 24\nColumn sums: 12 15 18\n" }
+  ],
+  "driver": "g++ -o program program.cpp && ./program",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The inner loop for calculating row sums (`for (int j = 0; j <= 3; ++j)`) has an incorrect termination condition. It attempts to access `matrix[i][3]`, which is an out-of-bounds access for a 3x3 matrix (valid column indices are 0, 1, 2). This leads to undefined behavior, which could manifest as a crash, incorrect results, or other unpredictable program behavior."
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "language": "c++",
+  "question": "Concatenate two C-style strings (character arrays) into a third C-style string without using any standard library string functions like `strcat`.",
+  "test_cases": [
+    { "input": "Hello\nWorld", "expected": "HelloWorld" },
+    { "input": "First\nSecondPart", "expected": "FirstSecondPart" },
+    { "input": "A\nB", "expected": "AB" },
+    { "input": "LongStringExample\nAnotherLongStringExample", "expected": "LongStringExampleAnotherLongStringExample" }
+  ],
+  "driver": "
+#include <iostream>
+#include <vector>
+#include <string> // For parsing input, not for string manipulation in the tested function
+
+// Assuming customConcatenate is defined in the student's code
+
+// Helper to split input for driver
+void splitString(const std::string& s, std::string& s1, std::string& s2) {
+    size_t newlinePos = s.find('\\n');
+    if (newlinePos != std::string::npos) {
+        s1 = s.substr(0, newlinePos);
+        s2 = s.substr(newlinePos + 2); // +2 for '\\n'
+    } else {
+        s1 = s;
+        s2 = \"\";
+    }
+}
+
+int main() {
+    std::vector<std::pair<std::string, std::string>> testInputs = {
+        {\"Hello\\nWorld\", \"HelloWorld\"},
+        {\"First\\nSecondPart\", \"FirstSecondPart\"},
+        {\"A\\nB\", \"AB\"},
+        {\"LongStringExample\\nAnotherLongStringExample\", \"LongStringExampleAnotherLongStringExample\"}
+    };
+
+    for (const auto& test : testInputs) {
+        std::string s1_str, s2_str;
+        splitString(test.first, s1_str, s2_str);
+
+        // We need a buffer large enough for the expected result + null terminator.
+        // The *student's* customConcatenate function will still have the robustness issue
+        // if called with a small buffer, but for the driver to get a correct 'expected' value
+        // we must provide a sufficient buffer here.
+        // The error_type and errors will point out the function's flaw.
+        size_t buffer_size = s1_str.length() + s2_str.length() + 1;
+        char* dest_buffer = new char[buffer_size];
+
+        customConcatenate(dest_buffer, s1_str.c_str(), s2_str.c_str());
+
+        if (std::string(dest_buffer) == test.second) {
+            std::cout << \"Test Passed: '\" << dest_buffer << \"' == '\" << test.second << \"'\\n\";
+        } else {
+            std::cout << \"Test Failed: Expected '\" << test.second << \"', Got '\" << dest_buffer << \"'\\n\";
+        }
+        delete[] dest_buffer;
+    }
+    return 0;
+}
+",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `customConcatenate` function is vulnerable to buffer overflow. It does not take the destination buffer's capacity as an argument and performs no bounds checking. If the combined length of `s1` and `s2` (plus the null terminator) exceeds the allocated size of `dest`, the function will write past the buffer's bounds, leading to undefined behavior, potential crashes, or memory corruption. A robust solution would either take the buffer capacity as an argument and perform bounds checking (e.g., `strncpy`-like behavior) or return an error/indicate failure if the buffer is too small."
+  ]
+}

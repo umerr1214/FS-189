@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Explain the necessity of a virtual destructor in a polymorphic base class. Provide a simple C++ code structure with a `Base` class and a `Derived` class, illustrating a scenario where a non-virtual destructor leads to a memory leak and how a virtual destructor solves it.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Program Start: Demonstrating virtual destructor necessity with readability/efficiency issues.\n\n--- Execution Cycle Number 1 Initiated ---\n  A_Base_Class_Entity::constructor has been invoked.\n    X_Derived_Class_Object::constructor has been invoked. Allocated a std::vector of size 50000 on heap via raw pointer.\n    X_Derived_Class_Object processing specific data, first element: 0.\n  Commencing object deletion sequence for temp_base_pointer...\n    X_Derived_Class_Object::destructor has been invoked. Deallocating std::vector pointed to by v_data_ptr.\n  A_Base_Class_Entity::destructor has been invoked.\n  Object deletion sequence for cycle 1 Concluded.\n\n--- Execution Cycle Number 2 Initiated ---\n  A_Base_Class_Entity::constructor has been invoked.\n    X_Derived_Class_Object::constructor has been invoked. Allocated a std::vector of size 50000 on heap via raw pointer.\n    X_Derived_Class_Object processing specific data, first element: 0.\n  Commencing object deletion sequence for temp_base_pointer...\n    X_Derived_Class_Object::destructor has been invoked. Deallocating std::vector pointed to by v_data_ptr.\n  A_Base_Class_Entity::destructor has been invoked.\n  Object deletion sequence for cycle 2 Concluded.\n\n--- Execution Cycle Number 3 Initiated ---\n  A_Base_Class_Entity::constructor has been invoked.\n    X_Derived_Class_Object::constructor has been invoked. Allocated a std::vector of size 50000 on heap via raw pointer.\n    X_Derived_Class_Object processing specific data, first element: 0.\n  Commencing object deletion sequence for temp_base_pointer...\n    X_Derived_Class_Object::destructor has been invoked. Deallocating std::vector pointed to by v_data_ptr.\n  A_Base_Class_Entity::destructor has been invoked.\n  Object deletion sequence for cycle 3 Concluded.\n\nProgram End: All allocated objects have been correctly processed and deallocated.\nObservation: The code functions correctly, but its structure and naming conventions introduce readability and minor efficiency concerns.\n"
+    }
+  ],
+  "driver": "// The main function directly demonstrates the concept.",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Class and variable names are overly verbose and not descriptive, hindering readability.",
+    "Using a raw pointer to `std::vector` (`std::vector<int>*`) is an unnecessary layer of indirection and less safe than a direct `std::vector<int>` member, impacting readability and potentially efficiency.",
+    "The demonstration uses an unnecessary loop, leading to verbose output and inefficiently repeating the core concept.",
+    "The `execute_cleanup_cycle` helper function adds complexity without a clear benefit for this simple example."
+  ]
+}

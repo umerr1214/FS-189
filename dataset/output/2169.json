@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create an `Engine` class with a simple constructor and `start()` method. Implement a `Car` class that uses composition: a `Car` object should contain an `Engine` object as a member. Ensure the `Engine` is properly constructed and its `start()` method can be called through the `Car` object.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Engine Turbo Engine constructed.\nCar constructed with Engine Turbo Engine.\nCar starting its engine.\nEngine Turbo Engine started.\n"
+    }
+  ],
+  "driver": "int main() {\n    Car myCar(\"Turbo Engine\");\n    myCar.start();\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

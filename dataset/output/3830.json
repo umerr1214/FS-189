@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `modifyValue` that takes an integer pointer as an argument and doubles the value pointed to by the pointer. Demonstrate its usage in `main` by creating an integer, passing its address, and printing the modified value.",
+  "test_cases": [
+    { "input": "val = 7;", "expected": "Test Case 1: 14\n" },
+    { "input": "val = -3;", "expected": "Test Case 2: -6\n" },
+    { "input": "val = 0;", "expected": "Test Case 3: 0\n" }
+  ],
+  "driver": "#include <iostream>\n\n// The modifyValue function will be prepended here by the evaluation system.\n\nint main() {\n    int val;\n\n    // Test Case 1\n    val = 7;\n    modifyValue(&val);\n    std::cout << \"Test Case 1: \" << val << std::endl;\n\n    // Test Case 2\n    val = -3;\n    modifyValue(&val);\n    std::cout << \"Test Case 2: \" << val << std::endl;\n\n    // Test Case 3\n    val = 0;\n    modifyValue(&val);\n    std::cout << \"Test Case 3: \" << val << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `modifyValue` function uses `*ptr = *ptr + *ptr;` to double the value. While functionally correct, `*ptr *= 2;` is more idiomatic, concise, and generally preferred for clarity and potentially minor efficiency gains in some contexts."
+  ]
+}

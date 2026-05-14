@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Implement a `StringWrapper` class that manages a dynamically allocated C-style character array (char*). Write a copy constructor that performs a deep copy of the string data, ensuring independent memory management for copied objects.",
+  "test_cases": [
+    { "input": "StringWrapper s1(\"Hello\"); StringWrapper s2 = s1; s1.modify(\"World\");", "expected": "s1: String: \"World\" (Length: 5, ...)\ns2: String: \"World\" (Length: 5, ...)\n(Expected s2 to remain \"Hello\", but it changed due to shallow copy. Also, potential runtime crash due to double-free.)" },
+    { "input": "StringWrapper s3(\"Test\"); StringWrapper s4 = s3;", "expected": "s3: String: \"Test\" (Length: 4, ...)\ns4: String: \"Test\" (Length: 4, ...)\n(Expected independent copies, but they share memory, leading to double-free on destruction.)" }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Test 1: Original and Shallow Copy ---\" << std::endl;\n    StringWrapper s1(\"Hello\");\n    std::cout << \"s1: \"; s1.print();\n\n    StringWrapper s2 = s1; // Calls the shallow copy constructor\n    std::cout << \"s2 (copy of s1): \"; s2.print(); // Initially looks correct, but shares memory\n\n    std::cout << \"\\n--- Test 2: Modifying Original (Reveals Shallow Copy) ---\" << std::endl;\n    s1.modify(\"World\");\n    std::cout << \"s1 after modification: \"; s1.print();\n    std::cout << \"s2 after s1 modification: \"; s2.print(); // LOGICAL ERROR: s2's content also changed!\n\n    std::cout << \"\\n--- Test 3: Demonstrating Double Free (expected runtime error) ---\" << std::endl;\n    {\n        StringWrapper s3(\"Temporary\");\n        std::cout << \"s3: \"; s3.print();\n        StringWrapper s4 = s3; // Another shallow copy\n        std::cout << \"s4 (copy of s3): \"; s4.print();\n        // When s3 and s4 go out of scope, they will both attempt to delete the same memory,\n        // leading to a double-free error and program crash.\n    } // s3 and s4 destructors called here, leading to potential crash.\n\n    std::cout << \"\\nProgram finished. Expect a crash or undefined behavior from double-free.\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": []
+}

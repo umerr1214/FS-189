@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that acts as a simple calculator. It should take two numbers (doubles) and an operator (+, -, *, /) as input from the user, then perform the operation using a `switch` statement and display the result. Handle division by zero.",
+  "test_cases": [
+    { "input": "10\n+\n5\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 15\n" },
+    { "input": "10\n/\n0\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Error: Division by zero is not allowed.\n" },
+    { "input": "abc\n+\n5\n", "expected": "Enter first number: Error: Invalid input for first number. Exiting.\n" },
+    { "input": "10\n+\nabc\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Error: Invalid input for second number. Exiting.\n" },
+    { "input": "10\nx\n5\n", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Error: Invalid operator.\n" }
+  ],
+  "driver": "g++ -o a.out 3757.cpp && echo \"$input\" | ./a.out",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program exits abruptly if non-numeric input is provided for the numbers (num1 or num2). It does not clear the input stream's error state or buffer, nor does it re-prompt the user for valid input, leading to poor user experience for incorrect number inputs.",
+    "While it handles invalid operators and division by zero, the handling of `std::cin.fail()` for numeric inputs is not robust, leading to premature termination."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that takes a C-style string (character array) as input. Implement a function to count the number of vowels (a, e, i, o, u, case-insensitive) present in the string and display the count.",
+  "test_cases": [
+    { "input": "Hello World!", "expected": "Number of vowels: 3" },
+    { "input": "Programming is FUN", "expected": "Number of vowels: 5" },
+    { "input": "AEIOUaeiou", "expected": "Number of vowels: 10" },
+    { "input": "Rhythm", "expected": "Number of vowels: 0" },
+    { "input": "", "expected": "Number of vowels: 0" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <cstring>\n#include <cctype>\n\n// The countVowels function, identical to the one in 4795.cpp for testing.\n// This driver will NOT call countVowels with nullptr to avoid crashing the test harness.\n// The robustness issue (nullptr crash) is demonstrated by running the 4795.cpp main directly.\nint countVowels(const char* str) {\n    int count = 0;\n    // Replicating the bug from the submitted code for consistent testing.\n    // No nullptr check here, so if nullptr were passed by a test case, it would crash.\n    for (int i = 0; str[i] != '\\0'; ++i) {\n        char c = std::tolower(static_cast<unsigned char>(str[i]));\n        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {\n            count++;\n        }\n    }\n    return count;\n}\n\nint main() {\n    std::vector<std::pair<const char*, int>> tests = {\n        {\"Hello World!\", 3},\n        {\"Programming is FUN\", 5},\n        {\"AEIOUaeiou\", 10},\n        {\"Rhythm\", 0},\n        {\"\", 0}\n    };\n\n    for (const auto& test : tests) {\n        char buffer[256]; \n        // Assuming test.first is always a valid C-string for these test cases.\n        strcpy(buffer, test.first);\n        \n        int result = countVowels(buffer);\n        std::cout << \"Number of vowels: \" << result << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": []
+}

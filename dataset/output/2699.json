@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a simple `MyString` class that dynamically allocates a character array for its string data. Implement a copy constructor for `MyString` to perform a deep copy, preventing shallow copy issues.",
+  "test_cases": [
+    { "input": "HelloWorld", "expected": "s1: HelloWorld, Length: 10\ns2: HelloWorld, Length: 10" },
+    { "input": "Short", "expected": "s3: Short, Length: 5\ns4: Short, Length: 5" },
+    { "input": "", "expected": "s5: , Length: 0\ns6: , Length: 0" }
+  ],
+  "driver": "int main() {\n    MyString s1(\"HelloWorld\");\n    MyString s2 = s1;\n\n    std::cout << \"s1: \" << s1.c_str() << \", Length: \" << s1.getLength() << std::endl;\n    std::cout << \"s2: \" << s2.c_str() << \", Length: \" << s2.getLength() << std::endl;\n\n    MyString s3(\"Short\");\n    MyString s4 = s3;\n    std::cout << \"s3: \" << s3.c_str() << \", Length: \" << s3.getLength() << std::endl;\n    std::cout << \"s4: \" << s4.c_str() << \", Length: \" << s4.getLength() << std::endl;\n\n    MyString s5(\"\");\n    MyString s6 = s5;\n    std::cout << \"s5: \" << s5.c_str() << \", Length: \" << s5.getLength() << std::endl;\n    std::cout << \"s6: \" << s6.c_str() << \", Length: \" << s6.getLength() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The copy constructor allocates 'length' bytes for the string data instead of 'length + 1'. This omits space for the null terminator, leading to a buffer overflow when `strcpy` is called and potentially undefined behavior or corrupted output for copied strings."]
+}

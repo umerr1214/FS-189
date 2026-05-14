@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Revisit the `Shape` hierarchy (with `Shape` as an abstract base class, and derived `Circle`/`Rectangle`). Demonstrate the importance of a virtual destructor in the `Shape` base class. Create a `Shape` pointer that points to a dynamically allocated `Circle` or `Rectangle` object, and then `delete` it through the `Shape` pointer. Explain the consequences if the base class destructor were not virtual.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Demonstrating consequences of NON-VIRTUAL destructor:\n--- Deleting Circle via Shape pointer ---\nShape constructor\nCircle constructor\nDrawing a Circle with color: red\nShape destructor\n\n--- Deleting Rectangle via Shape pointer ---\nShape constructor\nRectangle constructor\nDrawing a Rectangle\nShape destructor\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"Demonstrating consequences of NON-VIRTUAL destructor:\\n\";\n\n    std::cout << \"--- Deleting Circle via Shape pointer ---\\n\";\n    Shape* s1 = new Circle();\n    s1->draw();\n    delete s1;\n\n    std::cout << \"\\n--- Deleting Rectangle via Shape pointer ---\\n\";\n    Shape* s2 = new Rectangle();\n    s2->draw();\n    delete s2;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The destructor of the base class 'Shape' is not declared as virtual. When a derived class object (Circle or Rectangle) is deleted through a base class pointer (Shape*), only the base class destructor is called. This leads to partial destruction of the object, causing potential resource leaks and undefined behavior, as the derived class's destructor (e.g., Circle destructor) is never invoked to clean up its specific resources."
+  ]
+}

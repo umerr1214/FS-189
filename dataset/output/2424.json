@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Vehicle` base class with protected attributes `speed` and `fuelType`. Derive `Car` and `Motorcycle` classes, adding specific attributes like `numDoors` for `Car` and `hasSidecar` for `Motorcycle`.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "Compilation Error: Access to protected member 'speed' denied. The program will not compile due to semantic violation of access rules."
+    }
+  ],
+  "driver": "    Car myCar(60, \"Gasoline\", 4);\n    myCar.accelerate();\n    myCar.honk();\n    // SEMANTIC ERROR: Attempting to access protected member 'speed' directly from main function.\n    // This violates C++ access rules for protected members and will result in a compilation error.\n    std::cout << \"Car speed (direct access attempt): \" << myCar.speed << std::endl; \n    std::cout << \"Car speed: \" << myCar.getSpeed() << \", Fuel: \" << myCar.getFuelType() << \", Doors: \" << myCar.getNumDoors() << std::endl;\n\n    Motorcycle myBike(80, \"Petrol\", true);\n    myBike.accelerate();\n    myBike.wheelie();\n    std::cout << \"Motorcycle speed: \" << myBike.getSpeed() << \", Fuel: \" << myBike.getFuelType() << \", Sidecar: \" << (myBike.getHasSidecar() ? \"Yes\" : \"No\") << std::endl;",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": []
+}

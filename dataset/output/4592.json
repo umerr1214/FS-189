@@ -1,0 +1,29 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that dynamically allocates a 1D array of integers of a size specified by the user. Fill the array with user-provided values, print all elements, and then deallocate the memory.",
+  "test_cases": [
+    {
+      "input": "4\n100\n200\n300\n400\n",
+      "expected": "Enter the size of the array: Enter 4 integer values one by one:\nInput element 1: Input element 2: Input element 3: Input element 4: The values you entered are: 100 200 300 400 \n"
+    },
+    {
+      "input": "0\n",
+      "expected": "Enter the size of the array: Size must be positive.\n"
+    },
+    {
+      "input": "-2\n",
+      "expected": "Enter the size of the array: Size must be positive.\n"
+    }
+  ],
+  "driver": "// The program is expected to be compiled and run as a standalone executable.",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Poor variable naming (e.g., 's' instead of 'size', 'ptr_arr' instead of 'arr') reduces code readability.",
+    "Lack of comments makes it harder to understand the purpose of certain code blocks or variables.",
+    "Inconsistent output prompts and phrasing (e.g., 'Enter the size', 'Enter values one by one', 'Input element', 'The values you entered are') make the user experience less uniform.",
+    "Using a 'while' loop with an auxiliary counter for printing array elements when a simple 'for' loop is more idiomatic and often clearer for array iteration is a minor readability/efficiency issue.",
+    "The variable 'count' in the printing loop is unnecessary, as 'i' from a 'for' loop could serve the same purpose."
+  ]
+}

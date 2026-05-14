@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Write a recursive function `int fibonacci(int n)` that calculates the Nth Fibonacci number (where F(0)=0, F(1)=1).",
+  "test_cases": [
+    { "input": "0", "expected": "0" },
+    { "input": "1", "expected": "1" },
+    { "input": "5", "expected": "5" },
+    { "input": "10", "expected": "55" },
+    { "input": "-1", "expected": "Stack Overflow" },
+    { "input": "-5", "expected": "Stack Overflow" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n\n// The fibonacci function will be placed here by the evaluation system\n\nint main() {\n    std::vector<int> test_inputs = {0, 1, 5, 10, -1, -5};\n    for (int n : test_inputs) {\n        // For n < 0, this call will cause a stack overflow.\n        // For n >= 0, it will compute correctly.\n        std::cout << \"fibonacci(\" << n << \") = \" << fibonacci(n) << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The function does not handle negative input values for 'n'. Calling `fibonacci(n)` with `n < 0` leads to infinite recursion and a stack overflow.",
+    "A robust implementation should define behavior for invalid inputs (e.g., return an error code, throw an exception, or return a specific invalid value)."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Design a `Logger` class with an overloaded `log` method. One `log` method should take a `const char*` message, another should take an `int` error code, and a third should take a `bool` status. Each should print an appropriate formatted message.",
+  "test_cases": [
+    { "input": "logger.log(\"Test message.\");", "expected": "[INFO] Message: Test message.\n" },
+    { "input": "logger.log(101);", "expected": "[ERROR] Code: 101\n" },
+    { "input": "logger.log(false);", "expected": "[STATUS] Failure\n" }
+  ],
+  "driver": "Logger logger;\nlogger.log(\"Test message.\");\nlogger.log(101);\nlogger.log(false);",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the class definition of 'Logger'."
+  ]
+}

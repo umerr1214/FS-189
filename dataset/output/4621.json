@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Implement a function `isLeapYear` that takes an integer representing a year and returns true if it's a leap year, false otherwise. A leap year is divisible by 4, but not by 100 unless it is also divisible by 400.",
+  "test_cases": [
+    { "input": "2000", "expected": "true" },
+    { "input": "1900", "expected": "false" },
+    { "input": "2004", "expected": "true" },
+    { "input": "2001", "expected": "false" },
+    { "input": "0", "expected": "true" },
+    { "input": "-4", "expected": "true" },
+    { "input": "-400", "expected": "true" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n#include <utility>\n\n// The isLeapYear function is provided by the user code.\n\nint main() {\n    std::vector<std::pair<int, bool>> test_cases = {\n        {2000, true},\n        {1900, false},\n        {2004, true},\n        {2001, false},\n        {0, true},\n        {-4, true},\n        {-400, true}\n    };\n\n    for (const auto& tc : test_cases) {\n        int year = tc.first;\n        bool expected = tc.second;\n        bool result = isLeapYear(year);\n        std::cout << \"Year: \" << year << \", Expected: \" << (expected ? \"true\" : \"false\")\n                  << \", Got: \" << (result ? \"true\" : \"false\") << \" -> \"\n                  << (result == expected ? \"PASS\" : \"FAIL\") << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The function incorrectly assumes that years must be positive integers and returns false for year <= 0. While often true in a calendar context, the mathematical definition of a leap year (divisibility rules) applies to 0 and negative integers, making this a deviation from a general interpretation.",
+    "The problem statement did not explicitly define a valid range for 'year', so handling non-positive years by simply returning false might be considered a robustness issue if a more general mathematical interpretation is expected."
+  ]
+}

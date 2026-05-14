@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Calculate the power of a number (base raised to exponent) without using the `pow()` function. Both base and exponent are positive integers entered by the user.",
+  "test_cases": [
+    { "input": "2\n5\n", "expected": "Result: 32\n" },
+    { "input": "3\n4\n", "expected": "Result: 81\n" },
+    { "input": "5\n3\n", "expected": "Result: 125\n" },
+    { "input": "1\n100\n", "expected": "Result: 1\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\nvoid solve(); // Forward declaration of the user's solution function\n\nint main() {\n    solve();\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The code uses a simple iterative loop (O(exponent)) which is less efficient than exponentiation by squaring (O(log exponent)) for large exponent values.",
+    "Variable names ('b', 'e', 'r') are short and not descriptive, reducing code readability.",
+    "All logic is contained within the `solve` function without further modularization (e.g., a dedicated `power` function), which can make larger programs harder to read and maintain."
+  ]
+}

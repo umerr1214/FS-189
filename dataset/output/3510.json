@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that declares a 1D integer array and initializes it. Then, calculate and print the sum of all elements in the array using pointer arithmetic instead of array indexing.",
+  "test_cases": [
+    { "input": "Hardcoded array: {10, 20, 30, 40, 50}", "expected": "Sum calculated by function (with semantic error): 150" }
+  ],
+  "driver": "g++ -std=c++17 -Wall -Wextra -o program 3510.cpp && ./program",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["Inside 'calculateSumWithSemanticError', 'sizeof(arrayPtr)' incorrectly attempts to determine the size of the original array. Since 'arrayPtr' is a pointer (due to array decay when passed to a function), sizeof(arrayPtr) returns the size of the pointer type (e.g., 8 bytes on a 64-bit system) instead of the total size of the array elements. This leads to an incorrect loop iteration count and potential out-of-bounds memory access (undefined behavior). For the array {10,20,30,40,50}, if sizeof(int*) is 8 and sizeof(int) is 4, the function will calculate the size as 2, summing only the first two elements (10+20=30) instead of the correct sum of 150."]
+}

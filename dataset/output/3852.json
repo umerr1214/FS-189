@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function template `compareAndPrint` that takes two arguments of any same type and prints which one is greater, or if they are equal. Demonstrate its usage with `int`, `double`, and `char` data types.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- int comparison ---\n10 is greater than 5\n15 is greater than 5\n7 is equal to 7\n\n--- double comparison ---\n3.14 is greater than 2.71\n20.1 is greater than 10.5\n9.9 is equal to 9.9\n\n--- char comparison ---\nB is greater than A\nZ is greater than M\nX is equal to X\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- int comparison ---\" << std::endl;\n    compareAndPrint(5, 10);\n    compareAndPrint(15, 5);\n    compareAndPrint(7, 7);\n\n    std::cout << \"\\n--- double comparison ---\" << std::endl;\n    compareAndPrint(3.14, 2.71);\n    compareAndPrint(10.5, 20.1);\n    compareAndPrint(9.9, 9.9);\n\n    std::cout << \"\\n--- char comparison ---\" << std::endl;\n    compareAndPrint('A', 'B');\n    compareAndPrint('Z', 'M');\n    compareAndPrint('X', 'X');\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "For 'char' data types, the function prints the ASCII integer values instead of the characters themselves, altering the semantic meaning of the output despite correct comparison logic."
+  ]
+}

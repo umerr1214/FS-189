@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Illustrate hierarchical inheritance: Create a base class `Animal` with a `sound()` method. Derive `Dog` and `Cat` from `Animal`. Each derived class should override the `sound()` method to print its specific sound.",
+  "test_cases": [
+    { "input": "", "expected": "Direct calls:\nDog sound: Woof!\nCat sound: Meow!\n\nPolymorphic calls (semantic error demonstration):\nDog via Animal* sound: Woof!\nCat via Animal* sound: Meow!\n" }
+  ],
+  "driver": "int main() {\n    Dog myDog;\n    Cat myCat;\n\n    std::cout << \"Direct calls:\\n\";\n    std::cout << \"Dog sound: \";\n    myDog.sound();\n    std::cout << \"Cat sound: \";\n    myCat.sound();\n\n    std::cout << \"\\nPolymorphic calls (semantic error demonstration):\\n\";\n    Animal* polyDog = new Dog();\n    Animal* polyCat = new Cat();\n\n    std::cout << \"Dog via Animal* sound: \";\n    polyDog->sound();\n    std::cout << \"Cat via Animal* sound: \";\n    polyCat->sound();\n\n    delete polyDog;\n    delete polyCat;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The `Animal::sound()` method is not declared `virtual`. This prevents runtime polymorphism, causing `Animal::sound()` to be called instead of the derived class's overridden method when accessed through an `Animal*` pointer."]
+}

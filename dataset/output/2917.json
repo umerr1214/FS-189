@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a `Counter` class that keeps track of the total number of `Counter` objects currently alive. Use a static member variable for the count and a static member function to retrieve this count.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial count: 0\nAfter c1 created. Count: 1\nAfter c2 (copy of c1) created. Count: 1\nInside create_and_copy_in_scope: After c3, c4 created. Count: 2\nAfter create_and_copy_in_scope returned. Count: 0\nAfter c5 created. Count: 1\nEnd of test. Final count before main exit: -2\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\n// Assume Counter class is defined in the primary C++ file\n\nvoid create_and_copy_in_scope() {\n    Counter c3;\n    Counter c4 = c3; \n    std::cout << \"Inside create_and_copy_in_scope: After c3, c4 created. Count: \" << Counter::getCount() << std::endl;\n} \n\nint main() {\n    std::stringstream ss;\n    std::streambuf* oldCout = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n\n    std::cout << \"Initial count: \" << Counter::getCount() << std::endl;\n\n    Counter c1;\n    std::cout << \"After c1 created. Count: \" << Counter::getCount() << std::endl;\n\n    Counter c2 = c1; \n    std::cout << \"After c2 (copy of c1) created. Count: \" << Counter::getCount() << std::endl;\n\n    create_and_copy_in_scope(); \n\n    std::cout << \"After create_and_copy_in_scope returned. Count: \" << Counter::getCount() << std::endl;\n\n    Counter c5;\n    std::cout << \"After c5 created. Count: \" << Counter::getCount() << std::endl;\n\n    std::cout << \"End of test. Final count before main exit: \" << Counter::getCount() << std::endl;\n\n    std::cout.rdbuf(oldCout); // Restore original cout buffer\n    std::cout << ss.str(); // Print captured output\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The default copy constructor and assignment operator are implicitly used, which do not correctly manage the static object count. When an object is copied, the count is not incremented, but the destructor of the copied object will decrement the count, leading to an incorrect (potentially negative) total number of alive objects.",
+    "The class violates the Rule of Three/Five/Zero by defining a destructor but not explicitly handling copy/move operations for a resource-managing class (the static count acts as a resource)."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `Person` base class with `name` (string) and `age` (int). Derive a `Teacher` class that adds `subject` (string) and `salary` (double). Demonstrate how the `Teacher` constructor should call the `Person` base class constructor to initialize inherited members.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Compilation Error: 'name' and 'age' are private members of 'Person' and cannot be accessed directly from 'Teacher'." }
+  ],
+  "driver": "int main() {\n    // This driver will not compile due to the semantic error\n    // Teacher teacher1(\"Alice Smith\", 35, \"Mathematics\", 60000.0);\n    // teacher1.displayTeacher();\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The 'Person' class declares its 'name' and 'age' members as private. The 'Teacher' class's 'displayTeacher' method attempts to directly access these private members. This is a semantic error as private members are not directly accessible from derived classes, violating C++ encapsulation rules. Public getter methods (like 'getName()' and 'getAge()') should be used, or the members should be declared as 'protected' in the base class for direct access by derived classes."
+  ]
+}

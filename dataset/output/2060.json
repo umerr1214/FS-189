@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a `Date` class with private integer members `day`, `month`, and `year`. Implement a parameterized constructor to set these values and provide public getter methods for each. No setters are required.",
+  "test_cases": [
+    { "input": "15 7 2023", "expected": "Date 1: 15/7/2023\n" },
+    { "input": "1 1 2000", "expected": "Date 2: 1/1/2000\n" },
+    { "input": "31 12 1999", "expected": "Date 3: 31/12/1999\n" }
+  ],
+  "driver": "The `main` function creates `Date` objects with valid parameters and prints their values using the getter methods. The code functions correctly but exhibits readability issues.",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "**Readability Issue:** The private member variables (`d_val`, `m_val`, `y_val`) and constructor parameters (`p1`, `p2`, `p3`) use cryptic, non-descriptive names, making the code hard to understand at a glance.",
+    "**Readability Issue:** The constructor includes unnecessary temporary variables (`temp_d`, `temp_m`, `temp_y`) and explicit `this->` usage where not strictly needed, adding verbosity without improving clarity.",
+    "**Readability Issue:** Getter methods also use unnecessary temporary variables (`currentDay`, `currentMonth`, `currentYear`) before returning the member value, making them slightly more verbose than necessary."
+  ]
+}

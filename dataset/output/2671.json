@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a C++ class named `Book` with private member variables for `title` (string), `author` (string), and `isbn` (string). Implement public methods to `setTitle`, `setAuthor`, `setISBN` and `displayBookInfo` which prints all details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Title: The Hitchhiker's Guide to the Galaxy\nAuthor: Douglas Adams\nISBN: 978-0345391803\n\nTitle: 1984\nAuthor: George Orwell\nISBN: 978-0451524935\n\nTitle: \nAuthor: Unknown\nISBN: INVALID-ISBN\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\n// The Book class definition will be prepended by the test system\n\nint main() {\n    std::stringstream ss;\n    std::streambuf* oldCout = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n\n    Book myBook;\n    myBook.setTitle(\"The Hitchhiker's Guide to the Galaxy\");\n    myBook.setAuthor(\"Douglas Adams\");\n    myBook.setISBN(\"978-0345391803\");\n    myBook.displayBookInfo();\n\n    std::cout << \"\\n\"; // Separator for clarity in output\n\n    Book anotherBook;\n    anotherBook.setTitle(\"1984\");\n    anotherBook.setAuthor(\"George Orwell\");\n    anotherBook.setISBN(\"978-0451524935\");\n    anotherBook.displayBookInfo();\n\n    std::cout << \"\\n\";\n    Book problematicBook;\n    problematicBook.setTitle(\"\");\n    problematicBook.setAuthor(\"Unknown\");\n    problematicBook.setISBN(\"INVALID-ISBN\");\n    problematicBook.displayBookInfo();\n\n    std::cout.rdbuf(oldCout);\n    std::cout << ss.str();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Lack of input validation in setter methods allows for invalid or problematic data (e.g., empty title, malformed ISBN) to be stored in the Book object, reducing the robustness of the data model."
+  ]
+}

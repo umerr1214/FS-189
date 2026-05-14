@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Animal` with a `string name` and a `void makeSound()` method. Derive a `Dog` class that inherits from `Animal` and overrides `makeSound()` to print 'Woof!' without using virtual functions.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Animal named Generic is being initialized.\nAnimal named Generic makes a sound. This is a very generic sound.\n\nAnimal named Buddy is being initialized.\nDog named Buddy is being prepared.\nDog named Buddy makes a sound. It says: Woof! Woof! Such a loud bark!\n"
+    }
+  ],
+  "driver": "int main() {\n    Animal genericAnimal(\"Generic\");\n    genericAnimal.makeSound();\n\n    Dog myDog(\"Buddy\");\n    myDog.makeSound();\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Constructors pass `std::string` by value instead of `const std::string&`, causing unnecessary string copies during object construction. The `makeSound` methods are overly verbose, using multiple `std::cout` statements where a single, more concise statement would suffice, impacting readability and minor efficiency."
+  ]
+}

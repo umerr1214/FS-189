@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `swap_integers` that takes two integer pointers as arguments and swaps the values pointed to by these pointers. Demonstrate its usage in `main` by swapping two integer variables.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Before swap: x = 100, y = 200\nAfter swap: x = 200, y = 100\n\nBefore swap (p,q same): p = 77, q = 77\nAfter swap (p,q same): p = 77, q = 77\n\nDemonstrating nullptr handling:\nBefore swap (z, nullptr): z = 300\nWarning: `swap_integers` received a nullptr argument. No swap performed.\nAfter swap (z, nullptr): z = 300\n" }
+  ],
+  "driver": "#include <iostream>\n\n// The function under test is expected to be available\nvoid swap_integers(int* a, int* b);\n\nint main() {\n    int x = 5;\n    int y = 10;\n    swap_integers(&x, &y);\n    std::cout << x << \" \" << y << std::endl;\n\n    int a = -1;\n    int b = 0;\n    swap_integers(&a, &b);\n    std::cout << a << \" \" << b << std::endl;\n\n    int p = 7;\n    int q = 7;\n    swap_integers(&p, &q);\n    std::cout << p << \" \" << q << std::endl;\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

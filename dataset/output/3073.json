@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Printer` class with an overloaded public method `print`. This method should be able to print: 1) an integer, 2) a double, and 3) a C-style string (`const char*`). Demonstrate printing different data types using the same method name.",
+  "test_cases": [
+    {
+      "input": "No direct input, uses hardcoded calls.",
+      "expected": "--- Testing Robustness Issue ---\nPrinting an integer: 123\nPrinting a double: 45.67\nPrinting a C-style string: Hello C++\nPrinting a C-style string: 0x0\nPrinting a C-style string: \n--- End Robustness Issue Test ---\n"
+    }
+  ],
+  "driver": "int main() {\n    Printer p;\n    std::cout << \"--- Testing Robustness Issue ---\" << std::endl;\n    p.print(123);\n    p.print(45.67);\n    p.print(\"Hello C++\");\n    const char* null_str = nullptr;\n    p.print(null_str);\n    p.print(\"\");\n    std::cout << \"--- End Robustness Issue Test ---\" << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `print(const char*)` method does not explicitly handle `nullptr` input. While `std::cout` handles it without crashing (by printing a memory address like '0x0' or '(nil)'), a more robust implementation for a 'Printer' class would typically check for `nullptr` and print a user-friendly string like \"(null)\"."
+  ]
+}

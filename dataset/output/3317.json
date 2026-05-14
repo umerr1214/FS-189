@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Generate and print the first 'n' terms of the Fibonacci sequence, where 'n' is a positive integer provided by the user.",
+  "test_cases": [
+    { "input": "1", "expected": "0" },
+    { "input": "5", "expected": "0 1 1 2 3" }
+  ],
+  "driver": "valid C++ code to run test cases",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["Incorrect output for n=1; prints two terms ('0 1') instead of one ('0')."]
+}

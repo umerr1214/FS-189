@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create an `Employee` class with `name` and `id`. Design a `Team` class that manages an array of `Employee` pointers to represent team members. Demonstrate adding employees to the team without the team owning their memory.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Added employee Alice to team.\nAdded employee Bob to team.\nAdded employee Charlie to team.\nEmployee Alice is already in the team (pointer match).\n\n--- Team Members ---\nEmployee ID: 101, Name: Alice\nEmployee ID: 102, Name: Bob\nEmployee ID: 103, Name: Charlie\n--------------------"
+    }
+  ],
+  "driver": "int main() {\n    Employee emp1(\"Alice\", 101);\n    Employee emp2(\"Bob\", 102);\n    Employee emp3(\"Charlie\", 103);\n\n    Team devTeam;\n\n    devTeam.addEmployee(&emp1);\n    devTeam.addEmployee(&emp2);\n    devTeam.addEmployee(&emp3);\n    devTeam.addEmployee(&emp1);\n\n    devTeam.displayTeam();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `Team::addEmployee` method performs a linear search (O(N) complexity) to check if an employee already exists. If duplicate pointers are acceptable, this check is unnecessary overhead. If uniqueness is required, using `std::set<Employee*>` or `std::unordered_set<Employee*>` would offer better average time complexity (O(log N) or O(1) respectively) for large teams.",
+    "Instead of using the more concise and idiomatic `teamMembers.push_back(emp);`, the `addEmployee` method manually resizes the vector and then assigns the element. This is less readable and potentially less efficient than `push_back` which is optimized for appending.",
+    "The `Team::displayTeam` method uses a traditional index-based `for` loop. A range-based `for` loop (`for (Employee* emp : teamMembers)`) would be more modern, concise, and readable for iterating over the entire collection."
+  ]
+}

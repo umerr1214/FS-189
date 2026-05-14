@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Extend the `Animal` and `Dog` classes. Make the `name` member in `Animal` `protected`. Demonstrate how `Dog` can access and modify `name` directly, while an outside function cannot.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "The animal named Sparky makes a sound.\n---------------------------------\nName of the dog: Sparky\nStatus: Alive\n---------------------------------\n\nChanging dog's name:\n---------------------------------\nName of the dog: Max\nStatus: Alive\n---------------------------------\n\nDemonstrating outside function access restrictions:\nDog's name (via public getter): Max\nAnimal's name (via public getter): Max\n"
+    }
+  ],
+  "driver": "int main() {\n    Dog myDog(\"Sparky\");\n    myDog.makeSound();\n    myDog.printDetails();\n\n    std::cout << \"\\nChanging dog's name:\" << std::endl;\n    std::string tempName = \"Max\";\n    myDog.setDogName(tempName);\n    myDog.printDetails();\n\n    std::cout << \"\\nDemonstrating outside function access restrictions:\" << std::endl;\n    std::cout << \"Dog's name (via public getter): \" << myDog.getDogName() << std::endl;\n    std::cout << \"Animal's name (via public getter): \" << myDog.getAnimalNamePublic() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Constructors in `Animal` do not use initializer lists for `name`, assigning it in the body instead.",
+    "Constructors and `setDogName` take `std::string` parameters by value, causing unnecessary string copies.",
+    "Getter methods (`getAnimalNamePublic`, `getDogName`) return `std::string` by value, causing unnecessary string copies. They are also not marked `const`.",
+    "The `makeSound` method has a generic name and verbose output for a `Dog`, reducing readability and potential efficiency.",
+    "The `printDetails` method is overly verbose and calls `getDogName()` which incurs an extra function call and string copy.",
+    "Includes `<vector>` which is not used, leading to minor overhead and decreased readability."
+  ]
+}

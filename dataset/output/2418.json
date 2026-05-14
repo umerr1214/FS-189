@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Shape` with a public method `calculateArea()` that returns 0. Derive `Rectangle` and `Circle` classes, overriding `calculateArea()` to return their specific areas.",
+  "test_cases": [
+    { "input": "Shape* s1 = new Rectangle(5.0, 4.0); s1->calculateArea()", "expected": "Poly (Rect) Area: 20.0" },
+    { "input": "Shape* s2 = new Circle(3.0); s2->calculateArea()", "expected": "Poly (Circ) Area: 28.274333882308138" },
+    { "input": "Rectangle rect_obj(10.0, 2.5); rect_obj.calculateArea()", "expected": "Direct Rect Area: 25.0" },
+    { "input": "Circle circ_obj(5.0); circ_obj.calculateArea()", "expected": "Direct Circ Area: 78.53981633974483" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n\n// Assuming the user's code defines Shape, Rectangle, Circle classes\n\nint main() {\n    Shape* s1 = new Rectangle(5.0, 4.0);\n    Shape* s2 = new Circle(3.0);\n    Rectangle rect_obj(10.0, 2.5);\n    Circle circ_obj(5.0);\n\n    std::cout << \"Poly (Rect) Area: \" << s1->calculateArea() << std::endl;\n    std::cout << \"Poly (Circ) Area: \" << s2->calculateArea() << std::endl;\n    std::cout << \"Direct Rect Area: \" << rect_obj.calculateArea() << std::endl;\n    std::cout << \"Direct Circ Area: \" << circ_obj.calculateArea() << std::endl;\n\n    delete s1;\n    delete s2;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `calculateArea()` method in the base `Shape` class is not declared as `virtual`. This prevents polymorphic behavior when calling `calculateArea()` through a base class pointer or reference, causing the base class implementation to be called instead of the derived class's specific implementation."
+  ]
+}

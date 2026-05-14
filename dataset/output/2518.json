@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private attributes for `title`, `author`, and `isbn` (International Standard Book Number). Implement a parameterized constructor to initialize these attributes and a public method `displayDetails()` that prints all book information. Ensure data encapsulation.",
+  "test_cases": [
+    { "input": "", "expected": "Title: 1984\nAuthor: George Orwell\nISBN: 978-0451524935\n" }
+  ],
+  "driver": "int main() {\n    Book myBook(\"1984\", \"George Orwell\", \"978-0451524935\");\n    myBook.displayDetails();\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

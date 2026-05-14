@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter an integer and then prints its multiplication table up to 10 (e.g., for 5, print 5x1=5, 5x2=10, ..., 5x10=50).",
+  "test_cases": [
+    { "input": "5", "expected": "Enter an integer: Multiplication table for 5:\n5x1=5\n5x2=10\n5x3=15\n5x4=20\n5x5=25\n5x6=30\n5x7=35\n5x8=40\n5x9=45\n5x10=50\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// This is a placeholder driver. In a real system, the student's solution\n// (which is a full main program) would be compiled into an executable\n// and run as a separate process with I/O redirection for each test case.\n// For example, for an input \"5\", the test runner would execute:\n// `echo \"5\" | ./student_program`\n// And then compare the captured stdout with the expected output.\n// This C++ code represents the conceptual framework for test execution.\nint main() {\n    std::cout << \"Test driver placeholder: Running student's program externally.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon in the for loop's condition, specifically between '10' and 'i++'."
+  ]
+}

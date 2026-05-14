@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a `Student` class with private members `studentID`, `name`, and `major`. Provide a constructor to set these values and public `getStudentID()`, `getName()`, `getMajor()` methods, but no direct setters for `studentID` or `name`.",
+  "test_cases": [
+    { "input": "No direct input, uses hardcoded values.", "expected": "Student ID: 101\nName: Alice Smith\nMajor: Computer Science\n\nUpdating major for s1 to 'Mathematics'...\nNew Major: Mathematics\n\nAttempting to set major with nullptr (CRASH EXPECTED):\nProgram terminated due to unhandled exception/crash (e.g., segmentation fault)." }
+  ],
+  "driver": "See main() function in the C++ file. It demonstrates class instantiation, getter usage, and then triggers the robustness issue by passing a `nullptr` to `setMajor`.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `setMajor` method accepts a `const char*` for the new major but does not validate if the pointer is `nullptr`. Passing `nullptr` to this method leads to a segmentation fault when attempting to construct `std::string major = newMajor;`, making the class non-robust to common invalid inputs that could lead to a program crash."
+  ]
+}

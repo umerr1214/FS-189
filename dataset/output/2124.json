@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `MathOperations` class with three overloaded `add` methods: one that takes two integers, one that takes two doubles, and one that takes three integers. Demonstrate calling each version of the `add` method.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Sum of two ints: 15\nSum of two doubles: 6.2\nSum of three ints: 7\n" }
+  ],
+  "driver": "int main() {\n    MathOperations mo;\n    int sum_int = mo.add(5, 10);\n    std::cout << \"Sum of two ints: \" << sum_int << std::endl;\n    double sum_double = mo.add(3.5, 2.7);\n    std::cout << std::fixed << std::setprecision(1) << \"Sum of two doubles: \" << sum_double << std::endl;\n    int sum_three_int = mo.add(2, 2, 3);\n    std::cout << \"Sum of three ints: \" << sum_three_int << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The 'add' method taking three integers has a 'double' return type and performs a calculation that may result in a non-integer value. When its result is assigned to an 'int' variable in 'main', implicit conversion leads to data truncation, deviating from the expected integer sum."
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter an integer `num`. Using nested `for` loops, generate and print the multiplication table (from 1 to 10) for the given number `num`.",
+  "test_cases": [
+    {
+      "input": "8\n",
+      "expected": "Enter an integer num: Multiplication table for 8:\n8 * 1 = 8\n8 * 2 = 16\n8 * 3 = 24\n8 * 4 = 32\n8 * 5 = 40\n8 * 6 = 48\n8 * 7 = 56\n8 * 8 = 64\n8 * 9 = 72\n8 * 10 = 80\n"
+    },
+    {
+      "input": "0\n",
+      "expected": "Enter an integer num: Multiplication table for 0:\n0 * 1 = 0\n0 * 2 = 0\n0 * 3 = 0\n0 * 4 = 0\n0 * 5 = 0\n0 * 6 = 0\n0 * 7 = 0\n0 * 8 = 0\n0 * 9 = 0\n0 * 10 = 0\n"
+    },
+    {
+      "input": "hello\n-4\n",
+      "expected": "Enter an integer num: Invalid input. Please enter an integer: Multiplication table for -4:\n-4 * 1 = -4\n-4 * 2 = -8\n-4 * 3 = -12\n-4 * 4 = -16\n-4 * 5 = -20\n-4 * 6 = -24\n-4 * 7 = -28\n-4 * 8 = -32\n-4 * 9 = -36\n-4 * 10 = -40\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n\nvoid solve(); // Forward declaration for the student's solution\n\nint main() {\n    std::vector<std::string> test_inputs = {\n        \"8\\n\",\n        \"0\\n\",\n        \"hello\\n-4\\n\" // This input demonstrates robust error handling\n    };\n\n    for (size_t i = 0; i < test_inputs.size(); ++i) {\n        std::cout << \"--- Test Case \" << i + 1 << \" ---\\n\";\n        std::istringstream iss(test_inputs[i]);\n        std::streambuf* old_cin = std::cin.rdbuf();\n        std::cin.rdbuf(iss.rdbuf());\n\n        solve();\n\n        std::cin.rdbuf(old_cin);\n        std::cout << \"\\n--------------------\\n\";\n    }\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

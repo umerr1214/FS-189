@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a simple command-line calculator program in C++ that takes two numbers and an operator (+, -, *, /) as input from the user. Use a `switch` statement to perform the corresponding arithmetic operation and print the result. Handle division by zero.",
+  "test_cases": [
+    { "input": "10\n+\n5\n", "expected": "Result: <undefined_behavior_output>\n" },
+    { "input": "20\n-\n7\n", "expected": "Result: 13.00\n" },
+    { "input": "3\n*\n4\n", "expected": "Result: 12.00\n" },
+    { "input": "10\n/\n2\n", "expected": "Result: 5.00\n" },
+    { "input": "10\n/\n0\n", "expected": "Error: Division by zero is not allowed.\n" },
+    { "input": "5\n%\n2\n", "expected": "Error: Invalid operator.\n" }
+  ],
+  "driver": "int main() { /* The C++ code itself is the program to test. */ }",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The variable `result` is declared but not initialized. Specifically, in the `'+'` case, the assignment `result = num1 + num2;` is missing, leading to undefined behavior if `'+'` is chosen as the operator and `validOperation` remains true."]
+}

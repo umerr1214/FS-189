@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `swapValues(int& a, int& b)` that takes two integer references and swaps their values. Demonstrate its usage in a `main` function by swapping two user-defined integers.",
+  "test_cases": [
+    {
+      "input": "15\n25\n",
+      "expected": "Enter the first integer: Enter the second integer: \n--- Before swap ---\nFirst integer: 15\nSecond integer: 25\n\n--- After swap ---\nFirst integer: 25\nSecond integer: 15\n"
+    },
+    {
+      "input": "-50\n1000\n",
+      "expected": "Enter the first integer: Enter the second integer: \n--- Before swap ---\nFirst integer: -50\nSecond integer: 1000\n\n--- After swap ---\nFirst integer: 1000\nSecond integer: -50\n"
+    },
+    {
+      "input": "abc\n10\n20\n",
+      "expected": "Enter the first integer: Invalid input. Please enter an integer: Enter the second integer: \n--- Before swap ---\nFirst integer: 10\nSecond integer: 20\n\n--- After swap ---\nFirst integer: 20\nSecond integer: 10\n"
+    }
+  ],
+  "driver": "#include <iostream>\n\n// Assuming user's main is renamed to user_main\nextern int user_main();\n\nint main() {\n    return user_main();\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

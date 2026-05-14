@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Department` class that holds a collection of `Professor` objects (aggregation). Implement methods to `hireProfessor()`, `fireProfessor()`, and `displayProfessors()`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Hired Professor (semantically incorrect): Alice Smith (ID: 101)\nHired Professor (semantically incorrect): Bob Johnson (ID: 102)\n\n--- Current Professors (expecting issues) ---\nDepartment: Computer Science\n  Professor ID: [GARBAGE/CRASH], Name: [GARBAGE/CRASH]\n  Professor ID: [GARBAGE/CRASH], Name: [GARBAGE/CRASH]\n\n--- Firing Professor 102 ---\nFired Professor with ID: 102\n\n--- Professors After Firing (more issues) ---\nDepartment: Computer Science\n  Professor ID: [GARBAGE/CRASH], Name: [GARBAGE/CRASH]\nDepartment 'Computer Science' destroyed.\n"
+    }
+  ],
+  "driver": "int main() {\n    Department csDept(\"Computer Science\");\n\n    Professor p1(\"Alice Smith\", 101);\n    csDept.hireProfessor(p1);\n\n    Professor p2(\"Bob Johnson\", 102);\n    csDept.hireProfessor(p2);\n\n    std::cout << \"\\n--- Current Professors (expecting issues) ---\" << std::endl;\n    csDept.displayProfessors();\n\n    std::cout << \"\\n--- Firing Professor 102 ---\" << std::endl;\n    csDept.fireProfessor(102);\n\n    std::cout << \"\\n--- Professors After Firing (more issues) ---\" << std::endl;\n    csDept.displayProfessors();\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `hireProfessor` method takes a `Professor` object by value, creating a temporary copy on the stack. It then stores a pointer to this temporary object. When `hireProfessor` returns, the temporary object is destroyed, leaving a dangling pointer in the `professors` vector. Subsequent access to this pointer (e.g., in `displayProfessors` or `fireProfessor`) results in undefined behavior, likely leading to crashes or output of garbage values."
+  ]
+}

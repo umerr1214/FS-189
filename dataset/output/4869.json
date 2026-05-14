@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `printArrayElements(int* arr, int size)` that takes a pointer to an integer array and its size, then prints all elements of the array. Demonstrate its use by passing an array from `main`.",
+  "test_cases": [
+    { "input": "int arr[] = {10, 20, 30, 40, 50}; int size = 5;", "expected": "10 20 30 40 50 \n" },
+    { "input": "int arr[] = {}; int size = 0;", "expected": "(empty or invalid array)\n" },
+    { "input": "int* arr = nullptr; int size = 5;", "expected": "(empty or invalid array)\n" },
+    { "input": "int arr[] = {1, 2, 3}; int size = -2;", "expected": "(empty or invalid array)\n" },
+    { "input": "int arr[] = {100}; int size = 1;", "expected": "100 \n" }
+  ],
+  "driver": "#include <iostream>\n\nvoid printArrayElements(int* arr, int size);\n\nint main() {\n    std::cout << \"Printing myArr: \";\n    int myArr[] = {10, 20, 30, 40, 50};\n    int arrSize = sizeof(myArr) / sizeof(myArr[0]);\n    printArrayElements(myArr, arrSize);\n\n    std::cout << \"Printing emptyArr: \";\n    int emptyArr[] = {};\n    int emptyArrSize = 0;\n    printArrayElements(emptyArr, emptyArrSize);\n\n    std::cout << \"Printing nullArr: \";\n    int* nullArr = nullptr;\n    int nullArrSize = 5;\n    printArrayElements(nullArr, nullArrSize);\n\n    std::cout << \"Printing anotherArr with negative size: \";\n    int anotherArr[] = {1, 2, 3};\n    int negativeSize = -2;\n    printArrayElements(anotherArr, negativeSize);\n\n    std::cout << \"Printing singleElementArr: \";\n    int singleElementArr[] = {100};\n    int singleElementArrSize = 1;\n    printArrayElements(singleElementArr, singleElementArrSize);\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

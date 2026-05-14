@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Given three distinct integer numbers, determine and print which of them is the middle value (neither the smallest nor the largest).",
+  "test_cases": [
+    { "input": "1 2 3", "expected": "2" },
+    { "input": "3 1 2", "expected": "2" },
+    { "input": "5 10 7", "expected": "7" },
+    { "input": "100 50 75", "expected": "75" },
+    { "input": "1 5 2", "expected": "2" },
+    { "input": "8 2 5", "expected": "5" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\n// Assuming the student's code provides:\n// int findMiddleValue(int a, int b, int c);\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        std::stringstream ss(line);\n        int a, b, c;\n        if (ss >> a >> b >> c) {\n            std::cout << findMiddleValue(a, b, c) << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The conditional logic for determining if 'b' is the middle value contains a semantic error. The expression `(b > a || b < c)` uses an 'OR' operator where an 'AND' operator is logically required to correctly identify if 'b' is between 'a' and 'c'. This makes the condition too permissive and can lead to 'b' being incorrectly identified as the middle value. For example, with input `1 5 2`, it incorrectly returns `5` instead of `2`."
+  ]
+}

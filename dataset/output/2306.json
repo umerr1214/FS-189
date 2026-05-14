@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design an abstract base class `Animal` with a pure virtual method `makeSound()` (returning void). Create two concrete derived classes, `Dog` and `Cat`, that implement `makeSound()` to print their respective sounds ('Woof!' and 'Meow!').",
+  "test_cases": [
+    { "input": "", "expected": "--- Animals Making Sounds ---\nWoof!\nMeow!\n\n--- Deleting Animals ---\n\n--- Program End ---\n" }
+  ],
+  "driver": "int main() {\n    Animal* myDog = new Dog();\n    Animal* myCat = new Cat();\n\n    printf(\"--- Animals Making Sounds ---\\n\");\n    myDog->makeSound();\n    myCat->makeSound();\n\n    printf(\"\\n--- Deleting Animals ---\\n\");\n    delete myDog;\n    delete myCat;\n\n    printf(\"\\n--- Program End ---\\n\");\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["Using C-style `printf` instead of C++ iostreams for output, which is generally less type-safe and idiomatic in modern C++.", "Redundant local `std::string` object creation for sound strings within `makeSound` methods on every call.", "Lack of `override` keyword for virtual methods in derived classes, reducing readability and compile-time error checking."]
+}

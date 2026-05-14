@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Print the multiplication table for a user-specified number `X` up to `10` (e.g., X * 1, X * 2, ..., X * 10).",
+  "test_cases": [
+    {
+      "input": "8",
+      "expected": "Enter a number: 8 * 1 = 8\n8 * 2 = 16\n8 * 3 = 24\n8 * 4 = 32\n8 * 5 = 40\n8 * 6 = 48\n8 * 7 = 56\n8 * 8 = 64\n8 * 9 = 72\n8 * 10 = 80\n"
+    },
+    {
+      "input": "-5",
+      "expected": "Enter a number: -5 * 1 = -5\n-5 * 2 = -10\n-5 * 3 = -15\n-5 * 4 = -20\n-5 * 5 = -25\n-5 * 6 = -30\n-5 * 7 = -35\n-5 * 8 = -40\n-5 * 9 = -45\n-5 * 10 = -50\n"
+    },
+    {
+      "input": "250000000",
+      "expected": "Enter a number: 250000000 * 1 = 250000000\n250000000 * 2 = 500000000\n250000000 * 3 = 750000000\n250000000 * 4 = 1000000000\n250000000 * 5 = 1250000000\n250000000 * 6 = 1500000000\n250000000 * 7 = 1750000000\n250000000 * 8 = 2000000000\n250000000 * 9 = 2250000000\n250000000 * 10 = 2500000000\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <streambuf>\n\n// Forward declaration of the solution's main function\nextern int solution_main();\n\nstd::string run_test_case(const std::string& input) {\n    std::stringstream ss_in(input);\n    std::stringstream ss_out;\n\n    std::streambuf* old_cin_buf = std::cin.rdbuf();\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n\n    std::cin.rdbuf(ss_in.rdbuf());\n    std::cout.rdbuf(ss_out.rdbuf());\n\n    solution_main(); // Call the user's main function\n\n    std::cin.rdbuf(old_cin_buf);\n    std::cout.rdbuf(old_cout_buf);\n\n    return ss_out.str();\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

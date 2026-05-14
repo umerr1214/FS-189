@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a `ComplexNumber` class with private `real` and `imaginary` (double) parts. Overload the binary `+` operator to enable addition of two `ComplexNumber` objects, returning a new `ComplexNumber` object representing their sum.",
+  "test_cases": [
+    { "input": "1.0 2.0\n3.0 4.0", "expected": "4.0 + 6.0i" },
+    { "input": "-1.5 2.5\n0.5 -1.0", "expected": "-1.0 + 1.5i" },
+    { "input": "10.0 0.0\n-5.0 0.0", "expected": "5.0 + 0.0i" },
+    { "input": "0.0 -7.0\n0.0 7.0", "expected": "0.0 + 0.0i" }
+  ],
+  "driver": "double r1, i1, r2, i2; std::cin >> r1 >> i1 >> r2 >> i2; ComplexNumber c1(r1, i1); ComplexNumber c2(r2, i2); ComplexNumber sum = c1 + c2; std::cout << sum << std::endl;",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The binary '+' operator takes its ComplexNumber operands by value instead of by const reference, resulting in unnecessary object copying and reduced efficiency.",
+    "The ComplexNumber constructor does not utilize an initializer list for member initialization, which is less efficient and not idiomatic C++."
+  ]
+}

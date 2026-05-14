@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "For a `Book` class with `title` and `author`, overload the `<<` (insertion) operator to allow direct printing of `Book` objects to `std::cout` in a readable format.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation Error: Cannot access private members of 'Book' from non-friend function 'operator<<'." }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Book {\npublic:\n    std::string title;\n    std::string author;\n\n    Book(std::string t, std::string a) : title(t), author(a) {}\n\n    friend std::ostream& operator<<(std::ostream& os, const Book& book);\n};\n\nstd::ostream& operator<<(std::ostream& os, const Book& book) {\n    os << \"Title: \" << book.title << \", Author: \" << book.author;\n    return os;\n}\n\nint main() {\n    Book book1(\"Test Title 1\", \"Test Author 1\");\n    Book book2(\"Test Title 2\", \"Test Author 2\");\n    std::cout << \"Book 1: \" << book1 << std::endl;\n    std::cout << \"Book 2: \" << book2 << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": []
+}

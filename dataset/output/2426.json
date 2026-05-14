@@ -1,0 +1,27 @@
+{
+  "language": "c++",
+  "question": "Design a `Vehicle` base class with protected attributes `speed` and `fuelType`. Derive `Car` and `Motorcycle` classes, adding specific attributes like `numDoors` for `Car` and `hasSidecar` for `Motorcycle`.",
+  "test_cases": [
+    {
+      "input": "Car(180, \"High-Octane Unleaded Gasoline\", 4)",
+      "expected": "Vehicle Type: Automobile Car Object\n  Current Speed Measurement: 180 km/h\n  Fuel Type Designation: High-Octane Unleaded Gasoline\n  Total Number of Doors Present: 4\n"
+    },
+    {
+      "input": "Motorcycle(100, \"Regular Unleaded Petrol\", true)",
+      "expected": "Vehicle Type: Two-Wheeled Motorcycle Object\n  Current Speed Measurement: 100 km/h\n  Fuel Type Designation: Regular Unleaded Petrol\n  Sidecar Presence Status: Affirmative\n"
+    },
+    {
+      "input": "Car(90, \"Electric Power Source\", 2)",
+      "expected": "Vehicle Type: Automobile Car Object\n  Current Speed Measurement: 90 km/h\n  Fuel Type Designation: Electric Power Source\n  Total Number of Doors Present: 2\n"
+    }
+  ],
+  "driver": "    std::cout << \"Demonstrating Readability/Efficiency Issue: Verbose Naming and Inefficient String Passing\" << std::endl;\n    std::cout << \"--------------------------------------------------------------------------------------\" << std::endl;\n\n    Car my_automobile_car_instance(180, \"High-Octane Unleaded Gasoline\", 4);\n    std::cout << \"\\nDisplaying Information for my_automobile_car_instance:\" << std::endl;\n    my_automobile_car_instance.display_vehicle_information_details_function();\n\n    Motorcycle my_two_wheeled_motorcycle_instance(100, \"Regular Unleaded Petrol\", true);\n    std::cout << \"\\nDisplaying Information for my_two_wheeled_motorcycle_instance:\" << std::endl;\n    my_two_wheeled_motorcycle_instance.display_vehicle_information_details_function();\n\n    Car another_automobile_car_object(90, \"Electric Power Source\", 2);\n    std::cout << \"\\nDisplaying Information for another_automobile_car_object:\" << std::endl;\n    another_automobile_car_object.display_vehicle_information_details_function();\n",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Overly verbose and inconsistent naming conventions for attributes and methods (e.g., `m_vehicle_current_speed_in_kmph`, `display_vehicle_information_details_function`).",
+    "Inefficient string passing: `std::string` parameters in constructors are passed by value instead of `const std::string&`, leading to unnecessary copies.",
+    "Redundant code in derived `display` methods, repeating base class information instead of calling `Vehicle::display()`."
+  ]
+}

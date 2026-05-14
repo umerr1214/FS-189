@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a program that takes a sentence (std::string) and a character from the user, then counts and displays how many times that character appears in the sentence.",
+  "test_cases": [
+    { "input": "hello world\no", "expected": "The character 'o' appears 2 times." },
+    { "input": "programming\ng", "expected": "The character 'g' appears 2 times." },
+    { "input": "banana\na", "expected": "The character 'a' appears 3 times." }
+  ],
+  "driver": "std::string sentence; char targetChar; std::getline(std::cin, sentence); std::cin >> targetChar;",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The program incorrectly counts the character only if it appears at an even index (0, 2, 4, ...), ignoring occurrences at odd indices. For example, in 'hello world' for 'o', it counts 'o' at index 4 but misses 'o' at index 7."]
+}

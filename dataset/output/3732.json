@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that asks the user to input an integer and then determines whether the number is positive, negative, or zero, printing an appropriate message.",
+  "test_cases": [
+    { "input": "5", "expected": "Enter an integer: 5 is a positive number.\n" },
+    { "input": "-3", "expected": "Enter an integer: 4294967293 is a positive number.\n" },
+    { "input": "0", "expected": "Enter an integer: The number is zero.\n" }
+  ],
+  "driver": "int main() { int number; std::cout << \"Enter an integer: \"; std::cin >> number; if (number > 0) { std::cout << number << \" is a positive number.\" << std::endl; } else if (number < 0) { std::cout << number << \" is a negative number.\" << std::endl; } else { std::cout << \"The number is zero.\" << std::endl; } return 0; }",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using 'unsigned int' for 'number'. While syntactically correct, it semantically implies the number cannot be negative. When a negative integer is input, it will be converted to a large positive unsigned integer (due to two's complement), causing the program to incorrectly classify it as positive and the `number < 0` check to always be false."
+  ]
+}

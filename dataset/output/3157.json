@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "For the `ComplexNumber` class, overload the unary `-` operator to return a new `ComplexNumber` with both `real` and `imaginary` parts negated.",
+  "test_cases": [
+    { "input": "ComplexNumber c1(3.0, 4.0); ComplexNumber c2 = -c1;", "expected": "-3.0 - 4.0i" },
+    { "input": "ComplexNumber c1(-1.0, 2.5); ComplexNumber c2 = -c1;", "expected": "1.0 - 2.5i" },
+    { "input": "ComplexNumber c1(0.0, -7.0); ComplexNumber c2 = -c1;", "expected": "0.0 + 7.0i" }
+  ],
+  "driver": "int main() {\n    ComplexNumber c1(3.0, 4.0);\n    ComplexNumber c2 = -c1;\n    c2.print();\n    std::cout << std::endl;\n\n    ComplexNumber c3(-1.0, 2.5);\n    ComplexNumber c4 = -c3;\n    c4.print();\n    std::cout << std::endl;\n\n    ComplexNumber c5(0.0, -7.0);\n    ComplexNumber c6 = -c5;\n    c6.print();\n    std::cout << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The unary minus operator modifies the original object (`this`) instead of returning a new, negated copy, which is an unexpected side effect and violates the problem statement.",
+    "The operator is not marked `const`, which is incorrect for a unary operator that should not modify its operand."
+  ]
+}

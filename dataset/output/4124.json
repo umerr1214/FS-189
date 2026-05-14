@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Declare an `int` variable, a `float` variable, and a `char` variable. Then declare a pointer for each of these data types. Assign the address of each variable to its corresponding pointer. Print the memory address stored in each pointer and the value pointed to by each pointer using the dereference operator.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Int Addr: <memory_address, e.g., 0x7ffee45e0a0c>\nInt Val: 10\nFloat Addr: <memory_address, e.g., 0x7ffee45e0a08>\nFloat Val: 20.5\nChar Addr: <memory_address, e.g., 0x7ffee45e0a07>\nChar Val: A\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses non-descriptive and overly short variable names ('i', 'f', 'c', 'pi', 'pf', 'pc'), which reduces code readability.",
+    "Excessive use of 'std::endl' instead of '\\n'. 'std::endl' not only inserts a newline character but also flushes the output buffer, which can be less efficient, especially in loops or performance-critical sections."
+  ]
+}

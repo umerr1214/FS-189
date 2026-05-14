@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `Person` base class with `name` (string) and `age` (int). Derive a `Teacher` class that adds `subject` (string) and `salary` (double). Demonstrate how the `Teacher` constructor should call the `Person` base class constructor to initialize inherited members.",
+  "test_cases": [
+    { "input": "Alice Smith, 35, Mathematics, 60000.0", "expected": "Teacher 1 Info (Logical Error in display):\nName: Alice Smith, Age: 0\nSubject: Mathematics, Salary: 60000\n\nTeacher 2 Info (Logical Error in display):\nName: Bob Johnson, Age: 0\nSubject: Physics, Salary: 75000.5" }
+  ],
+  "driver": "int main() {\n    Teacher teacher1(\"Alice Smith\", 35, \"Mathematics\", 60000.0);\n    std::cout << \"Teacher 1 Info (Logical Error in display):\" << std::endl;\n    teacher1.displayTeacher();\n\n    std::cout << std::endl;\n\n    Teacher teacher2(\"Bob Johnson\", 42, \"Physics\", 75000.50);\n    std::cout << \"Teacher 2 Info (Logical Error in display):\" << std::endl;\n    teacher2.displayTeacher();\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'displayTeacher' method in the 'Teacher' class contains a logical error. It hardcodes the 'Age' to 0 instead of displaying the actual 'age' member inherited from the 'Person' base class, which was correctly initialized by the base constructor."
+  ]
+}

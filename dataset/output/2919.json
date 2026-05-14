@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Counter` class that keeps track of the total number of `Counter` objects currently alive. Use a static member variable for the count and a static member function to retrieve this count.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial count: 0\nAfter c1 created. Count: 1\nObject c2 created. Current count: 2\nObject c3 created. Current count: 3\nAfter temporary objects destroyed. Current count: 1\nObject c4 created. Current count: 2\nEnd of test. Final count before main exit: 2\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\n// Assume Counter class is defined in the primary C++ file\n\nstd::string run_test_scenario() {\n    std::stringstream ss;\n    ss << \"Initial count: \" << Counter::getCount() << std::endl;\n\n    Counter c1;\n    ss << \"After c1 created. Count: \" << Counter::getCount() << std::endl;\n\n    { \n        Counter c2;\n        ss << \"Object c2 created. Current count: \" << Counter::getCount() << std::endl;\n\n        Counter c3;\n        ss << \"Object c3 created. Current count: \" << Counter::getCount() << std::endl;\n    } \n\n    ss << \"After temporary objects destroyed. Current count: \" << Counter::getCount() << std::endl;\n\n    Counter c4;\n    ss << \"Object c4 created. Current count: \" << Counter::getCount() << std::endl;\n\n    ss << \"End of test. Final count before main exit: \" << Counter::getCount() << std::endl;\n    return ss.str();\n}\n\nint main() {\n    std::cout << run_test_scenario();\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

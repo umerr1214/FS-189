@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Write a program that prompts the user to enter their first name, last name, and age. Then, print a greeting message displaying all the entered information in a formatted way.",
+  "test_cases": [
+    { "input": "Alice\nWonderland\n30", "expected": "Please enter your first name: Please enter your last name: Please enter your age: \nHello, Alice Wonderland!\nYou are 30 years old.\n" },
+    { "input": "Bob\nTheBuilder\nforty", "expected": "Please enter your first name: Please enter your last name: Please enter your age: \nHello, Bob TheBuilder!\nYou are 0 years old.\n" }
+  ],
+  "driver": "g++ -o solution {file_name} && ./solution",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["Input validation for age is missing, leading to incorrect output or program entering a bad state if non-numeric input is provided.", "The program does not handle `std::cin` entering a fail state gracefully, such as clearing the buffer or re-prompting the user."]
+}

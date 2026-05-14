@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program using nested `for` loops to print a right-angled triangle pattern of asterisks (`*`). The height of the triangle should be specified by the user.",
+  "test_cases": [
+    { "input": "4", "expected": "Enter the height of the triangle (a positive integer): *\n**\n***\n****\n" },
+    { "input": "1", "expected": "Enter the height of the triangle (a positive integer): *\n" },
+    { "input": "0\n4", "expected": "Enter the height of the triangle (a positive integer): Height must be a positive integer. Please try again.\nEnter the height of the triangle (a positive integer): *\n**\n***\n****\n" },
+    { "input": "-3\n1", "expected": "Enter the height of the triangle (a positive integer): Height must be a positive integer. Please try again.\nEnter the height of the triangle (a positive integer): *\n" },
+    { "input": "abc\n5", "expected": "Enter the height of the triangle (a positive integer): Invalid input. Please enter an integer.\nEnter the height of the triangle (a positive integer): *\n**\n***\n****\n*****\n" }
+  ],
+  "driver": "The program reads an integer from standard input, then prints the pattern to standard output. A test driver would feed the input string to stdin and capture stdout for comparison.",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Using the `Shape`, `Circle`, and `Rectangle` classes (with `calculateArea` from previous questions), create a collection (e.g., a simple array) of `Shape*`. Populate it with a mix of `Circle` and `Rectangle` objects, then iterate and call `calculateArea()` on each using base class pointers.",
+  "test_cases": [
+    { "input": "", "expected": "Calculating areas:\nShape area: 78.53981633974483\nShape area: 24.0\nShape area: 19.634954084936208\nShape area: 21.0" }
+  ],
+  "driver": "// The provided C++ code is a complete program and acts as its own driver.",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": []
+}

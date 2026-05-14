@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Develop a `BankAccount` class. It must have private data members for `accountNumber` (string) and `balance` (double). Provide public methods `deposit(double amount)`, `withdraw(double amount)`, and `getBalance()` to manage and access the balance safely.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Account ACC001 initial balance: 1000\nAccount ACC001 after deposit 500: 1500\nAccount ACC001 after withdraw 200: 1300\nAccount ACC001 after withdraw 1500: 1300\nAccount ACC001 after deposit -100: 1300\nAccount ACC001 after withdraw -50: 1300\nAccount ACC002 initial balance: 0\nAccount ACC002 after deposit 250: 250\nAccount ACC002 after withdraw 250: 0\nAccount ACC002 after withdraw 1: 0\n" }
+  ],
+  "driver": "int main() {\n    std::ostringstream oss;\n    oss << std::fixed << std::setprecision(0);\n    BankAccount acc1(\"ACC001\", 1000.0);\n    oss << \"Account \" << acc1.getAccountNumber() << \" initial balance: \" << acc1.getBalance() << std::endl;\n    acc1.deposit(500.0);\n    oss << \"Account \" << acc1.getAccountNumber() << \" after deposit 500: \" << acc1.getBalance() << std::endl;\n    acc1.withdraw(200.0);\n    oss << \"Account \" << acc1.getAccountNumber() << \" after withdraw 200: \" << acc1.getBalance() << std::endl;\n    acc1.withdraw(1500.0);\n    oss << \"Account \" << acc1.getAccountNumber() << \" after withdraw 1500: \" << acc1.getBalance() << std::endl;\n    acc1.deposit(-100.0);\n    oss << \"Account \" << acc1.getAccountNumber() << \" after deposit -100: \" << acc1.getBalance() << std::endl;\n    acc1.withdraw(-50.0);\n    oss << \"Account \" << acc1.getAccountNumber() << \" after withdraw -50: \" << acc1.getBalance() << std::endl;\n    BankAccount acc2(\"ACC002\");\n    oss << \"Account \" << acc2.getAccountNumber() << \" initial balance: \" << acc2.getBalance() << std::endl;\n    acc2.deposit(250.0);\n    oss << \"Account \" << acc2.getAccountNumber() << \" after deposit 250: \" << acc2.getBalance() << std::endl;\n    acc2.withdraw(250.0);\n    oss << \"Account \" << acc2.getAccountNumber() << \" after withdraw 250: \" << acc2.getBalance() << std::endl;\n    acc2.withdraw(1.0);\n    oss << \"Account \" << acc2.getAccountNumber() << \" after withdraw 1: \" << acc2.getBalance() << std::endl;\n    std::cout << oss.str();\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

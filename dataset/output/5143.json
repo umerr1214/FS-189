@@ -1,0 +1,30 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that asks the user for the desired size of an integer array. Dynamically allocate an array of that size using `new`. Populate the array with sequential numbers starting from 0 (e.g., if size is 5, elements are 0, 1, 2, 3, 4). Print the array elements, then deallocate the memory using `delete[]`.",
+  "test_cases": [
+    {
+      "input": "5",
+      "expected": "Enter array size: \nArray elements: 0 1 2 3 4 \n"
+    },
+    {
+      "input": "0",
+      "expected": "Enter array size: \nArray elements: \n"
+    },
+    {
+      "input": "-3",
+      "expected": "Program terminated with an error due to invalid array size (negative input leads to undefined behavior with new[])."
+    },
+    {
+      "input": "abc",
+      "expected": "Program terminated with an error due to invalid input type (non-integer input)."
+    }
+  ],
+  "driver": "valid C++ code to run test cases",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program lacks input validation for the array size. Entering a negative integer for the size results in undefined behavior when allocating memory with `new int[size]`, often leading to a crash.",
+    "Entering non-integer input also causes `std::cin` to fail, leaving the `size` variable in an unpredictable state, leading to potential crashes or incorrect behavior."
+  ]
+}

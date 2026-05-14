@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a simple menu-driven program that allows the user to choose between calculating the area of a circle, square, or triangle. Use a `switch` statement to handle the user's choice and prompt for necessary dimensions.",
+  "test_cases": [
+    {
+      "input": "1\n5\n4\n",
+      "expected": "Program will not compile due to a syntax error."
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n#include <algorithm>\n\n// Assume the user's main function is renamed to 'solution_main' for testing.\n// It will be linked against this driver.\n// extern int solution_main(); // Uncomment and link if solution_main exists\n\n// Helper function to capture output and provide input\nstd::string run_program_with_input(const std::string& input_str) {\n    std::stringstream ss_input(input_str);\n    std::stringstream ss_output;\n\n    // Save original streambufs\n    std::streambuf* old_cin_buf = std::cin.rdbuf();\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n\n    // Redirect cin and cout\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    // In a real testing environment, the user's main function (renamed to solution_main)\n    // would be called here. For a syntax error, this call would fail at compilation.\n    // solution_main(); \n\n    // Restore original streambufs\n    std::cin.rdbuf(old_cin_buf);\n    std::cout.rdbuf(old_cout_buf);\n\n    return ss_output.str();\n}\n\n// The actual test runner main function (for demonstration, as compilation will fail)\nint main() {\n    // This main function would typically iterate through test cases defined in the JSON.\n    // Since this is a Syntax Error case, the compilation of the student's code (and thus the driver linking to it)\n    // is expected to fail. This driver serves as a conceptual framework.\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'std::cout << \"Enter your choice: \"' statement."
+  ]
+}

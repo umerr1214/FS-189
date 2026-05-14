@@ -1,0 +1,31 @@
+{
+  "language": "c++",
+  "question": "Implement a `DynamicIntegerArray` class that manages a dynamically allocated array of integers. Its constructor should take an integer `size` and allocate memory for an array of that size. Implement a destructor that correctly deallocates the dynamically allocated memory to prevent memory leaks.",
+  "test_cases": [
+    {
+      "input": "5",
+      "expected": "--- Test Case 1: Normal Allocation ---\nDynamicIntegerArray of size 5 created.\nArray contents: [100, 200, 300, 400, 500]\nDynamicIntegerArray of size 5 destroyed.\n"
+    },
+    {
+      "input": "0",
+      "expected": "--- Test Case 2: Zero Size Allocation ---\nDynamicIntegerArray of size 0 created (no memory allocated).\nArray size: 0\nArray contents: []\nDynamicIntegerArray of size 0 destroyed.\n"
+    },
+    {
+      "input": "-5",
+      "expected": "--- Test Case 3: Negative Size Allocation ---\nCaught expected exception: Array size cannot be negative.\n"
+    },
+    {
+      "input": "3",
+      "expected": "--- Test Case 4: Out of Bounds Access ---\nDynamicIntegerArray of size 3 created.\nArray contents: [1, 2, 3]\nCaught expected exception: Index out of bounds.\nDynamicIntegerArray of size 3 destroyed.\n"
+    },
+    {
+      "input": "2 (const)",
+      "expected": "--- Test Case 5: Out of Bounds Access (const) ---\nDynamicIntegerArray of size 2 created.\nArray contents: [0, 0]\nCaught expected exception: Index out of bounds (const).\nDynamicIntegerArray of size 2 destroyed.\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Test Case 1: Normal Allocation ---\" << std::endl;\n    try {\n        DynamicIntegerArray arr(5);\n        for (int i = 0; i < arr.getSize(); ++i) {\n            arr[i] = (i + 1) * 100;\n        }\n        std::cout << \"Array contents: \";\n        arr.print();\n    } catch (const std::exception& e) {\n        std::cerr << \"Error in Test Case 1: \" << e.what() << std::endl;\n    }\n    std::cout << std::endl;\n\n    std::cout << \"--- Test Case 2: Zero Size Allocation ---\" << std::endl;\n    try {\n        DynamicIntegerArray arr(0);\n        std::cout << \"Array size: \" << arr.getSize() << std::endl;\n        std::cout << \"Array contents: \";\n        arr.print();\n    } catch (const std::exception& e) {\n        std::cerr << \"Error in Test Case 2: \" << e.what() << std::endl;\n    }\n    std::cout << std::endl;\n\n    std::cout << \"--- Test Case 3: Negative Size Allocation ---\" << std::endl;\n    try {\n        DynamicIntegerArray arr(-5);\n        std::cout << \"Array size: \" << arr.getSize() << std::endl;\n        arr.print();\n    } catch (const std::invalid_argument& e) {\n        std::cout << \"Caught expected exception: \" << e.what() << std::endl;\n    } catch (const std::exception& e) {\n        std::cerr << \"Caught unexpected exception: \" << e.what() << std::endl;\n    }\n    std::cout << std::endl;\n\n    std::cout << \"--- Test Case 4: Out of Bounds Access ---\" << std::endl;\n    try {\n        DynamicIntegerArray arr(3);\n        arr[0] = 1; arr[1] = 2; arr[2] = 3;\n        std::cout << \"Array contents: \";\n        arr.print();\n        std::cout << \"Accessing arr[3]: \" << arr[3] << std::endl;\n    } catch (const std::out_of_range& e) {\n        std::cout << \"Caught expected exception: \" << e.what() << std::endl;\n    } catch (const std::exception& e) {\n        std::cerr << \"Caught unexpected exception: \" << e.what() << std::endl;\n    }\n    std::cout << std::endl;\n\n    std::cout << \"--- Test Case 5: Out of Bounds Access (const) ---\" << std::endl;\n    try {\n        const DynamicIntegerArray arr(2);\n        std::cout << \"Array contents: \";\n        arr.print();\n        std::cout << \"Accessing arr[2]: \" << arr[2] << std::endl;\n    } catch (const std::out_of_range& e) {\n        std::cout << \"Caught expected exception: \" << e.what() << std::endl;\n    } catch (const std::exception& e) {\n        std::cerr << \"Caught unexpected exception: \" << e.what() << std::endl;\n    }\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

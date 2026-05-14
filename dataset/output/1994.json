@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Overload the `==` operator for the `Point` class (from a previous question) to compare two `Point` objects. It should return `true` if both `x` and `y` coordinates are identical, `false` otherwise.",
+  "test_cases": [
+    { "input": "Point(1, 2), Point(1, 2)", "expected": "true" },
+    { "input": "Point(1, 2), Point(3, 4)", "expected": "false" },
+    { "input": "Point(5, 5), Point(5, 0)", "expected": "false" },
+    { "input": "Point(0, 0), Point(0, 0)", "expected": "true" },
+    { "input": "Point(-1, -2), Point(-1, -2)", "expected": "true" },
+    { "input": "Point(-1, -2), Point(-2, -1)", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n#include <string> // Required for std::boolalpha\n\nint main() {\n    std::cout << std::boolalpha;\n\n    Point p1(1, 2);\n    Point p2(1, 2);\n    Point p3(3, 4);\n    Point p4(0, 0);\n    Point p5(-1, -2);\n    Point p6(-1, -2);\n    Point p7(-2, -1);\n    Point p8(5, 5);\n    Point p9(5, 0);\n\n    std::cout << (p1 == p2) << std::endl;\n    std::cout << (p1 == p3) << std::endl;\n    std::cout << (p8 == p9) << std::endl;\n    std::cout << (p4 == p4) << std::endl;\n    std::cout << (p5 == p6) << std::endl;\n    std::cout << (p5 == p7) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["The operator== takes its parameter by value (Point other) instead of by const reference (const Point& other), leading to unnecessary object copying and reduced efficiency."]
+}

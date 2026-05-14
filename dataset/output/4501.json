@@ -1,0 +1,31 @@
+{
+  "language": "c++",
+  "question": "Design a basic ATM menu-driven program using a `switch` statement. The program should offer options for 'Deposit', 'Withdraw', and 'Check Balance'. For 'Deposit' and 'Withdraw', prompt for an amount and update a balance variable. For 'Check Balance', display the current balance. Include an 'Exit' option.",
+  "test_cases": [
+    {
+      "input": "1\n-100\n",
+      "expected": "\nATM Menu:\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit\nEnter your choice: Enter amount to deposit: Deposit successful. Current Balance: $400.00\n"
+    },
+    {
+      "input": "2\n600\n",
+      "expected": "\nATM Menu:\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit\nEnter your choice: Enter amount to withdraw: Withdrawal successful. Current Balance: $-100.00\n"
+    },
+    {
+      "input": "x\n1\n100\n4\n",
+      "expected": "\nATM Menu:\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit\nEnter your choice: Invalid input. Please enter a number.\n\nATM Menu:\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit\nEnter your choice: Invalid input. Please enter a number.\n\nATM Menu:\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit\nEnter your choice: Invalid input. Please enter a number.\n\nATM Menu:\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit\nEnter your choice: Invalid input. Please enter a number.\n\nATM Menu:\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit\nEnter your choice: Invalid input. Please enter a number.\n\nATM Menu:\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit\nEnter your choice: Enter amount to deposit: Deposit successful. Current Balance: $0.00\n\nATM Menu:\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit\nEnter your choice: Exiting ATM. Goodbye!\n"
+    },
+    {
+      "input": "1\nabc\n4\n",
+      "expected": "\nATM Menu:\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit\nEnter your choice: Enter amount to deposit: Invalid amount entered. Please try again.\n\nATM Menu:\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit\nEnter your choice: Invalid amount entered. Please try again.\n\nATM Menu:\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit\nEnter your choice: Invalid amount entered. Please try again.\n\nATM Menu:\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit\nEnter your choice: Invalid amount entered. Please try again.\n\nATM Menu:\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit\nEnter your choice: Invalid amount entered. Please try again.\n\nATM Menu:\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit\nEnter your choice: Exiting ATM. Goodbye!\n"
+    }
+  ],
+  "driver": "// This driver expects the C++ solution to be compiled into an executable named 'solution'.\n// It will feed the 'input' from each test case to the 'solution' executable's stdin\n// and capture its stdout to compare with 'expected'.\n// Example execution (pseudo-code):\n// foreach test_case in test_cases:\n//   run_command(\"./solution\", stdin=test_case.input, stdout_capture=true)\n//   assert captured_stdout == test_case.expected\n#include <iostream>\nint main() {\n    std::cout << \"This is a placeholder driver. The actual test harness will execute the compiled C++ solution.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Allows negative balance after withdrawal.",
+    "Allows negative amounts for deposit.",
+    "Lacks proper input buffer clearing (std::cin.ignore) after failed input operations, leading to infinite loops when non-numeric input is provided for menu choices or amounts."
+  ]
+}

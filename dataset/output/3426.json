@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that takes an integer year as input from the user and determines if it is a leap year. Print an appropriate message. (A leap year is divisible by 4, but not by 100 unless it is also divisible by 400).",
+  "test_cases": [
+    { "input": "2024", "expected": "2024 is not a leap year." },
+    { "input": "2000", "expected": "2000 is a leap year." },
+    { "input": "1900", "expected": "1900 is not a leap year." },
+    { "input": "2023", "expected": "2023 is not a leap year." },
+    { "input": "1600", "expected": "1600 is a leap year." },
+    { "input": "2100", "expected": "2100 is not a leap year." }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The condition `(year % 4 == 0 && year % 100 != 0, year % 400 == 0)` contains a semantic error due to the misuse of the comma operator. In a boolean context, the comma operator evaluates its left operand, discards the result, and then evaluates its right operand, using the result of the right operand as the overall expression's value. Therefore, the first part of the `||` condition effectively becomes `(year % 400 == 0)`. The entire `if` statement simplifies to `if (year % 400 == 0 || year % 400 == 0)`, which is simply `if (year % 400 == 0)`. This means the program only checks if a year is divisible by 400, completely ignoring the other leap year rules, leading to incorrect classifications for most years (e.g., 2024 is not divisible by 400, so it will be incorrectly classified as not a leap year)."
+  ]
+}

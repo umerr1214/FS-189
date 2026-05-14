@@ -1,0 +1,25 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `swapValues` that takes two integer variables by reference and swaps their values. Demonstrate its usage in the `main` function with user-provided integers.",
+  "test_cases": [
+    {
+      "input": "5\n10\n",
+      "expected": "Enter the first integer: Enter the second integer: Before swapping: a = 5, b = 10\nAfter swapping: a = 10, b = 5\n"
+    },
+    {
+      "input": "-3\n7\n",
+      "expected": "Enter the first integer: Enter the second integer: Before swapping: a = -3, b = 7\nAfter swapping: a = 7, b = -3\n"
+    },
+    {
+      "input": "0\n0\n",
+      "expected": "Enter the first integer: Enter the second integer: Before swapping: a = 0, b = 0\nAfter swapping: a = 0, b = 0\n"
+    }
+  ],
+  "driver": "int main_wrapper() { return main(); }",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `swapValues` function uses the XOR swap algorithm. While functionally correct and sometimes perceived as a micro-optimization by avoiding a temporary variable, it is generally less readable and more obscure than the standard temporary variable swap. Modern compilers are highly optimized and often generate identical or more efficient code for the temporary variable swap, making the XOR swap's efficiency advantage negligible or non-existent, while sacrificing clarity and increasing the potential for subtle errors if not understood well."
+  ]
+}

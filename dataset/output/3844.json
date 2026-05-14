@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that repeatedly prompts the user to enter an integer between 1 and 10 (inclusive) until a valid input is provided. Use a `do-while` loop for input validation.",
+  "test_cases": [
+    { "input": "0\n-5\n11\nabc\n5\n", "expected": "Enter an integer between 1 and 10 (inclusive): Input out of range. Please enter a number between 1 and 10.\nEnter an integer between 1 and 10 (inclusive): Input out of range. Please enter a number between 1 and 10.\nEnter an integer between 1 and 10 (inclusive): Input out of range. Please enter a number between 1 and 10.\nEnter an integer between 1 and 10 (inclusive): Invalid input. Please enter an integer.\nEnter an integer between 1 and 10 (inclusive): You entered: 5. Valid input!\n" }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    {
+      "line": 8,
+      "column": 70,
+      "message": "expected ';' before 'std::cin'"
+    }
+  ]
+}

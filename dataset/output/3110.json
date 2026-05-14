@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Create a `DataStore` class with a private integer member `secretValue`. Provide a public `getSecretValue()` method to access it and a public `setSecretValue(int value)` method to modify it. Demonstrate that `secretValue` cannot be accessed directly from outside the class, enforcing encapsulation.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "DataStoreClass object initialized.\nCurrent secret value is: 0\nSecret value updated to: 123\nNew secret value obtained: 123\nDemonstrating encapsulation: Direct access to 'sV_val' is prevented by the compiler.\n"
+    }
+  ],
+  "driver": "int main() {\n    DataStoreClass myDataStoreInstance;\n    std::cout << \"Current secret value is: \" << myDataStoreInstance.retrieveSecretValue() << std::endl;\n    myDataStoreInstance.updateSecretValue(123);\n    std::cout << \"New secret value obtained: \" << myDataStoreInstance.retrieveSecretValue() << std::endl;\n    std::cout << \"Demonstrating encapsulation: Direct access to 'sV_val' is prevented by the compiler.\" << '\\n';\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Poor and inconsistent naming conventions for the class (`DataStoreClass`), member variable (`sV_val`), methods (`retrieveSecretValue`, `updateSecretValue`), and method parameters (`p_val`).",
+    "Unnecessary use of the `this->` keyword, which reduces readability in simple cases.",
+    "Minor efficiency issue due to excessive use of `std::endl`, which flushes the output buffer on each call, potentially slowing down I/O compared to using `\\n`.",
+    "Overly verbose output statements in the constructor and setter method, cluttering the console output and obscuring core logic.",
+    "Unnecessary include of `<string>` header, adding minor compile-time overhead."
+  ]
+}

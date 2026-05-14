@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Building upon the `Shape` hierarchy (with `Circle` and `Rectangle`), make `calculateArea()` a virtual function in the `Shape` base class. Demonstrate runtime polymorphism by creating an array or vector of `Shape` pointers, populating it with `Circle` and `Rectangle` objects, and then iterating through it to call `calculateArea()` on each object.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation Error: missing ';' before 'int main()'" }
+  ],
+  "driver": "// No driver needed as the code contains a syntax error and will not compile.",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the definition of the `Rectangle` class. C++ requires a semicolon after class, struct, and union definitions."
+  ]
+}

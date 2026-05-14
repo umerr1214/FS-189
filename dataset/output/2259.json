@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "For a `Point` class with private `x` and `y` integer coordinates, overload the binary `+` operator to enable adding two `Point` objects (component-wise addition, returning a new `Point` object).",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Point p1: (1, 2)\nPoint p2: (3, 4)\np1 + p2: (4, 6)\np4 + p5: (-1, -1)\np7 + p8: (12, 2)\np10 + p11 + p12: (6, 6)\n"
+    }
+  ],
+  "driver": "g++ -std=c++17 -Wall -Wextra -o main 2259.cpp && ./main",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

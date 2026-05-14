@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that initializes a 3x3 integer matrix (2D array) with values. Then, calculate and print the sum of elements in each row separately.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Sum of row 0: 60\nSum of row 1: 75\nSum of row 2: 6\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'rowSum' variable is incorrectly assigned 'matrix[i][j]' instead of being accumulated using '+=', causing it to only hold the last element of each row rather than the sum of all elements in the row."
+  ]
+}

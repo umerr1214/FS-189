@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define an abstract base class `Animal` with a pure virtual function `makeSound()`. Create two concrete derived classes, `Dog` and `Cat`, each implementing `makeSound()` to print their specific sound. Demonstrate that you cannot instantiate `Animal` directly, but can use `Animal` pointers to refer to `Dog` and `Cat` objects.",
+  "test_cases": [
+    { "input": "", "expected": "Attempting to instantiate 'Animal' directly would result in a compile-time error.\nThis demonstrates that 'Animal' is an abstract base class.\n\nNow demonstrating polymorphism using 'Animal' pointers:\nDog says: Woof!\nCat says: Meow!\n\nDemonstration complete. Objects cleaned up.\n" }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

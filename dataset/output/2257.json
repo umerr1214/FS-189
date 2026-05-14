@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "For a `Point` class with private `x` and `y` integer coordinates, overload the binary `+` operator to enable adding two `Point` objects (component-wise addition, returning a new `Point` object).",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Point p1: (1, 2)\nPoint p2: (3, 4)\np1 + p2: (4, 6)\np4 + p5: (-1, -1)\np7 + p8: (12, 2)\n"
+    }
+  ],
+  "driver": "g++ -std=c++17 -Wall -Wextra -o main 2257.cpp && ./main",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The member operator+ is not declared const, which implies it might modify the object. For an addition operation, this is misleading and reduces robustness.",
+    "Lack of a default constructor might cause issues in scenarios requiring default initialization (e.g., array creation or usage with certain STL containers)."
+  ]
+}

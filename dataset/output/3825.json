@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that dynamically allocates memory for an array of 5 integers using `new`, prompts the user to enter values for these integers, prints the values, and then deallocates the memory using `delete[]`.",
+  "test_cases": [
+    {
+      "input": "10\n20\n30\n40\n50\n",
+      "expected": "Enter 5 integer values:\nEnter value for element 1: Enter value for element 2: Enter value for element 3: Enter value for element 4: Enter value for element 5: You entered the following values:\nElement 1: 10\nElement 2: 20\nElement 3: 30\nElement 4: 40\nElement 5: 50\n"
+    },
+    {
+      "input": "1\n2\nfoo\n3\n4\n5\n",
+      "expected": "Enter 5 integer values:\nEnter value for element 1: Enter value for element 2: Enter value for element 3: Invalid input. Please enter an integer.\nEnter value for element 3: Enter value for element 4: Enter value for element 5: You entered the following values:\nElement 1: 1\nElement 2: 2\nElement 3: 3\nElement 4: 4\nElement 5: 5\n"
+    }
+  ],
+  "driver": "The program is a complete C++ application. It can be compiled with `g++ -o program 3825.cpp` and run with `./program`. Input will be piped to stdin.",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design an abstract base class `GeometricShape` with a pure virtual function `getArea()` (returning double) and a non-virtual function `getName()` (returning string). Derive `Rectangle` and `Triangle` classes from `GeometricShape`, implementing the `getArea()` function specifically for each shape.",
+  "test_cases": [
+    { "input": "Rectangle dimensions: 5 4\nTriangle dimensions: 6 3", "expected": "Rectangle area: 20\nTriangle area: 9\nShape: Rectangle, Area: 20\nShape: Triangle, Area: 20" }
+  ],
+  "driver": "int main() {\n    Rectangle rect(5, 4);\n    Triangle tri(6, 3);\n\n    std::cout << rect.getName() << \" area: \" << rect.getArea() << std::endl;\n    std::cout << tri.getName() << \" area: \" << tri.getArea() << std::endl;\n\n    std::vector<GeometricShape*> shapes;\n    shapes.push_back(new Rectangle(10, 2));\n    shapes.push_back(new Triangle(8, 5));\n\n    for (const auto& shape : shapes) {\n        std::cout << \"Shape: \" << shape->getName() << \", Area: \" << shape->getArea() << std::endl;\n    }\n\n    for (const auto& shape : shapes) {\n        delete shape;\n    }\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition for 'GeometricShape'."
+  ]
+}

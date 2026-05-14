@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Book` with members `title` (`std::string`), `author` (`std::string`), and `publicationYear` (int). Write a program that declares an array of three `Book` structs, prompts the user to enter details for each book, and then prints the details of all books.",
+  "test_cases": [
+    {
+      "input": "The Great Gatsby\nF. Scott Fitzgerald\n1925\n1984\nGeorge Orwell\n1949\nTo Kill a Mockingbird\nHarper Lee\n1960\n",
+      "expected": "Enter details for Book 1:\nTitle: Author: Publication Year: Enter details for Book 2:\nTitle: Author: Publication Year: Enter details for Book 3:\nTitle: Author: Publication Year: \n--- Book Details ---\nBook 1:\n  Title: The Great Gatsby\n  Author: F. Scott Fitzgerald\n  Publication Year: 1925\nBook 2:\n  Title: 1984\n  Author: George Orwell\n  Publication Year: 1949\nBook 3:\n  Title: To Kill a Mockingbird\n  Author: Harper Lee\n  Publication Year: 1960\n"
+    }
+  ],
+  "driver": "// The student's code is a complete program that interacts with stdin/stdout. An external test runner would execute it.",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "Mixing `std::cin >> int` and `std::getline` without clearing the input buffer. After reading `publicationYear` with `std::cin >>`, the newline character remains in the buffer. The subsequent `std::getline` for the next book's title reads this leftover newline immediately, resulting in an empty title and shifting subsequent inputs (e.g., the intended title becomes the author, and the author becomes the publication year, which then fails input)."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that asks the user for a positive integer N and then prints all prime numbers up to N.",
+  "test_cases": [
+    { "input": "10", "expected": "2 3 5 7 \n" },
+    { "input": "1", "expected": "\n" },
+    { "input": "0", "expected": "\n" },
+    { "input": "-5", "expected": "\n" },
+    { "input": "abc", "expected": "\n" },
+    { "input": "20", "expected": "2 3 5 7 11 13 17 19 \n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <fstream>\n#include <cstdlib> // For system, remove\n\n// This function simulates running the user's compiled program with a given input.\n// It assumes the user's code is compiled into an executable named \"a.out\".\nstd::string run_user_code(const std::string& input_str) {\n    std::string temp_input_filename = \"temp_input.txt\";\n    std::string temp_output_filename = \"temp_output.txt\";\n    std::string program_executable = \"./a.out\"; \n\n    // Write input to a temporary file\n    std::ofstream input_file(temp_input_filename);\n    if (!input_file.is_open()) return \"ERROR: Could not create temp_input.txt\";\n    input_file << input_str;\n    input_file.close();\n\n    // Run the user's program, redirecting stdin and stdout\n    std::string command = program_executable + \" < \" + temp_input_filename + \" > \" + temp_output_filename + \" 2>&1\";\n    int system_result = system(command.c_str()); // Execute command\n\n    // Read output from the temporary file\n    std::ifstream output_file(temp_output_filename);\n    if (!output_file.is_open()) return \"ERROR: Could not open temp_output.txt\";\n    std::stringstream buffer;\n    buffer << output_file.rdbuf();\n    output_file.close();\n\n    // Clean up temporary files\n    remove(temp_input_filename.c_str());\n    remove(temp_output_filename.c_str());\n\n    return buffer.str();\n}\n\n// The actual test harness will call `run_user_code` with inputs from `test_cases`\n// and compare the returned string with `expected`.\n// This `main` function is just a placeholder to make the driver a complete C++ file.\nint main() {\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The primality test uses a naive loop that checks divisibility up to `N-1` for each number, leading to an overall O(N^2) time complexity. This is inefficient for larger values of N; an O(N*sqrt(N)) or Sieve of Eratosthenes (O(N log log N)) approach would be significantly faster.",
+    "The code lacks comments, making it harder to understand the logic at a glance.",
+    "Variable names like `input_limit_N`, `candidate_number`, and `is_this_number_a_prime` are overly verbose, reducing readability.",
+    "All core logic is contained within the `main` function, reducing modularity and reusability of the prime checking logic."
+  ]
+}

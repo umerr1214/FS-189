@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `Student` class with `name` (string) and `studentID` (int) as private members. Implement a default constructor that initializes `name` to \"Unknown\" and `studentID` to 0, and a parameterized constructor that takes both `name` and `studentID`. Also, implement a destructor that prints a message indicating when a `Student` object is being destroyed, e.g., 'Student [name] with ID [id] destroyed.'",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Program Start ---\n--- Entering createAndDestroyStudentsCorrectly ---\nInside block: s2 name=Jane Smith, s3 name=Unknown\nStudent Unknown with ID 0 destroyed.\nStudent Jane Smith with ID 102 destroyed.\n--- Exiting createAndDestroyStudentsCorrectly ---\nStudent Peter Jones with ID 104 destroyed.\nStudent John Doe with ID 101 destroyed.\n--- Program End ---\nStudent Main Student with ID 999 destroyed.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Student {\nprivate:\n    std::string name;\n    int studentID;\n\npublic:\n    Student() : name(\"Unknown\"), studentID(0) {\n    }\n\n    Student(const std::string& name_param, int id_param)\n        : name(name_param), studentID(id_param) {\n    }\n\n    ~Student() {\n        std::cout << \"Student \" << name << \" with ID \" << studentID << \" destroyed.\" << std::endl;\n    }\n\n    std::string getName() const { return name; }\n    int getStudentID() const { return studentID; }\n};\n\nvoid createAndDestroyStudentsCorrectly() {\n    std::cout << \"--- Entering createAndDestroyStudentsCorrectly ---\" << std::endl;\n    Student s1(\"John Doe\", 101);\n    {\n        Student s2(\"Jane Smith\", 102);\n        Student s3;\n        std::cout << \"Inside block: s2 name=\" << s2.getName() << \", s3 name=\" << s3.getName() << std::endl;\n    }\n    Student s4(\"Peter Jones\", 104);\n    std::cout << \"--- Exiting createAndDestroyStudentsCorrectly ---\" << std::endl;\n}\n\nint main() {\n    std::cout << \"--- Program Start ---\" << std::endl;\n\n    Student mainStudent(\"Main Student\", 999);\n\n    createAndDestroyStudentsCorrectly();\n\n    std::cout << \"--- Program End ---\" << std::endl;\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

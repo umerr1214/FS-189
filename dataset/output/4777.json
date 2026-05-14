@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that calculates the sum of all odd numbers between 1 and a user-specified positive integer 'N' (inclusive). Use a `for` loop for iteration.",
+  "test_cases": [
+    { "input": "10", "expected": "The sum of odd numbers between 1 and 10 is: 25\n" },
+    { "input": "1", "expected": "The sum of odd numbers between 1 and 1 is: 1\n" },
+    { "input": "2", "expected": "The sum of odd numbers between 1 and 2 is: 1\n" },
+    { "input": "-5", "expected": "The sum of odd numbers between 1 and -5 is: 0\n" },
+    { "input": "abc", "expected": "The sum of odd numbers between 1 and 0 is: 0\n" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream>\n#include <streambuf>\n\n// Forward declaration of the solution's core logic function.\nvoid solve_4777();\n\n// Helper function to simulate running the solution's logic\n// by redirecting standard input and output.\nstd::string run_solution_and_get_output(const std::string& input_str, void (*solution_func)() = solve_4777) {\n    std::stringstream ss_input(input_str);\n    std::stringstream ss_output;\n\n    std::streambuf* old_cin_buf = std::cin.rdbuf();\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    solution_func();\n\n    std::cin.rdbuf(old_cin_buf);\n    std::cout.rdbuf(old_cout_buf);\n\n    return ss_output.str();\n}\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> test_cases = {\n        { \"10\", \"The sum of odd numbers between 1 and 10 is: 25\\n\" },\n        { \"1\", \"The sum of odd numbers between 1 and 1 is: 1\\n\" },\n        { \"2\", \"The sum of odd numbers between 1 and 2 is: 1\\n\" },\n        { \"-5\", \"The sum of odd numbers between 1 and -5 is: 0\\n\" },\n        { \"abc\", \"The sum of odd numbers between 1 and 0 is: 0\\n\" }\n    };\n\n    bool all_passed = true;\n    for (size_t i = 0; i < test_cases.size(); ++i) {\n        const auto& tc = test_cases[i];\n        std::string actual_output = run_solution_and_get_output(tc.first);\n\n        if (actual_output == tc.second) {\n            // Test passed, no output needed for success\n        } else {\n            std::cout << \"Test \" << i + 1 << \" Failed.\" << std::endl;\n            std::cout << \"Input: \\\"\" << tc.first << \"\\\"\" << std::endl;\n            std::cout << \"Expected: \\\"\" << tc.second << \"\\\"\" << std::endl;\n            std::cout << \"Got: \\\"\" << actual_output << \"\\\"\" << std::endl;\n            all_passed = false;\n        }\n    }\n\n    if (all_passed) {\n        return 0;\n    } else {\n        return 1;\n    }\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not validate user input for non-numeric values. If a non-numeric string is entered, std::cin will fail, N might become 0, and the program will proceed without error handling, producing potentially misleading output (e.g., sum for N=0).",
+    "The program does not explicitly check if N is a positive integer as implied by the question. While the loop correctly handles N <= 0 by producing a sum of 0, a more robust solution would inform the user about the expected input range."
+  ]
+}

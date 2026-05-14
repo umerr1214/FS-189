@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that reads an integer from the user and determines whether it is positive, negative, or zero using if-else statements.",
+  "test_cases": [
+    { "input": "5", "expected": "Enter an integer: Positive\n" },
+    { "input": "-3", "expected": "Enter an integer: Negative\n" },
+    { "input": "0", "expected": "Enter an integer: Zero\n" },
+    { "input": "abc", "expected": "Enter an integer: Zero\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\n// Declare the student's solve function\nvoid solve();\n\nint main() {\n    // The testing infrastructure will redirect stdin and stdout.\n    // The student's solve() function is expected to read from std::cin and write to std::cout.\n    solve();\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not handle invalid input (e.g., non-integer input). If a non-integer is entered, `std::cin` fails, and the program proceeds with an uninitialized or default value for 'num', leading to incorrect output and leaving `std::cin` in a failed state. For example, 'abc' input results in 'Zero' output instead of an error message."
+  ]
+}

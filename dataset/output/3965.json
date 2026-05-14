@@ -1,0 +1,25 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `analyzeArray` that takes an integer array and its size as input. The function should also take two reference parameters, `minVal` and `maxVal`. It should find the minimum and maximum elements in the array and store them in `minVal` and `maxVal` respectively. Demonstrate with an example array.",
+  "test_cases": [
+    {
+      "input": "Array: [10, 4, 20, 5, 15], Size: 5",
+      "expected": "Min: 4, Max: 20"
+    },
+    {
+      "input": "Array: [-1, -5, -10, 0, 3], Size: 5",
+      "expected": "Min: -10, Max: 3"
+    },
+    {
+      "input": "Array: [7], Size: 1",
+      "expected": "Min: 7, Max: 7"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <limits> // Required for std::numeric_limits\n\n// The analyzeArray function will be inserted here\n\nint main() {\n    int arr1[] = {10, 4, 20, 5, 15};\n    int size1 = sizeof(arr1) / sizeof(arr1[0]);\n    int min_val1 = 0;\n    int max_val1 = 0;\n\n    std::cout << \"Array 1: \";\n    for (int i = 0; i < size1; ++i) {\n        std::cout << arr1[i] << (i == size1 - 1 ? \"\" : \", \");\n    }\n    std::cout << std::endl;\n\n    analyzeArray(arr1, size1, min_val1, max_val1);\n    std::cout << \"Min: \" << min_val1 << \", Max: \" << max_val1 << std::endl;\n\n    int arr2[] = {-1, -5, -10, 0, 3};\n    int size2 = sizeof(arr2) / sizeof(arr2[0]);\n    int min_val2 = 0;\n    int max_val2 = 0;\n\n    std::cout << \"\\nArray 2: \";\n    for (int i = 0; i < size2; ++i) {\n        std::cout << arr2[i] << (i == size2 - 1 ? \"\" : \", \");\n    }\n    std::cout << std::endl;\n\n    analyzeArray(arr2, size2, min_val2, max_val2);\n    std::cout << \"Min: \" << min_val2 << \", Max: \" << max_val2 << std::endl;\n\n    int arr3[] = {7};\n    int size3 = sizeof(arr3) / sizeof(arr3[0]);\n    int min_val3 = 0;\n    int max_val3 = 0;\n\n    std::cout << \"\\nArray 3: \";\n    for (int i = 0; i < size3; ++i) {\n        std::cout << arr3[i] << (i == size3 - 1 ? \"\" : \", \");\n    }\n    std::cout << std::endl;\n\n    analyzeArray(arr3, size3, min_val3, max_val3);\n    std::cout << \"Min: \" << min_val3 << \", Max: \" << max_val3 << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The function initializes `minVal` and `maxVal` to 0 unconditionally. This is incorrect if the array contains only positive numbers (min will be 0) or only negative numbers (max will be 0), leading to incorrect results for certain inputs."
+  ]
+}

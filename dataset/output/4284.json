@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `sum_rows` that takes a 2D integer array (matrix), its number of rows, and number of columns as input. The function should calculate and print the sum of elements for each individual row.",
+  "test_cases": [
+    {
+      "input": "const int ROWS = 3;\nconst int COLS = 4;\nint matrix[ROWS][COLS] = {\n    {1, 2, 3, 4},\n    {5, 6, 7, 8},\n    {9, 10, 11, 12}\n};\nsum_rows(matrix, ROWS, COLS);",
+      "expected": "Sum for row 0: 15\nSum for row 1: 35\nSum for row 2: 42\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\nconst int MAX_COLS_FOR_FUNC = 10;\nvoid sum_rows(int matrix[][MAX_COLS_FOR_FUNC], int num_rows, int num_cols);\n\nint main() {\n    std::stringstream ss;\n    std::streambuf* oldCout = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n\n    const int ROWS = 3;\n    const int COLS = 4;\n    int matrix[ROWS][COLS] = {\n        {1, 2, 3, 4},\n        {5, 6, 7, 8},\n        {9, 10, 11, 12}\n    };\n    sum_rows(matrix, ROWS, COLS);\n\n    std::cout.rdbuf(oldCout);\n    // std::cout << ss.str(); // For debugging\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The inner loop condition `j <= num_cols` attempts to access `matrix[i][num_cols]`, which is one element beyond the allocated column size (0 to `num_cols - 1`). This leads to out-of-bounds memory access and undefined behavior. For the provided input, it might read the first element of the next row or arbitrary memory."
+  ]
+}

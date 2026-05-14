@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that declares a 2D matrix (e.g., 3x3), prompts the user for a scalar value, and then performs scalar multiplication on the matrix, printing the resulting matrix.",
+  "test_cases": [
+    {
+      "input": "2",
+      "expected": "Original Matrix:\n1\t2\t3\n4\t5\t6\n7\t8\t9\nEnter a scalar value: \nResulting Matrix after scalar multiplication:\n2\t4\t6\n8\t10\t12\n14\t16\t18\n"
+    }
+  ],
+  "driver": "This driver assumes a system that compiles and runs the C++ code. Input is fed to stdin, and stdout is captured for comparison.\n\n#include <iostream>\n#include <string>\n#include <vector>\n\n// A conceptual function to execute the user's compiled program\nstd::string execute_program(const std::string& input_data) {\n    // In a real environment, this would involve forking a process,\n    // redirecting stdin/stdout, and capturing the output.\n    // For this JSON, we simulate the expected interaction.\n    return \"[Program output based on input: \" + input_data + \"]\";\n}\n\nint main() {\n    // This driver code itself does not compile the user's submission.\n    // It describes how a testing harness would interact with the submission.\n    std::string test_input = \"2\";\n    std::string expected_output = \"Original Matrix:\\n1\\t2\\t3\\n4\\t5\\t6\\n7\\t8\\t9\\nEnter a scalar value: \\nResulting Matrix after scalar multiplication:\\n2\\t4\\t6\\n8\\t10\\t12\\n14\\t16\\t18\\n\";\n\n    // In a real system, the user's code would be compiled and run with test_input.\n    // std::string actual_output = execute_program(test_input);\n    // if (actual_output == expected_output) {\n    //     std::cout << \"Test Passed\" << std::endl;\n    // } else {\n    //     std::cout << \"Test Failed\" << std::endl;\n    // }\n    std::cout << \"Driver setup complete. Test case input: \" << test_input << std::endl;\n    std::cout << \"Expected output for this input is provided in the JSON.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The scalar multiplication operation uses addition (+) instead of multiplication (*) in the core logic, leading to incorrect results."
+  ]
+}

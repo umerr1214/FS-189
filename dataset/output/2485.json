@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a `SecretAgent` class where the agent's `codename` is public, `trueIdentity` is private, and `missionBriefing` is protected. Show how these access levels restrict or permit access from outside and from a derived class `Handler`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating SecretAgent Access ---\nOutside accessing public codename (agent1): Phoenix\nOutside modified public codename (agent1): Nightshade\nOutside attempting to access private trueIdentity (agent1): Not permitted directly.\nTrue Identity (via public method): John Doe\nOutside attempting to access protected missionBriefing (agent1): Not permitted directly.\n\n--- Demonstrating Handler Access ---\nOutside accessing public codename (handler1): Shadow\nHandler accessing protected mission briefing: Provide backup for Phoenix.\n\n--- Demonstrating Robustness Issue ---\nOriginal Handler mission briefing: Handler providing a reference to mission briefing for external modification.\nProvide backup for Phoenix.\nHandler providing a reference to mission briefing for external modification.\nModified Handler mission briefing via external reference: \nHandler accessing protected mission briefing: MISSION COMPROMISED: New objective - Extract Phoenix immediately!\n"
+    }
+  ],
+  "driver": "int main() { SecretAgent agent1(\"Phoenix\", \"John Doe\", \"Infiltrate enemy base.\"); Handler handler1(\"Shadow\", \"Jane Smith\", \"Provide backup for Phoenix.\"); std::cout << \"--- Demonstrating SecretAgent Access ---\" << std::endl; std::cout << \"Outside accessing public codename (agent1): \" << agent1.codename << std::endl; agent1.codename = \"Nightshade\"; std::cout << \"Outside modified public codename (agent1): \" << agent1.codename << std::endl; std::cout << \"Outside attempting to access private trueIdentity (agent1): Not permitted directly.\" << std::endl; std::cout << agent1.getTrueIdentity() << std::endl; std::cout << \"Outside attempting to access protected missionBriefing (agent1): Not permitted directly.\" << std::endl; std::cout << \"\\n--- Demonstrating Handler Access ---\" << std::endl; std::cout << \"Outside accessing public codename (handler1): \" << handler1.codename << std::endl; handler1.displayMissionBriefing(); std::cout << \"\\n--- Demonstrating Robustness Issue ---\" << std::endl; std::cout << \"Original Handler mission briefing: \" << handler1.getMissionBriefingReference() << std::endl; std::string& briefingRef = handler1.getMissionBriefingReference(); briefingRef = \"MISSION COMPROMISED: New objective - Extract Phoenix immediately!\"; std::cout << \"Modified Handler mission briefing via external reference: \" << std::endl; handler1.displayMissionBriefing(); return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Handler::getMissionBriefingReference` method returns a non-const reference to `SecretAgent::missionBriefing`. This allows external code (from `main`) to directly modify a protected member, bypassing the intended encapsulation and potentially leading to unintended state changes, making the system less robust.",
+    "The `SecretAgent` constructor does not include validation for critical members like `trueIdentity` or `missionBriefing` being empty, which could lead to an agent being in an invalid or incomplete state if not handled by the caller."
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that reads a single word (as `std::string`) from the user and checks if it is a palindrome (reads the same forwards and backwards). The check should be case-sensitive.",
+  "test_cases": [
+    { "input": "racecar", "expected": "true" },
+    { "input": "hello", "expected": "false" },
+    { "input": "Madam", "expected": "false" },
+    { "input": "level", "expected": "true" },
+    { "input": "A", "expected": "true" },
+    { "input": "aa", "expected": "true" },
+    { "input": "ab", "expected": "false" },
+    { "input": "rotor", "expected": "true" },
+    { "input": "programming", "expected": "false" },
+    { "input": "", "expected": "true" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\nextern bool isPalindrome(const std::string& s);\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        bool result = isPalindrome(line);\n        std::cout << (result ? \"true\" : \"false\") << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `isPalindrome` function has an efficiency issue: it passes the string by value (creating a copy) and then creates another full copy to reverse. This results in O(N) space complexity and unnecessary overhead, whereas an O(1) space solution exists.",
+    "The variable names (`myInputWord`, `s_word_copy`, `s_reversed_copy`) are slightly informal or redundant, reducing readability.",
+    "User prompts and output messages are informal, which can detract from a professional or clear user experience."
+  ]
+}

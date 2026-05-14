@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design a `BankAccount` class with private members `accountNumber` (int) and `balance` (double). Implement a constructor that initializes these members, ensuring the initial `balance` cannot be negative. Provide public `deposit` and `withdraw` methods, with `withdraw` checking for sufficient funds.",
+  "test_cases": [
+    { "input": "BankAccount account1(1001, 500.0);\naccount1.deposit(200.0);\naccount1.withdraw(300.0);\naccount1.withdraw(1000.0); // This should fail logically\nBankAccount account2(1002, -100.0);", "expected": "Account 1001 initial balance: 500\nBalance after deposit: 700\nWithdrawal successful. New balance: 400\nCurrent balance before large withdraw: 400\nWithdrawal failed.\nBalance after large withdraw attempt: 400\nAccount 1002 initial balance (negative input): 0" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nint main() {\n    BankAccount account1(1001, 500.0);\n    std::cout << \"Account \" << account1.getAccountNumber() << \" initial balance: \" << account1.getBalance() << std::endl;\n\n    account1.deposit(200.0);\n    std::cout << \"Balance after deposit: \" << account1.getBalance() << std::endl;\n\n    if (account1.withdraw(300.0)) {\n        std::cout << \"Withdrawal successful. New balance: \" << account1.getBalance() << std::endl;\n    } else {\n        std::cout << \"Withdrawal failed.\" << std::endl;\n    }\n\n    std::cout << \"Current balance before large withdraw: \" << account1.getBalance() << std::endl;\n    if (account1.withdraw(1000.0)) {\n        std::cout << \"Withdrawal successful. New balance: \" << account1.getBalance() << std::endl;\n    } else {\n        std::cout << \"Withdrawal failed.\" << std::endl;\n    }\n    std::cout << \"Balance after large withdraw attempt: \" << account1.getBalance() << std::endl;\n\n    BankAccount account2(1002, -100.0);\n    std::cout << \"Account \" << account2.getAccountNumber() << \" initial balance (negative input): \" << account2.getBalance() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The `withdraw` method contains a logical error: it incorrectly returns `true` even when funds are insufficient and no withdrawal occurs, misrepresenting the operation's success to the caller."]
+}

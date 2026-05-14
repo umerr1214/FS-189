@@ -1,0 +1,27 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program with two overloaded functions named `calculateArea`. One function should take a single double argument (radius) and calculate the area of a circle. The second should take two double arguments (length, width) and calculate the area of a rectangle. Prompt the user to choose which area to calculate and provide inputs.",
+  "test_cases": [
+    {
+      "input": "1\n5.0\n3\n",
+      "expected": "Welcome to the Area Calculator!\n\nChoose which area to calculate:\n1. Circle (using radius)\n2. Rectangle (using length and width)\n3. Exit\nEnter your choice (1, 2, or 3): Enter the radius of the circle: The area of the circle is: 78.5398\n\nChoose which area to calculate:\n1. Circle (using radius)\n2. Rectangle (using length and width)\n3. Exit\nEnter your choice (1, 2, or 3): Exiting Area Calculator. Goodbye!\n"
+    },
+    {
+      "input": "2\n10.5\n4.2\n3\n",
+      "expected": "Welcome to the Area Calculator!\n\nChoose which area to calculate:\n1. Circle (using radius)\n2. Rectangle (using length and width)\n3. Exit\nEnter your choice (1, 2, or 3): Enter the length of the rectangle: Enter the width of the rectangle: The area of the rectangle is: 44.1000\n\nChoose which area to calculate:\n1. Circle (using radius)\n2. Rectangle (using length and width)\n3. Exit\nEnter your choice (1, 2, or 3): Exiting Area Calculator. Goodbye!\n"
+    },
+    {
+      "input": "1\n-5\n7\n3\n",
+      "expected": "Welcome to the Area Calculator!\n\nChoose which area to calculate:\n1. Circle (using radius)\n2. Rectangle (using length and width)\n3. Exit\nEnter your choice (1, 2, or 3): Enter the radius of the circle: Input cannot be negative. Please enter a positive number.\nEnter the radius of the circle: The area of the circle is: 153.9380\n\nChoose which area to calculate:\n1. Circle (using radius)\n2. Rectangle (using length and width)\n3. Exit\nEnter your choice (1, 2, or 3): Exiting Area Calculator. Goodbye!\n"
+    },
+    {
+      "input": "abc\n1\n10\n3\n",
+      "expected": "Welcome to the Area Calculator!\n\nChoose which area to calculate:\n1. Circle (using radius)\n2. Rectangle (using length and width)\n3. Exit\nEnter your choice (1, 2, or 3): Invalid input. Please enter a number.\n\nChoose which area to calculate:\n1. Circle (using radius)\n2. Rectangle (using length and width)\n3. Exit\nEnter your choice (1, 2, or 3): Enter the radius of the circle: The area of the circle is: 314.1593\n\nChoose which area to calculate:\n1. Circle (using radius)\n2. Rectangle (using length and width)\n3. Exit\nEnter your choice (1, 2, or 3): Exiting Area Calculator. Goodbye!\n"
+    }
+  ],
+  "driver": "int main() {\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

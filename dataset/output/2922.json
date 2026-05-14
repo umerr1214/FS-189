@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Person` with `protected` data members `name` (string) and `age` (int). Derive a `Student` class from `Person`. Implement a method in `Student` to display both its own specific details and the inherited `name` and `age`.",
+  "test_cases": [
+    { "input": "", "expected": "Student Name: Charlie Brown\nStudent Age: 21\nStudent ID: S98765\n" }
+  ],
+  "driver": "int main() {\n    Student s(\"Charlie Brown\", 21, \"S98765\");\n    s.displayDetails();\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The base class `Person` has its data members `name` and `age` declared as `private`. The derived class `Student` attempts to directly access these private members in its `displayDetails` method, which is a violation of access control rules in C++ and will result in a compile-time error."]
+}

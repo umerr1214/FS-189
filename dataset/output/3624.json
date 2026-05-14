@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Write a recursive function `int fibonacci(int n)` that calculates the Nth Fibonacci number (where F(0)=0, F(1)=1).",
+  "test_cases": [
+    { "input": "0", "expected": "runtime error (stack overflow)" },
+    { "input": "1", "expected": "runtime error (stack overflow)" },
+    { "input": "2", "expected": "runtime error (stack overflow)" },
+    { "input": "3", "expected": "runtime error (stack overflow)" },
+    { "input": "4", "expected": "runtime error (stack overflow)" },
+    { "input": "5", "expected": "runtime error (stack overflow)" },
+    { "input": "6", "expected": "runtime error (stack overflow)" },
+    { "input": "10", "expected": "runtime error (stack overflow)" }
+  ],
+  "driver": "#include <iostream>\n\n// The fibonacci function will be placed here by the system\n// int fibonacci(int n);\n\nint main() {\n    // These calls will lead to a runtime error (stack overflow)\n    // due to missing base cases in the fibonacci function.\n    std::cout << \"fibonacci(0) = \"; try { std::cout << fibonacci(0); } catch(...) { std::cout << \"runtime error\"; } std::cout << std::endl;\n    std::cout << \"fibonacci(1) = \"; try { std::cout << fibonacci(1); } catch(...) { std::cout << \"runtime error\"; } std::cout << std::endl;\n    std::cout << \"fibonacci(2) = \"; try { std::cout << fibonacci(2); } catch(...) { std::cout << \"runtime error\"; } std::cout << std::endl;\n    std::cout << \"fibonacci(3) = \"; try { std::cout << fibonacci(3); } catch(...) { std::cout << \"runtime error\"; } std::cout << std::endl;\n    std::cout << \"fibonacci(4) = \"; try { std::cout << fibonacci(4); } catch(...) { std::cout << \"runtime error\"; } std::cout << std::endl;\n    std::cout << \"fibonacci(5) = \"; try { std::cout << fibonacci(5); } catch(...) { std::cout << \"runtime error\"; } std::cout << std::endl;\n    std::cout << \"fibonacci(6) = \"; try { std::cout << fibonacci(6); } catch(...) { std::cout << \"runtime error\"; } std::cout << std::endl;\n    std::cout << \"fibonacci(10) = \"; try { std::cout << fibonacci(10); } catch(...) { std::cout << \"runtime error\"; } std::cout << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The recursive function `fibonacci` lacks proper base cases (for n=0 and n=1). This omission leads to infinite recursion for any non-negative input, ultimately resulting in a stack overflow and program termination at runtime."
+  ]
+}

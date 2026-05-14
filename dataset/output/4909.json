@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that uses nested `for` loops to print the following pattern of asterisks to the console, for a user-specified number of rows 'N':\n*\n**\n***\n****\n(For N=4)",
+  "test_cases": [
+    { "input": "4", "expected": "*\n**\n***\n****\n" },
+    { "input": "1", "expected": "*\n" },
+    { "input": "0", "expected": "" },
+    { "input": "-2", "expected": "" },
+    { "input": "5", "expected": "*\n**\n***\n****\n*****\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// This is a conceptual driver. The actual submitted C++ code has its own main.\n// This driver would typically compile and run the submitted code, providing input via stdin\n// and capturing output from stdout.\n\nint main() {\n    int N;\n    std::cin >> N;\n    // Assuming the submitted code has a main function that reads N and prints the pattern.\n    // The testing framework would execute that main function.\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not validate the user input 'N'. If N is zero or negative, it simply prints nothing without informing the user about the invalid input. A robust program should handle such cases explicitly, perhaps by printing an error message or prompting for a valid positive integer."
+  ]
+}

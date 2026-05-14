@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ function `findGCD` that calculates the Greatest Common Divisor (GCD) of two positive integers using the Euclidean algorithm (pass by value). The main program should take two numbers from the user and display their GCD.",
+  "test_cases": [
+    { "input": "10 15", "expected": "The GCD of 10 and 15 is: 5" },
+    { "input": "48 18", "expected": "The GCD of 48 and 18 is: 6" },
+    { "input": "7 13", "expected": "The GCD of 7 and 13 is: 1" }
+  ],
+  "driver": "#include <iostream>\n\n// Assume findGCD is defined here\n\nint main() {\n    int n1, n2;\n    std::cin >> n1 >> n2;\n    int result = findGCD(n1, n2);\n    std::cout << \"The GCD of \" << n1 << \" and \" << n2 << \" is: \" << result << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `findGCD` function is implemented using pass-by-reference (`int& a, int& b`) instead of pass-by-value (`int a, int b`) as explicitly stated in the problem description. While the GCD calculation itself is correct, this design choice modifies the original input variables in the `main` function, leading to a misleading output message regarding the original numbers."
+  ]
+}

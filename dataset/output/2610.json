@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Modify the `Shape` hierarchy (from previous questions) to make `Shape` an abstract base class. This means `Shape` should have a pure virtual function `calculateArea()`. Demonstrate that `Shape` objects cannot be instantiated directly and that any derived concrete class (`Circle`, `Rectangle`) must provide an implementation for `calculateArea()`.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Compilation error: cannot instantiate abstract class 'Circle'." }
+  ],
+  "driver": "int main() {\n    // The primary error occurs at the instantiation of Circle.\n    // If that were fixed, the rest would run.\n    Rectangle rectangle(4.0, 6.0);\n    std::cout << \"Rectangle Area: \" << rectangle.calculateArea() << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `Circle` class inherits a pure virtual function `calculateArea()` from `Shape` but does not provide an implementation for it. This makes `Circle` an abstract class. Attempting to instantiate an abstract class (e.g., `Circle circle(5.0);`) is a semantic error, as only concrete classes can be instantiated."
+  ]
+}

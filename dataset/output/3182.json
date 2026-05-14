@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Refactor the `Shape` class to be an abstract base class with a pure virtual `double calculateArea()` method. Ensure `Circle` and `Rectangle` properly implement this method and create instances of them.",
+  "test_cases": [
+    { "input": "N/A", "expected": "--------------------\nArea of a circular object with radius 25.00 (calculated using inefficient method): 78.54\n--------------------\nArea of a rectangular object with dimensions 5.00 by 4.00: 20.00\n--------------------\nAnother circle's area: 314.16\n--------------------\nAnother rectangle's area: 21.00\n--------------------" }
+  ],
+  "driver": "The `main` function in the provided C++ code creates instances of Circle and Rectangle, calculates their areas using an inefficient approach, and prints them with verbose and confusing descriptions.",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses a less precise #define for PI instead of `M_PI` from `<cmath>`, which is less safe and idiomatic.",
+    "Uses `std::pow(rad, 2.0)` instead of the more efficient `rad * rad` for squaring.",
+    "Poor variable names like 'rad', 'wd', 'ht', 'r_val', 'w_val', 'h_val' reduce readability.",
+    "Verbose and confusing `std::cout` statements in `main` function, including redundant calls to `calculateArea`.",
+    "Unnecessary `print_separator` function adds clutter and doesn't improve code structure.",
+    "Explicit empty virtual destructor is not needed when `default` is sufficient, adding unnecessary code."
+  ]
+}

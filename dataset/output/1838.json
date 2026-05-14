@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Model a `Laptop` class that contains a `CPU` object (composition). The `CPU` class should have private attributes `manufacturer` (string) and `clockSpeed` (double). The `Laptop` class should have a `modelName` (string) and instantiate a `CPU` object as a member, demonstrating their 'has-a' relationship.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "Laptop Model: ZenBook Pro\n  CPU Manufacturer: IntelCore\n  CPU Clock Speed: 2.8 GHz\nLaptop Model: Surface Laptop\n  CPU Manufacturer: Qualcomm\n  CPU Clock Speed: 3 GHz\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass CPU_component {\nprivate:\n    std::string cpu_manuf;\n    double clk_spd_ghz;\n\npublic:\n    CPU_component(std::string p_manuf, double p_clk_spd) {\n        cpu_manuf = p_manuf;\n        clk_spd_ghz = p_clk_spd;\n    }\n\n    std::string get_cpu_manufacturer_info() const { return cpu_manuf; }\n    double get_clock_speed_value() const { return clk_spd_ghz; }\n};\n\nclass Laptop_device {\nprivate:\n    std::string laptop_model_name;\n    CPU_component the_cpu_unit;\n\npublic:\n    Laptop_device(std::string p_model_name, std::string p_cpu_manuf, double p_cpu_clk_spd)\n        : the_cpu_unit(\"\", 0.0) \n    {\n        laptop_model_name = p_model_name;\n        the_cpu_unit = CPU_component(p_cpu_manuf, p_cpu_clk_spd);\n    }\n\n    std::string retrieve_laptop_model() const { return laptop_model_name; }\n    std::string retrieve_cpu_manuf() const { return the_cpu_unit.get_cpu_manufacturer_info(); }\n    double retrieve_cpu_speed() const { return the_cpu_unit.get_clock_speed_value(); }\n\n    void print_device_specifications() const {\n        std::cout << \"Laptop Model: \" << laptop_model_name << std::endl;\n        std::cout << \"  CPU Manufacturer: \" << the_cpu_unit.get_cpu_manufacturer_info() << std::endl;\n        std::cout << \"  CPU Clock Speed: \" << the_cpu_unit.get_clock_speed_value() << \" GHz\" << std::endl;\n    }\n};\n\nint main() {\n    Laptop_device first_laptop_instance(\"ZenBook Pro\", \"IntelCore\", 2.8);\n    first_laptop_instance.print_device_specifications();\n\n    Laptop_device second_laptop_instance(\"Surface Laptop\", \"Qualcomm\", 3.0);\n    second_laptop_instance.print_device_specifications();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": []
+}

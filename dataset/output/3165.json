@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Animal` with a `string name` and a `void makeSound()` method. Derive a `Dog` class that inherits from `Animal` and overrides `makeSound()` to print 'Woof!' without using virtual functions.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Animal Generic says: Generic animal sound.\nDog Buddy says: Woof!\n"
+    }
+  ],
+  "driver": "int main() {\n    Animal genericAnimal(\"Generic\");\n    genericAnimal.makeSound();\n\n    Dog myDog(\"Buddy\");\n    myDog.makeSound();\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

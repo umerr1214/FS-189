@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "For the `ComplexNumber` class, overload the `<<` (insertion) operator to enable printing `ComplexNumber` objects to an output stream in the format `real + imaginaryi` (e.g., `3.0 + 4.5i`).",
+  "test_cases": [
+    { "input": "ComplexNumber c1(3.0, 4.5)", "expected": "c1: 3.0 + 4.5i\n" },
+    { "input": "ComplexNumber c2(2.0, -1.5)", "expected": "c2: 2.0 - 1.5i\n" },
+    { "input": "ComplexNumber c3(0.0, 7.0)", "expected": "c3: 0.0 + 7.0i\n" },
+    { "input": "ComplexNumber c4(5.0, 0.0)", "expected": "c4: 5.0 + 0.0i\n" },
+    { "input": "ComplexNumber c5(-1.0, -2.0)", "expected": "c5: -1.0 - 2.0i\n" },
+    { "input": "ComplexNumber c6(0.0, 0.0)", "expected": "c6: 0.0 + 0.0i\n" },
+    { "input": "Chained output: ComplexNumber c1(3.0, 4.5) and ComplexNumber c2(2.0, -1.5)", "expected": "Chained output: 3.0 + 4.5i and 2.0 - 1.5i\n" }
+  ],
+  "driver": "    ComplexNumber c1(3.0, 4.5);\n    ComplexNumber c2(2.0, -1.5);\n    ComplexNumber c3(0.0, 7.0);\n    ComplexNumber c4(5.0, 0.0);\n    ComplexNumber c5(-1.0, -2.0);\n    ComplexNumber c6(0.0, 0.0);\n\n    std::cout << \"c1: \" << c1 << std::endl;\n    std::cout << \"c2: \" << c2 << std::endl;\n    std::cout << \"c3: \" << c3 << std::endl;\n    std::cout << \"c4: \" << c4 << std::endl;\n    std::cout << \"c5: \" << c5 << std::endl;\n    std::cout << \"c6: \" << c6 << std::endl;\n\n    std::cout << \"Chained output: \" << c1 << \" and \" << c2 << std::endl;\n",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `operator<<` for `ComplexNumber` is declared and defined to return `std::ostream` by value instead of `std::ostream&` by reference. While it might compile and produce correct output for simple insertions, this is semantically incorrect for stream operators. Returning by value creates temporary stream objects, which can prevent proper chaining of output operations and is less efficient than returning a reference to the original stream."
+  ]
+}

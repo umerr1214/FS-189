@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `User` class with private `username` and `password`. The `userID` should be a unique integer automatically assigned using a static member counter in the constructor. Provide public getters for `username` and `userID`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Creating and Displaying User Information ---\nUser 1 -> Username: alice_smith, ID: 1\nUser 2 -> Username: bob_johnson, ID: 2\nUser 3 -> Username: charlie_brown, ID: 3\nUser 4 -> Username: diana_prince, ID: 4\nUser 5 -> Username: eve_adams, ID: 5\n--- All Users Processed ---\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Creating and Displaying User Information ---\" << '\\n';\n\n    User user1(\"alice_smith\", \"pass123\");\n    User user2(\"bob_johnson\", \"secure_pwd\");\n    User user3(\"charlie_brown\", \"mysecret\");\n    User user4(\"diana_prince\", \"wonderwoman\");\n\n    std::cout << \"User 1 -> Username: \" << user1.getUsername() << \", ID: \" << user1.getUserID() << '\\n';\n    std::cout << \"User 2 -> Username: \" << user2.getUsername() << \", ID: \" << user2.getUserID() << '\\n';\n    std::cout << \"User 3 -> Username: \" << user3.getUsername() << \", ID: \" << user3.getUserID() << '\\n';\n    std::cout << \"User 4 -> Username: \" << user4.getUsername() << \", ID: \" << user4.getUserID() << '\\n';\n\n    User user5(\"eve_adams\", \"final_pass\");\n    std::cout << \"User 5 -> Username: \" << user5.getUsername() << \", ID: \" << user5.getUserID() << '\\n';\n\n    std::cout << \"--- All Users Processed ---\" << '\\n';\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

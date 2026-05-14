@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that declares and initializes a 3x3 integer matrix (2D array) with any values. Then, print the matrix in a formatted way (e.g., each row on a new line).",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "    1    2    3\n   10   20   30\n  100  200  300\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

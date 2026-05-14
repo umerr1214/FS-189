@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Person` with `protected` data members `name` (string) and `age` (int). Derive a `Student` class from `Person`. Implement a method in `Student` to display both its own specific details and the inherited `name` and `age`.",
+  "test_cases": [
+    { "input": "Alice Wonderland\ntwenty\nS12345\nComputer Science", "expected": "Enter Person's Name: Enter Person's Age: Enter Student ID: Enter Student Major: --- Student Details ---\nName: Alice Wonderland\nAge: 0\nStudent ID: \nMajor: \n-----------------------\n" }
+  ],
+  "driver": "// The test harness will compile and run the submitted C++ file directly, providing input via stdin and capturing stdout.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program lacks robust input validation for the 'age' field. If a non-integer value is provided, `std::cin` enters a fail state, causing `age` to be potentially uninitialized (or 0) and subsequent `std::getline` calls to fail, resulting in empty strings for 'Student ID' and 'Major'. The program does not recover from this error gracefully, leading to incorrect data being stored and displayed."
+  ]
+}

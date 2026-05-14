@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `copyCString` that takes two C-style character arrays (pointers to char), `source` and `destination`, and copies the content of `source` to `destination`. Assume `destination` has sufficient capacity. Do not use `std::string` or library functions like `strcpy`. Demonstrate with example strings.",
+  "test_cases": [
+    { "input": "source1 = \"Hello, World!\"", "expected": "Destination 1: \"Hello, World\"" },
+    { "input": "source2 = \"C++ Programming\"", "expected": "Destination 2: \"C++ Programmin\"" },
+    { "input": "source3 = \"A\"", "expected": "Destination 3: \"\"" },
+    { "input": "source4 = \"\"", "expected": "Destination 4: \"\"" }
+  ],
+  "driver": "The `main` function demonstrates the `copyCString` function with several example strings and prints the results, highlighting the truncation caused by the logical error.",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `while` loop condition `source[i+1] != '\\0'` in `copyCString` causes the loop to terminate one character too early. This results in the last character of the source string (before the null terminator) not being copied to the destination, truncating the copied string."
+  ]
+}

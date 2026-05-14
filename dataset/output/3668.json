@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a function `void incrementValue(int* ptr)` that takes an integer pointer as an argument and increments the value it points to by one. Demonstrate its use with an integer variable from `main`.",
+  "test_cases": [
+    { "input": "int myValue = 5; int anotherValue = 99;", "expected": "Initial value: 5\nAfter increment: 6\nInitial value: 99\nAfter increment: 100\n" }
+  ],
+  "driver": "int main() {\n    int myValue = 5;\n    std::cout << \"Initial value: \" << myValue << std::endl;\n    incrementValue(&myValue);\n    std::cout << \"After increment: \" << myValue << std::endl;\n\n    int anotherValue = 99;\n    std::cout << \"Initial value: \" << anotherValue << std::endl;\n    incrementValue(&anotherValue);\n    std::cout << \"After increment: \" << anotherValue << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `incrementValue` function uses an unnecessary temporary variable (`temporaryValue`) to perform a simple increment. This reduces readability by introducing an extra step and is slightly less efficient than using direct increment operators like `(*ptr)++` or `*ptr += 1`."
+  ]
+}

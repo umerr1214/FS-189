@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Define a C++ `struct` called `Product` with members `id` (int), `name` (std::string), and `price` (double). Write a program that creates an array of 2 `Product` structs, prompts the user to input data for each product, and then prints details for the product with the highest price.",
+  "test_cases": [
+    {
+      "input": "1\nSuper Laptop\n1200.50\n2\nGaming Mouse\n25.00\n",
+      "expected": "Enter details for Product 1:\nID: Name: Price: Enter details for Product 2:\nID: Name: Price: \nProduct with the highest price:\nID: 1\nName: Super Laptop\nPrice: 1200.5\n"
+    },
+    {
+      "input": "10\nDesk Chair\n150.00\n11\nErgonomic Keyboard\n99.99\n",
+      "expected": "Enter details for Product 1:\nID: Name: Price: Enter details for Product 2:\nID: Name: Price: \nProduct with the highest price:\nID: 10\nName: Desk Chair\nPrice: 150\n"
+    }
+  ],
+  "driver": "int main() { /* Your program logic here */ return 0; }",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The program uses `std::cin >> products[i].name;` to read the product name. This operator stops reading at the first whitespace character. If a user enters a name containing spaces (e.g., 'Super Laptop'), only the first word ('Super') will be stored, leading to truncated names and incorrect data representation."
+  ]
+}

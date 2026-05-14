@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Modify the `Shape` hierarchy (from previous questions) to make `Shape` an abstract base class. This means `Shape` should have a pure virtual function `calculateArea()`. Demonstrate that `Shape` objects cannot be instantiated directly and that any derived concrete class (`Circle`, `Rectangle`) must provide an implementation for `calculateArea()`.",
+  "test_cases": [
+    { "input": "", "expected": "Demonstrating Shape hierarchy with readability/efficiency issues.\nDEBUG: Circle object created with radius 5.0000\nDEBUG: Calculating area for Circle with radius 5.0000...\nDEBUG: Circle area calculation complete.\nArea of circle with radius 5.0000: 78.5398\n\nDEBUG: Rectangle object created with dimensions 4.0000x6.0000\nDEBUG: Initiating area calculation for Rectangle (4.0000x6.0000)...\nDEBUG: Intermediate product calculated.\nArea of rectangle with width 4.0000 and height 6.0000: 24.0000\n\nPolymorphic demonstration of various shapes:\nDEBUG: Circle object created with radius 7.0000\nDEBUG: Rectangle object created with dimensions 10.0000x5.0000\nProcessing shape at index 0: DEBUG: Calculating area for Circle with radius 7.0000...\nDEBUG: Circle area calculation complete.\nCalculated area is: 153.9380\nDEBUG: Shape base class destructor invoked.\nProcessing shape at index 1: DEBUG: Initiating area calculation for Rectangle (10.0000x5.0000)...\nDEBUG: Intermediate product calculated.\nCalculated area is: 50.0000\nDEBUG: Shape base class destructor invoked.\n" }
+  ],
+  "driver": "int main() { /* The provided main function acts as the driver */ return 0; }",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The code uses overly verbose variable names (e.g., `current_circle_radius_value`, `rectangle_width_dimension`, `collection_of_geometric_shapes`, `current_shape_index`) which significantly reduce readability.",
+    "Excessive `DEBUG` print statements are present within constructors and `calculateArea` methods, cluttering the output and the code itself. These should typically be removed or controlled by a logging system in production code.",
+    "In `Circle::calculateArea()`, `std::pow(current_circle_radius_value, 2)` is used for squaring. While functional, direct multiplication (`current_circle_radius_value * current_circle_radius_value`) is generally more efficient and clearer for simple squaring.",
+    "In `Circle::calculateArea()`, PI is calculated via `2.0 * std::acos(0.0)` repeatedly within the method. It would be more efficient to use the `M_PI` constant from `<cmath>` or define a `static const double PI` member.",
+    "In `Rectangle::calculateArea()`, an unnecessary temporary variable `temporary_product_of_dimensions` is used for a simple multiplication, adding verbosity without any functional benefit.",
+    "Inconsistent use of newlines and spacing in `main` (e.g., `std::cout << std::endl;`) slightly impacts overall code readability."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a recursive C++ function `int fibonacci(int n)` that calculates the Nth Fibonacci number (where F(0)=0, F(1)=1, F(n)=F(n-1)+F(n-2)). In `main`, ask the user for an integer `N` and print the `N`th Fibonacci number.",
+  "test_cases": [
+    { "input": "5", "expected": "The 5th Fibonacci number is: 5\n" },
+    { "input": "0", "expected": "The 0th Fibonacci number is: 0\n" },
+    { "input": "-3", "expected": "The -3th Fibonacci number is: 0\n" },
+    { "input": "-1", "expected": "The -1th Fibonacci number is: 0\n" }
+  ],
+  "driver": "int main() {\n    int N;\n    std::cin >> N;\n    int result = fibonacci(N);\n    std::cout << \"The \" << N << \"th Fibonacci number is: \" << result << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not handle negative input values for N gracefully. If N is negative, the `fibonacci` function returns an arbitrary value (0) instead of indicating an error or providing a mathematically consistent result for negative Fibonacci numbers. The `main` function also lacks input validation for negative N, accepting and processing potentially invalid input without warning."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Using the `Shape`, `Circle`, and `Rectangle` classes (with `calculateArea` from previous questions), create a collection (e.g., a simple array) of `Shape*`. Populate it with a mix of `Circle` and `Rectangle` objects, then iterate and call `calculateArea()` on each using base class pointers.",
+  "test_cases": [
+    { "input": "", "expected": "Calculating areas:\nArea: 78.53975\nArea: 24\nArea: 19.6349375\nArea: 21\nArea: 314.159\n" }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses a raw C-style array `Shape* shapes[MAX_SHAPES]` instead of `std::vector<Shape*>`. This requires manual size management (`shapeCount`) and bounds checking, making the code less readable, more verbose, and more error-prone compared to using `std::vector`.",
+    "Manual memory management with raw pointers (`new` and `delete`) and a raw array is less idiomatic C++ and less efficient in terms of development time and safety than using `std::vector` (or smart pointers like `std::unique_ptr` for individual objects)."
+  ]
+}

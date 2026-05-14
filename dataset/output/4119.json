@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a program to perform matrix addition for two 2x2 integer matrices. Prompt the user to enter elements for both matrices. Store the result in a third 2x2 matrix and then print all three matrices in a clear format.",
+  "test_cases": [
+    {
+      "input": "1 2 3 4 5 6 7 8\n",
+      "expected": "Enter elements for Matrix A (2x2):\nEnter element Matrix A[0][0]: Enter element Matrix A[0][1]: Enter element Matrix A[1][0]: Enter element Matrix A[1][1]: \nEnter elements for Matrix B (2x2):\nEnter element Matrix B[0][0]: Enter element Matrix B[0][1]: Enter element Matrix B[1][0]: Enter element Matrix B[1][1]: \nMatrix A:\n1\t2\t\n3\t4\t\n\nMatrix B:\n5\t6\t\n7\t8\t\n\nMatrix C (Sum):\n6\t8\t\n10\t12\t\n"
+    },
+    {
+      "input": "1\na\n2\n3\n4\n5\n6\n7\n8\n",
+      "expected": "Enter elements for Matrix A (2x2):\nEnter element Matrix A[0][0]: Enter element Matrix A[0][1]: Invalid input. Please enter an integer.\nEnter element Matrix A[0][1]: Enter element Matrix A[1][0]: Enter element Matrix A[1][1]: \nEnter elements for Matrix B (2x2):\nEnter element Matrix B[0][0]: Enter element Matrix B[0][1]: Enter element Matrix B[1][0]: Enter element Matrix B[1][1]: \nMatrix A:\n1\t2\t\n3\t4\t\n\nMatrix B:\n5\t6\t\n7\t8\t\n\nMatrix C (Sum):\n6\t8\t\n10\t12\t\n"
+    }
+  ],
+  "driver": "g++ -o solution solution.cpp && ./solution",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

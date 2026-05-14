@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a program that prompts the user to enter three distinct integer numbers. Sort these three numbers in ascending order and print them. You must achieve this using only `if-else` statements, without using arrays or any sorting algorithms.",
+  "test_cases": [
+    { "input": "10 20 30", "expected": "10 20 30" },
+    { "input": "30 20 10", "expected": "10 20 30" },
+    { "input": "10 30 20", "expected": "10 20 30" },
+    { "input": "20 10 30", "expected": "10 20 30" },
+    { "input": "20 30 10", "expected": "10 20 30" },
+    { "input": "30 10 20", "expected": "10 20 30" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <algorithm>\n\n// This driver is illustrative. It shows the conceptual flow.\n// For a real evaluation, an external system would:\n// 1. Compile the student's <file_number>.cpp into an executable.\n// 2. For each test case:\n//    a. Provide the \"input\" string to the executable's stdin.\n//    b. Capture the executable's stdout.\n//    c. Compare the captured stdout with the \"expected\" string.\n\n// Helper to generate expected output (for driver's own reference)\nstd::string generate_expected(const std::string& input_str) {\n    std::istringstream iss(input_str);\n    std::vector<int> nums;\n    int n;\n    while (iss >> n) {\n        nums.push_back(n);\n    }\n    std::sort(nums.begin(), nums.end());\n    std::ostringstream oss;\n    for (size_t i = 0; i < nums.size(); ++i) {\n        oss << nums[i] << (i == nums.size() - 1 ? \"\" : \" \");\n    }\n    return oss.str();\n}\n\nint main() {\n    std::cout << \"Driver is conceptual. See comments for actual testing method.\" << std::endl;\n    std::cout << \"Example test case: Input '30 10 20'\" << std::endl;\n    std::cout << \"Expected output:   '\" << generate_expected(\"30 10 20\") << \"'\" << std::endl;\n    return 0;\n}\n",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The assignment `num3 = num2;` within the final `if (num2 > num3)` block is semantically incorrect for performing a swap. After `num2 = num3;`, the variable `num2` holds the value that was originally in `num3`. When `num3 = num2;` is then executed, `num3` also receives this same value, effectively losing the original value of `num2` and resulting in `num2` and `num3` holding duplicate values (the original value of `num3`). A temporary variable must be used to preserve the original value of `num2` before its reassignment."
+  ]
+}

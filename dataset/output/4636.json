@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Given a 1D integer array, write a program to find and print the largest element in the array.",
+  "test_cases": [
+    { "input": "6\n10 5 20 15 25 8", "expected": "25" },
+    { "input": "5\n-10 -5 -20 -15 -25", "expected": "-5" },
+    { "input": "1\n42", "expected": "42" },
+    { "input": "1\n-7", "expected": "-7" },
+    { "input": "0\n", "expected": "Array is empty." }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream>\n#include <limits>\n\n// The user's findLargest function is expected to be linked.\n// For the purpose of this driver, we declare it extern.\nextern int findLargest(const std::vector<int>& arr);\n\nvoid run_test_case(const std::string& input_str, const std::string& expected_output) {\n    std::stringstream ss_in(input_str);\n    std::stringstream ss_out;\n    \n    int n;\n    ss_in >> n;\n\n    std::vector<int> arr;\n    if (n > 0) {\n        arr.resize(n);\n        for (int i = 0; i < n; ++i) {\n            ss_in >> arr[i];\n        }\n    }\n\n    // Redirect std::cout\n    std::streambuf* old_cout = std::cout.rdbuf(ss_out.rdbuf());\n\n    if (n <= 0) {\n        // Mimic the main function's empty array handling as per problem statement\n        std::cout << \"Array is empty.\" << std::endl;\n    } else {\n        int result = findLargest(arr);\n        std::cout << result << std::endl;\n    }\n\n    // Restore std::cout\n    std::cout.rdbuf(old_cout);\n\n    std::string actual_output = ss_out.str();\n    // Trim trailing newline for comparison\n    if (!actual_output.empty() && actual_output.back() == '\\n') {\n        actual_output.pop_back();\n    }\n\n    std::cout << \"Input: \\\"\" << input_str << \"\\\"\" << std::endl;\n    std::cout << \"Expected: \\\"\" << expected_output << \"\\\"\" << std::endl;\n    std::cout << \"Actual: \\\"\" << actual_output << \"\\\"\" << std::endl;\n    if (actual_output == expected_output) {\n        std::cout << \"Result: PASSED\" << std::endl << std::endl;\n    } else {\n        std::cout << \"Result: FAILED\" << std::endl << std::endl;\n    }\n}\n\nint main() {\n    run_test_case(\"6\\n10 5 20 15 25 8\", \"25\");\n    run_test_case(\"5\\n-10 -5 -20 -15 -25\", \"-5\");\n    run_test_case(\"1\\n42\", \"42\");\n    run_test_case(\"1\\n-7\", \"-7\");\n    run_test_case(\"0\\n\", \"Array is empty.\");\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Demonstrate multilevel inheritance by creating a `Vehicle` class, then derive `Car` from `Vehicle`, and finally `SportsCar` from `Car`. Add unique attributes and a simple `displayInfo` method at each level.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Vehicle Info ---\nVehicle Brand: General\n\n--- Car Info ---\nVehicle Brand: Toyota\nNumber of Doors: 4\n\n--- SportsCar Info ---\nVehicle Brand: Ferrari\nNumber of Doors: 2\nTop Speed: 200 mph\n"
+    }
+  ],
+  "driver": "int main() {\n    Vehicle v(\"General\");\n    Car c(\"Toyota\", 4);\n    SportsCar sc(\"Ferrari\", 2, 200);\n\n    std::cout << \"--- Vehicle Info ---\" << std::endl;\n    v.displayInfo();\n    std::cout << std::endl;\n\n    std::cout << \"--- Car Info ---\" << std::endl;\n    c.displayInfo();\n    std::cout << std::endl;\n\n    std::cout << \"--- SportsCar Info ---\" << std::endl;\n    sc.displayInfo();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `displayInfo` method in the `Car` class does not explicitly call its base class's `displayInfo` method (`Vehicle::displayInfo()`). Similarly, `SportsCar::displayInfo` does not call `Car::displayInfo()`. This prevents the full hierarchical information from being displayed cumulatively, which is a common expectation when demonstrating multilevel inheritance with such methods. Instead, derived classes re-access base members directly, leading to a fragmented and less informative output."
+  ]
+}

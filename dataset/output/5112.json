@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that uses a `do-while` loop to repeatedly ask the user to enter a positive integer. The loop should continue prompting until a positive integer (greater than 0) is entered. Once valid input is received, print the number.",
+  "test_cases": [
+    { "input": "-5\n10\n", "expected": "Enter a positive integer: Invalid input. Please enter a number.\nEnter a positive integer: You entered: 10\n" },
+    { "input": "0\n5\n", "expected": "Enter a positive integer: Enter a positive integer: You entered: 5\n" },
+    { "input": "abc\n-1\n7\n", "expected": "Enter a positive integer: Invalid input. Please enter a number.\nEnter a positive integer: Invalid input. Please enter a number.\nEnter a positive integer: You entered: 7\n" }
+  ],
+  "driver": "// This program is a complete executable. The test runner will compile and execute it, providing input via stdin.",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Using `unsigned int num;` for input. While `unsigned int` is an integer type, it semantically restricts the domain to non-negative values. When a negative integer (e.g., -5) is entered, `std::cin >> num` fails, making the input handling more complex than necessary for the problem's intent of simply checking if an 'integer' is positive. The loop condition `num <= 0` effectively becomes `num == 0` for `unsigned int` (as it can't be less than 0), which can be misleading or require extra handling for invalid (negative) inputs."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Declare an integer variable, a float variable, and a char variable. Declare and initialize a pointer for each variable, then use the pointers to print the values and memory addresses of the original variables.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Integer Variable:\nValue: 10\nAddress: 0x...\n\nFloat Variable:\nValue: 20.5\nAddress: 0x...\n\nChar Variable:\nValue: A\nAddress: 0x..."
+    }
+  ],
+  "driver": "",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'pInt' on line 14, causing a syntax error and preventing compilation."
+  ]
+}

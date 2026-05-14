@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `copyCString` that takes two C-style character arrays (pointers to char), `source` and `destination`, and copies the content of `source` to `destination`. Assume `destination` has sufficient capacity. Do not use `std::string` or library functions like `strcpy`. Demonstrate with example strings.",
+  "test_cases": [
+    { "input": "source1 = \"Hello, World!\"", "expected": "Destination 1: Hello, World!" },
+    { "input": "source2 = \"C++ Programming\"", "expected": "Destination 2: C++ Programming" },
+    { "input": "source3 = \"\"", "expected": "Destination 3: \"\"" }
+  ],
+  "driver": "The `main` function demonstrates the `copyCString` function with several example strings and prints the results.",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the `printf` statement on line 20 in the `main` function. This will prevent compilation."
+  ]
+}

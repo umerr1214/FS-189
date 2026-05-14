@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a C++ `struct Book` with members `std::string title` and `double price`. Create an array of 3 `Book` structs. Prompt the user to enter the title and price for each book. After input, iterate through the array to find and print the details (title and price) of the book with the highest price.",
+  "test_cases": [
+    { "input": "The Great Gatsby\n12.50\n1984\n10.00\nTo Kill a Mockingbird\n15.75\n", "expected": "Enter details for 3 books:\nBook 1 Title: Book 1 Price: Book 2 Title: Book 2 Price: Book 3 Title: Book 3 Price: \n\nBook with the highest price:\nTitle: To Kill a Mockingbird\nPrice: 15.75\n" }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

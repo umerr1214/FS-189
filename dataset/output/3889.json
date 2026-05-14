@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Develop a program that takes three side lengths from the user and determines if they form an equilateral, isosceles, or scalene triangle. Also, check for invalid triangle conditions (sum of any two sides must be greater than the third).",
+  "test_cases": [
+    { "input": "3 4 5", "expected": "Enter the length of side 1: Enter the length of side 2: Enter the length of side 3: This is a scalene triangle.\n" },
+    { "input": "5 5 5", "expected": "Enter the length of side 1: Enter the length of side 2: Enter the length of side 3: This is an equilateral triangle.\n" },
+    { "input": "7 7 10", "expected": "Enter the length of side 1: Enter the length of side 2: Enter the length of side 3: This is an isosceles triangle.\n" },
+    { "input": "1 2 5", "expected": "Enter the length of side 1: Enter the length of side 2: Enter the length of side 3: These side lengths do not form a valid triangle.\n" },
+    { "input": "0 4 5", "expected": "Enter the length of side 1: Enter the length of side 2: Enter the length of side 3: These side lengths do not form a valid triangle.\n" },
+    { "input": "3 -4 5", "expected": "Enter the length of side 1: Enter the length of side 2: Enter the length of side 3: These side lengths do not form a valid triangle.\n" },
+    { "input": "a 4 5", "expected": "Enter the length of side 1: Enter the length of side 2: Enter the length of side 3: These side lengths do not form a valid triangle.\n" }
+  ],
+  "driver": "The program expects three space-separated double values from standard input, each preceded by a prompt. For each test case, the provided input string is fed to standard input. The program's output to standard output is captured and compared with the expected output. In cases of non-numeric input, `std::cin` will fail, and local variables might remain uninitialized or be default-initialized (e.g., to 0), leading to potentially incorrect or undefined behavior, which is reflected in the expected output for such cases.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not explicitly check if side lengths are positive numbers, although the triangle inequality check handles some non-positive cases as invalid. It should explicitly state that side lengths must be positive.",
+    "More critically, it does not handle non-numeric input gracefully. If `std::cin` fails to read a double, it enters a fail state and subsequent reads also fail, potentially leaving variables uninitialized or default-initialized and leading to incorrect or undefined behavior without any error message to the user."
+  ]
+}

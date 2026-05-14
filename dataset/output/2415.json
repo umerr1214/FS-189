@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Implement a `Temperature` class with a private `celsiusValue`. Provide public methods `setCelsius(double c)` and `getFahrenheit()` (which converts Celsius to Fahrenheit).",
+  "test_cases": [
+    { "input": "0.0\n", "expected": "32.00\n" },
+    { "input": "100.0\n", "expected": "212.00\n" },
+    { "input": "25.0\n", "expected": "77.00\n" },
+    { "input": "-40.0\n", "expected": "-40.00\n" },
+    { "input": "-273.15\n", "expected": "-459.67\n" }
+  ],
+  "driver": "std::ostringstream oss;\nTemperature temp;\n\nstd::vector<double> testCelsius = {0.0, 100.0, 25.0, -40.0, -273.15};\n\nfor (double c : testCelsius) {\n    temp.setCelsius(c);\n    oss << std::fixed << std::setprecision(2) << temp.getFahrenheit() << \"\\n\";\n}\n\nstd::cout << oss.str();",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,43 @@
+{
+  "language": "c++",
+  "question": "Write a simple C++ calculator program. It should ask the user for two numbers and an arithmetic operator (+, -, *, /). Use a `switch` statement to perform the chosen operation and display the result. Handle division by zero appropriately.",
+  "test_cases": [
+    {
+      "input": "10\n+\n5\n",
+      "expected": "Welcome to the Simple Calculator!\nPlease enter the first number: Please enter an operator (+, -, *, /): Please enter the second number: Result: 15\n"
+    },
+    {
+      "input": "20\n-\n7\n",
+      "expected": "Welcome to the Simple Calculator!\nPlease enter the first number: Please enter an operator (+, -, *, /): Please enter the second number: Result: 13\n"
+    },
+    {
+      "input": "4\n*\n6\n",
+      "expected": "Welcome to the Simple Calculator!\nPlease enter the first number: Please enter an operator (+, -, *, /): Please enter the second number: Result: 24\n"
+    },
+    {
+      "input": "15\n/\n3\n",
+      "expected": "Welcome to the Simple Calculator!\nPlease enter the first number: Please enter an operator (+, -, *, /): Please enter the second number: Result: 5\n"
+    },
+    {
+      "input": "10\n/\n0\n",
+      "expected": "Welcome to the Simple Calculator!\nPlease enter the first number: Please enter an operator (+, -, *, /): Please enter the second number: Error: Division by zero is not allowed.\n"
+    },
+    {
+      "input": "invalid\n10\n+\n5\n",
+      "expected": "Welcome to the Simple Calculator!\nPlease enter the first number: Invalid input. Please enter a valid number.\nPlease enter the first number: Please enter an operator (+, -, *, /): Please enter the second number: Result: 15\n"
+    },
+    {
+      "input": "10\n%\n5\n",
+      "expected": "Welcome to the Simple Calculator!\nPlease enter the first number: Please enter an operator (+, -, *, /): Please enter the second number: Error: Invalid operator.\n"
+    },
+    {
+      "input": "20\n+\nabc\n5\n",
+      "expected": "Welcome to the Simple Calculator!\nPlease enter the first number: Please enter an operator (+, -, *, /): Please enter the second number: Invalid input. Please enter a valid number.\nPlease enter the second number: Result: 25\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

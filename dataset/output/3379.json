@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Declare an integer variable, a float variable, and a char variable. Declare and initialize a pointer for each variable, then use the pointers to print the values and memory addresses of the original variables.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Integer Variable:\n  Value: 42\n  Address: 0x[0-9a-fA-F]+\n\nFloat Variable:\n  Value: 3.14159\n  Address: 0x[0-9a-fA-F]+\n\nChar Variable:\n  Value: X\n  Address: 0x[0-9a-fA-F]+"
+    }
+  ],
+  "driver": "g++ -o 3379 3379.cpp && ./3379",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Using `void*` pointers loses type safety and requires explicit `static_cast` for dereferencing. If the cast type is incorrect, this would lead to undefined behavior, making the code less robust than using type-specific pointers directly."
+  ]
+}

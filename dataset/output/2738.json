@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Implement a base class `Employee` with `name` (string) and `id` (int). Derive a `Manager` class and a `Worker` class. `Manager` should have an additional `department` (string) and `Worker` an `hourlyRate` (double). Each class should have a method to print its specific details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Staff Details ---\nName of employee: Sarah Connor, ID number: 1001, Department area: Research & Development\nName of employee: John Doe, ID number: 2002, Hourly rate for worker: 18.75\nName of employee: Jane Smith, ID number: 1003, Human Resources\nName of employee: Peter Jones, ID number: 2004, Hourly rate for worker: 22.5\n---------------------\n"
+    }
+  ],
+  "driver": "int main() {\n    std::vector<Employee*> staff;\n    staff.push_back(new Manager(\"Sarah Connor\", 1001, \"Research & Development\"));\n    staff.push_back(new Worker(\"John Doe\", 2002, 18.75));\n    staff.push_back(new Manager(\"Jane Smith\", 1003, \"Human Resources\"));\n    staff.push_back(new Worker(\"Peter Jones\", 2004, 22.50));\n\n    std::cout << \"--- Staff Details ---\" << std::endl;\n    for (Employee* emp : staff) {\n        emp->printDetails();\n    }\n    std::cout << \"---------------------\" << std::endl;\n\n    for (Employee* emp : staff) {\n        delete emp;\n    }\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Strings are passed by value in constructors, causing unnecessary copies. Pass by const reference instead for efficiency.",
+    "The 'printDetails' methods are not marked 'const', violating const-correctness principles and potentially hindering optimization.",
+    "Derived class 'printDetails' methods do not use the 'override' keyword, reducing readability and compile-time checks for correct overriding.",
+    "Derived class 'printDetails' methods duplicate base class printing logic instead of calling 'Employee::printDetails()', leading to redundant code and maintenance overhead.",
+    "Member variable names like 'employeeName', 'employeeId', 'deptName', 'ratePerHour' are overly verbose or less descriptive than standard conventions.",
+    "Missing virtual destructor in base class 'Employee', which is a best practice for polymorphic base classes (minor quality/robustness issue)."
+  ]
+}

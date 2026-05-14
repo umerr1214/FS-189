@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a `Person` class with `protected` members `name` (string) and `age` (int). Derive a `Student` class from `Person`. The `Student` class should have an additional private member `studentId` and be able to access `name` and `age` to print its full details.",
+  "test_cases": [
+    { "input": "", "expected": "Name: Charlie Brown, Age: 18, Student ID: 2001\nName: Lucy Van Pelt, Age: 19, Student ID: 2002\n" }
+  ],
+  "driver": "int main() {\n    // Test case 1\n    Student s1(\"Charlie Brown\", 18, 2001);\n    s1.printFullDetails();\n\n    // Test case 2\n    Student s2(\"Lucy Van Pelt\", 19, 2002);\n    s2.printFullDetails();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The constructors for `Person` and `Student` pass `std::string` parameters by value instead of `const std::string&`. This causes unnecessary string copies, impacting efficiency.",
+    "The `Student` constructor does not use the base class's parameterized constructor in its initializer list. Instead, it implicitly calls the `Person` default constructor and then assigns values to the inherited `protected` members (`name`, `age`) in the constructor body. This is less efficient (due to extra default construction and assignment) and less idiomatic C++.",
+    "The `printFullDetails` method is not marked `const`, even though it does not modify the object's state. This reduces clarity and prevents the method from being called on `const` objects."
+  ]
+}

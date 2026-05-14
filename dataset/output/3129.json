@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Extend the `Student` class to include a default constructor that initializes members to default values and a parameterized constructor that accepts `name`, `id`, and `grade`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Student List ---\nStudent 1: Name: , ID: 0, Grade: 0.0\nStudent 2: Name: Alice Johnson, ID: 101, Grade: 95.5\nStudent 3: Name: Bob Smith, ID: 102, Grade: 88.0\nStudent 4: Name: Charlie Brown, ID: 103, Grade: 75.0\nStudent 5: Name: Diana Prince, ID: 104, Grade: 82.3\nStudent 6: Name: Eve Adams, ID: 105, Grade: 91.7\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <iomanip>\n#include <utility>\n\nclass Student {\nprivate:\n    std::string name;\n    int id;\n    double grade;\n\npublic:\n    Student() : name(\"\"), id(0), grade(0.0) {}\n\n    Student(std::string n, int i, double g) : name(std::move(n)), id(i), grade(g) {}\n\n    friend std::ostream& operator<<(std::ostream& os, const Student& s) {\n        os << \"Name: \" << s.name << \", ID: \" << s.id << \", Grade: \" << std::fixed << std::setprecision(1) << s.grade;\n        return os;\n    }\n};\n\nint main() {\n    std::vector<Student> students;\n\n    students.push_back(Student());\n    students.push_back(Student(\"Alice Johnson\", 101, 95.5));\n    students.push_back(Student(\"Bob Smith\", 102, 88.0));\n    students.push_back(Student(\"Charlie Brown\", 103, 75.0));\n    students.push_back(Student(\"Diana Prince\", 104, 82.3));\n    students.push_back(Student(\"Eve Adams\", 105, 91.7));\n\n    std::cout << \"--- Student List ---\" << std::endl;\n    for (size_t i = 0; i < students.size(); ++i) {\n        std::cout << \"Student \" << i + 1 << \": \" << students[i] << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

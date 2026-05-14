@@ -1,0 +1,31 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ function `fill_array_sequential` that takes an integer pointer `arr` and an integer `size` as arguments. The function should fill the array pointed to by `arr` with sequential values starting from 1 up to `size`.",
+  "test_cases": [
+    {
+      "input": "int arr_test1[5]; fill_array_sequential(arr_test1, 5);",
+      "expected": "1 2 3 4 5"
+    },
+    {
+      "input": "int arr_test2[1]; fill_array_sequential(arr_test2, 0);",
+      "expected": "Array 2 (size 0): (should be empty)"
+    },
+    {
+      "input": "int arr_test3[10]; fill_array_sequential(arr_test3, 10);",
+      "expected": "1 2 3 4 5 6 7 8 9 10"
+    },
+    {
+      "input": "fill_array_sequential(nullptr, 3);",
+      "expected": "Attempting to call with nullptr and size 3 (should do nothing)...\nFunction called with nullptr, program continues as expected."
+    },
+    {
+      "input": "int arr_test4[5]; fill_array_sequential(arr_test4, -5);",
+      "expected": "Attempting to call with negative size -5 (should do nothing)...\nFunction called with negative size, program continues as expected."
+    }
+  ],
+  "driver": "int main() {\n    // Test Case 1\n    int arr_test1[5];\n    fill_array_sequential(arr_test1, 5);\n    for (int i = 0; i < 5; ++i) {\n        std::cout << arr_test1[i] << (i == 4 ? \"\" : \" \");\n    }\n    std::cout << std::endl;\n\n    // Test Case 2\n    int arr_test2[1];\n    fill_array_sequential(arr_test2, 0);\n    std::cout << \"Array 2 (size 0): (should be empty)\" << std::endl;\n\n    // Test Case 3\n    int arr_test3[10];\n    fill_array_sequential(arr_test3, 10);\n    for (int i = 0; i < 10; ++i) {\n        std::cout << arr_test3[i] << (i == 9 ? \"\" : \" \");\n    }\n    std::cout << std::endl;\n\n    // Test Case 4: nullptr input\n    std::cout << \"Attempting to call with nullptr and size 3 (should do nothing)...\\n\";\n    fill_array_sequential(nullptr, 3);\n    std::cout << \"Function called with nullptr, program continues as expected.\\n\";\n\n    // Test Case 5: Negative size input\n    std::cout << \"Attempting to call with negative size -5 (should do nothing)...\\n\";\n    int arr_test4[5];\n    fill_array_sequential(arr_test4, -5);\n    std::cout << \"Function called with negative size, program continues as expected.\\n\";\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

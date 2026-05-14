@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create an `Employee` class with `name` and `employeeID`. Then create a `Department` class that uses aggregation to manage a collection of `Employee` objects (e.g., using a `std::vector`). Implement methods in `Department` to add an employee and to list all employees within that department.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "Listing employees in HR department (expected Alice, Bob, but will show logical error):\nDepartment: Human Resources\nNo employees in this department.\n\nListing employees in Sales department (empty, will print correctly):\nDepartment: Sales\nNo employees in this department.\n"
+    }
+  ],
+  "driver": "int main() {\n    Employee emp1(\"Alice\", 101);\n    Employee emp2(\"Bob\", 102);\n\n    Department hr(\"Human Resources\");\n    hr.addEmployee(&emp1);\n    hr.addEmployee(&emp2);\n\n    std::cout << \"Listing employees in HR department (expected Alice, Bob, but will show logical error):\" << std::endl;\n    hr.listEmployees();\n\n    Department sales(\"Sales\");\n    std::cout << \"\\nListing employees in Sales department (empty, will print correctly):\" << std::endl;\n    sales.listEmployees();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `listEmployees` method contains a logical error in its conditional statement. When the `employees` vector is not empty, it incorrectly prints 'No employees in this department.' instead of iterating and displaying the actual employees. The `if (!employees.empty())` condition should lead to listing employees, not declaring the department empty."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Establish a multilevel inheritance hierarchy: `Electronics` (base class) -> `Smartphone` (derived from `Electronics`) -> `PremiumSmartphone` (derived from `Smartphone`). Each class should add at least one unique attribute (e.g., `Electronics` has `powerConsumption`, `Smartphone` adds `operatingSystem`, `PremiumSmartphone` adds `cameraMP`) and a method to display its specific details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Electronics Details ---\nPower Consumption: 6.8W\n--- Smartphone Details ---\nOperating System: iOS\n--- Premium Smartphone Details ---\nCamera Megapixels: 108MP\n"
+    }
+  ],
+  "driver": "PremiumSmartphone flagshipPhone(6.8, \"iOS\", 108);\nflagshipPhone.displayDetails();",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'displayDetails' method in 'PremiumSmartphone' does not correctly call the 'displayDetails' method of its direct base class 'Smartphone'. Instead, it calls 'Electronics::displayDetails()' directly, causing the 'Smartphone' specific details (like operating system) to be skipped in the output."
+  ]
+}

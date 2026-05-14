@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `Logger` class with overloaded `log` methods. One `log` method should take a `std::string` message, another an `int` error code, and a third a `char` severity level. Each should print an appropriate formatted message.",
+  "test_cases": [
+    { "input": "", "expected": "[LOG MESSAGE] Application is starting up.\n[LOG ERROR] Code: 100\n[LOG SEVERITY] Level: I\n[LOG MESSAGE] Processing batch job.\n[LOG ERROR] Code: 201\n[LOG SEVERITY] Level: W\n" }
+  ],
+  "driver": "int main() {\n    Logger myLogger;\n    myLogger.log(\"Application is starting up.\");\n    myLogger.log(100);\n    myLogger.log('i');\n    myLogger.log(\"Processing batch job.\");\n    myLogger.log(201);\n    myLogger.log('w');\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `log(std::string message)` method passes `std::string` by value, which is inefficient due to unnecessary copying. It should be passed by `const std::string&`.",
+    "Excessive use of `std::stringstream` for simple formatting in all `log` methods. Direct printing to `std::cout` is more efficient for basic types and strings.",
+    "Lack of `const` correctness: The `log` methods do not modify the object's state but are not marked `const`, which can prevent their use with `const` Logger objects.",
+    "The `log(char)` method uses `std::toupper` and `static_cast<char>` even when not strictly necessary or desired, adding verbosity and potential for unexpected behavior with non-alphabetic chars, making it less readable for simple severity logging."
+  ]
+}

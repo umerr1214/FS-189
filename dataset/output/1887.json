@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Logger` class. It should have a `private static int logCount` to track the total number of log messages created across all `Logger` objects. Increment `logCount` in the constructor. Implement a `public static void displayTotalLogs()` method to show the current value of `logCount`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Single-threaded test ---\nTotal log messages created: 5\n\n--- Multi-threaded test (thread-safe) ---\nTotal log messages created: 10000\nExpected total: 10000\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <thread>\n#include <mutex>\n#include <chrono>\n\nclass Logger {\npublic:\n    Logger() {\n        std::lock_guard<std::mutex> lock(logMutex);\n        logCount++; \n    }\n\n    static void displayTotalLogs() {\n        std::lock_guard<std::mutex> lock(logMutex);\n        std::cout << \"Total log messages created: \" << logCount << std::endl;\n    }\n\nprivate:\n    static int logCount;\n    static std::mutex logMutex;\n};\n\nint Logger::logCount = 0;\nstd::mutex Logger::logMutex;\n\nvoid createLoggersThreadSafe(int num_logs) {\n    for (int i = 0; i < num_logs; ++i) {\n        Logger l;\n    }\n}\n\nint main() {\n    std::cout << \"--- Single-threaded test ---\" << std::endl;\n    for (int i = 0; i < 5; ++i) {\n        Logger l;\n    }\n    Logger::displayTotalLogs();\n\n    {\n        std::lock_guard<std::mutex> lock(Logger::logMutex);\n        Logger::logCount = 0; \n    }\n    std::cout << \"\\n--- Multi-threaded test (thread-safe) ---\" << std::endl;\n\n    const int num_threads = 10;\n    const int logs_per_thread = 1000;\n    std::vector<std::thread> threads;\n\n    for (int i = 0; i < num_threads; ++i) {\n        threads.push_back(std::thread(createLoggersThreadSafe, logs_per_thread));\n    }\n\n    for (std::thread& t : threads) {\n        t.join();\n    }\n\n    Logger::displayTotalLogs(); \n    std::cout << \"Expected total: \" << num_threads * logs_per_thread << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

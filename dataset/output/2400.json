@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `ResourceHandler` class that simulates acquiring a resource in its constructor (e.g., printing 'Resource acquired.') and releasing it in its destructor (e.g., printing 'Resource released.').",
+  "test_cases": [
+    { "input": "", "expected": "Resource acquired.\nResource released.\n" }
+  ],
+  "driver": "int main() {\n    ResourceHandler rh;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `ResourceHandler` class allocates memory for `actual_resource_ptr` in its constructor using `new` but fails to deallocate it in its destructor using `delete`. This leads to a memory leak, which is a semantic error in resource management. Although the print statements are correct, the underlying resource is not properly managed."
+  ]
+}

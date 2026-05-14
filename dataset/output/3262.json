@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Implement a `Counter` class with an integer count. Overload both the prefix `++` and postfix `++` operators for this class to increment the counter value.",
+  "test_cases": [
+    { "input": "Initial c1=5, then ++c1, then c2=c1++, then initial c3=10, then c4=++c3", "expected": "c1 initial: 5\nc1 after prefix ++: 6\nc1 after postfix ++ (assigned to c2): 7\nc2 (value before increment): 6\nc3 initial: 10\nc3 after prefix ++ (assigned to c4): 11\nc4 (value after increment): 11\n" }
+  ],
+  "driver": "#include <iostream>\n\nclass Counter {\nprivate:\n    int count;\n\npublic:\n    Counter(int initialCount = 0) : count(initialCount) {}\n\n    Counter& operator++() {\n        ++count;\n        return *this;\n    }\n\n    Counter operator++(int) {\n        Counter temp = *this;\n        ++count;\n        return temp;\n    }\n\n    int getCount() const {\n        return count;\n    }\n};\n\nint main() {\n    Counter c1(5);\n    std::cout << \"c1 initial: \" << c1.getCount() << std::endl;\n\n    ++c1;\n    std::cout << \"c1 after prefix ++: \" << c1.getCount() << std::endl;\n\n    Counter c2 = c1++;\n    std::cout << \"c1 after postfix ++ (assigned to c2): \" << c1.getCount() << std::endl;\n    std::cout << \"c2 (value before increment): \" << c2.getCount() << std::endl;\n\n    Counter c3(10);\n    std::cout << \"c3 initial: \" << c3.getCount() << std::endl;\n    Counter c4 = ++c3;\n    std::cout << \"c3 after prefix ++ (assigned to c4): \" << c3.getCount() << std::endl;\n    std::cout << \"c4 (value after increment): \" << c4.getCount() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

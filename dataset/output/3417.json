@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a function template `T get_absolute_value(T val)` that takes a value of any numeric type (e.g., `int`, `float`, `double`) and returns its absolute value. Demonstrate with at least two different data types.",
+  "test_cases": [
+    { "input": "", "expected": "Absolute value of -100 (int): 100\nAbsolute value of 25 (int): 25\nAbsolute value of 0 (int): 0\nAbsolute value of -2147483648 (int): -2147483648\nAbsolute value of -123.456 (double): 123.456\nAbsolute value of 789.012 (double): 789.012\nAbsolute value of -0.000 (double): 0.000\n" }
+  ],
+  "driver": "g++ -std=c++17 -o 3417 3417.cpp && ./3417",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

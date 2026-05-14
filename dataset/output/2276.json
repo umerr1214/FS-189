@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Design a `Car` class that uses composition to include an `Engine` object as a private member. The `Engine` class should have `horsepower` (int) and `fuelType` (string). Implement a `Car` constructor that initializes its `Engine` and a method `Car::start()` that calls an `Engine::start()` method.",
+  "test_cases": [
+    {
+      "input": "Hardcoded in `main` function.",
+      "expected": "Engine constructed (inefficiently).\nCar constructed (engine assigned after default construction).\nCar is preparing to start its engine...\nEngine with 200 HP and fuel type 'Diesel' started.\n---\nEngine constructed (inefficiently).\nCar constructed (engine assigned after default construction).\nCar is preparing to start its engine...\nEngine with 120 HP and fuel type 'Electric' started.\n"
+    }
+  ],
+  "driver": "int main() {\n    Car myCar(200, \"Diesel\");\n    myCar.start();\n    std::cout << \"---\" << std::endl;\n\n    Car anotherCar(120, \"Electric\");\n    anotherCar.start();\n    std::cout << \"---\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `Car` constructor does not use an initializer list for its `engine` member, leading to default construction followed by an assignment. This is less efficient (extra default construction and assignment) and less readable than direct member initialization.",
+    "The `Engine` constructor passes `fuelType` by value (`std::string ft`), causing an unnecessary copy of the string when the constructor is called. It should be passed by `const std::string&`.",
+    "The `Engine` constructor uses assignment (`this->horsepower = hp; this->fuelType = ft;`) instead of an initializer list for its own members, which can be less efficient for complex types like `std::string`.",
+    "Unnecessary and verbose use of `this->` for member access in the `Engine` constructor."
+  ]
+}

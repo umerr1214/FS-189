@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a `Base` class with a `protected` integer member `data`. Create a `Derived` class that inherits from `Base`. Demonstrate how the `Derived` class can directly access and modify the `data` member, and explain why `data` cannot be accessed from a non-member function.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Base data: 10\nDerived class accessing protected data. Current data: 20\n\n--- Non-member function attempt ---\nA non-member function cannot directly access 'data'.\nThis is because 'data' is a protected member of 'Base'.\nOnly members of 'Base' itself and its 'Derived' classes can access protected members.\n--- End non-member function attempt ---\n\nAfter Derived::accessDataButNotModify(), Derived object's data: Base data: 20\n"
+    }
+  ],
+  "driver": "int main() {\n    Base b(10);\n    Derived d(20);\n\n    b.displayBaseData();\n    d.accessDataButNotModify();\n\n    nonMemberAccess(b);\n\n    std::cout << \"After Derived::accessDataButNotModify(), Derived object's data: \";\n    d.displayBaseData();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `Derived::accessDataButNotModify()` method only accesses and prints the `data` member, but it does not *modify* it as explicitly requested by the question. The `data` member remains unchanged after the call, failing to fully demonstrate the modification capability.",
+    "The explanation provided in `nonMemberAccess` is correct but could be more exhaustive in detailing the nuances of `protected` access specifiers regarding inheritance and non-member scope."
+  ]
+}

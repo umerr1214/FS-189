@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a program that takes a sentence (std::string) and a character from the user, then counts and displays how many times that character appears in the sentence.",
+  "test_cases": [
+    { "input": "apple\ne", "expected": "The character 'e' appears 1 times." },
+    { "input": "world\nd", "expected": "The character 'd' appears 1 times." },
+    { "input": "banana\na", "expected": "The character 'a' appears 3 times." }
+  ],
+  "driver": "std::string sentence; char targetChar; std::getline(std::cin, sentence); std::cin >> targetChar;",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The loop condition `i < sentence.length() - 1` is an off-by-one error, causing the program to skip checking the last character of the sentence. This leads to an incorrect count if the target character is at the end of the string."]
+}

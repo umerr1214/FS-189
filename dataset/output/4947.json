@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user for a positive integer limit and then uses a for loop to calculate and display the sum of all even numbers from 1 up to that limit (inclusive).",
+  "test_cases": [
+    { "input": "hello\n-5\n0\n10", "expected": "Enter a positive integer limit: Invalid input. Please enter an integer.\nEnter a positive integer limit: Limit must be a positive integer. Please try again.\nEnter a positive integer limit: Limit must be a positive integer. Please try again.\nEnter a positive integer limit: The sum of even numbers up to 10 is: 30\n" },
+    { "input": "1", "expected": "Enter a positive integer limit: The sum of even numbers up to 1 is: 0\n" },
+    { "input": "2", "expected": "Enter a positive integer limit: The sum of even numbers up to 2 is: 2\n" },
+    { "input": "50", "expected": "Enter a positive integer limit: The sum of even numbers up to 50 is: 650\n" },
+    { "input": "99", "expected": "Enter a positive integer limit: The sum of even numbers up to 99 is: 2450\n" },
+    { "input": "1000", "expected": "Enter a positive integer limit: The sum of even numbers up to 1000 is: 250500\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <streambuf>\n\nint user_main(); \n\nint main() {\n    std::string input_str;\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        input_str += line + \"\\n\";\n    }\n\n    std::stringstream ss_input(input_str);\n    std::stringstream ss_output;\n\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    user_main(); \n\n    std::cin.rdbuf(old_cin);   \n    std::cout.rdbuf(old_cout); \n\n    std::cout << ss_output.str(); \n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

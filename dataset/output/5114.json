@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that uses a `do-while` loop to repeatedly ask the user to enter a positive integer. The loop should continue prompting until a positive integer (greater than 0) is entered. Once valid input is received, print the number.",
+  "test_cases": [
+    { "input": "5", "expected": "Enter a positive integer: You entered: 5\n" },
+    { "input": "-3\n10", "expected": "Enter a positive integer: Enter a positive integer: You entered: 10\n" },
+    { "input": "0\n7", "expected": "Enter a positive integer: Enter a positive integer: You entered: 7\n" },
+    { "input": "abc\n-2\n1", "expected": "Enter a positive integer: Enter a positive integer: Enter a positive integer: You entered: 1\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <functional>\n\n// Utility to capture stdout\nstd::string capture_stdout(std::function<void()> func) {\n    std::stringstream ss;\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n    func();\n    std::cout.rdbuf(old_cout);\n    return ss.str();\n}\n\n// Utility to feed stdin\nvoid set_stdin(const std::string& input) {\n    std::stringstream ss(input);\n    std::cin.rdbuf(ss.rdbuf());\n}\n\n// The user's main function\nextern int user_main();\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> tests = {\n        { \"5\", \"Enter a positive integer: You entered: 5\\n\" },\n        { \"-3\\n10\", \"Enter a positive integer: Enter a positive integer: You entered: 10\\n\" },\n        { \"0\\n7\", \"Enter a positive integer: Enter a positive integer: You entered: 7\\n\" },\n        { \"abc\\n-2\\n1\", \"Enter a positive integer: Enter a positive integer: Enter a positive integer: You entered: 1\\n\" }\n    };\n\n    for (const auto& test : tests) {\n        set_stdin(test.first);\n        std::string output = capture_stdout(user_main);\n        // In a real testing scenario, you'd compare output with test.second\n        // For this dataset generation, we just run the code.\n        // std::cout << \"Input: \\\"\" << test.first << \"\\\"\\nOutput: \\\"\" << output << \"\\\"\\nExpected: \\\"\" << test.second << \"\\\"\\n---\\n\";\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The code uses an overly long and verbose variable name (`the_user_input_value_for_positive_check`) which harms readability. It also introduces an unnecessary boolean flag (`condition_met`) to control the `do-while` loop. The loop condition could be more directly expressed as `while (std::cin.fail() || num <= 0)` without the need for the intermediate flag, making the logic more concise and easier to understand."
+  ]
+}

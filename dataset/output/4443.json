@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Implement a simple linear search function that takes an integer array, its size, and a target value. It should return the index of the target if found, otherwise -1.",
+  "test_cases": [
+    { "input": "arr = [1, 5, 2, 8, 3], size = 5, target = 8", "expected": "3" },
+    { "input": "arr = [10, 20, 30, 40], size = 4, target = 10", "expected": "0" },
+    { "input": "arr = [5, 4, 3, 2, 1], size = 5, target = 1", "expected": "4" },
+    { "input": "arr = [7, 8, 9], size = 3, target = 10", "expected": "-1" },
+    { "input": "arr = [], size = 0, target = 5", "expected": "-1" },
+    { "input": "arr = [1], size = 1, target = 1", "expected": "0" },
+    { "input": "arr = [1], size = 1, target = 2", "expected": "-1" },
+    { "input": "arr = [1, 2, 3, 2, 4], size = 5, target = 2", "expected": "1" },
+    { "input": "arr = [5, 5, 5], size = 3, target = 5", "expected": "0" },
+    { "input": "arr = [any], size = -5, target = 10", "expected": "-1" },
+    { "input": "arr = nullptr, size = 0, target = 7", "expected": "-1" },
+    { "input": "arr = nullptr, size = 5, target = 7", "expected": "-1" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <cstddef>\n\n// linearSearch function definition (assumed to be linked or in the same file)\n\nint main() {\n    struct TestCase {\n        std::vector<int> arr_vec;\n        int size;\n        int target;\n        int expected;\n        const char* description;\n        bool pass_null_arr = false;\n    };\n\n    std::vector<TestCase> testCases = {\n        {{1, 5, 2, 8, 3}, 5, 8, 3, \"Target found in middle\"},\n        {{10, 20, 30, 40}, 4, 10, 0, \"Target found at beginning\"},\n        {{5, 4, 3, 2, 1}, 5, 1, 4, \"Target found at end\"},\n        {{7, 8, 9}, 3, 10, -1, \"Target not found\"},\n        {{}, 0, 5, -1, \"Empty array\"},\n        {{1}, 1, 1, 0, \"Single element array, target found\"},\n        {{1}, 1, 2, -1, \"Single element array, target not found\"},\n        {{1, 2, 3, 2, 4}, 5, 2, 1, \"Target with duplicates (returns first occurrence)\"},\n        {{5, 5, 5}, 3, 5, 0, \"All elements are target (returns first occurrence)\"},\n        {{}, -5, 10, -1, \"Negative size (robustness check)\"},\n        {{}, 0, 7, -1, \"Null array pointer with size 0 (robustness check)\", true},\n        {{}, 5, 7, -1, \"Null array pointer with positive size (robustness check)\", true}\n    };\n\n    for (const auto& tc : testCases) {\n        int result;\n        std::cout << \"Test Case: \" << tc.description << std::endl;\n        std::cout << \"  Array: [\";\n        if (tc.pass_null_arr) {\n            std::cout << \"nullptr\";\n            result = linearSearch(nullptr, tc.size, tc.target);\n        } else {\n            if (tc.size > 0) {\n                for (int i = 0; i < tc.size; ++i) {\n                    std::cout << tc.arr_vec[i] << (i == tc.size - 1 ? \"\" : \", \");\n                }\n            }\n            result = linearSearch(tc.arr_vec.data(), tc.size, tc.target);\n        }\n        std::cout << \"], Size: \" << tc.size << \", Target: \" << tc.target << std::endl;\n        std::cout << \"  Expected: \" << tc.expected << \", Got: \" << result << std::endl;\n        std::cout << (result == tc.expected ? \"  PASS\" : \"  FAIL\") << std::endl << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

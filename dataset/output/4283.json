@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `sum_rows` that takes a 2D integer array (matrix), its number of rows, and number of columns as input. The function should calculate and print the sum of elements for each individual row.",
+  "test_cases": [
+    {
+      "input": "const int ROWS = 3;\nconst int COLS = 4;\nint matrix[ROWS][COLS] = {\n    {1, 2, 3, 4},\n    {5, 6, 7, 8},\n    {9, 10, 11, 12}\n};\nsum_rows(matrix, ROWS, COLS);",
+      "expected": "Sum for row 0: 10\nSum for row 1: 36\nSum for row 2: 78\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\nconst int MAX_COLS_FOR_FUNC = 10;\nvoid sum_rows(int matrix[][MAX_COLS_FOR_FUNC], int num_rows, int num_cols);\n\nint main() {\n    std::stringstream ss;\n    std::streambuf* oldCout = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n\n    const int ROWS = 3;\n    const int COLS = 4;\n    int matrix[ROWS][COLS] = {\n        {1, 2, 3, 4},\n        {5, 6, 7, 8},\n        {9, 10, 11, 12}\n    };\n    sum_rows(matrix, ROWS, COLS);\n\n    std::cout.rdbuf(oldCout);\n    // std::cout << ss.str(); // For debugging\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `row_sum` variable is initialized once before the outer loop, causing it to accumulate sums across all rows instead of resetting for each new row."
+  ]
+}

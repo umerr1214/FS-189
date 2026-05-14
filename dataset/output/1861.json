@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `Date` class with private attributes `day`, `month`, and `year` (all integers). Implement a `const` member function `displayDate()` that prints the date. Demonstrate that this `const` method can be called safely on both `const` and non-`const` `Date` objects.",
+  "test_cases": [
+    {
+      "input": "Date(15, 7, 2023)\nDate(32, 13, 2023)\nDate(1, 1, 2024)",
+      "expected": "Non-const date: 7/15/2023\nInvalid date (robustness issue): 13/32/2023\nConst date: 1/1/2024\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The Date class constructor lacks input validation, allowing the creation of Date objects with invalid day and month values (e.g., day 32, month 13). This makes the class non-robust as it doesn't protect its internal state from inconsistent data, leading to displayDate() printing logically incorrect dates."
+  ]
+}

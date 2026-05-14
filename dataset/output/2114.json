@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Using the `Shape` hierarchy from a previous problem, demonstrate runtime polymorphism. Create an array of `Shape` pointers, store instances of `Rectangle` and `Circle` in it, and then iterate through the array to call `calculateArea()` on each object.",
+  "test_cases": [
+    { "input": "", "expected": "Calculating areas (Readability / Efficiency Issue):\nArea 1: 72.0\nArea 2: 200.96\nArea 3: 36.0\nArea 4: 28.26\n" }
+  ],
+  "driver": "int main() {\n    // The main function of the C++ file serves as the driver.\n    // No external driver code is needed as the program self-demonstrates.\n    // The output will be captured directly from stdout.\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Unclear variable names (e.g., `w_val`, `h_val`, `rad`, `P_VAL`, `shape_collection`).",
+    "Using a less precise 'magic number' (3.14) for PI instead of a more accurate constant, which can lead to minor inaccuracies.",
+    "Manual memory management with raw pointers (`new`/`delete`) is less readable and more error-prone compared to using smart pointers (`std::unique_ptr`).",
+    "Using an older style `for` loop (`for (size_t i = 0; i < ...; ++i)`) instead of a more modern and concise range-based for loop for iteration."
+  ]
+}

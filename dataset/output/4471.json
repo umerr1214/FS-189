@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter the radius of a circle, then calculates and prints its area. Use a constant for Pi (e.g., 3.14159).",
+  "test_cases": [
+    { "input": "5\n", "expected": "Enter the radius of the circle: The area of the circle is: 78.53975\n" },
+    { "input": "-3\n", "expected": "Enter the radius of the circle: The area of the circle is: 28.27431\n" },
+    { "input": "abc\n", "expected": "Enter the radius of the circle: Invalid input. Assuming radius 0.0.\nThe area of the circle is: 0\n" },
+    { "input": "0\n", "expected": "Enter the radius of the circle: The area of the circle is: 0\n" }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Program does not robustly handle non-numeric input without assigning a default value. If `std::cin.fail()` occurs, it assigns a default radius of 0.0 and proceeds, which might not be the desired behavior for all applications (e.g., prompting for re-entry).",
+    "Program calculates area for negative radius input, which is mathematically correct but might be physically invalid for a 'circle' context without specific validation."
+  ]
+}

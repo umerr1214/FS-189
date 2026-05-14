@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class that encapsulates attributes like `title`, `author`, and `isbn` (all strings). Include a constructor to initialize these attributes and a `displayInfo()` method to print all book details.",
+  "test_cases": [
+    { "input": "The Great Gatsby,F. Scott Fitzgerald,978-0743273565", "expected": "Details:\n Title: The Great Gatsby\n Author: F. Scott Fitzgerald\n ISBN: 978-0743273565\n" },
+    { "input": "Moby Dick,Herman Melville,978-0142437247", "expected": "Details:\n Title: Moby Dick\n Author: Herman Melville\n ISBN: 978-0142437247\n" }
+  ],
+  "driver": "int main() {\n    Book b1(\"The Great Gatsby\", \"F. Scott Fitzgerald\", \"978-0743273565\");\n    b1.displayInfo();\n    std::cout << \"---\\n\";\n\n    Book b2(\"Moby Dick\", \"Herman Melville\", \"978-0142437247\");\n    b2.displayInfo();\n    std::cout << \"---\\n\";\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The constructor takes `std::string` arguments by value, leading to unnecessary copies when constructing `Book` objects. Using `const std::string&` or `std::string&&` with `std::move` would be more efficient.",
+    "Member initialization in the constructor body (`this->bookTitle = t;`) causes additional copy assignments. Using an initializer list (`Book(...) : bookTitle(t), ... {}`) is more efficient and idiomatic C++.",
+    "The `displayInfo()` method is not marked `const`, even though it does not modify the object's state, which is a common readability and correctness best practice.",
+    "Inconsistent formatting and verbose `this->` usage for member variables reduce code readability."
+  ]
+}

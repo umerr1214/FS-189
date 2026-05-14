@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "For a `Rectangle` class with `width` and `height` (double), implement a `getArea()` method that is declared as `const`. Demonstrate that this method can be called on a `const` `Rectangle` object and does not modify object state.",
+  "test_cases": [
+    {
+      "input": "10.0 5.0",
+      "expected": "Area of r1 (expected 50.0): 50.0"
+    },
+    {
+      "input": "7.0 3.0",
+      "expected": "Area of const_r1 (expected 21.0): 21.0"
+    }
+  ],
+  "driver": "int main() {\n    Rectangle r1(10.0, 5.0);\n    const Rectangle const_r1(7.0, 3.0);\n\n    std::cout << \"Area of r1 (expected 50.0): \" << r1.getArea() << std::endl;\n    std::cout << \"Area of const_r1 (expected 21.0): \" << const_r1.getArea() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `getArea()` method incorrectly calculates the area by adding `width` and `height` instead of multiplying them."
+  ]
+}

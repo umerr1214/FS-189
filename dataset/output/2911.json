@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Define an abstract base class `Animal` with a pure virtual `void makeSound()` method. Derive concrete classes `Dog` and `Cat` from `Animal`, and each should provide its specific implementation for the `makeSound()` method.",
+  "test_cases": [
+    { "input": "", "expected": "Woof! (from Buddy)\nMeow! (playing with Yarn Ball)\nWoof! (from Rex)\nMeow! (playing with Mouse)\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\n// Abstract base class Animal\nclass Animal {\npublic:\n    // Pure virtual method\n    virtual void makeSound() = 0;\n\n    // No virtual destructor! This is the robustness issue.\n    // If derived classes have resources allocated on the heap,\n    // deleting them via an an Animal* pointer will lead to memory leaks.\n    ~Animal() {}\n};\n\n// Concrete class Dog\nclass Dog : public Animal {\nprivate:\n    std::string* name_tag; \n\npublic:\n    Dog(const std::string& name) : name_tag(new std::string(name)) {}\n\n    void makeSound() override {\n        std::cout << \"Woof! (from \" << *name_tag << \")\" << std::endl;\n    }\n\n    ~Dog() {\n        delete name_tag;\n    }\n};\n\n// Concrete class Cat\nclass Cat : public Animal {\nprivate:\n    std::string* favorite_toy; \n\npublic:\n    Cat(const std::string& toy) : favorite_toy(new std::string(toy)) {}\n\n    void makeSound() override {\n        std::cout << \"Meow! (playing with \" << *favorite_toy << \")\" << std::endl;\n    }\n\n    ~Cat() {\n        delete favorite_toy;\n    }\n};\n\nint main() {\n    Animal* myDog = new Dog(\"Buddy\");\n    Animal* myCat = new Cat(\"Yarn Ball\");\n\n    myDog->makeSound();\n    myCat->makeSound();\n\n    delete myDog;\n    delete myCat;\n\n    Dog stackDog(\"Rex\");\n    Cat stackCat(\"Mouse\");\n    stackDog.makeSound();\n    stackCat.makeSound();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The base class `Animal` is missing a `virtual` destructor. When derived class objects (`Dog`, `Cat`) are deleted via a base class pointer (`Animal*`), only the `Animal` destructor is called. This leads to undefined behavior and memory leaks if derived classes allocate resources on the heap (e.g., `name_tag` in `Dog`, `favorite_toy` in `Cat`) that need to be deallocated by their specific destructors."
+  ]
+}

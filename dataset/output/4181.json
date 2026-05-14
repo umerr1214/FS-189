@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that takes 10 integer values from the user and stores them in a one-dimensional array. After reading all inputs, find and print the largest and smallest elements present in the array.",
+  "test_cases": [
+    { "input": "1 2 3 4 5 6 7 8 9 10", "expected": "Largest element: 10\nSmallest element: 1\n" },
+    { "input": "-5 -10 -1 -8 -3 -7 -2 -9 -4 -6", "expected": "Largest element: -1\nSmallest element: -10\n" }
+  ],
+  "driver": "g++ -o solution 4181.cpp && ./solution",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The variables 'largest' and 'smallest' are initialized to 0. This leads to incorrect results when all input numbers are negative (largest remains 0) or all input numbers are positive (smallest remains 0). For example, with input '1 2 3 4 5 6 7 8 9 10', smallest will incorrectly be 0 instead of 1. With input '-5 -10 -1 -8 -3 -7 -2 -9 -4 -6', largest will incorrectly be 0 instead of -1."]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private members for `title`, `author`, and `isbn` (string types). Provide public methods to set and retrieve these details, and a method `displayBookDetails()` to print all information.",
+  "test_cases": [
+    {
+      "input": "Create Book1, set title 'The Lord of the Rings', author 'J.R.R. Tolkien', ISBN '978-0618053267'. Display details. Create Book2, set title 'Dune', author 'Frank Herbert', ISBN '978-0441172719'. Display details.",
+      "expected": "--- Book 1 Details ---\nTitle: The Lord of the Rings\nAuthor: J.R.R. Tolkien\nISBN: 978-0618053267\n\n--- Book 2 Details ---\nTitle: Dune\nAuthor: Frank Herbert\nISBN: 978-0441172719\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Book {\nprivate:\n    std::string title;\n    std::string author;\n    std::string isbn;\n\npublic:\n    Book() : title(\"\"), author(\"\"), isbn(\"\") {}\n\n    void setTitle(const std::string& t) { /* title = t; */ }\n    void setAuthor(const std::string& a) { /* author = a; */ }\n    void setISBN(const std::string& i) { /* isbn = i; */ }\n\n    std::string getTitle() const { return title; }\n    std::string getAuthor() const { return author; }\n    std::string getISBN() const { return isbn; }\n\n    void displayBookDetails() const {\n        std::cout << \"Title: \" << title << std::endl;\n        std::cout << \"Author: \" << author << std::endl;\n        std::cout << \"ISBN: \" << isbn << std::endl;\n    }\n};\n\nint main() {\n    Book book1;\n    book1.setTitle(\"The Lord of the Rings\");\n    book1.setAuthor(\"J.R.R. Tolkien\");\n    book1.setISBN(\"978-0618053267\");\n\n    std::cout << \"--- Book 1 Details ---\" << std::endl;\n    book1.displayBookDetails();\n    std::cout << std::endl;\n\n    Book book2;\n    book2.setTitle(\"Dune\");\n    book2.setAuthor(\"Frank Herbert\");\n    book2.setISBN(\"978-0441172719\");\n\n    std::cout << \"--- Book 2 Details ---\" << std::endl;\n    book2.displayBookDetails();\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": []
+}

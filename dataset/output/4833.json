@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Student` with members `studentID` (int), `name` (`std::string`), and `gpa` (double). Write a program that creates an instance of `Student`, prompts the user to enter its details, and then prints all the student's information.",
+  "test_cases": [
+    {
+      "input": "1001\nJane Doe\n3.75",
+      "expected": "Enter student ID (integer): Enter student name: Enter student GPA (double, e.g., 3.5): \n--- Student Information ---\nID: 1001\nName: Jane Doe\nGPA: 3.75\n"
+    },
+    {
+      "input": "2002\nDr. Stephen Strange\n4.0",
+      "expected": "Enter student ID (integer): Enter student name: Enter student GPA (double, e.g., 3.5): \n--- Student Information ---\nID: 2002\nName: Dr. Stephen Strange\nGPA: 4.00\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

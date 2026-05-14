@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Base` class with a `protected` integer member `data`. Create a `Derived` class that inherits from `Base`. Demonstrate how the `Derived` class can directly access and modify the `data` member, and explain why `data` cannot be accessed from a non-member function.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "--- Demonstrating Robustness Issue ---\nBase object created with data: 10\nDerived object created.\nDerived class: Accessing and modifying 'data'.\nOriginal data: 10\nNew data: 5\n\nDerived class: Attempting a risky operation (division by data).\nCurrent data (divisor): 5\nAttempting to divide 100 by data...\nResult of 100 / data: 20\n\n--- Triggering Robustness Issue (Division by Zero) ---\nDerived class: Accessing and modifying 'data'.\nOriginal data: 5\nNew data: 0\nCalling performRiskyOperation() with data = 0. This will cause a runtime error (division by zero).\nDerived class: Attempting a risky operation (division by data).\nCurrent data (divisor): 0\nAttempting to divide 100 by data...\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Demonstrating Robustness Issue ---\" << std::endl;\n\n    Derived d_obj(10);\n    d_obj.accessAndModifyData(5);\n    d_obj.performRiskyOperation(); // Works fine with data = 5\n\n    std::cout << \"\\n--- Triggering Robustness Issue (Division by Zero) ---\" << std::endl;\n    d_obj.accessAndModifyData(0); // Set data to 0\n    std::cout << \"Calling performRiskyOperation() with data = 0. This will cause a runtime error (division by zero).\" << std::endl;\n    d_obj.performRiskyOperation();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `performRiskyOperation` method in `Derived` does not check if `data` is zero before performing division, leading to a runtime division-by-zero error when `data` is 0. This is a critical robustness flaw as it causes the program to crash for specific inputs."
+  ]
+}

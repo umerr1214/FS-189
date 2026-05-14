@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Animal` with a `string name` and a `void makeSound()` method. Derive a `Dog` class that inherits from `Animal` and overrides `makeSound()` to print 'Woof!' without using virtual functions.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Animal Generic created.\nGeneric animal Generic makes a sound: Generic animal sound.\n\nDog Buddy created.\nDog Buddy makes a sound: Woof!\n\nUsing Animal pointer to Dog:\nGeneric animal Buddy makes a sound: Generic animal sound.\n\nUsing Animal reference to Dog:\nGeneric animal Buddy makes a sound: Generic animal sound.\n"
+    }
+  ],
+  "driver": "int main() {\n    Animal genericAnimal(\"Generic\");\n    genericAnimal.makeSound();\n\n    Dog myDog(\"Buddy\");\n    myDog.makeSound();\n\n    Animal* animalPtr = &myDog;\n    animalPtr->makeSound();\n\n    Animal& animalRef = myDog;\n    animalRef.makeSound();\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The absence of virtual functions for `makeSound` leads to object slicing behavior (specifically, static dispatch) when `Dog` objects are accessed via `Animal` pointers or references. This results in `Animal::makeSound` being called instead of `Dog::makeSound`, violating expected polymorphic behavior and making the program less robust to design changes or usage patterns that rely on dynamic dispatch for overridden methods."
+  ]
+}

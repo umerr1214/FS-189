@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Define a C++ `struct` named `Book` with members `title` (std::string), `author` (std::string), and `yearPublished` (int). Write a function `printBookDetails` that takes a `Book` struct (by value) and prints all its details. Demonstrate by creating a `Book` instance and calling the function.",
+  "test_cases": [
+    { "input": "", "expected": "Title: 1984\nAuthor: George Orwell\nYear: 1949\n" }
+  ],
+  "driver": "int main() { Book myBook; myBook.title = \"1984\"; myBook.author = \"George Orwell\"; myBook.yearPublished = 1949; printBookDetails(myBook); return 0; }",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after struct definition."
+  ]
+}

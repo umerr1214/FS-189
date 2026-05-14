@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Circle` class with a private `radius`. Implement `getRadius()` as a `const` member function and `setRadius()` as a non-`const` member function. In `main`, create a `const Circle` object and demonstrate which methods it can call.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating const Circle methods ---\nConst Circle radius: 5\nConst Circle area: 78.53975\nAttempting to call setRadius() on const_circle would fail compilation.\n\n--- Demonstrating Robustness Issue ---\nInitial mutable Circle radius: 10\nMutable Circle radius after setting -3.0: -3\nMutable Circle area with negative radius: 28.27431\nThis program allows a negative radius, which is geometrically invalid.\n"
+    }
+  ],
+  "driver": "The main function serves as the driver.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `setRadius` method does not validate input, allowing negative values which are invalid for a geometric circle. This can lead to unexpected or incorrect behavior without crashing the program."
+  ]
+}

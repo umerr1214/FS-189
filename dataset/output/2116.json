@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a base class `Vehicle` with a virtual method `startEngine()` that prints a generic message. Derive `Car` and `Motorcycle` classes, each overriding `startEngine()` to print a specific message for their vehicle type.",
+  "test_cases": [
+    { "input": "", "expected": "Car engine started. Vroom!\nMotorcycle engine started. Roar!\n" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <memory>\n\n// Base class Vehicle\nclass Vehicle {\npublic:\n    virtual void startEngine() {\n        std::cout << \"Generic vehicle engine started.\" << std::endl;\n    }\n    virtual ~Vehicle() {}\n};\n\n// Derived class Car\nclass Car : public Vehicle {\npublic:\n    void startEngine() override {\n        std::cout << \"Car engine started. Vroom!\" << std::endl;\n    }\n}; \n\n// Derived class Motorcycle\nclass Motorcycle : public Vehicle {\npublic:\n    void startEngine() override {\n        std::cout << \"Motorcycle engine started. Roar!\" << std::endl;\n    }\n};\n\nint main() {\n    std::vector<std::unique_ptr<Vehicle>> vehicles;\n    vehicles.push_back(std::make_unique<Car>());\n    vehicles.push_back(std::make_unique<Motorcycle>());\n\n    for (const auto& v : vehicles) {\n        v->startEngine();\n    }\n    return 0;\n}",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class 'Car' definition, leading to a compilation error."
+  ]
+}

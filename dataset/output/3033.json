@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a base class `Shape` with a pure virtual method `calculateArea()` that returns a double. Create two derived classes, `Rectangle` (with `length` and `width`) and `Circle` (with `radius`). Implement the `calculateArea()` method in each derived class. Demonstrate creating objects of derived classes and calling their `calculateArea()` method.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Rectangle Area: 20.00\nCircle Area: 28.27\nStack Rectangle Area: 18.00\nStack Circle Area: 19.63\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include <cmath> // For M_PI\n\n// The classes Shape, Rectangle, Circle are assumed to be defined in the solution code.\n\nint main() {\n    std::cout << std::fixed << std::setprecision(2);\n\n    // Create a Rectangle object\n    Rectangle rect(5.0, 4.0);\n    std::cout << \"Rectangle Area: \" << rect.calculateArea() << std::endl;\n\n    // Create a Circle object\n    Circle circ(3.0);\n    std::cout << \"Circle Area: \" << circ.calculateArea() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

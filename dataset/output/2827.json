@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Implement a `Circle` class. Provide overloaded constructors: a default constructor setting radius to 1.0, and another constructor that takes a `double` argument for the radius. Also, include a method `calculateArea()`.",
+  "test_cases": [
+    { "input": "", "expected": "Circle 1 (default, radius=1.00000): Area = 3.14159\nCircle 2 (radius=5.00000): Area = 78.53982\nCircle 3 (radius=0.00000): Area = 0.00000\nCircle 4 (radius=2.50000): Area = 19.63495\nCircle 5 (radius=-3.00000): Area = 28.27433" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n#include <iomanip>\n\n// The Circle class will be inserted here\n\nint main() {\n    std::cout << std::fixed << std::setprecision(5);\n\n    Circle c1;\n    std::cout << \"Circle 1 (default, radius=\" << c1.getRadius() << \"): Area = \" << c1.calculateArea() << std::endl;\n\n    Circle c2(5.0);\n    std::cout << \"Circle 2 (radius=\" << c2.getRadius() << \"): Area = \" << c2.calculateArea() << std::endl;\n\n    Circle c3(0.0);\n    std::cout << \"Circle 3 (radius=\" << c3.getRadius() << \"): Area = \" << c3.calculateArea() << std::endl;\n\n    Circle c4(2.5);\n    std::cout << \"Circle 4 (radius=\" << c4.getRadius() << \"): Area = \" << c4.calculateArea() << std::endl;\n\n    Circle c5(-3.0);\n    std::cout << \"Circle 5 (radius=\" << c5.getRadius() << \"): Area = \" << c5.calculateArea() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The class allows a negative radius to be set in its constructor, leading to an invalid object state from a mathematical/physical perspective. A robust implementation would validate the input radius (e.g., ensure it's non-negative) in the constructor, potentially throwing an exception or clamping the value."]
+}

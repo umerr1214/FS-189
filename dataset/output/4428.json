@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a program that takes a positive integer from the user and determines if it is a prime number (divisible only by 1 and itself).",
+  "test_cases": [
+    { "input": "7", "expected": "7 is a prime number." },
+    { "input": "4", "expected": "4 is not a prime number." },
+    { "input": "2", "expected": "2 is a prime number." },
+    { "input": "1", "expected": "Please enter a positive integer." },
+    { "input": "2147483647", "expected": "2147483647 is a prime number." },
+    { "input": "4000000000", "expected": "4000000000 is not a prime number." }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\n// Assume isPrime(int n) is defined in the user's code.\n// The user's main function is ignored; this driver calls isPrime directly.\n\nextern bool isPrime(int n);\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        std::stringstream ss(line);\n        long long input_val;\n        if (!(ss >> input_val)) {\n            std::cout << \"Invalid input.\" << std::endl;\n            continue;\n        }\n\n        // Mimic the semantic error: read as unsigned int, then convert to int\n        unsigned int num_unsigned = static_cast<unsigned int>(input_val);\n        int num = static_cast<int>(num_unsigned);\n\n        if (num <= 0) {\n            std::cout << \"Please enter a positive integer.\" << std::endl;\n        } else {\n            if (isPrime(num)) {\n                std::cout << num << \" is a prime number.\" << std::endl;\n            } else {\n                std::cout << num << \" is not a prime number.\" << std::endl;\n            }\n        }\n    }\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `main` function reads user input into an `unsigned int` (`num_unsigned`), then implicitly converts it to `int` (`num`) before passing it to `isPrime`. If the input is a large positive number (e.g., 4,000,000,000) that exceeds `INT_MAX`, this conversion causes integer overflow, leading to the number being interpreted as a negative value (e.g., -294,967,296 on a 32-bit system). This changes the semantic meaning of the input for the primality check, leading to incorrect results for such large positive numbers."
+  ]
+}

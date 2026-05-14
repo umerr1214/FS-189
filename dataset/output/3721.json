@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter the length and width of a rectangle (as floating-point numbers), then calculates and displays its area and perimeter with appropriate labels.",
+  "test_cases": [
+    {
+      "input": "5.5\n4.0\n",
+      "expected": "Enter the length of the rectangle: Enter the width of the rectangle: \n--- Calculation Results ---\nArea: 22.00\nPerimeter: 19.00\n"
+    },
+    {
+      "input": "abc\n4.0\n",
+      "expected": "Enter the length of the rectangle: Enter the width of the rectangle: \n--- Calculation Results ---\nArea: 0.00\nPerimeter: 0.00\n"
+    },
+    {
+      "input": "10.0\ndef\n",
+      "expected": "Enter the length of the rectangle: Enter the width of the rectangle: \n--- Calculation Results ---\nArea: 0.00\nPerimeter: 0.00\n"
+    }
+  ],
+  "driver": "int main() { float length, width; std::cout << \"Enter the length of the rectangle: \"; std::cin >> length; std::cout << \"Enter the width of the rectangle: \"; std::cin >> width; float area = length * width; float perimeter = 2 * (length + width); std::cout << \"\\n--- Calculation Results ---\\n\"; std::cout << \"Area: \" << std::fixed << std::setprecision(2) << area << std::endl; std::cout << \"Perimeter: \" << std::fixed << std::setprecision(2) << perimeter << std::endl; return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["Missing input validation for floating-point numbers", "Program can produce incorrect results (e.g., 0.00) or undefined behavior on invalid non-numeric input", "Does not handle non-numeric input gracefully, leading to silent failures"]
+}

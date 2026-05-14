@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a function `multiplyByTwo` that takes an integer pointer as an argument, dereferences it, and doubles the value at that memory address.",
+  "test_cases": [
+    { "input": "5", "expected": "10" },
+    { "input": "0", "expected": "0" },
+    { "input": "-3", "expected": "-6" }
+  ],
+  "driver": "int main() {\n    int val1 = 5;\n    multiplyByTwo(&val1);\n    std::cout << val1 << std::endl;\n\n    int val2 = 0;\n    multiplyByTwo(&val2);\n    std::cout << val2 << std::endl;\n\n    int val3 = -3;\n    multiplyByTwo(&val3);\n    std::cout << val3 << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `multiplyByTwo` function introduces an unnecessary temporary variable `current_value_at_address`. This adds a redundant step and slightly reduces readability and conciseness compared to directly modifying the dereferenced pointer using `*ptr *= 2;` or `*ptr = *ptr * 2;`. While functionally correct, it's not the most idiomatic or efficient way to perform the operation."
+  ]
+}

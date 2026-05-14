@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `isPrime` that takes an integer as input and returns `true` if the number is prime, otherwise `false`. Use this function in the main program to check if a user-provided number is prime.",
+  "test_cases": [
+    { "input": "0", "expected": "false" },
+    { "input": "1", "expected": "false" },
+    { "input": "2", "expected": "true" },
+    { "input": "4", "expected": "false" },
+    { "input": "7", "expected": "true" },
+    { "input": "999983", "expected": "true" },
+    { "input": "1000000", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n\n// The `isPrime` function will be inserted here by the system.\nbool isPrime(int n);\n\nint main() {\n    int num;\n    std::cin >> num;\n    if (isPrime(num)) {\n        std::cout << \"true\" << std::endl;\n    } else {\n        std::cout << \"false\" << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `isPrime` function is inefficient for larger numbers. It iterates up to `n/2` to check for divisors, whereas an optimal approach would iterate up to `sqrt(n)`.",
+    "This inefficiency leads to a time complexity of O(N) instead of O(sqrt(N)), which is significantly slower for large inputs."
+  ]
+}

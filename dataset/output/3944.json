@@ -1,0 +1,25 @@
+{
+  "language": "c++",
+  "question": "Implement a simple number guessing game. The program should generate a random number between 1 and 100, and the user has to guess it. Provide hints (higher/lower) after each incorrect guess and count the number of attempts.",
+  "test_cases": [
+    {
+      "input": "50\n25\n42\n",
+      "expected": "Welcome to the number guessing game, my friend.\nI'm thinking of a number between 1 and 100. Good luck!\nGuess number: Your number is too high. Try a smaller one.\nGuess number: Your number is too low. Try a bigger one.\nGuess number: You got it! The number was 42. It took you 3 tries.\n"
+    },
+    {
+      "input": "101\n1\n42\n",
+      "expected": "Welcome to the number guessing game, my friend.\nI'm thinking of a number between 1 and 100. Good luck!\nGuess number: That's not between 1 and 100, try again anyway.\nYour number is too high. Try a smaller one.\nGuess number: Your number is too low. Try a bigger one.\nGuess number: You got it! The number was 42. It took you 3 tries.\n"
+    }
+  ],
+  "driver": "g++ -o solution 3944.cpp && ./solution",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Poor variable names (e.g., `x`, `y`, `z`, `g`) make the code harder to understand without careful tracing.",
+    "Excessive use of `std::endl` instead of `\\n` can lead to unnecessary buffer flushes, slightly impacting efficiency in I/O heavy applications.",
+    "The loop control using `bool game_finished` and `while(!game_finished)` is less direct than `while (userGuess != targetNumber)`.",
+    "The `get_the_guess` function is simple but adds an extra function call overhead without significant benefit for this small task, and uses a poor variable name `g`.",
+    "The input range check `if (y < 1 || y > 100)` is redundant in its current placement and its message is not very helpful ('try again anyway')."
+  ]
+}

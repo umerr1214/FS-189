@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function template `findMax` that takes two arguments of any comparable data type (e.g., `int`, `double`, `char`) and returns the larger of the two values. Demonstrate its usage with at least two different data types in the `main` function.",
+  "test_cases": [
+    { "input": "No direct input, internal values.", "expected": "Max of 10 and 5 is: 10\nMax of 3.14 and 2.71 is: 3.14\nMax of 'X' and 'A' is: X" }
+  ],
+  "driver": "#include <iostream>\n\ntemplate <typename T>\nT findMax(T a, T b) {\n    return (a > b) ? a : b;\n}\n\nint main() {\n    int int1 = 10;\n    int int2 = 5;\n    std::cout << \"Max of \" << int1 << \" and \" << int2 << \" is: \" << findMax(int1, int2) << std::endl;\n\n    double double1 = 3.14;\n    double double2 = 2.71;\n    std::cout << \"Max of \" << double1 << \" and \" << double2 << \" is: \" << findMax(double1, double2) << std::endl;\n\n    char char1 = 'X';\n    char char2 = 'A';\n    std::cout << \"Max of '\" << char1 << \"' and '\" << char2 << \"' is: \" << findMax(char1, char2) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing 'template <typename T>' keyword before the function definition, causing 'T' to be an undeclared identifier."
+  ]
+}

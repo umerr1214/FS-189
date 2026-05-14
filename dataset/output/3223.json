@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a `Point` class with `x` and `y` coordinates. Provide two overloaded `getX()` methods: one `const` version and one non-`const` version. Explain when each would be called.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Demonstrating Point class with overloaded getX() methods.\np1 (non-const): Point(10, 20)\nCalling non-const getX() on p1 to modify x to 15.\np1 after modification: Point(15, 20)\np2 (const): Point(30, 40)\nCalling const getX() on p2: 30\n\nExplanation of getX() calls:\nThe 'const int getX() const' version is called when the Point object itself is const (like p2) or when the method is called on an rvalue (temporary object).\nThe 'int& getX()' version is called when the Point object is non-const (like p1) and allows modification of the internal x-coordinate via the returned reference.\nIt's important to be careful when using the non-const version, especially with temporary objects.\n\n--- Demonstrating a potential robustness issue (Undefined Behavior) ---\nAttempting to modify a temporary Point object's x-coordinate:\nValue of x after attempting to modify temporary: 50\nNote: The actual effect of modifying a temporary is undefined and may not be immediately apparent.\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Attempting to modify a temporary object (rvalue) via a non-const reference returned by getX() leads to undefined behavior. While it might compile, the behavior is not guaranteed and can lead to subtle bugs.",
+    "The explanation provided in main() mentions caution with temporaries but does not explicitly warn against the undefined behavior caused by modifying them via a non-const reference."
+  ]
+}

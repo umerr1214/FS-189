@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a `Vehicle` base class with a public method `startEngine()` that prints 'Vehicle engine started.' Derive a `Car` class and implement its own `startEngine()` method that prints 'Car engine started with a roar!'. Demonstrate calling `startEngine()` using both a `Vehicle` object and a `Car` object, showing method hiding (non-virtual overriding).",
+  "test_cases": [
+    { "input": "", "expected": "Vehicle engine started.\nCar engine started with a roar!\nVehicle engine started.\nVehicle engine started.\n" }
+  ],
+  "driver": "",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The code uses `std::endl` for every output, which forces a flush of the output buffer. For simple console output, using `\\n` is generally more efficient as it doesn't force a flush, allowing the buffer to be flushed less frequently.",
+    "Output messages are constructed using `std::string` concatenation and temporary `std::string` objects (e.g., `first_part_of_message + second_part_of_message`). For simple string literals, direct streaming (`std::cout << \"Vehicle engine started.\" << '\\n';`) is more efficient and readable, avoiding unnecessary object creation and memory allocations.",
+    "Variable names like `aVehicleObjectInstance`, `aCarObjectInstance`, `pointerToDerivedCarObject`, and `referenceToDerivedCarObject` are overly verbose. Shorter, more descriptive names (e.g., `myVehicle`, `myCar`, `ptrVehicle`, `refVehicle`) would improve readability without sacrificing clarity."
+  ]
+}

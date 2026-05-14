@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Develop a program that takes an integer from the user and prints its reverse. For example, if the input is 12345, the output should be 54321. Use a `while` loop.",
+  "test_cases": [
+    { "input": "123", "expected": "321" },
+    { "input": "-123", "expected": "-321" },
+    { "input": "0", "expected": "0" },
+    { "input": "100", "expected": "1" },
+    { "input": "12345", "expected": "54321" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <cmath> // For std::abs\n\n// This function defines the correct behavior for reversing an integer.\n// It is used by the test harness to determine the 'expected' output for a given input.\nstd::string get_expected_reverse(int n_val) {\n    if (n_val == 0) {\n        return \"0\";\n    }\n\n    bool is_negative = false;\n    if (n_val < 0) {\n        is_negative = true;\n        n_val = -n_val;\n    }\n\n    long long reversed_num = 0; // Use long long to prevent overflow during reversal for larger inputs.\n                               // Assumes reversed number fits within long long.\n    while (n_val > 0) {\n        int digit = n_val % 10;\n        reversed_num = reversed_num * 10 + digit;\n        n_val /= 10;\n    }\n\n    std::stringstream ss;\n    if (is_negative) {\n        ss << \"-\";\n    }\n    ss << reversed_num;\n    return ss.str();\n}\n\n// In a real testing environment, this main function might be omitted or\n// replaced by a testing framework's entry point. For the purpose of this dataset,\n// this driver is a self-contained C++ snippet that defines the expected behavior.\nint main() {\n    // Example of how this function would be used by a test harness:\n    // std::cout << get_expected_reverse(123) << std::endl; // Output: 321\n    // std::cout << get_expected_reverse(-456) << std::endl; // Output: -654\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The program fails to correctly handle negative input integers by losing the negative sign in the output. For example, input -123 results in 321 instead of -321."]
+}

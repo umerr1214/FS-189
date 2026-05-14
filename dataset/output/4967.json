@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function `normalizeAngle` that takes an angle in degrees (as a `double` passed by reference) and modifies it so that its value is within the range [0, 360).",
+  "test_cases": [
+    { "input": "400.0", "expected": "40.0" },
+    { "input": "-90.0", "expected": "270.0" },
+    { "input": "360.0", "expected": "0.0" },
+    { "input": "-720.0", "expected": "0.0" },
+    { "input": "0.0", "expected": "0.0" },
+    { "input": "180.0", "expected": "180.0" },
+    { "input": "540.0", "expected": "180.0" },
+    { "input": "-180.0", "expected": "180.0" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream>\n#include <iomanip>\n\n// The normalizeAngle function will be inserted here\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> test_cases = {\n        {\"400.0\", \"40.0\"},\n        {\"-90.0\", \"270.0\"},\n        {\"360.0\", \"0.0\"},\n        {\"-720.0\", \"0.0\"},\n        {\"0.0\", \"0.0\"},\n        {\"180.0\", \"180.0\"},\n        {\"540.0\", \"180.0\"},\n        {\"-180.0\", \"180.0\"}\n    };\n\n    for (const auto& tc : test_cases) {\n        double input_val;\n        std::istringstream(tc.first) >> input_val;\n        double original_val = input_val;\n\n        normalizeAngle(input_val);\n\n        std::ostringstream oss;\n        oss << std::fixed << std::setprecision(1) << input_val;\n        std::cout << \"Input: \" << std::fixed << std::setprecision(1) << original_val\n                  << \", Output: \" << oss.str() << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": []
+}

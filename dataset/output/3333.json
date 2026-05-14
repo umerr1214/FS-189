@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Write a function `bool is_palindrome(int num)` that takes an integer and returns `true` if it's a palindrome (reads the same forwards and backwards), and `false` otherwise.",
+  "test_cases": [
+    { "input": "121", "expected": "true" },
+    { "input": "0", "expected": "true" },
+    { "input": "12345", "expected": "false" },
+    { "input": "-121", "expected": "false" },
+    { "input": "10", "expected": "false" },
+    { "input": "11", "expected": "true" },
+    { "input": "2147483647", "expected": "false" },
+    { "input": "1000000001", "expected": "true" },
+    { "input": "123454321", "expected": "true" },
+    { "input": "123456789", "expected": "false" },
+    { "input": "-2147483648", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n#include <limits> // Required for std::numeric_limits\n\n// The is_palindrome function would be inserted here\n\nint main() {\n    std::vector<std::pair<int, bool>> test_cases = {\n        {121, true},\n        {0, true},\n        {12345, false},\n        {-121, false},\n        {10, false},\n        {11, true},\n        {std::numeric_limits<int>::max(), false},\n        {1000000001, true},\n        {123454321, true},\n        {123456789, false},\n        {std::numeric_limits<int>::min(), false}\n    };\n\n    for (const auto& tc : test_cases) {\n        int input_num = tc.first;\n        bool expected_output = tc.second;\n        bool actual_output = is_palindrome(input_num);\n        std::cout << \"Input: \" << input_num\n                  << \", Expected: \" << (expected_output ? \"true\" : \"false\")\n                  << \", Actual: \" << (actual_output ? \"true\" : \"false\")\n                  << (expected_output == actual_output ? \" [PASS]\" : \" [FAIL]\") << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

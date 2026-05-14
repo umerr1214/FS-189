@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Given a 2D integer array (matrix), write a program to calculate and print the sum of all its elements.",
+  "test_cases": [
+    { "input": "2 3\n1 2 3\n4 5 6\n", "expected": "21" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n\n// The calculateSum function will be provided by the user's solution.\nlong long calculateSum(const std::vector<std::vector<int>>& matrix);\n\nint main() {\n    int rows, cols;\n    std::cin >> rows >> cols;\n\n    std::vector<std::vector<int>> matrix(rows, std::vector<int>(cols));\n\n    for (int i = 0; i < rows; ++i) {\n        for (int j = 0; j < cols; ++j) {\n            std::cin >> matrix[i][j];\n        }\n    }\n\n    long long sum = calculateSum(matrix);\n    std::cout << sum << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The outer loop condition `i <= matrix.size()` allows the loop variable `i` to exceed the valid index range for the matrix. When `i` becomes `matrix.size()`, accessing `matrix[i]` results in an out-of-bounds access, leading to undefined behavior such as a crash, memory corruption, or an incorrect sum."
+  ]
+}

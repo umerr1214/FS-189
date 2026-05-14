@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Create a `Logger` class. Its constructor should open a specified log file, and its destructor should close the file, ensuring proper resource management. Add a `logMessage(const std::string& message)` method.",
+  "test_cases": [
+    {
+      "input": ["Starting application...", "User logged in: Alice", "Processing data for ID 123.", "User logged out: Alice"],
+      "expected": "Starting application...\nUser logged in: Alice\nProcessing data for ID 123.\nUser logged out: Alice\n"
+    },
+    {
+      "input": ["Error: File not found.", "Warning: Low disk space.", "Info: System shutdown initiated."],
+      "expected": "Error: File not found.\nWarning: Low disk space.\nInfo: System shutdown initiated.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <fstream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <chrono>\n#include <cstdio>\n\n// Logger class definition will be inserted here by the system\n\nstd::string run_test(const std::vector<std::string>& messages, const std::string& filename) {\n    std::ofstream clear_file(filename, std::ios::trunc);\n    clear_file.close();\n\n    Logger logger(filename);\n\n    for (const std::string& msg : messages) {\n        logger.logMessage(msg);\n    }\n\n    std::ifstream infile(filename);\n    std::stringstream buffer;\n    if (infile.is_open()) {\n        buffer << infile.rdbuf();\n        infile.close();\n    } else {\n        return \"ERROR: Could not read log file: \" + filename + \"\\n\";\n    }\n    return buffer.str();\n}\n\nint main() {\n    std::vector<std::string> test_messages_1 = {\"Starting application...\", \"User logged in: Alice\", \"Processing data for ID 123.\", \"User logged out: Alice\"};\n    std::string temp_log_filename_1 = \"temp_log_\" + std::to_string(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count()) + \"_1.txt\";\n    std::cout << run_test(test_messages_1, temp_log_filename_1);\n    std::remove(temp_log_filename_1.c_str());\n\n    std::vector<std::string> test_messages_2 = {\"Error: File not found.\", \"Warning: Low disk space.\", \"Info: System shutdown initiated.\"};\n    std::string temp_log_filename_2 = \"temp_log_\" + std::to_string(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count()) + \"_2.txt\";\n    std::cout << run_test(test_messages_2, temp_log_filename_2);\n    std::remove(temp_log_filename_2.c_str());\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The Logger constructor does not check if the log file was successfully opened. If file opening fails (e.g., due to invalid path or permissions), the Logger object will be in an invalid state but will not indicate this, leading to silent failures.",
+    "The `logMessage` method does not verify the internal file stream's state (`is_open()` or `good()`) before attempting to write. If the file was never opened successfully or encountered an error after opening, writing to the stream will fail silently or result in undefined behavior, compromising data integrity without notification."
+  ]
+}

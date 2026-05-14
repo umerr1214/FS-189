@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create three classes: `Base`, `Derived` (inheriting `Base`), and `External`. In `Base`, declare `public`, `protected`, and `private` members. Demonstrate the accessibility of these members from `Derived` and `External` classes respectively.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "The program should output clear and concise messages, demonstrating the accessibility rules for public, protected, and private members. It should show that public members are accessible everywhere, protected members are accessible from derived classes (but not external classes), and private members are only accessible within their own class. Constructor and destructor calls should be correctly balanced."
+    }
+  ],
+  "driver": "int main() { /* The solution code is expected to contain its own main function. */ return 0; }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

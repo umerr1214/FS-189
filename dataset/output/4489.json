@@ -1,0 +1,24 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that takes a single character as input from the user and determines if it is a vowel (a, e, i, o, u, case-insensitive) or a consonant.",
+  "test_cases": [
+    { "input": "a", "expected": "'a' is a vowel." },
+    { "input": "E", "expected": "'E' is a vowel." },
+    { "input": "I", "expected": "'I' is a vowel." },
+    { "input": "o", "expected": "'o' is a vowel." },
+    { "input": "U", "expected": "'U' is a vowel." },
+    { "input": "b", "expected": "'b' is a consonant." },
+    { "input": "C", "expected": "'C' is a consonant." },
+    { "input": "Z", "expected": "'Z' is a consonant." },
+    { "input": "7", "expected": "'7' is a consonant." },
+    { "input": "$", "expected": "'$' is a consonant." },
+    { "input": " ", "expected": "' ' is a consonant." }
+  ],
+  "driver": "```cpp\n#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// Assuming the user's code is in a file named `solution.cpp`\n// and has a main function that takes input from stdin and prints to stdout.\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> test_cases = {\n        {\"a\", \"'a' is a vowel.\"},\n        {\"E\", \"'E' is a vowel.\"},\n        {\"I\", \"'I' is a vowel.\"},\n        {\"o\", \"'o' is a vowel.\"},\n        {\"U\", \"'U' is a vowel.\"},\n        {\"b\", \"'b' is a consonant.\"},\n        {\"C\", \"'C' is a consonant.\"},\n        {\"Z\", \"'Z' is a consonant.\"},\n        {\"7\", \"'7' is a consonant.\"},\n        {\"$", \"'$' is a consonant.\"},\n        {\" \", \"' ' is a consonant.\"}\n    };\n\n    for (const auto& tc : test_cases) {\n        // Simulate input\n        std::string input_str = tc.first;\n        std::cout << \"Running test with input: \" << input_str << std::endl;\n        // In a real scenario, you'd execute the compiled user program \n        // redirecting stdin/stdout. For this driver, we just print expectations.\n        // This is a placeholder as direct execution is not possible in this environment.\n        std::cout << \"Expected output: \" << tc.second << std::endl;\n        std::cout << \"---\\n\";\n    }\n\n    return 0;\n}\n```",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not check if the input character is an alphabet before classifying it. Non-alphabetic characters (like '7', '$', ' ') are incorrectly identified as consonants, which violates the implicit assumption of the question regarding only alphabetic characters being vowels or consonants."
+  ]
+}

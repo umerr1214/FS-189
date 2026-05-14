@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Print a right-angled triangle pattern of asterisks (*) with a height specified by the user. For example, if the height is 4:\n*\n**\n***\n****",
+  "test_cases": [
+    { "input": "3", "expected": "\n*\n**\n" },
+    { "input": "4", "expected": "\n*\n**\n***\n" },
+    { "input": "1", "expected": "\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\nint main() {\n    int height;\n    std::cin >> height;\n    \n    // The student's code will be inserted here.\n    // Since the problem prints directly to stdout, \n    // we just need to read input and let the student's code run.\n    // The test harness will capture stdout for comparison.\n\n    // Placeholder for student code to ensure compilation of driver\n    /*\n    for (int i = 1; i <= height; ++i) {\n        for (int j = 1; j <= i; ++j) {\n            std::cout << \"*\";\n        }\n        std::cout << std::endl;\n    }\n    */\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The program prints a right-angled triangle, but it is effectively shifted by one row and one star per row compared to the problem description. For a requested height N, the output is a triangle of height N-1, with the first row being empty. This is due to the inner loop condition `j < i` which prints `i` stars, but the outer loop `i` starts from 0, making the first row (i=0) print 0 stars."
+  ]
+}

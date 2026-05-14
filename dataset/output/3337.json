@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a function `void increment_by_ten(int& value)` that takes an integer by reference and increments its value by 10. Demonstrate its usage by calling it with a variable and printing the variable's value before and after the call.",
+  "test_cases": [
+    { "input": "", "expected": "--- Test Case 1: Normal Value ---\nValue before: 5\nValue after: 15\n\n--- Test Case 2: Value near INT_MAX (potential overflow) ---\nValue before: 2147483642\nValue after: -2147483644\n" }
+  ],
+  "driver": "int main() {\n    // Test case 1: Normal operation\n    int num1 = 5;\n    std::cout << \"--- Test Case 1: Normal Value ---\" << std::endl;\n    std::cout << \"Value before: \" << num1 << std::endl;\n    increment_by_ten(num1);\n    std::cout << \"Value after: \" << num1 << std::endl;\n    std::cout << std::endl;\n\n    // Test case 2: Value close to INT_MAX to demonstrate potential overflow\n    // For a 32-bit signed int, INT_MAX is 2147483647.\n    // Adding 10 to (INT_MAX - 5) will cause an overflow.\n    int num3 = std::numeric_limits<int>::max() - 5;\n    std::cout << \"--- Test Case 2: Value near INT_MAX (potential overflow) ---\" << std::endl;\n    std::cout << \"Value before: \" << num3 << std::endl;\n    increment_by_ten(num3);\n    std::cout << \"Value after: \" << num3 << std::endl;\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `increment_by_ten` function does not handle potential integer overflow. If `value` is sufficiently close to `std::numeric_limits<int>::max()`, adding 10 will result in an overflow, leading to undefined behavior (typically wrapping around to a negative value on most systems, as demonstrated in Test Case 2). A robust solution would check for overflow before performing the addition or use a wider integer type if such large values are expected."
+  ]
+}

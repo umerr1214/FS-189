@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program to create a 3x4 integer matrix (2D array). Initialize it with some values, then calculate and print the sum of elements for each individual row.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Starting row sum calculations now.\nRow 0 total: 10.\n---\nRow 1 total: 26.\n---\nRow 2 total: 42.\nAll row sums processed."
+    }
+  ],
+  "driver": "g++ -o solution 3986.cpp && ./solution",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses magic numbers (3, 4) directly in loops instead of named constants, reducing readability and maintainability.",
+    "Variable names (m, r, c, s) are overly short and not descriptive.",
+    "Inefficient addition (s = s + m[r][c] instead of s += m[r][c]).",
+    "Inconsistent and verbose output formatting (e.g., '---' separator, extra newlines).",
+    "Lack of comments to explain logic."
+  ]
+}

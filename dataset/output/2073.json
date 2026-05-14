@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private members for `title`, `author`, and `isbn` (string types). Provide public methods to set and retrieve these details, and a method `displayBookDetails()` to print all information.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book Details:\n  Title: The C++ Programming Language\n  Author: Bjarne Stroustrup\n  ISBN: 978-0321563842\n"
+    }
+  ],
+  "driver": "Book myBook;\nmyBook.setTitle(\"The C++ Programming Language\");\nmyBook.setAuthor(\"Bjarne Stroustrup\");\nmyBook.setISBN(\"978-0321563842\");\nmyBook.displayBookDetails();",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

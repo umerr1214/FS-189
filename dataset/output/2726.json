@@ -1,0 +1,42 @@
+{
+  "language": "c++",
+  "question": "Implement a `Circle` class with a private `radius` (double). The constructor should initialize the radius. Provide a public method `setRadius()` that only accepts positive values. Include public methods `getArea()` and `getCircumference()`.",
+  "test_cases": [
+    {
+      "input": "Circle c1(5.0); // Initial valid radius\nc1.getArea();\nc1.getCircumference();",
+      "expected": "Circle 1 (radius 5.0):\n  Area: 78.53982\n  Circumference: 31.41593\n"
+    },
+    {
+      "input": "c1.setRadius(10.0); // Set new valid radius\nc1.getArea();\nc1.getCircumference();",
+      "expected": "Circle 1 (radius 10.0):\n  Area: 314.15927\n  Circumference: 62.83185\n"
+    },
+    {
+      "input": "c1.setRadius(-2.0); // Try to set invalid radius (negative)\nc1.getArea();\nc1.getCircumference();",
+      "expected": "Circle 1 (radius after invalid set -2.0):\n  Area: 314.15927\n  Circumference: 62.83185\n"
+    },
+    {
+      "input": "c1.setRadius(0.0); // Try to set invalid radius (zero)\nc1.getArea();\nc1.getCircumference();",
+      "expected": "Circle 1 (radius after invalid set 0.0):\n  Area: 314.15927\n  Circumference: 62.83185\n"
+    },
+    {
+      "input": "Circle c2(0.5); // Another Circle with a different valid initial radius\nc2.getArea();\nc2.getCircumference();",
+      "expected": "Circle 2 (radius 0.5):\n  Area: 0.78540\n  Circumference: 3.14159\n"
+    },
+    {
+      "input": "Circle c3(-7.0); // Circle with invalid initial radius, constructor handles by defaulting to 1.0\nc3.getArea();\nc3.getCircumference();",
+      "expected": "Circle 3 (radius -7.0 initial):\n  Area: 3.14159\n  Circumference: 6.28319\n"
+    },
+    {
+      "input": "c3.setRadius(7.0); // Set valid radius for c3\nc3.getArea();\nc3.getCircumference();",
+      "expected": "Circle 3 (radius 7.0 after set):\n  Area: 153.93804\n  Circumference: 43.98230\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n#include <iomanip>\n\n// Circle class definition will go here\n\nint main() {\n    std::cout << std::fixed << std::setprecision(5);\n\n    // Test Case 1: Initial valid radius\n    Circle c1(5.0);\n    std::cout << \"Circle 1 (radius 5.0):\" << std::endl;\n    std::cout << \"  Area: \" << c1.getArea() << std::endl;\n    std::cout << \"  Circumference: \" << c1.getCircumference() << std::endl;\n\n    // Test Case 2: Set new valid radius\n    c1.setRadius(10.0);\n    std::cout << \"Circle 1 (radius 10.0):\" << std::endl;\n    std::cout << \"  Area: \" << c1.getArea() << std::endl;\n    std::cout << \"  Circumference: \" << c1.getCircumference() << std::endl;\n\n    // Test Case 3: Try to set invalid radius (negative)\n    c1.setRadius(-2.0); // Should not change radius, remains 10.0\n    std::cout << \"Circle 1 (radius after invalid set -2.0):\" << std::endl;\n    std::cout << \"  Area: \" << c1.getArea() << std::endl;\n    std::cout << \"  Circumference: \" << c1.getCircumference() << std::endl;\n\n    // Test Case 4: Try to set invalid radius (zero)\n    c1.setRadius(0.0); // Should not change radius, remains 10.0\n    std::cout << \"Circle 1 (radius after invalid set 0.0):\" << std::endl;\n    std::cout << \"  Area: \" << c1.getArea() << std::endl;\n    std::cout << \"  Circumference: \" << c1.getCircumference() << std::endl;\n    \n    // Test Case 5: Another Circle with a different valid initial radius\n    Circle c2(0.5);\n    std::cout << \"Circle 2 (radius 0.5):\" << std::endl;\n    std::cout << \"  Area: \" << c2.getArea() << std::endl;\n    std::cout << \"  Circumference: \" << c2.getCircumference() << std::endl;\n\n    // Test Case 6: Circle with invalid initial radius (constructor handles)\n    Circle c3(-7.0); \n    std::cout << \"Circle 3 (radius -7.0 initial):\" << std::endl;\n    std::cout << \"  Area: \" << c3.getArea() << std::endl;\n    std::cout << \"  Circumference: \" << c3.getCircumference() << std::endl;\n\n    // Test Case 7: Set valid radius for c3\n    c3.setRadius(7.0);\n    std::cout << \"Circle 3 (radius 7.0 after set):\" << std::endl;\n    std::cout << \"  Area: \" << c3.getArea() << std::endl;\n    std::cout << \"  Circumference: \" << c3.getCircumference() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The value of PI is re-calculated using `std::atan(1.0) * 4.0` within both `getArea()` and `getCircumference()` methods. This is an inefficient approach as PI is a mathematical constant and should be defined once (e.g., using `M_PI` from `<cmath>` or a `const double`).",
+    "Using `std::pow(radius, 2)` for squaring the radius is less efficient and less readable than simply multiplying `radius * radius` for double-precision floating-point numbers."
+  ]
+}

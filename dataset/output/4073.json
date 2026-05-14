@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Print a right-angled triangle pattern of asterisks (*) with a height specified by the user. For example, if the height is 4:\n*\n**\n***\n****",
+  "test_cases": [
+    { "input": "3", "expected": "*\n**\n***\n" },
+    { "input": "4", "expected": "*\n**\n***\n****\n" },
+    { "input": "1", "expected": "*\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\nint main() {\n    int height;\n    std::cin >> height;\n    \n    // The student's code will be inserted here.\n    // Since the problem prints directly to stdout, \n    // we just need to read input and let the student's code run.\n    // The test harness will capture stdout for comparison.\n\n    // Placeholder for student code to ensure compilation of driver\n    /*\n    for (int i = 1; i <= height; ++i) {\n        for (int j = 1; j <= i; ++j) {\n            std::cout << \"*\";\n        }\n        std::cout << std::endl;\n    }\n    */\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The program prints an inverted right-angled triangle (largest row first) instead of the ascending right-angled triangle requested. The outer loop iterates downwards from 'height' instead of upwards."
+  ]
+}

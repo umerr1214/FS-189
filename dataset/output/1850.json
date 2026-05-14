@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Design an abstract base class `GeometricShape` with a pure virtual function `getArea()` (returning double) and a non-virtual function `getName()` (returning string). Derive `Rectangle` and `Triangle` classes from `GeometricShape`, implementing the `getArea()` function specifically for each shape.",
+  "test_cases": [
+    { "input": "Rectangle(7.0, 3.0)", "expected": "RectangularShape Object Area Is: 21.0" },
+    { "input": "Triangle(8.0, 4.0)", "expected": "TriangularShape Object Area Is: 16.0" },
+    { "input": "Rectangle(10.0, 2.0)", "expected": "RectangularShape Object Area Is: 20.0" },
+    { "input": "Triangle(5.0, 6.0)", "expected": "TriangularShape Object Area Is: 15.0" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <cmath>\n\nclass GeometricShape {\npublic:\n    virtual double getArea() const = 0;\n    std::string getName() const {\n        return this->shapeNameMemberVariable;\n    }\n    virtual ~GeometricShape() { /* No specific cleanup needed, but good practice to have virtual */ }\nprotected:\n    std::string shapeNameMemberVariable;\n};\n\nclass Rectangle : public GeometricShape {\npublic:\n    Rectangle(double rectWidthParam, double rectHeightParam) : rectangleWidth(rectWidthParam), rectangleHeight(rectHeightParam) {\n        this->shapeNameMemberVariable = \"RectangularShape\";\n    }\n    double getArea() const override {\n        double area_of_this_rectangle_width = this->rectangleWidth;\n        double area_of_this_rectangle_height = this->rectangleHeight;\n        double final_computed_area = area_of_this_rectangle_width * area_of_this_rectangle_height;\n        return final_computed_area;\n    }\nprivate:\n    double rectangleWidth;\n    double rectangleHeight;\n};\n\nclass Triangle : public GeometricShape {\npublic:\n    Triangle(double triangleBaseParam, double triangleHeightParam) : triangleBase(triangleBaseParam), triangleHeight(triangleHeightParam) {\n        this->shapeNameMemberVariable = \"TriangularShape\";\n    }\n    double getArea() const override {\n        return ( ( 1.0 / 2.0 ) * this->triangleBase * this->triangleHeight );\n    }\nprivate:\n    double triangleBase;\n    double triangleHeight;\n};\n\nint main() {\n    Rectangle* firstRectangleObject = new Rectangle(7.0, 3.0);\n    std::cout << firstRectangleObject->getName() << \" Object Area Is: \" << firstRectangleObject->getArea() << std::endl;\n\n    Triangle* firstTriangleObject = new Triangle(8.0, 4.0);\n    std::cout << firstTriangleObject->getName() << \" Object Area Is: \" << firstTriangleObject->getArea() << std::endl;\n\n    Rectangle* secondRectangleObject = new Rectangle(10.0, 2.0);\n    std::cout << secondRectangleObject->getName() << \" Object Area Is: \" << secondRectangleObject->getArea() << std::endl;\n\n    Triangle* secondTriangleObject = new Triangle(5.0, 6.0);\n    std::cout << secondTriangleObject->getName() << \" Object Area Is: \" << secondTriangleObject->getArea() << std::endl;\n\n    delete firstRectangleObject;\n    delete firstTriangleObject;\n    delete secondRectangleObject;\n    delete secondTriangleObject;\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Excessive and inconsistent use of 'this->' keyword, reducing readability.",
+    "Verbose and inconsistent naming conventions for member variables and function parameters (e.g., `shapeNameMemberVariable`, `rectangleWidth`, `rectWidthParam`).",
+    "Redundant intermediate variables in `getArea()` for `Rectangle` and unnecessary parentheses in `getArea()` for `Triangle`, making expressions less concise.",
+    "The `main` function is repetitive and lacks structure (e.g., using raw pointers and manual cleanup for each object instead of a `std::vector` and smart pointers or a loop), leading to poor readability and potential memory leaks if not carefully managed."
+  ]
+}

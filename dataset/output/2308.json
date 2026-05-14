@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "For a `Product` class with `id` (int), `name` (string), and `price` (double), implement three constructors: one that takes only `id`, one that takes `id` and `name`, and one that takes `id`, `name`, and `price`. Use constructor chaining where appropriate.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation Error" }
+  ],
+  "driver": "int main() {\n    Product p1(101);\n    Product p2(102, \"Laptop\");\n    Product p3(103, \"Mouse\", 25.99);\n\n    p1.display();\n    p2.display();\n    p3.display();\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after class definition"]
+}

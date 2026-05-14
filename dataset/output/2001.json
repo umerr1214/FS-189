@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Employee` with `name` (string) and `salary` (double). Derive two classes: `Manager` (adds `department` string) and `Engineer` (adds `specialization` string). Implement constructors for all classes.",
+  "test_cases": [
+    { "input": "", "expected": "--- Employee Information ---\nEmployee: John Doe, Salary: $50000\nManager: Jane Smith, Salary: $120000\nEngineer: Peter Jones, Salary: $85000\n\n--- Polymorphic Display ---\nEmployee: John Doe, Salary: $50000\nManager: Jane Smith, Salary: $120000\nEngineer: Peter Jones, Salary: $85000\n\nManager's Department: Research & Development\n" }
+  ],
+  "driver": "int main() {\n    Employee emp(\"John Doe\", 50000.0);\n    Manager mgr(\"Jane Smith\", 120000.0, \"Research & Development\");\n    Engineer eng(\"Peter Jones\", 85000.0, \"Machine Learning\");\n\n    std::cout << \"--- Employee Information ---\" << std::endl;\n    emp.display();\n    mgr.display();\n    eng.display();\n\n    std::cout << \"\\n--- Polymorphic Display ---\" << std::endl;\n    std::vector<Employee*> employees;\n    employees.push_back(&emp);\n    employees.push_back(&mgr);\n    employees.push_back(&eng);\n\n    for (const auto* e : employees) {\n        e->display();\n    }\n    \n    std::cout << \"\\nManager's Department: \" << mgr.getDepartment() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

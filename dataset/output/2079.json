@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `Student` class with private members `name` (string), `studentId` (int), and `gpa` (double). Implement a public default constructor and a parameterized constructor. Include a public method `isEligibleForScholarship()` that returns true if `gpa` is 3.5 or higher.",
+  "test_cases": [
+    { "input": "Student s1(\"Frank Green\", 3001, 3.9);", "expected": "Student Frank Green (ID: 3001) is eligible: true" },
+    { "input": "Student s2(\"Hannah Black\", 3002, 3.4);", "expected": "Student Hannah Black (ID: 3002) is eligible: false" },
+    { "input": "Student s3(\"Ivan Blue\", 3003, 3.5);", "expected": "Student Ivan Blue (ID: 3003) is eligible: true" },
+    { "input": "Student s4;", "expected": "Student  (ID: 0) is eligible: false" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Student {\nprivate:\n    std::string name;\n    int studentId;\n    double gpa;\n\npublic:\n    Student() : name(\"\"), studentId(0), gpa(0.0) {}\n    Student(const std::string& n, int id, double g)\n        : name(n), studentId(id), gpa(g) {}\n\n    bool isEligibleForScholarship() const {\n        return gpa >= 3.5;\n    }\n\n    std::string getName() const { return name; }\n    int getStudentId() const { return studentId; }\n    double getGpa() const { return gpa; }\n};\n\nint main() {\n    Student s1(\"Frank Green\", 3001, 3.9);\n    std::cout << \"Student \" << s1.getName() << \" (ID: \" << s1.getStudentId() << \") is eligible: \" << (s1.isEligibleForScholarship() ? \"true\" : \"false\") << std::endl;\n\n    Student s2(\"Hannah Black\", 3002, 3.4);\n    std::cout << \"Student \" << s2.getName() << \" (ID: \" << s2.getStudentId() << \") is eligible: \" << (s2.isEligibleForScholarship() ? \"true\" : \"false\") << std::endl;\n\n    Student s3(\"Ivan Blue\", 3003, 3.5);\n    std::cout << \"Student \" << s3.getName() << \" (ID: \" << s3.getStudentId() << \") is eligible: \" << (s3.isEligibleForScholarship() ? \"true\" : \"false\") << std::endl;\n\n    Student s4;\n    std::cout << \"Student \" << s4.getName() << \" (ID: \" << s4.getStudentId() << \") is eligible: \" << (s4.isEligibleForScholarship() ? \"true\" : \"false\") << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

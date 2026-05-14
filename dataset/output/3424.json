@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that takes an integer year as input from the user and determines if it is a leap year. Print an appropriate message. (A leap year is divisible by 4, but not by 100 unless it is also divisible by 400).",
+  "test_cases": [
+    { "input": "2024", "expected": "2024 is a leap year." },
+    { "input": "2000", "expected": "2000 is a leap year." },
+    { "input": "1900", "expected": "1900 is not a leap year." },
+    { "input": "2023", "expected": "2023 is not a leap year." }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'std::cout << \"Enter a year: \"' on line 7. This will cause a compilation error."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `Date` class with private `day`, `month`, `year` (integers). Implement public setter methods for each (`setDay`, `setMonth`, `setYear`) that perform basic validation (e.g., month between 1-12, day valid for the given month, year positive). If validation fails, do not update the member and print an error.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation Error" },
+    { "input": "", "expected": "Compilation Error" },
+    { "input": "", "expected": "Compilation Error" },
+    { "input": "", "expected": "Compilation Error" },
+    { "input": "", "expected": "Compilation Error" },
+    { "input": "", "expected": "Compilation Error" }
+  ],
+  "driver": "    // Test Case 1: Valid Date\n    Date date1;\n    std::cout << \"Test 1 - Valid Date\" << std::endl;\n    std::cout << \"Initial Date: \" << date1.getDateString() << std::endl;\n    date1.setYear(2023);\n    date1.setMonth(6);\n    date1.setDay(15);\n    std::cout << \"Final Date: \" << date1.getDateString() << std::endl << std::endl;\n\n    // Test Case 2: Invalid Day for Feb\n    Date date2;\n    std::cout << \"Test 2 - Invalid Day for Feb\" << std::endl;\n    std::cout << \"Initial Date: \" << date2.getDateString() << std::endl;\n    date2.setYear(2023);\n    date2.setMonth(2);\n    date2.setDay(30); // Invalid for Feb 2023\n    std::cout << \"Final Date: \" << date2.getDateString() << std::endl << std::endl;\n\n    // Test Case 3: Invalid Month\n    Date date3;\n    std::cout << \"Test 3 - Invalid Month\" << std::endl;\n    std::cout << \"Initial Date: \" << date3.getDateString() << std::endl;\n    date3.setYear(2023);\n    date3.setMonth(0); // Invalid month\n    date3.setDay(15);\n    std::cout << \"Final Date: \" << date3.getDateString() << std::endl << std::endl;\n\n    // Test Case 4: Invalid Year\n    Date date4;\n    std::cout << \"Test 4 - Invalid Year\" << std::endl;\n    std::cout << \"Initial Date: \" << date4.getDateString() << std::endl;\n    date4.setYear(-1); // Invalid year\n    date4.setMonth(6);\n    date4.setDay(15);\n    std::cout << \"Final Date: \" << date4.getDateString() << std::endl << std::endl;\n\n    // Test Case 5: Leap Year Day Adjustment (set day 29, then year 2024)\n    Date date5;\n    std::cout << \"Test 5 - Leap Year Day Adjustment\" << std::endl;\n    std::cout << \"Initial Date: \" << date5.getDateString() << std::endl;\n    date5.setMonth(2);\n    date5.setDay(28); // Start with valid day\n    date5.setYear(2024); // Make it a leap year\n    date5.setDay(29); // Now set to valid leap day\n    std::cout << \"Final Date: \" << date5.getDateString() << std::endl << std::endl;\n\n    // Test Case 6: Non-Leap Year Day Adjustment (set day 29, then year 2023)\n    Date date6;\n    std::cout << \"Test 6 - Non-Leap Year Day Adjustment\" << std::endl;\n    std::cout << \"Initial Date: \" << date6.getDateString() << std::endl;\n    date6.setMonth(2);\n    date6.setDay(29); // Set an invalid day initially (or valid for leap year)\n    date6.setYear(2023); // Make it non-leap, day should adjust to 28\n    std::cout << \"Final Date: \" << date6.getDateString() << std::endl << std::endl;\n\n    return 0;",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the class definition of 'Date'."]
+}

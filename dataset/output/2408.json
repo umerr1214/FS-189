@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Refine a `BankAccount` class. Ensure the `balance` is private. Provide public methods `deposit(double amount)` and `withdraw(double amount)` that safely modify the balance, and a `getBalance()` method.",
+  "test_cases": [
+    { "input": "150\ndeposit 75\nwithdraw 200\nwithdraw 50\ndeposit -10\nwithdraw -20", "expected": "Initial: $150.00\nAfter deposit: $225.00\nAfter failed withdraw: $225.00\nAfter successful withdraw: $175.00\nFinal: $175.00" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <iomanip>\n\nint main() {\n    BankAccount myAccount(150.0);\n    std::cout << \"Initial: \" << std::fixed << std::setprecision(2) << myAccount.getBalance() << std::endl;\n\n    myAccount.deposit(75.0); // Return value ignored\n    std::cout << \"After deposit: \" << myAccount.getBalance() << std::endl;\n\n    myAccount.withdraw(200.0); // Return value ignored, will fail\n    std::cout << \"After failed withdraw: \" << myAccount.getBalance() << std::endl;\n\n    myAccount.withdraw(50.0); // Return value ignored, will succeed\n    std::cout << \"After successful withdraw: \" << myAccount.getBalance() << std::endl;\n\n    myAccount.deposit(-10.0); // Return value ignored, will fail\n    myAccount.withdraw(-20.0); // Return value ignored, will fail\n\n    std::cout << \"Final: \" << myAccount.getBalance() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["Poor naming conventions (e.g., `_b` for balance, `amt`, `w_amt` for parameters) reduce readability. The `getBalance()` method is not `const`, violating good practice. The `deposit` and `withdraw` methods return `bool` but the driver code ignores these return values, making the return type an efficiency/readability concern if it's not used to provide feedback."]
+}

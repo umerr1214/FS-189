@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Define a C++ struct `Point` with two integer members, `x` and `y`. Write a function `double calculateDistance(Point p1, Point p2)` that takes two `Point` objects and returns the Euclidean distance between them. Demonstrate creating `Point` objects and calculating their distance in `main`.",
+  "test_cases": [
+    { "input": "0 0 3 4", "expected": "5.000000" },
+    { "input": "-10 -20 20 10", "expected": "42.426407" },
+    { "input": "2147483647 0 -2147483648 0", "expected": "4294967295.000000" }
+  ],
+  "driver": "int main() {\n    int x1, y1, x2, y2;\n    while (std::cin >> x1 >> y1 >> x2 >> y2) {\n        Point p1 = {x1, y1};\n        Point p2 = {x2, y2};\n        double dist = calculateDistance(p1, p2);\n        std::cout.precision(6);\n        std::cout << std::fixed << dist << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `calculateDistance` function uses `std::pow(value, 2)` for squaring integer differences. While mathematically correct, `std::pow` operates on floating-point types and can introduce minor precision errors or be less numerically stable compared to direct multiplication (`value * value`), especially for integer-derived inputs. Direct multiplication is generally preferred for squaring integer-derived values for better robustness and efficiency."
+  ]
+}

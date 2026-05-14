@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Define a C++ `struct` named `Book` with members `title` (std::string), `author` (std::string), and `yearPublished` (int). Write a function `printBookDetails` that takes a `Book` struct (by value) and prints all its details. Demonstrate by creating a `Book` instance and calling the function.",
+  "test_cases": [
+    { "input": "", "expected": "Title: The Great Gatsby\nAuthor: F. Scott Fitzgerald\nYear: 1925\n" }
+  ],
+  "driver": "int main() { Book myBook; myBook.title = \"The Great Gatsby\"; myBook.author = \"F. Scott Fitzgerald\"; myBook.yearPublished = 1925; printBookDetails(myBook); return 0; }",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Attempting to access a non-existent member 'publisher' from the 'Book' struct within the 'printBookDetails' function."
+  ]
+}

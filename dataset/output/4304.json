@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function template `calculate_average` that accepts an array of any numeric type (e.g., `int`, `double`) and its size, then returns the average of all elements in the array. Ensure it works for different numeric types.",
+  "test_cases": [
+    { "input": "int intArray[] = {1, 2, 3, 4, 5}; int intArraySize = 5; calculate_average(intArray, intArraySize);", "expected": "3.0" },
+    { "input": "double doubleArray[] = {10.5, 20.5, 30.0}; int doubleArraySize = 3; calculate_average(doubleArray, doubleArraySize);", "expected": "20.333333333333332" },
+    { "input": "int emptyArray[] = {}; int emptyArraySize = 0; calculate_average(emptyArray, emptyArraySize);", "expected": "0.0" },
+    { "input": "long long largeNumArray[] = {1000000000000000000LL, 2000000000000000000LL}; int largeNumArraySize = 2; calculate_average(largeNumArray, largeNumArraySize);", "expected": "1.5e+18" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <numeric>\n\ntemplate <typename T>\ndouble calculate_average(const T arr[], int size) {\n    if (size <= 0) {\n        return 0.0;\n    }\n\n    long double current_sum = 0.0;\n    const T* current_ptr = arr;\n    int remaining_elements = size;\n\n    while (remaining_elements > 0) {\n        current_sum += *current_ptr;\n        current_ptr++;\n        remaining_elements--;\n    }\n    return static_cast<double>(current_sum / size);\n}\n\nint main() {\n    int intArray[] = {1, 2, 3, 4, 5};\n    int intArraySize = sizeof(intArray) / sizeof(intArray[0]);\n    std::cout << \"Average of intArray: \" << calculate_average(intArray, intArraySize) << std::endl;\n\n    double doubleArray[] = {10.5, 20.5, 30.0};\n    int doubleArraySize = sizeof(doubleArray) / sizeof(doubleArray[0]);\n    std::cout << \"Average of doubleArray: \" << calculate_average(doubleArray, doubleArraySize) << std::endl;\n\n    int emptyArray[] = {};\n    int emptyArraySize = 0;\n    std::cout << \"Average of emptyArray: \" << calculate_average(emptyArray, emptyArraySize) << std::endl;\n\n    long long largeNumArray[] = {1000000000000000000LL, 2000000000000000000LL};\n    int largeNumArraySize = sizeof(largeNumArray) / sizeof(largeNumArray[0]);\n    std::cout << \"Average of largeNumArray: \" << calculate_average(largeNumArray, largeNumArraySize) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The loop for summing elements uses manual pointer arithmetic and a while loop, which is less idiomatic and potentially less readable than a standard indexed for-loop or `std::accumulate` for this common task.",
+    "Using `long double` for the sum type is often overkill for intermediate calculations and can be less efficient than `double` on many architectures, especially when the input type `T` is `int` or `float`."
+  ]
+}

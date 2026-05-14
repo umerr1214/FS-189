@@ -1,0 +1,31 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that asks the user for the desired size of an integer array. Dynamically allocate an array of that size using `new`. Populate the array with sequential numbers starting from 0 (e.g., if size is 5, elements are 0, 1, 2, 3, 4). Print the array elements, then deallocate the memory using `delete[]`.",
+  "test_cases": [
+    {
+      "input": "5",
+      "expected": "Enter array size: \nArray elements:\n0\n1\n2\n3\n4\n"
+    },
+    {
+      "input": "1",
+      "expected": "Enter array size: \nArray elements:\n0\n"
+    },
+    {
+      "input": "0",
+      "expected": "Enter array size: \nArray elements:\n"
+    },
+    {
+      "input": "-3",
+      "expected": "Program terminated with an error due to invalid array size (negative input leads to undefined behavior with new[])."
+    }
+  ],
+  "driver": "valid C++ code to run test cases",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Variable names (`s`, `a`) are not descriptive, making the code harder to understand.",
+    "Using `std::endl` inside the loop for printing each element is inefficient because it forces a flush of the output buffer on every iteration. Using `\\n` is generally more efficient for newlines.",
+    "The program does not include input validation for the array size, which can lead to runtime errors for invalid inputs (e.g., negative numbers or non-integers)."
+  ]
+}

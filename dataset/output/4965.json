@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `isPerfect` that takes an integer as input and returns `true` if the number is a perfect number (a positive integer that is equal to the sum of its proper positive divisors, excluding the number itself), and `false` otherwise. (e.g., 6 = 1+2+3).",
+  "test_cases": [
+    { "input": "6", "expected": "true" },
+    { "input": "28", "expected": "true" },
+    { "input": "496", "expected": "true" },
+    { "input": "8128", "expected": "true" },
+    { "input": "1", "expected": "false" },
+    { "input": "0", "expected": "false" },
+    { "input": "-5", "expected": "false" },
+    { "input": "7", "expected": "false" },
+    { "input": "12", "expected": "false" },
+    { "input": "25", "expected": "false" },
+    { "input": "30", "expected": "false" },
+    { "input": "33550336", "expected": "true" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n\nbool isPerfect(int num) {\n    if (num <= 1) {\n        return false;\n    }\n\n    long long sumOfDivisors = 1;\n\n    for (int i = 2; i * i <= num; ++i) {\n        if (num % i == 0) {\n            sumOfDivisors += i;\n            if (i * i != num) {\n                sumOfDivisors += (num / i);\n            }\n        }\n    }\n    return sumOfDivisors == num;\n}\n\nint main() {\n    std::cout << \"isPerfect(6): \" << (isPerfect(6) ? \"true\" : \"false\") << std::endl;\n    std::cout << \"isPerfect(28): \" << (isPerfect(28) ? \"true\" : \"false\") << std::endl;\n    std::cout << \"isPerfect(496): \" << (isPerfect(496) ? \"true\" : \"false\") << std::endl;\n    std::cout << \"isPerfect(8128): \" << (isPerfect(8128) ? \"true\" : \"false\") << std::endl;\n    std::cout << \"isPerfect(1): \" << (isPerfect(1) ? \"true\" : \"false\") << std::endl;\n    std::cout << \"isPerfect(0): \" << (isPerfect(0) ? \"true\" : \"false\") << std::endl;\n    std::cout << \"isPerfect(-5): \" << (isPerfect(-5) ? \"true\" : \"false\") << std::endl;\n    std::cout << \"isPerfect(7): \" << (isPerfect(7) ? \"true\" : \"false\") << std::endl;\n    std::cout << \"isPerfect(12): \" << (isPerfect(12) ? \"true\" : \"false\") << std::endl;\n    std::cout << \"isPerfect(25): \" << (isPerfect(25) ? \"true\" : \"false\") << std::endl;\n    std::cout << \"isPerfect(30): \" << (isPerfect(30) ? \"true\" : \"false\") << std::endl;\n    std::cout << \"isPerfect(33550336): \" << (isPerfect(33550336) ? \"true\" : \"false\") << std::endl;\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

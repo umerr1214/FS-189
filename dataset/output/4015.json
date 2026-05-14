@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function template `findMax` that takes two arguments of any comparable data type (e.g., `int`, `double`, `char`) and returns the larger of the two values. Demonstrate its usage with at least two different data types in the `main` function.",
+  "test_cases": [
+    { "input": "findMax(10, 20)", "expected": "20" },
+    { "input": "findMax(3.14, 2.71)", "expected": "3.14" },
+    { "input": "findMax(5, 5.5) (int, double -> int)", "expected": "5" },
+    { "input": "findMax(5.5, 5) (double, int -> double)", "expected": "5.5" },
+    { "input": "findMax('a', 'z')", "expected": "z" },
+    { "input": "findMax('c', 100) (char, int -> char)", "expected": "d" }
+  ],
+  "driver": "int main() {\n    int maxInt = findMax(10, 20);\n    std::cout << \"Max of 10 and 20 (int): \" << maxInt << std::endl;\n    double maxDouble = findMax(3.14, 2.71);\n    std::cout << \"Max of 3.14 and 2.71 (double): \" << maxDouble << std::endl;\n    int maxMixedInt = findMax(5, 5.5);\n    std::cout << \"Max of 5 and 5.5 (int, double -> int): \" << maxMixedInt << std::endl;\n    double maxMixedDouble = findMax(5.5, 5);\n    std::cout << \"Max of 5.5 and 5 (double, int -> double): \" << maxMixedDouble << std::endl;\n    char maxChar = findMax('a', 'z');\n    std::cout << \"Max of 'a' and 'z' (char): \" << maxChar << std::endl;\n    char maxMixedChar = findMax('c', 100);\n    std::cout << \"Max of 'c' and 100 (char, int -> char): \" << maxMixedChar << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The function template's return type is fixed to the type of the first argument (T1), which can lead to implicit type conversions and potential data loss or unexpected results when comparing arguments of different types (e.g., `findMax(int, double)` truncates the double value, returning an incorrect maximum). A more robust solution would use a common type for the return value, such as `std::common_type` or `decltype` of the conditional expression, to ensure precision is maintained."
+  ]
+}

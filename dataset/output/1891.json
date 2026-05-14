@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "For the `Point2D` class (from Q7) with private `x` and `y` coordinates, overload the stream insertion operator `<<` to enable printing `Point2D` objects directly to `std::cout` in the format \"(x, y)\".",
+  "test_cases": [
+    { "input": "Point2D p1(10, 20);", "expected": "Point p1: (10, 20)\n" },
+    { "input": "Point2D p2(-5, 0);", "expected": "Point p2: (-5, 0)\n" },
+    { "input": "Point2D p3; // Default constructor, x and y uninitialized", "expected": "Point p3 (uninitialized): (0, 0)\n" }
+  ],
+  "driver": "    Point2D p1(10, 20);\n    Point2D p2(-5, 0);\n    Point2D p3;\n\n    std::cout << \"Point p1: \" << p1 << std::endl;\n    std::cout << \"Point p2: \" << p2 << std::endl;\n    std::cout << \"Point p3 (uninitialized): \" << p3 << std::endl;\n",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The default constructor of the `Point2D` class (`Point2D() {}`) leaves its `x` and `y` member variables uninitialized. When an object created with this constructor is printed, it results in undefined behavior, typically printing garbage values.",
+    "A robust `Point2D` class should ensure all its member variables are initialized in all constructors to prevent unpredictable behavior."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that dynamically allocates memory for an integer array of size N (where N is provided by the user). Populate this array with values from 1 to N, print its contents, and then deallocate the dynamically allocated memory.",
+  "test_cases": [
+    { "input": "5", "expected": "Gimme array size: Data: 1\n2\n3\n4\n5\n" },
+    { "input": "1", "expected": "Gimme array size: Data: 1\n" },
+    { "input": "0", "expected": "Gimme array size: Bad input or size. Bye.\n" },
+    { "input": "abc", "expected": "Gimme array size: Bad input or size. Bye.\n" }
+  ],
+  "driver": "// driver for console applications\n#include <iostream>\n#include <string>\n<vector>\n\n// This is a placeholder for a test driver.\n// In a real testing environment, this driver would:\n// 1. Compile the user's solution (e.g., 4261.cpp).\n// 2. For each test case:\n//    a. Redirect the test case's \"input\" string to the solution's stdin.\n//    b. Execute the compiled solution.\n//    c. Capture the solution's stdout and stderr.\n//    d. Compare the captured output with the test case's \"expected\" output.\n// This C++ code snippet itself does not perform the actual execution and comparison,\n// but represents the entry point for such a testing process if written in C++.\nint main() {\n    std::cout << \"Test driver placeholder. The actual testing mechanism involves redirecting stdin/stdout.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses obscure and single-letter variable names ('s', 'd', 'x') making the code difficult to understand.",
+    "Lacks comments to explain the purpose of different code sections.",
+    "Uses `std::endl` inside the printing loop, which flushes the output buffer on each iteration and can be less efficient than using `'\n'` for large arrays.",
+    "Input prompts and error messages are unhelpful and unfriendly ('Gimme array size:', 'Bad input or size. Bye.')."
+  ]
+}

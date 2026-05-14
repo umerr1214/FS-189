@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a function `bool is_palindrome(int num)` that takes an integer and returns `true` if it's a palindrome (reads the same forwards and backwards), and `false` otherwise.",
+  "test_cases": [
+    { "input": "121", "expected": "true" },
+    { "input": "123", "expected": "false" },
+    { "input": "0", "expected": "true" },
+    { "input": "7", "expected": "true" },
+    { "input": "1221", "expected": "true" },
+    { "input": "-121", "expected": "false" },
+    { "input": "10", "expected": "false" },
+    { "input": "-10", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <algorithm> // For std::reverse\n#include <cmath>     // For std::abs\n\nbool is_palindrome(int num) {\n    // LOGICAL ERROR: Negative numbers are converted to positive for checking,\n    // which incorrectly treats numbers like -121 as palindromes.\n    int temp_num = std::abs(num); \n\n    std::string s = std::to_string(temp_num);\n    std::string reversed_s = s;\n    std::reverse(reversed_s.begin(), reversed_s.end());\n\n    return s == reversed_s;\n}\n\nint main() {\n    std::cout << std::boolalpha;\n\n    std::cout << \"is_palindrome(121): \" << is_palindrome(121) << std::endl;\n    std::cout << \"is_palindrome(123): \" << is_palindrome(123) << std::endl;\n    std::cout << \"is_palindrome(0): \" << is_palindrome(0) << std::endl;\n    std::cout << \"is_palindrome(7): \" << is_palindrome(7) << std::endl;\n    std::cout << \"is_palindrome(1221): \" << is_palindrome(1221) << std::endl;\n    std::cout << \"is_palindrome(-121): \" << is_palindrome(-121) << std::endl; // Incorrect: should be false\n    std::cout << \"is_palindrome(10): \" << is_palindrome(10) << std::endl;\n    std::cout << \"is_palindrome(-10): \" << is_palindrome(-10) << std::endl;   // Incorrect: should be false\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 5,
+  "error_type": "Logical Error",
+  "errors": ["The function incorrectly handles negative numbers. It converts them to their absolute value before checking for a palindrome, leading to `is_palindrome(-121)` returning `true` instead of `false`."]
+}

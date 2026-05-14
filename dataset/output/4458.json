@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Prompt the user to enter a monetary value (e.g., 123.456). Print this value formatted to two decimal places, prefixed with a dollar sign (e.g., $123.46).",
+  "test_cases": [
+    { "input": "123.456", "expected": "$123.46" },
+    { "input": "99.9", "expected": "$99.90" },
+    { "input": "0.001", "expected": "$0.00" },
+    { "input": "5", "expected": "$5.00" },
+    { "input": "12345.6789", "expected": "$12345.68" },
+    { "input": "0.999", "expected": "$1.00" }
+  ],
+  "driver": "int main() {\n    int int_value;\n    double value;\n    std::cout << \"Enter a monetary value: \";\n    std::cin >> int_value;\n    value = static_cast<double>(int_value);\n    std::cout << \"$\" << std::fixed << std::setprecision(2) << value << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The program semantically misinterprets the input requirement. It reads the monetary value as an 'int' (integer), which discards any fractional part of the input (e.g., 123.456 becomes 123). Although the output is correctly formatted to two decimal places, the original decimal precision of the input is lost, leading to incorrect results for non-whole monetary values (e.g., $123.00 instead of $123.46)."
+  ]
+}

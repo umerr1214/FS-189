@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a `Logger` class. Its constructor should print 'Logger initialized' and its destructor should print 'Logger destroyed'. Demonstrate how the constructor and destructor are automatically called when a `Logger` object enters and exits scope.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Main function started.\nEntering inner block 1...\nLogger initialized\nLog: Inside inner block 1.\nExiting inner block 1...\nLogger destroyed\nEntering createAndDestroyScopedLogger function...\nLogger initialized\nLog: Inside function scope.\nExiting createAndDestroyScopedLogger function...\nLogger destroyed\nCreating a dynamically allocated Logger (memory leak intended for demonstration)...\nLogger initialized\nLog: This logger is on the heap and will leak.\nMain function finished.\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program creates a `Logger` object using `new` (dynamically allocated) but fails to `delete` it. This results in a memory leak, as the object's destructor is not called, and the memory is not reclaimed until the program terminates. While the question focuses on scope-based destruction, demonstrating a dynamic allocation without proper deallocation highlights a common robustness issue where RAII principles are bypassed, leading to resource management failures."
+  ]
+}

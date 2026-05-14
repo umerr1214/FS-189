@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Using the `Shape` base class and `Circle` derived class (from previous questions), demonstrate runtime polymorphism by creating a `Shape*` pointer, assigning a `Circle` object to it, and calling `calculateArea()`.",
+  "test_cases": [
+    {
+      "input": "5.0",
+      "expected": "78.53981633974483"
+    }
+  ],
+  "driver": "#define _USE_MATH_DEFINES\n#include <iostream>\n#include <cmath>\n#include <iomanip>\n#ifndef M_PI\n#define M_PI 3.14159265358979323846\n#endif\n\nclass Shape {\npublic:\n    virtual double calculateArea() const = 0;\n    virtual ~Shape() {}\n};\n\nclass Circle : public Shape {\nprivate:\n    double radius;\npublic:\n    Circle(double r) : radius(r) {}\n    double calculateArea() const override {\n        return M_PI * radius * radius;\n    }\n};\n\nint main() {\n    double test_radius = 5.0;\n    Circle myCircle(test_radius);\n    Shape* shapePtr = &myCircle;\n    std::cout << std::fixed << std::setprecision(12);\n    std::cout << \"Area of the circle (via Shape*): \" << shapePtr->calculateArea() << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

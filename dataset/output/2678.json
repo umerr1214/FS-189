@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Create a `Point2D` class with private integer member variables `x` and `y`. Include a parameterized constructor to initialize `x` and `y`. Add a public method `getDistanceToOrigin()` that calculates and returns the Euclidean distance from the point to (0,0).",
+  "test_cases": [
+    { "input": "Point2D(0, 0)", "expected": "0.00000000" },
+    { "input": "Point2D(3, 4)", "expected": "5.00000000" },
+    { "input": "Point2D(5, 12)", "expected": "13.00000000" },
+    { "input": "Point2D(1, 1)", "expected": "1.41421356" },
+    { "input": "Point2D(-3, -4)", "expected": "5.00000000" },
+    { "input": "Point2D(50000, 50000)", "expected": "70710.67811865" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream>\n#include <cmath>\n#include <iomanip>\n\nclass Point2D {\nprivate:\n    int x;\n    int y;\n\npublic:\n    Point2D(int initialX, int initialY) : x(initialX), y(initialY) {}\n\n    int getX() const {\n        return x;\n    }\n\n    int getY() const {\n        return y;\n    }\n\n    double getDistanceToOrigin() {\n        double dx = x;\n        double dy = y;\n        double distance_squared = std::pow(dx, 2) + std::pow(dy, 2);\n        return std::sqrt(distance_squared);\n    }\n};\n\nint main() {\n    std::vector<Point2D> points = {\n        Point2D(0, 0),\n        Point2D(3, 4),\n        Point2D(5, 12),\n        Point2D(1, 1),\n        Point2D(-3, -4)\n    };\n\n    for (size_t i = 0; i < points.size(); ++i) {\n        std::cout << \"Point \" << i + 1 << \": (\" << points[i].getX() << \", \" << points[i].getY() << \")\\n\";\n        std::cout << \"Distance to origin: \" << std::fixed << std::setprecision(8) << points[i].getDistanceToOrigin() << \"\\n\\n\";\n    }\n\n    Point2D large_point(50000, 50000);\n    std::cout << \"Point with large coordinates: (\" << large_point.getX() << \", \" << large_point.getY() << \")\\n\";\n    std::cout << \"Distance to origin: \" << std::fixed << std::setprecision(8) << large_point.getDistanceToOrigin() << \"\\n\\n\";\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Used `std::pow(val, 2)` instead of `val * val` which is generally less efficient and less idiomatic for squaring integers.",
+    "Method `getDistanceToOrigin()` is not marked `const` even though it does not modify the object's state, which is a good practice for accessor methods."
+  ]
+}

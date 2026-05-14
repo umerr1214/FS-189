@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Develop a `Logger` class that prints 'Logger created.' when an object is constructed and 'Logger destroyed.' when it is destructed. Demonstrate its usage in `main`.",
+  "test_cases": [
+    { "input": "", "expected": "Logger created.\nLogger destroyed.\n" }
+  ],
+  "driver": "g++ 2388.cpp -o 2388 && ./2388",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The Logger class is correctly defined, but no instance of the Logger is created in main, thus failing to demonstrate its usage as required by the problem statement. The program compiles and runs, but produces no output."]
+}

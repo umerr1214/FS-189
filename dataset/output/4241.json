@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function template `find_maximum` that takes two arguments of any comparable data type and returns the larger of the two. Test it with at least two different data types (e.g., int and double).",
+  "test_cases": [
+    { "input": "5, 10 (int)", "expected": "10" },
+    { "input": "10, 5 (int)", "expected": "10" },
+    { "input": "3.14, 2.718 (double)", "expected": "3.14" },
+    { "input": "1.0, 1.000001 (double)", "expected": "1.000001" },
+    { "input": "7, 7 (int)", "expected": "7" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\ntemplate <typename T>\nT find_maximum(T a, T b) {\n    if (a > b) {\n        return b;\n    } else {\n        return a;\n    }\n}\n\nint main() {\n    std::cout << find_maximum(5, 10) << std::endl;\n    std::cout << find_maximum(10, 5) << std::endl;\n    std::cout << find_maximum(3.14, 2.718) << std::endl;\n    std::cout << find_maximum(1.0, 1.000001) << std::endl;\n    std::cout << find_maximum(7, 7) << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `find_maximum` function template incorrectly returns the smaller of the two values instead of the larger one."
+  ]
+}

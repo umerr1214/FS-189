@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter a single character and determines if it is a vowel (a, e, i, o, u, case-insensitive) or a consonant. If it's not an alphabet, display an appropriate message.",
+  "test_cases": [
+    { "input": "a", "expected": "Enter a character: The character is a vowel.\n" },
+    { "input": "B", "expected": "Enter a character: The character is a consonant.\n" },
+    { "input": "7", "expected": "Enter a character: The character is not an alphabet.\n" },
+    { "input": "E", "expected": "Enter a character: The character is a consonant.\n" },
+    { "input": "z", "expected": "Enter a character: The character is a consonant.\n" }
+  ],
+  "driver": "int main() {\n    char ch;\n    std::cin >> ch;\n    if (std::isalpha(ch)) {\n        if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {\n            std::cout << \"The character is a vowel.\\n\";\n        } else {\n            std::cout << \"The character is a consonant.\\n\";\n        }\n    } else {\n        std::cout << \"The character is not an alphabet.\\n\";\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The program fails to correctly identify uppercase vowels (e.g., 'A', 'E') as vowels, classifying them as consonants because it does not convert the input character to lowercase before the vowel check."
+  ]
+}

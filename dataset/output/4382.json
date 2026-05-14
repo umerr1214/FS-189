@@ -1,0 +1,32 @@
+{
+  "language": "c++",
+  "question": "Implement a program that asks the user to choose an option (1 for 'Square', 2 for 'Circle', 3 for 'Triangle'). Use a 'switch' statement to print the chosen shape's name.",
+  "test_cases": [
+    {
+      "input": "1",
+      "expected": "Choose an option (1 for 'Square', 2 for 'Circle', 3 for 'Triangle'): Square\n"
+    },
+    {
+      "input": "2",
+      "expected": "Choose an option (1 for 'Square', 2 for 'Circle', 3 for 'Triangle'): Circle\n"
+    },
+    {
+      "input": "4",
+      "expected": "Choose an option (1 for 'Square', 2 for 'Circle', 3 for 'Triangle'): Invalid option chosen.\n"
+    },
+    {
+      "input": "abc",
+      "expected": "Choose an option (1 for 'Square', 2 for 'Circle', 3 for 'Triangle'): Invalid input. Please enter a number.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <limits>\n\n// Assume the user's solve() function is linked here\nvoid solve();\n\nint main() {\n    std::string input_str;\n    std::getline(std::cin, input_str);\n\n    std::stringstream ss_in(input_str);\n    std::stringstream ss_out;\n\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n\n    std::cin.rdbuf(ss_in.rdbuf());\n    std::cout.rdbuf(ss_out.rdbuf());\n\n    solve();\n\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    std::cout << ss_out.str(); // Output captured result\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses cryptic and non-descriptive variable names (e.g., 'o').",
+    "Inconsistent and poor code formatting/indentation makes the logic hard to follow.",
+    "Lack of comments hinders understanding of the program's intent.",
+    "Input validation for non-numeric input is not robust; it exits after the first invalid attempt without re-prompting."
+  ]
+}

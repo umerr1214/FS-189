@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Student` class with private members `studentName` (string), `studentID` (int), and `grade` (char). Implement a default constructor, a parameterized constructor, and public `get` methods for all members. Also, add a `printStudentDetails()` method.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Student 1:\nName: Unknown\nID: 0\nGrade: U\n--------------------\nStudent 2:\nName: Alice Smith\nID: 1001\nGrade: A\n--------------------\nStudent 3:\nName: Bob Johnson\nID: 2002\nGrade: B\n--------------------\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\nclass Student {\nprivate:\n    std::string studentName;\n    int studentID;\n    char grade;\n\npublic:\n    Student() : studentName(\"Unknown\"), studentID(0), grade('U') {}\n\n    Student(std::string name, int id, char g) : studentName(name), studentID(id), grade(g) {}\n\n    std::string getStudentName() const {\n        return studentName;\n    }\n\n    int getStudentID() const {\n        return studentID;\n    }\n\n    char getGrade() const {\n        return grade;\n    }\n\n    void printStudentDetails() const {\n        std::cout << \"Name: \" << studentName << std::endl;\n        std::cout << \"ID: \" << studentID << std::endl;\n        std::cout << \"Grade: \" << grade << std::endl;\n    }\n};\n\nint main() {\n    Student student1;\n    Student student2(\"Alice Smith\", 1001, 'A');\n    Student student3(\"Bob Johnson\", 2002, 'B');\n\n    std::cout << \"Student 1:\\n\";\n    student1.printStudentDetails();\n    std::cout << \"--------------------\\n\";\n\n    std::cout << \"Student 2:\\n\";\n    student2.printStudentDetails();\n    std::cout << \"--------------------\\n\";\n\n    std::cout << \"Student 3:\\n\";\n    student3.printStudentDetails();\n    std::cout << \"--------------------\\n\";\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

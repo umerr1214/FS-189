@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Student` with members `studentID` (int), `name` (`std::string`), and `gpa` (double). Write a program that creates an instance of `Student`, prompts the user to enter its details, and then prints all the student's information.",
+  "test_cases": [
+    {
+      "input": "101\nJohn Doe\nabc",
+      "expected": "Enter student ID: Enter student name: Enter student GPA:\nStudent Information:\nID: 101\nName: John Doe\nGPA: 3.8\n"
+    }
+  ],
+  "driver": "g++ 4830.cpp -o 4830 && echo -e \"101\\nJohn Doe\\nabc\" | ./4830",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The program fails to check the input stream state after reading the GPA. If non-numeric input is provided for GPA, `std::cin` enters a fail state, `s.gpa` is set to 0, and the program proceeds as if a valid GPA of 0 was entered. This is a semantic error because it misinterprets invalid input as valid data without proper error handling, leading to semantically incorrect output (a GPA of 0 instead of an error or a valid number)."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that prompts the user to enter their first name (as a string), age (as an integer), and height in meters (as a double). After receiving all inputs, print a formatted sentence summarizing this information (e.g., 'Hello [Name], you are [Age] years old and [Height] meters tall.').",
+  "test_cases": [
+    {
+      "input": "John\n30\n1.75\n",
+      "expected": "Hello John, you are 30 years old and 1.75 meters tall."
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'std::cout << \"Enter your first name: \"' on line 10, leading to a compilation error."
+  ]
+}

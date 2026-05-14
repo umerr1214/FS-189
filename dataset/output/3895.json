@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter a single character and determines if it is a vowel (a, e, i, o, u, case-insensitive) or a consonant. If it's not an alphabet, display an appropriate message.",
+  "test_cases": [
+    { "input": "a", "expected": "Enter a character: a is a vowel.\n" },
+    { "input": "B", "expected": "Enter a character: B is a consonant.\n" },
+    { "input": "7", "expected": "Enter a character: 7 is not an alphabet.\n" },
+    { "input": "abc", "expected": "Enter a character: a is a vowel.\n" },
+    { "input": "!", "expected": "Enter a character: ! is not an alphabet.\n" },
+    { "input": "", "expected": "Enter a character:  is not an alphabet.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <fstream>\n#include <cstdlib> // For system()\n#include <cstdio>  // For remove()\n\n// Helper function to execute the compiled program with specific input and capture its full output.\n// This function assumes the student's code has been compiled into an executable named 'a.out'\n// in the current directory.\nstd::string run_and_capture_output(const std::string& input_str) {\n    std::string output_filename = \"program_output.txt\";\n    std::string input_filename = \"program_input.txt\";\n    std::string executable_name = \"./a.out\"; // Or \"program.exe\" on Windows\n\n    // Write input to a temporary file\n    std::ofstream input_file(input_filename);\n    if (!input_file.is_open()) {\n        return \"Driver Error: Could not create input file.\\n\";\n    }\n    input_file << input_str << std::endl;\n    input_file.close();\n\n    // Execute the program, redirecting stdin and stdout/stderr\n    // Note: This command captures both stdout and stderr to the same output file.\n    std::string command = executable_name + \" < \" + input_filename + \" > \" + output_filename + \" 2>&1\";\n    std::system(command.c_str());\n\n    // Read the captured output\n    std::ifstream output_file(output_filename);\n    if (!output_file.is_open()) {\n        return \"Driver Error: Could not open output file.\\n\";\n    }\n    std::stringstream buffer;\n    buffer << output_file.rdbuf();\n    output_file.close();\n\n    // Clean up temporary files\n    std::remove(input_filename.c_str());\n    std::remove(output_filename.c_str());\n    \n    return buffer.str();\n}\n\nint main() {\n    std::cout << \"Driver ready to execute program with test cases defined in JSON.\" << std::endl;\n    std::cout << \"Compile student's code to 'a.out' and run `run_and_capture_output` for each test case.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Program does not check for input stream failures (e.g., EOF) after `std::cin >> ch`, leading to misleading output if input fails.",
+    "If multiple characters are entered (e.g., 'abc'), only the first character is processed, and the rest are silently ignored without user notification.",
+    "The manual character classification (e.g., `ch >= 'a' && ch <= 'z'`) is less robust and portable compared to `std::isalpha` from `<cctype>` for different locales or extended character sets."
+  ]
+}

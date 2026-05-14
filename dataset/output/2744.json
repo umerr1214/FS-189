@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Demonstrate multilevel inheritance by creating a `Vehicle` class, then derive `Car` from `Vehicle`, and finally `SportsCar` from `Car`. Add unique attributes and a simple `displayInfo` method at each level.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "------------------------------------------\nThis is the Vehicle's Information Section.\nThe vehicle's speed is: 100 mph.\n------------------------------------------\n******************************************\nNow displaying Car-specific details.\nThe vehicle's speed is still: 100 mph.\nThe number of doors for this car is: 4.\n******************************************\n==========================================\nFinally, SportsCar unique attributes.\nThe vehicle's speed is: 100 mph.\nThe number of doors is: 4.\nThe spoiler's height in centimeters is: 30 cm.\n==========================================\n"
+    }
+  ],
+  "driver": "int main() {\n    SportsCar my_awesome_sports_car(100, 4, 30);\n    my_awesome_sports_car.displayInfo();\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Excessive use of `std::endl` which flushes the buffer on each call, leading to minor inefficiency. Using `\\n` is generally preferred for simple console output.",
+    "Redundant printing of base class information (`speed` and `numDoors`) in derived `displayInfo` methods after calling the base class's `displayInfo`. This makes the output verbose and less efficient.",
+    "Verbose and inconsistent variable naming (e.g., `current_speed_val`, `number_of_doors_count`, `spoiler_height_in_cm`) making the code harder to read and maintain.",
+    "Attributes are declared `public` instead of `protected` or `private`, breaking encapsulation and making the class design less robust and harder to manage in larger projects."
+  ]
+}

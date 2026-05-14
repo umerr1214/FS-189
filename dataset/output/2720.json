@@ -1,0 +1,38 @@
+{
+  "language": "c++",
+  "question": "Create a `Temperature` class with a private `celsius` (double) member. Provide a public `setCelsius()` method that validates input (e.g., must be >= absolute zero). Implement public `getFahrenheit()` and `getKelvin()` methods to convert and return the temperature.",
+  "test_cases": [
+    {
+      "input": "25.0",
+      "expected": "--- Valid temp test (Room Temp) ---\nTrying to set Celsius to: 25.0 C\nTemperature set OK.\nCurrent state of TempClass:\n  Celsius:    25.00 C\n  Fahrenheit: 77.00 F\n  Kelvin:     298.15 K\n"
+    },
+    {
+      "input": "-273.15",
+      "expected": "--- Absolute Zero test ---\nTrying to set Celsius to: -273.15 C\nTemperature set OK.\nCurrent state of TempClass:\n  Celsius:    -273.15 C\n  Fahrenheit: -459.67 F\n  Kelvin:     0.00 K\n"
+    },
+    {
+      "input": "-300.0",
+      "expected": "--- Invalid low temp test ---\nTrying to set Celsius to: -300.0 C\nERROR: Input value -300.0 C is too cold! Must be >= -273.15 C.\nSetting temperature failed. Internal state remains unchanged.\nCurrent state of TempClass:\n  Celsius:    -273.15 C\n  Fahrenheit: -459.67 F\n  Kelvin:     0.00 K\n"
+    },
+    {
+      "input": "100.0",
+      "expected": "--- Another valid temp test (Boiling Point) ---\nTrying to set Celsius to: 100.0 C\nTemperature set OK.\nCurrent state of TempClass:\n  Celsius:    100.00 C\n  Fahrenheit: 212.00 F\n  Kelvin:     373.15 K\n"
+    },
+    {
+      "input": "-273.16",
+      "expected": "--- Slightly too low test ---\nTrying to set Celsius to: -273.16 C\nERROR: Input value -273.16 C is too cold! Must be >= -273.15 C.\nSetting temperature failed. Internal state remains unchanged.\nCurrent state of TempClass:\n  Celsius:    100.00 C\n  Fahrenheit: 212.00 F\n  Kelvin:     373.15 K\n"
+    }
+  ],
+  "driver": "// The `run_test_readability` function and `main` function provided in the C++ file serve as the driver.\n// It creates a TempClass object, explicitly sets an initial valid temperature,\n// and then calls `set_the_celsius_temperature_value` with various inputs (valid and invalid),\n// displaying the current temperature in Celsius, Fahrenheit, and Kelvin after each attempt.",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Lack of a constructor means the object's initial state is not explicitly managed and relies on default initialization for `double`.",
+    "Verbose and inconsistent naming conventions for the class (`TempClass`), member variable (`my_internal_celsius_value`), and methods (`set_the_celsius_temperature_value`, `get_current_celsius_value`).",
+    "Use of magic numbers (`-273.15`, `9.0`, `5.0`, `32.0`) directly in the code instead of named `static constexpr` constants, reducing maintainability and readability.",
+    "Lack of `const` correctness on getter methods (`get_current_celsius_value`, `get_fahrenheit_temperature`, `get_kelvin_temperature`), which should not modify the object's state.",
+    "The `absolute_zero_c_local` constant is re-declared and re-initialized on every call to `set_the_celsius_temperature_value`, which is inefficient.",
+    "Redundant `else` block in `set_the_celsius_temperature_value`."
+  ]
+}

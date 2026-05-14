@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Building on the `Shape` and `Rectangle` example, add a `virtual void display()` method to the `Shape` base class that prints generic shape information. Override this method in the `Rectangle` class to display its specific dimensions and area.",
+  "test_cases": [
+    { "input": "", "expected": "" }
+  ],
+  "driver": "int main() {\n    Shape* s1 = new Shape();\n    Shape* s2 = new Rectangle(5.0, 10.0);\n\n    s1->display();\n    s2->display();\n\n    delete s1;\n    delete s2;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Attempt to use 'override' keyword on a non-virtual base class function in Rectangle::display(). The base class method 'Shape::display()' must be declared 'virtual' to be overridden."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function `reverseArray` that takes a one-dimensional integer array and its size as arguments, and reverses the order of its elements in-place (without using a second array).",
+  "test_cases": [
+    { "input": "[1, 2, 3, 4, 5], size=5", "expected": "5 4 3 2 1" },
+    { "input": "[10, 20, 30, 40], size=4", "expected": "40 30 20 10" },
+    { "input": "[100], size=1", "expected": "100" },
+    { "input": "[], size=0", "expected": "Program termination (crash/undefined behavior)" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <algorithm>\n\n// The problematic reverseArray function\nvoid reverseArray(int* arr, int size) {\n    for (int i = 0; i <= (size - 1) / 2; ++i) {\n        int temp = arr[i];\n        arr[i] = arr[size - 1 - i];\n        arr[size - 1 - i] = temp;\n    }\n}\n\nvoid printArray(const std::vector<int>& arr) {\n    for (size_t i = 0; i < arr.size(); ++i) {\n        std::cout << arr[i] << (i == arr.size() - 1 ? \"\" : \" \");\n    }\n    std::cout << std::endl;\n}\n\nint main() {\n    std::vector<int> arr1 = {1, 2, 3, 4, 5};\n    reverseArray(arr1.data(), arr1.size());\n    printArray(arr1);\n\n    std::vector<int> arr2 = {10, 20, 30, 40};\n    reverseArray(arr2.data(), arr2.size());\n    printArray(arr2);\n\n    std::vector<int> arr3 = {100};\n    reverseArray(arr3.data(), arr3.size());\n    printArray(arr3);\n\n    std::vector<int> arr4;\n    // This call is expected to crash for arr4 (empty array)\n    reverseArray(arr4.data(), arr4.size()); \n    // The program might not reach here or might print garbage depending on UB\n    printArray(arr4);\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The function exhibits undefined behavior (out-of-bounds array access) when an empty array (size=0) is passed as input. The loop condition `i <= (size - 1) / 2` evaluates to `i <= 0` for `size=0`, causing the loop to execute once with `i=0`. Inside the loop, `arr[size - 1 - i]` attempts to access `arr[-1]`, which is an invalid memory access and leads to a crash or unpredictable behavior."
+  ]
+}

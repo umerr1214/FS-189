@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Model a `Library` class that maintains a collection of `Book` objects (from a previous question) using aggregation. Implement methods to `addBook()`, `removeBook()`, and `listAllBooks()`.",
+  "test_cases": [
+    {
+      "input": "myLibrary.addBook(Book(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", 1979));\nmyLibrary.addBook(Book(\"1984\", \"George Orwell\", 1949));\nmyLibrary.addBook(Book(\"Brave New World\", \"Aldous Huxley\", 1932));\nmyLibrary.listAllBooks();\nmyLibrary.removeBook(\"1984\");\nmyLibrary.listAllBooks();\nmyLibrary.removeBook(\"Moby Dick\");\nmyLibrary.listAllBooks();",
+      "expected": "--- All Books ---\nTitle: The Hitchhiker's Guide to the Galaxy, Author: Douglas Adams, Year: 1979\nTitle: 1984, Author: George Orwell, Year: 1949\nTitle: Brave New World, Author: Aldous Huxley, Year: 1932\n\n--- Removing '1984' ---\nBook '1984' removed.\n\n--- Books after removal ---\nTitle: The Hitchhiker's Guide to the Galaxy, Author: Douglas Adams, Year: 1979\nTitle: Brave New World, Author: Aldous Huxley, Year: 1932\n\n--- Attempting to remove non-existent book ---\nBook 'Moby Dick' not found.\n\n--- Final Book List ---\nTitle: The Hitchhiker's Guide to the Galaxy, Author: Douglas Adams, Year: 1979\nTitle: Brave New World, Author: Aldous Huxley, Year: 1932\n"
+    }
+  ],
+  "driver": "int main() {\n    Library myLibrary;\n\n    myLibrary.addBook(Book(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", 1979));\n    myLibrary.addBook(Book(\"1984\", \"George Orwell\", 1949));\n    myLibrary.addBook(Book(\"Brave New World\", \"Aldous Huxley\", 1932));\n\n    std::cout << \"--- All Books ---\" << std::endl;\n    myLibrary.listAllBooks();\n    std::cout << std::endl;\n\n    std::cout << \"--- Removing '1984' ---\" << std::endl;\n    if (myLibrary.removeBook(\"1984\")) {\n        std::cout << \"Book '1984' removed.\" << std::endl;\n    } else {\n        std::cout << \"Book '1984' not found.\" << std::endl;\n    }\n    std::cout << std::endl;\n\n    std::cout << \"--- Books after removal ---\" << std::endl;\n    myLibrary.listAllBooks();\n    std::cout << std::endl;\n\n    std::cout << \"--- Attempting to remove non-existent book ---\" << std::endl;\n    if (myLibrary.removeBook(\"Moby Dick\")) {\n        std::cout << \"Book 'Moby Dick' removed.\" << std::endl;\n    } else {\n        std::cout << \"Book 'Moby Dick' not found.\" << std::endl;\n    }\n    std::cout << std::endl;\n\n    std::cout << \"--- Final Book List ---\" << std::endl;\n    myLibrary.listAllBooks();\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition for 'Library'."
+  ]
+}

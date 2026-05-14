@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Create a simple menu-driven program (e.g., 'A' for Add, 'S' for Subtract, 'Q' for Quit) that continuously prompts the user for choices until 'Q' is entered. Use a `do-while` loop and a `switch` statement.",
+  "test_cases": [
+    {
+      "input": "A\n5\n3\nS\n10\n2\nQ\n",
+      "expected": "Menu:\nA - Add\nS - Subtract\nQ - Quit\nEnter your choice (A/S/Q): Enter two numbers to add: Result: 8\n\nMenu:\nA - Add\nS - Subtract\nQ - Quit\nEnter your choice (A/S/Q): Enter two numbers to subtract: Result: 8\n\nMenu:\nA - Add\nS - Subtract\nQ - Quit\nEnter your choice (A/S/Q): Exiting program. Goodbye!\n\n"
+    },
+    {
+      "input": "X\nA\n1\n1\nQ\n",
+      "expected": "Menu:\nA - Add\nS - Subtract\nQ - Quit\nEnter your choice (A/S/Q): Invalid choice. Please try again.\n\nMenu:\nA - Add\nS - Subtract\nQ - Quit\nEnter your choice (A/S/Q): Enter two numbers to add: Result: 2\n\nMenu:\nA - Add\nS - Subtract\nQ - Quit\nEnter your choice (A/S/Q): Exiting program. Goodbye!\n\n"
+    }
+  ],
+  "driver": "This program will not compile due to a syntax error. A driver would typically compile and then execute the program, redirecting stdin and capturing stdout. Since compilation will fail, execution cannot proceed.",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after std::cout statement on line 13 (before std::cin >> choice;), preventing compilation."
+  ]
+}

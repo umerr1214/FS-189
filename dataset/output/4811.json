@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that prompts the user to enter positive integers repeatedly until they enter a zero (0). After a zero is entered, calculate and display the sum of all the positive integers entered. Use a `while` loop for input.",
+  "test_cases": [
+    { "input": "5\n10\n0\n", "expected": "Sum of positive integers: 15\n" },
+    { "input": "5\n-2\n10\n0\n", "expected": "Sum of positive integers: 15\n" },
+    { "input": "-5\n-10\n0\n", "expected": "Sum of positive integers: 0\n" },
+    { "input": "0\n", "expected": "Sum of positive integers: 0\n" }
+  ],
+  "driver": "run_test_case(\"5\\n10\\n0\\n\", \"Sum of positive integers: 15\\n\");\nrun_test_case(\"5\\n-2\\n10\\n0\\n\", \"Sum of positive integers: 15\\n\");\nrun_test_case(\"-5\\n-10\\n0\\n\", \"Sum of positive integers: 0\\n\");\nrun_test_case(\"0\\n\", \"Sum of positive integers: 0\\n\");",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The program incorrectly sums all non-zero integers entered, including negative numbers, instead of only positive integers as required by the question."]
+}

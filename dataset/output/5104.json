@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a simple C++ calculator program. It should ask the user for two numbers and an arithmetic operator (+, -, *, /). Use a `switch` statement to perform the chosen operation and display the result. Handle division by zero appropriately.",
+  "test_cases": [
+    { "input": "10\n+\n5", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 10 + 5 = 15\n" },
+    { "input": "10\n/\n0", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Error: Division by zero is not allowed.\n" },
+    { "input": "7\n*\n3", "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 7 * 3 = 21\n" }
+  ],
+  "driver": "g++ -std=c++17 -Wall -Wextra -pedantic -o solution 5104.cpp && ./solution",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "5104.cpp:12:47: error: expected ';' after expression"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Develop a `Logger` class that prints 'Logger created.' when an object is constructed and 'Logger destroyed.' when it is destructed. Demonstrate its usage in `main`.",
+  "test_cases": [
+    { "input": "", "expected": "Logger created.\nLogger destroyed.\n" }
+  ],
+  "driver": "g++ 2387.cpp -o 2387 && ./2387",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The messages in the constructor and destructor are swapped, leading to incorrect output order."]
+}

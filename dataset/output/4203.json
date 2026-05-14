@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function `count_vowels` that takes a C-style string (char array) as input and returns the total number of vowels (a, e, i, o, u, case-insensitive) present in the string.",
+  "test_cases": [
+    { "input": "Hello World", "expected": "3" },
+    { "input": "Programming is Fun", "expected": "5" },
+    { "input": "AEIOUaeiou", "expected": "10" },
+    { "input": "rhythm", "expected": "0" },
+    { "input": "", "expected": "0" },
+    { "input": "C++ is Great!", "expected": "4" },
+    { "input": "nullptr", "expected": "0" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n#include <utility>\n#include <cstring>\n\n// The count_vowels function will be inserted here\n\nint main() {\n    std::vector<std::pair<const char*, int>> tests = {\n        {\"Hello World\", 3},\n        {\"Programming is Fun\", 5},\n        {\"AEIOUaeiou\", 10},\n        {\"rhythm\", 0},\n        {\"\", 0},\n        {\"C++ is Great!\", 4},\n        {nullptr, 0} // Test for nullptr input\n    };\n\n    int passed_count = 0;\n    for (const auto& test : tests) {\n        // Special handling for nullptr input in output for clarity\n        const char* input_str = test.first;\n        std::string input_display = (input_str == nullptr) ? \"nullptr\" : \"\\\"\" + std::string(input_str) + \"\\\"\";\n\n        int result = count_vowels(test.first);\n        if (result == test.second) {\n            std::cout << \"Test passed for \" << input_display << \". Expected: \" << test.second << \", Got: \" << result << std::endl;\n            passed_count++;\n        } else {\n            std::cout << \"Test FAILED for \" << input_display << \". Expected: \" << test.second << \", Got: \" << result << std::endl;\n        }\n    }\n\n    std::cout << \"\\n--- Summary ---\" << std::endl;\n    std::cout << passed_count << \" out of \" << tests.size() << \" tests passed.\" << std::endl;\n\n    if (passed_count == tests.size()) {\n        return 0; // All tests passed\n    } else {\n        return 1; // Some tests failed\n    }\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "For the `ComplexNumber` class, overload the equality operator (`==`) as a non-member function. This operator should return `true` if two `ComplexNumber` objects have identical real and imaginary parts, and `false` otherwise.",
+  "test_cases": [
+    { "input": "ComplexNumber c1(1.0, 2.0); ComplexNumber c2(1.0, 2.0);", "expected": "true" },
+    { "input": "ComplexNumber c3(1.0, 2.0); ComplexNumber c4(1.0, 3.0);", "expected": "false" },
+    { "input": "ComplexNumber c5(1.0, 2.0); ComplexNumber c6(3.0, 2.0);", "expected": "false" },
+    { "input": "ComplexNumber c7(1.0, 2.0); ComplexNumber c8(3.0, 4.0);", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass ComplexNumber {\npublic:\n    double real;\n    double imag;\n\n    ComplexNumber(double r = 0.0, double i = 0.0) : real(r), imag(i) {}\n};\n\nbool operator==(const ComplexNumber& c1, const ComplexNumber& c2) {\n    return (c1.real == c2.real) && (c1.imag == c2.imag);\n}\n\nint main() {\n    std::cout << std::boolalpha;\n\n    ComplexNumber c1(1.0, 2.0);\n    ComplexNumber c2(1.0, 2.0);\n    std::cout << \"Test 1: \" << c1.real << \"+\" << c1.imag << \"i == \" << c2.real << \"+\" << c2.imag << \"i -> \" << (c1 == c2) << std::endl;\n\n    ComplexNumber c3(1.0, 2.0);\n    ComplexNumber c4(1.0, 3.0);\n    std::cout << \"Test 2: \" << c3.real << \"+\" << c3.imag << \"i == \" << c4.real << \"+\" << c4.imag << \"i -> \" << (c3 == c4) << std::endl;\n\n    ComplexNumber c5(1.0, 2.0);\n    ComplexNumber c6(3.0, 2.0);\n    std::cout << \"Test 3: \" << c5.real << \"+\" << c5.imag << \"i == \" << c6.real << \"+\" << c6.imag << \"i -> \" << (c5 == c6) << std::endl;\n\n    ComplexNumber c7(1.0, 2.0);\n    ComplexNumber c8(3.0, 4.0);\n    std::cout << \"Test 4: \" << c7.real << \"+\" << c7.imag << \"i == \" << c8.real << \"+\" << c8.imag << \"i -> \" << (c7 == c8) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The equality operator uses logical OR (||) instead of logical AND (&&) to compare real and imaginary parts. It incorrectly returns true if only one of the parts (real or imaginary) is identical, instead of requiring both to be identical."
+  ]
+}

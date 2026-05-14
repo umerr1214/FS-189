@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ function template `T findMax(T val1, T val2)` that accepts two values of any data type (`T`) and returns the larger of the two. Demonstrate its usage in `main` by finding the maximum of two integers and two floating-point numbers.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "Max of 10 and 20 is: 20\nMax of 15.5 and 10.2 is: 15.5\n"
+    }
+  ],
+  "driver": "#include <iostream>\n\ntemplate <typename T>\nT findMax(T val1, T val2) {\n    return (val1 > val2) ? val1 : val2;\n}\n\nint main() {\n    int int1 = 10;\n    int int2 = 20;\n    int maxInt = findMax(int1, int2);\n    std::cout << \"Max of \" << int1 << \" and \" << int2 << \" is: \" << maxInt << std::endl;\n\n    double float1 = 15.5;\n    double float2 = 10.2;\n    double maxFloat = findMax(float1, float2);\n    std::cout << \"Max of \" << float1 << \" and \" << float2 << \" is: \" << maxFloat << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `findMax` function template incorrectly returns the minimum of the two values instead of the maximum. The condition `val1 < val2` should be `val1 > val2` for determining the maximum."
+  ]
+}

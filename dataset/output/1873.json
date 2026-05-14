@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Design a base class `Publication` with private attributes `title` (string) and `price` (double). Implement methods to set and display these. From `Publication`, derive `Book` (adds private attribute `author` - string) and `Magazine` (adds private attribute `issueNumber` - int). Demonstrate creating objects of `Book` and `Magazine` and displaying their complete details.",
+  "test_cases": [
+    {
+      "input": "The C++ Programming Language\n69.99\nBjarne Stroustrup\nC++ Magazine\n12.50\n25\n",
+      "expected": "--- Enter Book Details ---\nEnter book title: Enter book price: Enter book author: \n--- Enter Magazine Details ---\nEnter magazine title: Enter magazine price: Enter magazine issue number: \n--- Displaying Details ---\n\nBook Details:\nTitle: The C++ Programming Language\nPrice: $69.99\nAuthor: Bjarne Stroustrup\n\nMagazine Details:\nTitle: C++ Magazine\nPrice: $12.5\nIssue Number: 25\n"
+    },
+    {
+      "input": "Invalid Book\nabc\nAuthor Name\nInvalid Magazine\ndef\nxyz\n",
+      "expected": "--- Enter Book Details ---\nEnter book title: Enter book price: Enter book author: \n--- Enter Magazine Details ---\nEnter magazine title: Enter magazine price: Enter magazine issue number: \n--- Displaying Details ---\n\nBook Details:\nTitle: Invalid Book\nPrice: $0\nAuthor: Author Name\n\nMagazine Details:\nTitle: Invalid Magazine\nPrice: $0\nIssue Number: 0\n"
+    }
+  ],
+  "driver": "int main_wrapper() {\n    return main();\n}\n\nint main() {\n    // Redirect std::cin and std::cout for testing\n    // This part is handled by the testing framework\n    main_wrapper();\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Lack of input validation for numeric fields (price, issue number). If non-numeric input is provided, `std::cin` enters a fail state, leading to default-initialized values (0) and potential issues with subsequent input operations.",
+    "The program does not explicitly check `std::cin.fail()` after numeric input, which means it proceeds with potentially invalid data without informing the user or attempting recovery."
+  ]
+}

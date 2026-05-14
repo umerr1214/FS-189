@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Define a `Product` class with `id`, `name`, and `price`. Create an array of `Product` objects, populate it with data, and then iterate through the array to display details of each product.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Product Details (Readability/Efficiency Issue) ---\nProduct 1: ID: 101, Name: Laptop, Price: $1200.50\nProduct 2: ID: 102, Name: Mouse, Price: $25.00\nProduct 3: ID: 103, Name: Keyboard, Price: $75.99\n"
+    }
+  ],
+  "driver": "void run_test_case() { main(); }",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses manual memory management (`new`/`delete`) for an array, which is less safe and less idiomatic in modern C++ compared to using `std::vector` or `std::array`.",
+    "Employs a `goto` statement for iterating through the products. This significantly reduces code readability, maintainability, and makes control flow harder to follow, compared to standard loop constructs (`for`, `while`).",
+    "Uses C-style `printf` for output. While functional, `printf` is less type-safe and generally considered less C++ idiomatic than `std::cout` with stream manipulators.",
+    "Variable name `prod_arr` is less descriptive than `products`."
+  ]
+}

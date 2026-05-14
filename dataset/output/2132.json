@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a `Logger` class with an overloaded `log` method. One `log` method should take a `const char*` message, another should take an `int` error code, and a third should take a `bool` status. Each should print an appropriate formatted message.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "[INFO] Message: Application started.\n[ERROR] Code: 101\n[STATUS] Success: 1\n[INFO] Message: Processing data...\n[ERROR] Code: 200\n[STATUS] Success: 0\n[INFO] Message: Shutdown initiated.\n"
+    }
+  ],
+  "driver": "#include <sstream>\n#include <iostream>\n\n// Assume Logger class is defined in the main file\n\nint main() {\n    Logger logger;\n    std::stringstream ss;\n    std::streambuf* oldCout = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n\n    logger.log(\"Application started.\");\n    logger.log(101);\n    logger.log(true);\n    logger.log(\"Processing data...\");\n    logger.log(200);\n    logger.log(false);\n    logger.log(\"Shutdown initiated.\");\n    \n    std::cout.rdbuf(oldCout);\n    std::cout << ss.str();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "All `log` methods use `std::endl`, which flushes the output buffer on every call. For high-volume logging, using `\\n` instead of `std::endl` and letting the buffer flush automatically or explicitly flushing when needed is generally more efficient.",
+    "The `log(bool status)` method prints '1' for true and '0' for false. While technically correct, using `std::boolalpha` to print 'true' or 'false' would significantly improve readability for boolean status messages, making the output more user-friendly."
+  ]
+}

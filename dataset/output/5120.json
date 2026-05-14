@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `void swap(int& a, int& b)` that takes two integer variables by reference and exchanges their values. In `main`, declare two integers, initialize them, call `swap` with them, and then print their values before and after the swap to demonstrate its effect.",
+  "test_cases": [
+    { "input": "Initial values: a=15, b=25", "expected": "Before swap: a = 15, b = 25\nAfter swap: a = 25, b = 15\n" },
+    { "input": "Initial values: a=-10, b=0", "expected": "Before swap: a = -10, b = 0\nAfter swap: a = 0, b = -10\n" },
+    { "input": "Initial values: a=100, b=100", "expected": "Before swap: a = 100, b = 100\nAfter swap: a = 100, b = 100\n" }
+  ],
+  "driver": "std::string driver_code = R\"(\n#include <iostream>\n#include <vector>\n#include <utility>\n\nvoid swap(int& a, int& b);\n\nint main() {\n    std::vector<std::pair<int, int>> test_values = {\n        {15, 25},\n        {-10, 0},\n        {100, 100}\n    };\n\n    for (size_t i = 0; i < test_values.size(); ++i) {\n        int a = test_values[i].first;\n        int b = test_values[i].second;\n        std::cout << \"Before swap: a = \" << a << \", b = \" << b << \"\\n\";\n        swap(a, b);\n        std::cout << \"After swap: a = \" << a << \", b = \" << b << \"\\n\";\n    }\n    return 0;\n}\n)\";",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["The XOR swap method, while functionally correct, uses bitwise operations which can be less readable and harder to understand for many developers compared to the standard temporary variable approach. It offers no significant efficiency gain on modern compilers and can sometimes be less efficient due to CPU pipeline stalls."]
+}

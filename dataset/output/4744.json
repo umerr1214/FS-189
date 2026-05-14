@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Given a square 2D integer array (matrix), write a program to compute and print its transpose.",
+  "test_cases": [
+    { "input": "2\n1 2\n3 4", "expected": "   1   3\n   2   4\n" },
+    { "input": "3\n1 2 3\n4 5 6\n7 8 9", "expected": "   1   4   7\n   2   5   8\n   3   6   9\n" }
+  ],
+  "driver": "int main() { int N; std::cin >> N; std::vector<std::vector<int>> matrix(N, std::vector<int>(N)); for (int i = 0; i < N; ++i) { for (int j = 0; j < N; ++j) { std::cin >> matrix[i][j]; } } std::vector<std::vector<int>> transposedMatrix(N, std::vector<int>(N)); for (int i = 0; i < N; ++i) { for (int j = 0; j < N; ++j) { transposedMatrix[j][i] = matrix[i][j]; } } for (int i = 0; i < N; ++i) { for (int j = 0; j < N; ++j) { std::cout << std::setw(4) << transposedMatrix[i][j]; } std::cout << std::endl; } return 0; }",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the assignment statement `transposedMatrix[j][i] = matrix[i][j]` within the transpose loop."]
+}

@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function template named `getAbsoluteValue` that can compute and return the absolute value of any numeric data type (e.g., `int`, `float`, `double`).",
+  "test_cases": [
+    { "input": "-5", "expected": "5" },
+    { "input": "0", "expected": "0" },
+    { "input": "10", "expected": "10" },
+    { "input": "-3.14f", "expected": "3.14f" },
+    { "input": "0.0f", "expected": "0.0f" },
+    { "input": "2.71f", "expected": "2.71f" },
+    { "input": "-9.81", "expected": "9.81" },
+    { "input": "0.0", "expected": "0.0" },
+    { "input": "1.2345", "expected": "1.2345" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n\ntemplate <typename T>\nT getAbsoluteValue(T value)\n{\n    if (value < 0) {\n        return -value;\n    }\n    return value;\n}\n\nint main() {\n    std::cout << getAbsoluteValue(-5) << std::endl;\n    std::cout << getAbsoluteValue(0) << std::endl;\n    std::cout << getAbsoluteValue(10) << std::endl;\n    std::cout << getAbsoluteValue(-3.14f) << std::endl;\n    std::cout << getAbsoluteValue(0.0f) << std::endl;\n    std::cout << getAbsoluteValue(2.71f) << std::endl;\n    std::cout << getAbsoluteValue(-9.81) << std::endl;\n    std::cout << getAbsoluteValue(0.0) << std::endl;\n    std::cout << getAbsoluteValue(1.2345) << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

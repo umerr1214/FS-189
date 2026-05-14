@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ function `findGCD` that calculates the Greatest Common Divisor (GCD) of two positive integers using the Euclidean algorithm (pass by value). The main program should take two numbers from the user and display their GCD.",
+  "test_cases": [
+    { "input": "10\n5", "expected": "Enter first number: Enter second number: GCD of 10 and 5 is: 5" },
+    { "input": "48\n18", "expected": "Enter first number: Enter second number: GCD of 48 and 18 is: 6" },
+    { "input": "123\n456", "expected": "Enter first number: Enter second number: GCD of 123 and 456 is: 3" },
+    { "input": "7\n1", "expected": "Enter first number: Enter second number: GCD of 7 and 1 is: 1" },
+    { "input": "0\n0", "expected": "Enter first number: Enter second number: GCD is undefined for (0, 0)." }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses a recursive approach for GCD which, while correct, can be less efficient than an iterative solution for large inputs due to function call overhead and potential stack depth limits.",
+    "Poor variable naming (e.g., 'a', 'b' in main, 'x', 'y' in function) reduces code readability.",
+    "Lack of comments makes the code harder to understand for complex logic (though GCD is relatively simple).",
+    "Minimal formatting and inconsistent spacing.",
+    "The handling of negative inputs by converting to positive in `main` is not ideal; proper validation or function design would be better."
+  ]
+}

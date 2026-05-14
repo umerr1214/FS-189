@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "For the `Book` class (from a previous problem), overload the equality operator `==`. Two books should be considered equal if their `isbn` values are identical. Demonstrate comparing two `Book` objects.",
+  "test_cases": [
+    { "input": "", "expected": "Book 1 and Book 2 are equal (same ISBN).\nBook 1 and Book 3 are not equal.\n" }
+  ],
+  "driver": "    Book book1(\"The Hitchhiker's Guide\", \"Douglas Adams\", \"978-0345391803\");\n    Book book2(\"The Restaurant at the End of the Universe\", \"Douglas Adams\", \"978-0345391803\"); // Same ISBN\n    Book book3(\"Pride and Prejudice\", \"Jane Austen\", \"978-0141439518\");\n\n    if (book1 == book2) {\n        std::cout << \"Book 1 and Book 2 are equal (same ISBN).\" << std::endl;\n    } else {\n        std::cout << \"Book 1 and Book 2 are not equal.\" << std::endl;\n    }\n\n    if (book1 == book3) {\n        std::cout << \"Book 1 and Book 3 are equal (same ISBN).\" << std::endl;\n    } else {\n        std::cout << \"Book 1 and Book 3 are not equal.\" << std::endl;\n    }",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": []
+}

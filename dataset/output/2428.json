@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a multi-level inheritance hierarchy: `Person` (base) -> `Employee` (derived from Person) -> `Manager` (derived from Employee). Add relevant attributes and methods at each level.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Person Info ---\nName: Alice, Age: 30\n\n--- Employee Info ---\nName: Bob, Age: 35\nEmployee ID: E101, Salary: $75000\n\n--- Manager Info ---\nName: Charlie, Age: 40\nEmployee ID: M201, Salary: $120000\nDepartment: HR, Team Size: 15\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Person {\npublic:\n    std::string name;\n    int age;\n\n    Person(const std::string& n, int a) : name(n), age(a) {}\n\n    void displayPersonInfo() const {\n        std::cout << \"Name: \" << name << \", Age: \" << age << std::endl // MISSING SEMICOLON HERE\n    }\n};\n\nclass Employee : public Person {\npublic:\n    std::string employeeId;\n    double salary;\n\n    Employee(const std::string& n, int a, const std::string& id, double s)\n        : Person(n, a), employeeId(id), salary(s) {}\n\n    void displayEmployeeInfo() const {\n        displayPersonInfo();\n        std::cout << \"Employee ID: \" << employeeId << \", Salary: $\" << salary << std::endl;\n    }\n};\n\nclass Manager : public Employee {\npublic:\n    std::string department;\n    int teamSize;\n\n    Manager(const std::string& n, int a, const std::string& id, double s, const std::string& dept, int ts)\n        : Employee(n, a, id, s), department(dept), teamSize(ts) {}\n\n    void displayManagerInfo() const {\n        displayEmployeeInfo();\n        std::cout << \"Department: \" << department << \", Team Size: \" << teamSize << std::endl;\n    }\n};\n\nint main() {\n    Person p(\"Alice\", 30);\n    std::cout << \"--- Person Info ---\" << std::endl;\n    p.displayPersonInfo();\n\n    Employee e(\"Bob\", 35, \"E101\", 75000.0);\n    std::cout << \"\\n--- Employee Info ---\" << std::endl;\n    e.displayEmployeeInfo();\n\n    Manager m(\"Charlie\", 40, \"M201\", 120000.0, \"HR\", 15);\n    std::cout << \"\\n--- Manager Info ---\" << std::endl;\n    m.displayManagerInfo();\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "missing semicolon after statement"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program to concatenate two one-dimensional integer arrays into a third array. The program should take the sizes and elements of the first two arrays from the user, then populate and print the concatenated array.",
+  "test_cases": [
+    {
+      "input": "3\n1 2 3\n2\n4 5\n",
+      "expected": "Enter the size of the first array: Enter 3 elements for the first array:\nElement 1: Element 2: Element 3: Enter the size of the second array: Enter 2 elements for the second array:\nElement 1: Element 2: First array: 1 2 3\nSecond array: 4 5\nConcatenated array: 1 2 3 4 5\n"
+    },
+    {
+      "input": "0\n0\n",
+      "expected": "Enter the size of the first array: Enter 0 elements for the first array:\nEnter the size of the second array: Enter 0 elements for the second array:\nFirst array: (empty)\nSecond array: (empty)\nConcatenated array: (empty)\n"
+    },
+    {
+      "input": "1\n100\n0\n",
+      "expected": "Enter the size of the first array: Enter 1 elements for the first array:\nElement 1: Enter the size of the second array: Enter 0 elements for the second array:\nFirst array: 100\nSecond array: (empty)\nConcatenated array: 100\n"
+    },
+    {
+      "input": "2\n10 20\n-5\n3\n30 40 50\n",
+      "expected": "Enter the size of the first array: Enter 2 elements for the first array:\nElement 1: Element 2: Enter the size of the second array: Array size cannot be negative. Please enter a non-negative integer.\nEnter 3 elements for the second array:\nElement 1: Element 2: Element 3: First array: 10 20\nSecond array: 30 40 50\nConcatenated array: 10 20 30 40 50\n"
+    },
+    {
+      "input": "2\n10 a\n20\n1\n30\n",
+      "expected": "Enter the size of the first array: Enter 2 elements for the first array:\nElement 1: Element 2: Invalid input. Please enter an integer.\nElement 2: Enter the size of the second array: Enter 1 elements for the second array:\nElement 1: First array: 10 20\nSecond array: 30\nConcatenated array: 10 20 30\n"
+    }
+  ],
+  "driver": "g++ -o program program.cpp && ./program",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

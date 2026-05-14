@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a simple `Timer` class with private integer members `hours`, `minutes`, and `seconds`. Provide a public method `displayTime()` that prints the current time in `HH:MM:SS` format.",
+  "test_cases": [
+    { "input": "Timer t1(10, 30, 45); t1.displayTime();", "expected": "10:30:45\n" },
+    { "input": "Timer t2(2, 5, 8); t2.displayTime();", "expected": "02:05:08\n" },
+    { "input": "Timer t3(23, 59, 59); t3.displayTime();", "expected": "23:59:59\n" },
+    { "input": "Timer t4(0, 0, 0); t4.displayTime();", "expected": "00:00:00\n" },
+    { "input": "Timer t5(25, 65, 70); t5.displayTime();", "expected": "02:06:10\n" },
+    { "input": "Timer t6(-1, -1, -1); t6.displayTime();", "expected": "22:58:59\n" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include <sstream>\n\nclass Timer {\nprivate:\n    int hours;\n    int minutes;\n    int seconds;\n\npublic:\n    Timer(int h, int m, int s) {\n        long long totalSeconds = (long long)h * 3600 + (long long)m * 60 + s;\n\n        while (totalSeconds < 0) {\n            totalSeconds += 24LL * 3600;\n        }\n\n        seconds = totalSeconds % 60;\n        totalSeconds /= 60;\n\n        minutes = totalSeconds % 60;\n        totalSeconds /= 60;\n\n        hours = totalSeconds % 24;\n    }\n\n    void displayTime() const {\n        std::cout << std::setw(2) << std::setfill('0') << hours << \":\"\n                  << std::setw(2) << std::setfill('0') << minutes << \":\"\n                  << std::setw(2) << std::setfill('0') << seconds << std::endl;\n    }\n};\n\nint main() {\n    std::stringstream ss;\n    std::streambuf* oldCout = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n\n    Timer t1(10, 30, 45);\n    t1.displayTime();\n\n    Timer t2(2, 5, 8);\n    t2.displayTime();\n\n    Timer t3(23, 59, 59);\n    t3.displayTime();\n\n    Timer t4(0, 0, 0);\n    t4.displayTime();\n\n    Timer t5(25, 65, 70);\n    t5.displayTime();\n\n    Timer t6(-1, -1, -1);\n    t6.displayTime();\n\n    std::cout.rdbuf(oldCout);\n    std::cout << ss.str();\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a base class `Shape` with a pure virtual method `calculateArea()` that returns a double. Create two derived classes, `Rectangle` (with `length` and `width`) and `Circle` (with `radius`). Implement the `calculateArea()` method in each derived class. Demonstrate creating objects of derived classes and calling their `calculateArea()` method.",
+  "test_cases": [
+    { "input": "Circle(3.0)", "expected": "Circle area: 28.2743" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n\n// Assume Shape, Rectangle, Circle classes are defined above\n\nint main() {\n    // The Rectangle instantiation will cause a compile-time error due to semantic issues.\n    // Rectangle rect(10.0, 5.0);\n    Circle circ(3.0);\n\n    // Shape* s1 = &rect; // Would be problematic\n    Shape* s2 = &circ;\n\n    // std::cout << \"Rectangle area: \" << s1->calculateArea() << std::endl;\n    std::cout << \"Circle area: " << s2->calculateArea() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `Rectangle::calculateArea()` method has an `int` return type instead of `double`, meaning it does not correctly override the pure virtual `Shape::calculateArea()` method. As a result, `Rectangle` remains an abstract class, and attempting to instantiate it (e.g., `Rectangle rect(10.0, 5.0);`) will result in a compile-time error: 'cannot declare variable 'rect' to be of abstract type 'Rectangle''."
+  ]
+}

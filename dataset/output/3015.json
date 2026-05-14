@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Logger` class. Its constructor should print 'Logger initialized' and its destructor should print 'Logger destroyed'. Demonstrate how the constructor and destructor are automatically called when a `Logger` object enters and exits scope.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Main program started.\n\n--- Entering explicit block scope ---\nLogger initialized\nLog message: This log is from inside the explicit block.\n--- Exiting explicit block scope ---\nLogger destroyed\n\n--- Entering demonstrateFunctionScopeLogger() ---\nLogger initialized\nLog message: This log is from inside the function.\n--- Exiting demonstrateFunctionScopeLogger() ---\nLogger destroyed\n\n--- Back in main function scope ---\nLogger initialized\nLog message: This log is from the main function's scope.\n--- Main program about to end ---\nLogger destroyed\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

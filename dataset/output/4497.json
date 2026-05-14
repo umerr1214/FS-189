@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that reads an integer from the user and checks whether it is positive, negative, or zero.",
+  "test_cases": [
+    { "input": "15", "expected": "Enter an integer: The number is positive.\n" },
+    { "input": "-100", "expected": "Enter an integer: The number is negative.\n" },
+    { "input": "0", "expected": "Enter an integer: The number is zero.\n" },
+    { "input": "hello\n5", "expected": "Enter an integer: Invalid input. Please enter an integer: The number is positive.\n" },
+    { "input": "abc def\n-2", "expected": "Enter an integer: Invalid input. Please enter an integer: The number is negative.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// Assume the user's main function is renamed to `user_main` for testing purposes.\nextern int user_main();\n\nstd::string run_test(const std::string& input) {\n    std::stringstream input_stream(input);\n    std::stringstream output_stream;\n\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::cin.rdbuf(input_stream.rdbuf());\n    std::cout.rdbuf(output_stream.rdbuf());\n\n    user_main();\n\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    return output_stream.str();\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

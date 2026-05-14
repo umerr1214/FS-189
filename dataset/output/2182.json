@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design a `Circle` class with a private `radius`. Implement `getRadius()` as a `const` member function and `setRadius()` as a non-`const` member function. In `main`, create a `const Circle` object and demonstrate which methods it can call.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation error due to syntax error." }
+  ],
+  "driver": "The `main` function demonstrates the class usage. The program is expected to fail compilation.",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after class definition, leading to a syntax error."]
+}

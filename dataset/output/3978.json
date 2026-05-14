@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ function `rotateArrayRight` that takes a 1D integer array and its size. The function should shift all elements one position to the right, moving the last element to the first position. Demonstrate with an example.",
+  "test_cases": [
+    { "input": "{1, 2, 3, 4, 5}, size=5", "expected": "5 1 2 3 4" },
+    { "input": "{10, 20}, size=2", "expected": "20 10" },
+    { "input": "{1}, size=1", "expected": "1" }
+  ],
+  "driver": "int main() {\n    int arr1[] = {1, 2, 3, 4, 5};\n    int size1 = sizeof(arr1) / sizeof(arr1[0]);\n    rotateArrayRight(arr1, size1);\n    for (int i = 0; i < size1; ++i) {\n        std::cout << arr1[i] << (i == size1 - 1 ? \"\" : \" \");\n    }\n    std::cout << std::endl;\n\n    int arr2[] = {10, 20};\n    int size2 = sizeof(arr2) / sizeof(arr2[0]);\n    rotateArrayRight(arr2, size2);\n    for (int i = 0; i < size2; ++i) {\n        std::cout << arr2[i] << (i == size2 - 1 ? \"\" : \" \");\n    }\n    std::cout << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["Out-of-bounds array write: The loop for shifting elements iterates one step too far (i >= 0 instead of i > 0). When i is equal to size-1, the expression arr[i+1] attempts to access arr[size], which is outside the array's legal bounds. This results in undefined behavior, often leading to crashes or memory corruption."]
+}

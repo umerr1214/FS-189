@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Design a `Circle` class with a private `radius`. Implement `getRadius()` as a `const` member function and `setRadius()` as a non-`const` member function. In `main`, create a `const Circle` object and demonstrate which methods it can call.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating const Circle methods (Readability/Efficiency Issue version) ---\nConstant Circle's current radius: 7\nCalculated area for constant Circle: 153.93804\nNote: Attempting to modify const_circle_obj using setRadius() would result in a compilation error.\n\n--- Demonstrating non-const Circle methods ---\nInitial changeable Circle radius: 2\nChangeable Circle radius after setting to 4.0: 4\nArea of changeable Circle: 50.265482456\n"
+    }
+  ],
+  "driver": "The main function serves as the driver.",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Unnecessary `typedef` `RadiusType` adds indirection without clear benefit.",
+    "Member variable `m_radius_value` is overly verbose (`radius` would suffice).",
+    "Constructor uses explicit `this->` unnecessarily, which can reduce readability for simple assignments.",
+    "`getRadius` uses an unnecessary temporary variable `current_radius` before returning the member value.",
+    "`setRadius` uses an unnecessary temporary variable `temp_radius` and a redundant `if` condition to check if `this->m_radius_value != temp_radius` before assignment.",
+    "`calculate_area_verbose` re-declares PI as a local constant and calls `getRadius()` instead of directly accessing the member variable, slightly reducing efficiency and readability."
+  ]
+}

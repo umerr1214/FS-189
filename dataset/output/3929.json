@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that takes an integer from the user and reverses the digits of that number. For example, if the input is 12345, the output should be 54321.",
+  "test_cases": [
+    { "input": "123", "expected": "6" },
+    { "input": "500", "expected": "5" },
+    { "input": "0", "expected": "0" },
+    { "input": "-456", "expected": "-15" },
+    { "input": "987654321", "expected": "45" },
+    { "input": "-10", "expected": "-1" }
+  ],
+  "driver": "int main() {\n  int num;\n  std::cin >> num;\n  // The student's code will be inserted here, assuming it's a complete program.\n  // For evaluation, we'd typically run the student's main function\n  // and capture its output.\n  // Since the problem asks for a complete program, the driver here is just a placeholder\n  // indicating how input would be provided.\n  return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The program sums the digits of the number instead of reversing them. The core logic for building the reversed number (reversed_num = reversed_num * 10 + digit) is incorrect."
+  ]
+}

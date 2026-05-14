@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Create a `Fraction` class with `numerator` and `denominator` (int). Overload the `==` operator to compare two `Fraction` objects for equality (e.g., 1/2 == 2/4). Consider simplifying fractions before comparison or handle it appropriately.",
+  "test_cases": [
+    { "input": "1/2,2/4", "expected": "true" },
+    { "input": "1/-2,-1/2", "expected": "true" },
+    { "input": "0/5,0/10", "expected": "true" },
+    { "input": "7/3,14/6", "expected": "true" },
+    { "input": "1/2,7/3", "expected": "false" },
+    { "input": "-10/-20,1/2", "expected": "true" },
+    { "input": "5/-10,-1/2", "expected": "true" },
+    { "input": "0/0,0/0", "expected": "EXCEPTION: Denominator cannot be zero." },
+    { "input": "1/0,2/0", "expected": "EXCEPTION: Denominator cannot be zero." },
+    { "input": "1/0,1/2", "expected": "EXCEPTION: Denominator cannot be zero." }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <stdexcept>\n\n// The Fraction class code will be inserted here by the system.\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        size_t comma_pos = line.find(',');\n        std::string s_f1 = line.substr(0, comma_pos);\n        std::string s_f2 = line.substr(comma_pos + 1);\n\n        int n1 = std::stoi(s_f1.substr(0, s_f1.find('/')));\n        int d1 = std::stoi(s_f1.substr(s_f1.find('/') + 1));\n        int n2 = std::stoi(s_f2.substr(0, s_f2.find('/')));\n        int d2 = std::stoi(s_f2.substr(s_f2.find('/') + 1));\n\n        try {\n            Fraction f1(n1, d1);\n            Fraction f2(n2, d2);\n            std::cout << (f1 == f2 ? \"true\" : \"false\") << std::endl;\n        } catch (const std::invalid_argument& e) {\n            std::cout << \"EXCEPTION: \" << e.what() << std::endl;\n        } catch (const std::exception& e) {\n            std::cout << \"GENERAL_EXCEPTION: \" << e.what() << std::endl;\n        } catch (...) {\n            std::cout << \"UNKNOWN_ERROR\" << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

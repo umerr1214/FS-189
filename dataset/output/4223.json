@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `calculate_circle_properties` that takes a `double` radius as input and, using pass-by-reference parameters, updates two `double` variables with the calculated area and circumference of the circle.",
+  "test_cases": [
+    { "input": "1.0", "expected": "Radius: 1.000000000000000, Area: 3.141592653589793, Circumference: 6.283185307179586" },
+    { "input": "2.0", "expected": "Radius: 2.000000000000000, Area: 12.566370614359172, Circumference: 12.566370614359172" },
+    { "input": "0.0", "expected": "Radius: 0.000000000000000, Area: 0.000000000000000, Circumference: 0.000000000000000" }
+  ],
+  "driver": "#include <iostream>\\n#include <iomanip>\\n#include <vector>\\n\\n// Function definition would go here\\n\\nint main() {\\n    std::cout << std::fixed << std::setprecision(15);\\n    std::vector<double> radii = {1.0, 2.0, 0.0};\\n    for (double r : radii) {\\n        double area = 0.0;\\n        double circumference = 0.0;\\n        calculate_circle_properties(r, area, circumference);\\n        std::cout << \"Radius: \" << r << \", Area: \" << area << \", Circumference: \" << circumference << std::endl;\\n    }\\n    return 0;\\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The area calculation is incorrect. It calculates `PI * radius` instead of `PI * radius * radius`."]
+}

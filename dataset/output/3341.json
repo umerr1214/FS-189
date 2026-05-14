@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a function `double calculate_average(const int arr[], int size)` that takes a 1D integer array and its size, then calculates and returns the average of its elements.",
+  "test_cases": [
+    { "input": "arr = {1, 2, 3, 4, 5}, size = 5", "expected": "3.0" },
+    { "input": "arr = {10}, size = 1", "expected": "10.0" },
+    { "input": "arr = {}, size = 0", "expected": "0.0" },
+    { "input": "arr = {1, 2, 4}, size = 3", "expected": "2.3333333333333335" },
+    { "input": "arr = {1, 2, 3, 4}, size = 4", "expected": "2.5" }
+  ],
+  "driver": "#include <iostream>\n\n// The calculate_average function definition would be here\n\nint main() {\n    int arr1[] = {1, 2, 3, 4, 5};\n    int size1 = 5;\n    std::cout << \"Average of {1, 2, 3, 4, 5}: \" << calculate_average(arr1, size1) << std::endl;\n\n    int arr2[] = {10};\n    int size2 = 1;\n    std::cout << \"Average of {10}: \" << calculate_average(arr2, size2) << std::endl;\n\n    int arr3[] = {};\n    int size3 = 0;\n    std::cout << \"Average of {}: \" << calculate_average(arr3, size3) << std::endl;\n\n    int arr4[] = {1, 2, 4};\n    int size4 = 3;\n    std::cout << \"Average of {1, 2, 4}: \" << calculate_average(arr4, size4) << std::endl;\n\n    int arr5[] = {1, 2, 3, 4};\n    int size5 = 4;\n    std::cout << \"Average of {1, 2, 3, 4}: \" << calculate_average(arr5, size5) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["Integer division performed before converting sum to double, leading to truncated results for non-integer averages."]
+}

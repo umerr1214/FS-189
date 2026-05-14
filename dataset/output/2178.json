@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create two classes, `Box` (with private `length`) and `Container` (with private `volume`). Declare a non-member function `compareSizes(Box b, Container c)` as a friend to both classes, allowing it to access their private members and print a comparison.",
+  "test_cases": [
+    { "input": "", "expected": "Box length: 10.5\nContainer volume: 8.2\nBox length is greater than Container volume.\n---\nBox length: 5\nContainer volume: 12\nContainer volume is greater than Box length.\n---\nBox length: 7.7\nContainer volume: 7.7\nBox length is equal to Container volume.\n---\n" }
+  ],
+  "driver": "Box b1(10.5);\nContainer c1(8.2);\ncompareSizes(b1, c1);\nstd::cout << \"---\" << std::endl;\n\nBox b2(5.0);\nContainer c2(12.0);\ncompareSizes(b2, c2);\nstd::cout << \"---\" << std::endl;\n\nBox b3(7.7);\nContainer c3(7.7);\ncompareSizes(b3, c3);\nstd::cout << \"---\" << std::endl;",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `compareSizes` function attempts to access the private member `volume` of the `Container` class. However, `compareSizes` is not declared as a friend within the `Container` class, violating C++ access rules."
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function `isPalindrome(const std::string& str)` that takes a `std::string` and returns `true` if it's a palindrome (reads the same forwards and backwards, ignoring case and spaces), and `false` otherwise. Demonstrate with user input.",
+  "test_cases": [
+    { "input": "", "expected": "true" },
+    { "input": " ", "expected": "true" },
+    { "input": "A", "expected": "true" },
+    { "input": "racecar", "expected": "true" },
+    { "input": "RaceCar", "expected": "true" },
+    { "input": "A man, a plan, a canal: Panama", "expected": "true" },
+    { "input": "No lemon, no melon", "expected": "true" },
+    { "input": "Was it a car or a cat I saw?", "expected": "true" },
+    { "input": "Madam, I'm Adam", "expected": "true" },
+    { "input": "hello", "expected": "false" },
+    { "input": "world", "expected": "false" },
+    { "input": "12321", "expected": "true" },
+    { "input": "1 2 3 2 1", "expected": "true" },
+    { "input": "A.B.A", "expected": "true" },
+    { "input": "apple", "expected": "false" },
+    { "input": "test", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <algorithm> \n#include <cctype>    \n\n// Assume isPalindrome function is defined in the same scope\n\nint main() {\n    std::vector<std::string> test_inputs = {\n        \"\",\n        \" \",\n        \"A\",\n        \"racecar\",\n        \"RaceCar\",\n        \"A man, a plan, a canal: Panama\",\n        \"No lemon, no melon\",\n        \"Was it a car or a cat I saw?\",\n        \"Madam, I'm Adam\",\n        \"hello\",\n        \"world\",\n        \"12321\",\n        \"1 2 3 2 1\",\n        \"A.B.A\",\n        \"apple\",\n        \"test\"\n    };\n\n    std::cout << \"--- Predefined Test Cases ---\\n\";\n    for (const std::string& input : test_inputs) {\n        std::cout << \"Input: \\\"\" << input << \"\\\"\\n\";\n        std::cout << (isPalindrome(input) ? \"true\" : \"false\") << \"\\n\";\n        std::cout << \"---\\n\";\n    }\n\n    // Also demonstrate with user input as required by question\n    std::string user_input;\n    std::cout << \"\\n--- User Input Demo ---\\n\";\n    std::cout << \"Enter a string: \";\n    std::getline(std::cin, user_input);\n    std::cout << \"Input: \\\"\" << user_input << \"\\\"\\n\";\n    std::cout << (isPalindrome(user_input) ? \"true\" : \"false\") << \"\\n\";\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

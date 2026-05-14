@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create two classes, `DataHolder` and `Processor`. `DataHolder` has a private integer member `value`. Implement a function `processData(DataHolder& dh)` which needs to access and modify `DataHolder`'s private `value`. Declare `processData` as a `friend` function of the `DataHolder` class to enable this access.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Test Case 1: Uninitialized DataHolder ---\nInitial state (uninitialized value): DataHolder value: <system-dependent-garbage>\nprocessData: Attempted to increment value.\nAfter processData (uninitialized): DataHolder value: <system-dependent-garbage-plus-1>\n\n--- Test Case 2: Potential Overflow ---\nInitial state (INT_MAX): DataHolder value: 2147483647\nprocessData: Attempted to increment value.\nAfter processData (INT_MAX + 1): DataHolder value: -2147483648\n"
+    }
+  ],
+  "driver": "// The main function in the provided C++ code serves as the driver.\n// It demonstrates operating on an uninitialized DataHolder and triggering integer overflow.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `DataHolder` class does not provide a constructor to initialize its `value` member, leading to undefined behavior if `processData` is called on a default-constructed object without prior explicit initialization of `value`.",
+    "The `processData` function increments `DataHolder::value` without checking for potential integer overflow. When `value` is `INT_MAX`, incrementing it results in undefined behavior."
+  ]
+}

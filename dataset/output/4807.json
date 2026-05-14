@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that asks the user to input a number representing a day of the week (1 for Monday, 2 for Tuesday, etc.). Use a `switch` statement to print the corresponding day name.",
+  "test_cases": [
+    { "input": "1", "expected": "Enter a number representing the day of the week (1-7): Monday\n" },
+    { "input": "4", "expected": "Enter a number representing the day of the week (1-7): Thursday\n" },
+    { "input": "7", "expected": "Enter a number representing the day of the week (1-7): Sunday\n" },
+    { "input": "0", "expected": "Enter a number representing the day of the week (1-7): Input not recognized.\n" },
+    { "input": "8", "expected": "Enter a number representing the day of the week (1-7): Input not recognized.\n" },
+    { "input": "-3", "expected": "Enter a number representing the day of the week (1-7): Input not recognized.\n" }
+  ],
+  "driver": "g++ -o program program.cpp && ./program",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program fails to handle out-of-range inputs gracefully. The default error message 'Input not recognized.' is vague and does not guide the user on the expected input range (1-7). A robust program would provide a more informative error message and possibly prompt for re-entry."
+  ]
+}

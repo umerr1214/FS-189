@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter three distinct integers and then identifies and prints the largest among them using if-else if-else statements.",
+  "test_cases": [
+    { "input": "10 20 5", "expected": "Enter three distinct integers: The largest number is: 20\n" },
+    { "input": "-1 -5 -2", "expected": "Enter three distinct integers: The largest number is: -1\n" },
+    { "input": "7 3 7", "expected": "Enter three distinct integers: The largest number is: 7\n" },
+    { "input": "0 0 0", "expected": "Enter three distinct integers: The largest number is: 0\n" }
+  ],
+  "driver": "// Compile: g++ -o program_name 3740.cpp\n// Run: ./program_name\n// Input will be provided via stdin, output captured from stdout.\n// Example for a single test:\n// echo \"10 20 5\" | ./program_name",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The variable names (`first_integer_value_from_user`, `second_integer_value_from_user`, etc.) are excessively long and verbose, significantly reducing code readability and making it harder to maintain.",
+    "The indentation is inconsistent and poor, making the control flow difficult to follow and visually parse.",
+    "While functionally correct, the nested if-else structure for finding the maximum can be simplified into a more linear and concise `if-else if-else` chain (e.g., `if (a > b && a > c) ... else if (b > c) ... else ...`) which is generally preferred for clarity and slightly better efficiency with a small number of comparisons.",
+    "The code lacks comments, which further hinders understanding, especially given the other readability issues."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that calculates the factorial of a non-negative integer entered by the user using a `for` loop. If the user enters a negative number, display an error message.",
+  "test_cases": [
+    { "input": "5", "expected": "Factorial of 5 is 0\n" },
+    { "input": "0", "expected": "Factorial of 0 is 0\n" },
+    { "input": "-3", "expected": "Error: Factorial is not defined for negative numbers.\n" },
+    { "input": "1", "expected": "Factorial of 1 is 0\n" },
+    { "input": "10", "expected": "Factorial of 10 is 0\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\nint main() {\n    std::string line;\n    if (std::getline(std::cin, line)) {\n        std::stringstream ss(line);\n        int num;\n        ss >> num;\n\n        long long factorial = 1;\n\n        if (num < 0) {\n            std::cout << "Error: Factorial is not defined for negative numbers." << std::endl;\n        } else {\n            for (int i = 0; i <= num; ++i) {\n                factorial *= i;\n            }\n            std::cout << "Factorial of " << num << " is " << factorial << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The loop for calculating factorial starts from i=0, causing 'factorial' to become 0 when i=0, for any num >= 0. Factorial of 0 should be 1, and for positive numbers, it should be the product of positive integers up to num."]
+}

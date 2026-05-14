@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design an `Employee` class with `name` and `id`. Create a `Department` class which `contains` a collection of `Employee` objects (using aggregation, e.g., a `std::vector<Employee>`). Implement methods in `Department` to `addEmployee(Employee emp)` and `displayAllEmployees()`. Demonstrate adding multiple employees to a department and displaying their details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Attempting to display employees (expecting crash or garbage):\n--- Employees in IT Department ---\nName: Grace, ID: 201\nName: Heidi, ID: 202\n------------------------------------------\n"
+    }
+  ],
+  "driver": "int main() {\n    Department itDept(\"IT\");\n    Employee empA(\"Grace\", 201);\n    Employee empB(\"Heidi\", 202);\n    itDept.addEmployee(empA);\n    itDept.addEmployee(empB);\n    std::cout << \"Attempting to display employees (expecting crash or garbage):\" << std::endl;\n    itDept.displayAllEmployees();\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `Department` class stores `Employee*` (pointers to Employee objects) in its vector. However, the `addEmployee(Employee emp)` method takes an Employee object by value. Inside `addEmployee`, it then stores the address of this temporary `emp` object (`employees.push_back(&emp)`). When `addEmployee` returns, the temporary `emp` object is destroyed, leaving a dangling pointer in the `employees` vector. Subsequent access to these pointers in `displayAllEmployees` results in undefined behavior, likely a crash or corrupted data."
+  ]
+}

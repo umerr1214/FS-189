@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "For the `ComplexNumber` class, overload the stream insertion operator (`<<`) as a non-member friend function. This should allow you to print `ComplexNumber` objects directly using `std::cout`, in a user-friendly format like \"(3 + 4i)\" or \"(5 - 2i)\".",
+  "test_cases": [
+    { "input": "", "expected": "c1: (3 + 4i)\nc2: (5 - 2i)\nc3: (0 + 7i)\nc4: (-6 + 0i)\nc5: (0 + 0i)\nc6: (-1 - 1i)\n" }
+  ],
+  "driver": "int main() {\n    ComplexNumber c1(3, 4);\n    ComplexNumber c2(5, -2);\n    ComplexNumber c3(0, 7);\n    ComplexNumber c4(-6, 0);\n    ComplexNumber c5(0, 0);\n    ComplexNumber c6(-1, -1);\n\n    std::cout << \"c1: \" << c1 << std::endl;\n    std::cout << \"c2: \" << c2 << std::endl;\n    std::cout << \"c3: \" << c3 << std::endl;\n    std::cout << \"c4: \" << c4 << std::endl;\n    std::cout << \"c5: \" << c5 << std::endl;\n    std::cout << \"c6: \" << c6 << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The stream insertion operator is implemented to print complex numbers in '(real, imag)' format, which is syntactically valid but semantically incorrect for the requested algebraic '(real +/- imag i)' user-friendly format, violating the problem's core requirement."]
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that uses a `do-while` loop to continuously prompt the user to enter a positive integer. The loop should only terminate when a valid positive integer (greater than 0) is provided.",
+  "test_cases": [
+    { "input": "0\n", "expected": "Enter a positive integer: Invalid input. Please enter a positive integer.\nYou entered: 0\n" },
+    { "input": "5\n", "expected": "Enter a positive integer: Enter a positive integer: " },
+    { "input": "-1\n", "expected": "Enter a positive integer: Invalid input. Please enter a positive integer.\nYou entered: -1\n" }
+  ],
+  "driver": "int main() { return main(); }",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": []
+}

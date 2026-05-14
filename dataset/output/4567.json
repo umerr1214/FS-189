@@ -1,0 +1,35 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program to count the frequency of each distinct element in a 1D array of integers. Print each element and its count.",
+  "test_cases": [
+    {
+      "input": "10 20 10 30 20 10",
+      "expected": "10 3\n20 2\n30 1\n"
+    },
+    {
+      "input": "5 5 5 5 5",
+      "expected": "5 5\n"
+    },
+    {
+      "input": "100 1 2 100",
+      "expected": "1 1\n"
+    },
+    {
+      "input": "101 5 6 101",
+      "expected": "5 1\n6 1\n"
+    },
+    {
+      "input": "-1 5 6 -1",
+      "expected": "5 1\n6 1\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream>\n#include <algorithm>\n#include <map>\n\n// Function signature will vary slightly based on implementation\nvoid countFrequencies(const std::vector<int>& arr);\n\nint main() {\n    std::string line;\n    std::getline(std::cin, line);\n\n    std::stringstream ss(line);\n    int num;\n    std::vector<int> arr;\n    while (ss >> num) {\n        arr.push_back(num);\n    }\n\n    // Redirect cout to a stringstream to capture output\n    std::stringstream buffer;\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::cout.rdbuf(buffer.rdbuf());\n\n    countFrequencies(arr);\n\n    std::cout.rdbuf(old_cout); // Restore cout\n    std::cout << buffer.str(); // Print captured output\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program uses a fixed-size array (counts) for frequency counting, assuming elements are within a limited non-negative range (0 to 99).",
+    "Inputs containing negative numbers or numbers greater than 99 will not be correctly handled; they are either ignored or would cause an out-of-bounds access if not explicitly checked.",
+    "The current implementation silently ignores elements outside the [0, 99] range, leading to incorrect frequency counts for such inputs, rather than crashing (which would be another form of robustness failure)."
+  ]
+}

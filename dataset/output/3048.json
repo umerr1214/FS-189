@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Base` class with a `protected` integer member `data`. Create a `Derived` class that inherits from `Base`. Demonstrate how the `Derived` class can directly access and modify the `data` member, and explain why `data` cannot be accessed from a non-member function.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Base data: 10\nDerived class accessing protected data. Current data: 20\nDerived class modified protected data. New data: 25\nBase data: 25\n\n--- Non-member function attempt ---\nExplanation: The 'data' member is protected in the Base class.\nThis means it can only be accessed by members of Base itself and its Derived classes.\nA non-member function, even if it has an object of Base or Derived, cannot directly access 'data'.\nAttempting to do so (e.g., 'obj.data = 100;') would result in a compile-time error due to access protection.\n--- End non-member function attempt ---\n"
+    }
+  ],
+  "driver": "int main() {\n    Base b(10);\n    Derived d(20);\n\n    b.displayBaseData();\n    d.accessAndModifyData(25);\n    d.displayBaseData();\n\n    nonMemberAccess(b);\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `nonMemberAccess` function provides a correct explanation of why `protected` members cannot be accessed by non-member functions. However, it semantically fails to fully *demonstrate* this restriction as requested by the question. It merely states the rule without including any actual (even commented-out) attempt to access the `data` member, which would visually illustrate the compile-time error or the access limitation."
+  ]
+}

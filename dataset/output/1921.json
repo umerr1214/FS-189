@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private members `title`, `author`, and `isbn` (all strings). Provide public methods to set and get these values, ensuring basic encapsulation.",
+  "test_cases": [
+    { "input": "Initial values: The Hitchhiker's Guide to the Galaxy, Douglas Adams, 978-0345391803\nModify title via getter: A New Title\nModify author via getter: append (Modified)\nModify ISBN via getter: replace prefix with XXX", "expected": "Original Book:\nTitle: The Hitchhiker's Guide to the Galaxy\nAuthor: Douglas Adams\nISBN: 978-0345391803\n\nModified Book (via 'robustness issue' getters):\nTitle: A New Title\nAuthor: Douglas Adams (Modified)\nISBN: XXX-0345391803" }
+  ],
+  "driver": "int main() {\n    Book myBook(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\");\n    std::cout << \"Original Book:\" << std::endl;\n    std::cout << \"Title: \" << myBook.getTitle() << std::endl;\n    std::cout << \"Author: \" << myBook.getAuthor() << std::endl;\n    std::cout << \"ISBN: \" << myBook.getIsbn() << std::endl;\n\n    myBook.getTitle() = \"A New Title\";\n    myBook.getAuthor().append(\" (Modified)\");\n    myBook.setIsbn().replace(0, 3, \"XXX\");\n\n    std::cout << \"\\nModified Book (via 'robustness issue' getters):\" << std::endl;\n    std::cout << \"Title: \" << myBook.getTitle() << std::endl;\n    std::cout << \"Author: \" << myBook.getAuthor() << std::endl;\n    std::cout << \"ISBN: \" << myBook.getIsbn() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The getter methods (getTitle, getAuthor, getIsbn) return a non-const reference to the private member variables. This breaks encapsulation, allowing external code to directly modify the internal state of the Book object without using a designated setter method, which can lead to unexpected behavior and make the class less robust against misuse."
+  ]
+}

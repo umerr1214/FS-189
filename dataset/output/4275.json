@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a recursive C++ function `fibonacci` that takes an integer `n` as input and returns the `n`-th Fibonacci number. The Fibonacci sequence starts with F(0)=0, F(1)=1. Demonstrate with an example.",
+  "test_cases": [
+    { "input": "0", "expected": "F(0) = 0" },
+    { "input": "1", "expected": "F(1) = 1" },
+    { "input": "5", "expected": "F(5) = 5" },
+    { "input": "10", "expected": "F(10) = 55" },
+    { "input": "20", "expected": "F(20) = 6765" },
+    { "input": "45", "expected": "F(45) = 1134903170" },
+    { "input": "-1", "expected": "F(-1) = -1" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n\nlong long fibonacci_memo_helper(int n, std::vector<long long>& memo);\nlong long fibonacci(int n);\n\nint main() {\n    std::vector<int> inputs = {0, 1, 5, 10, 20, 45, -1};\n    for (int n : inputs) {\n        std::cout << \"F(\" << n << \") = \" << fibonacci(n) << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

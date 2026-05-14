@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a C++ `struct Book` with members `std::string title` and `double price`. Create an array of 3 `Book` structs. Prompt the user to enter the title and price for each book. After input, iterate through the array to find and print the details (title and price) of the book with the highest price.",
+  "test_cases": [
+    {
+      "input": "The Great Gatsby\n15.99\n1984\n12.50\nTo Kill a Mockingbird\n18.75\n",
+      "expected": "Enter details for 3 books:\nBook 1 T: Book 1 P: Book 2 T: Book 2 P: Book 3 T: Book 3 P: \nBook with the highest price:\nTitle: To Kill a Mockingbird\nPrice: 18.75\n"
+    }
+  ],
+  "driver": "g++ -o {file_name} {file_name}.cpp && {file_name}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The code suffers from poor readability due to the use of cryptic and non-descriptive variable names (e.g., `B` for Book, `t` for title, `p` for price, `bks` for books, `N` for NUM_BOOKS). Prompts are also abbreviated (e.g., 'T:', 'P:'). While functionally correct, this significantly hinders understanding and maintenance. No comments are provided to explain non-obvious parts of the code."
+  ]
+}

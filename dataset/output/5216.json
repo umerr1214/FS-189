@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that defines a class `Matrix` to represent a 2D matrix. Implement a constructor to initialize the matrix, a method to input values, and a method to add two matrices. Overload the `+` operator to perform matrix addition. Demonstrate the functionality in `main` by adding two matrices and displaying the result.",
+  "test_cases": [
+    {
+      "input": "1 2 3 4\n5 6 7 8\n",
+      "expected": "Input for M1:\nEnter val for [0][0]: Enter val for [0][1]: Enter val for [1][0]: Enter val for [1][1]: Input for M2:\nEnter val for [0][0]: Enter val for [0][1]: Enter val for [1][0]: Enter val for [1][1]: \nAdding M1 and M2:\nMatrix:\n6\n8\n10\n12\n"
+    }
+  ],
+  "driver": "g++ 5216.cpp -o 5216 && ./5216",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Poor variable names ('r', 'c', 'dat', 'res') reduce readability.",
+    "Using `using namespace std;` in global scope can lead to name collisions and reduce clarity in larger projects.",
+    "Matrix objects are passed by value to `operator+` and `display` methods, causing unnecessary copies and impacting efficiency.",
+    "The `display` method uses `std::endl` inside the inner loop, leading to frequent buffer flushes and significantly degrading output performance. It also makes the output hard to read.",
+    "The `display` method is not `const`-qualified, which is a minor quality issue as it does not modify the object's state."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that prompts the user to enter their first name (as a string), age (as an integer), and height in meters (as a double). After receiving all inputs, print a formatted sentence summarizing this information (e.g., 'Hello [Name], you are [Age] years old and [Height] meters tall.').",
+  "test_cases": [
+    {
+      "input": "Bob\n40\n1.83\n",
+      "expected": "Hello Bob, you are 40 years old and 1.83 meters tall."
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The 'height' variable is declared as an 'int' instead of a 'double'. Although the input prompt asks for height in meters (which can be a decimal), reading a double value (e.g., 1.83) into an integer variable will cause truncation (e.g., 1), losing the fractional part and leading to semantically incorrect output for height."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `swapNumbers` that takes two integer arguments by reference and swaps their values. Demonstrate its usage in `main` by taking two numbers from the user, swapping them, and printing their new values.",
+  "test_cases": [
+    { "input": "5\n10\n", "expected": "Enter first number: Enter second number: Before swap: num1 = 5, num2 = 10\nAfter swap: num1 = 10, num2 = 5\n" }
+  ],
+  "driver": "int main() {\n    // The student's solution contains its own main function\n    // which handles input, calls swapNumbers, and prints output.\n    // The testing framework will execute the student's program directly.\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after std::cin >> num1 in main function."]
+}

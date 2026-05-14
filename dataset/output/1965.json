@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Explain the purpose and usage of `public`, `private`, and `protected` access specifiers using a simple example with a base class `MyClass` and a derived class `DerivedClass`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "MyClass constructor called with: 10, 20, 30\nMyClass constructor called with: 100, 200, 300\nDerivedClass constructor called. Derived public member: 400\n--- Correct Version: C++ Access Specifiers (public, private, protected) ---\n\n--- Access from main (MyClass object `baseObject`) ---\n  main can access MyClass::publicMember directly: 10\n  main cannot directly access MyClass::protectedMember (compile-time error).\n  main cannot directly access MyClass::privateMember (compile-time error).\n  main can access MyClass::privateMember via public getter: 30\n  MyClass Data (from within MyClass):\n    Public Member: 10\n    Protected Member: 20\n    Private Member (via public getter): 30\n\n--- Access from main (DerivedClass object `derivedObject`) ---\n  main can access DerivedClass::publicMember (inherited from MyClass): 100\n  main can access DerivedClass::derivedPublicMember: 400\n  main cannot directly access DerivedClass::protectedMember (inherited, compile-time error).\n  main cannot directly access DerivedClass::privateMember (inherited, compile-time error).\n  MyClass Data (from within MyClass):\n    Public Member: 100\n    Protected Member: 200\n    Private Member (via public getter): 300\n\n--- Access from DerivedClass member function (`demonstrateDerivedAccess`) ---\n  Can access MyClass::publicMember: 100\n  Can access MyClass::protectedMember: 200\n  Cannot directly access MyClass::privateMember (compile-time error).\n  DerivedClass's own publicMember: 400\n\n--- End of Demonstration ---\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

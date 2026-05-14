@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Shape` with a public virtual method `calculateArea()` that returns 0. Derive two classes, `Square` and `Circle`, from `Shape`. Override `calculateArea()` in each derived class to return the correct area.",
+  "test_cases": [
+    { "input": "Square side = 5.0, Circle radius = 3.0", "expected": "Compilation Error" }
+  ],
+  "driver": "Square s(5.0);\nCircle c(3.0);\nShape* shape1 = &s;\nShape* shape2 = &c;\n\nstd::cout << \"Area of Square: \" << shape1->calculateArea() << std::endl;\nstd::cout << \"Area of Circle: \" << shape2->calculateArea() << std::endl;",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

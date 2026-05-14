@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that reads a `std::string` from the user and checks if it is a palindrome (reads the same forwards and backwards, ignoring case and spaces is optional but for this problem, consider exact match).",
+  "test_cases": [
+    { "input": "madam", "expected": "true" },
+    { "input": "hello", "expected": "false" },
+    { "input": "racecar", "expected": "true" },
+    { "input": "", "expected": "true" },
+    { "input": "a", "expected": "true" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\nbool isPalindrome(const std::string& s); // Forward declaration\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        if (isPalindrome(line)) {\n            std::cout << \"true\" << std::endl;\n        } else {\n            std::cout << \"false\" << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    {
+      "line": 21,
+      "column": 40,
+      "message": "expected ';' before 'std::getline'"
+    }
+  ]
+}

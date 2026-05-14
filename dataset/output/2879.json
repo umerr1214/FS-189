@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `Point` class with private `x` and `y` coordinates. Then, define a `DistanceCalculator` class. Make `DistanceCalculator` a friend of `Point` so that a `calculateDistance` method in `DistanceCalculator` can directly access the private coordinates of two `Point` objects.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Distance between (1,1) and (4,5): 5.0\nDistance between (0,0) and (3,4): 5.0\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n\nclass Point {\nprivate:\n    double x;\n    double y;\n\npublic:\n    Point(double _x, double _y) : x(_x), y(_y) {}\n\n    friend class DistanceCalculator;\n};\n\nclass DistanceCalculator {\npublic:\n    double calculateDistance(const Point& p1, const Point& p2) {\n        double dx = p1.x - p2.x;\n        double dy = p1.y - p2.y;\n        return std::sqrt(dx * dx + dy * dy);\n    }\n};\n\nint main() {\n    Point p1(1.0, 1.0);\n    Point p2(4.0, 5.0);\n    DistanceCalculator dc;\n    double dist = dc.calculateDistance(p1, p2);\n    std::cout << \"Distance between (1,1) and (4,5): \" << dist << std::endl;\n\n    Point p3(0.0, 0.0);\n    Point p4(3.0, 4.0);\n    double dist2 = dc.calculateDistance(p3, p4);\n    std::cout << \"Distance between (0,0) and (3,4): \" << dist2 << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'calculateDistance' method in 'DistanceCalculator' returns the squared Euclidean distance instead of the actual distance, as it omits the 'std::sqrt' function."
+  ]
+}

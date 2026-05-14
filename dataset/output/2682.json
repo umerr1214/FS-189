@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `Student` class with private members `studentName` (string), `studentID` (int), and `grade` (char). Implement a default constructor, a parameterized constructor, and public `get` methods for all members. Also, add a `printStudentDetails()` method.",
+  "test_cases": [
+    { "input": "No direct input, uses hardcoded Student objects.", "expected": "Student Details:\nName: Charlie Brown\nID: 303\nGrade: C\n\nRetrieved Grade (int value): 67\nRetrieved Grade (char cast): C\n\nStudent Details:\nName: Diana Prince\nID: 404\nGrade: A\n\nRetrieved Grade (int value): 65\nRetrieved Grade (char cast): A\n", "actual_output_pattern": "Student Details:\nName: Charlie Brown\nID: 303\nGrade: C\n\nRetrieved Grade (int value): 67\nRetrieved Grade (char cast): C\n\nStudent Details:\nName: Diana Prince\nID: 404\nGrade: A\n\nRetrieved Grade (int value): 65\nRetrieved Grade (char cast): A\n" }
+  ],
+  "driver": "int main() {\n    Student s1(\"Charlie Brown\", 303, 'C');\n    std::cout << \"Student Details:\" << std::endl;\n    s1.printStudentDetails();\n    std::cout << std::endl;\n\n    std::cout << \"Retrieved Grade (int value): \" << s1.getGrade() << std::endl;\n    std::cout << \"Retrieved Grade (char cast): \" << static_cast<char>(s1.getGrade()) << std::endl;\n    std::cout << std::endl;\n\n    Student s2(\"Diana Prince\", 404, 'A');\n    std::cout << \"Student Details:\" << std::endl;\n    s2.printStudentDetails();\n    std::cout << std::endl;\n\n    std::cout << \"Retrieved Grade (int value): \" << s2.getGrade() << std::endl;\n    std::cout << \"Retrieved Grade (char cast): \" << static_cast<char>(s2.getGrade()) << std::endl;\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The getGrade() method is declared to return an 'int' instead of a 'char'. While this compiles and returns the ASCII integer value of the character grade, it semantically violates the expectation that a getter for a 'char' member should return a 'char'."
+  ]
+}

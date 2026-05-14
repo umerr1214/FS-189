@@ -1,0 +1,24 @@
+{
+  "language": "c++",
+  "question": "Write a program that checks if a given `std::string` entered by the user is a palindrome (e.g., \"madam\", \"racecar\").",
+  "test_cases": [
+    { "input": "madam", "expected": "Yes, \"madam\" is a palindrome." },
+    { "input": "racecar", "expected": "Yes, \"racecar\" is a palindrome." },
+    { "input": "hello", "expected": "No, \"hello\" is not a palindrome." },
+    { "input": "Madam", "expected": "Yes, \"Madam\" is a palindrome." },
+    { "input": "A man, a plan, a canal: Panama", "expected": "Yes, \"A man, a plan, a canal: Panama\" is a palindrome." },
+    { "input": "No lemon, no melon", "expected": "Yes, \"No lemon, no melon\" is a palindrome." },
+    { "input": "Was it a car or a cat I saw?", "expected": "Yes, \"Was it a car or a cat I saw?\" is a palindrome." },
+    { "input": "", "expected": "Yes, \"\" is a palindrome." },
+    { "input": "a", "expected": "Yes, \"a\" is a palindrome." },
+    { "input": "12321", "expected": "Yes, \"12321\" is a palindrome." },
+    { "input": "abccba", "expected": "Yes, \"abccba\" is a palindrome." },
+    { "input": "abcde", "expected": "No, \"abcde\" is not a palindrome." },
+    { "input": "  _  ", "expected": "Yes, \"  _  \" is a palindrome." }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <algorithm>\n#include <cctype>\n\nbool isPalindrome(const std::string& s) {\n    if (s.empty()) {\n        return true;\n    }\n\n    int left = 0;\n    int right = s.length() - 1;\n\n    while (left < right) {\n        while (left < right && !std::isalnum(s[left])) {\n            left++;\n        }\n        while (left < right && !std::isalnum(s[right])) {\n            right--;\n        }\n\n        if (left >= right) {\n            break;\n        }\n\n        if (std::tolower(s[left]) != std::tolower(s[right])) {\n            return false;\n        }\n\n        left++;\n        right--;\n    }\n\n    return true;\n}\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        if (isPalindrome(line)) {\n            std::cout << \"Yes, \\\"\" << line << \"\\\" is a palindrome.\" << std::endl;\n        } else {\n            std::cout << \"No, \\\"\" << line << \"\\\" is not a palindrome.\" << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

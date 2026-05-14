@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Generate and print all prime numbers within a specified range (e.g., from `start` to `end` provided by the user). Reuse the `isPrime` logic if you created it earlier.",
+  "test_cases": [
+    { "input": "2\n20\n", "expected": "2 3 5 7 11 13 17 19" },
+    { "input": "1000\n1100\n", "expected": "1009 1013 1019 1021 1031 1033 1039 1049 1051 1061 1063 1069 1087 1091 1093 1097" },
+    { "input": "1\n10\n", "expected": "2 3 5 7" },
+    { "input": "50000\n50050\n", "expected": "50021 50023 50039 50041 50047" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <algorithm>\n#include <cctype>\n\n// Declare the user's solution_main function\nextern int solution_main(); \n\n// Helper to trim and normalize string output for comparison\nstd::string trim_and_normalize(const std::string& str) {\n    std::string s = str;\n    // Remove carriage returns\n    s.erase(std::remove(s.begin(), s.end(), '\\r'), s.end());\n    // Trim leading and trailing whitespace\n    size_t first = s.find_first_not_of(\" \\t\\n\");\n    if (std::string::npos == first) {\n        return \"\";\n    }\n    size_t last = s.find_last_not_of(\" \\t\\n\");\n    return s.substr(first, (last - first + 1));\n}\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> test_cases = {\n        {\"2\\n20\\n\", \"2 3 5 7 11 13 17 19\"},\n        {\"1000\\n1100\\n\", \"1009 1013 1019 1021 1031 1033 1039 1049 1051 1061 1063 1069 1087 1091 1093 1097\"},\n        {\"1\\n10\\n\", \"2 3 5 7\"},\n        {\"50000\\n50050\\n\", \"50021 50023 50039 50041 50047\"}\n    };\n\n    for (size_t i = 0; i < test_cases.size(); ++i) {\n        std::string input = test_cases[i].first;\n        std::string expected_output = test_cases[i].second;\n\n        std::stringstream ss_in(input);\n        std::stringstream ss_out;\n\n        // Redirect std::cin and std::cout\n        std::streambuf* old_cin = std::cin.rdbuf();\n        std::streambuf* old_cout = std::cout.rdbuf();\n        std::cin.rdbuf(ss_in.rdbuf());\n        std::cout.rdbuf(ss_out.rdbuf());\n\n        // Call the user's solution function\n        solution_main();\n\n        // Restore std::cin and std::cout\n        std::cin.rdbuf(old_cin);\n        std::cout.rdbuf(old_cout);\n\n        std::string actual_output = trim_and_normalize(ss_out.str());\n        std::string normalized_expected = trim_and_normalize(expected_output);\n\n        if (actual_output != normalized_expected) {\n            std::cerr << \"Test Case \" << i + 1 << \" Failed!\\n\";\n            std::cerr << \"Input:\\n\" << input << \"\\n\";\n            std::cerr << \"Expected:\\n\" << normalized_expected << \"\\n\";\n            std::cerr << \"Actual:\\n\" << actual_output << \"\\n\";\n            return 1; // Indicate failure\n        }\n    }\n    return 0; // Indicate success\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `isPrime` function checks for divisibility up to `n/2` instead of the more efficient `sqrt(n)`, leading to poor performance for larger numbers.",
+    "The `isPrime` function does not optimize by skipping even divisors after checking for 2, performing unnecessary checks.",
+    "Variable names like `s`, `e`, and `n` are less descriptive than `start_range`, `end_range`, or `number` respectively, reducing code readability."
+  ]
+}

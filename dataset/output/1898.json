@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Model a `Course` class that aggregates `Student` objects. The `Course` class should have a `courseName` (string) and maintain a collection (e.g., `std::vector`) of `Student` objects. Implement methods to add a student to the course and display all enrolled students.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Testing Readability/Efficiency Issues ---\nStudent Eve Adams (ID: 201) added to Intro to C++.\nStudent Frank Green (ID: 202) added to Intro to C++.\nStudent Grace Hall (ID: 203) added to Intro to C++.\n\n--- Course Details for: Intro to C++ ---\nCurrent Enrollment (3 students):\n  - ID: 201, Name: Eve Adams\n  - ID: 202, Name: Frank Green\n  - ID: 203, Name: Grace Hall\n----------------------------------------\n\n--- Course Details for: Data Structures ---\n  No students currently enrolled.\n----------------------------------------\n"
+    }
+  ],
+  "driver": "Self-contained in main function.",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `addStudent` method passes `Student` objects by value, causing unnecessary object copying when a `const` reference would be more efficient.",
+    "The `displayStudents` method uses an indexed `for` loop instead of a more modern and readable range-based `for` loop for iterating through the collection.",
+    "Inconsistent naming conventions are used (e.g., `course_name` vs `displayStudents`, `display_info` vs `displayStudents`), reducing readability.",
+    "Less descriptive parameter names are used in constructors and methods (e.g., `n`, `i`, `c_name`, `s`), which can hinder understanding."
+  ]
+}

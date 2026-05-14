@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Student` with members: an integer `id`, a `std::string name`, and a `double gpa`. Write a C++ program that declares a `Student` variable, prompts the user to enter its details, and then displays them.",
+  "test_cases": [
+    {
+      "input": "102\nJane Doe\n3.90",
+      "expected": "Enter student ID: Enter student name (no spaces): Enter student GPA:\n--- Student Details ---\nID: 102\nName: Jane\nGPA: 3.90\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// The actual user's `main` function will be renamed to `user_main`\n// by the testing framework for evaluation.\nextern int user_main(); // Declare the renamed user's main function\n\nint main() {\n    // In a real testing environment, input would be redirected from\n    // a string or file, and output captured.\n    // For this dataset, we simply call the user's main function.\n    return user_main();\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses C-style I/O (`printf`, `scanf`) instead of C++ iostreams (`std::cout`, `std::cin`), which is less idiomatic C++ and can be error-prone.",
+    "Uses a fixed-size `char` array for `name` (`char name[100]`) instead of `std::string`, which is less safe (buffer overflow risk) and less flexible.",
+    "`scanf(\"%s\", s.name)` only reads a single word for the name, truncating names with spaces. This is an efficiency issue as it requires specific user input patterns and doesn't handle common names naturally."
+  ]
+}

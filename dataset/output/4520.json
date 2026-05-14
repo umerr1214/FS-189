@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program to generate and print the Nth term of the Fibonacci sequence. The program should take N as input from the user. (e.g., N=7 should output 8, for 1, 1, 2, 3, 5, 8, 13, ...)",
+  "test_cases": [
+    { "input": "7", "expected": "8\n" },
+    { "input": "10", "expected": "55\n" },
+    { "input": "1", "expected": "1\n" },
+    { "input": "0", "expected": "0\n" },
+    { "input": "-5", "expected": "0\n" },
+    { "input": "40", "expected": "102334155\n" }
+  ],
+  "driver": "// This is a placeholder for a C++ driver. In a real testing environment,\n// this would involve compiling the student's code (e.g., to 'solution.exe'),\n// then for each test case, piping the input to the executable's stdin\n// and capturing its stdout/stderr.\n// Example:\n// std::string input_str = \"7\";\n// std::string command = \"echo \\\"\" + input_str + \"\\\" | ./solution.exe\";\n// std::string output = execute_shell_command(command); // Function to run shell command and get output\n// assert(output == \"8\\n\");\nint main_driver_placeholder() {\n    // The actual testing framework would compile and run the submitted C++ file's main function.\n    // It would redirect standard input for the 'N' value and capture standard output.\n    // For example, if the user's code is in 'user_code.cpp':\n    // 1. Compile: g++ user_code.cpp -o user_code_exec\n    // 2. Run with input \"7\": echo \"7\" | ./user_code_exec\n    // 3. Capture output.\n    std::cout << \"Test driver executed successfully (placeholder).\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The program uses a naive recursive implementation of the Fibonacci sequence, which has exponential time complexity (O(2^N)). This is highly inefficient for larger N values, leading to long execution times and potential stack overflows.",
+    "The handling of N <= 0 is inconsistent with the 'Nth term' problem statement, which typically implies N is a positive integer. While it doesn't crash, it provides a potentially unexpected output (0)."
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `void transposeMatrix(int original[3][3], int transposed[3][3])` that takes a 3x3 integer matrix and stores its transpose in another 3x3 matrix. In `main`, populate an original matrix from user input, call the function, and then print both the original and transposed matrices.",
+  "test_cases": [
+    {
+      "input": "1 2 3 4 5 6 7 8 9",
+      "expected": "Original Matrix:\n1 2 3\n4 5 6\n7 8 9\nTransposed Matrix:\n1 4 7\n2 5 8\n3 6 9\n"
+    },
+    {
+      "input": "0 0 0 1 1 1 2 2 2",
+      "expected": "Original Matrix:\n0 0 0\n1 1 1\n2 2 2\nTransposed Matrix:\n0 1 2\n0 1 2\n0 1 2\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n\n// Assuming the user's code is compiled into an executable named 'solution'\n// This driver is illustrative and would typically involve process execution.\n\nint main() {\n    std::cout << \"Running test cases...\\n\";\n    \n    // Test Case 1\n    std::string input1 = \"1 2 3 4 5 6 7 8 9\";\n    std::string expected1 = \"Original Matrix:\\n1 2 3\\n4 5 6\\n7 8 9\\nTransposed Matrix:\\n1 4 7\\n2 5 8\\n3 6 9\\n\";\n    std::cout << \"\\nTest Case 1 Input:\\n\" << input1 << \"\\n\";\n    std::cout << \"Test Case 1 Expected Output:\\n\" << expected1 << \"\\n\";\n\n    // Test Case 2\n    std::string input2 = \"0 0 0 1 1 1 2 2 2\";\n    std::string expected2 = \"Original Matrix:\\n0 0 0\\n1 1 1\\n2 2 2\\nTransposed Matrix:\\n0 1 2\\n0 1 2\\n0 1 2\\n\";\n    std::cout << \"\\nTest Case 2 Input:\\n\" << input2 << \"\\n\";\n    std::cout << \"Test Case 2 Expected Output:\\n\" << expected2 << \"\\n\";\n\n    // In a real environment, you would execute the compiled program with inputs\n    // redirected to stdin and capture stdout to compare with expected outputs.\n    // Example (conceptual for each test case): \n    // system(\"echo \\\"\" + input1 + \"\\\" | ./solution > output1.txt\");\n    // std::string actual_output1 = read_file(\"output1.txt\");\n    // if (actual_output1 == expected1) { std::cout << \"Test 1 Passed\\n\"; }\n    // else { std::cout << \"Test 1 Failed\\n\"; }\n    \n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

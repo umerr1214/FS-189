@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Write a program that prompts the user for a non-negative integer and uses a `while` loop to count the number of digits in that integer.",
+  "test_cases": [
+    { "input": "12345", "expected": "Number of digits is: 5\n" },
+    { "input": "0", "expected": "Number of digits is: 1\n" },
+    { "input": "9", "expected": "Number of digits is: 1\n" },
+    { "input": "1000000000000000000", "expected": "Number of digits is: 19\n" }
+  ],
+  "driver": "int main() { long long input_val; std::cin >> input_val; int counter_for_digits = 0; if (input_val == 0) { counter_for_digits = 1; } else { long long temp_num = input_val; while (true) { if (temp_num == 0) { break; } temp_num /= 10; counter_for_digits++; } } std::cout << \"Number of digits is: \" << counter_for_digits << std::endl; return 0; }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The code uses a `while(true)` loop with an explicit `break` condition, which is generally less readable and less idiomatic than a direct `while (condition)` loop (e.g., `while (temp_num > 0)`).",
+    "An unnecessary temporary variable `temp_num` is created when the original `input_val` could have been used directly if its value was not needed later.",
+    "Variable names like `input_val` and `counter_for_digits` are slightly more verbose than necessary for their simple roles, impacting readability.",
+    "The explicit `if (temp_num == 0)` check inside the `while(true)` loop is redundant, as the loop condition `while (temp_num > 0)` would naturally handle termination more efficiently and clearly."
+  ]
+}

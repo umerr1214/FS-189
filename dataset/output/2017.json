@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `ComplexNumber` class with `real` and `imaginary` parts (both double). Implement a constructor that takes two arguments for `real` and `imaginary`, and a default constructor that initializes both to 0.0.",
+  "test_cases": [
+    { "input": "ComplexNumber c1;", "expected": "Real: 0.0, Imaginary: 0.0" },
+    { "input": "ComplexNumber c2(3.5, -2.1);", "expected": "Real: 3.5, Imaginary: -2.1" },
+    { "input": "ComplexNumber c3(0.0, 7.0);", "expected": "Real: 0.0, Imaginary: 7.0" },
+    { "input": "ComplexNumber c4(-1.0, 0.0);", "expected": "Real: -1.0, Imaginary: 0.0" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\nclass ComplexNumber {\npublic:\n    double real;\n    double imaginary;\n\n    ComplexNumber() : real(0.0), imaginary(0.0) {}\n    ComplexNumber(double r, double i) : real(r), imaginary(i) {}\n};\n\nint main() {\n    std::cout << std::fixed << std::setprecision(1);\n    ComplexNumber c1;\n    std::cout << \"Test 1 - Default: Real: \" << c1.real << \", Imaginary: \" << c1.imaginary << std::endl;\n    ComplexNumber c2(3.5, -2.1);\n    std::cout << \"Test 2 - Param (3.5, -2.1): Real: \" << c2.real << \", Imaginary: \" << c2.imaginary << std::endl;\n    ComplexNumber c3(0.0, 7.0);\n    std::cout << \"Test 3 - Param (0.0, 7.0): Real: \" << c3.real << \", Imaginary: \" << c3.imaginary << std::endl;\n    ComplexNumber c4(-1.0, 0.0);\n    std::cout << \"Test 4 - Param (-1.0, 0.0): Real: \" << c4.real << \", Imaginary: \" << c4.imaginary << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 8,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Member variables `real` and `imaginary` are declared public, violating encapsulation. This makes the class less robust against external misuse and harder to maintain or extend while preserving data integrity."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Vehicle` base class with `speed` (int) and `color` (string). Derive a `Car` class (adds `numDoors` int) and a `Motorcycle` class (adds `hasSidecar` bool). Demonstrate methods specific to each derived class.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating Car ---\nVehicle Info: Speed = 150 mph, Color = Blue\nCar Specifics: Number of Doors = 4\nCar specific method: Wipers swishing! (This car has 4 doors).\nUpdated Car Info:\nVehicle Info: Speed = 160 mph, Color = Blue\nCar Specifics: Number of Doors = 2\n\n--- Demonstrating Motorcycle ---\nVehicle Info: Speed = 100 mph, Color = Black\nMotorcycle Specifics: Has Sidecar = Yes\nMotorcycle specific method: Vroom vroom! with a sidecar!\nUpdated Motorcycle Info:\nVehicle Info: Speed = 110 mph, Color = Black\nMotorcycle Specifics: Has Sidecar = No\n\n--- Demonstrating Polymorphism and Robustness ---\nVehicle Info: Speed = 80 mph, Color = Silver\nCar Specifics: Number of Doors = 5\nWarning: Speed cannot be negative. Setting to 0.\n\nVehicle Info: Speed = 70 mph, Color = Yellow\nMotorcycle Specifics: Has Sidecar = No\nWarning: Speed cannot be negative. Setting to 0.\n\n--- Testing Constructor Validation ---\nWarning: Car must have at least 1 door. Setting to 2.\nVehicle Info: Speed = 100 mph, Color = White\nCar Specifics: Number of Doors = 2\nWarning: Number of doors cannot be less than 1. Keeping current value.\nVehicle Info: Speed = 100 mph, Color = White\nCar Specifics: Number of Doors = 2\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Demonstrating Car ---\" << std::endl;\n    Car myCar(150, \"Blue\", 4);\n    myCar.displayInfo();\n    myCar.activateWipers();\n    myCar.setSpeed(160);\n    myCar.setNumDoors(2);\n    std::cout << \"Updated Car Info:\" << std::endl;\n    myCar.displayInfo();\n\n    std::cout << \"\\n--- Demonstrating Motorcycle ---\" << std::endl;\n    Motorcycle myMotorcycle(100, \"Black\", true);\n    myMotorcycle.displayInfo();\n    myMotorcycle.revEngine();\n    myMotorcycle.setSpeed(110);\n    myMotorcycle.setHasSidecar(false);\n    std::cout << \"Updated Motorcycle Info:\" << std::endl;\n    myMotorcycle.displayInfo();\n\n    std::cout << \"\\n--- Demonstrating Polymorphism and Robustness ---\" << std::endl;\n    std::vector<Vehicle*> vehicles;\n    vehicles.push_back(new Car(80, \"Silver\", 5));\n    vehicles.push_back(new Motorcycle(70, \"Yellow\", false));\n\n    for (const auto& v : vehicles) {\n        v->displayInfo();\n        v->setSpeed(-20);\n        std::cout << std::endl;\n    }\n\n    for (Vehicle* v : vehicles) {\n        delete v;\n    }\n    vehicles.clear();\n\n    std::cout << \"\\n--- Testing Constructor Validation ---\" << std::endl;\n    Car invalidCar(100, \"White\", 0);\n    invalidCar.displayInfo();\n    invalidCar.setNumDoors(-1);\n    invalidCar.displayInfo();\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter a sentence (`std::string`). Then, count and display the total number of words in the sentence. Assume words are separated by a single space.",
+  "test_cases": [
+    { "input": "Hello world", "expected": "2" },
+    { "input": "Programming is fun", "expected": "3" },
+    { "input": "Single", "expected": "1" },
+    { "input": "", "expected": "0" }
+  ],
+  "driver": "int main() {\n    std::string inputs[] = {\"Hello world\", \"Programming is fun\", \"Single\", \"\"};\n    for (const std::string& input : inputs) {\n        std::stringstream ss_input(input);\n        std::streambuf* old_cin = std::cin.rdbuf();\n        std::cin.rdbuf(ss_input.rdbuf());\n        \n        std::stringstream ss_output;\n        std::streambuf* old_cout = std::cout.rdbuf();\n        std::cout.rdbuf(ss_output.rdbuf());\n        \n        main(); // Call the student's main function\n        \n        std::cin.rdbuf(old_cin);\n        std::cout.rdbuf(old_cout);\n        \n        std::string output = ss_output.str();\n        // Extract the number from the output, e.g., \"Total number of words: 2\\n\"\n        size_t pos = output.find(\"Total number of words: \");\n        if (pos != std::string::npos) {\n            std::string num_str = output.substr(pos + 23);\n            num_str.erase(std::remove(num_str.begin(), num_str.end(), '\\n'), num_str.end());\n            std::cout << num_str << std::endl;\n        } else {\n            std::cout << \"Error: Could not parse output\" << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after std::cout statement."]
+}

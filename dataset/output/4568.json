@@ -1,0 +1,31 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program to count the frequency of each distinct element in a 1D array of integers. Print each element and its count.",
+  "test_cases": [
+    {
+      "input": "1 2 2 3 1 4",
+      "expected": "1 2\n2 2\n3 1\n4 1\n"
+    },
+    {
+      "input": "7 7 7 7 7",
+      "expected": "7 5\n"
+    },
+    {
+      "input": "10 20 30 40 50",
+      "expected": "10 1\n20 1\n30 1\n40 1\n50 1\n"
+    },
+    {
+      "input": "5 2 8 2 5 8 2",
+      "expected": "5 2\n2 3\n8 2\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n<sstream>\n#include <algorithm>\n#include <map>\n\n// Function signature will vary slightly based on implementation\nvoid freqCounter(const std::vector<int>& dataArray);\n\nint main() {\n    std::string line;\n    std::getline(std::cin, line);\n\n    std::stringstream ss(line);\n    int num;\n    std::vector<int> arr;\n    while (ss >> num) {\n        arr.push_back(num);\n    }\n\n    // Redirect cout to a stringstream to capture output\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::stringstream buffer;\n    std::cout.rdbuf(buffer.rdbuf());\n\n    freqCounter(arr);\n\n    std::cout.rdbuf(old_cout); // Restore cout\n    std::cout << buffer.str(); // Print captured output\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The algorithm uses nested loops to count frequencies, resulting in O(N^2) time complexity, which is inefficient for large input arrays.",
+    "A separate `visited` vector is used to mark elements already counted, adding to memory usage and making the logic slightly more complex than a hash map approach.",
+    "Variable names like `dataArray` and `freqCounter` are functional but could be more descriptive. The overall structure is less concise and idiomatic C++ compared to using standard library containers like `std::unordered_map`."
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "language": "c++",
+  "question": "For the `Book` class (from Q1), overload the stream insertion operator (`<<`) to enable printing `Book` objects directly to `std::cout` in a formatted way (e.g., 'Title: ... Author: ... ISBN: ...').",
+  "test_cases": [
+    {
+      "input": "Book(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\")",
+      "expected": "Title: The Hitchhiker's Guide to the Galaxy Author: Douglas Adams ISBN: 978-0345391803\n"
+    },
+    {
+      "input": "Book(\"1984\", \"\", \"978-0451524935\")",
+      "expected": "Title: 1984 Author: N/A ISBN: 978-0451524935\n"
+    },
+    {
+      "input": "Book(\"Brave New World\", \"Aldous Huxley\", \"\")",
+      "expected": "Title: Brave New World Author: Aldous Huxley ISBN: N/A\n"
+    },
+    {
+      "input": "Book(\"\", \"\", \"\")",
+      "expected": "Title: N/A Author: N/A ISBN: N/A\n"
+    },
+    {
+      "input": "Book(\"The Great Gatsby\", \"F. Scott Fitzgerald\", \"978-0743273565\")",
+      "expected": "Title: The Great Gatsby Author: F. Scott Fitzgerald ISBN: 978-0743273565\n"
+    }
+  ],
+  "driver": "int main() {\n    Book book1(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\");\n    Book book2(\"1984\", \"\", \"978-0451524935\");\n    Book book3(\"Brave New World\", \"Aldous Huxley\", \"\");\n    Book book4(\"\", \"\", \"\");\n    Book book5(\"The Great Gatsby\", \"F. Scott Fitzgerald\", \"978-0743273565\");\n\n    std::cout << book1;\n    std::cout << book2;\n    std::cout << book3;\n    std::cout << book4;\n    std::cout << book5;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

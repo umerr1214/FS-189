@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Develop a simple console-based calculator program that takes two numbers and an operator (+, -, *, /) from the user and performs the corresponding operation using a `switch` statement.",
+  "test_cases": [
+    { "input": "10\n+\n5", "expected": "Kindly input the initial numerical value: Kindly input the mathematical operation symbol (+, -, *, /): Kindly input the subsequent numerical value: The calculated sum of 10.00 and 5.00 is: 15.00\n" },
+    { "input": "10\n/\n3", "expected": "Kindly input the initial numerical value: Kindly input the mathematical operation symbol (+, -, *, /): Kindly input the subsequent numerical value: The calculated quotient of 10.00 and 3.00 is: 3.33\n" },
+    { "input": "10\n/\n0", "expected": "Kindly input the initial numerical value: Kindly input the mathematical operation symbol (+, -, *, /): Kindly input the subsequent numerical value: An arithmetic error occurred: Division by zero is not permissible.\n" },
+    { "input": "7\n*\n-2.5", "expected": "Kindly input the initial numerical value: Kindly input the mathematical operation symbol (+, -, *, /): Kindly input the subsequent numerical value: The calculated product of 7.00 and -2.50 is: -17.50\n" }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Poor variable names (e.g., `v1`, `v2`, `calc_result`, `op_char_val`) reduce readability.",
+    "Overly verbose input prompts and output messages make the user interface less concise and harder to parse.",
+    "Hardcoded precision (std::setprecision(2)) might not always be appropriate for a general-purpose calculator."
+  ]
+}

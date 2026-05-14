@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Document` with a virtual destructor. Derive a class `PdfDocument` from `Document`. Demonstrate the importance of the virtual destructor in `Document` when deleting a `PdfDocument` object via a `Document` pointer to prevent memory leaks or undefined behavior.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Creating a PdfDocument object via Document pointer...\nDocument constructor\nPdfDocument constructor, allocated buffer\nAttempting to delete PdfDocument object via Document pointer...\nDocument destructor\nDemonstration of potential memory leak complete.\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"Creating a PdfDocument object via Document pointer...\\n\";\n    Document* docPtr = new PdfDocument();\n\n    std::cout << \"Attempting to delete PdfDocument object via Document pointer...\\n\";\n    delete docPtr;\n\n    std::cout << \"Demonstration of potential memory leak complete.\\n\";\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Memory leak due to non-virtual destructor in base class `Document` when deleting a derived `PdfDocument` object via a `Document` pointer. The `PdfDocument`'s destructor is not invoked, leading to unreleased resources."
+  ]
+}

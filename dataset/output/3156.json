@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "For the `ComplexNumber` class, overload the unary `-` operator to return a new `ComplexNumber` with both `real` and `imaginary` parts negated.",
+  "test_cases": [
+    { "input": "ComplexNumber c1(3.5, -2.0);", "expected": "-3.5 + 2.0i" },
+    { "input": "ComplexNumber c2(-1.0, 4.0);", "expected": "1.0 - 4.0i" },
+    { "input": "ComplexNumber c3(0.0, 0.0);", "expected": "0.0 + 0.0i" },
+    { "input": "ComplexNumber c4(10.0, 0.0);", "expected": "-10.0 + 0.0i" },
+    { "input": "ComplexNumber c5(0.0, -5.5);", "expected": "0.0 + 5.5i" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <iomanip>\n\nclass ComplexNumber {\nprivate:\n    double real;\n    double imaginary;\n\npublic:\n    ComplexNumber(double r = 0.0, double i = 0.0) : real(r), imaginary(i) {}\n\n    std::string toString() const {\n        std::stringstream ss;\n        ss << std::fixed << std::setprecision(1);\n        ss << real;\n        if (imaginary >= 0) {\n            ss << \" + \" << imaginary << \"i\";\n        } else {\n            ss << \" - \" << -imaginary << \"i\";\n        }\n        return ss.str();\n    }\n\n    ComplexNumber operator-() const {\n        return ComplexNumber(-real, -imaginary);\n    }\n};\n\nint main() {\n    ComplexNumber c1(3.5, -2.0);\n    ComplexNumber negated_c1 = -c1;\n    std::cout << negated_c1.toString() << std::endl;\n\n    ComplexNumber c2(-1.0, 4.0);\n    ComplexNumber negated_c2 = -c2;\n    std::cout << negated_c2.toString() << std::endl;\n\n    ComplexNumber c3(0.0, 0.0);\n    ComplexNumber negated_c3 = -c3;\n    std::cout << negated_c3.toString() << std::endl;\n\n    ComplexNumber c4(10.0, 0.0);\n    ComplexNumber negated_c4 = -c4;\n    std::cout << negated_c4.toString() << std::endl;\n\n    ComplexNumber c5(0.0, -5.5);\n    ComplexNumber negated_c5 = -c5;\n    std::cout << negated_c5.toString() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": []
+}

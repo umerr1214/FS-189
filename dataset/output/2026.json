@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Define an abstract base class `Animal` with a pure virtual method `void makeSound()`. Implement two derived classes, `Dog` and `Cat`, each overriding `makeSound()` to print their respective sounds.",
+  "test_cases": [
+    { "input": "", "expected": "Woof!\nMeow!\n" }
+  ],
+  "driver": "int main() {\n    // The main function will not be executed due to the syntax error.\n    // Animal* myDog = new Dog();\n    // Animal* myCat = new Cat();\n    // myDog->makeSound();\n    // myCat->makeSound();\n    // delete myDog;\n    // delete myCat;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Syntax error in 'Animal' class: 'makeSound' is declared without parentheses, making it a data member instead of a function, which cannot be pure virtual. Expected 'virtual void makeSound() = 0;'."
+  ]
+}

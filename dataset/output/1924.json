@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `Rectangle` class with `length` and `width` (both double). Implement a default constructor that initializes both to 0.0 and a parameterized constructor that takes two arguments to set `length` and `width`.",
+  "test_cases": [
+    { "input": "No direct input, object creation and member access.", "expected": "Default Rectangle: Length = 0.0, Width = 0.0\nParameterized Rectangle: Length = 10.5, Width = 5.2" }
+  ],
+  "driver": "int main() {\n    Rectangle r1;\n    std::cout << \"Default Rectangle: Length = \" << r1.length << \", Width = \" << r1.width << std::endl;\n\n    Rectangle r2(10.5, 5.2);\n    std::cout << \"Parameterized Rectangle: Length = \" << r2.length << \", Width = \" << r2.width << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Expected ';' after class definition."
+  ]
+}

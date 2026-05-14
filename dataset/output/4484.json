@@ -1,0 +1,26 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program to calculate the simple interest given the principal amount, rate of interest, and time period from user input. Display the calculated interest.",
+  "test_cases": [
+    {
+      "input": "1000\n5\n2",
+      "expected": "Enter principal amount: Enter annual rate of interest (%): Enter time period (years): Simple Interest: 100"
+    },
+    {
+      "input": "1500.75\n6.5\n4.5",
+      "expected": "Enter principal amount: Enter annual rate of interest (%): Enter time period (years): Simple Interest: 439.018125"
+    },
+    {
+      "input": "5000\n3.75\n1",
+      "expected": "Enter principal amount: Enter annual rate of interest (%): Enter time period (years): Simple Interest: 187.5"
+    }
+  ],
+  "driver": "main()",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The program uses single-letter, non-descriptive variable names (p, r, t, si), significantly reducing code readability.",
+    "Lack of comments makes it harder to understand the purpose of different sections or variables, especially for complex logic (though this program is simple)."
+  ]
+}

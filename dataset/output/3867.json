@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `copyCString` that takes two C-style character arrays (pointers to char), `source` and `destination`, and copies the content of `source` to `destination`. Assume `destination` has sufficient capacity. Do not use `std::string` or library functions like `strcpy`. Demonstrate with example strings.",
+  "test_cases": [
+    { "input": "Hello, World!", "expected": "Hello, World!" },
+    { "input": "", "expected": "" },
+    { "input": "Another example string", "expected": "Another example string" },
+    { "input": "Hi", "expected": "Hi" }
+  ],
+  "driver": "#include <iostream>\n\n// The function to be tested\nvoid copyCString(const char* source, char* destination) {\n    while ((*destination++ = *source++) != '\\0');\n}\n\nint main() {\n    char dest1[50];\n    char dest2[50];\n    char dest3[50];\n    char dest4[50];\n\n    const char* src1 = \"Hello, World!\";\n    copyCString(src1, dest1);\n    std::cout << \"Source: \\\"\" << src1 << \"\\\"\" << std::endl;\n    std::cout << \"Destination (Correct): \\\"\" << dest1 << \"\\\"\" << std::endl;\n\n    const char* src2 = \"\";\n    copyCString(src2, dest2);\n    std::cout << \"Source: \\\"\" << src2 << \"\\\"\" << std::endl;\n    std::cout << \"Destination (Correct): \\\"\" << dest2 << \"\\\"\" << std::endl;\n\n    const char* src3 = \"Another example string\";\n    copyCString(src3, dest3);\n    std::cout << \"Source: \\\"\" << src3 << \"\\\"\" << std::endl;\n    std::cout << \"Destination (Correct): \\\"\" << dest3 << \"\\\"\" << std::endl;\n\n    const char* src4 = \"Hi\";\n    copyCString(src4, dest4);\n    std::cout << \"Source: \\\"\" << src4 << \"\\\"\" << std::endl;\n    std::cout << \"Destination (Correct): \\\"\" << dest4 << \"\\\"\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

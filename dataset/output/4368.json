@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Product` with members `id` (integer), `name` (std::string), and `price` (double). Create an instance of `Product`, initialize its members, and print its details.",
+  "test_cases": [
+    { "input": "", "expected": "Product ID: 101\nProduct Name: 123\nProduct Price: 1200.50\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nstruct Product {\n    int id;\n    std::string name;\n    double price;\n};\n\nint main_driver() {\n    Product p;\n    p.id = 101;\n    p.name = \"Laptop\";\n    p.price = 1200.50;\n\n    std::cout << \"Product ID: \" << p.id << std::endl;\n    std::cout << \"Product Name: \" << p.name << std::endl;\n    std::cout << \"Product Price: \" << p.price << std::endl;\n\n    return 0;\n}\n\nint main() { return main_driver(); }",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": []
+}

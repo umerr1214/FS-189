@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Student` with members `studentID` (int), `name` (`std::string`), and `gpa` (double). Write a program that creates an instance of `Student`, prompts the user to enter its details, and then prints all the student's information.",
+  "test_cases": [
+    {
+      "input": "12345\nAlice Wonderland\n3.95",
+      "expected": "P L E A S E   E N T E R   S T U D E N T   D E T A I L S\n\nS T U D E N T   I D : S T U D E N T   N A M E : S T U D E N T   G P A : \n\n========================================\nD I S P L A Y I N G   S T U D E N T   I N F O R M A T I O N\n========================================\n\nS T U D E N T   I D   I S : 12345\nS T U D E N T   N A M E   I S : Alice Wonderland\nS T U D E N T   G P A   I S : 3.95\n\n\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Excessive use of `std::endl` which flushes the output buffer on each call, potentially impacting performance. Using `\\n` is generally more efficient for newlines.",
+    "Global `using namespace std;` is used, which can lead to name collisions and reduced readability in larger projects by obscuring the origin of symbols.",
+    "The input buffer is cleared using a magic number `256` in `cin.ignore()`, which is less robust and less readable than `std::numeric_limits<std::streamsize>::max()`.",
+    "Printing the student's name character by character in a loop is less efficient and more verbose than directly printing the `std::string` object."
+  ]
+}

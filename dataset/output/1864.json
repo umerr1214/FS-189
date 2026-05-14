@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Implement a `Time` class with private attributes `hours`, `minutes`, and `seconds` (all integers). Overload the `==` operator to compare two `Time` objects for equality (i.e., they represent the exact same time).",
+  "test_cases": [
+    { "input": "Time t1(10, 30, 0); Time t2(10, 30, 0);", "expected": "t1 == t2 is true" },
+    { "input": "Time t1(10, 30, 0); Time t3(10, 30, 1);", "expected": "t1 == t3 is false" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// Time class definition would go here\n\nint main() {\n    Time t1(10, 30, 0);\n    Time t2(10, 30, 0);\n    Time t3(10, 30, 1);\n\n    if (t1 == t2) {\n        std::cout << \"t1 == t2 is true\" << std::endl;\n    } else {\n        std::cout << \"t1 == t2 is false\" << std::endl;\n    }\n\n    if (t1 == t3) {\n        std::cout << \"t1 == t3 is true\" << std::endl;\n    } else {\n        std::cout << \"t1 == t3 is false\" << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the class definition of `Time`."]
+}

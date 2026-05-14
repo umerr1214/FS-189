@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that initializes a 1D integer array of size 5 with user-defined values. Then, find and print the largest element in the array.",
+  "test_cases": [
+    { "input": "10 20 5 30 15\n", "expected": "Enter 5 nums:\nNum 1: Num 2: Num 3: Num 4: Num 5: Largest is: 30\n" },
+    { "input": "-5 -10 -2 -1 -8\n", "expected": "Enter 5 nums:\nNum 1: Num 2: Num 3: Num 4: Num 5: Largest is: -1\n" },
+    { "input": "7 7 7 7 7\n", "expected": "Enter 5 nums:\nNum 1: Num 2: Num 3: Num 4: Num 5: Largest is: 7\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n#include <algorithm>\n\n// Assumes the student's core logic is within a 'void solve()' function\n// which reads from std::cin and writes to std::cout.\nstd::string execute_solution(const std::string& input_data) {\n    std::stringstream ss_input(input_data);\n    std::stringstream ss_output;\n\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    solve(); // Call the student's solution function\n\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    return ss_output.str();\n}\n",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses short, non-descriptive variable names (e.g., 'S' for size, 'a' for array, 'x' for index, 'm' for largest element) reducing readability.",
+    "Lack of comments to explain the purpose of variables or complex logic sections.",
+    "Minor inefficiency in finding the largest element: initializes 'm' with 'a[0]' but then iterates from 'x=0' to 'S-1', causing 'a[0]' to be compared with itself unnecessarily. Iterating from 'x=1' would be slightly more efficient."
+  ]
+}

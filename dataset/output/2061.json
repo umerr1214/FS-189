@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Design a `Date` class with private integer members `day`, `month`, and `year`. Implement a parameterized constructor to set these values and provide public getter methods for each. No setters are required.",
+  "test_cases": [
+    { "input": "15 7 2023", "expected": "Date 1 (Valid): 15/7/2023\n" },
+    { "input": "29 2 2024", "expected": "Date 2 (Leap Year): 29/2/2024\n" },
+    { "input": "32 13 2025", "expected": "Warning: Invalid date provided (32/13/2025). Setting to default 1/1/2000.\nDate 3 (Invalid input): 1/1/2000\n" },
+    { "input": "31 4 2023", "expected": "Warning: Invalid date provided (31/4/2023). Setting to default 1/1/2000.\nDate 4 (Invalid day for month): 1/1/2000\n" },
+    { "input": "10 10 -500", "expected": "Warning: Invalid date provided (10/10/-500). Setting to default 1/1/2000.\nDate 5 (Invalid year): 1/1/2000\n" }
+  ],
+  "driver": "The `main` function creates `Date` objects with both valid and invalid parameters. It demonstrates the class's ability to correctly store valid dates and handle invalid input by defaulting to 1/1/2000, along with a warning message.",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

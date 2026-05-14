@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that reads a positive integer from the user and calculates the sum of its digits (e.g., for 123, the sum is 1+2+3=6). Use a `while` loop for the calculation.",
+  "test_cases": [
+    { "input": 123, "expected": 6 },
+    { "input": 45, "expected": 9 },
+    { "input": 7, "expected": 7 },
+    { "input": 0, "expected": 0 }
+  ],
+  "driver": "int main() {\n    // Test case 1\n    if (getSumOfDigits(123) == 6) std::cout << \"Test 1 Passed\\n\"; else std::cout << \"Test 1 Failed\\n\";\n    // Test case 2\n    if (getSumOfDigits(45) == 9) std::cout << \"Test 2 Passed\\n\"; else std::cout << \"Test 2 Failed\\n\";\n    // Test case 3\n    if (getSumOfDigits(7) == 7) std::cout << \"Test 3 Passed\\n\"; else std::cout << \"Test 3 Failed\\n\";\n    // Test case 4 (edge case for 0)\n    if (getSumOfDigits(0) == 0) std::cout << \"Test 4 Passed\\n\"; else std::cout << \"Test 4 Failed\\n\";\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

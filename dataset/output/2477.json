@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Illustrate the use of `private`, `protected`, and `public` access specifiers by creating a `BaseClass` with members of each type and a `DerivedClass` that attempts to access them. Explain which accesses are permitted.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Demonstrating C++ Access Specifiers (Logical Error Example)\n\nBaseClass members (from BaseClass itself):\n  Private: 10\n  Protected: 20\n  Public: 30\n\nDerivedClass attempting to access BaseClass members:\n  Accessing publicMember (allowed): 30\n  Accessing protectedMember (allowed): 20\n  Attempting to access privateMember directly: NOT PERMITTED\n  Accessing privateMember via public getter (allowed): 10\n\nFrom main() function:\n  Accessing baseObj.publicMember (allowed): 30\n  Attempting to access baseObj.protectedMember directly: NOT PERMITTED\n  Attempting to access baseObj.privateMember directly: NOT PERMITTED\n  Accessing baseObj.privateMember via public getter (allowed): 10"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"Demonstrating C++ Access Specifiers (Logical Error Example)\\n\" << std::endl;\n\n    BaseClass baseObj;\n    baseObj.displayBaseMembers();\n\n    DerivedClass derivedObj;\n    derivedObj.accessBaseMembers();\n\n    std::cout << \"\\nFrom main() function:\" << std::endl;\n    std::cout << \"  Accessing baseObj.publicMember (allowed): \" << baseObj.publicMember << std::endl;\n    std::cout << \"  Accessing baseObj.protectedMember (allowed from main): \" << baseObj.publicMember << std::endl; // Logical error in explanation/value\n    std::cout << \"  Attempting to access baseObj.privateMember directly: NOT PERMITTED\" << std::endl;\n    std::cout << \"  Accessing baseObj.privateMember via public getter (allowed): \" << baseObj.getPrivateMember() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The program's explanation in `DerivedClass::accessBaseMembers` incorrectly states that `privateMember` can be accessed 'directly' from the derived class, even though it relies on a public getter.",
+    "The program's explanation in `main()` incorrectly states that `protectedMember` is 'allowed from main' and prints the value of `publicMember` instead of demonstrating the actual (disallowed) access to `protectedMember`."
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "language": "c++",
+  "question": "For a `Product` class with `id` (int), `name` (string), and `price` (double), implement three constructors: one that takes only `id`, one that takes `id` and `name`, and one that takes `id`, `name`, and `price`. Use constructor chaining where appropriate.",
+  "test_cases": [
+    {
+      "input": "Construct Product with ID 101.",
+      "expected": "ID: 101, Name: [N/A], Price: 0.00\n"
+    },
+    {
+      "input": "Construct Product with ID 102 and name 'Laptop'.",
+      "expected": "ID: 102, Name: Laptop, Price: 0.00\n"
+    },
+    {
+      "input": "Construct Product with ID 103, name 'Mouse', and price 25.50.",
+      "expected": "ID: 103, Name: Mouse, Price: 25.50\n"
+    },
+    {
+      "input": "Modify an existing Product's name and price (ID 200).",
+      "expected": "ID: 200, Name: Custom Product, Price: 99.99\n"
+    },
+    {
+      "input": "Construct Product with ID 300 and name 'Keyboard' (testing chaining).",
+      "expected": "ID: 300, Name: Keyboard, Price: 0.00\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <iomanip> // For setprecision\n\nclass Product {\npublic:\n    int id;\n    std::string name;\n    double price;\n\n    // Constructor 3 (Primary/Full): Takes id, name, and price\n    // Initializes all members directly using member initializer list.\n    Product(int id_val, std::string name_val, double price_val)\n        : id(id_val), name(name_val), price(price_val) {\n        // Body can be empty or contain additional logic/validation if needed.\n    }\n\n    // Constructor 2: Takes id and name\n    // Chains to the 3-argument constructor, providing a default price.\n    Product(int id_val, std::string name_val)\n        : Product(id_val, name_val, 0.0) {\n    }\n\n    // Constructor 1: Takes only id\n    // Chains to the 2-argument constructor, providing default name and price.\n    Product(int id_val)\n        : Product(id_val, \"\") { // Chains to the 2-argument constructor, which then chains to the 3-arg.\n    }\n\n    void display() const {\n        std::cout << \"ID: \" << id\n                  << \", Name: \" << (name.empty() ? \"[N/A]\" : name)\n                  << \", Price: \" << std::fixed << std::setprecision(2) << price\n                  << std::endl;\n    }\n};\n\nint main() {\n    std::cout << \"Testing Product constructors (Correct Version with Chaining):\\n\";\n\n    Product p1(101); // Only ID\n    std::cout << \"Product 1: \";\n    p1.display();\n\n    Product p2(102, \"Laptop\"); // ID and Name\n    std::cout << \"Product 2: \";\n    p2.display();\n\n    Product p3(103, \"Mouse\", 25.50); // ID, Name, and Price\n    std::cout << \"Product 3: \";\n    p3.display();\n\n    // Test with modified object\n    Product p4_mod(200); // Only ID, then modify\n    p4_mod.name = \"Custom Product\";\n    p4_mod.price = 99.99;\n    std::cout << \"Product 4 (Modified): \";\n    p4_mod.display();\n\n    // Another test for chaining\n    Product p5_chain(300, \"Keyboard\");\n    std::cout << \"Product 5: \";\n    p5_chain.display();\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

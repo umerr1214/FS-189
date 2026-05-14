@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that takes a temperature in Celsius from the user and converts it to Fahrenheit, displaying the result. (Formula: F = C * 9/5 + 32)",
+  "test_cases": [
+    { "input": "25", "expected": "Temperature in Fahrenheit: 77.00\n" },
+    { "input": "-10", "expected": "Temperature in Fahrenheit: 14.00\n" },
+    { "input": "abc", "expected": "Temperature in Fahrenheit: 32.00\n" },
+    { "input": "", "expected": "Temperature in Fahrenheit: 32.00\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <streambuf>\n\n// Forward declaration of the user's main logic function\nint _user_main_function_3877();\n\nstd::string execute_program_and_capture_output(const std::string& input) {\n    std::stringstream ss_input(input);\n    std::stringstream ss_output;\n\n    std::streambuf* old_cin_buf = std::cin.rdbuf();\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    _user_main_function_3877(); // Call the user's program logic\n\n    std::cin.rdbuf(old_cin_buf);\n    std::cout.rdbuf(old_cout_buf);\n\n    return ss_output.str();\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program lacks input validation. If a non-numeric value is entered for Celsius, `std::cin` will enter a fail state, and the `celsius` variable will retain its default value (0.0 in this case). The program will then proceed with this incorrect value, displaying '32.00' Fahrenheit, without notifying the user or requesting valid input."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a `BankAccount` class with private members `accountNumber` (string), `ownerName` (string), and `balance` (double). Provide public methods `deposit(double amount)` and `withdraw(double amount)` to modify the balance, ensuring withdrawals do not result in a negative balance. Include a `getBalance()` method.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial balance: $1000.00\nAfter deposit $200.00: $1200.00\nAfter withdraw $300.00: $900.00\nAfter deposit $-150.00 (robustness issue): $750.00\nAfter withdraw $0.00 (robustness issue): $750.00\nAfter withdraw $-50.00 (robustness issue): $750.00\nAfter attempt to withdraw $1000.00: $750.00\nAfter withdraw $50.00: $700.00\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <iomanip>\n\n// The class definition will be inserted here by the system.\n\nint main() {\n    BankAccount myAccount(\"123456789\", \"John Doe\", 1000.0);\n\n    std::cout << std::fixed << std::setprecision(2);\n\n    std::cout << \"Initial balance: $\" << myAccount.getBalance() << std::endl;\n\n    myAccount.deposit(200.0);\n    std::cout << \"After deposit $200.00: $\" << myAccount.getBalance() << std::endl;\n\n    myAccount.withdraw(300.0);\n    std::cout << \"After withdraw $300.00: $\" << myAccount.getBalance() << std::endl;\n\n    myAccount.deposit(-150.0);\n    std::cout << \"After deposit $-150.00 (robustness issue): $\" << myAccount.getBalance() << std::endl;\n\n    myAccount.withdraw(0.0);\n    std::cout << \"After withdraw $0.00 (robustness issue): $\" << myAccount.getBalance() << std::endl;\n\n    myAccount.withdraw(-50.0);\n    std::cout << \"After withdraw $-50.00 (robustness issue): $\" << myAccount.getBalance() << std::endl;\n\n    myAccount.withdraw(1000.0);\n    std::cout << \"After attempt to withdraw $1000.00: $\" << myAccount.getBalance() << std::endl;\n\n    myAccount.withdraw(50.0);\n    std::cout << \"After withdraw $50.00: $\" << myAccount.getBalance() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `deposit` method does not validate that the `amount` is positive, allowing negative deposits which effectively act as withdrawals without proper checks, potentially leading to unintended state changes.",
+    "The `withdraw` method does not provide explicit feedback (e.g., return a boolean or throw an exception) when a withdrawal fails due to insufficient funds or a non-positive amount. It silently does nothing, which is not robust as the calling code cannot easily determine success or failure."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that takes three integer side lengths of a triangle as input and determines if it is an equilateral, isosceles, or scalene triangle. Assume valid triangle inequalities are met.",
+  "test_cases": [
+    { "input": "5 5 5", "expected": "Equilateral" },
+    { "input": "7 7 10", "expected": "Isosceles" },
+    { "input": "3 4 5", "expected": "Scalene" },
+    { "input": "10 10 10", "expected": "Equilateral" },
+    { "input": "8 12 8", "expected": "Isosceles" }
+  ],
+  "driver": "The program reads three integers from standard input, separated by spaces or newlines. It prints the triangle type (Equilateral, Isosceles, or Scalene) followed by a newline to standard output.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["Program does not handle invalid input gracefully. If non-integer input is provided, the program may produce incorrect results or crash due to unhandled stream errors. It assumes input will always be valid integers without checking std::cin's state."]
+}

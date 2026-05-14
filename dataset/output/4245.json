@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function template `find_maximum` that takes two arguments of any comparable data type and returns the larger of the two. Test it with at least two different data types (e.g., int and double).",
+  "test_cases": [
+    { "input": "int_val1 = 100, int_val2 = 50", "expected": "Maximum of 100 and 50 (int): 100" },
+    { "input": "double_val1 = 99.9, double_val2 = 100.1", "expected": "Maximum of 99.9 and 100.1 (double): 100.1" },
+    { "input": "7, 3", "expected": "Maximum of 7 and 3 (literals): 7" },
+    { "input": "12.3f, 12.34", "expected": "Maximum of 12.3 and 12.34 (float, double): 12.34" },
+    { "input": "s1 = \"apple\", s2 = \"banana\"", "expected": "Maximum of \"apple\" and \"banana\" (string): \"banana\"" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\ntemplate <typename T>\nT find_maximum(const T& a, const T& b) {\n    return (a > b) ? a : b;\n}\n\nint main() {\n    int int_val1 = 100;\n    int int_val2 = 50;\n    int max_int = find_maximum(int_val1, int_val2);\n    std::cout << \"Maximum of \" << int_val1 << \" and \" << int_val2 << \" (int): \" << max_int << std::endl;\n\n    double double_val1 = 99.9;\n    double double_val2 = 100.1;\n    double max_double = find_maximum(double_val1, double_val2);\n    std::cout << \"Maximum of \" << double_val1 << \" and \" << double_val2 << \" (double): \" << max_double << std::endl;\n\n    int max_mixed = find_maximum(7, 3);\n    std::cout << \"Maximum of \" << 7 << \" and \" << 3 << \" (literals): \" << max_mixed << std::endl;\n\n    double max_mixed_double = find_maximum(12.3f, 12.34);\n    std::cout << \"Maximum of \" << 12.3f << \" and \" << 12.34 << \" (float, double): \" << max_mixed_double << std::endl;\n\n    std::string s1 = \"apple\";\n    std::string s2 = \"banana\";\n    std::string max_string = find_maximum(s1, s2);\n    std::cout << \"Maximum of \\\"\" << s1 << \"\\\" and \\\"\" << s2 << \"\\\" (string): \\\"\" << max_string << \"\\\"\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

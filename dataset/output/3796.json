@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function `linearSearch` that takes an integer array, its size, and a target value as input. The function should return the index of the target if found, otherwise return -1. Demonstrate its usage by searching for multiple values.",
+  "test_cases": [
+    { "input": "Array: {10, 20, 30, 40, 50}, Size: 5, Target: 30", "expected": "Index: 2" },
+    { "input": "Array: {10, 20, 30, 40, 50}, Size: 5, Target: 10", "expected": "Index: 0" },
+    { "input": "Array: {10, 20, 30, 40, 50}, Size: 5, Target: 50", "expected": "Index: 4" },
+    { "input": "Array: {10, 20, 30, 40, 50}, Size: 5, Target: 99", "expected": "Index: -1" },
+    { "input": "Array: {5}, Size: 1, Target: 5", "expected": "Index: 0" },
+    { "input": "Array: {5}, Size: 1, Target: 10", "expected": "Index: -1" }
+  ],
+  "driver": "#include <iostream>\n\n// linearSearch function will be inserted here\n\nint main() {\n    int arr1[] = {10, 20, 30, 40, 50};\n    int size1 = sizeof(arr1) / sizeof(arr1[0]);\n\n    std::cout << \"Searching in {10, 20, 30, 40, 50}:\\n\";\n    std::cout << \"Target 30: \" << linearSearch(arr1, size1, 30) << \" (Expected: 2)\\n\";\n    std::cout << \"Target 10: \" << linearSearch(arr1, size1, 10) << \" (Expected: 0)\\n\";\n    std::cout << \"Target 50: \" << linearSearch(arr1, size1, 50) << \" (Expected: 4)\\n\";\n    std::cout << \"Target 99: \" << linearSearch(arr1, size1, 99) << \" (Expected: -1)\\n\";\n\n    int arr2[] = {5};\n    int size2 = sizeof(arr2) / sizeof(arr2[0]);\n    std::cout << \"\\nSearching in {5}:\\n\";\n    std::cout << \"Target 5: \" << linearSearch(arr2, size2, 5) << \" (Expected: 0)\\n\";\n    std::cout << \"Target 10: \" << linearSearch(arr2, size2, 10) << \" (Expected: -1)\\n\";\n\n    return 0;\n}",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the closing brace of the `linearSearch` function definition, before `main`."
+  ]
+}

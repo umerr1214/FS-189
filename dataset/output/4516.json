@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program to generate and print the Nth term of the Fibonacci sequence. The program should take N as input from the user. (e.g., N=7 should output 8, for 1, 1, 2, 3, 5, 8, 13, ...)",
+  "test_cases": [
+    { "input": "1", "expected": "1" },
+    { "input": "7", "expected": "8" },
+    { "input": "8", "expected": "16" },
+    { "input": "0", "expected": "0" },
+    { "input": "5", "expected": "5" }
+  ],
+  "driver": "std::cout << fibonacci(N_INPUT_VAR);",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after #include <iostream> directive."
+  ]
+}

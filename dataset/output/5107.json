@@ -1,0 +1,30 @@
+{
+  "language": "c++",
+  "question": "Write a simple C++ calculator program. It should ask the user for two numbers and an arithmetic operator (+, -, *, /). Use a `switch` statement to perform the chosen operation and display the result. Handle division by zero appropriately.",
+  "test_cases": [
+    {
+      "input": "10\n+\n5\n",
+      "expected": "Welcome to the Simple Calculator!\nPlease enter the first number: Please enter an operator (+, -, *, /): Please enter the second number: Result: 15\n"
+    },
+    {
+      "input": "abc\n+\n5\n",
+      "expected": "Welcome to the Simple Calculator!\nPlease enter the first number: Invalid input. Please enter numbers only.\nPlease enter an operator (+, -, *, /): Please enter the second number: Invalid input. Please enter numbers only.\nError: Invalid operator.\n"
+    },
+    {
+      "input": "10\n/\n0\n",
+      "expected": "Welcome to the Simple Calculator!\nPlease enter the first number: Please enter an operator (+, -, *, /): Please enter the second number: Error: Division by zero is not allowed.\n"
+    },
+    {
+      "input": "10\n%\n5\n",
+      "expected": "Welcome to the Simple Calculator!\nPlease enter the first number: Please enter an operator (+, -, *, /): Please enter the second number: Error: Invalid operator.\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Program does not handle invalid non-numeric input robustly. If a non-numeric value is entered for a number, `std::cin` enters a fail state and subsequent input operations will fail or behave unexpectedly without clearing the error flag or ignoring bad input.",
+    "The program terminates immediately after encountering an error (division by zero or invalid operator) instead of allowing the user to correct the input or perform another calculation, which reduces user experience and robustness."
+  ]
+}

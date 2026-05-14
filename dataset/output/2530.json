@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Develop a `BankAccount` class with a private `balance` (double) attribute. Provide public methods `deposit(double amount)`, `withdraw(double amount)`, and `getBalance()`. Ensure `deposit` only accepts positive amounts, and `withdraw` only proceeds if sufficient funds are available and the withdrawal amount is positive. Both `deposit` and `withdraw` methods should return a boolean indicating success or failure.",
+  "test_cases": [
+    { "input": "Initial balance 100.0; Deposit 50.0; Withdraw 20.0; Get balance;", "expected": "Initial balance: 100.00\nDeposit 50.0: true\nCurrent balance: 150.00\nWithdraw 20.0: true\nCurrent balance: 130.00" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\n// The BankAccount class definition would typically be linked or included here.\n// This driver assumes the BankAccount class is available in the compilation unit.\n\nint main() {\n    std::cout << std::fixed << std::setprecision(2);\n    BankAccount account(100.0);\n    std::cout << \"Initial balance: \" << account.getBalance() << std::endl;\n    bool deposited = account.deposit(50.0);\n    std::cout << \"Deposit 50.0: \" << (deposited ? \"true\" : \"false\") << std::endl;\n    std::cout << \"Current balance: \" << account.getBalance() << std::endl;\n    bool withdrawn = account.withdraw(20.0);\n    std::cout << \"Withdraw 20.0: \" << (withdrawn ? \"true\" : \"false\") << std::endl;\n    std::cout << \"Current balance: \" << account.getBalance() << std::endl;\n    return 0;\n}",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the class definition of BankAccount."]
+}

@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program using nested `for` loops to print a right-angled triangle pattern of asterisks (`*`). The height of the triangle should be specified by the user.",
+  "test_cases": [
+    { "input": "4", "expected": "*\n**\n***\n****\n" },
+    { "input": "1", "expected": "*\n" },
+    { "input": "0", "expected": "" },
+    { "input": "-3", "expected": "" }
+  ],
+  "driver": "The program reads an integer from standard input, then prints the pattern to standard output. A test driver would feed the input string to stdin and capture stdout for comparison.",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses obscure and non-descriptive variable names (e.g., 'hgt', 'i_idx', 'j_idx') which reduce code readability.",
+    "Uses `std::endl` within the loop for newlines, which flushes the output buffer on each iteration, leading to reduced efficiency compared to using `'\n'`."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that continuously reads positive integers from the user using a `while` loop. The loop should terminate when the user enters -1 (a sentinel value). After termination, calculate and print the average of all positive integers entered (excluding the -1).",
+  "test_cases": [
+    { "input": "10\n20\n30\n-1\n", "expected": "Average of all entered numbers (excluding -1): 20.00" },
+    { "input": "5\n-2\n15\n0\n-1\n", "expected": "Average of all entered numbers (excluding -1): 4.50" },
+    { "input": "-1\n", "expected": "No numbers were entered (excluding -1)." },
+    { "input": "1\n2\n3\n-1\n", "expected": "Average of all entered numbers (excluding -1): 2.00" },
+    { "input": "10\n-5\n20\n-1\n", "expected": "Average of all entered numbers (excluding -1): 8.33" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <iomanip>\n\nint main() {\n    std::string input_data;\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        input_data += line + \"\\n\";\n    }\n\n    std::istringstream iss(input_data);\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::cin.rdbuf(iss.rdbuf());\n\n    std::ostringstream oss;\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::cout.rdbuf(oss.rdbuf());\n\n    // Placeholder for actual execution of the student's program.\n    // In a real evaluation environment, the student's compiled program\n    // would be executed with 'input_data' as stdin, and its stdout\n    // would be captured and compared against the 'expected' field.\n    std::cout << \"Driver would execute the compiled C++ program with provided input and capture output.\\n\";\n\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The program incorrectly includes zeros and negative numbers (other than -1) in the sum and count when calculating the average. The question explicitly asks for the average of 'positive integers' only."
+  ]
+}

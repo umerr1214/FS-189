@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Determine if a given character entered by the user is an uppercase letter, a lowercase letter, a digit, or a special character. Print the category.",
+  "test_cases": [
+    { "input": "A", "expected": "Category: Uppercase Letter" },
+    { "input": "g", "expected": "Category: Lowercase Letter" },
+    { "input": "5", "expected": "Category: Digit" },
+    { "input": "$", "expected": "Category: Special Character" },
+    { "input": "Z", "expected": "Category: Uppercase Letter" },
+    { "input": "0", "expected": "Category: Digit" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// Assuming getCategory(char ch) is defined in the solution.cpp file\n// and is linked with this driver.\n\nint main() {\n    char input_char;\n    // Read character from standard input (provided by the testing framework)\n    if (std::cin >> input_char) {\n        // Call the solution's function and print the result in the format expected by the solution's main\n        std::cout << \"Category: \" << getCategory(input_char) << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The character range comparisons use magic numbers (ASCII values like 65 for 'A', 90 for 'Z', 97 for 'a', 122 for 'z', 48 for '0', 57 for '9') instead of character literals. While technically functional on ASCII-based systems, this practice makes the code less readable, less portable (e.g., to EBCDIC systems), and semantically obscures the direct intent of comparing against specific characters."
+  ]
+}

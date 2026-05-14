@@ -1,0 +1,28 @@
+{
+  "language": "c++",
+  "question": "Design a `Date` class with private members `day`, `month`, and `year` (all integers). Implement a parameterized constructor. Add a public method `isValidDate()` that returns `true` if the date is valid (e.g., month between 1-12, day within month's range, considering leap years for February), otherwise `false`.",
+  "test_cases": [
+    { "input": [1, 1, 2023], "expected": "true" },
+    { "input": [31, 12, 2023], "expected": "true" },
+    { "input": [29, 2, 2024], "expected": "true" },
+    { "input": [28, 2, 2023], "expected": "true" },
+    { "input": [30, 4, 2023], "expected": "true" },
+    { "input": [31, 7, 2023], "expected": "true" },
+    { "input": [0, 1, 2023], "expected": "false" },
+    { "input": [32, 1, 2023], "expected": "false" },
+    { "input": [1, 0, 2023], "expected": "false" },
+    { "input": [1, 13, 2023], "expected": "false" },
+    { "input": [29, 2, 2023], "expected": "false" },
+    { "input": [31, 4, 2023], "expected": "false" },
+    { "input": [-1, 1, 2023], "expected": "false" },
+    { "input": [1, -1, 2023], "expected": "false" },
+    { "input": [1, 1, -2023], "expected": "false" },
+    { "input": [29, 2, 1900], "expected": "false" },
+    { "input": [29, 2, 2000], "expected": "true" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n#include <tuple>\n\n// The Date class definition will be prepended by the evaluation system.\n\nint main() {\n    std::vector<std::tuple<int, int, int, bool>> tests = {\n        // day, month, year, expected_validity\n        {1, 1, 2023, true},\n        {31, 12, 2023, true},\n        {29, 2, 2024, true},   // Leap year\n        {28, 2, 2023, true},\n        {30, 4, 2023, true},\n        {31, 7, 2023, true},\n\n        // Invalid dates\n        {0, 1, 2023, false},    // Day 0\n        {32, 1, 2023, false},   // Day too high\n        {1, 0, 2023, false},    // Month 0\n        {1, 13, 2023, false},   // Month too high\n        {29, 2, 2023, false},   // Not a leap year\n        {31, 4, 2023, false},   // April has 30 days\n        {-1, 1, 2023, false},   // Negative day\n        {1, -1, 2023, false},   // Negative month\n        {1, 1, -2023, false},   // Negative year\n        {29, 2, 1900, false},  // 1900 is NOT a leap year\n        {29, 2, 2000, true}    // 2000 IS a leap year\n    };\n\n    int passed_tests = 0;\n    for (const auto& test : tests) {\n        int d_val = std::get<0>(test);\n        int m_val = std::get<1>(test);\n        int y_val = std::get<2>(test);\n        bool expected = std::get<3>(test);\n\n        Date d(d_val, m_val, y_val);\n        bool actual = d.isValidDate();\n\n        if (actual == expected) {\n            passed_tests++;\n        } else {\n            std::cout << \"Test failed for date \" << d.getDay() << \"/\" << d.getMonth() << \"/\" << d.getYear()\n                      << \". Expected: \" << (expected ? \"true\" : \"false\")\n                      << \", Got: \" << (actual ? \"true\" : \"false\") << std::endl;\n        }\n    }\n    std::cout << \"Passed \" << passed_tests << \"/\" << tests.size() << \" tests.\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

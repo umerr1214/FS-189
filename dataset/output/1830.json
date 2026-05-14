@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Shape` with a `protected` member `color` (string) and a public method `displayColor()`. Derive a class `ColoredCircle` from `Shape`. Demonstrate how `ColoredCircle` can directly access and modify the `protected` `color` member, and then use `displayColor()` to confirm the change.",
+  "test_cases": [
+    { "input": "", "expected": "Color: blue\nColor: red\n" }
+  ],
+  "driver": "// The main function is part of the provided code.",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The class 'ColoredCircle' inherits 'Shape' privately. This makes the public method 'displayColor()' of the base class inaccessible from outside 'ColoredCircle' (e.g., from 'main'). To allow access, 'ColoredCircle' should inherit 'Shape' publicly, or 'displayColor()' should be explicitly exposed using a 'using' declaration within 'ColoredCircle's public section."]
+}

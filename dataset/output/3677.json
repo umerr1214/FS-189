@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a program that checks if a given `std::string` entered by the user is a palindrome (e.g., \"madam\", \"racecar\").",
+  "test_cases": [
+    { "input": "madam", "expected": "madam is a palindrome." },
+    { "input": "hello", "expected": "hello is not a palindrome." },
+    { "input": "racecar", "expected": "racecar is a palindrome." },
+    { "input": "A", "expected": "A is a palindrome." },
+    { "input": "", "expected": " is a palindrome." },
+    { "input": "ab", "expected": "ab is not a palindrome." },
+    { "input": "aba", "expected": "aba is a palindrome." }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <utility>\n\n// The isPalindrome function from the user's code would be linked or included here.\n// bool isPalindrome(const std::string& s);\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> test_cases = {\n        {\"madam\", \"madam is a palindrome.\"},\n        {\"hello\", \"hello is not a palindrome.\"},\n        {\"racecar\", \"racecar is a palindrome.\"},\n        {\"A\", \"A is a palindrome.\"},\n        {\"\
+", \" is a palindrome.\"},\n        {\"ab\", \"ab is not a palindrome.\"},\n        {\"aba\", \"aba is a palindrome.\"}\n    };\n\n    for (const auto& tc : test_cases) {\n        std::string input_str = tc.first;\n        bool result = isPalindrome(input_str);\n        std::cout << input_str;\n        if (result) {\n            std::cout << \" is a palindrome.\" << std::endl;\n        } else {\n            std::cout << \" is not a palindrome.\" << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["Incorrect palindrome check logic", "Function incorrectly always returns true for strings of length >= 2"]
+}

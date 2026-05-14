@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Demonstrate multilevel inheritance by creating a `Vehicle` class, then derive `Car` from `Vehicle`, and finally `SportsCar` from `Car`. Add unique attributes and a simple `displayInfo` method at each level.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Vehicle Info: Speed = 100 mph\nCar Info: Number of doors = 4\nSportsCar Info: Spoiler Height = 30 cm\nVehicle Info: Speed = 120 mph\nCar Info: Number of doors = 2\nSportsCar Info: Spoiler Height = 40 cm\n"
+    }
+  ],
+  "driver": "int main() {\n    SportsCar mySportsCar(100, 4, 30);\n    mySportsCar.displayInfo();\n\n    Vehicle* polyVehicle = new SportsCar(120, 2, 40);\n    polyVehicle->displayInfo();\n    delete polyVehicle;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a function template `getLarger(T val1, T val2)` that accepts two arguments of the same comparable type `T` and returns the larger of the two. Demonstrate this template function with at least two different data types (e.g., `int` and `double`).",
+  "test_cases": [
+    { "input": "10 20 (int)", "expected": "Larger is 20" },
+    { "input": "15.5 7.3 (double)", "expected": "Larger is 15.5" },
+    { "input": "MyData(1, \"Apple\"), MyData(2, \"Banana\")", "expected": "Compilation Error: `operator>` not defined for MyData" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <utility>\n\ntemplate <typename T>\nT getLarger(T val1, T val2) {\n    if (val1 > val2) {\n        return val1;\n    } else {\n        return val2;\n    }\n}\n\nstruct MyData {\n    int id;\n    std::string name;\n\n    MyData(int i, std::string n) : id(i), name(std::move(n)) {}\n\n    // For demonstration, if MyData were comparable:\n    friend std::ostream& operator<<(std::ostream& os, const MyData& md) {\n        return os << \"{id: \" << md.id << \", name: \" << md.name << \"}\";\n    }\n};\n\nint main() {\n    int int1 = 10;\n    int int2 = 20;\n    std::cout << \"Comparing \" << int1 << \" and \" << int2 << \": Larger is \" << getLarger(int1, int2) << std::endl;\n\n    double double1 = 15.5;\n    double double2 = 7.3;\n    std::cout << \"Comparing \" << double1 << \" and \" << double2 << \": Larger is \" << getLarger(double1, double2) << std::endl;\n\n    MyData data1(1, \"Apple\");\n    MyData data2(2, \"Banana\");\n    // The following line is commented out because it causes the semantic error.\n    // If operator> were defined for MyData, it would compile and run.\n    // std::cout << \"Comparing MyData objects: Larger is \" << getLarger(data1, data2) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["Attempting to instantiate the `getLarger` template function with `MyData` type, but `MyData` does not provide an `operator>` for comparison, leading to a compilation error (invalid operands to binary expression)."]
+}

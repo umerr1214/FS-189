@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Develop a `BankAccount` class where `balance` (double) is private. Provide public methods `deposit(double amount)`, `withdraw(double amount)`, and `getBalance()`. Ensure `withdraw` checks for sufficient funds.",
+  "test_cases": [
+    {
+      "input": "init 100\ndeposit 50\nwithdraw 30\nwithdraw 150\ndeposit -20\nwithdraw -10\nget_balance\ninit -50\nget_balance",
+      "expected": "Account initialized with balance: 100.00\nDeposited: 50.00. New balance: 150.00\nWithdrew: 30.00. New balance: 120.00\nInsufficient funds for withdrawal of 150.00. Current balance: 120.00\nDeposited: -20.00. New balance: 100.00\nWithdrew: -10.00. New balance: 110.00\nCurrent balance: 110.00\nWarning: Initial balance cannot be negative. Setting to 0.\nAccount initialized with balance: 0.00\nCurrent balance: 0.00\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <iomanip>\n// Assuming BankAccount class is defined in the context (from the .cpp file)\n\nint main() {\n    std::string command;\n    double amount;\n    BankAccount* account = nullptr;\n\n    while (std::cin >> command) {\n        if (command == \"init\") {\n            std::cin >> amount;\n            if (account) {\n                delete account;\n            }\n            account = new BankAccount(amount);\n            std::cout << \"Account initialized with balance: \" << std::fixed << std::setprecision(2) << account->getBalance() << std::endl;\n        } else if (command == \"deposit\") {\n            std::cin >> amount;\n            if (account) {\n                account->deposit(amount);\n            } else {\n                std::cout << \"Error: Account not initialized.\" << std::endl;\n            }\n        } else if (command == \"withdraw\") {\n            std::cin >> amount;\n            if (account) {\n                account->withdraw(amount);\n            } else {\n                std::cout << \"Error: Account not initialized.\" << std::endl;\n            }\n        } else if (command == \"get_balance\") {\n            if (account) {\n                std::cout << \"Current balance: \" << std::fixed << std::setprecision(2) << account->getBalance() << std::endl;\n            } else {\n                std::cout << \"Error: Account not initialized.\" << std::endl;\n            }\n        } else {\n            std::cout << \"Unknown command: \" << command << std::endl;\n        }\n    }\n\n    if (account) {\n        delete account;\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `BankAccount` constructor handles negative initial balances by printing a warning to `std::cerr` and silently setting the balance to 0, which is not a robust error handling strategy (e.g., throwing an exception would be better).",
+    "The `deposit` method does not validate the input `amount`, allowing negative values. A negative deposit effectively acts as an unchecked withdrawal, leading to unexpected behavior.",
+    "The `withdraw` method does not explicitly check if the `amount` is positive. If a negative `amount` is passed, the condition `balance >= amount` will likely be true (if `balance` is positive), causing `balance -= amount` to incorrectly increase the balance (acting as an unchecked deposit)."
+  ]
+}

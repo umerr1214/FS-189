@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a `Logger` class. Its constructor should open a specified log file, and its destructor should close the file, ensuring proper resource management. Add a `logMessage(const std::string& message)` method.",
+  "test_cases": [
+    {
+      "input": "Logger(\"test_log_2832_valid.txt\");\nlogger.logMessage(\"First message.\");\nlogger.logMessage(\"Second message.\");",
+      "expected": "First message.\nSecond message.\n"
+    },
+    {
+      "input": "Logger(\"/nonexistent_dir/test_log_2832_invalid.txt\");\nlogger.logMessage(\"This should not be logged.\");",
+      "expected": "Log file should not be created or should be empty, as logging fails silently."
+    }
+  ],
+  "driver": "#include <fstream>\n#include <string>\n#include <iostream>\n#include <cstdio> // For std::remove\n\nclass Logger {\npublic:\n    Logger(const std::string& filename) : logFilename(filename) {\n        outFile.open(logFilename, std::ios::app);\n        if (!outFile.is_open()) {\n            std::cerr << \"Error: Could not open log file \" << logFilename << std::endl;\n        }\n    }\n\n    ~Logger() {\n        if (outFile.is_open()) {\n            outFile.close();\n        }\n    }\n\n    void logMessage(const std::string& message) {\n        if (outFile.is_open()) {\n            outFile << message << std::endl;\n        } else {\n            std::cerr << \"Error: Log file is not open. Message not logged.\" << std::endl;\n        }\n    }\n\nprivate:\n    std::ofstream outFile;\n    std::string logFilename;\n};\n\nint main() {\n    std::string valid_file = \"test_log_2832_valid.txt\";\n    std::string invalid_file = \"/nonexistent_dir/test_log_2832_invalid.txt\"; \n\n    std::remove(valid_file.c_str());\n    std::remove(invalid_file.c_str());\n\n    // Test 1: Valid file path\n    Logger validLogger(valid_file);\n    validLogger.logMessage(\"First message.\");\n    validLogger.logMessage(\"Second message.\");\n    \n    std::cout << \"--- Content of valid_file: ---\\n\";\n    std::ifstream validInFile(valid_file);\n    if (validInFile.is_open()) {\n        std::string line;\n        while (std::getline(validInFile, line)) {\n            std::cout << line << \"\\n\";\n        }\n        validInFile.close();\n    } else {\n        std::cout << \"Valid log file could not be opened for reading.\\n\";\n    }\n    std::remove(valid_file.c_str());\n\n    // Test 2: Invalid file path\n    Logger invalidLogger(invalid_file); \n    invalidLogger.logMessage(\"This should not be logged.\");\n    \n    std::cout << \"--- Content of invalid_file (if any): ---\\n\";\n    std::ifstream invalidInFile(invalid_file);\n    if (invalidInFile.is_open()) {\n        std::string line;\n        bool content_found = false;\n        while (std::getline(invalidInFile, line)) {\n            std::cout << line << \"\\n\";\n            content_found = true;\n        }\n        invalidInFile.close();\n        if (!content_found) {\n             std::cout << \"Invalid log file was created but is empty.\\n\";\n        }\n    } else {\n        std::cout << \"Invalid log file was not created or could not be opened for reading.\\n\";\n    }\n    std::remove(invalid_file.c_str());\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The `Logger` constructor and `logMessage` method do not explicitly check if the underlying `ofstream` is in a valid state (i.e., `is_open()`) before attempting file operations. This can lead to silent failures when the file cannot be opened (e.g., due to an invalid path), violating proper resource management and error reporting semantics."]
+}

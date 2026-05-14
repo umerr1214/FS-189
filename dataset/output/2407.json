@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Refine a `BankAccount` class. Ensure the `balance` is private. Provide public methods `deposit(double amount)` and `withdraw(double amount)` that safely modify the balance, and a `getBalance()` method.",
+  "test_cases": [
+    { "input": "100\ndeposit 50\nwithdraw 200\ndeposit -10\nwithdraw -50", "expected": "Initial balance: $100.00\nAfter deposit $50.00: $150.00\nAfter withdraw $200.00: $-50.00\nFinal balance: $-50.00" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <iomanip>\n\nint main() {\n    BankAccount account(100.0);\n    std::cout << \"Initial balance: $\" << std::fixed << std::setprecision(2) << account.getBalance() << std::endl;\n\n    double depositAmount = 50.0;\n    account.deposit(depositAmount);\n    std::cout << \"After deposit $\" << std::fixed << std::setprecision(2) << depositAmount << \": $\" << account.getBalance() << std::endl;\n\n    double withdrawAmount = 200.0;\n    account.withdraw(withdrawAmount);\n    std::cout << \"After withdraw $\" << std::fixed << std::setprecision(2) << withdrawAmount << \": $\" << account.getBalance() << std::endl;\n\n    // These calls will do nothing internally as per the implementation, so balance remains unchanged.\n    account.deposit(-10.0);\n    account.withdraw(-50.0);\n\n    std::cout << \"Final balance: $\" << std::fixed << std::setprecision(2) << account.getBalance() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The `withdraw` method does not prevent the balance from going negative (overdrafts), which can lead to an invalid financial state. The `deposit` and `withdraw` methods also silently fail for invalid input (non-positive amounts) without providing any feedback to the caller, which can lead to unexpected behavior."]
+}

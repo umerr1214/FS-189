@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a C++ `struct` named `Book` with members `title` (std::string), `author` (std::string), and `yearPublished` (int). Write a function `printBookDetails` that takes a `Book` struct (by value) and prints all its details. Demonstrate by creating a `Book` instance and calling the function.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Book 1 ---\nBook Details:\nTitle: The Great C++ Book\nAuthor: N/A\nYear Published: 2023\n\n--- Book 2 ---\nBook Details:\nTitle: N/A\nAuthor: Jane Doe\nYear Published: 0\n\n--- Book 3 ---\nBook Details:\nTitle: Another Book\nAuthor: John Smith\nYear Published: -100\n\n--- Book 4 ---\nBook Details:\nTitle: Valid Title\nAuthor: Valid Author\nYear Published: 1999\n"
+    }
+  ],
+  "driver": "int main() {\n    Book book1 = {\"The Great C++ Book\", \"\", 2023};\n    std::cout << \"--- Book 1 ---\\n\";\n    printBookDetails(book1);\n    std::cout << \"\\n\";\n\n    Book book2 = {\"\", \"Jane Doe\", 0};\n    std::cout << \"--- Book 2 ---\\n\";\n    printBookDetails(book2);\n    std::cout << \"\\n\";\n\n    Book book3 = {\"Another Book\", \"John Smith\", -100};\n    std::cout << \"--- Book 3 ---\\n\";\n    printBookDetails(book3);\n    std::cout << \"\\n\";\n    \n    Book book4 = {\"Valid Title\", \"Valid Author\", 1999};\n    std::cout << \"--- Book 4 ---\\n\";\n    printBookDetails(book4);\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `printBookDetails` function demonstrates inconsistent robustness in handling 'missing' or 'invalid' data. While it explicitly checks for and handles empty strings for `title` and `author` by printing 'N/A', it directly prints `yearPublished` even if it's 0 or negative. In many real-world applications, 0 or negative years would signify an unknown or invalid publication date, and a more robust implementation would apply consistent validation or provide a more informative representation (e.g., 'Unknown Year') for such cases, similar to how empty strings are handled."
+  ]
+}

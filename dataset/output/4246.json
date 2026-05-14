@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `linear_search` that takes an integer array, its size, and a target integer as input. The function should return the index of the first occurrence of the target in the array, or -1 if the target is not found.",
+  "test_cases": [
+    { "input": "{\"array\": [10, 20, 30, 40, 50], \"size\": 5, \"target\": 10}", "expected": "0" },
+    { "input": "{\"array\": [10, 20, 30, 40, 50], \"size\": 5, \"target\": 30}", "expected": "2" },
+    { "input": "{\"array\": [10, 20, 30, 40, 50], \"size\": 5, \"target\": 50}", "expected": "4" },
+    { "input": "{\"array\": [10, 20, 30, 40, 50], \"size\": 5, \"target\": 60}", "expected": "-1" },
+    { "input": "{\"array\": [], \"size\": 0, \"target\": 10}", "expected": "-1" },
+    { "input": "{\"array\": [77], \"size\": 1, \"target\": 77}", "expected": "0" },
+    { "input": "{\"array\": [77], \"size\": 1, \"target\": 88}", "expected": "-1" },
+    { "input": "{\"array\": [10, 20, 30, 20, 50], \"size\": 5, \"target\": 20}", "expected": "1" }
+  ],
+  "driver": "#include <iostream>\n\n// The linear_search function will be inserted here\n\nvoid run_test(int arr[], int size, int target, int expected, int test_num) {\n    int result = linear_search(arr, size, target);\n    std::cout << \"Test \" << test_num << \": \";\n    if (result == expected) {\n        std::cout << \"PASSED\" << std::endl;\n    } else {\n        std::cout << \"FAILED (Expected: \" << expected << \", Got: \" << result << \")\" << std::endl;\n    }\n}\n\nint main() {\n    // Test cases\n    int arr1[] = {10, 20, 30, 40, 50};\n    run_test(arr1, 5, 10, 0, 1);\n\n    int arr2[] = {10, 20, 30, 40, 50};\n    run_test(arr2, 5, 30, 2, 2);\n\n    int arr3[] = {10, 20, 30, 40, 50};\n    run_test(arr3, 5, 50, 4, 3);\n\n    int arr4[] = {10, 20, 30, 40, 50};\n    run_test(arr4, 5, 60, -1, 4);\n\n    int arr5[] = {}; \n    run_test(arr5, 0, 10, -1, 5);\n\n    int arr6[] = {77};\n    run_test(arr6, 1, 77, 0, 6);\n\n    int arr7[] = {77};\n    run_test(arr7, 1, 88, -1, 7);\n\n    int arr8[] = {10, 20, 30, 20, 50};\n    run_test(arr8, 5, 20, 1, 8);\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after 'return i' statement inside the if block, causing a syntax error."]
+}

@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "For the `Book` class (from a previous problem), overload the equality operator `==`. Two books should be considered equal if their `isbn` values are identical. Demonstrate comparing two `Book` objects.",
+  "test_cases": [
+    {
+      "input": "Implicit (objects created in main)",
+      "expected": "Comparing books:\nbook1 ('978-0743273565') == book2 ('978-0451524935'): False\nbook1 ('978-0743273565') == book4 ('978-0743273565'): True\nbook1 ('978-0743273565') == book5 ('978-0743273565'): True\n\nAttempting comparison with empty ISBN:\nCaught expected error: Robustness Issue: Cannot compare books with empty ISBNs!"
+    }
+  ],
+  "driver": "int main() {\n    Book book1(\"The Great Gatsby\", \"F. Scott Fitzgerald\", \"978-0743273565\");\n    Book book2(\"1984\", \"George Orwell\", \"978-0451524935\");\n    Book book3(\"Brave New World\", \"Aldous Huxley\", \"978-0060850524\");\n    Book book4(\"The Great Gatsby\", \"F. Scott Fitzgerald\", \"978-0743273565\");\n    Book book5(\"Another Book\", \"Another Author\", \"978-0743273565\");\n    Book book6(\"Empty ISBN Book\", \"Someone\", \"\");\n\n    std::cout << \"Comparing books:\" << std::endl;\n\n    try {\n        if (book1 == book2) {\n            std::cout << \"book1 ('\" << book1.isbn << \"') == book2 ('\" << book2.isbn << \"'): True\" << std::endl;\n        } else {\n            std::cout << \"book1 ('\" << book1.isbn << \"') == book2 ('\" << book2.isbn << \"'): False\" << std::endl;\n        }\n    } catch (const std::runtime_error& e) {\n        std::cout << \"Error during comparison: \" << e.what() << std::endl;\n    }\n\n    try {\n        if (book1 == book4) {\n            std::cout << \"book1 ('\" << book1.isbn << \"') == book4 ('\" << book4.isbn << \"'): True\" << std::endl;\n        } else {\n            std::cout << \"book1 ('\" << book1.isbn << \"') == book4 ('\" << book4.isbn << \"'): False\" << std::endl;\n        }\n    } catch (const std::runtime_error& e) {\n        std::cout << \"Error during comparison: \" << e.what() << std::endl;\n    }\n\n    try {\n        if (book1 == book5) {\n            std::cout << \"book1 ('\" << book1.isbn << \"') == book5 ('\" << book5.isbn << \"'): True\" << std::endl;\n        } else {\n            std::cout << \"book1 ('\" << book1.isbn << \"') == book5 ('\" << book5.isbn << \"'): False\" << std::endl;\n        }\n    } catch (const std::runtime_error& e) {\n        std::cout << \"Error during comparison: \" << e.what() << std::endl;\n    }\n\n    std::cout << \"\\nAttempting comparison with empty ISBN:\" << std::endl;\n    try {\n        if (book1 == book6) {\n            std::cout << \"book1 ('\" << book1.isbn << \"') == book6 ('\" << book6.isbn << \"'): True\" << std::endl;\n        } else {\n            std::cout << \"book1 ('\" << book1.isbn << \"') == book6 ('\" << book6.isbn << \"'): False\" << std::endl;\n        }\n    } catch (const std::runtime_error& e) {\n        std::cout << \"Caught expected error: \" << e.what() << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The equality operator is not `const` correct, preventing its use with `const` Book objects and potentially allowing modification of `this` object.",
+    "The equality operator throws an exception for empty ISBNs, which is an unexpected and non-robust behavior for an equality check. Equality operators should return `true` or `false` and not throw exceptions under normal conditions."
+  ]
+}

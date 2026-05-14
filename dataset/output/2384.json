@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a `Student` class with private members `studentID`, `name`, and `major`. Provide a constructor to set these values and public `getStudentID()`, `getName()`, `getMajor()` methods, but no direct setters for `studentID` or `name`.",
+  "test_cases": [
+    { "input": "No direct input, uses hardcoded values.", "expected": "Student ID: 202\nName: Bob Johnson\nMajor: Physics\n\nStudent ID: 203\nName: Charlie Brown\nMajor: Art History\n" }
+  ],
+  "driver": "See main() function in the C++ file. It instantiates `Student` objects and prints their details using the provided getters.",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "**Readability Issues:**\n1. Global `using namespace std;` pollutes the global namespace, which is generally considered bad practice, especially in header files or large scopes.\n2. Cryptic and non-descriptive member variable names (`_id`, `_n`, `_m`) and getter names (`get_id`, `get_name`, `get_major`) significantly reduce code readability and maintainability.\n3. The `get_name()` method creates an unnecessary temporary `std::string` (`temp_name`) before returning, adding complexity without benefit.\n\n**Efficiency Issues:**\n1. The constructor `Student(int p_id, string p_n, string p_m)` passes `std::string` parameters by value (`string p_n`, `string p_m`). This causes unnecessary copies of the string arguments when the `Student` object is constructed. Parameters should typically be passed by `const std::string&` to avoid copies.\n2. The constructor uses assignment (`_id = p_id;`) rather than an initializer list (`: _id(p_id)`) for member initialization. While for primitive types like `int` it's often optimized, for `std::string` it means default-constructing the members first, then assigning, which can be less efficient than direct initialization.\n3. The getters `get_name()` and `get_major()` return `std::string` by value. This creates unnecessary copies of the internal string data every time these methods are called. They should return `const std::string&` to provide efficient, read-only access.\n4. Using `std::endl` instead of `\\n` for simple newlines forces a flush of the output buffer on every call, which can negatively impact performance, especially in loops or for frequent output."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Accept three integer numbers from the user and determine which one is the largest. Print the largest number.",
+  "test_cases": [
+    { "input": "10 20 5", "expected": "The largest number is: 20\n" },
+    { "input": "20 5 10", "expected": "The largest number is: 20\n" },
+    { "input": "7 3 15", "expected": "The largest number is: 15\n" },
+    { "input": "100 120 110", "expected": "The largest number is: 120\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// This C++ code represents how a test harness might\n// interact with the user's program.\n// The user's solution is expected to be a complete program with a `main` function.\n\n// For each test case:\n// 1. The 'input' string will be fed to the standard input (stdin) of the user's program.\n// 2. The standard output (stdout) of the user's program will be captured.\n// 3. The captured stdout will be compared against the 'expected' string.\n\n// Example of how input/output redirection works for a single test:\n// (This is illustrative; the actual execution would be an external process call)\n//\n// std::string input_for_test = \"10 20 5\";\n// // Simulate stdin redirection:\n// std::stringstream ss_input(input_for_test);\n// std::streambuf* old_cin = std::cin.rdbuf();\n// std::cin.rdbuf(ss_input.rdbuf());\n//\n// // Simulate stdout capture:\n// std::stringstream ss_output;\n// std::streambuf* old_cout = std::cout.rdbuf();\n// std::cout.rdbuf(ss_output.rdbuf());\n//\n// // Here, the user's `main()` function would be executed.\n// // For example: user_solution_main(); // if main was renamed\n//\n// // Restore original streams:\n// std::cin.rdbuf(old_cin);\n// std::cout.rdbuf(old_cout);\n//\n// std::string actual_output = ss_output.str();\n// // Compare actual_output with expected output.\n",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The comparison for the third number (`num3`) is flawed. It compares `num3` only with `num2` (`if (num3 > num2)`), instead of comparing it with the current `largest` value (which holds `std::max(num1, num2)`). This leads to incorrect results when `num1` is the actual largest number, but `num3` is greater than `num2` (e.g., input: 20 5 10, expected: 20, actual: 10)."
+  ]
+}

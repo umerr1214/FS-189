@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Implement a C-style string copy function, `myStrcpy`, in C++. This function should take two character pointers: one for the destination array and one for the source array. It should copy the content of the source string to the destination using pointer arithmetic, without using `strcpy` or `std::string`.",
+  "test_cases": [
+    { "input": { "src": "hello world", "dest_size": 20 }, "expected": "hello world" },
+    { "input": { "src": "", "dest_size": 5 }, "expected": "" },
+    { "input": { "src": "short", "dest_size": 10 }, "expected": "short" },
+    { "input": { "src": "a very long string that should fit", "dest_size": 50 }, "expected": "a very long string that should fit" }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <vector>\n\n// Assuming myStrcpy is defined above\n\nint main() {\n    struct TestCase {\n        const char* src;\n        int dest_size;\n        const char* expected;\n    };\n\n    TestCase test_cases[] = {\n        {\"hello world\", 20, \"hello world\"},\n        {\"\", 5, \"\"},\n        {\"short\", 10, \"short\"},\n        {\"a very long string that should fit\", 50, \"a very long string that should fit\"}\n    };\n\n    int passed_count = 0;\n    int total_count = sizeof(test_cases) / sizeof(test_cases[0]);\n\n    for (int i = 0; i < total_count; ++i) {\n        char* dest_buffer = new char[test_cases[i].dest_size];\n        memset(dest_buffer, 'X', test_cases[i].dest_size); // Fill with 'X' to easily spot unintended writes\n\n        myStrcpy(dest_buffer, test_cases[i].src);\n\n        if (strcmp(dest_buffer, test_cases[i].expected) == 0) {\n            std::cout << \"Test \" << i + 1 << \" Passed (content).\\n\";\n            passed_count++;\n        } else {\n            std::cout << \"Test \" << i + 1 << \" Failed (content).\\n\";\n            std::cout << \"  Input src: \\\"\" << test_cases[i].src << \"\\\"\\n\";\n            std::cout << \"  Expected: \\\"\" << test_cases[i].expected << \"\\\"\\n\";\n            std::cout << \"  Got:      \\\"\" << dest_buffer << \"\\\"\\n\";\n        }\n        delete[] dest_buffer;\n    }\n\n    std::cout << \"\\n\" << passed_count << \"/\" << total_count << \" tests passed.\\n\";\n\n    if (passed_count == total_count) {\n        return 0;\n    } else {\n        return 1;\n    }\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    {
+      "line": 18,
+      "column": 20,
+      "message": "The function writes an extra null terminator one byte past the intended end of the destination string. This can lead to a 1-byte buffer overflow and memory corruption if the destination buffer is exactly sized, causing undefined behavior."
+    }
+  ]
+}

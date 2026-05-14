@@ -1,0 +1,27 @@
+{
+  "language": "c++",
+  "question": "Implement a simple menu-driven calculator in C++ that allows the user to choose between addition, subtraction, multiplication, and division for two numbers. Use a switch statement to handle the operations.",
+  "test_cases": [
+    {
+      "input": "1\n10\n5\n5\n",
+      "expected": "\n--- Calculator Menu ---\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\n5. Exit\n-----------------------\nEnter your choice (1-5): Enter first number: Enter second number: Result: 15\n\n--- Calculator Menu ---\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\n5. Exit\n-----------------------\nEnter your choice (1-5): Exiting calculator. Goodbye!\n"
+    },
+    {
+      "input": "4\n10\n0\n5\n",
+      "expected": "\n--- Calculator Menu ---\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\n5. Exit\n-----------------------\nEnter your choice (1-5): Enter first number: Enter second number: Error: Division by zero is not allowed.\n\n--- Calculator Menu ---\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\n5. Exit\n-----------------------\nEnter your choice (1-5): Exiting calculator. Goodbye!\n"
+    },
+    {
+      "input": "a\n0\n6\n1\n10\n5\n5\n",
+      "expected": "\n--- Calculator Menu ---\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\n5. Exit\n-----------------------\nEnter your choice (1-5): Invalid input. Please enter a number.\nEnter your choice (1-5): Choice out of range. Please enter a number between 1 and 5.\nEnter your choice (1-5): Choice out of range. Please enter a number between 1 and 5.\nEnter your choice (1-5): Enter first number: Enter second number: Result: 15\n\n--- Calculator Menu ---\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\n5. Exit\n-----------------------\nEnter your choice (1-5): Exiting calculator. Goodbye!\n"
+    },
+    {
+      "input": "1\nb\n10\n5\n5\n",
+      "expected": "\n--- Calculator Menu ---\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\n5. Exit\n-----------------------\nEnter your choice (1-5): Enter first number: Invalid input. Please enter a valid number.\nEnter first number: Enter second number: Result: 15\n\n--- Calculator Menu ---\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\n5. Exit\n-----------------------\nEnter your choice (1-5): Exiting calculator. Goodbye!\n"
+    }
+  ],
+  "driver": "The program is compiled and executed. Test inputs are fed to stdin, and the stdout is captured and compared against expected outputs. The program is expected to terminate after the 'Exit' option (5) is chosen or the provided input stream is exhausted.",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

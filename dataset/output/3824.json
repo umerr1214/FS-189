@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that dynamically allocates memory for an array of 5 integers using `new`, prompts the user to enter values for these integers, prints the values, and then deallocates the memory using `delete[]`.",
+  "test_cases": [
+    {
+      "input": "11\n22\n33\n44\n55\n",
+      "expected": "Please enter 5 integer values:\nEnter value for element 1: Enter value for element 2: Enter value for element 3: Enter value for element 4: Enter value for element 5: The values you entered are:\nValue at index 0: 11\nValue at index 1: 22\nValue at index 2: 33\nValue at index 3: 44\nValue at index 4: 55\n"
+    }
+  ],
+  "driver": "The program is a complete C++ application. It can be compiled with `g++ -o program 3824.cpp` and run with `./program`. Input will be piped to stdin.",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses non-descriptive variable names (`a`, `S`, `j`) making the code harder to understand.",
+    "Repeats the magic number `5` directly in loops instead of using the defined constant, reducing maintainability.",
+    "Uses `NULL` instead of `nullptr`, which is less modern C++ practice."
+  ]
+}

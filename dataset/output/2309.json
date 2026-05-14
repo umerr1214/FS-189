@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "For a `Product` class with `id` (int), `name` (string), and `price` (double), implement three constructors: one that takes only `id`, one that takes `id` and `name`, and one that takes `id`, `name`, and `price`. Use constructor chaining where appropriate.",
+  "test_cases": [
+    { "input": "", "expected": "ID: 101, Name: Unnamed Product, Price: 1.00\nID: 102, Name: Laptop, Price: 1.00\nID: 103, Name: Mouse, Price: 25.99\n" }
+  ],
+  "driver": "int main() {\n    Product p1(101);\n    Product p2(102, \"Laptop\");\n    Product p3(103, \"Mouse\", 25.99);\n\n    p1.display();\n    p2.display();\n    p3.display();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["Constructor `Product(int, std::string)` incorrectly initializes `price` to 1.0 instead of chaining or setting to 0.0, leading to incorrect default price for products constructed with fewer arguments."]
+}

@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "For a `Rectangle` class with `width` and `height` (double), implement a `getArea()` method that is declared as `const`. Demonstrate that this method can be called on a `const` `Rectangle` object and does not modify object state.",
+  "test_cases": [
+    {
+      "input": "10.0 5.0",
+      "expected": "Area of r1: 50.0"
+    },
+    {
+      "input": "7.0 3.0",
+      "expected": "Area of const_r1: 21.0"
+    }
+  ],
+  "driver": "int main() {\n    Rectangle r1(10.0, 5.0);\n    const Rectangle const_r1(7.0, 3.0);\n\n    std::cout << \"Area of r1: \" << r1.getArea() << std::endl;\n    std::cout << \"Area of const_r1: \" << const_r1.getArea() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the closing brace of the 'Rectangle' class definition."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter the length and width of a rectangle. Calculate and print both the area and the perimeter of the rectangle, ensuring to use appropriate data types for real-world measurements.",
+  "test_cases": [
+    {
+      "input": "10.0 5.0",
+      "expected": "Enter length: Enter width: Area: 50.00\nPerimeter: 30.00\n"
+    },
+    {
+      "input": "7.5 3.0",
+      "expected": "Enter length: Enter width: Area: 22.50\nPerimeter: 21.00\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\nextern void solution_main();\n\nint main() {\n    // In a testing environment, stdin/stdout might be redirected.\n    // The solution_main function is expected to handle I/O directly.\n    solution_main();\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The formula for calculating the perimeter is incorrect. It should be '2 * (length + width)' but is currently 'length + width'."
+  ]
+}

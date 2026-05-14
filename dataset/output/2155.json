@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Develop a `Person` class with `name` (public), `address` (protected), and `phone` (private). Create a derived class `Student` that tries to access all three members. Demonstrate which members are accessible from `Student` and from a non-member function.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial Person Info:\nPerson (Public): Name - Alice Wonderland\nPerson (Private): Phone - 555-1111\n\nInitial Student Info:\nPerson (Public): Name - Bob The Builder\n\n--- Student (Derived Class) Access Demonstration ---\n  - Accessible: name (public) - Bob The Builder\n  - Accessible: address (protected) - 202 Oak Ave\n  - Inaccessible: phone (private) -- Cannot access directly (compile error).\n  - Student ID: S12345\n  Robustness Issue: Leaked address pointer used: 202 Oak Ave\n  Robustness Issue: Address modified via leaked pointer: 123 Leaked St., Modified City\n\n--- Non-Member Function Access Demonstration ---\n  - Accessible: name (public) - Bob The Builder\n  - Inaccessible: address (protected) -- Cannot access directly (compile error).\n  - Inaccessible: phone (private) -- Cannot access directly (compile error).\n  (Non-member functions can only access public members directly).\n\n--- After Student's demonstrateAccess (showing modification via leak) ---\nPerson (Public): Name - Bob The Builder\n  Student's address after potential leak modification: 123 Leaked St., Modified City\n"
+    }
+  ],
+  "driver": "int main() {\n    Person p(\"Alice Wonderland\", \"101 Main St\", \"555-1111\");\n    Student s(\"Bob The Builder\", \"202 Oak Ave\", \"555-2222\", \"S12345\");\n\n    std::cout << \"Initial Person Info:\\n\";\n    p.displayPersonPublicInfo();\n    p.displayInternalPhone();\n\n    std::cout << \"\\nInitial Student Info:\\n\";\n    s.displayPersonPublicInfo();\n\n    s.demonstrateAccess();\n    demonstrateNonMemberAccess(s);\n\n    std::cout << \"\\n--- After Student's demonstrateAccess (showing modification via leak) ---\\n\";\n    s.displayPersonPublicInfo();\n    std::cout << \"  Student's address after potential leak modification: \" << *(s.getAddressPtr()) << \"\\n\";\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Person::getAddressPtr()` method publicly exposes a pointer to a protected member (`address`), breaking encapsulation and allowing unintended external modification. This is a significant design flaw.",
+    "The code includes an unnecessary header (`<vector>`) which can lead to larger compile times and increased binary size without benefit.",
+    "The demonstration of compile-time errors is done by commenting out lines, which is typical, but the runtime 'robustness issue' itself is a direct design flaw rather than a subtle bug."
+  ]
+}

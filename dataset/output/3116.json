@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Design an `Employee` class with `name` and `id`. Create a `Department` class which `contains` a collection of `Employee` objects (using aggregation, e.g., a `std::vector<Employee>`). Implement methods in `Department` to `addEmployee(Employee emp)` and `displayAllEmployees()`. Demonstrate adding multiple employees to a department and displaying their details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Department Employees:\nName: Alice, ID: 101\nName: Bob, ID: 102\nName: Charlie, ID: 103\nDemonstration complete.\n"
+    }
+  ],
+  "driver": "int main() {\n    Department myDeptObject;\n\n    Employee firstEmployee(\"Alice\", 101);\n    Employee secondEmployee(\"Bob\", 102);\n    Employee thirdEmployee(\"Charlie\", 103);\n\n    myDeptObject.addEmployee(firstEmployee);\n    myDeptObject.addEmployee(secondEmployee);\n    myDeptObject.addEmployee(thirdEmployee);\n\n    myDeptObject.displayAllEmployees();\n\n    std::cout << \"Demonstration complete.\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Efficiency Issue: The `addEmployee` method takes an `Employee` object by value (`Employee newEmp`), leading to an unnecessary copy of the `Employee` object when passed as an argument. A `const Employee&` or `Employee&&` parameter would be more efficient.",
+    "Readability Issue: The `displayAllEmployees` method uses C-style `printf` for output instead of C++ iostreams (`std::cout`). This reduces type safety, flexibility, and is less idiomatic in modern C++.",
+    "Readability Issue: The `displayAllEmployees` method uses a traditional `for` loop with an index (`for (size_t i = 0; i < allEmployees.size(); ++i)`) instead of a more concise and readable range-based for loop (`for (const auto& emp : allEmployees)`).",
+    "Readability Issue: The `displayAllEmployees` method is not marked `const`, even though it does not modify the object's state. This violates const-correctness and reduces clarity about the method's intent.",
+    "Readability Issue: Inconsistent use of output methods (`printf` in `displayAllEmployees` and `std::cout` in `main`), which can make code harder to maintain and read."
+  ]
+}

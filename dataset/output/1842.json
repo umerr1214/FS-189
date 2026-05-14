@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "For a `Counter` class with a single private integer member `count`, overload the prefix `++` operator. This operator should increment `count` and then return the modified `Counter` object (by reference).",
+  "test_cases": [
+    { "input": "", "expected": "Initial c: 5\nAfter ++c (c): 6\nAfter ++c (c_ref): 6\nBefore chained ++ (c reset to 5): 5\nAfter chained ++ (c): 7\nAfter chained ++ (c_chained): 7" }
+  ],
+  "driver": "#include <iostream>\n\nclass Counter {\nprivate:\n    int count;\npublic:\n    Counter(int c = 0) : count(c) {}\n    int getCount() const { return count; }\n\n    Counter& operator++() {\n        ++count;\n        return *this;\n    }\n};\n\nint main() {\n    Counter c(5);\n    std::cout << \"Initial c: \" << c.getCount() << std::endl;\n\n    Counter& c_ref = ++c;\n    std::cout << \"After ++c (c): \" << c.getCount() << std::endl;\n    std::cout << \"After ++c (c_ref): \" << c_ref.getCount() << std::endl;\n\n    c.count = 5; // Reset for this specific test\n    std::cout << \"Before chained ++ (c reset to 5): \" << c.getCount() << std::endl;\n    Counter c_chained = ++(++c);\n    std::cout << \"After chained ++ (c): \" << c.getCount() << std::endl;\n    std::cout << \"After chained ++ (c_chained): \" << c_chained.getCount() << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": []
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that declares a `double` variable, initializes it with a decimal value, and then declares a pointer to that variable. Print the value of the variable using dereferencing the pointer, and print the memory address of the variable using both the address-of operator and the pointer itself.",
+  "test_cases": [
+    { "input": "", "expected": "Value of myValue using pointer dereference: 123.45\nMemory address of myValue using address-of operator: <ADDRESS_OF_MYVALUE>\nMemory address of myValue using the pointer itself: <ADDRESS_OF_MYVALUE>\n" }
+  ],
+  "driver": "int main() { double myValue = 123.45; double* ptrToValue = &myValue; std::cout << \"Value of myValue using pointer dereference: \" << *ptrToValue << std::endl; std::cout << \"Memory address of myValue using address-of operator: \" << &myValue << std::endl; std::cout << \"Memory address of myValue using the pointer itself: \" << ptrToValue << std::endl; return 0; }",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "A pointer of type `int*` is used to point to a `double` variable via `reinterpret_cast`. While the code compiles and the address is correctly stored, dereferencing the `int*` will lead to an incorrect interpretation of the `double`'s value, violating the semantic intent of accessing the original `double` value."
+  ]
+}

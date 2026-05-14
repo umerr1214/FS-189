@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "For a `Book` class with `title` and `author`, overload the `<<` (insertion) operator to allow direct printing of `Book` objects to `std::cout` in a readable format.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book 1: Title: The Hitchhiker's Guide to the Galaxy, Author: Douglas Adams\nBook Copy: Title: The Hitchhiker's Guide to the Galaxy, Author: Douglas Adams\nBook Assigned: Title: The Hitchhiker's Guide to the Galaxy, Author: Douglas Adams\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <cstring> // For strlen, strcpy\n\n// Helper to safely copy C-style strings\nchar* string_copy(const char* src) {\n    if (!src) return nullptr;\n    char* dest = new char[std::strlen(src) + 1];\n    std::strcpy(dest, src);\n    return dest;\n}\n\nclass Book {\nprivate:\n    char* title;\n    char* author;\n\npublic:\n    // Constructor\n    Book(const char* title_str, const char* author_str) {\n        title = string_copy(title_str);\n        author = string_copy(author_str);\n    }\n\n    // Destructor to free dynamically allocated memory\n    ~Book() {\n        delete[] title;\n        delete[] author;\n    }\n\n    // ROBUSTNESS ISSUE:\n    // Missing copy constructor and copy assignment operator.\n    // The default implicitly generated ones will perform shallow copies,\n    // leading to double-free errors when Book objects are copied\n    // and then destructed. This violates the Rule of Three/Five.\n\n    const char* getTitle() const { return title; }\n    const char* getAuthor() const { return author; }\n\n    // Friend declaration for operator<<\n    friend std::ostream& operator<<(std::ostream& os, const Book& book);\n};\n\n// Overload the << operator for Book objects\nstd::ostream& operator<<(std::ostream& os, const Book& book) {\n    os << "Title: " << (book.title ? book.title : "N/A")\n       << ", Author: " << (book.author ? book.author : "N/A");\n    return os;\n}\n\nint main() {\n    // Test case 1: Basic printing of a Book object\n    Book book1(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\");\n    std::cout << \"Book 1: \" << book1 << '\\n';\n\n    // Test case 2: Implicit call to default copy constructor\n    // This performs a shallow copy, making book_copy.title point to the same memory as book1.title.\n    // When both book1 and book_copy are destructed, 'title' and 'author' will be double-freed.\n    Book book_copy = book1;\n    std::cout << \"Book Copy: \" << book_copy << '\\n';\n\n    // Test case 3: Implicit call to default copy assignment operator\n    // This also performs a shallow copy without proper memory management.\n    Book book_assigned(\"Temporary Title\", \"Temporary Author\");\n    book_assigned = book1; // book_assigned's original memory is leaked, then points to book1's memory\n    std::cout << \"Book Assigned: \" << book_assigned << '\\n';\n\n    // The program will likely crash upon exiting main due to double-free errors\n    // when book1, book_copy, and book_assigned are destructed.\n    // The operator<< itself works correctly for valid pointers.\n    return 0;\n}\n",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Book` class manages raw pointers (`char*`) but is missing a user-defined copy constructor and copy assignment operator. The implicitly generated default versions perform shallow copies, leading to potential double-free errors and memory corruption when `Book` objects are copied or assigned (violates the Rule of Three/Five).",
+    "The `string_copy` helper function uses `std::strcpy` which is unsafe; `strncpy_s` or `std::string` should be preferred to prevent buffer overflows."
+  ]
+}

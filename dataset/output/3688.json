@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Point` with `x` and `y` (double) coordinates. Create two `Point` objects, read their coordinates from the user, and calculate the Euclidean distance between them.",
+  "test_cases": [
+    { "input": "1.0 1.0\n4.0 5.0\n", "expected": "The Euclidean distance between (1.00, 1.00) and (4.00, 5.00) is 5.00\n" }
+  ],
+  "driver": "g++ -o solution 3688.cpp && ./solution",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

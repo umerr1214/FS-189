@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Calculate the sum of all elements in an integer array using pointer arithmetic instead of array indexing.",
+  "test_cases": [
+    { "input": "1 2 3 4 5", "expected": "15" },
+    { "input": "10 20 30", "expected": "60" },
+    { "input": "7", "expected": "7" },
+    { "input": "-1 -2 -3", "expected": "-6" },
+    { "input": "", "expected": "0" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <numeric>\n#include <sstream>\n\n// The calculateSum function will be placed here\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        std::stringstream ss(line);\n        int val;\n        std::vector<int> arr_vec;\n        while (ss >> val) {\n            arr_vec.push_back(val);\n        }\n\n        int size = arr_vec.size();\n        int* arr_ptr = arr_vec.empty() ? nullptr : arr_vec.data();\n\n        int result = calculateSum(arr_ptr, size);\n        std::cout << result << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The loop condition 'currentPtr <= endPtr' where 'endPtr' points one element past the array's boundary leads to dereferencing an out-of-bounds memory location ('*(arr + size)'). This causes undefined behavior and likely a segmentation fault."
+  ]
+}

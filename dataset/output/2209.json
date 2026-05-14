@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "For the `Book` class (from a previous problem), overload the output stream operator `<<` to allow printing `Book` objects directly to `std::cout` in a formatted way (e.g., \"Title: [title], Author: [author], ISBN: [isbn]\").",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Printing book1 (non-const Book&, stream returned by value):\nTitle: The Hitchhiker's Guide to the Galaxy, Author: Douglas Adams, ISBN: 978-0345391803\n\nPrinting book2 with chaining attempt:\nTitle: 1984, Author: George Orwell, ISBN: 978-0451524935 - A classic dystopian novel.\n"
+    }
+  ],
+  "driver": "    Book book1(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\");\n    Book book2(\"1984\", \"George Orwell\", \"978-0451524935\");\n\n    std::cout << \"Printing book1 (non-const Book&, stream returned by value):\\n\";\n    std::cout << book1 << std::endl;\n\n    std::cout << \"\\nPrinting book2 with chaining attempt:\\n\";\n    std::cout << book2 << \" - A classic dystopian novel.\" << std::endl;\n",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The overloaded output stream operator takes the 'Book' object by non-const reference (`Book& book`). This violates const-correctness, as an output operation should not modify the object being printed, making the design less robust against unintended side effects.",
+    "The overloaded output stream operator returns `std::ostream` by value instead of `std::ostream&`. This breaks the standard mechanism for stream chaining, as subsequent `<<` operations would apply to a temporary copy of the stream, potentially leading to unexpected behavior or loss of stream state modifications in more complex scenarios."
+  ]
+}

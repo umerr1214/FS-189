@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a `Counter` class that keeps track of the total number of `Counter` objects currently alive. Use a static member variable for the count, incremented in constructors and decremented in the destructor. Implement a static method to retrieve the current count.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial count: 0\nAfter creating c1: 1\nAfter creating c2: 2\nAfter copying c1 to c3: 3\nAfter creating c4: 4\nAfter block ends: 0\nAfter creating c5 (heap): 1\nAfter deleting c5 (heap): 0\n"
+    }
+  ],
+  "driver": "#include <iostream>\n\nint total_alive_counters = 0;\n\nclass Counter {\npublic:\n    Counter() {\n        total_alive_counters++;\n    }\n\n    Counter(const Counter& other) {\n        total_alive_counters++;\n    }\n\n    ~Counter() {\n        total_alive_counters--;\n    }\n\n    Counter& operator=(const Counter& other) {\n        return *this;\n    }\n\n    static int getCount() {\n        return total_alive_counters;\n    }\n};\n\nint main() {\n    std::cout << \"Initial count: \" << Counter::getCount() << std::endl;\n\n    {\n        Counter c1;\n        std::cout << \"After creating c1: \" << Counter::getCount() << std::endl;\n\n        Counter c2;\n        std::cout << \"After creating c2: \" << Counter::getCount() << std::endl;\n\n        Counter c3 = c1;\n        std::cout << \"After copying c1 to c3: \" << Counter::getCount() << std::endl;\n\n        Counter c4;\n        std::cout << \"After creating c4: \" << Counter::getCount() << std::endl;\n    }\n\n    std::cout << \"After block ends: \" << Counter::getCount() << std::endl;\n\n    Counter* p_c5 = new Counter();\n    std::cout << \"After creating c5 (heap): \" << Counter::getCount() << std::endl;\n    delete p_c5;\n    std::cout << \"After deleting c5 (heap): \" << Counter::getCount() << std::endl;\n\n    return 0;\n}\n",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The counter uses a global variable (`total_alive_counters`) instead of a static member variable as explicitly required by the question. This breaks encapsulation, makes the class less self-contained, and can lead to readability and maintainability issues in larger projects.",
+    "The reliance on a global variable for core class functionality reduces the object-oriented quality of the design."
+  ]
+}

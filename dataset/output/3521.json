@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that uses a `do-while` loop to repeatedly prompt the user to enter a positive integer. The loop should continue until a valid positive integer (greater than 0) is entered. Finally, print the valid number.",
+  "test_cases": [
+    { "input": "0\n", "expected": "Enter a positive integer: You entered: 0\n" },
+    { "input": "-5\n0\n", "expected": "Enter a positive integer: Enter a positive integer: You entered: 0\n" },
+    { "input": "-10\n-3\n7\n", "expected": "Enter a positive integer: Enter a positive integer: Enter a positive integer: You entered: 7\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <streambuf>\n\n// This driver redirects stdin and captures stdout for testing.\nstd::string run_program_with_input(const std::string& input) {\n    std::stringstream ss_in(input);\n    std::stringstream ss_out;\n\n    std::streambuf* old_cin_buf = std::cin.rdbuf();\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n\n    std::cin.rdbuf(ss_in.rdbuf());\n    std::cout.rdbuf(ss_out.rdbuf());\n\n    extern int main(); // Declare main to be callable\n    main(); // Call the program's main function\n\n    std::cin.rdbuf(old_cin_buf); // Restore original cin\n    std::cout.rdbuf(old_cout_buf); // Restore original cout\n\n    return ss_out.str();\n}\n",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The do-while loop condition `num != 0` is incorrect. It causes the loop to terminate if the user enters 0, which is not a positive integer. The loop should continue as long as `num` is less than or equal to 0. The correct condition should be `num <= 0`."
+  ]
+}

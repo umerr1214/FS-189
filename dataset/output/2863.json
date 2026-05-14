@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Implement a `Calculator` class with overloaded `add` methods. One `add` method should take two `int` arguments, another should take two `double` arguments, and a third should concatenate two `std::string` arguments.",
+  "test_cases": [
+    { "input": "calc.add(5, 3)", "expected": "8" },
+    { "input": "calc.add(-10, 20)", "expected": "10" },
+    { "input": "calc.add(2.5, 3.7)", "expected": "6.2" },
+    { "input": "calc.add(-1.1, 0.5)", "expected": "-0.6" },
+    { "input": "calc.add(\"Hello\", \"World\")", "expected": "HelloWorld" },
+    { "input": "calc.add(\"C++\", \"Programming\")", "expected": "C++Programming" },
+    { "input": "calc.add(std::string(150, 'a'), std::string(150, 'b'))", "expected": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" }
+  ],
+  "driver": "    Calculator calc;\n\n    std::cout << calc.add(5, 3) << std::endl;\n    std::cout << calc.add(-10, 20) << std::endl;\n    std::cout << calc.add(2.5, 3.7) << std::endl;\n    std::cout << calc.add(-1.1, 0.5) << std::endl;\n    std::cout << calc.add(\"Hello\", \"World\") << std::endl;\n    std::cout << calc.add(\"C++\", \"Programming\") << std::endl;\n\n    std::string long_str1(150, 'a');\n    std::string long_str2(150, 'b');\n    std::cout << calc.add(long_str1, long_str2) << std::endl;",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `add(const std::string&, const std::string&)` method uses a fixed-size `char` buffer (`buffer[256]`) with `snprintf` for string concatenation. This approach is prone to truncation if the combined length of the input strings exceeds the buffer size, which is a robustness issue. A more robust solution would use `std::string::operator+` or `std::string::append` which handle memory allocation dynamically."
+  ]
+}

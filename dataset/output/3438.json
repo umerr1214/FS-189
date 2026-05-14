@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `power(int base, int exp)` that calculates `base` raised to the power of `exp` (e.g., 2^3 = 8) using a loop. The function should return an integer, and parameters should be passed by value. Integrate this function into a program that takes base and exponent from the user and prints the result.",
+  "test_cases": [
+    { "input": "2\n3", "expected": "Result: 8\n" },
+    { "input": "10\n2", "expected": "Result: 100\n" },
+    { "input": "10\n3", "expected": "Result: 1000\n" },
+    { "input": "10\n4", "expected": "Result: 10000\n" },
+    { "input": "2\n15", "expected": "Result: 32768\n" }
+  ],
+  "driver": "int main() {\n    int base_val, exp_val;\n    std::cin >> base_val;\n    std::cin >> exp_val;\n    std::cout << \"Result: \" << power(base_val, exp_val) << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The 'result' variable inside the 'power' function is declared as 'short' instead of 'int'. While 'short' might work for small results, it can lead to integer overflow and incorrect values for larger calculations (e.g., 2^15, 10^4) because the maximum value a signed short can hold is typically 32,767. This changes the intended meaning of the calculation for certain inputs, even though the return type is 'int'."
+  ]
+}

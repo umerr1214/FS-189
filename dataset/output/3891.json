@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Develop a program that takes three side lengths from the user and determines if they form an equilateral, isosceles, or scalene triangle. Also, check for invalid triangle conditions (sum of any two sides must be greater than the third).",
+  "test_cases": [
+    { "input": "3 4 5", "expected": "Enter the three side lengths (e.g., 3.0 4.0 5.0): This is a scalene triangle.\n" },
+    { "input": "5 5 5", "expected": "Enter the three side lengths (e.g., 3.0 4.0 5.0): This is an equilateral triangle.\n" },
+    { "input": "7.5 7.5 10.0", "expected": "Enter the three side lengths (e.g., 3.0 4.0 5.0): This is an isosceles triangle.\n" },
+    { "input": "1 2 5", "expected": "Enter the three side lengths (e.g., 3.0 4.0 5.0): Invalid triangle: The sum of any two sides must be greater than the third.\n" },
+    { "input": "0 4 5", "expected": "Enter the three side lengths (e.g., 3.0 4.0 5.0): Invalid triangle: Side lengths must be positive.\n" },
+    { "input": "3 -4 5", "expected": "Enter the three side lengths (e.g., 3.0 4.0 5.0): Invalid triangle: Side lengths must be positive.\n" },
+    { "input": "a 4 5", "expected": "Enter the three side lengths (e.g., 3.0 4.0 5.0): Invalid input: Please enter three numeric values.\n" },
+    { "input": "3 4", "expected": "Enter the three side lengths (e.g., 3.0 4.0 5.0): Invalid input: Please enter three numeric values.\n" },
+    { "input": "3 4 5 6", "expected": "Enter the three side lengths (e.g., 3.0 4.0 5.0): Invalid input: Please enter exactly three numeric values.\n" },
+    { "input": "3.1 4.2 5.3", "expected": "Enter the three side lengths (e.g., 3.0 4.0 5.0): This is a scalene triangle.\n" }
+  ],
+  "driver": "The program expects a single line of three space-separated double values from standard input. For each test case, the provided input string is fed as a line to standard input. The program's output to standard output is captured and compared with the expected output. The driver ensures that the input is exactly three numeric values.",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

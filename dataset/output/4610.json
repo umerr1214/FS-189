@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Define a C++ struct `Point` with two integer members, `x` and `y`. Write a function `double calculateDistance(Point p1, Point p2)` that takes two `Point` objects and returns the Euclidean distance between them. Demonstrate creating `Point` objects and calculating their distance in `main`.",
+  "test_cases": [
+    { "input": "0 0 3 4", "expected": "DEBUG: Intermediate sum of squares: 25.000000\n5.000000" },
+    { "input": "-10 -20 20 10", "expected": "DEBUG: Intermediate sum of squares: 1800.000000\n42.426407" },
+    { "input": "1 1 1 1", "expected": "DEBUG: Intermediate sum of squares: 0.000000\n0.000000" }
+  ],
+  "driver": "int main() {\n    int x1, y1, x2, y2;\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        std::istringstream iss(line);\n        if (!(iss >> x1 >> y1 >> x2 >> y2)) break;\n        Point p1 = {x1, y1};\n        Point p2 = {x2, y2};\n        std::cout.precision(6);\n        std::cout << std::fixed;\n        // The calculateDistance function prints its own debug output.\n        // We just need to print the return value, the debug output will precede it.\n        double dist = calculateDistance(p1, p2);\n        std::cout << dist << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `calculateDistance` function uses `std::pow(value, 2)` instead of direct multiplication (`value * value`) for squaring, which is less efficient and can be less precise for integer-derived values.",
+    "The function includes an unnecessary `std::cout` debug statement inside, which impacts efficiency and pollutes output.",
+    "Variable names like `ptA`, `ptB`, `diffX`, `diffY`, `sqX`, `sqY`, `sumOfSq`, `finalResult` are overly verbose or less descriptive than they could be, reducing readability.",
+    "The function's logic involves several intermediate variables that could be condensed into fewer lines, making the code less concise and potentially harder to follow.",
+    "Lack of comments makes the code harder to understand at a glance."
+  ]
+}

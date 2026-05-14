@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Person` with `protected` members `firstName` and `lastName` (both strings). Create a derived class `Teacher` that has an additional `subject` (string) member. The `Teacher` constructor should correctly initialize `firstName` and `lastName` by calling the `Person` base class constructor, and then initialize its own `subject` member. Implement a method in `Teacher` to display the teacher's full name and subject.",
+  "test_cases": [
+    { "input": "", "expected": "Teacher: John Doe, Subject: Math\n" },
+    { "input": "", "expected": "Teacher: Jane , Subject: Physics\n" },
+    { "input": "", "expected": "Teacher:  Smith, Subject: Chemistry\n" },
+    { "input": "", "expected": "Teacher:  , Subject: Art\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\nclass Person {\nprotected:\n    std::string firstName;\n    std::string lastName;\n\npublic:\n    Person(std::string first, std::string last) : firstName(first), lastName(last) {}\n    Person() : firstName(\"\"), lastName(\"\") {}\n};\n\nclass Teacher : public Person {\nprivate:\n    std::string subject;\n\npublic:\n    Teacher(std::string first, std::string last, std::string sub)\n        : Person(), \n          subject(sub)\n    {\n        this->firstName = first;\n        this->lastName = last;\n    }\n\n    void displayTeacherInfo() {\n        std::cout << \"Teacher: \" << firstName << \" \" << lastName << \", Subject: \" << subject << std::endl;\n    }\n};\n\nint main() {\n    Teacher teacher1(\"John\", \"Doe\", \"Math\");\n    teacher1.displayTeacherInfo();\n\n    Teacher teacher2(\"Jane\", \"\", \"Physics\");\n    teacher2.displayTeacherInfo();\n\n    Teacher teacher3(\"\", \"Smith\", \"Chemistry\");\n    teacher3.displayTeacherInfo();\n\n    Teacher teacher4(\"\", \"\", \"Art\");\n    teacher4.displayTeacherInfo();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The Teacher constructor calls the default Person constructor and then directly re-assigns protected members 'firstName' and 'lastName' in its body. This bypasses the intended base class constructor initialization for these specific values, leading to inefficient double initialization/assignment and making the design less robust to changes in the Person class's internal logic or invariants.",
+    "The displayTeacherInfo method might produce an extra space in the output if either 'firstName' or 'lastName' is an empty string (e.g., 'Teacher: Jane , Subject: Physics'), which is a minor output formatting robustness issue."
+  ]
+}

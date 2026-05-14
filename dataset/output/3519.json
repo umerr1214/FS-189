@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define a C++ `struct Book` with members `std::string title`, `std::string author`, and `int publicationYear`. In `main`, create an array of 3 `Book` structs, populate their details, and then iterate through the array to print the details of each book.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book 1: Title: Dune, Author: Frank Herbert, Year: 1965\nBook 2: Title: Sapiens, Author: Yuval Noah Harari, Year: 2011\nBook 3: Title: The Midnight Library, Author: Matt Haig, Year: 2020\n"
+    }
+  ],
+  "driver": "",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

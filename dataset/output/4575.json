@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that declares a 2D matrix (e.g., 3x3), prompts the user for a scalar value, and then performs scalar multiplication on the matrix, printing the resulting matrix.",
+  "test_cases": [
+    {
+      "input": "4\n",
+      "expected": "Enter a scalar value for multiplication: Matrix after scalar multiplication:\n   4   8  12\n  16  20  24\n  28  32  36\n"
+    },
+    {
+      "input": "invalid\n3\n",
+      "expected": "Enter a scalar value for multiplication: Invalid input. Please enter a numeric value: Matrix after scalar multiplication:\n   3   6   9\n  12  15  18\n  21  24  27\n"
+    }
+  ],
+  "driver": "timeout 5s sh -c \"g++ -o solution solution.cpp && echo '{input}' | ./solution\"",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

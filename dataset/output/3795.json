@@ -1,0 +1,31 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter a sentence (as `std::string`) and then counts and displays the number of occurrences of a specific character (also input by the user) within that sentence.",
+  "test_cases": [
+    {
+      "input": "Hello, world! This is a test.\nl",
+      "expected": "The character 'l' appears 3 times in the sentence.\n"
+    },
+    {
+      "input": "Programming is fun.\np",
+      "expected": "The character 'p' appears 1 times in the sentence.\n"
+    },
+    {
+      "input": "\nx",
+      "expected": "The character 'x' appears 0 times in the sentence.\n"
+    },
+    {
+      "input": "Banana\na",
+      "expected": "The character 'a' appears 3 times in the sentence.\n"
+    },
+    {
+      "input": "No occurrences here.\nz",
+      "expected": "The character 'z' appears 0 times in the sentence.\n"
+    }
+  ],
+  "driver": "g++ -o solution 3795.cpp && echo \"<input>\" | ./solution",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

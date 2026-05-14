@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a base class `Employee` with `name` (string) and `id` (int). Derive a `Manager` class and a `Worker` class. `Manager` should have an additional `department` (string) and `Worker` an `hourlyRate` (double). Each class should have a method to print its specific details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Employee Details ---\nEmployee Name: Alice Wonderland, ID: 101, Department: Marketing\nEmployee Name: Bob The Builder, ID: 202, Hourly Rate: 35.75\nEmployee Name: Charlie Chaplin, ID: 303, Department: Finance\nEmployee Name: Dora The Explorer, ID: 404, Hourly Rate: 28\n------------------------\n"
+    }
+  ],
+  "driver": "int main() {\n    std::vector<Employee*> employees;\n    employees.push_back(new Manager(\"Alice Wonderland\", 101, \"Marketing\"));\n    employees.push_back(new Worker(\"Bob The Builder\", 202, 35.75));\n    employees.push_back(new Manager(\"Charlie Chaplin\", 303, \"Finance\"));\n    employees.push_back(new Worker(\"Dora The Explorer\", 404, 28.00));\n\n    std::cout << \"--- Employee Details ---\" << std::endl;\n    for (const auto& emp : employees) {\n        emp->printDetails();\n    }\n    std::cout << \"------------------------\" << std::endl;\n\n    for (Employee* emp : employees) {\n        delete emp;\n    }\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

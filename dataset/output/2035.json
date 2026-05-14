@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Model a `Library` class that manages a collection of `Book` objects (from Q1) using a simple array or vector (without using STL directly for management, just as storage). Implement methods to add a book and display all books.",
+  "test_cases": [
+    {
+      "input": "Adding 4 books to a library with MAX_BOOKS=3.",
+      "expected": "Attempting to add: The Great Gatsby\nAttempting to add: 1984\nAttempting to add: To Kill a Mockingbird\nAttempting to add: Brave New World\n(Program will likely crash or exhibit undefined behavior due to buffer overflow after adding 'Brave New World'.)"
+    }
+  ],
+  "driver": "int main() {\n    Library myLibrary;\n\n    myLibrary.addBook(Book(\"The Great Gatsby\", \"F. Scott Fitzgerald\", 1925));\n    myLibrary.addBook(Book(\"1984\", \"George Orwell\", 1949));\n    myLibrary.addBook(Book(\"To Kill a Mockingbird\", \"Harper Lee\", 1960));\n    \n    myLibrary.addBook(Book(\"Brave New World\", \"Aldous Huxley\", 1932)); \n\n    myLibrary.displayAllBooks();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `addBook` method does not check if the internal fixed-size array `books` has reached its `MAX_BOOKS` capacity before attempting to add a new book. This leads to a buffer overflow when more books than `MAX_BOOKS` are added, resulting in undefined behavior or a program crash.",
+    "Lack of error handling or capacity check in `addBook` makes the `Library` class non-robust against invalid usage (adding too many books)."
+  ]
+}

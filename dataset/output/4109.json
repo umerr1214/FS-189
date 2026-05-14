@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a function `reverseArray(int arr[], int size)` that reverses the order of elements in a 1D integer array in-place. Demonstrate by initializing an array, printing it, calling the function, and printing the reversed array.",
+  "test_cases": [
+    {
+      "input": "Array initialized as {1, 2, 3, 4, 5}",
+      "expected": "5 4 3 2 1 \n"
+    }
+  ],
+  "driver": "#include <iostream>\n\nvoid printArray(int arr[], int size) {\n    for (int i = 0; i < size; ++i) {\n        std::cout << arr[i] << \" \";\n    }\n    std::cout << std::endl;\n}\n\n// The reverseArray function would be inserted here\n\nint main() {\n    int arr[] = {1, 2, 3, 4, 5};\n    int size = sizeof(arr) / sizeof(arr[0]);\n\n    std::cout << \"Original array: \";\n    printArray(arr, size);\n\n    reverseArray(arr, size);\n\n    std::cout << \"Reversed array: \";\n    printArray(arr, size);\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `reverseArray` function incorrectly swaps `arr[left]` with `arr[left + 1]` instead of `arr[right]`, causing elements to shift rather than reverse. It also only processes the first half of the array this way."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Student` with members `studentID` (int), `name` (`std::string`), and `gpa` (double). Write a program that creates an instance of `Student`, prompts the user to enter its details, and then prints all the student's information.",
+  "test_cases": [
+    {
+      "input": "12345\nJohn Doe\n3.8",
+      "expected": "Enter student ID: Enter student name: Enter student GPA: \n--- Student Information ---\nID: 12345\nName: \nGPA: 0\n"
+    },
+    {
+      "input": "54321\nJane Smith\n3.9",
+      "expected": "Enter student ID: Enter student name: Enter student GPA: \n--- Student Information ---\nID: 54321\nName: \nGPA: 0\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Input buffer not properly cleared after numeric input (`std::cin >> studentID`), causing `std::getline` to immediately read the leftover newline character and assign an empty string to `name`.",
+    "Lack of error handling for `std::cin >> gpa` means if non-numeric input is provided, the stream enters a failed state, `gpa` is not updated, and subsequent I/O operations might behave unexpectedly without clearing error flags."
+  ]
+}

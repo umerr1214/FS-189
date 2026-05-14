@@ -1,0 +1,35 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that asks the user to enter an integer between 1 and 7, and then uses a switch statement to print the corresponding day of the week (e.g., 1 for Monday, 2 for Tuesday, etc.). Handle invalid input.",
+  "test_cases": [
+    {
+      "input": "1\n",
+      "expected": "Enter an integer between 1 and 7 (1 for Monday, 7 for Sunday): Monday\n"
+    },
+    {
+      "input": "7\n",
+      "expected": "Enter an integer between 1 and 7 (1 for Monday, 7 for Sunday): Sunday\n"
+    },
+    {
+      "input": "0\n2\n",
+      "expected": "Enter an integer between 1 and 7 (1 for Monday, 7 for Sunday): Invalid input. The number must be between 1 and 7.\nEnter an integer between 1 and 7 (1 for Monday, 7 for Sunday): Tuesday\n"
+    },
+    {
+      "input": "8\n6\n",
+      "expected": "Enter an integer between 1 and 7 (1 for Monday, 7 for Sunday): Invalid input. The number must be between 1 and 7.\nEnter an integer between 1 and 7 (1 for Monday, 7 for Sunday): Saturday\n"
+    },
+    {
+      "input": "abc\n3\n",
+      "expected": "Enter an integer between 1 and 7 (1 for Monday, 7 for Sunday): Invalid input. Please enter a numerical value.\nEnter an integer between 1 and 7 (1 for Monday, 7 for Sunday): Wednesday\n"
+    },
+    {
+      "input": "hello world\n5\n",
+      "expected": "Enter an integer between 1 and 7 (1 for Monday, 7 for Sunday): Invalid input. Please enter a numerical value.\nEnter an integer between 1 and 7 (1 for Monday, 7 for Sunday): Friday\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <fstream>\n#include <cstdlib>\n\nint main() {\n    std::string user_code_filename = \"3909.cpp\";\n\n    std::vector<std::pair<std::string, std::string>> test_cases = {\n        {\n            \"1\\n\",\n            \"Enter an integer between 1 and 7 (1 for Monday, 7 for Sunday): Monday\\n\"\n        },\n        {\n            \"7\\n\",\n            \"Enter an integer between 1 and 7 (1 for Monday, 7 for Sunday): Sunday\\n\"\n        },\n        {\n            \"0\\n2\\n\",\n            \"Enter an integer between 1 and 7 (1 for Monday, 7 for Sunday): Invalid input. The number must be between 1 and 7.\\nEnter an integer between 1 and 7 (1 for Monday, 7 for Sunday): Tuesday\\n\"\n        },\n        {\n            \"8\\n6\\n\",\n            \"Enter an integer between 1 and 7 (1 for Monday, 7 for Sunday): Invalid input. The number must be between 1 and 7.\\nEnter an integer between 1 and 7 (1 for Monday, 7 for Sunday): Saturday\\n\"\n        },\n        {\n            \"abc\\n3\\n\",\n            \"Enter an integer between 1 and 7 (1 for Monday, 7 for Sunday): Invalid input. Please enter a numerical value.\\nEnter an integer between 1 and 7 (1 for Monday, 7 for Sunday): Wednesday\\n\"\n        },\n        {\n            \"hello world\\n5\\n\",\n            \"Enter an integer between 1 and 7 (1 for Monday, 7 for Sunday): Invalid input. Please enter a numerical value.\\nEnter an integer between 1 and 7 (1 for Monday, 7 for Sunday): Friday\\n\"\n        }\n    };\n\n    std::string compile_cmd = \"g++ -o user_program \" + user_code_filename;\n    if (system(compile_cmd.c_str()) != 0) {\n        std::cerr << \"Compilation failed for \" << user_code_filename << std::endl;\n        return 1;\n    }\n\n    int passed_tests = 0;\n    for (size_t i = 0; i < test_cases.size(); ++i) {\n        std::string input = test_cases[i].first;\n        std::string expected_output = test_cases[i].second;\n\n        std::ofstream input_file(\"temp_input.txt\");\n        if (!input_file.is_open()) {\n            std::cerr << \"Error: Could not open temp_input.txt\\n\";\n            return 1;\n        }\n        input_file << input;\n        input_file.close();\n\n        std::string run_cmd = \"./user_program < temp_input.txt > temp_output.txt\";\n        system(run_cmd.c_str());\n\n        std::ifstream output_file(\"temp_output.txt\");\n        if (!output_file.is_open()) {\n            std::cerr << \"Error: Could not open temp_output.txt\\n\";\n            return 1;\n        }\n        std::stringstream ss;\n        ss << output_file.rdbuf();\n        std::string actual_output = ss.str();\n        output_file.close();\n\n        if (actual_output == expected_output) {\n            passed_tests++;\n        }\n    }\n\n    system(\"rm -f temp_input.txt temp_output.txt user_program\");\n\n    return (passed_tests == test_cases.size() ? 0 : 1);\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

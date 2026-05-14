@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `swapNumbers` that takes two integer arguments by reference and swaps their values. Demonstrate its usage in `main` by taking two numbers from the user, swapping them, and printing their new values.",
+  "test_cases": [
+    { "input": "5 15", "expected": "Enter two integers: \nBefore swap: num1 = 5, num2 = 15\nAfter swap: num1 = 15, num2 = 5\n" },
+    { "input": "abc def\n20 30", "expected": "Enter two integers: \nInvalid input. Please enter integers only.\nEnter two integers: \nBefore swap: num1 = 20, num2 = 30\nAfter swap: num1 = 30, num2 = 20\n" },
+    { "input": "-100 -200", "expected": "Enter two integers: \nBefore swap: num1 = -100, num2 = -200\nAfter swap: num1 = -200, num2 = -100\n" }
+  ],
+  "driver": "",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

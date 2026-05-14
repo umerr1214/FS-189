@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `int incrementPointerValue(int* ptr)` that takes an integer pointer, increments the value it points to by 5, and then returns the new value. Demonstrate its usage in `main`.",
+  "test_cases": [
+    { "input": "int score = 100; incrementPointerValue(&score);", "expected": "Initial score: 100\nScore after first increment: 105\nReturned value from first call: 105" },
+    { "input": "int temperature = -5; incrementPointerValue(&temperature);", "expected": "Initial temperature: -5\nTemperature after increment: 0\nReturned value from second call: 0" },
+    { "input": "int count = 0; incrementPointerValue(&count);", "expected": "Initial count: 0\nCount after increment: 5\nReturned value from third call: 5" }
+  ],
+  "driver": "#include <iostream>\n\n// The function to be tested\nint incrementPointerValue(int* ptr) {\n    *ptr += 5;\n    return *ptr;\n}\n\nint main() {\n    std::cout << \"Running test cases for Correct Version...\\n\";\n\n    int score = 100;\n    std::cout << \"Initial score: \" << score << std::endl;\n    int newScore = incrementPointerValue(&score);\n    std::cout << \"Score after first increment: \" << score << std::endl;\n    std::cout << \"Returned value from first call: \" << newScore << std::endl;\n\n    std::cout << \"\\n\";\n\n    int temperature = -5;\n    std::cout << \"Initial temperature: \" << temperature << std::endl;\n    int newTemperature = incrementPointerValue(&temperature);\n    std::cout << \"Temperature after increment: \" << temperature << std::endl;\n    std::cout << \"Returned value from second call: \" << newTemperature << std::endl;\n\n    std::cout << \"\\n\";\n\n    int count = 0;\n    std::cout << \"Initial count: \" << count << std::endl;\n    int newCount = incrementPointerValue(&count);\n    std::cout << \"Count after increment: \" << count << std::endl;\n    std::cout << \"Returned value from third call: \" << newCount << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

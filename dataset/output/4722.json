@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create a function `isPrime` that takes an integer as input and returns `true` if it's a prime number, `false` otherwise.",
+  "test_cases": [
+    { "input": "7", "expected": "true" },
+    { "input": "4", "expected": "false" },
+    { "input": "2", "expected": "true" },
+    { "input": "1", "expected": "false" },
+    { "input": "0", "expected": "false" },
+    { "input": "-5", "expected": "true" },
+    { "input": "-4", "expected": "false" },
+    { "input": "std::numeric_limits<int>::min()", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n#include <limits>\n\nbool isPrime(int n) {\n    n = std::abs(n);\n\n    if (n <= 1) {\n        return false;\n    }\n    for (int i = 2; i * i <= n; ++i) {\n        if (n % i == 0) {\n            return false;\n        }\n    }\n    return true;\n}\n\nint main() {\n    std::cout << std::boolalpha;\n    std::cout << \"Is 7 prime? \" << isPrime(7) << std::endl;\n    std::cout << \"Is 4 prime? \" << isPrime(4) << std::endl;\n    std::cout << \"Is 2 prime? \" << isPrime(2) << std::endl;\n    std::cout << \"Is 1 prime? \" << isPrime(1) << std::endl;\n    std::cout << \"Is 0 prime? \" << isPrime(0) << std::endl;\n    std::cout << \"Is -5 prime? \" << isPrime(-5) << std::endl;\n    std::cout << \"Is -4 prime? \" << isPrime(-4) << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The function uses `std::abs(n)` to handle negative inputs. If the input `n` is `std::numeric_limits<int>::min()`, calling `std::abs` results in undefined behavior due to integer overflow, as its absolute value cannot be represented in a signed `int`."]
+}

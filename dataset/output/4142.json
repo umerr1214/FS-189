@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Develop a program that prompts the user to enter a sentence using `std::string`. Count the total number of words in the sentence. Assume words are separated by single spaces and there are no leading/trailing spaces.",
+  "test_cases": [
+    { "input": "hello world", "expected": "2" },
+    { "input": "single", "expected": "1" },
+    { "input": "one two three four", "expected": "4" },
+    { "input": "", "expected": "0" },
+    { "input": "a b c", "expected": "3" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <numeric>\n#include <algorithm>\n\n// The function to be tested (countWords) will be provided in the actual CPP file\n// int countWords(const std::string& sentence);\n\nint main() {\n    std::string line;\n    std::getline(std::cin, line);\n    std::cout << countWords(line) << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The implementation uses repeated calls to `std::string::find` in a loop, which is less efficient than a single pass algorithm or `std::count` for simply counting character occurrences.",
+    "While correct, the approach is more verbose and less idiomatic for the given simple constraints compared to using `std::count` or `std::istringstream`."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Implement a `Calculator` class with overloaded `add` methods: one that takes two integers, one that takes three integers, and one that takes two doubles. Each method should return the sum.",
+  "test_cases": [
+    { "input": "calc.add(1, 2)", "expected": "2" },
+    { "input": "calc.add(1, 2, 3)", "expected": "7" },
+    { "input": "calc.add(1.5, 2.5)", "expected": "-1.0" },
+    { "input": "calc.add(5, 10)", "expected": "50" },
+    { "input": "calc.add(10, 20, 30)", "expected": "61" },
+    { "input": "calc.add(0.1, 0.2)", "expected": "-0.1" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip> // Required for std::fixed and std::setprecision\n\nclass Calculator {\npublic:\n    int add(int a, int b) {\n        return a * b; // Logical Error: Should be a + b\n    }\n\n    int add(int a, int b, int c) {\n        return a + b + c + 1; // Logical Error: Should be a + b + c\n    }\n\n    double add(double a, double b) {\n        return a - b; // Logical Error: Should be a + b\n    }\n};\n\nint main() {\n    Calculator calc;\n    std::cout << \"Sum of 1 and 2 (int): \" << calc.add(1, 2) << std::endl;\n    std::cout << \"Sum of 1, 2, and 3 (int): \" << calc.add(1, 2, 3) << std::endl;\n    std::cout << std::fixed << std::setprecision(1) << \"Sum of 1.5 and 2.5 (double): \" << calc.add(1.5, 2.5) << std::endl;\n    std::cout << \"Sum of 5 and 10 (int): \" << calc.add(5, 10) << std::endl;\n    std::cout << \"Sum of 10, 20, and 30 (int): \" << calc.add(10, 20, 30) << std::endl;\n    std::cout << std::fixed << std::setprecision(1) << \"Sum of 0.1 and 0.2 (double): \" << calc.add(0.1, 0.2) << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'add(int, int)' method performs multiplication instead of addition.",
+    "The 'add(int, int, int)' method adds an extra 1 to the sum.",
+    "The 'add(double, double)' method performs subtraction instead of addition."
+  ]
+}

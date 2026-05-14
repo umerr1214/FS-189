@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a `Product` class with private members `id` (int), `name` (string), and `price` (double). Implement a single constructor that uses default arguments to allow creating `Product` objects either with all attributes provided, or with only `id` and `name` (default `price` to 0.0), or with no arguments (default `id` to 0, `name` to \"Unnamed\", `price` to 0.0).",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "P1 Initial: ID=101, Name=Laptop Pro, Price=1200.50\nP2 Initial: ID=202, Name=Wireless Mouse, Price=0.00\nP3 Initial: ID=0, Name=Unnamed, Price=0.00\nP4 (Negative ID): ID=-500, Name=Invalid Product ID, Price=10.00\nP5 Before Modification: ID=505, Name=Old Name, Price=25.00\nP5 After Modification: ID=505, Name=New Name Via Reference, Price=25.00\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <iomanip>\n\nclass Product {\nprivate:\n    int id;\n    std::string name;\n    double price;\n\npublic:\n    Product(int id = 0, std::string name = \"Unnamed\", double price = 0.0)\n        : id(id), name(name), price(price) {\n    }\n\n    int getId() const {\n        return id;\n    }\n\n    std::string& getName() {\n        return name;\n    }\n\n    double getPrice() const {\n        return price;\n    }\n};\n\nint main() {\n    std::stringstream ss;\n\n    Product p1(101, \"Laptop Pro\", 1200.50);\n    ss << \"P1 Initial: ID=\" << p1.getId() << \", Name=\" << p1.getName() << \", Price=\" << std::fixed << std::setprecision(2) << p1.getPrice() << \"\\n\";\n\n    Product p2(202, \"Wireless Mouse\");\n    ss << \"P2 Initial: ID=\" << p2.getId() << \", Name=\" << p2.getName() << \", Price=\" << std::fixed << std::setprecision(2) << p2.getPrice() << \"\\n\";\n\n    Product p3;\n    ss << \"P3 Initial: ID=\" << p3.getId() << \", Name=\" << p3.getName() << \", Price=\" << std::fixed << std::setprecision(2) << p3.getPrice() << \"\\n\";\n\n    Product p4(-500, \"Invalid Product ID\", 10.00);\n    ss << \"P4 (Negative ID): ID=\" << p4.getId() << \", Name=\" << p4.getName() << \", Price=\" << std::fixed << std::setprecision(2) << p4.getPrice() << \"\\n\";\n\n    Product p5(505, \"Old Name\", 25.00);\n    ss << \"P5 Before Modification: ID=\" << p5.getId() << \", Name=\" << p5.getName() << \", Price=\" << std::fixed << std::setprecision(2) << p5.getPrice() << \"\\n\";\n    \n    p5.getName() = \"New Name Via Reference\";\n    ss << \"P5 After Modification: ID=\" << p5.getId() << \", Name=\" << p5.getName() << \", Price=\" << std::fixed << std::setprecision(2) << p5.getPrice() << \"\\n\";\n\n    std::cout << ss.str();\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The class allows the creation of Product objects with negative IDs (e.g., -500), which might be an invalid state for an identifier in many real-world applications. A robust implementation would include validation for `id` to ensure it's non-negative.",
+    "The `getName()` getter returns a non-const reference (`std::string&`). This breaks encapsulation by allowing external code to directly modify the private `name` member, bypassing any potential internal validation or state management. A robust getter should return a `const std::string&` to prevent such modifications."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Write a function `bool is_palindrome(int num)` that takes an integer and returns `true` if it's a palindrome (reads the same forwards and backwards), and `false` otherwise.",
+  "test_cases": [
+    { "input": "121", "expected": "true" },
+    { "input": "123", "expected": "false" },
+    { "input": "0", "expected": "true" },
+    { "input": "7", "expected": "true" },
+    { "input": "1221", "expected": "true" },
+    { "input": "-121", "expected": "false" },
+    { "input": "10", "expected": "false" },
+    { "input": "1000000009", "expected": "false" },
+    { "input": "2147483647", "expected": "false" },
+    { "input": "1000000001", "expected": "true" }
+  ],
+  "driver": "#include <iostream>\n#include <limits> // For std::numeric_limits<int>::max()\n\nbool is_palindrome(int num) {\n    if (num < 0) {\n        return false; // Negative numbers are not palindromes\n    }\n    // Single digit numbers (including 0) are palindromes\n    if (num < 10) { \n        return true;\n    }\n\n    int originalNum = num;\n    // SEMANTIC ERROR: 'reversedNum' is declared as 'int'.\n    // For large input numbers whose true reversed value exceeds INT_MAX,\n    // 'reversedNum' will overflow, leading to undefined behavior (typically wrap-around).\n    // This means 'reversedNum' might not semantically represent the actual reversed number.\n    int reversedNum = 0; \n\n    while (num > 0) {\n        int digit = num % 10;\n        reversedNum = reversedNum * 10 + digit; \n        num /= 10;\n    }\n\n    return originalNum == reversedNum;\n}\n\nint main() {\n    std::cout << std::boolalpha;\n\n    std::cout << \"is_palindrome(121): \" << is_palindrome(121) << std::endl;\n    std::cout << \"is_palindrome(123): \" << is_palindrome(123) << std::endl;\n    std::cout << \"is_palindrome(0): \" << is_palindrome(0) << std::endl;\n    std::cout << \"is_palindrome(7): \" << is_palindrome(7) << std::endl;\n    std::cout << \"is_palindrome(1221): \" << is_palindrome(1221) << std::endl;\n    std::cout << \"is_palindrome(-121): \" << is_palindrome(-121) << std::endl;\n    std::cout << \"is_palindrome(10): \" << is_palindrome(10) << std::endl;\n    \n    // Test cases for semantic error (integer overflow of intermediate result)\n    // 1000000009: Not a palindrome. Its true reverse (9000000001) overflows a 32-bit signed int.\n    // The `reversedNum` variable will become an incorrect value due to overflow,\n    // but the final comparison `originalNum == reversedNum` will still correctly return `false`.\n    std::cout << \"is_palindrome(1000000009): \" << is_palindrome(1000000009) << std::endl;\n\n    // 2147483647 (INT_MAX): Not a palindrome. Its true reverse (7463847412) overflows an int.\n    std::cout << \"is_palindrome(2147483647): \" << is_palindrome(2147483647) << std::endl;\n\n    // 1000000001: A palindrome that fits within int limits and does not cause overflow.\n    std::cout << \"is_palindrome(1000000001): \" << is_palindrome(1000000001) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 6,
+  "error_type": "Semantic Error",
+  "errors": ["The `reversedNum` variable is declared as `int`, which can lead to integer overflow for large input numbers (e.g., 1000000009) whose true reversed value exceeds `INT_MAX`. This causes `reversedNum` to hold an incorrect, wrapped-around value, violating its semantic intent, even if the final boolean comparison coincidentally yields the correct result for non-palindromic inputs."]
+}

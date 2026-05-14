@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Define a C++ `struct` named `Book` with members `title` (std::string), `author` (std::string), and `yearPublished` (int). Write a function `printBookDetails` that takes a `Book` struct (by value) and prints all its details. Demonstrate by creating a `Book` instance and calling the function.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book Details:\nTitle:The Code Guide\nAuthor:A. Coder\nYear Published:2024\n"
+    }
+  ],
+  "driver": "int main() {\nBook x = {\"The Code Guide\", \"A. Coder\", 2024}; \nprintBookDetails(x); \nreturn 0; \n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The code uses `using namespace std;` in the global scope, which is generally discouraged in larger projects as it can lead to name collisions and reduce clarity.",
+    "The `main` function and `printBookDetails` function exhibit poor and inconsistent indentation, making the code difficult to read and maintain.",
+    "The `Book` instance in `main` uses a non-descriptive variable name (`x`), which hinders code readability and understanding.",
+    "The `printBookDetails` function uses `std::endl` for every newline. While functional, `std::endl` flushes the output buffer, which can be less efficient than using `'\n'` (character literal) for frequent output operations, especially in performance-critical applications.",
+    "The output formatting within `printBookDetails` lacks spaces after the colons (e.g., `Title:` instead of `Title: `), which slightly reduces readability of the printed output."
+  ]
+}

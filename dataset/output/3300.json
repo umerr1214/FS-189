@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Calculate and print the sum of all even numbers between 1 and a user-defined positive integer `N` (inclusive).",
+  "test_cases": [
+    { "input": "5", "expected": "6" },
+    { "input": "10", "expected": "30" },
+    { "input": "1", "expected": "0" },
+    { "input": "0", "expected": "0" },
+    { "input": "100", "expected": "2550" },
+    { "input": "100000", "expected": "2500050000" }
+  ],
+  "driver": "#include <iostream>\n\nint main() {\n    int N;\n    std::cin >> N;\n    long long sum = 0;\n    for (int i = 2; i <= N; i += 2) {\n        sum += i;\n    }\n    std::cout << sum << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": []
+}

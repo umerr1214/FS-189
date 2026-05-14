@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function template `void printArray(const T arr[], int size)` that can print all elements of a 1D array of any data type `T`. Demonstrate its usage with an `int` array and a `char` array.",
+  "test_cases": [
+    {
+      "input": "int someInts[] = {11, 22, 33};\nint countInts = sizeof(someInts) / sizeof(someInts[0]);\nstd::cout << \"Testing int array:\\n\";\nprintArray(someInts, countInts);\n\nchar letters[] = {'W', 'o', 'r', 'l', 'd'};\nint countLetters = sizeof(letters) / sizeof(letters[0]);\nstd::cout << \"Testing char array:\\n\";\nprintArray(letters, countLetters);\n\nint emptyContainer[] = {};\nint emptyCount = 0;\nstd::cout << \"Testing empty array:\\n\";\nprintArray(emptyContainer, emptyCount);",
+      "expected": "Testing int array:\nArray elements: [11, 22, 33]\n\nTesting char array:\nArray elements: [W, o, r, l, d]\n\nTesting empty array:\nArray elements: []\n"
+    }
+  ],
+  "driver": "int main() {\n    int someInts[] = {11, 22, 33};\n    int countInts = sizeof(someInts) / sizeof(someInts[0]);\n    std::cout << \"Testing int array:\\n\";\n    printArray(someInts, countInts);\n\n    std::cout << \"\\n\";\n\n    char letters[] = {'W', 'o', 'r', 'l', 'd'};\n    int countLetters = sizeof(letters) / sizeof(letters[0]);\n    std::cout << \"Testing char array:\\n\";\n    printArray(letters, countLetters);\n\n    std::cout << \"\\n\";\n\n    int emptyContainer[] = {};\n    int emptyCount = 0;\n    std::cout << \"Testing empty array:\\n\";\n  \n    printArray(emptyContainer, emptyCount);\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses `std::endl` unnecessarily, which flushes the buffer and can be less efficient than `'\n'`, especially when used repeatedly or at the end of every line.",
+    "Variable names like `cnt` are less descriptive than `size`, and `theArray` is less concise than `arr`.",
+    "The `if (cnt > 0)` check before the loop is redundant and slightly reduces readability; the loop condition `i < cnt` would naturally handle `cnt <= 0` without needing an explicit `if` wrapper.",
+    "The condition `i != cnt - 1` for adding a comma is less idiomatic than `i < cnt - 1`."
+  ]
+}

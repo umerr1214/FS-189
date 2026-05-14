@@ -1,0 +1,32 @@
+{
+  "language": "c++",
+  "question": "Implement a `DynamicIntegerArray` class that manages a dynamically allocated array of integers. Its constructor should take an integer `size` and allocate memory for an array of that size. Implement a destructor that correctly deallocates the dynamically allocated memory to prevent memory leaks.",
+  "test_cases": [
+    {
+      "input": "5",
+      "expected": "--- Test Case 1: Normal Allocation ---\nDynamicIntegerArray (malloc) of size 5 created.\nArray contents: [11, 22, 33, 44, 55]\nDynamicIntegerArray (malloc) of size 5 destroyed.\n"
+    },
+    {
+      "input": "0",
+      "expected": "--- Test Case 2: Zero Size Allocation ---\nDynamicIntegerArray (malloc) of size 0 created.\nArray contents: []\nError: Index out of bounds (malloc)!\nDynamicIntegerArray (malloc) of size 0 destroyed.\n"
+    },
+    {
+      "input": "-3",
+      "expected": "--- Test Case 3: Negative Size Allocation ---\nDynamicIntegerArray (malloc) of size 0 created.\nArray size: 0\nArray contents: []\nDynamicIntegerArray (malloc) of size 0 destroyed.\n"
+    },
+    {
+      "input": "3",
+      "expected": "--- Test Case 4: Out of Bounds Access ---\nDynamicIntegerArray (malloc) of size 3 created.\nArray contents: [10, 20, 30]\nError: Index out of bounds (malloc)!\nAccessing d_arr.op_idx(3): -1\nError: Index out of bounds (malloc)!\nAccessing d_arr.op_idx(-1): -1\nDynamicIntegerArray (malloc) of size 3 destroyed.\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Test Case 1: Normal Allocation ---\" << std::endl;\n    {\n        DynamicIntegerArray d_arr(5);\n        for (int i = 0; i < d_arr.get_sz(); ++i) {\n            d_arr.op_idx(i) = (i + 1) * 11;\n        }\n        std::cout << \"Array contents: \";\n        d_arr.show_arr();\n    }\n    std::cout << std::endl;\n\n    std::cout << \"--- Test Case 2: Zero Size Allocation ---\" << std::endl;\n    {\n        DynamicIntegerArray d_arr(0);\n        std::cout << \"Array contents: \";\n        d_arr.show_arr();\n        d_arr.op_idx(0) = 100;\n    }\n    std::cout << std::endl;\n\n    std::cout << \"--- Test Case 3: Negative Size Allocation ---\" << std::endl;\n    {\n        DynamicIntegerArray d_arr(-3);\n        std::cout << \"Array size: \" << d_arr.get_sz() << std::endl;\n        std::cout << \"Array contents: \";\n        d_arr.show_arr();\n    }\n    std::cout << std::endl;\n\n    std::cout << \"--- Test Case 4: Out of Bounds Access ---\" << std::endl;\n    {\n        DynamicIntegerArray d_arr(3);\n        d_arr.op_idx(0) = 10; d_arr.op_idx(1) = 20; d_arr.op_idx(2) = 30;\n        std::cout << \"Array contents: \";\n        d_arr.show_arr();\n        std::cout << \"Accessing d_arr.op_idx(3): \" << d_arr.op_idx(3) << std::endl;\n        std::cout << \"Accessing d_arr.op_idx(-1): \" << d_arr.op_idx(-1) << std::endl;\n    }\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses `malloc` and `free` instead of C++'s `new[]` and `delete[]` for array allocation/deallocation, which is less idiomatic and bypasses C++ object construction/destruction (though not an issue for `int`).",
+    "Uses `memset` for initialization instead of value-initialization with `new int[size]()` or a simple loop, which is less C++ idiomatic.",
+    "Employs cryptic variable names (`d_ptr`, `s_val`) and method names (`get_sz`, `op_idx`, `show_arr`), severely impacting readability.",
+    "Does not use `operator[]` for element access, opting for a regular method (`op_idx`), which is less intuitive for array-like classes."
+  ]
+}

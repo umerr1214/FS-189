@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `int linearSearch(int arr[], int size, int target)` that performs a linear search on a 1D integer array. It should return the index of the `target` element if found, or -1 if not found. Test this function in `main` with a sample array and target values.",
+  "test_cases": [
+    { "input": "arr: [10, 20, 30, 40, 50], size: 5, target: 30", "expected": "2" },
+    { "input": "arr: [10, 20, 30, 40, 50], size: 5, target: 99", "expected": "-1" },
+    { "input": "arr: [], size: 0, target: 5", "expected": "-1" },
+    { "input": "arr: [7], size: 1, target: 7", "expected": "0" },
+    { "input": "arr: [7], size: 1, target: 10", "expected": "-1" },
+    { "input": "arr: nullptr, size: 3, target: 10", "expected": "CRASH/Undefined Behavior" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n\n// The linearSearch function would be included here\n\nvoid runTest(const std::string& description, int arr[], int size, int target, int expected_val, bool expect_crash = false) {\n    std::cout << \"Test Case: \" << description << std::endl;\n    std::cout << \"Array: { \";\n    if (arr == nullptr) {\n        std::cout << \"nullptr\";\n    } else {\n        for (int i = 0; i < size; ++i) {\n            std::cout << arr[i] << (i == size - 1 ? \"\" : \", \");\n        }\n    }\n    std::cout << \" }, Size: \" << size << \", Target: \" << target << std::endl;\n\n    if (expect_crash) {\n        std::cout << \"Expected: CRASH/Undefined Behavior\" << std::endl;\n        std::cout << \"Note: This test case is designed to expose a robustness issue and might terminate the program prematurely.\" << std::endl;\n    } else {\n        int result = linearSearch(arr, size, target);\n        std::cout << \"Expected: \" << expected_val << \", Got: \" << result << std::endl;\n        if (result == expected_val) {\n            std::cout << \"Status: PASSED\" << std::endl;\n        } else {\n            std::cout << \"Status: FAILED\" << std::endl;\n        }\n    }\n    std::cout << std::endl;\n}\n\nint main() {\n    int arr1[] = {10, 20, 30, 40, 50};\n    runTest(\"Target in middle\", arr1, 5, 30, 2);\n\n    int arr2[] = {10, 20, 30, 40, 50};\n    runTest(\"Target not found\", arr2, 5, 99, -1);\n\n    int arr3[] = {}; \n    runTest(\"Empty array\", arr3, 0, 5, -1);\n\n    int arr4[] = {7};\n    runTest(\"Single element array - found\", arr4, 1, 7, 0);\n\n    int arr5[] = {7};\n    runTest(\"Single element array - not found\", arr5, 1, 10, -1);\n    \n    // Test case designed to trigger robustness issue (nullptr dereference)\n    // This will likely crash the program if the linearSearch implementation doesn't check for nullptr.\n    int* null_ptr_arr = nullptr;\n    // The following call would lead to a crash if executed directly here without try-catch or OS-level handling.\n    // The actual evaluation system would need to handle a crashing program.\n    // For demonstration purposes, we note the expected behavior without executing the crashing call within this driver's stdout.\n    runTest(\"Robustness Issue: Null array pointer with positive size (expected crash)\", null_ptr_arr, 3, 10, -1, true);\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The linearSearch function does not check if the input array pointer `arr` is `nullptr` before attempting to access its elements. If `arr` is `nullptr` and `size` is greater than 0, dereferencing `arr[i]` will result in undefined behavior, typically a segmentation fault or program crash. A robust implementation would add a check like `if (arr == nullptr && size > 0) return -1;` or throw an exception."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `ResourceHandler` class that allocates dynamic memory for an integer array of a given size in its constructor. Implement a destructor to correctly deallocate this memory and print a message indicating destruction.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "ResourceHandler: Allocated memory for 5 integers.\nResourceHandler: Data filled.\nResourceHandler: Deallocated memory.\n--- Test Case Separator ---\nResourceHandler: No memory allocated for size 0.\nResourceHandler: Deallocated memory.\nProgram finished.\n"
+    }
+  ],
+  "driver": "int main() {\n    {\n        ResourceHandler handler1(5);\n        handler1.fillData();\n    }\n    std::cout << \"--- Test Case Separator ---\" << std::endl;\n    {\n        ResourceHandler handler2(0);\n    }\n    std::cout << \"Program finished.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 5,
+  "error_type": "Logical Error",
+  "errors": ["The destructor prints 'ResourceHandler: Deallocated memory.' even when no memory was actually deallocated (e.g., for a size-0 array), which is misleading regarding the actual memory operations."]
+}

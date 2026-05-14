@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `Vehicle` base class with a virtual `void startEngine()` method. Derive `Car` and `Motorcycle` classes, each providing its own implementation for `startEngine()`. Demonstrate polymorphic behavior by calling `startEngine()` using `Vehicle` pointers.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Demonstrating polymorphic engine starting with a robustness issue (missing virtual destructor).\nVehicle constructor called.\nCar constructor called.\nVehicle constructor called.\nMotorcycle constructor called.\n\nCalling startEngine() polymorphically:\nCar engine roaring to life!\nMotorcycle engine kicking over!\n\nCleaning up vehicles (watch destructor calls):\nVehicle destructor called.\nVehicle destructor called.\n\nProgram finished.\n"
+    }
+  ],
+  "driver": "",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Vehicle` base class is missing a `virtual` destructor. When derived objects (`Car`, `Motorcycle`) are deleted through a base class pointer, only the base class destructor is called, leading to potential memory leaks or undefined behavior if derived classes have specific cleanup logic in their destructors."
+  ]
+}

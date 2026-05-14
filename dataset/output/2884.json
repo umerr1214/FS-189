@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a `StringWrapper` class that dynamically allocates memory for a `char*` to store a string. Provide a constructor, a destructor, and a proper copy constructor to ensure deep copying of the string data.",
+  "test_cases": [
+    { "input": "StringWrapper s1(\"Hello World\");", "expected": "String: \"Hello World\", Length: 11" },
+    { "input": "StringWrapper s2 = s1;", "expected": "String: \"Hello World\", Length: 11 (deep copy)" },
+    { "input": "StringWrapper s_empty;", "expected": "String: (null), Length: 0" }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Attempting to compile (Syntax Error) ---\" << std::endl;\n    StringWrapper s1(\"Hello World\");\n    std::cout << \"s1 created: \";\n    s1.print();\n\n    StringWrapper s2 = s1; // Test copy constructor\n    std::cout << \"s2 copied from s1: \";\n    s2.print();\n\n    StringWrapper s_empty;\n    std::cout << \"s_empty created: \";\n    s_empty.print();\n\n    std::cout << \"This program contains a syntax error and will not compile.\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

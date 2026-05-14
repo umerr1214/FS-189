@@ -1,0 +1,34 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `bool areMatricesEqual(int mat1[ROWS][COLS], int mat2[ROWS][COLS], int rows, int cols)` that checks if two 2D integer matrices are identical. Demonstrate with example matrices in `main`.",
+  "test_cases": [
+    {
+      "input": "mat1:[[1,2,3],[4,5,6],[7,8,9]], mat2:[[1,2,3],[4,5,6],[7,8,9]], rows:3, cols:3",
+      "expected": "Equal"
+    },
+    {
+      "input": "mat1:[[1,2,3],[4,5,6],[7,8,9]], mat2:[[1,2,3],[4,0,6],[7,8,9]], rows:3, cols:3",
+      "expected": "Not Equal"
+    },
+    {
+      "input": "mat1:[[1,2,3],[4,5,6],[7,8,9]], mat2:[[1,2,3],[4,5,6],[7,8,9]], rows:2, cols:2",
+      "expected": "Equal"
+    },
+    {
+      "input": "mat1:[[1,2,3],[4,5,6],[7,8,9]], mat2:[[1,2,3],[4,5,6],[7,8,9]], rows:4, cols:3",
+      "expected": "Undefined Behavior (Out-of-bounds access)"
+    },
+    {
+      "input": "mat1:[[1,2,3],[4,5,6],[7,8,9]], mat2:[[1,2,3],[4,0,6],[7,8,9]], rows:3, cols:4",
+      "expected": "Undefined Behavior (Out-of-bounds access)"
+    }
+  ],
+  "driver": "#include <iostream>\n\n#define ROWS 3\n#define COLS 3\n\nbool areMatricesEqual(int mat1[ROWS][COLS], int mat2[ROWS][COLS], int rows, int cols) {\n    for (int i = 0; i < rows; ++i) {\n        for (int j = 0; j < cols; ++j) {\n            if (mat1[i][j] != mat2[i][j]) {\n                return false;\n            }\n        }\n    }\n    return true;\n}\n\nvoid printMatrix(int mat[ROWS][COLS], int r, int c) {\n    for (int i = 0; i < r; ++i) {\n        for (int j = 0; j < c; ++j) {\n            std::cout << mat[i][j] << (j == c - 1 ? \"\" : \" \");\n        }\n        std::cout << std::endl;\n    }\n}\n\nint main() {\n    int matrixA[ROWS][COLS] = {\n        {1, 2, 3},\n        {4, 5, 6},\n        {7, 8, 9}\n    };\n\n    int matrixB[ROWS][COLS] = {\n        {1, 2, 3},\n        {4, 5, 6},\n        {7, 8, 9}\n    };\n\n    int matrixC[ROWS][COLS] = {\n        {1, 2, 3},\n        {4, 0, 6},\n        {7, 8, 9}\n    };\n\n    std::cout << \"Test Case 1 (A vs B, 3x3): \" << (areMatricesEqual(matrixA, matrixB, 3, 3) ? \"Equal\" : \"Not Equal\") << std::endl;\n    std::cout << \"Test Case 2 (A vs C, 3x3): \" << (areMatricesEqual(matrixA, matrixC, 3, 3) ? \"Equal\" : \"Not Equal\") << std::endl;\n    std::cout << \"Test Case 3 (A vs B, 2x2): \" << (areMatricesEqual(matrixA, matrixB, 2, 2) ? \"Equal\" : \"Not Equal\") << std::endl;\n    \n    // The following calls are expected to cause undefined behavior due to out-of-bounds access.\n    // Their output cannot be reliably predicted, but they demonstrate the robustness flaw.\n    std::cout << \"Test Case 4 (A vs B, 4x3 - OOB): \" << (areMatricesEqual(matrixA, matrixB, 4, 3) ? \"Equal\" : \"Not Equal\") << std::endl;\n    std::cout << \"Test Case 5 (A vs C, 3x4 - OOB): \" << (areMatricesEqual(matrixA, matrixC, 3, 4) ? \"Equal\" : \"Not Equal\") << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The function `areMatricesEqual` does not perform bounds checking on the `rows` and `cols` parameters against the compile-time `ROWS` and `COLS` constants. Passing `rows > ROWS` or `cols > COLS` will result in out-of-bounds memory access, leading to undefined behavior or a program crash.",
+    "The function implicitly assumes `rows` and `cols` are valid and within the declared bounds, making it fragile to incorrect input dimensions."
+  ]
+}

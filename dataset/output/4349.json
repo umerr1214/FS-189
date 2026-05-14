@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Using a 'do-while' loop, repeatedly ask the user to enter a number between 1 and 10 (inclusive) until valid input is received.",
+  "test_cases": [
+    { "input": "5\n", "expected": "Please enter a number between 1 and 10 (inclusive):\nYou entered: 5\n" },
+    { "input": "0\n5\n", "expected": "Please enter a number between 1 and 10 (inclusive):\nInvalid input. Please try again.\nPlease enter a number between 1 and 10 (inclusive):\nYou entered: 5\n" },
+    { "input": "11\n-3\n9\n", "expected": "Please enter a number between 1 and 10 (inclusive):\nInvalid input. Please try again.\nPlease enter a number between 1 and 10 (inclusive):\nInvalid input. Please try again.\nPlease enter a number between 1 and 10 (inclusive):\nYou entered: 9\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <functional>\n\n// Assume the user's main function is renamed to 'user_main' for testing purposes.\n// The actual 'main' in the user's submitted file will be compiled as 'user_main'.\nextern int user_main(); \n\nstd::string run_test_case(const std::string& input) {\n    std::stringstream ss_input(input);\n    std::stringstream ss_output;\n\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    user_main(); // Call the user's program entry point\n\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    return ss_output.str();\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The 'do-while' loop condition is inverted. It continues looping as long as the input is valid (1-10) and exits when input is invalid, which is the opposite of the problem requirement. This leads to an infinite loop for valid numeric inputs and incorrect termination for invalid ones, often printing an invalid number."]
+}

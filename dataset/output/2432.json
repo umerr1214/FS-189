@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a multi-level inheritance hierarchy: `Person` (base) -> `Employee` (derived from Person) -> `Manager` (derived from Employee). Add relevant attributes and methods at each level.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "---------------------------------------\nDisplaying Person Information:\nName: Alice Smith, Age: 30\n---------------------------------------\nDisplaying Employee Information:\nName: Bob Johnson, Age: 35\nEmployee ID: 1001, Salary: 60000\nCalculated Bonus (10%): 6000\n---------------------------------------\nDisplaying Manager Information:\nName: Charlie Brown, Age: 45\nEmployee ID: 2001, Salary: 90000\nDepartment: Engineering, Direct Reports: 15\nManager Charlie Brown is conducting a performance review for David Lee in Engineering.\n---------------------------------------\nDisplaying Generic Employee Information (Polymorphism):\nName: Eve Green, Age: 28\nEmployee ID: 1002, Salary: 55000\n---------------------------------------\n"
+    }
+  ],
+  "driver": "int main() {\n    // Creating a Person object\n    Person p_obj(\"Alice Smith\", 30);\n    std::cout << \"---------------------------------------\" << std::endl;\n    std::cout << \"Displaying Person Information:\" << std::endl;\n    p_obj.display();\n    std::cout << \"---------------------------------------\" << std::endl;\n\n    // Creating an Employee object\n    Employee e_obj(\"Bob Johnson\", 35, 1001, 60000.0);\n    std::cout << \"Displaying Employee Information:\" << std::endl;\n    e_obj.display();\n    std::cout << \"Calculated Bonus (10%): \" << e_obj.calculateBonus(0.10) << std::endl;\n    std::cout << \"---------------------------------------\" << std::endl;\n\n    // Creating a Manager object\n    Manager m_obj(\"Charlie Brown\", 45, 2001, 90000.0, \"Engineering\", 15);\n    std::cout << \"Displaying Manager Information:\" << std::endl;\n    m_obj.display();\n    m_obj.conductPerformanceReview(\"David Lee\");\n    std::cout << \"---------------------------------------\" << std::endl;\n\n    // Demonstrating polymorphism with a pointer to base class\n    Person* generic_employee = new Employee(\"Eve Green\", 28, 1002, 55000.0);\n    std::cout << \"Displaying Generic Employee Information (Polymorphism):\" << std::endl;\n    generic_employee->display();\n    delete generic_employee;\n    std::cout << \"---------------------------------------\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The code suffers from readability issues: excessive use of `this->` keyword, lack of comments for complex parts, passing strings by value in some cases (e.g., `Manager` constructor parameters, `conductPerformanceReview` argument) leading to unnecessary copies. Additionally, the overridden `display` methods print redundant newlines and cause unnecessary buffer flushes by using `std::endl` after calling the base class's `display` method, which also uses `std::endl`."
+  ]
+}

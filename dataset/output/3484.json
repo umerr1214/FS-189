@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a simple command-line calculator program in C++ that takes two numbers and an operator (+, -, *, /) as input from the user. Use a `switch` statement to perform the corresponding arithmetic operation and print the result. Handle division by zero.",
+  "test_cases": [
+    { "input": "10\n+\n5\n", "expected": "Result: 15\n" },
+    { "input": "20\n-\n7\n", "expected": "Result: 13\n" },
+    { "input": "3\n*\n4\n", "expected": "Result: 12\n" },
+    { "input": "10\n/\n2\n", "expected": "Result: 5\n" },
+    { "input": "10\n/\n0\n", "expected": "Error: Division by zero is not allowed.\n" },
+    { "input": "5\n%\n2\n", "expected": "Error: Invalid operator.\n" }
+  ],
+  "driver": "int main() { /* The C++ code itself is the program to test. */ }",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after `std::cout << \"Enter second number: \"` statement."]
+}

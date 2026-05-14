@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Write a function `concatenateStrings` that takes two C-style strings (char arrays) as input and prints their combined string. (Assume the destination array has enough space).",
+  "test_cases": [
+    { "input": "s1=\"Hello\", s2=\" World\"", "expected": "Hello World" },
+    { "input": "s1=\"\", s2=\"World\"", "expected": "World" },
+    { "input": "s1=\"Hello\", s2=\"\"", "expected": "Hello" },
+    { "input": "s1=\"\", s2=\"\"", "expected": "" },
+    { "input": "s1=\"Programming is fun!\", s2=\" Let's learn C++.\"", "expected": "Programming is fun! Let's learn C++." }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <cstdio>\n\nvoid concatenateStrings(const char* s1, const char* s2) {\n    char buffer[512];\n\n    int i = 0;\n    while (s1[i] != '\\0') {\n        buffer[i] = s1[i];\n        i++;\n    }\n\n    int j = 0;\n    while (s2[j] != '\\0') {\n        buffer[i + j] = s2[j];\n        j++;\n    }\n    buffer[i + j] = '\\0';\n\n    printf(\"%s\\n\", buffer);\n}\n\nint main() {\n    concatenateStrings(\"Hello\", \" World\");\n    concatenateStrings(\"\", \"World\");\n    concatenateStrings(\"Hello\", \"\");\n    concatenateStrings(\"\", \"\");\n    concatenateStrings(\"Programming is fun!\", \" Let's learn C++.\");\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The function implements string concatenation using manual character-by-character copying and explicit loop-based length determination.",
+    "This approach is less readable and more verbose compared to using optimized standard library functions like `strcpy` and `strcat`.",
+    "While functional, manual string manipulation can be less efficient than highly optimized library implementations and more prone to off-by-one errors (e.g., forgetting null terminator)."
+  ]
+}

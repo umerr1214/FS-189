@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Design a `Complex` number class (with private `real` and `imaginary` double parts). Overload the binary `+` operator to enable addition of two `Complex` objects, returning a new `Complex` object.",
+  "test_cases": [
+    { "input": "", "expected": "c1 = 3 + 4i\nc2 = 1 + 2i\nc1 + c2 = 4 + 6i\nc4 = 5 - 3i\nc5 = 2 + 1i\nc4 + c5 = 7 - 2i\n" }
+  ],
+  "driver": "Complex c1(3.0, 4.0);\nComplex c2(1.0, 2.0);\nComplex c3 = c1 + c2;\nstd::cout << \"c1 = \"; c1.print(); std::cout << std::endl;\nstd::cout << \"c2 = \"; c2.print(); std::cout << std::endl;\nstd::cout << \"c1 + c2 = \"; c3.print(); std::cout << std::endl;\n\nComplex c4(5.0, -3.0);\nComplex c5(2.0, 1.0);\nComplex c6 = c4 + c5;\nstd::cout << \"c4 = \"; c4.print(); std::cout << std::endl;\nstd::cout << \"c5 = \"; c5.print(); std::cout << std::endl;\nstd::cout << \"c4 + c5 = \"; c6.print(); std::cout << std::endl;",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The overloaded '+' operator has a semantic error: it returns a reference to a local variable ('result'). This local variable is destroyed when the function exits, leading to a dangling reference and subsequent undefined behavior when the returned reference is used."
+  ]
+}

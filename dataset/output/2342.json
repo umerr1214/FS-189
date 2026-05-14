@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Design a `Library` class that uses aggregation to manage a collection of `Book` objects (from Q1). The `Library` class should store pointers (or references) to `Book` objects that are created and owned externally. Implement methods to `addBook(Book* book)` and `displayAllBooks()`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Current Books in Library (Inefficient Display) ---\nEntry 1: Book Title: \"Dune\", Author Name: \"Frank Herbert\", Publication Year: 1965.\nEntry 2: Book Title: \"Foundation\", Author Name: \"Isaac Asimov\", Publication Year: 1951.\nEntry 3: Book Title: \"Neuromancer\", Author Name: \"William Gibson\", Publication Year: 1984.\n--- End of Inefficient Display ---\n\nLibrary is currently empty.\n"
+    }
+  ],
+  "driver": "int main() {\n    Book bookA(\"Dune\", \"Frank Herbert\", 1965);\n    Book bookB(\"Foundation\", \"Isaac Asimov\", 1951);\n    Book bookC(\"Neuromancer\", \"William Gibson\", 1984);\n\n    Library sciFiLibrary;\n\n    sciFiLibrary.addBook(&bookA);\n    sciFiLibrary.addBook(&bookB);\n    sciFiLibrary.addBook(&bookC);\n\n    sciFiLibrary.displayAllBooks();\n    std::cout << std::endl;\n\n    Library emptyLibrary;\n    emptyLibrary.displayAllBooks();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `displayAllBooks` method uses an old-style index-based `for` loop instead of a more modern and readable range-based for loop.",
+    "The `displayAllBooks` method relies on `Book::getBookInfo()` which uses `std::stringstream` for each book's output, creating temporary strings and potentially being less efficient than direct stream insertion.",
+    "The output formatting in `displayAllBooks` is slightly verbose and less concise than idiomatic C++ stream output."
+  ]
+}

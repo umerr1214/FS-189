@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a `Product` class with `productID`, `name`, and `price`. Overload the `==` operator to compare two `Product` objects based solely on their `productID`.",
+  "test_cases": [
+    { "input": "Standard product creation and comparison.", "expected": "Product ID: 101\nProduct Name: Laptop Pro\nProduct Price: $1200.5\n--------------------\nProduct ID: 102\nProduct Name: Wireless Mouse\nProduct Price: $25\n--------------------\nProduct ID: 101\nProduct Name: Mechanical Keyboard\nProduct Price: $75\n--------------------\nComparing p1 and p2 (ID 101 vs 102): No Match\nComparing p1 and p3 (ID 101 vs 101): Match\nComparing p4 and p5 (ID 103 vs 103): Match" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <utility>\n\nclass Product {\nprivate:\n    int productID;\n    std::string name;\n    double price;\n\npublic:\n    Product(int id, std::string n, double p) : productID(id), name(std::move(n)), price(p) {}\n\n    bool operator==(Product other) const {\n        return this->productID == other.productID;\n    }\n\n    void displayProductDetails() const {\n        std::cout << \"Product ID: \" << this->productID << std::endl;\n        std::cout << \"Product Name: \" << this->name << std::endl;\n        std::cout << \"Product Price: $\" << this->price << std::endl;\n        std::cout << \"--------------------\" << std::endl;\n    }\n};\n\nint main() {\n    Product p1(101, \"Laptop Pro\", 1200.50);\n    Product p2(102, \"Wireless Mouse\", 25.00);\n    Product p3(101, \"Mechanical Keyboard\", 75.00);\n\n    p1.displayProductDetails();\n    p2.displayProductDetails();\n    p3.displayProductDetails();\n\n    std::cout << \"Comparing p1 and p2 (ID 101 vs 102): \" << (p1 == p2 ? \"Match\" : \"No Match\") << std::endl;\n    std::cout << \"Comparing p1 and p3 (ID 101 vs 101): \" << (p1 == p3 ? \"Match\" : \"No Match\") << std::endl;\n\n    Product p4(103, \"Monitor\", 300.00);\n    Product p5(103, \"Webcam\", 50.00);\n    std::cout << \"Comparing p4 and p5 (ID 103 vs 103): \" << (p4 == p5 ? \"Match\" : \"No Match\") << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Efficiency Issue: The `operator==` takes its argument `other` by value (`Product other`) instead of by constant reference (`const Product& other`). This causes an unnecessary copy of the `Product` object every time the operator is called, which can be inefficient, especially if `Product` objects were larger or contained complex data structures.",
+    "Readability Issue: The `this->` prefix is used unnecessarily (e.g., `this->productID`). While technically correct, it adds visual clutter and is generally omitted in C++ when there's no ambiguity (i.e., when a member variable does not shadow a local variable or parameter).",
+    "Readability Issue: The method `displayProductDetails` has a somewhat verbose name for a common operation like displaying an object's state. A simpler, more conventional name like `display` or `print` might improve readability."
+  ]
+}

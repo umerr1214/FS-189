@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design two classes: `Building` and `Tenant`. `Building` needs to store a `Tenant` object as its owner. `Tenant` does not need to know about `Building`. Demonstrate how to use a forward declaration for `Tenant` within `Building`.",
+  "test_cases": [
+    { "input": "", "expected": "Building Address: 123 Main St\nOwner: Alice Smith (ID: 101)\nBuilding Address: 123 Main St\nOwner: Bob Johnson (ID: 102)\n" }
+  ],
+  "driver": "int main() {\n    Tenant tenant1(\"Alice Smith\", 101);\n    Building b1(\"123 Main St\", &tenant1);\n    b1.displayBuildingInfo();\n\n    Tenant tenant2(\"Bob Johnson\", 102);\n    b1.setOwner(&tenant2);\n    b1.displayBuildingInfo();\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the definition of the `Building` class."]
+}

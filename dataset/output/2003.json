@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Develop a `BankAccount` class where `balance` (double) is private. Provide public methods `deposit(double amount)`, `withdraw(double amount)`, and `getBalance()`. Ensure `withdraw` checks for sufficient funds.",
+  "test_cases": [
+    { "input": "Initial balance 100.0, deposit 50.0, withdraw 30.0", "expected": "120.0" },
+    { "input": "Initial balance 0.0, withdraw 10.0 (insufficient funds)", "expected": "0.0" },
+    { "input": "Initial balance 200.0, deposit -10.0, withdraw 50.0", "expected": "150.0" },
+    { "input": "Initial balance 100.0, withdraw -20.0 (invalid amount)", "expected": "100.0" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\nclass BankAccount {\nprivate:\n    double balance;\n\npublic:\n    BankAccount(double initialBalance = 0.0) : balance(initialBalance) {}\n\n    void deposit(double amount) {\n        if (amount > 0) {\n            balance += amount;\n        }\n    }\n\n    void withdraw(double amount) {\n        if (amount > 0 && balance >= amount) {\n            balance -= amount;\n        }\n    }\n\n    double getBalance() const {\n        return balance;\n    }\n};\n\nint main() {\n    std::cout << std::fixed << std::setprecision(1);\n\n    BankAccount acc1(100.0);\n    acc1.deposit(50.0);\n    acc1.withdraw(30.0);\n    std::cout << acc1.getBalance() << std::endl;\n\n    BankAccount acc2(0.0);\n    acc2.withdraw(10.0);\n    std::cout << acc2.getBalance() << std::endl;\n\n    BankAccount acc3(200.0);\n    acc3.deposit(-10.0);\n    acc3.withdraw(50.0);\n    std::cout << acc3.getBalance() << std::endl;\n\n    BankAccount acc4(100.0);\n    acc4.withdraw(-20.0);\n    std::cout << acc4.getBalance() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The `withdraw` method does not check for sufficient funds before deducting the amount, allowing the balance to become negative, which violates the problem requirement."]
+}

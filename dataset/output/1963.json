@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Explain the purpose and usage of `public`, `private`, and `protected` access specifiers using a simple example with a base class `MyClass` and a derived class `DerivedClass`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "MyClass constructor called. Initialized with: 10, 20, 30\nMyClass constructor called. Initialized with: 100, 200, 300\nDerivedClass constructor called. Derived public: 400\n--- Robustness Issue Example: C++ Access Specifiers ---\n\n*** Access from main (MyClass object) ***\n  Accessing MyClass::public_data_base directly: 10\n  Cannot directly access MyClass::protected_data_base from main.\n  Cannot directly access MyClass::private_data_base from main.\n  Accessing MyClass::private_data_base via public getter: 30\n  MyClass Public Data (from within MyClass): 10\n  MyClass Private Data (via getter): 30\n  MyClass Public Data (from within MyClass): 100\n  MyClass Private Data (via getter): 300\n\n*** Access from DerivedClass member function ***\n  Can access MyClass::public_data_base: 100\n  Can access MyClass::protected_data_base: 200\n  Cannot directly access MyClass::private_data_base (compile-time error).\n  DerivedClass's own public_data_derived: 400\n\n*** Access from main (DerivedClass object) ***\n  Accessing DerivedClass::public_data_base (inherited): 100\n  Accessing DerivedClass::public_data_derived: 400\n  Cannot directly access DerivedClass::protected_data_base from main.\n  Robustness Issue: Accessing protected_data_base via public DerivedClass::getProtectedBaseData(): \n  Accessing MyClass::protected_data_base via public DerivedClass method.\n200\n\n--- End of Robustness Example ---\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The DerivedClass provides a public method (`getProtectedBaseData`) that returns a protected member of the base class. This design choice weakens the 'protected' access level, making the base class's protected data effectively public through the derived class's interface. This can lead to less robust encapsulation and make future changes to the base class's internal representation more difficult.",
+    "The output formatting is less structured and uses `std::endl` excessively, which can be inefficient and makes the explanation harder to follow compared to a well-structured output."
+  ]
+}

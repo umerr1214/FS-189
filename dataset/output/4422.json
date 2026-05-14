@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Book` with `title` (std::string) and `pages` (int). Create an array of 2 `Book` structs, populate their data, and print the title of the book with more pages.",
+  "test_cases": [
+    { "input": "", "expected": "Books have the same number of pages.\n" }
+  ],
+  "driver": "int main() { /* The provided code */ }",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["Dereferencing an uninitialized pointer (uninitializedPtr) when book pages are equal, leading to undefined behavior (e.g., crash or garbage output) at runtime."]
+}

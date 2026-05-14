@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Accept three integer numbers from the user and determine which one is the largest. Print the largest number.",
+  "test_cases": [
+    { "input": "10 5 20", "expected": "The largest number is: 20\n" },
+    { "input": "7 7 7", "expected": "The largest number is: 7\n" },
+    { "input": "-1 -5 -2", "expected": "The largest number is: -1\n" },
+    { "input": "100 200 150", "expected": "The largest number is: 200\n" },
+    { "input": "30 10 20", "expected": "The largest number is: 30\n" },
+    { "input": "5 10 5", "expected": "The largest number is: 10\n" }
+  ],
+  "driver": "The program reads three integers from standard input. The test driver will provide these integers via standard input redirection and capture the program's standard output.",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

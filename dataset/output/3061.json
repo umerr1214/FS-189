@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Animal` with a virtual public method `makeSound()` that prints a generic sound. Derive `Dog` and `Cat` classes from `Animal`, each overriding `makeSound()` to print their specific sound. Demonstrate calling `makeSound()` using a pointer to the `Animal` base class that points to objects of `Dog` and `Cat`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Woof!\nAnimal destroyed.\n\nMeow!\nAnimal destroyed.\n"
+    }
+  ],
+  "driver": "int main() {\n    Animal* myAnimal;\n\n    myAnimal = new Dog();\n    myAnimal->makeSound();\n    delete myAnimal;\n\n    std::cout << \"\\n\";\n\n    myAnimal = new Cat();\n    myAnimal->makeSound();\n    delete myAnimal;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The base class `Animal` is missing a virtual destructor. When derived objects (`Dog`, `Cat`) are deleted via a base class pointer (`Animal*`), only the base class destructor is called. This leads to undefined behavior and potential resource leaks as the derived class destructors (`~Dog()`, `~Cat()`) are not invoked."
+  ]
+}

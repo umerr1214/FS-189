@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Define a C++ `struct Book` with members `std::string title`, `std::string author`, and `int publicationYear`. In `main`, create an array of 3 `Book` structs, populate their details, and then iterate through the array to print the details of each book.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book 1:\n  Title: The Hitchhiker's Guide to the Galaxy\n  Author: Douglas Adams\n  Year: 1979\n\nBook 2:\n  Title: Pride and Prejudice\n  Author: Jane Austen\n  Year: 1813\n\nBook 3:\n  Title: 1984\n  Author: George Orwell\n  Year: 1949\n\n"
+    }
+  ],
+  "driver": "g++ -o solution solution.cpp && ./solution",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    {
+      "line": 9,
+      "column": 2,
+      "message": "expected ';' after struct definition"
+    }
+  ]
+}

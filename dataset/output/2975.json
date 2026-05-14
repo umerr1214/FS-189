@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `Circle` class with a private member `radius` (double). Include a public constructor, a public method `calculateArea()` that returns the area, and another public method `calculateCircumference()` that returns the circumference. Demonstrate creating a `Circle` object and calling its methods.",
+  "test_cases": [
+    {
+      "input": "5.0",
+      "expected": "Area: 78.53981633974483\nCircumference: 31.41592653589793"
+    }
+  ],
+  "driver": "int main() {\n    Circle myCircle(5.0);\n    std::cout << std::fixed << std::setprecision(15);\n    std::cout << \"Area: \" << myCircle.calculateArea() << std::endl;\n    std::cout << \"Circumference: \" << myCircle.calculateCircumference() << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The formulas for `calculateArea()` and `calculateCircumference()` methods are swapped, leading to incorrect calculations for both area and circumference."
+  ]
+}

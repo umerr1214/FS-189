@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Calculate the sum of all natural numbers up to a given positive integer `N` entered by the user. Use a `while` loop.",
+  "test_cases": [
+    { "input": "5", "expected": "The sum of natural numbers up to 5 is: 15" },
+    { "input": "15", "expected": "The sum of natural numbers up to 15 is: 120" },
+    { "input": "16", "expected": "The sum of natural numbers up to 16 is: -120" },
+    { "input": "20", "expected": "The sum of natural numbers up to 20 is: -46" }
+  ],
+  "driver": "The user's `main` function is expected to read an integer from stdin and print the result to stdout.",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The sum variable is declared as `char`, which has a small range (-128 to 127 on most systems). For N values that result in a sum greater than 127 (e.g., N=16, sum=136), an integer overflow occurs, leading to incorrect results due to wrap-around. It should be an `int`."]
+}

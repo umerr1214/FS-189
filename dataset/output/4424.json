@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Book` with `title` (std::string) and `pages` (int). Create an array of 2 `Book` structs, populate their data, and print the title of the book with more pages.",
+  "test_cases": [
+    { "input": "", "expected": "The C++ Way\n" }
+  ],
+  "driver": "// No specific driver needed as input is hardcoded in the C++ program itself.\n// The program will compile and run, printing the result to stdout.",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "For a fixed-size array of only two elements, using a loop to find the maximum is less readable and less efficient than a direct if-else comparison. The current approach introduces unnecessary complexity and overhead for such a small, fixed dataset.",
+    "While the variable names are functional, the overall structure could be simplified for better clarity given the problem's constraints."
+  ]
+}

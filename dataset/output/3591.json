@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a program that takes a day number (1-7) as input and prints the corresponding day name (e.g., 1 for Monday, 2 for Tuesday) using a switch statement.",
+  "test_cases": [
+    { "input": "1", "expected": "Enter a day number (1-7): Monday\n" },
+    { "input": "4", "expected": "Enter a day number (1-7): Thursday\n" },
+    { "input": "7", "expected": "Enter a day number (1-7): Sunday\n" },
+    { "input": "0", "expected": "Enter a day number (1-7): Invalid day number. Please enter a number between 1 and 7.\n" },
+    { "input": "8", "expected": "Enter a day number (1-7): Invalid day number. Please enter a number between 1 and 7.\n" },
+    { "input": "abc", "expected": "Enter a day number (1-7): Invalid input. Please enter a valid integer.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <utility> // For std::pair\n\nint main() {\n    std::cout << \"This C++ driver is designed to orchestrate test cases.\" << std::endl;\n    std::cout << \"It would typically compile the target C++ program, then for each test case:\" << std::endl;\n    std::cout << \"  1. Provide the 'input' string to the program's standard input.\" << std::endl;\n    std::cout << \"  2. Capture the program's standard output.\" << std::endl;\n    std::cout << \"  3. Compare the captured output with the 'expected' output.\" << std::endl;\n    std::cout << \"The actual test data (inputs and expected outputs) would be read from the JSON configuration.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

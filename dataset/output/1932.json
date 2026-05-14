@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Enhance the `Rectangle` class. Implement setters for `length` and `width` that validate input: dimensions must be positive. If an invalid value is provided, print an error message and do not update the member.",
+  "test_cases": [
+    { "input": "Rect1 initial dimensions: \nRect2 initial dimensions: \nRect1 dimensions after Rect2 creation: \nRect1 after setting length to 7.5: \nRect2 dimensions after Rect1 length change: \nRect2 after setting width to 2.0: \nRect1 dimensions after Rect2 width change: \nRect1 after setting length to -3.0: \nRect2 dimensions after Rect1 invalid length change: ", "expected": "Length: 5, Width: 10\nLength: 20, Width: 30\nLength: 5, Width: 10\nLength: 7.5, Width: 10\nLength: 7.5, Width: 10\nLength: 7.5, Width: 2\nLength: 7.5, Width: 2\nError: Invalid length (value -3). Length must be positive and was not updated.\nLength: 7.5, Width: 2\nLength: 7.5, Width: 2\n" }
+  ],
+  "driver": "Rectangle rect1(5.0, 10.0);\nstd::cout << \"Rect1 initial dimensions: \";\nrect1.printDimensions();\n\nRectangle rect2(20.0, 30.0);\nstd::cout << \"Rect2 initial dimensions: \";\nrect2.printDimensions();\nstd::cout << \"Rect1 dimensions after Rect2 creation: \";\nrect1.printDimensions();\n\nrect1.setLength(7.5);\nstd::cout << \"Rect1 after setting length to 7.5: \";\nrect1.printDimensions();\nstd::cout << \"Rect2 dimensions after Rect1 length change: \";\nrect2.printDimensions();\n\nrect2.setWidth(2.0);\nstd::cout << \"Rect2 after setting width to 2.0: \";\nrect2.printDimensions();\nstd::cout << \"Rect1 dimensions after Rect2 width change: \";\nrect1.printDimensions();\n\nrect1.setLength(-3.0); // Invalid\nstd::cout << \"Rect1 after setting length to -3.0: \";\nrect1.printDimensions();\nstd::cout << \"Rect2 dimensions after Rect1 invalid length change: \";\nrect2.printDimensions();",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The `length` and `width` member variables are declared `static`. This means all `Rectangle` objects share the same `length` and `width`, violating the semantic meaning of a class where each object should have its own independent state. Modifying one `Rectangle` object's dimensions affects all other instances."]
+}

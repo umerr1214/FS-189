@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Create a `ComplexNumber` class with `real` and `imaginary` parts. Overload the `+` operator for complex number addition and the `<<` operator to enable easy printing of `ComplexNumber` objects.",
+  "test_cases": [
+    { "input": "ComplexNumber c1(3, 2); ComplexNumber c2(1, 7); ComplexNumber sum = c1 + c2; std::cout << sum;", "expected": "4 + 9i" },
+    { "input": "ComplexNumber c4(5, -3); ComplexNumber c5(2, 1); ComplexNumber sum2 = c4 + c5; std::cout << sum2;", "expected": "7 - 2i" }
+  ],
+  "driver": "#include <iostream>\n\nclass ComplexNumber {\nprivate:\n    double real;\n    double imaginary;\n\npublic:\n    ComplexNumber(double r = 0.0, double i = 0.0) : real(r), imaginary(i) {}\n\n    ComplexNumber operator+(const ComplexNumber& other) const {\n        return ComplexNumber(real + other.real, imaginary + other.imaginary);\n    }\n\n    friend std::ostream& operator<<(std::ostream& os, const ComplexNumber& obj) {\n        os << obj.real;\n        if (obj.imaginary >= 0) {\n            os << \" + \" << obj.imaginary << \"i\";\n        } else {\n            os << \" - \" << -obj.imaginary << \"i\";\n        }\n        return os;\n    }\n};\n\nint main() {\n    ComplexNumber c1(3.0, 2.0);\n    ComplexNumber c2(1.0, 7.0);\n    ComplexNumber c3 = c1 + c2;\n    std::cout << \"c1: \" << c1 << std::endl;\n    std::cout << \"c2: \" << c2 << std::endl;\n    std::cout << \"c1 + c2: \" << c3 << std::endl;\n\n    ComplexNumber c4(5.0, -3.0);\n    ComplexNumber c5(2.0, 1.0);\n    ComplexNumber c6 = c4 + c5;\n    std::cout << \"c4: \" << c4 << std::endl;\n    std::cout << \"c5: \" << c5 << std::endl;\n    std::cout << \"c4 + c5: \" << c6 << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the class definition of `ComplexNumber`."]
+}

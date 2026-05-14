@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that takes a temperature in Celsius as input from the user and converts it to Fahrenheit, displaying the result. Use the formula: F = C * 9/5 + 32. Ensure the calculation handles decimal values correctly.",
+  "test_cases": [
+    { "input": "25.0", "expected": "77.0" },
+    { "input": "abc", "expected": "32.0" },
+    { "input": "-10", "expected": "14.0" }
+  ],
+  "driver": "// This C++ driver code demonstrates how test cases are applied.\n// It sets up input and captures output for a program that reads from stdin and writes to stdout.\n// The student's program (containing 'int main()') is expected to be compiled and executed.\n\n#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <iomanip>\n#include <cstdlib> // For system() - conceptual example\n\n// Helper to capture stdout (not used directly in this conceptual driver, but for context)\nstruct CaptureOutput {\n    std::stringstream oss;\n    std::streambuf* oldCout;\n    CaptureOutput() : oldCout(std::cout.rdbuf()) {\n        std::cout.rdbuf(oss.rdbuf());\n    }\n    ~CaptureOutput() {\n        std::cout.rdbuf(oldCout);\n    }\n    std::string getOutput() const { return oss.str(); }\n};\n\n// Helper to provide stdin (not used directly in this conceptual driver, but for context)\nstruct SimulateInput {\n    std::istringstream iss;\n    std::streambuf* oldCin;\n    SimulateInput(const std::string& input) : oldCin(std::cin.rdbuf()) {\n        iss.str(input);\n        std::cin.rdbuf(iss.rdbuf());\n    }\n    ~SimulateInput() { std::cin.rdbuf(oldCin); }\n};\n\n// This main function would typically be part of the *evaluation harness*, not the student's submission.\n// It shows how the student's compiled program would be interacted with.\nint main() {\n    std::vector<std::pair<std::string, std::string>> test_cases = {\n        // Test cases will be inserted here by the JSON generator\n        {\"25.0\", \"77.0\"},\n        {\"abc\", \"32.0\"},\n        {\"-10\", \"14.0\"}\n    };\n\n    // Conceptual loop for running student's program for each test case\n    for (size_t i = 0; i < test_cases.size(); ++i) {\n        const auto& tc = test_cases[i];\n        std::cout << \"--- Running Test Case \" << (i + 1) << \" ---\" << std::endl;\n        std::cout << \"Input: \\\"\" << tc.first << \"\\\"\" << std::endl;\n        std::cout << \"Expected Output (normalized): \\\"\" << tc.second << \"\\\"\" << std::endl;\n\n        // In an actual evaluation system, the student's compiled program (e.g., 'a.out')\n        // would be executed here with 'tc.first' as stdin, and its stdout captured.\n        // Example (conceptual, requires specific environment setup):\n        // std::string command = \"./a.out < input_file.txt > output_file.txt\";\n        // system(command.c_str());\n        // // Then read output_file.txt and compare with tc.second.\n        \n        std::cout << \"--- End Test Case \" << (i + 1) << \" ---\" << std::endl << std::endl;\n    }\n\n    std::cout << \"Test execution conceptualized. Actual evaluation involves running student's compiled program.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Program does not handle non-numeric input gracefully, potentially leading to incorrect calculations or undefined behavior.",
+    "Lack of input validation for numeric types from standard input."
+  ]
+}

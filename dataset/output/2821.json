@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class that encapsulates attributes like `title`, `author`, and `isbn` (all strings). Include a constructor to initialize these attributes and a `displayInfo()` method to print all book details.",
+  "test_cases": [
+    { "input": "The Hitchhiker's Guide to the Galaxy,Douglas Adams,978-0345391803", "expected": "Book Details:\n  Title:  The Hitchhiker's Guide to the Galaxy\n  Author: Douglas Adams\n  ISBN:   978-0345391803\n" },
+    { "input": "1984,George Orwell,978-0451524935", "expected": "Book Details:\n  Title:  1984\n  Author: George Orwell\n  ISBN:   978-0451524935\n" }
+  ],
+  "driver": "int main() {\n    // Standard test cases (from JSON input or direct construction)\n    Book book_valid1(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\");\n    book_valid1.displayInfo();\n    std::cout << \"---\\n\";\n\n    Book book_valid2(\"1984\", \"George Orwell\", \"978-0451524935\");\n    book_valid2.displayInfo();\n    std::cout << \"---\\n\";\n\n    // Robustness Issue demonstration: Passing nullptr to a std::string constructor via const char*\n    // This is expected to cause a std::logic_error or crash.\n    try {\n        std::cout << \"\\nAttempting to create a book with a nullptr title (expecting a runtime error):\\n\";\n        Book book_with_nullptr(nullptr, \"J.K. Rowling\", \"978-0747532743\");\n        // The line above should throw an exception or crash before reaching here.\n        book_with_nullptr.displayInfo(); // This line should ideally not be reached.\n        std::cout << \"Unexpected: Book created successfully with nullptr.\\n\";\n    } catch (const std::logic_error& e) {\n        std::cerr << \"Caught expected std::logic_error: \" << e.what() << \"\\n\";\n        return 1; // Indicate that the robustness issue was triggered.\n    } catch (const std::exception& e) {\n        std::cerr << \"Caught unexpected exception: \" << e.what() << \"\\n\";\n        return 1; // Indicate failure\n    }\n\n    return 0; // If no issue was triggered (unexpected for this case)\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The constructor takes C-style string pointers (`const char*`) but does not explicitly handle `nullptr` arguments. Constructing `std::string` from a `nullptr` `const char*` results in a `std::logic_error` (or crash), making the class non-robust to invalid C-style string inputs."]
+}

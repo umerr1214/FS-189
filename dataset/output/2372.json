@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private attributes for `title`, `author`, and `isbn`. Implement a public constructor to initialize these attributes and a `displayDetails()` method to print all book information.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Book Details:\nTitle: The Hitchhiker's Guide to the Galaxy\nAuthor: Douglas Adams\nISBN: 978-0345391803\n---\nBook Details:\nTitle: Pride and Prejudice\nAuthor: Jane Austen\nISBN: 978-0141439518\n---\nBook Details:\nTitle: Empty Title\nAuthor: \nISBN: No ISBN\n"
+    }
+  ],
+  "driver": "int main() {\n    Book book1(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", \"978-0345391803\");\n    book1.displayDetails();\n    std::cout << \"---\\n\";\n\n    Book book2(\"Pride and Prejudice\", \"Jane Austen\", \"978-0141439518\");\n    book2.displayDetails();\n    std::cout << \"---\\n\";\n\n    Book book3(\"Empty Title\", \"\", \"No ISBN\");\n    book3.displayDetails();\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "**Efficiency Issue:** The constructor `Book(std::string t, std::string a, std::string i)` passes `std::string` parameters by value. This creates unnecessary copies of the string arguments when the `Book` object is constructed. It should pass by `const std::string&` to avoid these copies.",
+    "**Efficiency Issue:** The constructor uses direct assignment (`this->title = t;`) in its body instead of an initializer list. While functionally correct, using an initializer list is generally more efficient for member initialization as it avoids default construction followed by assignment.",
+    "**Readability Issue:** The `displayDetails()` method is not marked `const`. Since this method does not modify the object's state, it should be `const` to clearly indicate its intent and allow it to be called on `const` `Book` objects.",
+    "**Efficiency Issue:** The `displayDetails()` method uses `std::endl` for line breaks. `std::endl` not only inserts a newline character but also flushes the output buffer, which can be less efficient than simply using `'\n'` for console output, especially in performance-critical applications."
+  ]
+}

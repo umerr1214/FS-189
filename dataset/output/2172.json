@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a custom `MyString` class that dynamically allocates memory for a C-style string. Provide a deep copy constructor and a deep copy assignment operator (`operator=`). Demonstrate how these are crucial to avoid shallow copies and dangling pointers when copying `MyString` objects.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "s1 String: Hello World, Address: <address1>\ns2 (copy of s1) String: Hello World, Address: <address2>\ns1 (modified) String: hello World, Address: <address1>\ns2 (after s1 modified) String: Hello World, Address: <address2>\ns3 String: Initial, Address: <address3>\ns3 (assigned s1) String: hello World, Address: <address4>\ns1 (modified again) String: Gello World, Address: <address1>\ns3 (after s1 modified again) String: hello World, Address: <address4>\ns4 String: , Address: <address5>\ns4 (assigned s2) String: Hello World, Address: <address6>\n"
+    }
+  ],
+  "driver": "int main() {\n    MyString s1(\"Hello World\");\n    std::cout << \"s1 \"; s1.print();\n\n    // Demonstrate copy constructor\n    MyString s2 = s1; // Calls copy constructor\n    std::cout << \"s2 (copy of s1) \"; s2.print();\n\n    // Modify s1 to show deep copy\n    s1.m_data[0] = 'h'; // Direct modification for demonstration, bad practice normally\n    std::cout << \"s1 (modified) \"; s1.print();\n    std::cout << \"s2 (after s1 modified) \"; s2.print();\n\n    MyString s3(\"Initial\");\n    std::cout << \"s3 \"; s3.print();\n\n    // Demonstrate copy assignment operator\n    s3 = s1; // Calls copy assignment operator\n    std::cout << \"s3 (assigned s1) \"; s3.print();\n\n    // Modify s1 again to show deep copy\n    s1.m_data[0] = 'G';\n    std::cout << \"s1 (modified again) \"; s1.print();\n    std::cout << \"s3 (after s1 modified again) \"; s3.print();\n\n    MyString s4; // Default constructor\n    std::cout << \"s4 \"; s4.print();\n    s4 = s2;\n    std::cout << \"s4 (assigned s2) \"; s4.print();\n\n    // All MyString objects created (s1, s2, s3, s4) will leak memory\n    // because the destructor is missing. The program will run to completion,\n    // but memory allocated on the heap for m_data will not be released.\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Missing destructor (`~MyString()`) for the `MyString` class. This leads to a memory leak for every `MyString` object created, as the dynamically allocated `m_data` memory is never freed when objects are destroyed."
+  ]
+}

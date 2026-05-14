@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that dynamically allocates memory for an array of 5 integers using `new`, prompts the user to enter values for these integers, prints the values, and then deallocates the memory using `delete[]`.",
+  "test_cases": [
+    {
+      "input": "1\n2\n3\n4\n5\n",
+      "expected": "Enter 5 integer values:\nEnter value 1: Enter value 2: Enter value 3: Enter value 4: Enter value 5: You entered:\nValue 1: 1\nValue 2: 2\nValue 3: 3\nValue 4: 4\nValue 5: 5\n"
+    },
+    {
+      "input": "1\n2\nhello\n",
+      "expected": "Enter 5 integer values:\nEnter value 1: Enter value 2: Enter value 3: "
+    }
+  ],
+  "driver": "The program is a complete C++ application. It can be compiled with `g++ -o program 3823.cpp` and run with `./program`. Input will be piped to stdin.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program lacks input validation. If the user enters non-integer input, `std::cin`'s failbit is set, causing the input loop to enter an infinite state or behave unpredictably without clearing the error state and ignoring remaining invalid input."
+  ]
+}

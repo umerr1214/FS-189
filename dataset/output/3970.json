@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that initializes a 1D integer array with 10 elements. Then, calculate and display the sum of all even numbers and the product of all odd numbers in that array.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Array elements: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10\nSum of even numbers: 30\nProduct of odd numbers: 945\n"
+    }
+  ],
+  "driver": "int main() { /* The solution is expected to be a complete program with its own main function. */ return 0; }",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing '<<' operator before std::endl in a cout statement, leading to a compilation error."
+  ]
+}

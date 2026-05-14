@@ -1,0 +1,26 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program with two overloaded functions named `calculateArea`. One function should take a single double argument (radius) and calculate the area of a circle. The second should take two double arguments (length, width) and calculate the area of a rectangle. Prompt the user to choose which area to calculate and provide inputs.",
+  "test_cases": [
+    {
+      "input": "1\n5\n",
+      "expected": "Choose an area to calculate:\n1. Circle (radius)\n2. Rectangle (length, width)\nEnter your choice: Enter the radius of the circle: Area of the circle: 78.53975\n"
+    },
+    {
+      "input": "abc\n",
+      "expected": "Choose an area to calculate:\n1. Circle (radius)\n2. Rectangle (length, width)\nEnter your choice: Invalid choice. Please enter 1 or 2.\n"
+    },
+    {
+      "input": "1\n-5\n",
+      "expected": "Choose an area to calculate:\n1. Circle (radius)\n2. Rectangle (length, width)\nEnter your choice: Enter the radius of the circle: Area of the circle: 78.53975\n"
+    }
+  ],
+  "driver": "int main() {\n    // The program directly interacts with stdin/stdout, so no special driver needed.\n    // Test cases will provide input and capture output.\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not handle non-numeric input gracefully for choices or dimensions, potentially leading to crashes or infinite loops (e.g., if `std::cin` enters a fail state and is not cleared).",
+    "Negative dimensions (radius, length, width) are accepted without validation, which is mathematically illogical for area calculations."
+  ]
+}

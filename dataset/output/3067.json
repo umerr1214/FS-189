@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Calculator` class with an overloaded public method `add`. It should be able to: 1) add two integers, 2) add three integers, and 3) add two double-precision numbers. Demonstrate calling each version of the `add` method.",
+  "test_cases": [
+    { "input": "", "expected": "Adding two integers (10, 20): 30\nAdding two integers (-5, 15): 10\nAdding two integers (2147483647, 1) [OVERFLOW TEST]: -2147483648\nAdding three integers (1, 2, 3): 6\nAdding three integers (100, -50, 20): 70\nAdding three integers (2147483647, 1, 1) [OVERFLOW TEST]: -2147483647\nAdding two doubles (10.5, 20.3): 30.8\nAdding two doubles (-2.5, 7.0): 4.5\n" }
+  ],
+  "driver": "#include <iostream>\n#include <limits>\n#include <iomanip>\n\nclass Calculator3067 {\npublic:\n    int add(int a, int b) {\n        return a + b;\n    }\n\n    int add(int a, int b, int c) {\n        return a + b + c;\n    }\n\n    double add(double a, double b) {\n        return a + b;\n    }\n};\n\nint main() {\n    Calculator3067 calculator;\n\n    std::cout << \"Adding two integers (10, 20): \" << calculator.add(10, 20) << std::endl;\n    std::cout << \"Adding two integers (-5, 15): \" << calculator.add(-5, 15) << std::endl;\n    std::cout << \"Adding two integers (\" << std::numeric_limits<int>::max() << \", 1) [OVERFLOW TEST]: \"\n              << calculator.add(std::numeric_limits<int>::max(), 1) << std::endl;\n\n    std::cout << \"Adding three integers (1, 2, 3): \" << calculator.add(1, 2, 3) << std::endl;\n    std::cout << \"Adding three integers (100, -50, 20): \" << calculator.add(100, -50, 20) << std::endl;\n    std::cout << \"Adding three integers (\" << std::numeric_limits<int>::max() << \", 1, 1) [OVERFLOW TEST]: \"\n              << calculator.add(std::numeric_limits<int>::max(), 1, 1) << std::endl;\n\n    std::cout << std::fixed << std::setprecision(1);\n    std::cout << \"Adding two doubles (10.5, 20.3): \" << calculator.add(10.5, 20.3) << std::endl;\n    std::cout << \"Adding two doubles (-2.5, 7.0): \" << calculator.add(-2.5, 7.0) << std::endl;\n    std::cout << std::setprecision(6);\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Integer overflow is not handled for sums that exceed `int` limits in `add(int, int)` and `add(int, int, int)` methods, leading to incorrect results for large inputs (e.g., `INT_MAX + 1`).",
+    "The program does not provide safeguards or alternative return types (like `long long`) to prevent or indicate overflow, which is a robustness concern for arithmetic operations with potentially large integer inputs."
+  ]
+}

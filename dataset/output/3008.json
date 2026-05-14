@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Design a `Resource` class that simulates managing a dynamic integer array. The constructor should allocate memory for a specified size, and the destructor should deallocate it. Include methods to `fillArray()` and `displayArray()`. Demonstrate its lifecycle to ensure proper memory management.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "Program starting for Readability/Efficiency demonstration.\nResource_Manager_For_Dynamic_Integer_Array object created with size 7.\nArray population routine completed.\nCurrent array data (size 7):\nElement 0: <random_number>\nElement 1: <random_number>\nElement 2: <random_number>\nElement 3: <random_number>\nElement 4: <random_number>\nElement 5: <random_number>\nElement 6: <random_number>\n--- End of Array Data ---\n\nCreating another resource with an invalid size...\nInvalid size provided. Defaulting to 5 for safety.\nResource_Manager_For_Dynamic_Integer_Array object created with size 5.\nArray population routine completed.\nCurrent array data (size 5):\nElement 0: <random_number>\nElement 1: <random_number>\nElement 2: <random_number>\nElement 3: <random_number>\nElement 4: <random_number>\n--- End of Array Data ---\n\nProgram finished.\nResource_Manager_For_Dynamic_Integer_Array object (size 5) destroyed.\nResource_Manager_For_Dynamic_Integer_Array object (size 7) destroyed."
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"Program starting for Readability/Efficiency demonstration.\" << std::endl;\n\n    Resource_Manager_For_Dynamic_Integer_Array my_first_resource(7);\n    my_first_resource.execute_array_population_routine();\n    my_first_resource.present_array_data_to_console();\n\n    std::cout << \"\\nCreating another resource with an invalid size...\" << std::endl;\n    Resource_Manager_For_Dynamic_Integer_Array my_second_resource(0);\n    my_second_resource.execute_array_population_routine();\n    my_second_resource.present_array_data_to_console();\n\n    std::cout << \"\\nProgram finished.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses overly verbose and non-idiomatic C++ variable/method names (e.g., `p_internal_data_store_for_numbers`, `execute_array_population_routine`).",
+    "Uses C-style memory management (`calloc` and `free`) instead of C++-idiomatic `new[]` and `delete[]`, which is a mismatch and less type-safe.",
+    "The `execute_array_population_routine` method redundantly initializes the array to zero after `calloc` (which already zero-initializes) before filling with random values.",
+    "Seeds the random number generator (`srand(time(nullptr))`) inside `execute_array_population_routine`. This is inefficient and can lead to non-random or repetitive sequences if the function is called multiple times in quick succession.",
+    "The `present_array_data_to_console` method prints each element on a new line using `std::endl` in a loop, which is less efficient due to frequent buffer flushing and results in less concise array output.",
+    "Lack of `const` correctness: `present_array_data_to_console` and `execute_array_population_routine` are not marked `const` even if they don't modify the object's logical state (or in the case of populate, it *does* modify but could be more clearly stated).",
+    "Includes `<vector>` but doesn't use it, which is unnecessary."
+  ]
+}

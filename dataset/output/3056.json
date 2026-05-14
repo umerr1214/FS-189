@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Extend the `Shape` hierarchy (from Q11). Add a `virtual` destructor to the `Shape` base class. Demonstrate polymorphic behavior by storing `Rectangle` and `Circle` objects in a `std::vector` of `Shape*` pointers and then deleting them to ensure correct destructors are called.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Beginning of shape creation process ---\nShape base object 'Rectangle' is being constructed.\n  Rectangle object is being constructed with width 12.5 and height 7.0.\nShape base object 'Circle' is being constructed.\n  Circle object is being constructed with radius 5.0.\nShape base object 'Rectangle' is being constructed.\n  Rectangle object is being constructed with width 4.0 and height 9.5.\nShape base object 'Circle' is being constructed.\n  Circle object is being constructed with radius 8.2.\n--- Shape creation process completed ---\n\n--- Initiating drawing operations for all shapes ---\n  Shape #1: Drawing a Rectangle: dimensions 12.5x7.0.\n\n  Shape #2: Drawing a Circle: radius 5.0.\n\n  Shape #3: Drawing a Rectangle: dimensions 4.0x9.5.\n\n  Shape #4: Drawing a Circle: radius 8.2.\n\n--- Drawing operations concluded ---\n\n--- Starting memory cleanup for shape objects (Readability/Efficiency Issue: manual indexed deletion) ---\n  Deleting shape at index 0...\n    ~Rectangle() destructor called for 'Rectangle'.\n      ~Shape() destructor called for base object 'Rectangle'.\n  Deleting shape at index 1...\n    ~Circle() destructor called for 'Circle'.\n      ~Shape() destructor called for base object 'Circle'.\n  Deleting shape at index 2...\n    ~Rectangle() destructor called for 'Rectangle'.\n      ~Shape() destructor called for base object 'Rectangle'.\n  Deleting shape at index 3...\n    ~Circle() destructor called for 'Circle'.\n      ~Shape() destructor called for base object 'Circle'.\n--- Memory cleanup finished ---\n\n\nProgram has successfully executed and is now terminating.\n"
+    }
+  ],
+  "driver": "The `main` function serves as the driver, demonstrating shape creation, drawing, and polymorphic deletion.",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The program uses traditional indexed for-loops for iterating and deleting objects in the vector, which is less readable and more error-prone compared to modern C++ range-based for loops or standard algorithms like `std::for_each` for such tasks.",
+    "Excessive and overly verbose output messages, especially in constructors and destructors, can clutter the console and make debugging harder.",
+    "Frequent use of `std::endl` instead of `\\n` can slightly impact efficiency due to flushing the buffer on each call."
+  ]
+}

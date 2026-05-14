@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create a `Student` class with private `name` (string) and `id` (int). Implement both a default constructor (initializing `name` to 'Unknown' and `id` to 0) and a parameterized constructor (taking `name` and `id`).",
+  "test_cases": [
+    {
+      "input": "No direct input, runs main function.",
+      "expected": "Student Name: Unknown, ID: 0\nStudent Name: Alice, ID: 101\nStudent Name: Bob, ID: 500\n"
+    }
+  ],
+  "driver": "int main() {\n    // Test default constructor\n    Student s1;\n    s1.printStudent();\n\n    // Test parameterized constructor\n    Student s2(\"Alice\", 101);\n    s2.printStudent();\n\n    // Another test\n    Student s3(\"Bob\", 500);\n    s3.printStudent();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The parameterized constructor passes `std::string newName` by value, leading to an unnecessary copy when the string is passed into the constructor. It should be passed by `const std::string&` for efficiency.",
+    "Both constructors do not use member initializer lists. For `std::string` members, this means the member is default-constructed first and then assigned, which is less efficient than direct initialization through an initializer list."
+  ]
+}

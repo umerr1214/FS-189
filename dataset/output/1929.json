@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a `Rectangle` class with `length` and `width` (both double). Implement a default constructor that initializes both to 0.0 and a parameterized constructor that takes two arguments to set `length` and `width`.",
+  "test_cases": [
+    { "input": "Default constructor", "expected": "Default Rectangle: Length=0.00, Width=0.00, Area=0.00, Perimeter=0.00\n" },
+    { "input": "l=0.0, w=0.0", "expected": "Parameterized Rectangle: Length=0.00, Width=0.00, Area=0.00, Perimeter=0.00\n" },
+    { "input": "l=5.0, w=10.0", "expected": "Parameterized Rectangle: Length=5.00, Width=10.00, Area=50.00, Perimeter=30.00\n" },
+    { "input": "l=2.5, w=4.0", "expected": "Parameterized Rectangle: Length=2.50, Width=4.00, Area=10.00, Perimeter=13.00\n" },
+    { "input": "l=0.0, w=7.0", "expected": "Parameterized Rectangle: Length=0.00, Width=7.00, Area=0.00, Perimeter=14.00\n" }
+  ],
+  "driver": "#define INCLUDE_PERIMETER\n\n#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <iomanip>\n\nclass Rectangle {\nprivate:\n    double length;\n    double width;\n\npublic:\n    Rectangle() : length(0.0), width(0.0) {}\n\n    Rectangle(double l, double w) : length(l), width(w) {}\n\n    double getLength() const {\n        return length;\n    }\n\n    double getWidth() const {\n        return width;\n    }\n\n    double getArea() const {\n        return length * width;\n    }\n\n    double getPerimeter() const {\n        return 2 * (length + width);\n    }\n};\n\nstd::string testDefaultConstructor() {\n    std::ostringstream oss;\n    oss << std::fixed << std::setprecision(2);\n    Rectangle r_default;\n    oss << \"Default Rectangle: Length=\" << r_default.getLength() << \", Width=\" << r_default.getWidth() << \", Area=\" << r_default.getArea();\n    #ifdef INCLUDE_PERIMETER\n    oss << \", Perimeter=\" << r_default.getPerimeter();\n    #endif\n    oss << std::endl;\n    return oss.str();\n}\n\nstd::string testParameterizedConstructor(double l, double w) {\n    std::ostringstream oss;\n    oss << std::fixed << std::setprecision(2);\n    Rectangle r(l, w);\n    oss << \"Parameterized Rectangle: Length=\" << r.getLength() << \", Width=\" << r.getWidth() << \", Area=\" << r.getArea();\n    #ifdef INCLUDE_PERIMETER\n    oss << \", Perimeter=\" << r.getPerimeter();\n    #endif\n    oss << std::endl;\n    return oss.str();\n}\n\nint main() {\n    std::cout << testDefaultConstructor();\n    std::cout << testParameterizedConstructor(0.0, 0.0);\n    std::cout << testParameterizedConstructor(5.0, 10.0);\n    std::cout << testParameterizedConstructor(2.5, 4.0);\n    std::cout << testParameterizedConstructor(0.0, 7.0);\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

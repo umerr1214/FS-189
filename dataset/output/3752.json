@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that takes a positive integer 'N' as input from the user and calculates the sum of all odd numbers from 1 to N using a `while` loop.",
+  "test_cases": [
+    { "input": "7", "expected": "Enter a positive integer N: The sum of odd numbers from 1 to 7 is: 16\n" },
+    { "input": "10", "expected": "Enter a positive integer N: The sum of odd numbers from 1 to 10 is: 25\n" },
+    { "input": "1", "expected": "Enter a positive integer N: The sum of odd numbers from 1 to 1 is: 1\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <stdexcept>\n\nvoid solve_question(); // Forward declaration of the student's solution function\n\nstd::string run_test_case(const std::string& input) {\n    std::stringstream ss_input(input);\n    std::stringstream ss_output;\n    std::stringstream ss_error;\n\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::streambuf* old_cerr = std::cerr.rdbuf();\n\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n    std::cerr.rdbuf(ss_error.rdbuf());\n\n    try {\n        solve_question(); \n    } catch (const std::exception& e) {\n        ss_error << \"Unhandled exception: \" << e.what() << std::endl;\n    } catch (...) {\n        ss_error << \"Unhandled unknown exception.\" << std::endl;\n    }\n\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n    std::cerr.rdbuf(old_cerr);\n\n    std::string output = ss_output.str();\n    std::string error_output = ss_error.str();\n\n    if (!error_output.empty()) {\n        return \"ERROR: \" + error_output + output; \n    }\n    return output;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The program iterates through all numbers from 1 to N and checks for oddness, which is less efficient than directly incrementing by 2 to sum only odd numbers.",
+    "Variable names like 'x', 'y', and 'z' are not descriptive, significantly reducing the readability and maintainability of the code."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that takes a C-style string (character array) as input. Implement a function to count the number of vowels (a, e, i, o, u, case-insensitive) present in the string and display the count.",
+  "test_cases": [
+    { "input": "Hello World", "expected": "3" },
+    { "input": "programming", "expected": "3" },
+    { "input": "AEIOUaeiou", "expected": "10" },
+    { "input": "Rhythm", "expected": "0" },
+    { "input": "UNIVERSITY", "expected": "4" }
+  ],
+  "driver": "#include <iostream>\n#include <cctype>\n#include <cstring>\n\n// Assuming countVowels function is defined above\n// int countVowels(const char* str) { ... }\n\nint main() {\n    char input1[] = \"Hello World\";\n    char input2[] = \"programming\";\n    char input3[] = \"AEIOUaeiou\";\n    char input4[] = \"Rhythm\";\n    char input5[] = \"UNIVERSITY\";\n\n    std::cout << countVowels(input1) << std::endl;\n    std::cout << countVowels(input2) << std::endl;\n    std::cout << countVowels(input3) << std::endl;\n    std::cout << countVowels(input4) << std::endl;\n    std::cout << countVowels(input5) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": []
+}

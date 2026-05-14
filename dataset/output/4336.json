@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a function `isEven` that takes an integer as an argument (pass by value) and returns a boolean `true` if the number is even, `false` otherwise.",
+  "test_cases": [
+    { "input": "4", "expected": "true" },
+    { "input": "7", "expected": "false" },
+    { "input": "0", "expected": "true" },
+    { "input": "-2", "expected": "true" },
+    { "input": "-3", "expected": "false" }
+  ],
+  "driver": "    std::cout << std::boolalpha;\n    std::cout << \"isEven(4): \" << isEven(4) << std::endl;\n    std::cout << \"isEven(7): \" << isEven(7) << std::endl;\n    std::cout << \"isEven(0): \" << isEven(0) << std::endl;\n    std::cout << \"isEven(-2): \" << isEven(-2) << std::endl;\n    std::cout << \"isEven(-3): \" << isEven(-3) << std::endl;",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

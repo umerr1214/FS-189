@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Given a 1D array of integers, count how many times a specific target number (provided by the user) appears in the array.",
+  "test_cases": [
+    { "input": "5\n1 2 3 2 1\n2", "expected": "2" },
+    { "input": "7\n10 20 10 30 10 40 10\n10", "expected": "4" },
+    { "input": "4\n-1 -2 -1 -3\n-1", "expected": "2" },
+    { "input": "0\n\n5", "expected": "0" },
+    { "input": "1\n100\n101", "expected": "0" }
+  ],
+  "driver": "std::string run_test_case(const std::string& input) {\n    std::stringstream ss_in(input);\n    std::stringstream ss_out;\n\n    std::streambuf* old_cin_buf = std::cin.rdbuf();\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n\n    std::cin.rdbuf(ss_in.rdbuf());\n    std::cout.rdbuf(ss_out.rdbuf());\n\n    solve(std::cin, std::cout);\n\n    std::cin.rdbuf(old_cin_buf);\n    std::cout.rdbuf(old_cout_buf);\n\n    return ss_out.str();\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The code suffers from poor readability due to the use of cryptic and non-descriptive variable names (e.g., 'sz' for size, 'ar' for array, 't' for target, 'cnt' for count, 'idx' for index). While the comments are present, they mostly reiterate the obvious action rather than explaining the 'why' or higher-level logic, and the overall code lacks sufficient formatting and clear structure to enhance understanding."
+  ]
+}

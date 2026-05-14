@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Extend the `Shape` hierarchy (from a previous question) by making `calculateArea()` a virtual function in the base class. Demonstrate dynamic polymorphism by storing derived class objects in a `Shape*` array and calling `calculateArea()`.",
+  "test_cases": [
+    { "input": "", "expected": "Calculating areas of various shapes (Robustness Issue - Memory Leak):\nShape 1 area: 78.5398\nShape 2 area: 24.0000\nShape 3 area: 19.6350\n" }
+  ],
+  "driver": "int main() {\n    const int num_shapes = 3;\n    Shape* shapes[num_shapes];\n\n    shapes[0] = new Circle(5.0);\n    shapes[1] = new Rectangle(4.0, 6.0);\n    shapes[2] = new Circle(2.5);\n\n    std::cout << \"Calculating areas of various shapes (Robustness Issue - Memory Leak):\" << std::endl;\n    std::cout << std::fixed << std::setprecision(4);\n\n    for (int i = 0; i < num_shapes; ++i) {\n        std::cout << \"Shape \" << i + 1 << \" area: \" << shapes[i]->calculateArea() << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["Memory leak: Dynamically allocated Shape objects (Circle, Rectangle) using 'new' are not deallocated with 'delete'. This leads to unreleased memory, which is a significant robustness flaw, especially in long-running applications."]
+}

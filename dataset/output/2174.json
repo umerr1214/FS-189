@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a custom `MyString` class that dynamically allocates memory for a C-style string. Provide a deep copy constructor and a deep copy assignment operator (`operator=`). Demonstrate how these are crucial to avoid shallow copies and dangling pointers when copying `MyString` objects.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- MyString Demonstration (Readability/Efficiency Issue) ---\ns1: \"Hello\" (Address of data: 0x...)\ns2 (copy of s1): \"Hello\" (Address of data: 0x...)\ns3 (default): \"\" (Address of data: 0x...)\ns3 (assigned s1): \"Hello\" (Address of data: 0x...)\n\n--- Modifying s1 ---\ns1 (assigned temp 'World'): \"World\" (Address of data: 0x...)\ns2 (should still be 'Hello'): \"Hello\" (Address of data: 0x...)\ns3 (should still be 'Hello'): \"Hello\" (Address of data: 0x...)\n\n--- Self-assignment test ---\ns2 (after self-assignment): \"Hello\" (Address of data: 0x...)\n\n--- Assignment from temporary ---\ns3 (assigned temporary): \"Temporary\" (Address of data: 0x...)\n\n--- Objects going out of scope ---\nlocal_s: \"Local String\" (Address of data: 0x...)\nlocal_copy: \"Local String\" (Address of data: 0x...)\nLocal strings went out of scope.\n--- End of Demonstration ---\n"
+    }
+  ],
+  "driver": "int main() { MyString s1(\"Hello\"); MyString s2 = s1; MyString s3; s3 = s1; MyString temp(\"World\"); s1 = temp; s2 = s2; s3 = MyString(\"Temporary\"); { MyString local_s(\"Local String\"); MyString local_copy = local_s; } return 0; }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The copy constructor and copy assignment operator use manual character-by-character loops for copying strings instead of efficient standard library functions like `std::strcpy` or `std::memcpy`. This is less efficient.",
+    "The copy assignment operator always deallocates and reallocates memory, even if the existing buffer is large enough to hold the new string. This leads to unnecessary memory operations and is less efficient than conditionally reallocating or resizing."
+  ]
+}

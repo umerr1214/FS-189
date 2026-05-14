@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "For the `Point` class (from a previous problem), overload the prefix increment `++` operator. It should increment both the `x` and `y` coordinates of the `Point` object and return a reference to the modified object.",
+  "test_cases": [
+    { "input": "Initial Point p1(1,2); call ++p1; check p1;", "expected": "Initial p1: (1, 2)\nAfter ++p1: (2, 3)\n" },
+    { "input": "Initial Point p2(5,5); call Point& ref_p2 = ++p2; check p2 and ref_p2; modify ref_p2.x = 10; check p2;", "expected": "After ++p2, p2: (6, 6)\nReference ref_p2: (6, 6)\nAfter ref_p2.x = 10, p2: (10, 6)\n" },
+    { "input": "Initial Point p3(10,20); call ++(++p3); check p3;", "expected": "Initial p3: (10, 20)\nAfter ++(++p3): (12, 22)\n" }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n\nclass Point {\npublic:\n    int x;\n    int y;\n\n    Point(int _x = 0, int _y = 0) : x(_x), y(_y) {}\n\n    friend std::ostream& operator<<(std::ostream& os, const Point& p) {\n        os << \"(\" << p.x << \", \" << p.y << \")\";\n        return os;\n    }\n\n    Point& operator++() {\n        x++;\n        y++;\n        return *this;\n    }\n}; // Corrected Point class definition for driver context\n\nint main() {\n    std::stringstream ss;\n\n    // Test Case 1: Basic increment\n    Point p1(1, 2);\n    ss << \"Initial p1: \" << p1 << std::endl;\n    ++p1;\n    ss << \"After ++p1: \" << p1 << std::endl;\n\n    // Test Case 2: Return value of prefix increment\n    Point p2(5, 5);\n    Point& ref_p2 = ++p2;\n    ss << \"After ++p2, p2: \" << p2 << std::endl;\n    ss << \"Reference ref_p2: \" << ref_p2 << std::endl;\n    ref_p2.x = 10;\n    ss << \"After ref_p2.x = 10, p2: \" << p2 << std::endl;\n\n    // Test Case 3: Chained increment\n    Point p3(10, 20);\n    ss << \"Initial p3: \" << p3 << std::endl;\n    ++(++p3);\n    ss << \"After ++(++p3): \" << p3 << std::endl;\n\n    std::cout << ss.str();\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the class definition, leading to a compilation error. The code for the operator itself is syntactically correct, but the class definition is incomplete."]
+}

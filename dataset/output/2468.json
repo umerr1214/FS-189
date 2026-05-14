@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a `ComplexNumber` class with `real` and `imaginary` parts. Overload the `+` operator for complex number addition and the `<<` operator to enable easy printing of `ComplexNumber` objects.",
+  "test_cases": [
+    { "input": "", "expected": "Details of first complex number: Complex Number Object: [Real_Component=3, Imaginary_Component=4, Standard_Form=3 + 4i]\nDetails of second complex number: Complex Number Object: [Real_Component=1.5, Imaginary_Component=-2.5, Standard_Form=1.5 - 2.5i]\nResult of their addition: Complex Number Object: [Real_Component=4.5, Imaginary_Component=1.5, Standard_Form=4.5 + 1.5i]\nAnother addition result: Complex Number Object: [Real_Component=-1.5, Imaginary_Component=1, Standard_Form=-1.5 + 1i]\n" }
+  ],
+  "driver": "int main() {\n    ComplexNumber_With_Verbose_Names first_complex_operand(3.0, 4.0);\n    ComplexNumber_With_Verbose_Names second_complex_operand(1.5, -2.5);\n    ComplexNumber_With_Verbose_Names sum_of_complex_numbers = first_complex_operand + second_complex_operand;\n\n    std::cout << \"Details of first complex number: \" << first_complex_operand << std::endl;\n    std::cout << \"Details of second complex number: \" << second_complex_operand << std::endl;\n    std::cout << \"Result of their addition: \" << sum_of_complex_numbers << std::endl;\n\n    ComplexNumber_With_Verbose_Names another_first_operand(0.5, 1.0);\n    ComplexNumber_With_Verbose_Names another_second_operand(-2.0, 0.0);\n    ComplexNumber_With_Verbose_Names another_sum_result = another_first_operand + another_second_operand;\n    std::cout << \"Another addition result: \" << another_sum_result << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses excessively verbose variable and class names (e.g., `real_part_of_complex_number`, `ComplexNumber_With_Verbose_Names`, `output_stream_reference`) which significantly hinders readability.",
+    "The `operator+` implementation uses explicit temporary variables (`resultant_real_value`, `resultant_imaginary_value`, `temporary_sum_object`) which, while often optimized by RVO, makes the code less concise than directly returning a constructed object.",
+    "The `operator<<` produces overly verbose output, including redundant labels and 'Standard_Form' sections, which deviates from 'easy printing' and reduces the clarity of the output."
+  ]
+}

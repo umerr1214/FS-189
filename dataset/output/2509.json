@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `Product` class with `productID`, `name`, and `price`. Overload the `==` operator to compare two `Product` objects based solely on their `productID`.",
+  "test_cases": [
+    { "input": "Standard product creation and comparison.", "expected": "ID: 101, Name: Laptop, Price: 1200.5\nID: 102, Name: Mouse, Price: 25\nID: 101, Name: Keyboard, Price: 75\np1 == p2: false\np1 == p3: true" }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n\nclass Product {\npublic:\n    int productID;\n    char* name;\n    double price;\n\n    Product(int id, const char* n, double p) : productID(id), price(p) {\n        if (n) {\n            name = new char[strlen(n) + 1];\n            strcpy(name, n);\n        } else {\n            name = nullptr;\n        }\n    }\n\n    ~Product() {\n        delete[] name;\n    }\n\n    // The robustness issue lies here: lack of custom copy constructor and assignment operator\n    // for managing the dynamically allocated 'name' C-string.\n\n    bool operator==(const Product& other) const {\n        return productID == other.productID;\n    }\n\n    void display() const {\n        std::cout << \"ID: \" << productID << \", Name: \" << (name ? name : \"N/A\") << \", Price: \" << price << std::endl;\n    }\n};\n\nint main() {\n    Product p1(101, \"Laptop\", 1200.50);\n    Product p2(102, \"Mouse\", 25.00);\n    Product p3(101, \"Keyboard\", 75.00);\n\n    p1.display();\n    p2.display();\n    p3.display();\n\n    std::cout << \"p1 == p2: \" << (p1 == p2 ? \"true\" : \"false\") << std::endl;\n    std::cout << \"p1 == p3: \" << (p1 == p3 ? \"true\" : \"false\") << std::endl;\n\n    // The potential for crash due to shallow copy is not directly triggered in this main\n    // to ensure the program can compile and run for basic testing, but the design flaw exists.\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Product` class uses a raw `char*` for the `name` member but does not implement the Rule of Three (custom copy constructor, copy assignment operator, and destructor). This leads to shallow copies when `Product` objects are copied, causing multiple objects to share the same dynamically allocated memory for `name`. This will result in a double-free error and undefined behavior or a crash when the objects are destructed.",
+    "The absence of proper memory management for `name` makes the class unsafe for common C++ operations like copying, passing by value, or returning by value, significantly reducing its robustness."
+  ]
+}

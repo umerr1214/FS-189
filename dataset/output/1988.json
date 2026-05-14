@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Create an `Engine` class with `horsepower` (int) and `fuelType` (string). Then, design a `Car` class that demonstrates composition by containing an `Engine` object as a member.",
+  "test_cases": [
+    { "input": "Car(\"AeroDynamics GT\", 2022, 250, \"Premium Unleaded\")", "expected": "--- First Vehicle Information ---\nVehicle Identifier Model: AeroDynamics GT\nVehicle Production Year: 2022\n  Engine Power Rating: 250 Horsepower Units\n  Engine Fuel Source Classification: Premium Unleaded\n\n" },
+    { "input": "Car(\"EcoDrive Compact\", 2020, 120, \"Electric\")", "expected": "--- Second Vehicle Information ---\nVehicle Identifier Model: EcoDrive Compact\nVehicle Production Year: 2020\n  Engine Power Rating: 120 Horsepower Units\n  Engine Fuel Source Classification: Electric\n\n" },
+    { "input": "Engine tempEngine(10, \"Old Fuel\"); tempEngine.accessEngineFuelType() = \"New Fuel\";", "expected": "Attempting to modify fuel type via non-const getter:\nOriginal tempEngine fuel: Old Fuel\nModified tempEngine fuel: New Fuel\n\n" }
+  ],
+  "driver": "The main function demonstrates the class functionality by creating and displaying Car objects, highlighting various readability and efficiency issues in the implementation.",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Constructors for `Engine` and `Car` pass `std::string` parameters by value instead of `const std::string&`, causing unnecessary string copies and reduced efficiency.",
+    "Excessively verbose variable and method names (`anEngineHorsepowerValue`, `outputEngineDetailsToConsole`, `presentCarAndEngineInformation`, etc.) severely reduce code readability.",
+    "Unnecessary use of `this->` in constructors and member initializers.",
+    "The `Engine::accessEngineFuelType()` method returns a non-const reference to `fuelType`, breaking encapsulation and allowing external modification of the object's internal state, which is a design flaw affecting readability, maintainability, and safety."
+  ]
+}

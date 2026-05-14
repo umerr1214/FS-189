@@ -1,0 +1,31 @@
+{
+  "language": "c++",
+  "question": "Declare a `std::string` variable. Ask the user to input a sentence. Then, count and print the total number of characters in the sentence (including spaces).",
+  "test_cases": [
+    {
+      "input": "This is a test sentence.\n",
+      "expected": "Please enter a sentence: You entered: \"This is a test sentence.\"\nTotal characters (including spaces): 24\n"
+    },
+    {
+      "input": "Hello World!\n",
+      "expected": "Please enter a sentence: You entered: \"Hello World!\"\nTotal characters (including spaces): 12\n"
+    },
+    {
+      "input": "SingleWord\n",
+      "expected": "Please enter a sentence: You entered: \"SingleWord\"\nTotal characters (including spaces): 10\n"
+    },
+    {
+      "input": "\n",
+      "expected": "Please enter a sentence: You entered: \"\"\nTotal characters (including spaces): 0\n"
+    },
+    {
+      "input": "   leading and trailing spaces   \n",
+      "expected": "Please enter a sentence: You entered: \"   leading and trailing spaces   \"\nTotal characters (including spaces): 33\n"
+    }
+  ],
+  "driver": "g++ -std=c++17 -o solution {file_name} && ./solution",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

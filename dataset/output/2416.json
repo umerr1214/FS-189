@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Shape` with a public method `calculateArea()` that returns 0. Derive `Rectangle` and `Circle` classes, overriding `calculateArea()` to return their specific areas.",
+  "test_cases": [
+    { "input": "Rectangle(5.0, 4.0), Circle(3.0)", "expected": "Rectangle Area: 20.0\nCircle Area: 28.274333882308138" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n\n// Assuming the user's code defines Shape, Rectangle, Circle classes\n\nint main() {\n    Rectangle rect(5.0, 4.0);\n    Circle circ(3.0);\n\n    std::cout << \"Rectangle Area: \" << rect.calculateArea() << std::endl;\n    std::cout << \"Circle Area: \" << circ.calculateArea() << std::endl;\n\n    Rectangle rect2(10.0, 2.5);\n    Circle circ2(5.0);\n    std::cout << \"Rectangle Area: \" << rect2.calculateArea() << std::endl;\n    std::cout << \"Circle Area: \" << circ2.calculateArea() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition 'Rectangle'."
+  ]
+}

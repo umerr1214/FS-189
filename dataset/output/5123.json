@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that declares a 3x3 integer matrix. Prompt the user to enter values for each element of the matrix. After filling the matrix, calculate and print the sum of all elements in the matrix.",
+  "test_cases": [
+    { "input": "1\n2\n3\n4\n5\n6\n7\n8\n9\n", "expected": "Sum of all elements: 45\n" }
+  ],
+  "driver": "// The test driver will compile and run the user's C++ code.\n// It will feed the 'input' string to the program's stdin\n// and capture the program's stdout to compare with 'expected'.\n",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'sum' variable is incorrectly re-initialized to 0 inside the outer loop for calculating the sum. This causes it to reset for each row, and only the sum of the last row is retained and printed, instead of the sum of all elements."
+  ]
+}

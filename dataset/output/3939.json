@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that continuously prompts the user to enter a positive integer until valid input is received. Use a `do-while` loop for input validation.",
+  "test_cases": [
+    {
+      "input": "-5\n0\nabc\n100\n",
+      "expected": "Enter a positive integer: Invalid input. Please enter a positive integer.\nEnter a positive integer: Invalid input. Please enter a positive integer.\nEnter a positive integer: Invalid input. Please enter an integer.\nEnter a positive integer: You have entered a valid positive integer: 100\n"
+    },
+    {
+      "input": "test\n-1\n5\n",
+      "expected": "Enter a positive integer: Invalid input. Please enter an integer.\nEnter a positive integer: Invalid input. Please enter a positive integer.\nEnter a positive integer: You have entered a valid positive integer: 5\n"
+    },
+    {
+      "input": "42\n",
+      "expected": "Enter a positive integer: You have entered a valid positive integer: 42\n"
+    }
+  ],
+  "driver": "g++ {filename}.cpp -o {filename} && ./{filename}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

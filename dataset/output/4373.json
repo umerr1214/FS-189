@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a function `findMin` that takes a 1D integer array and its size, then returns the smallest value found within that array.",
+  "test_cases": [
+    { "input": "{5, 2, 9, 1, 7}, size = 5", "expected": "1" },
+    { "input": "{-10, -5, -20}, size = 3", "expected": "-20" },
+    { "input": "{0}, size = 1", "expected": "0" },
+    { "input": "{10, 20, 30}, size = 3", "expected": "10" }
+  ],
+  "driver": "#include <iostream>\n\n// Assuming findMin is defined above\n\nint main() {\n    int arr1[] = {5, 2, 9, 1, 7};\n    int size1 = sizeof(arr1) / sizeof(arr1[0]);\n    std::cout << \"Min in {5, 2, 9, 1, 7}: \" << findMin(arr1, size1) << std::endl;\n\n    int arr2[] = {-10, -5, -20};\n    int size2 = sizeof(arr2) / sizeof(arr2[0]);\n    std::cout << \"Min in {-10, -5, -20}: \" << findMin(arr2, size2) << std::endl;\n\n    int arr3[] = {0};\n    int size3 = sizeof(arr3) / sizeof(arr3[0]);\n    std::cout << \"Min in {0}: \" << findMin(arr3, size3) << std::endl;\n\n    int arr4[] = {10, 20, 30};\n    int size4 = sizeof(arr4) / sizeof(arr4[0]);\n    std::cout << \"Min in {10, 20, 30}: \" << findMin(arr4, size4) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The 'minVal' variable is initialized to 0 instead of the first element of the array or a maximum possible integer value. This leads to incorrect results for arrays containing only positive numbers where the minimum is greater than 0."]
+}

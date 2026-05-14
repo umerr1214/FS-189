@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Shape` with a `virtual double calculateArea() = 0;` pure virtual function. Derive a `Rectangle` class from `Shape`, adding `length` and `width` attributes, and implement the `calculateArea()` method for a rectangle.",
+  "test_cases": [
+    { "input": "5.0 10.0", "expected": "50.00" },
+    { "input": "2.5 4.0", "expected": "10.00" },
+    { "input": "0.0 7.0", "expected": "0.00" },
+    { "input": "-3.0 5.0", "expected": "0.00" },
+    { "input": "3.0 -5.0", "expected": "-15.00" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n#include <cmath>\n\n// ... (ShapeBaseClass and Rectangle_Class code) ...\n\nint main() {\n    double l_input, w_input;\n    while (std::cin >> l_input >> w_input) {\n        Rectangle_Class my_rectangle_object(l_input, w_input);\n        std::cout << std::fixed << std::setprecision(2) << my_rectangle_object.calc_area_func() << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `calc_area_func()` method implements multiplication using an iterative summation (`for (double x_coordinate = 0; x_coordinate < len; x_coordinate += iteration_step_size) { ... }`), which is highly inefficient and computationally expensive compared to direct multiplication (`len * wid`). This approach also introduces floating-point inaccuracies due to repeated additions.",
+    "Variable names like `ShapeBaseClass`, `calc_area_func`, `len`, `wid`, `Rectangle_Class`, `l_input`, `w_input`, `my_rectangle_object` are inconsistent or not descriptive, hindering readability.",
+    "Lack of `const` correctness for getter methods (`get_len()`, `get_wid()`) and the `calc_area_func()` method, which does not modify the object's state.",
+    "Excessive and unnecessary comments explaining obvious code, or comments that do not add value."
+  ]
+}

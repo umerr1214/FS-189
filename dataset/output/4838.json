@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function template `findMin(T val1, T val2)` that accepts two arguments of any type `T` and returns the smaller of the two. Demonstrate its usage with both integer and double types in the `main` function.",
+  "test_cases": [
+    { "input": "int i_a = 5, i_b = 10; findMin(i_a, i_b);\nint i_c = 10, i_d = 5; findMin(i_c, i_d);\nint i_e = 7, i_f = 7; findMin(i_e, i_f);\ndouble d_x = 3.14, d_y = 2.71; findMin(d_x, d_y);\ndouble d_p = 1.0, d_q = 1.0; findMin(d_p, d_q);", "expected": "5\n5\n7\n2.71\n1.00\n" }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n#include <string>\n#include <iomanip>\n\n// The findMin function template will be inserted here by the system for evaluation.\n\nint main() {\n    std::stringstream ss;\n\n    // Test Case 1: int\n    int i1 = 5, i2 = 10;\n    ss << findMin(i1, i2) << std::endl;\n\n    // Test Case 2: int\n    int i3 = 10, i4 = 5;\n    ss << findMin(i3, i4) << std::endl;\n\n    // Test Case 3: int (equal values)\n    int i5 = 7, i6 = 7;\n    ss << findMin(i5, i6) << std::endl;\n\n    // Test Case 4: double\n    double d1 = 3.14, d2 = 2.71;\n    ss << std::fixed << std::setprecision(2) << findMin(d1, d2) << std::endl;\n\n    // Test Case 5: double (equal values)\n    double d3 = 1.0, d4 = 1.0;\n    ss << std::fixed << std::setprecision(2) << findMin(d3, d4) << std::endl;\n\n    std::cout << ss.str();\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The function creates unnecessary copies of arguments inside its body ('temp_a', 'temp_b'), leading to potential inefficiency for larger user-defined types. Additionally, the conditional logic for finding the minimum is overly verbose and includes a redundant equality check, which harms readability."
+  ]
+}

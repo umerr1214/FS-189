@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `Person` class with `protected` members `name` (string) and `age` (int). Derive a `Student` class from `Person`. The `Student` class should have an additional private member `studentId` and be able to access `name` and `age` to print its full details.",
+  "test_cases": [
+    { "input": "", "expected": "Name: Alice Smith, Age: 20, Student ID: 1001\nName: Bob Johnson, Age: -5, Student ID: -123\nName: , Age: 22, Student ID: 1003\n" }
+  ],
+  "driver": "int main() {\n    // Test case 1: Valid data\n    Student s1(\"Alice Smith\", 20, 1001);\n    s1.printFullDetails();\n\n    // Test case 2: Potentially invalid/nonsensical data\n    Student s2(\"Bob Johnson\", -5, -123);\n    s2.printFullDetails();\n\n    // Test case 3: Empty name\n    Student s3(\"\", 22, 1003);\n    s3.printFullDetails();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The code lacks robustness in handling potentially invalid or nonsensical input data (e.g., negative age, negative student ID, empty name). The `printFullDetails` method simply prints these values without validation, error messages, or alternative handling (e.g., printing 'N/A' or 'Invalid'). A more robust solution would validate inputs or provide graceful handling for such cases."
+  ]
+}

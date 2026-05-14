@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Calculate the power of a number (base raised to exponent) without using the `pow()` function. Both base and exponent are positive integers entered by the user.",
+  "test_cases": [
+    { "input": "2\n10\n", "expected": "Result: 1024\n" },
+    { "input": "3\n5\n", "expected": "Result: 243\n" },
+    { "input": "10\n5\n", "expected": "Result: 100000\n" },
+    { "input": "2\n31\n", "expected": "Result: 2147483648\n" },
+    { "input": "7\n12\n", "expected": "Result: 13841287201\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n\nvoid solve(); // Forward declaration of the user's solution function\n\nint main() {\n    // In a real testing environment, input/output streams would be redirected\n    // for each test case. This driver simply calls the solution function.\n    // The test harness would typically do something like:\n    //\n    // for each test_case in test_cases:\n    //   redirect_stdin(test_case.input);\n    //   redirect_stdout_to_buffer();\n    //   solve();\n    //   compare_output_buffer_with(test_case.expected);\n    //\n    // For this dataset generation, we simply provide the entry point.\n    solve();\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program uses 'int' to store the result of the power calculation, which is prone to integer overflow for relatively small bases and exponents (e.g., 2^31 or 7^12). This makes the solution non-robust for valid inputs that produce large results."
+  ]
+}

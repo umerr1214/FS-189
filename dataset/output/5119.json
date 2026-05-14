@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `void swap(int& a, int& b)` that takes two integer variables by reference and exchanges their values. In `main`, declare two integers, initialize them, call `swap` with them, and then print their values before and after the swap to demonstrate its effect.",
+  "test_cases": [
+    { "input": "Initial values: a=10, b=20", "expected": "Before swap: a = 10, b = 20\nAfter swap: a = 20, b = 10\n" },
+    { "input": "Initial values: a=-5, b=0", "expected": "Before swap: a = -5, b = 0\nAfter swap: a = 0, b = -5\n" },
+    { "input": "Initial values: a=7, b=7", "expected": "Before swap: a = 7, b = 7\nAfter swap: a = 7, b = 7\n" },
+    { "input": "Initial values: a=2000000000, b=1000000000 (potential overflow)", "expected": "Before swap: a = 2000000000, b = 1000000000\nAfter swap: a = 1000000000, b = 2000000000\n" }
+  ],
+  "driver": "std::string driver_code = R\"(\n#include <iostream>\n#include <vector>\n#include <utility>\n\nvoid swap(int& a, int& b);\n\nint main() {\n    std::vector<std::pair<int, int>> test_values = {\n        {10, 20},\n        {-5, 0},\n        {7, 7},\n        {2000000000, 1000000000} // Values for potential overflow\n    };\n\n    for (size_t i = 0; i < test_values.size(); ++i) {\n        int a = test_values[i].first;\n        int b = test_values[i].second;\n        std::cout << \"Before swap: a = \" << a << \", b = \" << b << \"\\n\";\n        swap(a, b);\n        std::cout << \"After swap: a = \" << a << \", b = \" << b << \"\\n\";\n    }\n    return 0;\n}\n)\";",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The arithmetic swap method can lead to integer overflow/underflow for large values (where a+b exceeds INT_MAX or is less than INT_MIN). For signed integers, this results in undefined behavior, making the function not robust for all possible `int` ranges."]
+}

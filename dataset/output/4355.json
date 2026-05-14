@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Declare a `std::string` variable. Ask the user to input a sentence. Then, count and print the total number of characters in the sentence (including spaces).",
+  "test_cases": [
+    { "input": "Hello World", "expected": "Total characters: 10\n" },
+    { "input": "  Test string with leading and trailing spaces  ", "expected": "Total characters: 39\n" },
+    { "input": "OneTwoThree", "expected": "Total characters: 11\n" },
+    { "input": " A B C ", "expected": "Total characters: 3\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\nint main() {\n    std::cout << \"Driver placeholder: The user's program will be compiled and executed with provided test inputs.\" << std::endl;\n    std::cout << \"Input will be fed to stdin, and stdout will be captured for comparison.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    {
+      "line": 18,
+      "column": 12,
+      "message": "The loop explicitly skips counting space characters, leading to an incorrect total count as the problem statement requires counting all characters, including spaces."
+    }
+  ]
+}

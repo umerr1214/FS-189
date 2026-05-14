@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Extend the `Shape` hierarchy (from a previous question) by making `calculateArea()` a virtual function in the base class. Demonstrate dynamic polymorphism by storing derived class objects in a `Shape*` array and calling `calculateArea()`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Calculating areas using dynamic polymorphism:\nArea: 78.53981633974483\nArea: 24.0\nArea: 19.634954084936208\n"
+    }
+  ],
+  "driver": "    std::vector<Shape*> shapes;\n\n    shapes.push_back(new Circle(5.0));\n    shapes.push_back(new Rectangle(4.0, 6.0));\n    shapes.push_back(new Circle(2.5));\n\n    std::cout << \"Calculating areas using dynamic polymorphism:\\n\";\n    for (const auto& shape : shapes) {\n        std::cout << \"Area: \" << shape->calculateArea() << std::endl;\n    }\n\n    for (const auto& shape : shapes) {\n        delete shape;\n    }\n    shapes.clear();\n\n    return 0;",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `calculateArea()` method for the `Rectangle` class incorrectly calculates the area by adding `width` and `height` instead of multiplying them."
+  ]
+}

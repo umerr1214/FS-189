@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function `findMinPointer(const int* arr, int size)` that takes a constant pointer to the beginning of an integer array and its size. The function should return a pointer to the element with the minimum value in the array. Demonstrate by finding and printing the minimum value of a user-defined array.",
+  "test_cases": [
+    { "input": "{10, 4, 8, 2, 6}", "expected": "2" },
+    { "input": "{42}", "expected": "42" },
+    { "input": "{}", "expected": "Array is empty or invalid." },
+    { "input": "{ -5, -10, 0, 3 }", "expected": "-10" },
+    { "input": "{ 7, 7, 7, 7 }", "expected": "7" },
+    { "input": "{ 100, 200, 50, 300, 10 }", "expected": "10" }
+  ],
+  "driver": "#include <iostream>\n\nconst int* findMinPointer(const int* arr, int size);\n\nint main() {\n    // Test Case 1\n    int arr1[] = {10, 4, 8, 2, 6};\n    int size1 = sizeof(arr1) / sizeof(arr1[0]);\n    const int* minPtr1 = findMinPointer(arr1, size1);\n    if (minPtr1 != nullptr) {\n        std::cout << *minPtr1 << std::endl;\n    } else {\n        std::cout << \"Array is empty or invalid.\" << std::endl;\n    }\n\n    // Test Case 2\n    int arr2[] = {42};\n    int size2 = sizeof(arr2) / sizeof(arr2[0]);\n    const int* minPtr2 = findMinPointer(arr2, size2);\n    if (minPtr2 != nullptr) {\n        std::cout << *minPtr2 << std::endl;\n    } else {\n        std::cout << \"Array is empty or invalid.\" << std::endl;\n    }\n\n    // Test Case 3\n    int arr3[] = {};\n    int size3 = 0;\n    const int* minPtr3 = findMinPointer(arr3, size3);\n    if (minPtr3 != nullptr) {\n        std::cout << *minPtr3 << std::endl;\n    } else {\n        std::cout << \"Array is empty or invalid.\" << std::endl;\n    }\n\n    // Test Case 4\n    int arr4[] = { -5, -10, 0, 3 };\n    int size4 = sizeof(arr4) / sizeof(arr4[0]);\n    const int* minPtr4 = findMinPointer(arr4, size4);\n    if (minPtr4 != nullptr) {\n        std::cout << *minPtr4 << std::endl;\n    } else {\n        std::cout << \"Array is empty or invalid.\" << std::endl;\n    }\n\n    // Test Case 5\n    int arr5[] = { 7, 7, 7, 7 };\n    int size5 = sizeof(arr5) / sizeof(arr5[0]);\n    const int* minPtr5 = findMinPointer(arr5, size5);\n    if (minPtr5 != nullptr) {\n        std::cout << *minPtr5 << std::endl;\n    } else {\n        std::cout << \"Array is empty or invalid.\" << std::endl;\n    }\n\n    // Test Case 6\n    int arr6[] = { 100, 200, 50, 300, 10 };\n    int size6 = sizeof(arr6) / sizeof(arr6[0]);\n    const int* minPtr6 = findMinPointer(arr6, size6);\n    if (minPtr6 != nullptr) {\n        std::cout << *minPtr6 << std::endl;\n    } else {\n        std::cout << \"Array is empty or invalid.\" << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

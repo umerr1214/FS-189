@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a custom `MyString` class that dynamically allocates memory for a C-style string. Provide a deep copy constructor and a deep copy assignment operator (`operator=`). Demonstrate how these are crucial to avoid shallow copies and dangling pointers when copying `MyString` objects.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- MyString Demonstration (Robustness Issue: Self-assignment) ---\ns1: \"Hello\" (Address of data: 0x...)\ns2 (copy of s1): \"Hello\" (Address of data: 0x...)\ns3 (default): \"\" (Address of data: 0x...)\ns3 (assigned s1): \"Hello\" (Address of data: 0x...)\n\n--- Modifying s1 ---\ns1 (assigned temp 'World'): \"World\" (Address of data: 0x...)\ns2 (should still be 'Hello'): \"Hello\" (Address of data: 0x...)\ns3 (should still be 'Hello'): \"Hello\" (Address of data: 0x...)\n\n--- CRITICAL: Self-assignment test (Will likely crash or corrupt memory) ---\n"
+    }
+  ],
+  "driver": "int main_wrapper() { MyString s1(\"Hello\"); MyString s2 = s1; s2 = s2; return 0; } int main() { main_wrapper(); return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The copy assignment operator (`operator=`) does not correctly handle self-assignment (`s = s;`). It deletes the underlying C-style string before copying, which causes a dangling pointer if the source and destination are the same object, leading to undefined behavior (e.g., crash, memory corruption) when attempting to read from the now-invalid source memory."
+  ]
+}

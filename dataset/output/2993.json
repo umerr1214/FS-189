@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `Student` class with private members `name` (string) and `id` (integer). Implement a parameterized constructor. Include a static member `totalStudents` to keep track of the total number of `Student` objects created. Increment this counter in the constructor and provide a static method `getTotalStudents()`.",
+  "test_cases": [
+    { "input": "", "expected": "Total students: 3\n" }
+  ],
+  "driver": "int main() { Student s1(\"Alice\", 101); Student s2(\"Bob\", 102); Student s3(\"Charlie\", 103); std::cout << \"Total students: \" << Student::getTotalStudents() << std::endl; return 0; }",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": []
+}

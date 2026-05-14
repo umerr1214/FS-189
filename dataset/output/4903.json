@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Book` with members `title` (`std::string`), `author` (`std::string`), and `publicationYear` (int). Write a program that declares an array of three `Book` structs, prompts the user to enter details for each book, and then prints the details of all books.",
+  "test_cases": [
+    {
+      "input": "The Great Gatsby\nF. Scott Fitzgerald\n1925\nBook Two Title\nAuthor Two\n2001\nBook Three Title\nAuthor Three\n2002\n",
+      "expected": "Enter details for three books:\n\n--- Book 1 ---\nEnter title for book 1: Enter author for book 1: Enter publication year for book 1: \n--- Book 2 ---\nEnter title for book 2: Enter author for book 2: Enter publication year for book 2: \n--- Book 3 ---\nEnter title for book 3: Enter author for book 3: Enter publication year for book 3: \n\n--- Details of all books ---\n\nBook 1:\nTitle: The Great Gatsby\nAuthor: F. Scott Fitzgerald\nPublication Year: 1925\n\nBook 2:\nTitle: \nAuthor: Book Two Title\nPublication Year: 2001\n\nBook 3:\nTitle: \nAuthor: Book Three Title\nPublication Year: 2002\n"
+    }
+  ],
+  "driver": "g++ -o solution 4903.cpp && ./solution",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not properly handle leftover newline characters in the input buffer after reading an integer (`std::cin >> int`). This causes `std::getline` to read an empty string for the subsequent `title` input in the next iteration, leading to incorrect or missing data for books after the first one.",
+    "The program lacks input validation for `publicationYear`. If non-numeric input is provided, `std::cin` enters a fail state, and subsequent input operations will fail or misbehave, potentially leading to crashes or incorrect data without proper error handling (e.g., clearing the error state and ignoring bad input)."
+  ]
+}

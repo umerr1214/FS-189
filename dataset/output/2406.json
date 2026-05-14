@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Refine a `BankAccount` class. Ensure the `balance` is private. Provide public methods `deposit(double amount)` and `withdraw(double amount)` that safely modify the balance, and a `getBalance()` method.",
+  "test_cases": [
+    { "input": "deposit 100.00\nwithdraw 50.00", "expected": "50.00" },
+    { "input": "deposit 200.50\ndeposit 100.00\nwithdraw 150.00", "expected": "150.50" },
+    { "input": "withdraw 10.00", "expected": "0.00" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <iomanip>\n\n// BankAccount class is expected to be defined in the provided code.\n\nint main() {\n    BankAccount account;\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        std::stringstream ss(line);\n        std::string command;\n        double amount;\n        ss >> command >> amount;\n        if (command == \"deposit\") {\n            account.deposit(amount);\n        } else if (command == \"withdraw\") {\n            account.withdraw(amount);\n        }\n    }\n    std::cout << std::fixed << std::setprecision(2) << account.getBalance() << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["Attempt to modify a member variable 'balance' within a const member function 'getBalance()'. This violates C++ const-correctness rules."]
+}

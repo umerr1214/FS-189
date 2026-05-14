@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `DataStore` class with a private integer member `secretValue`. Provide a public `getSecretValue()` method to access it and a public `setSecretValue(int value)` method to modify it. Demonstrate that `secretValue` cannot be accessed directly from outside the class, enforcing encapsulation.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation error: cannot access private member 'secretValue' of 'DataStore'." }
+  ],
+  "driver": "    DataStore ds;\n\n    std::cout << \"Initial secret value: \" << ds.getSecretValue() << std::endl;\n\n    ds.setSecretValue(42);\n    std::cout << \"Set secret value to 42.\" << std::endl;\n\n    std::cout << \"Current secret value: \" << ds.getSecretValue() << std::endl;\n\n    ds.secretValue = 100;\n    std::cout << \"Attempted to set secretValue directly to 100.\" << std::endl;\n    std::cout << \"Value after direct access attempt: \" << ds.secretValue << std::endl;\n\n    return 0;",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["Attempt to access a private member 'secretValue' directly from outside the 'DataStore' class. This violates encapsulation rules and results in a semantic compilation error."]
+}

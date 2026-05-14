@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Using the `Shape` base class and `Circle` derived class (from previous questions), demonstrate runtime polymorphism by creating a `Shape*` pointer, assigning a `Circle` object to it, and calling `calculateArea()`.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Calculated Area: 113.0973" }
+  ],
+  "driver": "int main() {\n    std::cout << \"Demonstrating Robustness Issue: Non-virtual base destructor.\" << std::endl;\n    std::cout << \"----------------------------------------------------------\" << std::endl;\n\n    Shape* myShapePtr = new Circle(6.0, \"MyPolymorphicCircle\");\n\n    std::cout << \"Calculated Area: \"\n              << std::fixed << std::setprecision(4)\n              << myShapePtr->calculateArea() << std::endl;\n\n    std::cout << \"\\nAttempting to delete Shape* pointer...\" << std::endl;\n    delete myShapePtr;\n    myShapePtr = nullptr;\n\n    std::cout << \"----------------------------------------------------------\" << std::endl;\n    std::cout << \"Notice that 'Circle destructor called' was NOT printed, \"\n              << \"indicating a potential resource leak for Circle's members.\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Base class destructor is not virtual, leading to potential resource leaks or undefined behavior when deleting derived objects through a base class pointer."
+  ]
+}

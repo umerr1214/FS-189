@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function `multiplyByTwo` that takes an integer pointer as an argument, dereferences it, and doubles the value at that memory address.",
+  "test_cases": [
+    { "input": "5", "expected": "10" },
+    { "input": "0", "expected": "0" },
+    { "input": "-3", "expected": "-6" },
+    { "input": "nullptr", "expected": "Runtime error: Segmentation fault" }
+  ],
+  "driver": "int main() {\n    int val1 = 5;\n    multiplyByTwo(&val1);\n    std::cout << val1 << std::endl;\n\n    int val2 = 0;\n    multiplyByTwo(&val2);\n    std::cout << val2 << std::endl;\n\n    int val3 = -3;\n    multiplyByTwo(&val3);\n    std::cout << val3 << std::endl;\n\n    int* null_ptr = nullptr;\n    multiplyByTwo(null_ptr);\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `multiplyByTwo` function does not handle the case where a `nullptr` is passed as an argument. Dereferencing a `nullptr` leads to undefined behavior, typically a segmentation fault at runtime, making the program crash. A robust solution would include a check for `nullptr`."
+  ]
+}

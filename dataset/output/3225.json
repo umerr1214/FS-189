@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Point` class with `x` and `y` coordinates. Provide two overloaded `getX()` methods: one `const` version and one non-`const` version. Explain when each would be called.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating Point Class with Overloaded getX() Methods ---\n\nInitial p1 (non-const): Point(10, 20)\nCalling non-const getX() on p1: 10\np1 after modifying x to 15: Point(15, 20)\n\nInitial p2 (const): Point(30, 40)\nCalling const getX() on p2: 30\n\nCalling getX() on a temporary Point object:\nx-coordinate of temporary Point(50, 60): 50\n\n--- Summary of getX() overload resolution ---\n1. If the object is non-const (lvalue), the non-const `int& getX()` is called.\n2. If the object is const (lvalue or rvalue), the const `int getX() const` is called.\nThis design allows for both read-only access and controlled modification based on object const-ness.\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

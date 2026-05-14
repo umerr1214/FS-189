@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Implement a simple menu-driven program for a basic task list (e.g., Add Task, View Tasks, Exit). Use a `do-while` loop to keep displaying the menu until the user chooses to exit.",
+  "test_cases": [
+    {
+      "input": "1\nTask Alpha\n1\nTask Beta\n2\n4\n1\nAnother task\n2\n3\n",
+      "expected": "\n--- M E N U ---\n1. Add\n2. View\n3. Exit\nEnter option: What to add? Added.\n\n--- M E N U ---\n1. Add\n2. View\n3. Exit\nEnter option: What to add? Added.\n\n--- M E N U ---\n1. Add\n2. View\n3. Exit\nEnter option: \n--- I T E M S ---\n1. Task Alpha\n2. Task Beta\n\n--- M E N U ---\n1. Add\n2. View\n3. Exit\nEnter option: Invalid option. Select 1-3.\n\n--- M E N U ---\n1. Add\n2. View\n3. Exit\nEnter option: What to add? Added.\n\n--- M E N U ---\n1. Add\n2. View\n3. Exit\nEnter option: \n--- I T E M S ---\n1. Task Alpha\n2. Task Beta\n3. Another task\n\n--- M E N U ---\n1. Add\n2. View\n3. Exit\nEnter option: Bye!\n"
+    },
+    {
+      "input": "2\n1\n\n2\n3\n",
+      "expected": "\n--- M E N U ---\n1. Add\n2. View\n3. Exit\nEnter option: No items.\n\n--- M E N U ---\n1. Add\n2. View\n3. Exit\nEnter option: What to add? Empty task not allowed.\n\n--- M E N U ---\n1. Add\n2. View\n3. Exit\nEnter option: No items.\n\n--- M E N U ---\n1. Add\n2. View\n3. Exit\nEnter option: Bye!\n"
+    },
+    {
+      "input": "abc\n2\n3\n",
+      "expected": "\n--- M E N U ---\n1. Add\n2. View\n3. Exit\nEnter option: Bad input. Try again.\n\n--- M E N U ---\n1. Add\n2. View\n3. Exit\nEnter option: No items.\n\n--- M E N U ---\n1. Add\n2. View\n3. Exit\nEnter option: Bye!\n"
+    }
+  ],
+  "driver": "/*\nThis is a placeholder driver. In a real testing environment,\nthe test harness would redirect stdin/stdout for the student's program.\nFor this dataset generation, we assume the test harness\nwill execute the student's program with the provided input\nand compare its output with the expected output.\n*/\n#include <iostream>\nint main() {\n    // The actual program to be tested will be compiled and run separately,\n    // with its standard input and output streams redirected.\n    // This driver merely serves as a structural component for the JSON.\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["The code has significant readability issues. It uses cryptic and abbreviated variable names (e.g., `tsks`, `ch`, `tsk_desc`), lacks modularity by keeping all logic within the `main` function, uses a long `if-else if` chain instead of a `switch` statement for menu handling, and has minimal comments. While functionally correct, it is difficult to understand and maintain."]
+}

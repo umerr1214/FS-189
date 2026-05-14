@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Write a recursive function `int fibonacci(int n)` that calculates the Nth Fibonacci number (where F(0)=0, F(1)=1).",
+  "test_cases": [
+    { "input": "0", "expected": "1" },
+    { "input": "1", "expected": "1" },
+    { "input": "2", "expected": "2" },
+    { "input": "3", "expected": "3" },
+    { "input": "4", "expected": "5" },
+    { "input": "5", "expected": "8" },
+    { "input": "6", "expected": "13" },
+    { "input": "10", "expected": "89" }
+  ],
+  "driver": "#include <iostream>\n\n// The fibonacci function will be placed here by the system\n// int fibonacci(int n);\n\nint main() {\n    std::cout << \"fibonacci(0) = \" << fibonacci(0) << std::endl;\n    std::cout << \"fibonacci(1) = \" << fibonacci(1) << std::endl;\n    std::cout << \"fibonacci(2) = \" << fibonacci(2) << std::endl;\n    std::cout << \"fibonacci(3) = \" << fibonacci(3) << std::endl;\n    std::cout << \"fibonacci(4) = \" << fibonacci(4) << std::endl;\n    std::cout << \"fibonacci(5) = \" << fibonacci(5) << std::endl;\n    std::cout << \"fibonacci(6) = \" << fibonacci(6) << std::endl;\n    std::cout << \"fibonacci(10) = \" << fibonacci(10) << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The base case for n=0 is incorrectly set to return 1. According to the problem statement, F(0) should be 0. This single error propagates and causes all subsequent Fibonacci numbers (except F(1)) to be calculated incorrectly."
+  ]
+}

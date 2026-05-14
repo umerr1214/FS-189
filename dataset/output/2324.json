@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Create a `Person` base class with `name` (string) and `age` (int). Derive a `Teacher` class that adds `subject` (string) and `salary` (double). Demonstrate how the `Teacher` constructor should call the `Person` base class constructor to initialize inherited members.",
+  "test_cases": [
+    {
+      "input": "No direct input, output is from hardcoded objects.",
+      "expected": "--- Readability / Efficiency Issue Demonstration ---\nPerson Name: Alice, Age: 30\n\nPerson Name: Bob, Age: 45\nSubject: Chemistry, Salary: $75000.5\n\nDirect access to public members (Person): Bob, 45\nModified salary directly: $80000\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Readability / Efficiency Issue Demonstration ---\" << std::endl;\n    Person person1(\"Alice\", 30);\n    person1.displayPersonInfo();\n    std::cout << std::endl;\n    Teacher teacher1(\"Bob\", 45, \"Chemistry\", 75000.50);\n    teacher1.displayTeacherInfo();\n    std::cout << std::endl;\n    std::cout << \"Direct access to public members (Person): \" << teacher1.name << \", \" << teacher1.age << std::endl;\n    teacher1.salary = 80000.0;\n    std::cout << \"Modified salary directly: $\" << teacher1.salary << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Member variables (`name`, `age`, `subject`, `salary`) are declared `public`, violating encapsulation. This allows direct external modification, making it harder to maintain object invariants.",
+    "Constructors for `Person` and `Teacher` use assignment in the constructor body for their own members (e.g., `name = n;`, `subject = s;`) instead of initializer lists. While correct, for `std::string` this can be less efficient as it involves default construction followed by an assignment, rather than direct initialization.",
+    "Excessive and unnecessary use of `this->` keyword, which can slightly reduce readability without adding value in this context.",
+    "Including `<vector>` header when it's not used, adding unnecessary compile time dependencies."
+  ]
+}

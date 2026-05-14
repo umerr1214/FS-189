@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that continuously reads positive integers from the user using a `while` loop. The loop should terminate when the user enters -1 (a sentinel value). After termination, calculate and print the average of all positive integers entered (excluding the -1).",
+  "test_cases": [
+    { "input": "5\n10\n-1\n", "expected": "Please enter positive integers. Enter -1 to calculate the average and terminate.\nThe average of the positive integers entered is: 7.5\n" },
+    { "input": "-1\n", "expected": "Please enter positive integers. Enter -1 to calculate the average and terminate.\nNo positive integers were entered.\n" },
+    { "input": "2\n4\n6\n-1\n", "expected": "Please enter positive integers. Enter -1 to calculate the average and terminate.\nThe average of the positive integers entered is: 4.0\n" },
+    { "input": "1\n1\n1\n-1\n", "expected": "Please enter positive integers. Enter -1 to calculate the average and terminate.\nThe average of the positive integers entered is: 1.0\n" },
+    { "input": "0\n-5\n8\n-1\n", "expected": "Please enter positive integers. Enter -1 to calculate the average and terminate.\nThe average of the positive integers entered is: 8.0\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <streambuf> // For std::streambuf\n\nint main() {\n    // This C++ driver illustrates how a testing framework would typically\n    // execute the student's compiled program for evaluation.\n    // The student's solution (a complete C++ program with a `main` function)\n    // would be compiled into an executable (e.g., `solution_exec`).\n    //\n    // For each test case, the framework would:\n    // 1. Prepare the input string for the test case.\n    // 2. Redirect `stdin` to read from this input string (e.g., via a pipe or temporary file).\n    // 3. Redirect `stdout` to capture the program's output (e.g., via a pipe or temporary file).\n    // 4. Execute `solution_exec`.\n    // 5. Read the captured `stdout` and compare it with the expected output for the test case.\n    //\n    // Example (conceptual shell command for a test case):\n    // echo \"5\\n10\\n-1\\n\" | ./solution_exec > actual_output.txt\n    // diff actual_output.txt expected_output.txt\n    //\n    // This C++ snippet itself doesn't execute the student's code directly\n    // because the student's code is also a complete `main` function.\n    // It serves as a description of the testing mechanism.\n    std::cout << \"Test driver placeholder for external execution.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

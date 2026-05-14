@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that takes a positive integer `N` from the user. Using a `for` loop, calculate and display the sum of all even numbers between 1 and `N` (inclusive).",
+  "test_cases": [
+    { "input": "5", "expected": "The sum of even numbers between 1 and 5 is: 6" },
+    { "input": "10", "expected": "The sum of even numbers between 1 and 10 is: 30" },
+    { "input": "1", "expected": "The sum of even numbers between 1 and 1 is: 0" },
+    { "input": "2", "expected": "The sum of even numbers between 1 and 2 is: 2" }
+  ],
+  "driver": "// No specific driver needed as the program handles I/O itself.",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The program iterates through all numbers from 1 to N and checks each one for evenness (k % 2 == 0), which is less efficient than directly iterating through only the even numbers.",
+    "Variable names (n, s, k) are not descriptive, which negatively impacts code readability and understanding."
+  ]
+}

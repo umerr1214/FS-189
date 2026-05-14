@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Design an `Engine` class with a `string type` and `int horsepower`. Then create a `Car` class that uses an `Engine` object as a private member, demonstrating composition.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Information for Car: Mercedes\n  Engine Type: V8-Biturbo, Horsepower: 600\n--- End of Car Information ---\nInformation for Car: BMW\n  Engine Type: Inline-6-Turbo, Horsepower: 380\n--- End of Car Information ---\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// Engine class definition\nclass Engine {\nprivate:\n    std::string engine_type_member;\n    int engine_horsepower_member;\n\npublic:\n    Engine(std::string type_parameter, int horsepower_parameter) {\n        engine_type_member = type_parameter;\n        engine_horsepower_member = horsepower_parameter;\n    }\n\n    std::string getTheEngineType() {\n        return engine_type_member;\n    }\n\n    int getTheEngineHorsepower() {\n        return engine_horsepower_member;\n    }\n\n    std::string retrieveEngineDetails() {\n        std::stringstream details_stream;\n        details_stream << \"Engine Type: \" << getTheEngineType()\n                       << \", Horsepower: \" << getTheEngineHorsepower();\n        return details_stream.str();\n    }\n};\n\n// Car class definition\nclass Car {\nprivate:\n    std::string car_make_member;\n    Engine composed_engine_object;\n\npublic:\n    Car(std::string car_make_param, std::string engine_type_param, int engine_hp_param)\n        : composed_engine_object(engine_type_param, engine_hp_param) {\n        car_make_member = car_make_param;\n    }\n\n    void displayCompleteCarInformation() {\n        std::cout << \"Information for Car: \" << car_make_member << std::endl;\n        std::cout << \"  \" << composed_engine_object.retrieveEngineDetails() << std::endl;\n        std::cout << \"--- End of Car Information ---\" << std::endl;\n    }\n};\n\nint main() {\n    Car car_one(\"Mercedes\", \"V8-Biturbo\", 600);\n    car_one.displayCompleteCarInformation();\n\n    Car car_two(\"BMW\", \"Inline-6-Turbo\", 380);\n    car_two.displayCompleteCarInformation();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "String parameters in constructors (`Engine`, `Car`) are passed by value (`std::string`), leading to unnecessary copies. They should be passed by `const std::string&` for efficiency.",
+    "Member variables in `Engine` (`engine_type_member`, `engine_horsepower_member`) have verbose names, reducing readability.",
+    "Getters (`getTheEngineType`, `getTheEngineHorsepower`) are not marked `const`, which is a design oversight as they do not modify the object's state.",
+    "The `Engine` constructor uses assignment in the body (`this->type = engineType;`) instead of an initializer list for `engine_type_member` and `engine_horsepower_member`, which can be less efficient for non-primitive types or objects.",
+    "The `Car` constructor assigns `car_make_member` in the body rather than using an initializer list, which is less efficient.",
+    "Output methods (`displayCompleteCarInformation`) include slightly verbose or redundant text (e.g., '--- End of Car Information ---'), impacting conciseness."
+  ]
+}

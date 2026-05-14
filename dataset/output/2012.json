@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "In a class `Printer`, overload a `print` member function to output different data types: `print(int)`, `print(double)`, and `print(const char*)`. Each should print the value with a descriptive label.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Integer: 10\nDouble: 3.140000\nString: Test String\nString: (null)\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n#include <string>\n#include <cstdio> // For printf in the solution\n\n// The Printer class definition will be prepended by the evaluation system.\n\nint main() {\n    std::stringstream ss;\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n\n    Printer p;\n    p.print(10);\n    p.print(3.14);\n    p.print(\"Test String\");\n    p.print(static_cast<const char*>(nullptr)); \n\n    std::cout.rdbuf(old_cout);\n    std::cout << ss.str();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `print` functions use C-style `printf` for output within a C++ class, which is less idiomatic and mixes I/O styles, impacting readability.",
+    "The `print(const char*)` function unnecessarily converts the `const char*` to an `std::string` before printing. This introduces minor inefficiency due to dynamic memory allocation and copying, which could be avoided by directly using the `const char*` with `printf` or `std::cout`."
+  ]
+}

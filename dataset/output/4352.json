@@ -1,0 +1,34 @@
+{
+  "language": "c++",
+  "question": "Using a 'do-while' loop, repeatedly ask the user to enter a number between 1 and 10 (inclusive) until valid input is received.",
+  "test_cases": [
+    {
+      "input": "5\n",
+      "expected": {
+        "returnValue": 5,
+        "consoleOutput": "Enter a number between 1 and 10 (inclusive): "
+      }
+    },
+    {
+      "input": "0\n11\n7\n",
+      "expected": {
+        "returnValue": 7,
+        "consoleOutput": "Enter a number between 1 and 10 (inclusive): Invalid input. Please enter a number between 1 and 10.\nEnter a number between 1 and 10 (inclusive): Invalid input. Please enter a number between 1 and 10.\nEnter a number between 1 and 10 (inclusive): "
+      }
+    },
+    {
+      "input": "abc\n-3\n10\n",
+      "expected": {
+        "returnValue": 10,
+        "consoleOutput": "Enter a number between 1 and 10 (inclusive): Invalid input. Please enter a number.\nEnter a number between 1 and 10 (inclusive): Invalid input. Please enter a number between 1 and 10.\nEnter a number between 1 and 10 (inclusive): "
+      }
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n#include <stdexcept>\n\n// The student's solution is assumed to be in a function `int solve()`\n// which interacts with std::cin and std::cout and returns the valid number.\nextern int solve(); // Declare solve() as external\n\n// Helper to run the solution with given input and capture output\nstruct TestResult {\n    int returnValue;\n    std::string consoleOutput;\n};\n\nTestResult run_and_capture(const std::string& input_str) {\n    std::stringstream ss_input(input_str);\n    std::stringstream ss_output;\n\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    int result = 0;\n    // Set a timeout or read a limited number of characters to prevent infinite loops\n    // For this conceptual driver, we assume a testing harness would handle timeouts.\n    // We'll call solve and capture what it does.\n    try {\n        result = solve(); // Call the student's core logic\n    } catch (const std::exception& e) {\n        ss_output << \"Exception caught: \" << e.what() << std::endl;\n    } catch (...) {\n        ss_output << \"Unknown exception caught.\" << std::endl;\n    }\n\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    return {result, ss_output.str()};\n}\n\nint main() {\n    // This main function serves as a conceptual driver.\n    // In a real testing environment, the test cases would be iterated\n    // and run_and_capture would be used for evaluation.\n    // Example usage for one test case:\n    // std::string input = \"0\\n5\\n\";\n    // TestResult result = run_and_capture(input);\n    // std::cout << \"Input: \" << input << std::endl;\n    // std::cout << \"Return Value: \" << result.returnValue << std::endl;\n    // std::cout << \"Console Output:\\n\" << result.consoleOutput << std::endl;\n\n    std::cout << \"This C++ driver code is designed to test a function named 'solve()'.\" << std::endl;\n    std::cout << \"The 'solve()' function is expected to encapsulate the core logic \" << std::endl;\n    std::cout << \"of the problem, interacting with 'std::cin' and 'std::cout', \" << std::endl;\n    std::cout << \"and returning the final valid number.\" << std::endl;\n    std::cout << \"Test cases are typically executed by redirecting 'std::cin' and capturing 'std::cout'.\" << std::endl;\n\n    return 0;\n}\n",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses non-descriptive variable names (e.g., 'val_input', 'is_ok'). The use of a separate boolean flag 'is_ok' for loop control is redundant; the conditions for validity (stream state and range) could be directly incorporated into the 'do-while' loop's condition, making the code more concise and easier to follow."
+  ]
+}

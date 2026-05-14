@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Library` class that uses aggregation to manage a collection of `Book` objects (from Q1). The `Library` class should store pointers (or references) to `Book` objects that are created and owned externally. Implement methods to `addBook(Book* book)` and `displayAllBooks()`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Books in Library:\nTitle: The Hitchhiker's Guide to the Galaxy, Author: Douglas Adams\nTitle: 1984, Author: George Orwell\nTitle: Dune, Author: Frank Herbert\n"
+    }
+  ],
+  "driver": "int main() {\n    Book book1(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\");\n    Book book2(\"1984\", \"George Orwell\");\n    Book book3(\"Dune\", \"Frank Herbert\");\n\n    Library myLibrary;\n    myLibrary.addBook(&book1);\n    myLibrary.addBook(&book2);\n    myLibrary.addBook(&book3);\n\n    myLibrary.displayAllBooks();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `displayAllBooks` method contains a logical error in its loop condition. It iterates from index 1 instead of 0, causing the first book added to the library to be skipped and not displayed."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Student` that contains `char name[50]`, `int studentID`, and `float GPA`. Create an array of 2 `Student` objects. Allow the user to input data for each student. Finally, print the details of both students.",
+  "test_cases": [
+    {
+      "input": "Alice Smith\n101\n3.8\nBob Johnson\n102\n3.5\n",
+      "expected": "Enter details for student 1:\nName (max 49 chars): Student ID: GPA: \nEnter details for student 2:\nName (max 49 chars): Student ID: GPA: \n--- Student Details ---\nStudent 1:\n  Name: Alice Smith\n  ID: 101\n  GPA: 3.8\nStudent 2:\n  Name: Bob Johnson\n  ID: 102\n  GPA: 3.5\n"
+    }
+  ],
+  "driver": "main()",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Repetitive, duplicated code for input and output operations for each student object instead of utilizing a loop or helper functions to process an array.",
+    "Lack of modularity in data handling, making the code harder to maintain and extend for more students."
+  ]
+}

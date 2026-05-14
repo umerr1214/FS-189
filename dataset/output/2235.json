@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `BankAccount` class with `accountNumber` (string, read-only after creation) and `balance` (double, private). Implement public methods `deposit(amount)` and `withdraw(amount)` with appropriate validation (e.g., non-negative amounts, sufficient balance for withdrawal).",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "Account created: ACC12345, Initial Balance: 0.00\nDeposited 100.50. New Balance: 100.50\nDeposit of -20.00 failed (as expected).\nDeposit of 0.00 failed (as expected).\nWithdrew 50.25. New Balance: 50.25\nWithdrawal of 200.00 failed (insufficient balance, as expected).\nWithdrawal of -10.00 failed (as expected).\nWithdrawal of 0.00 failed (as expected).\nDeposited 100.00. New Balance: 150.25\nWithdrawal of 200.25 failed.\n\nFinal state for account ACC12345: Balance: 150.25\n\nAccount created: ACC99887, Initial Balance: 0.00\nFinal state for account ACC99887: Balance: 0.00\n"
+    }
+  ],
+  "driver": "int main() { ... }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

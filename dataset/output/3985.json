@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program to create a 3x4 integer matrix (2D array). Initialize it with some values, then calculate and print the sum of elements for each individual row.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Sum of Row 0: (sum of 10,20,30,40 + garbage)\nSum of Row 1: (sum of 15,25,35,45 + garbage)\nSum of Row 2: (sum of 5,10,15,20 + garbage)"
+    }
+  ],
+  "driver": "g++ -o solution 3985.cpp && ./solution",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The inner loop iterates one element too far (j <= COLS instead of j < COLS), leading to an out-of-bounds array access (matrix[i][4]). This is undefined behavior and a robustness issue, as it could lead to crashes or incorrect results depending on the system/compiler."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a `Student` class with private members `studentName` (string), `studentID` (int), and `grade` (char). Implement a default constructor, a parameterized constructor, and public `get` methods for all members. Also, add a `printStudentDetails()` method.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Student 1:\nName: Unknown\nID: 0\nGrade: U\n--------------------\nStudent 2:\nName: Alice Smith\nID: 1001\nGrade: A\n--------------------\nStudent 3:\nName: Bob Johnson\nID: 2002\nGrade: B\n--------------------\nStudent 4 (Robustness Issue - Invalid Data):\nName: Charlie Brown\nID: -5\nGrade: X\n--------------------\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\nclass Student {\nprivate:\n    std::string studentName;\n    int studentID;\n    char grade;\n\npublic:\n    Student() {\n        studentName = \"Unknown\";\n        studentID = 0;\n        grade = 'U';\n    }\n\n    Student(std::string name, int id, char g) {\n        studentName = name;\n        studentID = id;\n        grade = g;\n    }\n\n    std::string getStudentName() {\n        return studentName;\n    }\n\n    int getStudentID() {\n        return studentID;\n    }\n\n    char getGrade() {\n        return grade;\n    }\n\n    void printStudentDetails() {\n        std::cout << \"Name: \" << studentName << std::endl;\n        std::cout << \"ID: \" << studentID << std::endl;\n        std::cout << \"Grade: \" << grade << std::endl;\n    }\n};\n\nint main() {\n    Student student1;\n    Student student2(\"Alice Smith\", 1001, 'A');\n    Student student3(\"Bob Johnson\", 2002, 'B');\n    Student student4(\"Charlie Brown\", -5, 'X'); // Demonstrates robustness issue\n\n    std::cout << \"Student 1:\\n\";\n    student1.printStudentDetails();\n    std::cout << \"--------------------\\n\";\n\n    std::cout << \"Student 2:\\n\";\n    student2.printStudentDetails();\n    std::cout << \"--------------------\\n\";\n\n    std::cout << \"Student 3:\\n\";\n    student3.printStudentDetails();\n    std::cout << \"--------------------\\n\";\n\n    std::cout << \"Student 4 (Robustness Issue - Invalid Data):\\n\";\n    student4.printStudentDetails();\n    std::cout << \"--------------------\\n\";\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Lack of input validation in the parameterized constructor allows invalid student IDs (e.g., negative) or grades (e.g., non-standard characters) to be stored, leading to potentially inconsistent or incorrect data representations without indicating an error.",
+    "The class does not prevent the creation of Student objects with logically invalid states, which can cause downstream logical errors or unexpected behavior if other parts of the program assume valid data."
+  ]
+}

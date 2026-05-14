@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create an `Engine` class with `horsepower` (int) and `fuelType` (string). Then, design a `Car` class that demonstrates composition by containing an `Engine` object as a member.",
+  "test_cases": [
+    { "input": "Car(\"Sporty Model X\", 2023, -100, \"Gasoline\")", "expected": "--- Car 1 Info (Negative Horsepower) ---\nCar Model: Sporty Model X\nCar Year: 2023\n  Engine Horsepower: -100 HP\n  Engine Fuel Type: Gasoline\n\n" },
+    { "input": "Car(\"City Commuter\", 2021, 0, \"\")", "expected": "--- Car 2 Info (Zero Horsepower, Empty Fuel Type) ---\nCar Model: City Commuter\nCar Year: 2021\n  Engine Horsepower: 0 HP\n  Engine Fuel Type: [Not Specified]\n\n" },
+    { "input": "Car(\"Luxury Sedan\", 2024, 300, \"Electric\")", "expected": "--- Car 3 Info (Normal) ---\nCar Model: Luxury Sedan\nCar Year: 2024\n  Engine Horsepower: 300 HP\n  Engine Fuel Type: Electric\n\n" }
+  ],
+  "driver": "The main function demonstrates the class functionality by creating and displaying Car objects with different Engine configurations, including some with potentially invalid engine parameters to highlight the robustness issue.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Engine class constructor lacks validation for `horsepower` (allows non-positive values) and `fuelType` (allows empty string), leading to potentially invalid object states according to real-world constraints.",
+    "Car class does not perform validation on engine parameters before passing them to the Engine constructor, thus propagating the potential invalid states."
+  ]
+}

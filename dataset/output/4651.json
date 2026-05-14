@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that reads a string from the user and prints its reverse. Use `std::string` for string manipulation.",
+  "test_cases": [
+    { "input": "hello", "expected": "olleh" },
+    { "input": "world", "expected": "dlrow" },
+    { "input": "A", "expected": "A" },
+    { "input": "", "expected": "" },
+    { "input": "racecar", "expected": "racecar" },
+    { "input": "12345", "expected": "54321" },
+    { "input": "hello world", "expected": "olleh" }
+  ],
+  "driver": "int main() {\n    std::string input_str;\n    std::getline(std::cin, input_str);\n    std::string original_str = input_str;\n    \n    // Simulate the program's behavior: it only reads the first word\n    std::string first_word;\n    std::istringstream iss(input_str);\n    iss >> first_word;\n\n    std::reverse(first_word.begin(), first_word.end());\n    std::cout << first_word << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Input handling uses `std::cin >> string` which only reads a single word (up to the first whitespace), failing to process multi-word strings as a single input.",
+    "Does not robustly handle all potential `std::cin` stream errors beyond a basic `fail()` check, which might not be sufficient for all edge cases like unexpected EOF or complex invalid input sequences."
+  ]
+}

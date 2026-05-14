@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that initializes a 1D integer array with 10 elements. Then, calculate and display the sum of all even numbers and the product of all odd numbers in that array.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Sum of even numbers: 30\nProduct of odd numbers: 945\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <cstdio>\n\nstd::string execute_command(const std::string& cmd) {\n    std::string result = \"\";\n    FILE* pipe = popen(cmd.c_str(), \"r\");\n    if (!pipe) {\n        return \"ERROR: Could not run command.\\n\";\n    }\n    char buffer[128];\n    while (fgets(buffer, sizeof(buffer), pipe) != NULL) {\n        result += buffer;\n    }\n    pclose(pipe);\n    return result;\n}\n\nint main() {\n    std::string output = execute_command(\"./a.out\");\n    std::cout << output;\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

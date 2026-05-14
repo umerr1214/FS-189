@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "In a C++ program, prompt the user to enter two integers. Using the ternary operator, determine and print which of the two integers is larger.",
+  "test_cases": [
+    { "input": "10\n5", "expected": "The larger integer is: 10\n" },
+    { "input": "5\n10", "expected": "The larger integer is: 10\n" },
+    { "input": "7\n7", "expected": "Both integers are equal: 7\n" }
+  ],
+  "driver": "To run this program, compile it using a C++ compiler (e.g., `g++ 5152.cpp -o 5152`). Note that this program has a syntax error and will fail to compile. The expected output is based on the correct logic if the syntax error were resolved.",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the 'std::cout << \"Enter the second integer: \"' statement on line 12."
+  ]
+}

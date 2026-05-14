@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `isPerfect` that takes an integer as input and returns `true` if the number is a perfect number (a positive integer that is equal to the sum of its proper positive divisors, excluding the number itself), and `false` otherwise. (e.g., 6 = 1+2+3).",
+  "test_cases": [
+    { "input": "6", "expected": "true" },
+    { "input": "28", "expected": "true" },
+    { "input": "12", "expected": "false" },
+    { "input": "1", "expected": "false" },
+    { "input": "0", "expected": "false" },
+    { "input": "-6", "expected": "false" },
+    { "input": "8128", "expected": "true" }
+  ],
+  "driver": "#include <iostream>\n\nbool isPerfect(int x) {\n    if (x <= 0) return false;\n\n    int s = 0;\n    for (int i = 1; i < x; ++i) {\n        if (x % i == 0) {\n            s += i;\n        }\n    }\n    return s == x;\n}\n\nint main() {\n    std::cout << \"isPerfect(6): \" << (isPerfect(6) ? \"true\" : \"false\") << std::endl;\n    std::cout << \"isPerfect(28): \" << (isPerfect(28) ? \"true\" : \"false\") << std::endl;\n    std::cout << \"isPerfect(12): \" << (isPerfect(12) ? \"true\" : \"false\") << std::endl;\n    std::cout << \"isPerfect(1): \" << (isPerfect(1) ? \"true\" : \"false\") << std::endl;\n    std::cout << \"isPerfect(0): \" << (isPerfect(0) ? \"true\" : \"false\") << std::endl;\n    std::cout << \"isPerfect(-6): \" << (isPerfect(-6) ? \"true\" : \"false\") << std::endl;\n    std::cout << \"isPerfect(8128): \" << (isPerfect(8128) ? \"true\" : \"false\") << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The loop to find divisors iterates up to `n-1`, which is `O(n)` complexity. A more efficient approach would be to iterate up to `sqrt(n)`.",
+    "Variable names (`x`, `s`) are not descriptive, impacting readability."
+  ]
+}

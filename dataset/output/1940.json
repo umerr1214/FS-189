@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Modify the `Book` class to include a destructor. The destructor should print a message indicating the title of the book object that is being destroyed.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Starting Readability/Efficiency Test ---\nBook 'The Hobbit' (ID: 101) constructed.\nBook 'The Hobbit' (ID: 101) copied constructed from ID 101.\nBook 'Effective C++' (ID: 102) constructed.\nBook 'Effective C++' (ID: 102) copy assigned from ID 102.\nBook 'Effective C++' (ID: 102) is being destroyed.\nBook 'Clean Code' (ID: 103) constructed.\nBook 'The Hobbit' (ID: 101) copy assigned from ID 101.\n--- Populating vector ---\nBook 'The Pragmatic Programmer' (ID: 104) constructed.\nBook 'The Pragmatic Programmer' (ID: 104) copied constructed from ID 104.\nBook 'The Pragmatic Programmer' (ID: 104) is being destroyed.\nBook 'Design Patterns' (ID: 105) constructed.\nBook 'I, Robot' (ID: 106) constructed.\nBook 'I, Robot' (ID: 106) copied constructed from ID 106.\nBook 'I, Robot' (ID: 106) is being destroyed.\n--- Vector populated ---\nBook 'Temporary Read' (ID: 107) constructed.\nInside temporary block.\nBook 'Temporary Read' (ID: 107) is being destroyed.\nOutside temporary block.\n--- Readability/Efficiency Test Ended ---\nBook 'I, Robot' (ID: 106) is being destroyed.\nBook 'Design Patterns' (ID: 105) is being destroyed.\nBook 'The Pragmatic Programmer' (ID: 104) is being destroyed.\nBook 'The Hobbit' (ID: 101) is being destroyed.\nBook 'Effective C++' (ID: 102) is being destroyed.\nBook 'The Hobbit' (ID: 101) is being destroyed."
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Starting Readability/Efficiency Test ---\" << std::endl;\n    createAndManipulateBooks();\n    std::cout << \"--- Readability/Efficiency Test Ended ---\" << std::endl;\n    return 0;\n}\n\nvoid createAndManipulateBooks() {\n    Book book1(\"The Hobbit\", 101);\n    Book book2 = book1;\n    book2 = Book(\"Effective C++\", 102);\n    Book book3(\"Clean Code\", 103);\n    book3 = book1;\n    std::cout << \"--- Populating vector ---\" << std::endl;\n    std::vector<Book> shelf;\n    shelf.reserve(3);\n    shelf.push_back(Book(\"The Pragmatic Programmer\", 104));\n    shelf.emplace_back(\"Design Patterns\", 105);\n    shelf.push_back(Book(\"I, Robot\", 106));\n    std::cout << \"--- Vector populated ---\" << std::endl;\n    { Book tempBook(\"Temporary Read\", 107); std::cout << \"Inside temporary block.\" << std::endl; }\n    std::cout << \"Outside temporary block.\" << std::endl;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Using raw `char*` for string management instead of `std::string` makes the code less readable, more verbose, and significantly more prone to memory errors if the Rule of Three/Five is not meticulously followed.",
+    "Manual implementation of the copy constructor, copy assignment operator, and destructor for `char*` adds unnecessary boilerplate and complexity compared to relying on `std::string`'s automatic and robust memory management.",
+    "While functionally correct, this approach is less efficient for typical string operations than `std::string` and introduces overhead for manual resource handling."
+  ]
+}

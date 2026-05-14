@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Define a `Vector2D` class with `x` and `y` components (double). Overload the binary `+` operator to allow adding two `Vector2D` objects, returning a new `Vector2D` object that represents their sum.",
+  "test_cases": [
+    { "input": "", "expected": "v1: (1.0, 2.0)\nv2: (3.0, 4.0)\nv1 + v2: (4.0, 6.0)\nv4: (-1.5, 0.5)\nv5: (2.0, -3.0)\nv4 + v5: (0.5, -2.5)\n" }
+  ],
+  "driver": "#include <iostream>\n#include <ostream> // Required for std::ostream\n#include <iomanip> // Required for std::fixed, std::setprecision\n#include <sstream> // Required for std::stringstream in the driver\n\nclass Vector2D {\npublic:\n    double x;\n    double y;\n\n    // Readability Issue: Less descriptive parameter names (_x, _y)\n    Vector2D(double _x, double _y) : x(_x), y(_y) {}\n\n    // Default constructor for convenience (correctly initializes members)\n    Vector2D() : x(0.0), y(0.0) {}\n\n    // Method to print vector components to an output stream\n    // Readability Issue: Using `this->` for member access when not necessary\n    void print(std::ostream& os) const {\n        os << \"(\" << std::fixed << std::setprecision(1) << this->x << \", \" << std::fixed << std::setprecision(1) << this->y << \")\";\n    }\n};\n\n// Overloaded binary + operator - Readability/Efficiency Issue:\n// Takes arguments by value, leading to unnecessary copies of Vector2D objects.\nVector2D operator+(Vector2D v1, Vector2D v2) { // v1 and v2 are copied here\n    return Vector2D(v1.x + v2.x, v1.y + v2.y);\n}\n\nint main() {\n    std::stringstream ss;\n    std::streambuf* oldCout = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n\n    Vector2D v1(1.0, 2.0);\n    Vector2D v2(3.0, 4.0);\n    Vector2D v3 = v1 + v2;\n    ss << \"v1: \"; v1.print(ss); ss << std::endl;\n    ss << \"v2: \"; v2.print(ss); ss << std::endl;\n    ss << \"v1 + v2: \"; v3.print(ss); ss << std::endl;\n\n    Vector2D v4(-1.5, 0.5);\n    Vector2D v5(2.0, -3.0);\n    Vector2D v6 = v4 + v5;\n    ss << \"v4: \"; v4.print(ss); ss << std::endl;\n    ss << \"v5: \"; v5.print(ss); ss << std::endl;\n    ss << \"v4 + v5: \"; v6.print(ss); ss << std::endl;\n\n    std::cout.rdbuf(oldCout);\n    std::cout << ss.str();\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The binary `+` operator takes `Vector2D` arguments by value (`Vector2D v1, Vector2D v2`), leading to unnecessary copying of objects and reduced efficiency, especially for larger or more complex classes.",
+    "The constructor parameters `_x` and `_y` are less descriptive than names like `x_val` or `initial_x`, which can hinder readability.",
+    "Using `this->x` and `this->y` for member access within methods is redundant when there is no ambiguity (e.g., no local variable with the same name), slightly reducing code clarity without providing additional benefit."
+  ]
+}

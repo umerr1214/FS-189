@@ -1,0 +1,25 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `swapValues` that takes two integer variables by reference and swaps their values. Demonstrate its usage in the `main` function with user-provided integers.",
+  "test_cases": [
+    {
+      "input": "5\n10\n",
+      "expected": "Enter the first integer: Enter the second integer: Before swapping: a = 5, b = 10\nAfter swapping: a = 10, b = 5\n"
+    },
+    {
+      "input": "-3\n7\n",
+      "expected": "Enter the first integer: Enter the second integer: Before swapping: a = -3, b = 7\nAfter swapping: a = 7, b = -3\n"
+    },
+    {
+      "input": "hello\nworld\n",
+      "expected": "Enter the first integer: Enter the second integer: Before swapping: a = 0, b = 0\nAfter swapping: a = 0, b = 0\n"
+    }
+  ],
+  "driver": "int main_wrapper() { return main(); }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program lacks input validation for user-provided integers. If non-integer input is provided (e.g., text instead of numbers), `std::cin` will enter a fail state. This can lead to default initialization (often 0) for variables, and subsequent input operations might fail or cause an infinite loop if not explicitly handled (e.g., using `cin.clear()`, `cin.ignore()`). The program is not robust against invalid user input."
+  ]
+}

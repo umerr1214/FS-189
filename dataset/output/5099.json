@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that prompts the user to enter their first name (as a string), age (as an integer), and height in meters (as a double). After receiving all inputs, print a formatted sentence summarizing this information (e.g., 'Hello [Name], you are [Age] years old and [Height] meters tall.').",
+  "test_cases": [
+    {
+      "input": "Alice\n25\n1.68\n",
+      "expected": "Hello Alice, you are 25 years old and 1.68 meters tall."
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The program incorrectly prints the 'age' variable twice in the summary sentence, once for age and once for height, instead of using the 'height' variable for the height information. This leads to an incorrect summary output."
+  ]
+}

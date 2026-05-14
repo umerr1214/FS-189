@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that takes a positive integer 'N' as input from the user and calculates the sum of all odd numbers from 1 to N using a `while` loop.",
+  "test_cases": [
+    { "input": "1", "expected": "Enter a positive integer N: The sum of odd numbers from 1 to 1 is: 1\n" },
+    { "input": "8", "expected": "Enter a positive integer N: The sum of odd numbers from 1 to 8 is: 16\n" },
+    { "input": "15", "expected": "Enter a positive integer N: The sum of odd numbers from 1 to 15 is: 64\n" },
+    { "input": "abc", "expected": "ERROR: Invalid input. Please enter a positive integer.\n" },
+    { "input": "-5", "expected": "ERROR: Invalid input. Please enter a positive integer.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <stdexcept>\n\nvoid solve_question(); // Forward declaration of the student's solution function\n\nstd::string run_test_case(const std::string& input) {\n    std::stringstream ss_input(input);\n    std::stringstream ss_output;\n    std::stringstream ss_error;\n\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::streambuf* old_cerr = std::cerr.rdbuf();\n\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n    std::cerr.rdbuf(ss_error.rdbuf());\n\n    try {\n        solve_question(); \n    } catch (const std::exception& e) {\n        ss_error << \"Unhandled exception: \" << e.what() << std::endl;\n    } catch (...) {\n        ss_error << \"Unhandled unknown exception.\" << std::endl;\n    }\n\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n    std::cerr.rdbuf(old_cerr);\n\n    std::string output = ss_output.str();\n    std::string error_output = ss_error.str();\n\n    if (!error_output.empty()) {\n        return \"ERROR: \" + error_output + output; \n    }\n    return output;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

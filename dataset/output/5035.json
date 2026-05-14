@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function `replaceChar` that takes a `std::string` by reference, an `oldChar`, and a `newChar`. The function should modify the string in-place by replacing all occurrences of `oldChar` with `newChar`.",
+  "test_cases": [
+    { "input": "hello world|o|x", "expected": "hellx wxrld" },
+    { "input": "programming|g|G", "expected": "proGramminG" },
+    { "input": "aaaaa|a|b", "expected": "bbbbb" },
+    { "input": "nochange|z|q", "expected": "nochange" },
+    { "input": "|a|b", "expected": "" },
+    { "input": "single|s|S", "expected": "Single" },
+    { "input": "123123|1|x", "expected": "x23x23" },
+    { "input": "abcde|c|c", "expected": "abcde" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream> // Required for parsing test case input\n\n// Function with a Robustness Issue: Out-of-bounds access\nvoid replaceChar(std::string& s, char oldChar, char newChar) {\n    // Robustness Issue: The loop condition `i <= s.length()` is incorrect.\n    // It causes an out-of-bounds access when `i` equals `s.length()`,\n    // as valid indices for a string of length L are 0 to L-1.\n    // Accessing s[s.length()] leads to undefined behavior, which can include crashes,\n    // memory corruption, or unexpected results, especially for empty strings or specific inputs.\n    for (size_t i = 0; i <= s.length(); ++i) { // BUG: Should be i < s.length()\n        if (s[i] == oldChar) {\n            s[i] = newChar;\n        }\n    }\n}\n\nint main() {\n    // This code simulates the execution environment where test cases are provided.\n    // It parses an encoded string to extract the arguments for replaceChar.\n    std::vector<std::pair<std::string, std::string>> test_cases_data = {\n        {\"hello world|o|x\", \"hellx wxrld\"},\n        {\"programming|g|G\", \"proGramminG\"},\n        {\"aaaaa|a|b\", \"bbbbb\"},\n        {\"nochange|z|q\", \"nochange\"},\n        {\"|a|b\", \"\"}, // Empty string input - likely to cause a crash here\n        {\"single|s|S\", \"Single\"},\n        {\"123123|1|x\", \"x23x23\"},\n        {\"abcde|c|c\", \"abcde\"}\n    };\n\n    std::cout << \"Running tests for replaceChar function (Robustness Issue):\\n\";\n\n    for (const auto& tc : test_cases_data) {\n        std::string input_str_encoded = tc.first;\n        std::string expected_output = tc.second;\n\n        // Parse the encoded input string \"s_val|oldC_val|newC_val\"\n        std::string s_val_str;\n        std::string old_char_str;\n        std::string new_char_str;\n        std::istringstream iss(input_str_encoded);\n        \n        std::getline(iss, s_val_str, '|');\n        std::getline(iss, old_char_str, '|');\n        std::getline(iss, new_char_str);\n\n        std::string s_to_modify = s_val_str;\n        char actual_old_char = old_char_str.empty() ? '\\0' : old_char_str[0];\n        char actual_new_char = new_char_str.empty() ? '\\0' : new_char_str[0];\n\n        std::string s_copy = s_to_modify; // Make a copy to pass by reference\n\n        std::cout << \"Input: \\\"\" << s_to_modify << \"\\\", oldChar: '\" << actual_old_char << \"', newChar: '\" << actual_new_char << \"'\\n\";\n        replaceChar(s_copy, actual_old_char, actual_new_char);\n        std::cout << \"Output: \\\"\" << s_copy << \"\\\", Expected: \\\"\" << expected_output << \"\\\"\\n\";\n        // Note: For robustness issues, the comparison might be misleading if the program crashes or produces garbage.\n        std::cout << (s_copy == expected_output ? \"Result: PASS\" : \"Result: FAIL (or crash likely for some inputs)\") << \"\\n\";\n        std::cout << \"--------------------------------\\n\";\n    }\n\n    return 0;\n}\n",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The loop condition `i <= s.length()` causes an out-of-bounds access when `i` reaches `s.length()`, leading to undefined behavior or a crash, especially for empty strings or specific memory layouts."
+  ]
+}

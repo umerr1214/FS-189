@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Model a `Library` class that maintains a collection of `Book` objects (from a previous question) using aggregation. Implement methods to `addBook()`, `removeBook()`, and `listAllBooks()`.",
+  "test_cases": [
+    {
+      "input": "myLibrary.addBook(Book(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", 1979));\nmyLibrary.addBook(Book(\"1984\", \"George Orwell\", 1949));\nmyLibrary.addBook(Book(\"Brave New World\", \"Aldous Huxley\", 1932));\nmyLibrary.listAllBooks();\nmyLibrary.removeBook(\"1984\");\nmyLibrary.listAllBooks();",
+      "expected": "--- All Books (expect undefined behavior/crash/garbage) ---\nTitle: The Hitchhiker's Guide to the Galaxy, Author: Douglas Adams, Year: 1979\nTitle: 1984, Author: George Orwell, Year: 1949\nTitle: Brave New World, Author: Aldous Huxley, Year: 1932\n\n--- Removing '1984' (might crash or not work as expected) ---\nBook '1984' removed (from list of dangling pointers).\n\n--- Books after removal ---\nTitle: The Hitchhiker's Guide to the Galaxy, Author: Douglas Adams, Year: 1979\nTitle: Brave New World, Author: Aldous Huxley, Year: 1932\n"
+    }
+  ],
+  "driver": "int main() {\n    Library myLibrary;\n\n    // These Book objects are temporaries. Their addresses are stored in myLibrary.\n    // They are destroyed immediately after these statements.\n    myLibrary.addBook(Book(\"The Hitchhiker's Guide to the Galaxy\", \"Douglas Adams\", 1979));\n    myLibrary.addBook(Book(\"1984\", \"George Orwell\", 1949));\n    myLibrary.addBook(Book(\"Brave New World\", \"Aldous Huxley\", 1932));\n\n    std::cout << \"--- All Books (expect undefined behavior/crash/garbage) ---\" << std::endl;\n    // Accessing dangling pointers here\n    myLibrary.listAllBooks();\n    std::cout << std::endl;\n\n    std::cout << \"--- Removing '1984' (might crash or not work as expected) ---\" << std::endl;\n    if (myLibrary.removeBook(\"1984\")) {\n        std::cout << \"Book '1984' removed (from list of dangling pointers).\" << std::endl;\n    } else {\n        std::cout << \"Book '1984' not found (among dangling pointers).\" << std::endl;\n    }\n    std::cout << std::endl;\n\n    std::cout << \"--- Books after removal ---\" << std::endl;\n    myLibrary.listAllBooks();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `Library` class stores `Book*` (raw pointers) but does not manage their lifetime. The `addBook` method takes `const Book&` and stores the address of this temporary object, leading to dangling pointers. Subsequent access to these pointers (e.g., in `listAllBooks` or `removeBook`) results in undefined behavior (e.g., crashes, garbage output).",
+    "Missing proper memory management (e.g., using `new`/`delete` or smart pointers like `std::unique_ptr` in `addBook` and `~Library()`) for the aggregated `Book` objects."
+  ]
+}

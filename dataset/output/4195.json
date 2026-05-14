@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user for a positive integer `n` (representing the height). Using nested loops, print a solid pyramid pattern of asterisks `*` with `n` rows.",
+  "test_cases": [
+    {
+      "input": "-3",
+      "expected": "Enter the height of the pyramid (a positive integer): "
+    },
+    {
+      "input": "0",
+      "expected": "Enter the height of the pyramid (a positive integer): "
+    }
+  ],
+  "driver": "int main() { /* The user's solution's main function will be executed. */ return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not validate if the input 'n' is a positive integer. For non-positive inputs, it prints nothing without informing the user or re-prompting.",
+    "The program does not handle non-numeric input, which can lead to `std::cin` failure and unpredictable behavior."
+  ]
+}

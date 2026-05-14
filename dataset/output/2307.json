@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design an abstract base class `Animal` with a pure virtual method `makeSound()` (returning void). Create two concrete derived classes, `Dog` and `Cat`, that implement `makeSound()` to print their respective sounds ('Woof!' and 'Meow!').",
+  "test_cases": [
+    { "input": "", "expected": "--- Creating Animals ---\n\n--- Animals Making Sounds ---\nWoof!\nMeow!\n\n--- Deleting Animals (handled by unique_ptr) ---\n\n--- Program End ---\n" }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Creating Animals ---\" << std::endl;\n    std::unique_ptr<Animal> myDog = std::make_unique<Dog>();\n    std::unique_ptr<Animal> myCat = std::make_unique<Cat>();\n\n    std::cout << \"\\n--- Animals Making Sounds ---\" << std::endl;\n    myDog->makeSound();\n    myCat->makeSound();\n\n    std::cout << \"\\n--- Deleting Animals (handled by unique_ptr) ---\" << std::endl;\n\n    std::cout << \"\\n--- Program End ---\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

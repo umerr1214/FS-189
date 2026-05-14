@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that initializes a 4x4 integer matrix (2D array). Then, calculate and print the sum of the elements along its main diagonal (top-left to bottom-right).",
+  "test_cases": [
+    { "input": "", "expected": "Sum of main diagonal elements: 34\n" }
+  ],
+  "driver": "#include <iostream>\nextern void calculateAndPrintDiagonalSum();\n\nint main() {\n    calculateAndPrintDiagonalSum();\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses cryptic variable names ('m', 's') which severely reduce code readability.",
+    "Matrix initialization is overly verbose and not concise (e.g., using `resize` then individual element assignments), making it less readable.",
+    "Employs an inefficient nested loop with an `if (i==j)` condition to find diagonal elements, when a single loop iterating `i` from 0 to `MATRIX_SIZE-1` and directly accessing `matrix[i][i]` would be sufficient and significantly more efficient.",
+    "Poor and inconsistent code formatting (e.g., inconsistent indentation, one-liners) and lack of comments make the code hard to understand and maintain.",
+    "Uses `std::vector<std::vector<int>>` which introduces slightly more overhead compared to `std::array` or C-style arrays for a known fixed-size matrix."
+  ]
+}

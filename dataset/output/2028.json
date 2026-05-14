@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Define an abstract base class `Animal` with a pure virtual method `void makeSound()`. Implement two derived classes, `Dog` and `Cat`, each overriding `makeSound()` to print their respective sounds.",
+  "test_cases": [
+    { "input": "", "expected": "Woof!\n" }
+  ],
+  "driver": "int main() {\n    Animal* myDog = new Dog();\n    myDog->makeSound();\n\n    // The following lines would cause a compilation error due to the semantic error:\n    // Cat myCat; \n    // Animal* myAbstractCat = new Cat();\n\n    delete myDog;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The derived class 'Cat' inherits the pure virtual method 'makeSound()' from 'Animal' but fails to override it. This makes 'Cat' an abstract class. Attempting to instantiate 'Cat' directly (e.g., 'Cat myCat;' or 'new Cat()') is a semantic error, as abstract classes cannot be instantiated."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program for a simple number guessing game. Generate a random secret number between 1 and 100. The user gets 5 attempts to guess the number. Use a while loop for the guessing process and provide hints (higher/lower).",
+  "test_cases": [
+    {
+      "input": "50\n75\n25\n42\n",
+      "expected": "Welcome to the Number Guessing Game!\nI have picked a number between 1 and 100. You have 5 attempts.\nAttempt 1/5. Enter your guess: Too high! Try again.\nAttempt 2/5. Enter your guess: Too high! Try again.\nAttempt 3/5. Enter your guess: Too low! Try again.\nAttempt 4/5. Enter your guess: Congratulations! You guessed the number 42 in 4 attempts.\n"
+    },
+    {
+      "input": "10\n20\n30\n40\n50\n",
+      "expected": "Welcome to the Number Guessing Game!\nI have picked a number between 1 and 100. You have 5 attempts.\nAttempt 1/5. Enter your guess: Too low! Try again.\nAttempt 2/5. Enter your guess: Too low! Try again.\nAttempt 3/5. Enter your guess: Too low! Try again.\nAttempt 4/5. Enter your guess: Too low! Try again.\nAttempt 5/5. Enter your guess: Too high! Try again.\nSorry, you ran out of attempts. The secret number was 42.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <streambuf>\n\n// This driver describes how to test the semantic error in 4950.cpp.\n// The core issue is that the 'random' secret number is always the same (42 on many systems)\n// due to seeding with a fixed value (srand(1)).\n\nint main() {\n    std::cout << \"This driver demonstrates how to test the semantic error in 4950.cpp.\\n\";\n    std::cout << \"The program's 'random' number generation is flawed because it's seeded with a fixed value (srand(1)),\\n\";\n    std::cout << \"making the secret number predictable (typically 42 on most systems). To confirm, run the program multiple times.\\n\\n\";\n\n    std::cout << \"To test, compile 4950.cpp into an executable (e.g., g++ 4950.cpp -o game) and run it.\\n\";\n    std::cout << \"Then provide the inputs as specified in the test cases and compare the output.\\n\\n\";\n\n    std::cout << \"Test Case 1 Input:\\n50\\n75\\n25\\n42\\n\";\n    std::cout << \"\\nExpected Output (assuming secret number is always 42):\\n\";\n    std::cout << \"Welcome to the Number Guessing Game!\\nI have picked a number between 1 and 100. You have 5 attempts.\\nAttempt 1/5. Enter your guess: Too high! Try again.\\nAttempt 2/5. Enter your guess: Too high! Try again.\\nAttempt 3/5. Enter your guess: Too low! Try again.\\nAttempt 4/5. Enter your guess: Congratulations! You guessed the number 42 in 4 attempts.\\n\";\n\n    std::cout << \"\\nTest Case 2 Input:\\n10\\n20\\n30\\n40\\n50\\n\";\n    std::cout << \"\\nExpected Output (assuming secret number is always 42):\\n\";\n    std::cout << \"Welcome to the Number Guessing Game!\\nI have picked a number between 1 and 100. You have 5 attempts.\\nAttempt 1/5. Enter your guess: Too low! Try again.\\nAttempt 2/5. Enter your guess: Too low! Try again.\\nAttempt 3/5. Enter your guess: Too low! Try again.\\nAttempt 4/5. Enter your guess: Too low! Try again.\\nAttempt 5/5. Enter your guess: Too high! Try again.\\nSorry, you ran out of attempts. The secret number was 42.\\n\";\n\n    std::cout << \"\\nTo fully observe the semantic error, compile 4950.cpp into an executable and run it multiple times without changing the code. You will notice the secret number is consistently the same, demonstrating the lack of true randomness.\\n\";\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The program uses `srand(1)` to seed the random number generator. While `srand()` is called, using a fixed integer (1) as the seed means that `rand()` will produce the exact same sequence of 'random' numbers every time the program is executed. This defeats the purpose of a guessing game, as the 'secret number' will always be the same (e.g., 42 on many systems), making the game predictable and not truly random. To fix this, `srand(time(0))` should be used to seed with the current time, providing a different sequence each run."
+  ]
+}

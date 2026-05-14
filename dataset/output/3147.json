@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Implement a `Calculator` class with three overloaded `add` methods: one that adds two integers, one that adds two doubles, and one that adds three integers.",
+  "test_cases": [
+    { "input": "5 7", "expected": "add(5, 7) = 12" },
+    { "input": "-10 3", "expected": "add(-10, 3) = -7" },
+    { "input": "0 100", "expected": "add(0, 100) = 100" },
+    { "input": "2000000000 100000000", "expected": "add(2000000000, 100000000) = 2100000000" },
+    { "input": "5.5 2.3", "expected": "add(5.5, 2.3) = 7.80" },
+    { "input": "-1.2 0.7", "expected": "add(-1.2, 0.7) = -0.50" },
+    { "input": "10.0 0.0", "expected": "add(10.0, 0.0) = 10.00" },
+    { "input": "1 2 3", "expected": "add(1, 2, 3) = 6" },
+    { "input": "10 -5 2", "expected": "add(10, -5, 2) = 7" },
+    { "input": "-1 -2 -3", "expected": "add(-1, -2, -3) = -6" },
+    { "input": "0 0 0", "expected": "add(0, 0, 0) = 0" }
+  ],
+  "driver": "Calculator calc;\nstd::cout << \"Integer Addition (Two):\" << std::endl;\nstd::cout << \"add(5, 7) = \" << calc.add(5, 7) << std::endl;\nstd::cout << \"add(-10, 3) = \" << calc.add(-10, 3) << std::endl;\nstd::cout << \"add(0, 100) = \" << calc.add(0, 100) << std::endl;\nstd::cout << \"add(2000000000, 100000000) = \" << calc.add(2000000000, 100000000) << std::endl;\nstd::cout << \"\\nDouble Addition:\" << std::endl;\nstd::cout << std::fixed << std::setprecision(2);\nstd::cout << \"add(5.5, 2.3) = \" << calc.add(5.5, 2.3) << std::endl;\nstd::cout << \"add(-1.2, 0.7) = \" << calc.add(-1.2, 0.7) << std::endl;\nstd::cout << \"add(10.0, 0.0) = \" << calc.add(10.0, 0.0) << std::endl;\nstd::cout << \"\\nInteger Addition (Three):\" << std::endl;\nstd::cout << \"add(1, 2, 3) = \" << calc.add(1, 2, 3) << std::endl;\nstd::cout << \"add(10, -5, 2) = \" << calc.add(10, -5, 2) << std::endl;\nstd::cout << \"add(-1, -2, -3) = \" << calc.add(-1, -2, -3) << std::endl;\nstd::cout << \"add(0, 0, 0) = \" << calc.add(0, 0, 0) << std::endl;",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

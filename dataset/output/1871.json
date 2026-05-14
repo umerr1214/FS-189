@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a base class `Publication` with private attributes `title` (string) and `price` (double). Implement methods to set and display these. From `Publication`, derive `Book` (adds private attribute `author` - string) and `Magazine` (adds private attribute `issueNumber` - int). Demonstrate creating objects of `Book` and `Magazine` and displaying their complete details.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "--- Book Details ---\nTitle: The C++ Programming Language\nPrice: $59.99\nAuthor: Bjarne Stroustrup\n\n--- Magazine Details ---\nTitle: C++ Magazine\nPrice: $9.50\nIssue Number: 123\n\n--- Another Book Details (using setters) ---\nTitle: Effective C++\nPrice: $45.00\nAuthor: Scott Meyers\n"
+    }
+  ],
+  "driver": "int main() {\n    // Create Book object\n    Book myBook(\"The C++ Programming Language\", 59.99, \"Bjarne Stroustrup\");\n    std::cout << \"--- Book Details ---\" << std::endl;\n    myBook.display();\n    std::cout << std::endl;\n\n    // Create Magazine object\n    Magazine myMagazine(\"C++ Magazine\", 9.50, 123);\n    std::cout << \"--- Magazine Details ---\" << std::endl;\n    myMagazine.display();\n    std::cout << std::endl;\n\n    // Demonstrate setters\n    Book anotherBook;\n    anotherBook.setTitle(\"Effective C++\");\n    anotherBook.setPrice(45.00);\n    anotherBook.setAuthor(\"Scott Meyers\");\n    std::cout << \"--- Another Book Details (using setters) ---\" << std::endl;\n    anotherBook.display();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'display' methods in both 'Book' and 'Magazine' derived classes fail to call 'Publication::display()'. This results in only the derived class's specific attributes (author, issueNumber) being displayed, omitting the base class attributes (title, price) and thus providing incomplete details as required by the question."
+  ]
+}

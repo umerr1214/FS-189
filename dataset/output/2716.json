@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `Temperature` class with a private `celsius` (double) member. Provide a public `setCelsius()` method that validates input (e.g., must be >= absolute zero). Implement public `getFahrenheit()` and `getKelvin()` methods to convert and return the temperature.",
+  "test_cases": [
+    { "input": "Temperature t1; t1.setCelsius(25.0);", "expected": "25C is 77.00F and 298.15K" },
+    { "input": "Temperature t2(-300.0);", "expected": "-300C (invalid) is -459.67F and 0.00K" },
+    { "input": "Temperature t3(0.0);", "expected": "0C is 32.00F and 273.15K" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\n// Assuming Temperature class is defined (with syntax error)\n\nint main() {\n    std::cout << std::fixed << std::setprecision(2);\n\n    Temperature t1;\n    t1.setCelsius(25.0);\n    std::cout << \"25C is \" << t1.getFahrenheit() << \"F and \" << t1.getKelvin() << \"K\\n\";\n\n    Temperature t2(-300.0); // Should be set to absolute zero\n    std::cout << \"-300C (invalid) is \" << t2.getFahrenheit() << \"F and \" << t2.getKelvin() << \"K\\n\";\n\n    Temperature t3(0.0);\n    std::cout << \"0C is \" << t3.getFahrenheit() << \"F and \" << t3.getKelvin() << \"K\\n\";\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the class definition for 'Temperature'. This prevents the program from compiling."]
+}

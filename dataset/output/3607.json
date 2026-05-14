@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Create a simple menu-driven program (e.g., 'A' for Add, 'S' for Subtract, 'Q' for Quit) that continuously prompts the user for choices until 'Q' is entered. Use a `do-while` loop and a `switch` statement.",
+  "test_cases": [
+    {
+      "input": "A\n5\n3\nS\n10\n2\na\nQ\n",
+      "expected": "\n--- Menu ---\nA: Add\nS: Subtract\nQ: Quit\nEnter your choice: Enter two numbers to add: Result: 8\n\n--- Menu ---\nA: Add\nS: Subtract\nQ: Quit\nEnter your choice: Enter two numbers to subtract: Result: 8\n\n--- Menu ---\nA: Add\nS: Subtract\nQ: Quit\nEnter your choice: Invalid choice. Please try again.\n\n--- Menu ---\nA: Add\nS: Subtract\nQ: Quit\nEnter your choice: Exiting program. Goodbye!\n"
+    },
+    {
+      "input": "123\n",
+      "expected": "\n--- Menu ---\nA: Add\nS: Subtract\nQ: Quit\nEnter your choice: Invalid choice. Please try again.\n\n--- Menu ---\nA: Add\nS: Subtract\nQ: Quit\nEnter your choice: Invalid choice. Please try again.\n\n--- Menu ---\nA: Add\nS: Subtract\nQ: Quit\nEnter your choice: Invalid choice. Please try again.\n(Program enters an infinite loop printing 'Invalid choice. Please try again.' because `std::cin` fails and is not cleared, preventing further input.)"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <streambuf>\n#include <vector>\n\n// This function simulates running the main program with given input and captures its output.\n// In a real testing environment, the user's code would be compiled into an executable\n// and run as a separate process, with stdin/stdout redirected.\n// For the purpose of this JSON field, this C++ snippet illustrates the I/O redirection concept.\nstd::string run_program_and_capture_output(const std::string& input_str, int (*program_main)()) {\n    std::stringstream input_stream(input_str);\n    std::stringstream output_stream;\n\n    // Save original streambufs\n    std::streambuf* old_cin_buf = std::cin.rdbuf();\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n\n    // Redirect cin and cout\n    std::cin.rdbuf(input_stream.rdbuf());\n    std::cout.rdbuf(output_stream.rdbuf());\n\n    // Call the program's main function (conceptually)\n    // In a real test, 'program_main()' would be replaced by executing the compiled binary.\n    program_main();\n\n    // Restore original streambufs\n    std::cin.rdbuf(old_cin_buf);\n    std::cout.rdbuf(old_cout_buf);\n\n    return output_stream.str();\n}\n\n// Example usage (assuming 'main' from the solution is available as 'solution_main'):\n// extern int solution_main(); // Declaration if main is renamed or wrapped\n// std::string test_input = \"A\\n5\\n3\\nQ\\n\";\n// std::string actual_output = run_program_and_capture_output(test_input, solution_main);\n// // Compare actual_output with expected output\n",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program is not robust to invalid input. If the user enters non-character input (e.g., numbers or multiple characters), `std::cin` enters a failed state, causing an infinite loop where 'Invalid choice' is repeatedly printed without further input. Additionally, the program is case-sensitive and does not accept lowercase 'a', 's', or 'q' as valid commands."
+  ]
+}

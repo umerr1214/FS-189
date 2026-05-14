@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a function `void increment_by_ten(int& value)` that takes an integer by reference and increments its value by 10. Demonstrate its usage by calling it with a variable and printing the variable's value before and after the call.",
+  "test_cases": [
+    { "input": "", "expected": "Value before: 7\nValue after: 17\nValue before: -15\nValue after: -5\n" }
+  ],
+  "driver": "int main() {\n    int num1 = 7;\n    std::cout << \"Value before: \" << num1 << std::endl;\n    increment_by_ten(num1);\n    std::cout << \"Value after: \" << num1 << std::endl;\n\n    int num2 = -15;\n    std::cout << \"Value before: \" << num2 << std::endl;\n    increment_by_ten(num2);\n    std::cout << \"Value after: \" << num2 << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The function `increment_by_ten` uses a loop to increment the value ten times. This is less efficient than a direct arithmetic addition (`value += 10;`) because it introduces loop overhead (initialization, condition checking, incrementing the loop variable) and potentially multiple memory writes. It also reduces readability by making the simple intent of adding ten more complex than necessary."
+  ]
+}

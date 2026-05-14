@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Design a `Course` class (with `name`, `code`). Then, create a `Department` class that uses aggregation to manage a collection of `Course` objects (e.g., using `std::vector`). Implement methods to add a course and list all courses in the department.",
+  "test_cases": [
+    {
+      "input": "Initialize Department 'Computer Science', then call listCourses().",
+      "expected": "--- Test Case 1: Empty Department ---\nCourses in Computer Science:\n  No courses available.\n\n"
+    },
+    {
+      "input": "Initialize Department 'Mathematics', add 'Calculus I' (MATH101) and 'Linear Algebra' (MATH201), then call listCourses().",
+      "expected": "--- Test Case 2: Department with Courses ---\nCourses in Mathematics:\n  - MATH101: Calculus I\n  - MATH201: Linear Algebra\n\n"
+    },
+    {
+      "input": "Add 'Introduction to Programming' (CS101) and 'Data Structures' (CS201) to 'Computer Science' department, then call listCourses().",
+      "expected": "--- Test Case 3: Computer Science Department ---\nCourses in Computer Science:\n  - CS101: Introduction to Programming\n  - CS201: Data Structures\n\n"
+    }
+  ],
+  "driver": "int main() {\n    Department cs_dept(\"Computer Science\");\n    std::cout << \"--- Test Case 1: Empty Department ---\\n\";\n    cs_dept.listCourses();\n\n    Department math_dept(\"Mathematics\");\n    math_dept.addCourse(Course(\"Calculus I\", \"MATH101\"));\n    math_dept.addCourse(Course(\"Linear Algebra\", \"MATH201\"));\n    std::cout << \"--- Test Case 2: Department with Courses ---\\n\";\n    math_dept.listCourses();\n\n    cs_dept.addCourse(Course(\"Introduction to Programming\", \"CS101\"));\n    cs_dept.addCourse(Course(\"Data Structures\", \"CS201\"));\n    std::cout << \"--- Test Case 3: Computer Science Department ---\\n\";\n    cs_dept.listCourses();\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

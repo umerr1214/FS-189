@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Book` with members `title` (`std::string`), `author` (`std::string`), and `publicationYear` (int). Write a program that declares an array of three `Book` structs, prompts the user to enter details for each book, and then prints the details of all books.",
+  "test_cases": [
+    {
+      "input": "TitleA\nAuthorA\n1990\nTitleB\nAuthorB\n1991\nTitleC\nAuthorC\n1992\n",
+      "expected": "Enter details for three books:\n\n--- Book 1 ---\nEnter title for book 1 (single word): Enter author for book 1 (single word): Enter publication year for book 1: \n--- Book 2 ---\nEnter title for book 2 (single word): Enter author for book 2 (single word): Enter publication year for book 2: \n--- Book 3 ---\nEnter title for book 3 (single word): Enter author for book 3 (single word): Enter publication year for book 3: \n\n--- Details of all books ---\n\nBook 1:\nTitle: TitleA\nAuthor: AuthorA\nPublication Year: 1990\n\nBook 2:\nTitle: TitleB\nAuthor: AuthorB\nPublication Year: 1991\n\nBook 3:\nTitle: TitleC\nAuthor: AuthorC\nPublication Year: 1992\n"
+    }
+  ],
+  "driver": "g++ -o solution 4904.cpp && ./solution",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The program uses highly repetitive code blocks for input and output operations instead of utilizing loops. This significantly reduces readability, makes the code harder to maintain, and is inefficient for development, especially if the number of books were to change.",
+    "The program uses `std::cin >> std::string` for `title` and `author` inputs. This method only reads a single word, making it unsuitable for multi-word titles and authors (e.g., 'The Great Gatsby') and leading to incorrect data parsing for common book titles."
+  ]
+}

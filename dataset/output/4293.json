@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define a C++ struct named `Point` with two integer members, `x` and `y`, representing coordinates. Write a function `get_distance` that takes two `Point` structs as input and returns the Euclidean distance between them as a `double`.",
+  "test_cases": [
+    { "input": "Point p1={0,0}, p2={3,4}", "expected": "5.00000000" },
+    { "input": "Point p1={1,1}, p2={1,1}", "expected": "0.00000000" },
+    { "input": "Point p1={-1,-1}, p2={2,3}", "expected": "5.00000000" },
+    { "input": "Point p1={0,0}, p2={50000,50000}", "expected": "70710.67811865" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n#include <iomanip>\n\n// struct Point and get_distance function would be here\n\nint main() {\n    Point p1_a = {0, 0};\n    Point p2_a = {3, 4};\n    std::cout << \"Distance between (\" << p1_a.x << \",\" << p1_a.y << \") and (\" << p2_a.x << \",\" << p2_a.y << \"): \"\n              << std::fixed << std::setprecision(8) << get_distance(p1_a, p2_a) << std::endl;\n\n    Point p1_b = {1, 1};\n    Point p2_b = {1, 1};\n    std::cout << \"Distance between (\" << p1_b.x << \",\" << p1_b.y << \") and (\" << p2_b.x << \",\" << p2_b.y << \"): \"\n              << std::fixed << std::setprecision(8) << get_distance(p1_b, p2_b) << std::endl;\n\n    Point p1_c = {-1, -1};\n    Point p2_c = {2, 3};\n    std::cout << \"Distance between (\" << p1_c.x << \",\" << p1_c.y << \") and (\" << p2_c.x << \",\" << p2_c.y << \"): \"\n              << std::fixed << std::setprecision(8) << get_distance(p1_c, p2_c) << std::endl;\n\n    Point p1_d = {0, 0};\n    Point p2_d = {50000, 50000};\n    std::cout << \"Distance between (\" << p1_d.x << \",\" << p1_d.y << \") and (\" << p2_d.x << \",\" << p2_d.y << \"): \"\n              << std::fixed << std::setprecision(8) << get_distance(p1_d, p2_d) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

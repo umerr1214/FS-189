@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Design a `Student` class with private members `studentName` (string), `studentID` (int), and `grade` (char). Implement a default constructor, a parameterized constructor, and public `get` methods for all members. Also, add a `printStudentDetails()` method.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Student 1:\nName: Unknown\nID: 0\nGrade: U\n--------------------\nStudent 2:\nName: Alice Smith\nID: 1001\nGrade: A\n--------------------\nStudent 3:\nName: Bob Johnson\nID: 2002\nGrade: B\n--------------------\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\nclass Student {\nprivate:\n    std::string studentName;\n    int studentID;\n    char grade;\n\npublic:\n    Student() {\n        this->studentName = \"Unknown\";\n        this->studentID = 0;\n        this->grade = 'U';\n    }\n\n    Student(std::string name, int id, char g) {\n        this->studentName = name;\n        this->studentID = id;\n        this->grade = g;\n    }\n\n    std::string getStudentName() {\n        return this->studentName;\n    }\n\n    int getStudentID() {\n        return this->studentID;\n    }\n\n    char getGrade() {\n        return this->grade;\n    }\n\n    void printStudentDetails() {\n        std::cout << \"Name: \";\n        std::cout << this->studentName;\n        std::cout << std::endl;\n        std::cout << \"ID: \";\n        std::cout << this->studentID;\n        std::cout << std::endl;\n        std::cout << \"Grade: \";\n        std::cout << this->grade;\n        std::cout << std::endl;\n    }\n};\n\nint main() {\n    Student student1;\n    Student student2(\"Alice Smith\", 1001, 'A');\n    Student student3(\"Bob Johnson\", 2002, 'B');\n\n    std::cout << \"Student 1:\\n\";\n    student1.printStudentDetails();\n    std::cout << \"--------------------\\n\";\n\n    std::cout << \"Student 2:\\n\";\n    student2.printStudentDetails();\n    std::cout << \"--------------------\\n\";\n\n    std::cout << \"Student 3:\\n\";\n    student3.printStudentDetails();\n    std::cout << \"--------------------\\n\";\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Constructors do not use initializer lists, which is generally considered less efficient for member initialization, especially for complex objects, and is not idiomatic C++.",
+    "Excessive and unnecessary use of the `this->` keyword throughout the class methods (constructors, getters, and `printStudentDetails`) reduces readability without providing additional clarity.",
+    "The `printStudentDetails` method uses multiple `std::cout` statements chained with `std::endl` for each member, which is less concise and potentially less efficient than a single chained output statement."
+  ]
+}

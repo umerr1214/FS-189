@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a multi-level inheritance hierarchy: `Person` -> `Employee` -> `Manager`. Each class should have a parameterized constructor. `Person` should have `name`, `Employee` should add `employeeId` and `salary`, and `Manager` should add `department`. Demonstrate the constructor chain by creating a `Manager` object.",
+  "test_cases": [
+    {
+      "input": "Manager(\"Alice Smith\", 101, 75000.0, \"Sales\")",
+      "expected": "Person constructor: Alice Smith\nEmployee constructor: 101, 75000\nManager constructor: Sales\n\nManager Details:\nName: Alice Smith\nEmployee ID: 101\nSalary: 75000\nDepartment: Sales"
+    }
+  ],
+  "driver": "Manager manager(\"Alice Smith\", 101, 75000.0, \"Sales\");\nstd::cout << \"\\nManager Details:\" << std::endl;\nstd::cout << \"Name: \" << manager.getName() << std::endl;\nstd::cout << \"Employee ID: \" << manager.getEmployeeId() << std::endl;\nstd::cout << \"Salary: \" << manager.getSalary() << std::endl;\nstd::cout << \"Department: \" << manager.getDepartment() << std::endl;",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The constructor of the base class `Person` is declared as `private`. This prevents derived classes like `Employee` from calling the base class constructor during their own initialization, leading to a compilation error. The attempt to initialize `Person` using `Person::createPerson(name)` in the initializer list is also semantically incorrect for base class construction."
+  ]
+}

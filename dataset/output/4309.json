@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter an integer `num`. Using nested `for` loops, generate and print the multiplication table (from 1 to 10) for the given number `num`.",
+  "test_cases": [
+    {
+      "input": "5\n",
+      "expected": "Enter an integer num: 5 * 1 = 5\n5 * 2 = 10\n5 * 3 = 15\n5 * 4 = 20\n5 * 5 = 25\n5 * 6 = 30\n5 * 7 = 35\n5 * 8 = 40\n5 * 9 = 45\n5 * 10 = 50\n"
+    },
+    {
+      "input": "abc\n10\n",
+      "expected": "Enter an integer num: 0 * 1 = 0\n0 * 2 = 0\n0 * 3 = 0\n0 * 4 = 0\n0 * 5 = 0\n0 * 6 = 0\n0 * 7 = 0\n0 * 8 = 0\n0 * 9 = 0\n0 * 10 = 0\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n\nvoid solve(); // Forward declaration for the student's solution\n\nint main() {\n    std::vector<std::string> test_inputs = {\n        \"5\\n\",\n        \"abc\\n10\\n\" // This input will cause the robustness issue\n    };\n\n    for (size_t i = 0; i < test_inputs.size(); ++i) {\n        std::cout << \"--- Test Case \" << i + 1 << \" ---\\n\";\n        std::istringstream iss(test_inputs[i]);\n        std::streambuf* old_cin = std::cin.rdbuf();\n        std::cin.rdbuf(iss.rdbuf());\n\n        solve();\n\n        std::cin.rdbuf(old_cin);\n        std::cout << \"\\n--------------------\\n\";\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The program does not handle non-integer input gracefully. If the user enters a non-integer (e.g., 'abc'), std::cin enters a fail state. The variable 'num' will likely be uninitialized or default to 0 (depending on compiler/environment) and the program will proceed with this incorrect value, leading to unexpected or incorrect output without any error message or retry mechanism. The subsequent '10' in the input stream is never processed."]
+}

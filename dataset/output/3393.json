@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Implement a function `char* reverse_cstring(char* str)` that takes a C-style string (character array) as input and reverses it in-place. The function should return a pointer to the modified string.",
+  "test_cases": [
+    { "input": "", "expected": "" },
+    { "input": "a", "expected": "a" },
+    { "input": "ab", "expected": "ba" },
+    { "input": "abc", "expected": "cba" },
+    { "input": "hello", "expected": "olleh" },
+    { "input": "racecar", "expected": "racecar" },
+    { "input": "long_string_to_test_correctness_and_efficiency_with_many_characters_and_words_and_symbols_like_!@#$%", "expected": "%#$@!_slobmys_dna_sdrow_dna_sretcarahc_ynam_htiw_ycneiciffe_dna_ssenctcerroc_tset_ot_gnirts_gnol" },
+    { "input": "__NULL__", "expected": "__NULL__" }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n#include <string>\n\n// Assumes reverse_cstring is defined here or included\n\nvoid run_test(const std::string& input_str, const std::string& expected_str) {\n    std::cout << \"Input: \\\"\" << input_str << \"\\\"\\n\";\n    std::cout << \"Expected: \\\"\" << expected_str << \"\\\"\\n\";\n\n    char buffer[256]; // Sufficient buffer for test strings\n    char* result = nullptr;\n\n    if (input_str == \"__NULL__\") {\n        char* null_ptr = nullptr;\n        result = reverse_cstring(null_ptr);\n        std::cout << \"Result: \" << (result == nullptr ? \"NULL\" : result) << \"\\n\";\n        if (result == nullptr && expected_str == \"__NULL__\") {\n            std::cout << \"Status: PASSED\\n\";\n        } else {\n            std::cout << \"Status: FAILED\\n\";\n        }\n    } else {\n        strncpy(buffer, input_str.c_str(), sizeof(buffer) - 1);\n        buffer[sizeof(buffer) - 1] = '\\0';\n        result = reverse_cstring(buffer);\n        std::cout << \"Result: \\\"\" << (result ? result : \"NULL\") << \"\\\"\\n\";\n        if (result && std::string(result) == expected_str) {\n            std::cout << \"Status: PASSED\\n\";\n        } else {\n            std::cout << \"Status: FAILED\\n\";\n        }\n    }\n    std::cout << \"--------------------------------\\n\";\n}\n\nint main() {\n    // Test cases matching the JSON 'test_cases'\n    run_test(\"\", \"\");\n    run_test(\"a\", \"a\");\n    run_test(\"ab\", \"ba\");\n    run_test(\"abc\", \"cba\");\n    run_test(\"hello\", \"olleh\");\n    run_test(\"racecar\", \"racecar\");\n    run_test(\"long_string_to_test_correctness_and_efficiency_with_many_characters_and_words_and_symbols_like_!@#$%\","
+        "\"%#$@!_slobmys_dna_sdrow_dna_sretcarahc_ynam_htiw_ycneiciffe_dna_ssenctcerroc_tset_ot_gnirts_gnol\");\n    run_test(\"__NULL__\", \"__NULL__\"); // Signifies NULL input\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

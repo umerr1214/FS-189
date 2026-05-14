@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that initializes an array of 5 integers (e.g., {10, 20, 30, 40, 50}), then reverses the order of its elements *in-place* (without using a second array) and prints the modified array.",
+  "test_cases": [
+    { "input": "", "expected": "20 10 30 40 50 \n" }
+  ],
+  "driver": "valid C++ code to run test cases",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Inside the 'reverseArray' function, 'sizeof(arr)' is used on a function parameter 'arr' which has decayed from an array to a pointer ('int*'). This results in 'sizeof(arr)' returning the size of the pointer itself (e.g., 8 bytes on a 64-bit system) instead of the size of the original array. Consequently, 'n_incorrect' is calculated incorrectly (e.g., 2 instead of 5), leading to only a partial reversal of the array."
+  ]
+}

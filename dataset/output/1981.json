@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Implement a `StringWrapper` class that manages a C-style string (`char*`) dynamically allocated on the heap. Provide a copy constructor that performs a deep copy to prevent dangling pointers.",
+  "test_cases": [
+    { "input": "StringWrapper s1(\"Test\"); StringWrapper s2 = s1; /* Check s1 and s2 content */", "expected": "s1: Test\ns2: Test" },
+    { "input": "StringWrapper s_null(nullptr); StringWrapper s_copied_null = s_null; /* Check s_null and s_copied_null content */", "expected": "s4: \ns5: " }
+  ],
+  "driver": "valid C++ code to run test cases",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing copy assignment operator. The compiler-generated default performs a shallow copy, leading to potential double-free errors, memory leaks, or dangling pointers on assignment.",
+    "The default constructor leaves member `data` and `len` uninitialized, leading to undefined behavior if a `StringWrapper` object is default-constructed and its members are accessed before a proper initialization."
+  ]
+}

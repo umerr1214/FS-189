@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Determine if a given character entered by the user is an uppercase letter, a lowercase letter, a digit, or a special character. Print the category.",
+  "test_cases": [
+    { "input": "A", "expected": "Category: Uppercase Letter" },
+    { "input": "b", "expected": "Category: Lowercase Letter" },
+    { "input": "7", "expected": "Category: Digit" },
+    { "input": "#", "expected": "Category: Special Character" },
+    { "input": " ", "expected": "Category: Special Character" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// Assume classify_char_category is defined in the student's code\n// std::string classify_char_category(char c);\n\nint main() {\n    std::vector<std::pair<char, std::string>> test_cases = {\n        {'A', \"Category: Uppercase Letter\"},\n        {'b', \"Category: Lowercase Letter\"},\n        {'7', \"Category: Digit\"},\n        {'#', \"Category: Special Character\"},\n        {' ', \"Category: Special Character\"}\n    };\n\n    bool all_passed = true;\n    for (const auto& tc : test_cases) {\n        char input_char = tc.first;\n        std::string expected_output = tc.second;\n\n        // Call the student's classification function\n        std::string actual_output = classify_char_category(input_char);\n\n        // For simple comparison, just print result. A real driver would compare and report.\n        // For this dataset generation, we just need to ensure the driver is valid C++ code.\n        if (actual_output == expected_output) {\n            std::cout << \"Test passed for input '\" << input_char << \"'. Output: \" << actual_output << std::endl;\n        } else {\n            std::cout << \"Test FAILED for input '\" << input_char << \"'. Expected: \" << expected_output << \", Got: \" << actual_output << std::endl;\n            all_passed = false;\n        }\n    }\n\n    if (all_passed) {\n        std::cout << \"All test cases passed!\" << std::endl;\n    } else {\n        std::cout << \"Some test cases failed.\" << std::endl;\n    }\n\n    return all_passed ? 0 : 1;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

@@ -1,0 +1,29 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function template named `getAbsoluteValue` that can compute and return the absolute value of any numeric data type (e.g., `int`, `float`, `double`).",
+  "test_cases": [
+    { "input": "5", "expected": "5" },
+    { "input": "-10", "expected": "10" },
+    { "input": "0", "expected": "0" },
+    { "input": "2147483647", "expected": "2147483647" },
+    { "input": "-2147483648", "expected": "2147483648" },
+    { "input": "3.14f", "expected": "3.14" },
+    { "input": "-2.5f", "expected": "2.5" },
+    { "input": "0.0f", "expected": "0" },
+    { "input": "FLT_MAX", "expected": "3.402823466e+38" },
+    { "input": "123.456", "expected": "123.456" },
+    { "input": "-98.765", "expected": "98.765" },
+    { "input": "0.0", "expected": "0" },
+    { "input": "DBL_MAX", "expected": "1.7976931348623157e+308" },
+    { "input": "10000000000LL", "expected": "10000000000" },
+    { "input": "-20000000000LL", "expected": "20000000000" },
+    { "input": "0LL", "expected": "0" },
+    { "input": "9223372036854775807LL", "expected": "9223372036854775807" },
+    { "input": "-9223372036854775808LL", "expected": "9223372036854775808" }
+  ],
+  "driver": "#include <iostream>\n#include <limits>\n#include <string>\n#include <sstream>\n#include <iomanip>\n#include <cmath>\n#include <type_traits>\n\ntemplate <typename T>\nT getAbsoluteValue(T val) {\n    return std::abs(val);\n}\n\ntemplate <typename T>\nstd::string format_output(T value) {\n    std::ostringstream oss;\n    if constexpr (std::is_integral_v<T>) {\n        oss << value;\n    } else {\n        if (std::fabs(value) >= 1e15 || (std::fabs(value) > 0 && std::fabs(value) < 1e-6)) {\n            oss << std::scientific << std::setprecision(std::numeric_limits<T>::max_digits10 - 1) << value;\n        } else {\n            oss << std::fixed << std::setprecision(std::numeric_limits<T>::max_digits10 - 1) << value;\n        }\n    }\n    std::string s = oss.str();\n    if (s.find('.') != std::string::npos) {\n        s.erase(s.find_last_not_of('0') + 1, std::string::npos);\n        if (s.back() == '.') {\n            s.pop_back();\n        }\n    }\n    return s;\n}\n\nint main() {\n    std::cout << \"[\";\n\n    bool first_item = true;\n\n    int i_vals[] = {5, -10, 0, std::numeric_limits<int>::max(), std::numeric_limits<int>::min()};\n    for (size_t i = 0; i < sizeof(i_vals)/sizeof(i_vals[0]); ++i) {\n        if (!first_item) std::cout << \",\";\n        std::cout << \"\\\"\" << format_output(getAbsoluteValue(i_vals[i])) << \"\\\"\";\n        first_item = false;\n    }\n\n    float f_vals[] = {3.14f, -2.5f, 0.0f, std::numeric_limits<float>::max()};\n    for (size_t i = 0; i < sizeof(f_vals)/sizeof(f_vals[0]); ++i) {\n        if (!first_item) std::cout << \",\";\n        std::cout << \"\\\"\" << format_output(getAbsoluteValue(f_vals[i])) << \"\\\"\";\n        first_item = false;\n    }\n\n    double d_vals[] = {123.456, -98.765, 0.0, std::numeric_limits<double>::max()};\n    for (size_t i = 0; i < sizeof(d_vals)/sizeof(d_vals[0]); ++i) {\n        if (!first_item) std::cout << \",\";\n        std::cout << \"\\\"\" << format_output(getAbsoluteValue(d_vals[i])) << \"\\\"\";\n        first_item = false;\n    }\n\n    long long ll_vals[] = {10000000000LL, -20000000000LL, 0LL, std::numeric_limits<long long>::max(), std::numeric_limits<long long>::min()};\n    for (size_t i = 0; i < sizeof(ll_vals)/sizeof(ll_vals[0]); ++i) {\n        if (!first_item) std::cout << \",\";\n        std::cout << \"\\\"\" << format_output(getAbsoluteValue(ll_vals[i])) << \"\\\"\";\n        first_item = false;\n    }\n\n    std::cout << \"]\";\n\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

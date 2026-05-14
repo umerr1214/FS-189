@@ -1,0 +1,33 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that converts a given temperature from Celsius to Fahrenheit and vice versa. Ask the user to choose the conversion type and then input the temperature. Use appropriate data types for temperatures (which can be decimal).",
+  "test_cases": [
+    {
+      "input": "1\n0",
+      "expected": "Temp Conv\n1 C to F\n2 F to C\nOpt: C: 0.00C is 32.00F\n"
+    },
+    {
+      "input": "2\n212",
+      "expected": "Temp Conv\n1 C to F\n2 F to C\nOpt: F: 212.00F is 100.00C\n"
+    },
+    {
+      "input": "1\n-10.5",
+      "expected": "Temp Conv\n1 C to F\n2 F to C\nOpt: C: -10.50C is 13.10F\n"
+    },
+    {
+      "input": "2\n14",
+      "expected": "Temp Conv\n1 C to F\n2 F to C\nOpt: F: 14.00F is -10.00C\n"
+    },
+    {
+      "input": "5\n10",
+      "expected": "Temp Conv\n1 C to F\n2 F to C\nOpt: Bad opt.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n#include <algorithm>\n\n// This function represents the user's submitted main function, renamed for testing.\n// It will be linked or included by the testing framework.\nextern int user_main(); \n\n// Helper to normalize whitespace and remove trailing newlines for comparison\nstd::string normalize_output(const std::string& s) {\n    std::string temp = s;\n    // Remove trailing whitespace\n    while (!temp.empty() && (temp.back() == '\\n' || temp.back() == '\\r' || temp.back() == ' ')) {\n        temp.pop_back();\n    }\n    // Optional: Replace multiple newlines with single, trim leading/trailing space on lines\n    std::string normalized_s;\n    std::istringstream iss(temp);\n    std::string line;\n    while (std::getline(iss, line)) {\n        // Trim whitespace from beginning and end of line\n        size_t first = line.find_first_not_of(\" \\t\\r\\n\");\n        if (std::string::npos == first) {\n            line.clear();\n        } else {\n            size_t last = line.find_last_not_of(\" \\t\\r\\n\");\n            line = line.substr(first, (last - first + 1));\n        }\n        if (!line.empty() || !normalized_s.empty()) { // Keep empty lines if not first\n             if (!normalized_s.empty()) normalized_s += '\\n';\n             normalized_s += line;\n        }\n    }\n    return normalized_s;\n}\n\nstruct TestCase {\n    std::string input;\n    std::string expected_output;\n};\n\nint main() {\n    std::vector<TestCase> test_cases = {\n        {\"1\\n0\", \"Temp Conv\\n1 C to F\\n2 F to C\\nOpt: C: 0.00C is 32.00F\\n\"},\n        {\"2\\n212\", \"Temp Conv\\n1 C to F\\n2 F to C\\nOpt: F: 212.00F is 100.00C\\n\"},\n        {\"1\\n-10.5\", \"Temp Conv\\n1 C to F\\n2 F to C\\nOpt: C: -10.50C is 13.10F\\n\"},\n        {\"2\\n14\", \"Temp Conv\\n1 C to F\\n2 F to C\\nOpt: F: 14.00F is -10.00C\\n\"},\n        {\"5\\n10\", \"Temp Conv\\n1 C to F\\n2 F to C\\nOpt: Bad opt.\\n\"}\n    };\n\n    int passed_tests = 0;\n    for (size_t i = 0; i < test_cases.size(); ++i) {\n        std::istringstream iss(test_cases[i].input);\n        std::ostringstream oss;\n\n        // Redirect std::cin and std::cout\n        std::streambuf* old_cin = std::cin.rdbuf(iss.rdbuf());\n        std::streambuf* old_cout = std::cout.rdbuf(oss.rdbuf());\n\n        // Call the user's main function\n        user_main();\n\n        // Restore std::cin and std::cout\n        std::cin.rdbuf(old_cin);\n        std::cout.rdbuf(old_cout);\n\n        std::string actual_output = normalize_output(oss.str());\n        std::string expected_output = normalize_output(test_cases[i].expected_output);\n\n        if (actual_output == expected_output) {\n            std::cout << \"Test Case \" << i + 1 << \" Passed.\\n\";\n            passed_tests++;\n        } else {\n            std::cout << \"Test Case \" << i + 1 << \" Failed.\\n\";\n            std::cout << \"Input:\\n---\\n\" << test_cases[i].input << \"\\n---\\n\";\n            std::cout << \"Expected:\\n---\\n\" << expected_output << \"\\n---\\n\";\n            std::cout << \"Actual:\\n---\\n\" << actual_output << \"\\n---\\n\";\n        }\n    }\n\n    std::cout << \"\\n\" << passed_tests << \"/\" << test_cases.size() << \" tests passed.\\n\";\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Code uses abbreviated and unclear variable names (e.g., 'o', 't', 'f', 'c'), lacks comments, and uses magic numbers directly in calculations. User prompts and output messages are terse and uninformative, negatively impacting readability and user experience. While functionally correct for valid inputs, the poor code style makes it difficult to understand and maintain."
+  ]
+}

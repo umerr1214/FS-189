@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `concatenateStrings` that takes two constant C-style string pointers (`char*`) and a third `char*` pointer to a destination buffer, along with the buffer's maximum size. It should concatenate the first two strings into the destination buffer. Ensure null termination and prevent buffer overflow.",
+  "test_cases": [
+    { "input": "str1=\"Hello\", str2=\"World\", destSize=20", "expected": "HelloWorld" },
+    { "input": "str1=\"One\", str2=\"Two\", destSize=5", "expected": "OneT" },
+    { "input": "str1=\"\", str2=\"Test\", destSize=10", "expected": "Test" },
+    { "input": "str1=\"Test\", str2=\"\", destSize=10", "expected": "Test" },
+    { "input": "str1=\"Long\", str2=\"String\", destSize=1", "expected": "" },
+    { "input": "str1=\"LongString\", str2=\"More\", destSize=10", "expected": "LongString" }
+  ],
+  "driver": "#include <iostream>\n#include <cstring>\n\nvoid concatenateStrings(const char* str1, const char* str2, char* dest, int destSize);\n\nint main() {\n    char buffer[20];\n\n    // Test Case 1\n    concatenateStrings(\"Hello\", \"World\", buffer, sizeof(buffer));\n    std::cout << \"Test 1: \" << buffer << std::endl;\n\n    // Test Case 2 (Truncation)\n    char buffer2[5];\n    concatenateStrings(\"One\", \"Two\", buffer2, sizeof(buffer2));\n    std::cout << \"Test 2: \" << buffer2 << std::endl;\n\n    // Test Case 3 (Empty str1)\n    char buffer3[10];\n    concatenateStrings(\"\", \"Test\", buffer3, sizeof(buffer3));\n    std::cout << \"Test 3: \" << buffer3 << std::endl;\n\n    // Test Case 4 (Empty str2)\n    char buffer4[10];\n    concatenateStrings(\"Test\", \"\", buffer4, sizeof(buffer4));\n    std::cout << \"Test 4: \" << buffer4 << std::endl;\n\n    // Test Case 5 (Buffer too small for anything)\n    char buffer5[1];\n    concatenateStrings(\"Long\", \"String\", buffer5, sizeof(buffer5));\n    std::cout << \"Test 5: \" << buffer5 << std::endl;\n\n    // Test Case 6 (str1 fills buffer, str2 is ignored)\n    char buffer6[10];\n    concatenateStrings(\"LongString\", \"More\", buffer6, sizeof(buffer6));\n    std::cout << \"Test 6: \" << buffer6 << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    {
+      "line": 6,
+      "column": 81,
+      "message": "expected ')'"
+    }
+  ]
+}

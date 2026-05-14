@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a program that takes three side lengths from the user and determines if they form an equilateral, isosceles, or scalene triangle. Also, check for invalid triangle conditions (sum of any two sides must be greater than the third).",
+  "test_cases": [
+    { "input": "5.0 5.0 5.0", "expected": "Equilateral Triangle" },
+    { "input": "5.0 5.0 7.0", "expected": "Isosceles Triangle" },
+    { "input": "3.0 4.0 5.0", "expected": "Scalene Triangle" },
+    { "input": "1.0 2.0 5.0", "expected": "Invalid Triangle" },
+    { "input": "0.0 5.0 5.0", "expected": "Invalid Triangle" },
+    { "input": "10.0 1.0 1.0", "expected": "Invalid Triangle" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// Assume getTriangleType function is defined in the user's code\n// std::string getTriangleType(double s1, double s2, double s3);\n\nint main() {\n    std::string line;\n    while (std::getline(std::cin, line)) {\n        std::stringstream ss(line);\n        double s1, s2, s3;\n        ss >> s1 >> s2 >> s3;\n        std::cout << getTriangleType(s1, s2, s3) << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": []
+}

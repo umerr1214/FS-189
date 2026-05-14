@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Design a function template `findMax` that can compare and return the larger of two values of any data type (e.g., int, double, char).",
+  "test_cases": [
+    { "input": "findMax(5, 10)", "expected": "10" },
+    { "input": "findMax(15, 7)", "expected": "15" },
+    { "input": "findMax(8, 8)", "expected": "8" },
+    { "input": "findMax(3.14, 2.71)", "expected": "3.14" },
+    { "input": "findMax(1.0, 2.0)", "expected": "2.0" },
+    { "input": "findMax('a', 'z')", "expected": "z" },
+    { "input": "findMax('X', 'B')", "expected": "X" },
+    { "input": "findMax(\"apple\", \"banana\")", "expected": "banana" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\ntemplate <typename T>\nT findMax(T a, T b) {\n    if (a > b) {\n        return a;\n    } else {\n        return b;\n    }\n}\n\nint main() {\n    std::cout << findMax(5, 10) << std::endl;\n    std::cout << findMax(15, 7) << std::endl;\n    std::cout << findMax(8, 8) << std::endl;\n    std::cout << findMax(3.14, 2.71) << std::endl;\n    std::cout << findMax(1.0, 2.0) << std::endl;\n    std::cout << findMax('a', 'z') << std::endl;\n    std::cout << findMax('X', 'B') << std::endl;\n    std::cout << findMax(std::string(\"apple\"), std::string(\"banana\")) << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 8,
+  "error_type": "Robustness Issue",
+  "errors": ["Function parameters are passed by value instead of const reference. While functional for primitive types, this leads to unnecessary copies for complex types (e.g., std::string), reducing efficiency and robustness against types with expensive copy constructors."]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Student` with members: an integer `id`, a `std::string name`, and a `double gpa`. Write a C++ program that declares a `Student` variable, prompts the user to enter its details, and then displays them.",
+  "test_cases": [
+    {
+      "input": "101\nAlice Smith\n3.85\n",
+      "expected": "--- Student Details ---\nID: 101\nName: Alice Smith\nGPA: 3.85\n"
+    }
+  ],
+  "driver": "g++ -o program program.cpp && ./program",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing a semicolon after the closing brace of the 'struct Student' definition."
+  ]
+}

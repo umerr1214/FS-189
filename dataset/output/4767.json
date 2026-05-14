@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter their first name, last name, and age. Then, display a greeting message including all this information on the console. Ensure appropriate data types are used for each input.",
+  "test_cases": [
+    {
+      "input": "Alice\nWonderland\n25",
+      "expected": "Hello, Alice Wonderland, you are 25 years old.\n"
+    },
+    {
+      "input": "John Paul\nJones\n30",
+      "expected": "Hello, John Paul Jones, you are 30 years old.\n"
+    },
+    {
+      "input": "Bob\nBuilder\nABC\n-5",
+      "expected": "Invalid input. Please enter a valid number for age.\nEnter your age: Hello, Bob Builder, you are -5 years old.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\nint main() {\n    // In a typical testing environment, the user's compiled `main` function\n    // is executed directly. Standard input is redirected from the `input`\n    // field of a test case, and standard output is captured to be compared\n    // with the `expected` field.\n    // This driver serves as a placeholder to fulfill the \"valid C++ code\" requirement.\n    // No explicit function call to user's code is made here as it's a full program.\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

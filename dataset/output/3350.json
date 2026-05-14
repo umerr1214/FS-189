@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Implement a recursive function to calculate the `n`-th power of a number `base` (i.e., `base^n`), where `n` is a non-negative integer.",
+  "test_cases": [
+    { "input": "2.0 3", "expected": "8.0" },
+    { "input": "5.0 0", "expected": "1.0" },
+    { "input": "0.0 5", "expected": "0.0" },
+    { "input": "1.0 100", "expected": "1.0" },
+    { "input": "3.0 7", "expected": "2187.0" },
+    { "input": "-2.0 2", "expected": "4.0" },
+    { "input": "-2.0 3", "expected": "-8.0" },
+    { "input": "0.0 0", "expected": "1.0" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n#include <cmath> // Required for std::fabs\n\n// The calculate_power function would be defined here in the actual file.\n\nstruct TestCase {\n    double base;\n    int n;\n    double expected;\n    std::string description;\n};\n\nint main() {\n    std::vector<TestCase> testCases = {\n        {2.0, 3, 8.0, \"Positive base, positive exponent\"},\n        {5.0, 0, 1.0, \"Positive base, zero exponent\"},\n        {0.0, 5, 0.0, \"Base zero, positive exponent\"},\n        {1.0, 100, 1.0, \"Base one, large exponent\"},\n        {3.0, 7, 2187.0, \"Another positive base, positive exponent\"},\n        {-2.0, 2, 4.0, \"Negative base, even exponent\"},\n        {-2.0, 3, -8.0, \"Negative base, odd exponent\"},\n        {0.0, 0, 1.0, \"Base zero, exponent zero\"}\n    };\n\n    bool all_passed = true;\n    for (const auto& tc : testCases) {\n        double result = calculate_power(tc.base, tc.n);\n        if (std::fabs(result - tc.expected) > 1e-9) {\n            std::cerr << \"Test Failed: \" << tc.description\n                      << \" | Input: base=\" << tc.base << \", n=\" << tc.n\n                      << \" | Expected: \" << tc.expected\n                      << \" | Got: \" << result << std::endl;\n            all_passed = false;\n        } else {\n            // std::cout << \"Test Passed: \" << tc.description << std::endl;\n        }\n    }\n\n    if (!all_passed) {\n        return 1; // Indicate failure\n    }\n    return 0; // Indicate success\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Inefficient O(n) recursive implementation (can be optimized to O(log n) using exponentiation by squaring)",
+    "Less descriptive variable names ('b', 'e' instead of 'base', 'n')"
+  ]
+}

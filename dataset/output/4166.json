@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a function template `getLarger(T val1, T val2)` that accepts two arguments of the same comparable type `T` and returns the larger of the two. Demonstrate this template function with at least two different data types (e.g., `int` and `double`).",
+  "test_cases": [
+    { "input": "50, 100 (int)", "expected": "100" },
+    { "input": "15.7, 15.70001 (double)", "expected": "15.70001" },
+    { "input": "-5, -10 (int)", "expected": "-5" },
+    { "input": "0.001, 0.0009 (double)", "expected": "0.001" }
+  ],
+  "driver": "#include <iostream>\n\ntemplate <typename T>\nT getLarger(T val1, T val2) {\n    T result;\n    if (val1 > val2) {\n        result = val1;\n    } else {\n        result = val2;\n    }\n    return result;\n}\n\nint main() {\n    int num1 = 50; int num2 = 100;\n    std::cout << getLarger(num1, num2) << std::endl;\n\n    double dval1 = 15.7; double dval2 = 15.70001;\n    std::cout << getLarger(dval1, dval2) << std::endl;\n\n    int a = -5; int b = -10;\n    std::cout << getLarger(a, b) << std::endl;\n\n    double x = 0.001; double y = 0.0009;\n    std::cout << getLarger(x, y) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["The function template `getLarger` passes arguments by value (`T val1, T val2`), which can be inefficient for large user-defined types as it involves unnecessary copying. The implementation within the function uses an unnecessary temporary variable and a verbose `if-else` block instead of a concise ternary operator. The `main` function's demonstration is repetitive and could be more organized using helper functions or a more compact output style."]
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `Temperature` class with a private `celsius` (double) member. Provide a public `setCelsius()` method that validates input (e.g., must be >= absolute zero). Implement public `getFahrenheit()` and `getKelvin()` methods to convert and return the temperature.",
+  "test_cases": [
+    { "input": "Temperature t1;", "expected": "Default (Absolute Zero):\n  Fahrenheit: -459.67F\n  Kelvin: 0.00K" },
+    { "input": "Temperature t2(25.0);", "expected": "Setting 25.0C (valid input, but logic error):\n  Fahrenheit: -459.67F\n  Kelvin: 0.00K" },
+    { "input": "Temperature t3(-300.0);", "expected": "Setting -300.0C (invalid input, but logic error):\n  Fahrenheit: -508.00F\n  Kelvin: -26.85K" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\n// Assuming Temperature class is defined with the logical error\n\nint main() {\n    std::cout << std::fixed << std::setprecision(2);\n\n    Temperature t1;\n    std::cout << \"Default (Absolute Zero):\\n\";\n    std::cout << \"  Fahrenheit: \" << t1.getFahrenheit() << \"F\\n\";\n    std::cout << \"  Kelvin: \" << t1.getKelvin() << \"K\\n\";\n\n    Temperature t2(25.0);\n    std::cout << \"\\nSetting 25.0C (valid input, but logic error):\\n\";\n    std::cout << \"  Fahrenheit: \" << t2.getFahrenheit() << \"F\\n\";\n    std::cout << \"  Kelvin: \" << t2.getKelvin() << \"K\\n\";\n\n    Temperature t3(-300.0);\n    std::cout << \"\\nSetting -300.0C (invalid input, but logic error):\\n\";\n    std::cout << \"  Fahrenheit: \" << t3.getFahrenheit() << \"F\\n\";\n    std::cout << \"  Kelvin: \" << t3.getKelvin() << \"K\\n\";\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The `setCelsius` method has inverted validation logic. If a valid temperature (>= absolute zero) is provided, it is incorrectly set to absolute zero. If an invalid temperature (< absolute zero) is provided, it is incorrectly accepted directly instead of being clamped to absolute zero."]
+}

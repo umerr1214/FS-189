@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a program that takes a day number (1-7) as input and prints the corresponding day name (e.g., 1 for Monday, 2 for Tuesday) using a switch statement.",
+  "test_cases": [
+    { "input": "1", "expected": "Monday\nTuesday\n" },
+    { "input": "2", "expected": "Tuesday\n" },
+    { "input": "7", "expected": "Sunday\n" },
+    { "input": "0", "expected": "Invalid day number\n" }
+  ],
+  "driver": "The program's main function is executed. Input is provided via stdin, and output is captured from stdout.",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "Missing 'break' statement in 'case 1', causing fall-through to 'case 2' and printing both day names."
+  ]
+}

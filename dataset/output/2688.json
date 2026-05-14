@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a `Rectangle` class with private `width` and `height` (double). Provide a parameterized constructor to set initial dimensions, ensuring both are positive. If invalid, default to 1.0. Also, add a `calculateArea()` and `calculatePerimeter()` method.",
+  "test_cases": [
+    { "input": "5.0,4.0", "expected": "Area: 20.0, Perimeter: 18.0" },
+    { "input": "-2.0,10.0", "expected": "Area: 10.0, Perimeter: 22.0" },
+    { "input": "3.0,-5.0", "expected": "Area: 3.0, Perimeter: 8.0" },
+    { "input": "-1.0,-1.0", "expected": "Area: 1.0, Perimeter: 4.0" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\n// The Rectangle class code will be inserted here.\n\nint main() {\n    std::cout << std::fixed << std::setprecision(1);\n\n    Rectangle r1(5.0, 4.0);\n    std::cout << \"Rectangle(5.0, 4.0) - Area: \" << r1.calculateArea() << \", Perimeter: \" << r1.calculatePerimeter() << std::endl;\n\n    Rectangle r2(-2.0, 10.0);\n    std::cout << \"Rectangle(-2.0, 10.0) - Area: \" << r2.calculateArea() << \", Perimeter: \" << r2.calculatePerimeter() << std::endl;\n\n    Rectangle r3(3.0, -5.0);\n    std::cout << \"Rectangle(3.0, -5.0) - Area: \" << r3.calculateArea() << \", Perimeter: \" << r3.calculatePerimeter() << std::endl;\n\n    Rectangle r4(-1.0, -1.0);\n    std::cout << \"Rectangle(-1.0, -1.0) - Area: \" << r4.calculateArea() << \", Perimeter: \" << r4.calculatePerimeter() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The constructor `Rectangle(double w, double h)` does not implement the validation logic required by the problem statement. It fails to ensure that `width` and `height` are positive, and does not default them to 1.0 if invalid. This allows the creation of `Rectangle` objects with negative dimensions, which is semantically incorrect for a real-world rectangle and violates the problem's explicit requirements."
+  ]
+}

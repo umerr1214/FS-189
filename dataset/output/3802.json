@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that initializes a 3x3 integer matrix with hardcoded values, then calculates and prints the sum of elements for each row and each column separately.",
+  "test_cases": [
+    { "input": "", "expected": "Row sums: 6 15 24\nColumn sums: 12 15 18\n" }
+  ],
+  "driver": "g++ -o program program.cpp && ./program",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the matrix initialization statement `int matrix[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}`."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program to create a 3x4 integer matrix (2D array). Initialize it with some values, then calculate and print the sum of elements for each individual row.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Calculating and printing the sum of elements for each row:\nSum of Row 0: 10\nSum of Row 1: 26\nSum of Row 2: 42\nMatrix row sums calculated successfully."
+    }
+  ],
+  "driver": "g++ -o solution 3987.cpp && ./solution",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

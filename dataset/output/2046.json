@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Implement a `Vehicle` base class with `speed` (int) and `color` (string). Derive a `Car` class (adds `numDoors` int) and a `Motorcycle` class (adds `hasSidecar` bool). Demonstrate methods specific to each derived class.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Vehicle constructor called for Red\nCar constructor called for Red with 4 doors.\nVehicle Red accelerates. Speed: 130 km/h\nVehicle Info: Color=Red, Speed=130 km/h\nVehicle destructor called for Red\n\nVehicle constructor called for Black\nMotorcycle constructor called for Black with sidecar: Yes\nVehicle Black accelerates. Speed: 100 km/h\nVehicle Info: Color=Black, Speed=100 km/h\n  Specific Motorcycle Info: Has Sidecar=Yes\nThe Black motorcycle with a sidecar performs a wheelie!\nMotorcycle destructor called for Black.\nVehicle destructor called for Black\n"
+    }
+  ],
+  "driver": "g++ -o main 2046.cpp && ./main",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    {
+      "line": 18,
+      "column": 5,
+      "message": "The base class `Vehicle` has a non-virtual destructor. When a `Car` object (which allocates memory) is deleted through a `Vehicle*` pointer, the `Car` destructor is not called, leading to a memory leak for `Car::passengers`."
+    }
+  ]
+}

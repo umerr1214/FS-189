@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Modify the `Point` class (from Q19) to overload the binary `==` operator as a member function. This operator should return `true` if two `Point` objects have identical `x` and `y` coordinates, otherwise `false`.",
+  "test_cases": [
+    { "input": "Point p1(1, 2); Point p2(1, 2);", "expected": "true" },
+    { "input": "Point p3(3, 4); Point p4(3, 5);", "expected": "false" },
+    { "input": "Point p5(1, 2); Point p6(1, 5);", "expected": "false" },
+    { "input": "Point p7(0, 0); Point p8(0, 0);", "expected": "true" },
+    { "input": "Point p9(5, 10); Point p10(10, 5);", "expected": "false" }
+  ],
+  "driver": "int main() {\n    Point p1(1, 2);\n    Point p2(1, 2);\n    Point p3(3, 4);\n    Point p4(3, 5);\n    Point p5(1, 5);\n    Point p6(0, 0);\n    Point p7(0, 0);\n    Point p8(5, 10);\n    Point p9(10, 5);\n\n    std::cout << (p1 == p2 ? \"true\" : \"false\") << std::endl;\n    std::cout << (p3 == p4 ? \"true\" : \"false\") << std::endl;\n    std::cout << (p1 == p5 ? \"true\" : \"false\") << std::endl;\n    std::cout << (p6 == p7 ? \"true\" : \"false\") << std::endl;\n    std::cout << (p8 == p9 ? \"true\" : \"false\") << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `operator==` implementation is overly verbose, using multiple temporary boolean variables and nested `if-else` statements. This reduces readability and is less concise than a direct logical `AND` operation.",
+    "While functionally correct, the code could be more efficient by directly returning the result of `(x == other.x && y == other.y)` instead of performing multiple assignments and branching."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that uses a `do-while` loop to repeatedly prompt the user to enter a positive integer. The loop should continue until a valid positive integer (greater than 0) is entered. Finally, print the valid number.",
+  "test_cases": [
+    { "input": "5\n", "expected": "Enter a positive integer: You entered: 5\n" },
+    { "input": "-3\n0\n10\n", "expected": "Enter a positive integer: Enter a positive integer: Enter a positive integer: You entered: 10\n" }
+  ],
+  "driver": "// This program contains a syntax error and will not compile.\n// A driver for compilation errors typically involves invoking the compiler\n// and checking its output, rather than running test cases against an executable.\n// For evaluation, the compiler output indicating the error would be examined.\n",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the 'std::cin >> num' statement. This will cause a compilation error."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function `reverseArray` that takes a one-dimensional integer array and its size as arguments, and reverses the order of its elements in-place (without using a second array).",
+  "test_cases": [
+    { "input": "[1, 2, 3, 4, 5]", "expected": "5 4 3 2 1" },
+    { "input": "[10, 20, 30, 40]", "expected": "40 30 20 10" },
+    { "input": "[7]", "expected": "7" },
+    { "input": "[] (size 0)", "expected": "" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n\n// Function to reverse an array in-place\nvoid reverseArray(int arr[], int size) {\n    // Logical Error: The loop iterates through the entire array,\n    // effectively swapping each element twice (e.g., arr[0] with arr[size-1],\n    // then later arr[size-1] with arr[0]), resulting in the original array.\n    for (int i = 0; i < size; ++i) { // Should be i < size / 2\n        int temp = arr[i];\n        arr[i] = arr[size - 1 - i];\n        arr[size - 1 - i] = temp;\n    }\n}\n\n// Helper function to print an array\nvoid printArray(const int arr[], int size) {\n    for (int i = 0; i < size; ++i) {\n        std::cout << arr[i] << (i == size - 1 ? \"\" : \" \");\n    }\n    std::cout << std::endl;\n}\n\nint main() {\n    // Test Case 1\n    int arr1[] = {1, 2, 3, 4, 5};\n    int size1 = sizeof(arr1) / sizeof(arr1[0]);\n    std::cout << \"Original array 1: \";\n    printArray(arr1, size1);\n    reverseArray(arr1, size1);\n    std::cout << \"Reversed array 1: \";\n    printArray(arr1, size1);\n\n    // Test Case 2\n    int arr2[] = {10, 20, 30, 40};\n    int size2 = sizeof(arr2) / sizeof(arr2[0]);\n    std::cout << \"Original array 2: \";\n    printArray(arr2, size2);\n    reverseArray(arr2, size2);\n    std::cout << \"Reversed array 2: \";\n    printArray(arr2, size2);\n\n    // Test Case 3\n    int arr3[] = {7};\n    int size3 = sizeof(arr3) / sizeof(arr3[0]);\n    std::cout << \"Original array 3: \";\n    printArray(arr3, size3);\n    reverseArray(arr3, size3);\n    std::cout << \"Reversed array 3: \";\n    printArray(arr3, size3);\n\n    // Test Case 4 (empty array)\n    int arr4[] = {};\n    int size4 = 0;\n    std::cout << \"Original array 4 (empty): \";\n    printArray(arr4, size4);\n    reverseArray(arr4, size4);\n    std::cout << \"Reversed array 4 (empty): \";\n    printArray(arr4, size4);\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The loop condition in 'reverseArray' iterates through the entire array (i < size) instead of half (i < size / 2), causing elements to be swapped twice and returning the original array. This leads to incorrect results for arrays with more than one element."
+  ]
+}

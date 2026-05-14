@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a `Student` class with private members `name` (string), `studentId` (int), and `gpa` (double). Implement a public default constructor and a parameterized constructor. Include a public method `isEligibleForScholarship()` that returns true if `gpa` is 3.5 or higher.",
+  "test_cases": [
+    { "input": "Default constructor", "expected": "Name=Unknown, ID=0, GPA=0.0, Eligible=false" },
+    { "input": "Student(\"Alice\", 101, 3.8)", "expected": "Name=Alice, ID=101, GPA=3.8, Eligible=true" },
+    { "input": "Student(\"Bob\", 102, 3.4)", "expected": "Name=Bob, ID=102, GPA=3.4, Eligible=false" },
+    { "input": "Student(\"Charlie\", 103, 3.5)", "expected": "Name=Charlie, ID=103, GPA=3.5, Eligible=true" },
+    { "input": "Student(\"Diana\", 104, 3.49)", "expected": "Name=Diana, ID=104, GPA=3.49, Eligible=false" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <iomanip>\n\nclass Student {\nprivate:\n    std::string name;\n    int studentId;\n    double gpa;\n\npublic:\n    Student() : name(\"Unknown\"), studentId(0), gpa(0.0) {}\n    Student(std::string n, int id, double g) : name(n), studentId(id), gpa(g) {}\n    bool isEligibleForScholarship() { return gpa >= 3.5; }\n    std::string getName() const { return name; }\n    int getId() const { return studentId; }\n    double getGpa() const { return gpa; }\n};\n\nint main() {\n    std::cout << \"--- Test Cases ---\" << std::endl;\n    Student s1;\n    std::cout << \"Student 1 (Default): Name=\" << s1.getName() << \", ID=\" << s1.getId() << \", GPA=\" << std::fixed << std::setprecision(1) << s1.getGpa() << \", Eligible=\" << (s1.isEligibleForScholarship() ? \"true\" : \"false\") << std::endl;\n    Student s2(\"Alice\", 101, 3.8);\n    std::cout << \"Student 2 (Alice): Name=\" << s2.getName() << \", ID=\" << s2.getId() << \", GPA=\" << std::fixed << std::setprecision(1) << s2.getGpa() << \", Eligible=\" << (s2.isEligibleForScholarship() ? \"true\" : \"false\") << std::endl;\n    Student s3(\"Bob\", 102, 3.4);\n    std::cout << \"Student 3 (Bob): Name=\" << s3.getName() << \", ID=\" << s3.getId() << \", GPA=\" << std::fixed << std::setprecision(1) << s3.getGpa() << \", Eligible=\" << (s3.isEligibleForScholarship() ? \"true\" : \"false\") << std::endl;\n    Student s4(\"Charlie\", 103, 3.5);\n    std::cout << \"Student 4 (Charlie): Name=\" << s4.getName() << \", ID=\" << s4.getId() << \", GPA=\" << std::fixed << std::setprecision(1) << s4.getGpa() << \", Eligible=\" << (s4.isEligibleForScholarship() ? \"true\" : \"false\") << std::endl;\n    Student s5(\"Diana\", 104, 3.49);\n    std::cout << \"Student 5 (Diana): Name=\" << s5.getName() << \", ID=\" << s5.getId() << \", GPA=\" << std::fixed << std::setprecision(2) << s5.getGpa() << \", Eligible=\" << (s5.isEligibleForScholarship() ? \"true\" : \"false\") << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["Attempting to directly access the private member `name` of a `Student` object from outside the class (in `main`). This violates C++ access control rules and results in a compilation error."]
+}

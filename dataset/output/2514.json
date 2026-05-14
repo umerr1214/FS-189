@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a `User` class with private `username` and `password`. The `userID` should be a unique integer automatically assigned using a static member counter in the constructor. Provide public getters for `username` and `userID`.",
+  "test_cases": [
+    { "input": "No direct input, tests object creation and method calls.", "expected": "User 1 Username: alice, ID: 1\nUser 2 Username: bob, ID: 2\nUser 3 Username: charlie, ID: 3\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// Assume the User class is defined above\n\nint main() {\n    User user1(\"alice\", \"pass123\");\n    std::cout << \"User 1 Username: \" << user1.getUsername() << \", ID: \" << user1.getUserID() << std::endl;\n\n    User user2(\"bob\", \"securepwd\");\n    std::cout << \"User 2 Username: \" << user2.getUsername() << \", ID: \" << user2.getUserID() << std::endl;\n\n    User user3(\"charlie\", \"secret\");\n    std::cout << \"User 3 Username: \" << user3.getUsername() << \", ID: \" << user3.getUserID() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `username` member variable is declared as public instead of private, violating the encapsulation requirement specified in the question."
+  ]
+}

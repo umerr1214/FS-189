@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Implement a `StringWrapper` class that dynamically allocates memory for a `char*` to store a string. Provide a constructor, a destructor, and a proper copy constructor to ensure deep copying of the string data.",
+  "test_cases": [
+    { "input": "StringWrapper s1(\"Test\"); std::cout << s1.getString();", "expected": "Test" },
+    { "input": "StringWrapper s_null(nullptr);", "expected": "Program should crash or exhibit undefined behavior due to strlen(nullptr) in the constructor." }
+  ],
+  "driver": "int main() {\n    try {\n        std::cout << \"Creating StringWrapper with a normal string:\" << std::endl;\n        StringWrapper s1(\"Hello Robustness\");\n        std::cout << \"s1: \\\"\" << s1.getString() << \"\\\", Length: \" << s1.getLength() << std::endl;\n\n        std::cout << \"\\nAttempting to create StringWrapper with nullptr (EXPECTED CRASH/UB):\" << std::endl;\n        StringWrapper s_null(nullptr); \n        std::cout << \"s_null: \\\"\" << s_null.getString() << \"\\\", Length: \" << s_null.getLength() << std::endl;\n    } catch (const std::bad_alloc& e) {\n        std::cerr << \"Memory allocation failed: \" << e.what() << std::endl;\n    } catch (...) {\n        std::cerr << \"An unexpected error occurred before or during StringWrapper construction.\" << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The constructor does not handle nullptr input for the string pointer. Calling `std::strlen(nullptr)` results in undefined behavior (e.g., a crash), making the class non-robust to common edge cases."]
+}

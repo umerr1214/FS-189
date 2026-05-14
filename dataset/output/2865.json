@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Implement a `Calculator` class with overloaded `add` methods. One `add` method should take two `int` arguments, another should take two `double` arguments, and a third should concatenate two `std::string` arguments.",
+  "test_cases": [
+    { "input": "calc.add(5, 3)", "expected": "8" },
+    { "input": "calc.add(-10, 20)", "expected": "10" },
+    { "input": "calc.add(0, 0)", "expected": "0" },
+    { "input": "calc.add(2.5, 3.7)", "expected": "6.2" },
+    { "input": "calc.add(-1.1, 0.5)", "expected": "-0.6" },
+    { "input": "calc.add(100.0, 200.5)", "expected": "300.5" },
+    { "input": "calc.add(\"Hello\", \"World\")", "expected": "HelloWorld" },
+    { "input": "calc.add(\"C++\", \"Programming\")", "expected": "C++Programming" },
+    { "input": "calc.add(\"\", \"Empty\")", "expected": "Empty" },
+    { "input": "calc.add(\"First\", \"\")", "expected": "First" }
+  ],
+  "driver": "    Calculator calc;\n\n    std::cout << calc.add(5, 3) << std::endl;\n    std::cout << calc.add(-10, 20) << std::endl;\n    std::cout << calc.add(0, 0) << std::endl;\n    std::cout << calc.add(2.5, 3.7) << std::endl;\n    std::cout << calc.add(-1.1, 0.5) << std::endl;\n    std::cout << calc.add(100.0, 200.5) << std::endl;\n    std::cout << calc.add(\"Hello\", \"World\") << std::endl;\n    std::cout << calc.add(\"C++\", \"Programming\") << std::endl;\n    std::cout << calc.add(\"\", \"Empty\") << std::endl;\n    std::cout << calc.add(\"First\", \"\") << std::endl;",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

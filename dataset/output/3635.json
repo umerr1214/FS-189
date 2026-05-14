@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Calculate the average of elements in a 1D array of 5 floating-point numbers. Get the array elements from the user.",
+  "test_cases": [
+    { "input": "10.0 20.0 30.0 40.0 50.0", "expected": "The average of the numbers is: 30.00" },
+    { "input": "1.0 2.0 3.0 4.0 5.0", "expected": "The average of the numbers is: 3.00" }
+  ],
+  "driver": "The provided C++ code is a complete program with a 'main' function. To run test cases, compile the code and execute the binary. Input values should be provided via standard input when prompted, and output will be printed to standard output.",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The average is calculated by dividing the sum by `SIZE - 1` (which is 4) instead of `SIZE` (which is 5). This results in an incorrect average value."
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function `normalizeAngle` that takes an angle in degrees (as a `double` passed by reference) and modifies it so that its value is within the range [0, 360).",
+  "test_cases": [
+    { "input": "10.0", "expected": "10.0000000000" },
+    { "input": "360.0", "expected": "0.0000000000" },
+    { "input": "370.0", "expected": "10.0000000000" },
+    { "input": "-10.0", "expected": "350.0000000000" },
+    { "input": "-360.0", "expected": "0.0000000000" },
+    { "input": "-370.0", "expected": "350.0000000000" },
+    { "input": "720.0", "expected": "0.0000000000" },
+    { "input": "0.0", "expected": "0.0000000000" },
+    { "input": "180.0", "expected": "180.0000000000" },
+    { "input": "540.0", "expected": "180.0000000000" },
+    { "input": "-180.0", "expected": "180.0000000000" },
+    { "input": "-540.0", "expected": "180.0000000000" },
+    { "input": "1000000000.0", "expected": "280.0000000000" },
+    { "input": "-1000000000.0", "expected": "280.0000000000" },
+    { "input": "-0.000000001", "expected": "359.9999999990" },
+    { "input": "359.999999999", "expected": "359.9999999990" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <iomanip>\n#include <cmath>\n\n// The normalizeAngle function will be inserted here by the system\n\nint main() {\n    std::vector<double> test_angles = {\n        10.0, 360.0, 370.0, -10.0, -360.0, -370.0, 720.0, 0.0,\n        180.0, 540.0, -180.0, -540.0,\n        1000000000.0, -1000000000.0,\n        -0.000000001, 359.999999999\n    };\n\n    std::cout << std::fixed << std::setprecision(10);\n\n    for (double angle : test_angles) {\n        double original_angle = angle;\n        normalizeAngle(angle);\n        std::cout << \"Original: \" << original_angle << \", Normalized: \" << angle << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["The function uses a `while` loop to handle negative angles before applying `fmod`. While correct, this approach is less efficient for large negative angles than directly using `fmod` and then adding 360.0 once if the result is negative. The conditional `if/else` structure also makes the code less concise and readable than an optimal, unified solution."]
+}

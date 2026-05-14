@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Revisit the `Shape` hierarchy (with `Shape` as an abstract base class, and derived `Circle`/`Rectangle`). Demonstrate the importance of a virtual destructor in the `Shape` base class. Create a `Shape` pointer that points to a dynamically allocated `Circle` or `Rectangle` object, and then `delete` it through the `Shape` pointer. Explain the consequences if the base class destructor were not virtual.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Demonstrating Robustness Issue (Non-virtual base destructor) ---\nCreating a Circle object via Shape*:\nShape constructor called.\nCircle constructor called with radius 5.\nI am a Circle with radius 5.\nDeleting the Circle object via Shape*...\nShape destructor called.\nDeletion attempted. Notice the Circle destructor was NOT called.\n\nCreating a Rectangle object via Shape*:\nShape constructor called.\nRectangle constructor called with width 4 and height 6.\nI am a Rectangle with width 4 and height 6.\nDeleting the Rectangle object via Shape*...\nShape destructor called.\nDeletion attempted. Notice the Rectangle destructor was NOT called.\n\n--- Consequences Explained ---\nIf the base class `Shape`'s destructor is not virtual, deleting a derived object (like `Circle` or `Rectangle`)\nthrough a base class pointer (`Shape*`) results in undefined behavior. Specifically, the derived class's destructor\n(e.g., `~Circle()` or `~Rectangle()`) will NOT be called. This means any resources managed by the derived class\n(e.g., dynamically allocated memory, file handles) will not be properly released, leading to resource leaks.\nIn this example, you can see that only the `Shape` destructor prints, but not the `Circle` or `Rectangle` destructors,\neven though they were dynamically allocated as `Circle` and `Rectangle` objects.\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 7,
+  "correctness": 8,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Shape` base class destructor is not declared as `virtual`. This leads to undefined behavior and potential memory leaks when deleting derived objects through a base class pointer, as the derived class destructor will not be called.",
+    "The program correctly demonstrates the consequence of a non-virtual destructor, but this design itself is a critical robustness flaw in a polymorphic hierarchy."
+  ]
+}

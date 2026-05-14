@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function template `findMin(T val1, T val2)` that accepts two arguments of any type `T` and returns the smaller of the two. Demonstrate its usage with both integer and double types in the `main` function.",
+  "test_cases": [
+    { "input": "", "expected": "Min of 10 and 5 is: 5\nMin of 3.14 and 2.71 is: 2.71\n" }
+  ],
+  "driver": "#include <iostream>\n\ntemplate <typename T>\nT findMin(T val1, T val2) {\n    return (val1 < val2) ? val1 : val2;\n}\n\nint main() {\n    int int1 = 10;\n    int int2 = 5;\n    std::cout << \"Min of \" << int1 << \" and \" << int2 << \" is: \" << findMin(int1, int2) << std::endl;\n\n    double double1 = 3.14;\n    double double2 = 2.71;\n    std::cout << \"Min of \" << double1 << \" and \" << double2 << \" is: \" << findMin(double1, double2) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the return statement in `findMin` function template, before the closing brace."]
+}

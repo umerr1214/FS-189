@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design a `Logger` class. It should have a `private static int logCount` to track the total number of log messages created across all `Logger` objects. Increment `logCount` in the constructor. Implement a `public static void displayTotalLogs()` method to show the current value of `logCount`.",
+  "test_cases": [
+    { "input": "Create 3 Logger objects, then display total logs.", "expected": "Total logs: 3\n" }
+  ],
+  "driver": "Logger l1;\nLogger l2;\nLogger l3;\nLogger::displayTotalLogs();",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["'cout' was not declared in this scope", "'endl' was not declared in this scope"]
+}

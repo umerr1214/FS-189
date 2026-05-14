@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that generates and prints the first `n` terms of the Fibonacci sequence, where `n` is an integer provided by the user. (The sequence starts 0, 1, 1, 2, 3, ...)",
+  "test_cases": [
+    { "input": "0", "expected": "\n" },
+    { "input": "1", "expected": "0\n" },
+    { "input": "2", "expected": "0 1\n" },
+    { "input": "10", "expected": "0 1 1 2 3 5 8 13 21 34\n" },
+    { "input": "40", "expected": "0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368 75025 121393 196418 317811 514229 832040 1346269 2178309 3524578 5702887 9227465 14930352 24157817 39088169 63245986\n" },
+    { "input": "-5", "expected": "Input `n` must be a non-negative integer.\n" }
+  ],
+  "driver": "int main() { /* The student's program is expected to read an integer 'n' from stdin and print the Fibonacci sequence to stdout. A test harness would execute the student's compiled program for each test case, piping the 'input' string to stdin and capturing stdout to compare with 'expected'. */ return 0; }",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

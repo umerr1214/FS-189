@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Accept a sentence from the user using `std::getline` and count the total number of words in it (assume words are separated by single spaces).",
+  "test_cases": [
+    { "input": "Hello World", "expected": "Enter a sentence: \nNumber of words: 2\n" },
+    { "input": "programming is fun", "expected": "Enter a sentence: \nNumber of words: 3\n" },
+    { "input": "singleword", "expected": "Enter a sentence: \nNumber of words: 1\n" },
+    { "input": "", "expected": "Enter a sentence: \nNumber of words: 0\n" },
+    { "input": "   ", "expected": "Enter a sentence: \nNumber of words: 0\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\n// Assume the user's solution is provided as a function:\n// void solve(std::istream& in, std::ostream& out);\n\n// This main function is for the test harness to call.\n// It reads from std::cin and writes to std::cout,\n// effectively acting as a wrapper for the solve function.\nint main() {\n    solve(std::cin, std::cout);\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The word counting logic incorrectly assumes that the number of words is always (number of spaces + 1), which fails for empty strings or strings consisting only of spaces. It does not correctly handle the base cases for zero words."
+  ]
+}

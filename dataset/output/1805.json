@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a `Point2D` class with private `x` and `y` coordinates (int). Overload the binary `+` operator to add two `Point2D` objects. The result should be a new `Point2D` object where its `x` is the sum of the input `x`s and its `y` is the sum of the input `y`s.",
+  "test_cases": [
+    { "input": "Point2D p1(1, 2); Point2D p2(3, 4); Point2D p3 = p1 + p2;", "expected": "p1: (1, 2)\np2: (3, 4)\np1 + p2: (4, 2)\n" },
+    { "input": "Point2D p4(0, 0); Point2D p5(-1, 5); Point2D p6 = p4 + p5;", "expected": "p4: (0, 0)\np5: (-1, 5)\np4 + p5: (-1, 0)\n" },
+    { "input": "Point2D p7(10, -5); Point2D p8(2, 7); Point2D p9 = p7 + p8;", "expected": "p7: (10, -5)\np8: (2, 7)\np7 + p8: (12, -5)\n" }
+  ],
+  "driver": "#include <iostream>\n\nclass Point2D {\nprivate:\n    int x;\n    int y;\n\npublic:\n    Point2D(int x_coord = 0, int y_coord = 0) : x(x_coord), y(y_coord) {}\n\n    int getX() const { return x; }\n    int getY() const { return y; }\n\n    void display() const {\n        std::cout << \"(\" << x << \", \" << y << \")\";\n    }\n\n    Point2D operator+(const Point2D& other) const {\n        Point2D result;\n        result.x = this->x + other.x;\n        result.y = this->y + other.y;\n        return result;\n    }\n};\n\nint main() {\n    Point2D p1(1, 2);\n    Point2D p2(3, 4);\n    Point2D p3 = p1 + p2;\n\n    std::cout << \"p1: \"; p1.display(); std::cout << std::endl;\n    std::cout << \"p2: \"; p2.display(); std::cout << std::endl;\n    std::cout << \"p1 + p2: \"; p3.display(); std::cout << std::endl;\n\n    Point2D p4(0, 0);\n    Point2D p5(-1, 5);\n    Point2D p6 = p4 + p5;\n\n    std::cout << \"p4: \"; p4.display(); std::cout << std::endl;\n    std::cout << \"p5: \"; p5.display(); std::cout << std::endl;\n    std::cout << \"p4 + p5: \"; p6.display(); std::cout << std::endl;\n\n    Point2D p7(10, -5);\n    Point2D p8(2, 7);\n    Point2D p9 = p7 + p8;\n\n    std::cout << \"p7: \"; p7.display(); std::cout << std::endl;\n    std::cout << \"p8: \"; p8.display(); std::cout << std::endl;\n    std::cout << \"p7 + p8: \"; p9.display(); std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": []
+}

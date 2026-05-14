@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "For a `Point` class with `x` and `y` integer coordinates, overload the binary `+` operator to add two `Point` objects. The result should be a new `Point` object with summed coordinates.",
+  "test_cases": [
+    { "input": "P1(1, 2) + P2(3, 4)", "expected": "(4, 6)" },
+    { "input": "P1(0, 0) + P2(-1, 5)", "expected": "(-1, 5)" },
+    { "input": "P1(10, -5) + P2(-5, 10)", "expected": "(5, 5)" },
+    { "input": "P1(-2, -3) + P2(-1, -1)", "expected": "(-3, -4)" },
+    { "input": "P1(100, 200) + P2(300, 400)", "expected": "(400, 600)" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream>\n\n// Assuming Point class and operator+ are defined in the main code block\n\nint main() {\n    std::vector<std::pair<Point, Point>> test_inputs = {\n        {{1, 2}, {3, 4}},\n        {{0, 0}, {-1, 5}},\n        {{10, -5}, {-5, 10}},\n        {{-2, -3}, {-1, -1}},\n        {{100, 200}, {300, 400}}\n    };\n\n    std::vector<std::string> expected_outputs = {\n        \"(4, 6)\",\n        \"(-1, 5)\",\n        \"(5, 5)\",\n        \"(-3, -4)\",\n        \"(400, 600)\"\n    };\n\n    for (size_t i = 0; i < test_inputs.size(); ++i) {\n        Point p1 = test_inputs[i].first;\n        Point p2 = test_inputs[i].second;\n        Point sum = p1 + p2;\n        \n        std::stringstream ss;\n        ss << \"(\" << sum.x << \", \" << sum.y << \")\";\n        std::string actual_output = ss.str();\n\n        std::cout << \"Test \" << i + 1 << \": \";\n        if (actual_output == expected_outputs[i]) {\n            std::cout << \"Passed. Result: \" << actual_output << std::endl;\n        } else {\n            std::cout << \"Failed. Expected: \" << expected_outputs[i] << \", Got: \" << actual_output << std::endl;\n        }\n    }\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The binary `+` operator is implemented as a member function. While technically correct, for binary arithmetic operators, it is generally considered more idiomatic and symmetric to implement them as non-member friend functions. This avoids implicitly tying the left-hand operand to the `this` pointer.",
+    "The implementation of the `operator+` is less efficient. It default-constructs a `Point` object (`Point temp;`), then assigns its `x` and `y` members, and finally returns `temp`. A more efficient approach is to directly construct and return the result using the `Point` constructor (e.g., `return Point(this->x + other.x, this->y + other.y);`), which can avoid an unnecessary default construction and potentially an extra copy/move operation due to Return Value Optimization (RVO)."
+  ]
+}

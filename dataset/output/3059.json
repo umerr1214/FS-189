@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Animal` with a virtual public method `makeSound()` that prints a generic sound. Derive `Dog` and `Cat` classes from `Animal`, each overriding `makeSound()` to print their specific sound. Demonstrate calling `makeSound()` using a pointer to the `Animal` base class that points to objects of `Dog` and `Cat`.",
+  "test_cases": [
+    { "input": "", "expected": "Dog says: Woof!\nCat says: Meow!\n" }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n#include <string>\n\n// Assume Animal, Dog, Cat classes are defined here by the user's code\n\nint main() {\n    std::stringstream ss;\n    std::streambuf* oldCout = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf()); // Redirect std::cout to stringstream\n\n    Animal* myDog = new Dog();\n    Animal* myCat = new Cat();\n\n    std::cout << \"Dog says: \";\n    myDog->makeSound();\n\n    std::cout << \"Cat says: \";\n    myCat->makeSound();\n\n    delete myDog;\n    delete myCat;\n\n    std::cout.rdbuf(oldCout); // Restore original std::cout\n    std::cout << ss.str(); // Print the captured output to actual stdout\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": []
+}

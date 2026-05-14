@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Implement a recursive function `calculatePower` that takes a base (integer) and an exponent (non-negative integer) and returns the result of base raised to the power of exponent.",
+  "test_cases": [
+    { "input": "2, 3", "expected": "8" },
+    { "input": "5, 0", "expected": "1" },
+    { "input": "0, 5", "expected": "0" },
+    { "input": "3, 1", "expected": "3" },
+    { "input": "-2, 3", "expected": "-8" },
+    { "input": "-2, 2", "expected": "4" },
+    { "input": "1, 10", "expected": "1" },
+    { "input": "-1, 11", "expected": "-1" }
+  ],
+  "driver": "int calculatePower(int base, int exponent) {\n    if (exponent == 0) {\n        return 1;\n    }\n    if (base == 0) {\n        return 0;\n    }\n    return base + calculatePower(base, exponent - 1);\n}\n\nint main() {\n    std::cout << \"2^3 = \" << calculatePower(2, 3) << std::endl;\n    std::cout << \"5^0 = \" << calculatePower(5, 0) << std::endl;\n    std::cout << \"0^5 = \" << calculatePower(0, 5) << std::endl;\n    std::cout << \"3^1 = \" << calculatePower(3, 1) << std::endl;\n    std::cout << \"-2^3 = \" << calculatePower(-2, 3) << std::endl;\n    std::cout << \"-2^2 = \" << calculatePower(-2, 2) << std::endl;\n    std::cout << \"1^10 = \" << calculatePower(1, 10) << std::endl;\n    std::cout << \"-1^11 = \" << calculatePower(-1, 11) << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The recursive step uses addition (`base + calculatePower(...)`) instead of multiplication (`base * calculatePower(...)`) to combine results, leading to incorrect power calculations for most inputs where exponent > 0."]
+}

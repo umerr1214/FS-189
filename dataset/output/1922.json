@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Book` class with private members `title`, `author`, and `isbn` (all strings). Provide public methods to set and get these values, ensuring basic encapsulation.",
+  "test_cases": [
+    { "input": "Set values for 1984 by George Orwell.\nUpdate title to Animal Farm.", "expected": "Book Details:\nTitle: 1984\nAuthor: George Orwell\nISBN: 978-0451524935\n\nUpdated Title: Animal Farm" }
+  ],
+  "driver": "int main() {\n    Book myBook;\n    myBook.updateBookTitle(\"1984\");\n    myBook.updateBookAuthor(\"George Orwell\");\n    myBook.updateBookISBN(\"978-0451524935\");\n\n    std::cout << \"Book Details:\" << std::endl;\n    std::cout << \"Title: \" << myBook.retrieveBookTitle() << std::endl;\n    std::cout << \"Author: \" << myBook.retrieveBookAuthor() << std::endl;\n    std::cout << \"ISBN: \" << myBook.retrieveBookISBN() << std::endl;\n\n    myBook.updateBookTitle(\"Animal Farm\");\n    std::cout << \"\\nUpdated Title: \" << myBook.retrieveBookTitle() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The setter methods (e.g., updateBookTitle) and constructor parameters pass `std::string` by value instead of by `const std::string&`. This creates an unnecessary copy of the string object for each call, leading to reduced efficiency, especially with large strings or frequent calls.",
+    "The getter methods (e.g., retrieveBookTitle) return `std::string` by value, which creates a copy of the internal string. While sometimes acceptable, returning `const std::string&` can be more efficient if the caller doesn't need a mutable copy.",
+    "The member variables and method names are overly verbose (e.g., `theBookTitle`, `updateBookTitle`, `retrieveBookTitle`), which can hinder readability without adding significant clarity.",
+    "Getter methods are not `const`-qualified (e.g., `std::string retrieveBookTitle()`). This is a readability and robustness issue, as it doesn't clearly indicate that the method does not modify the object's state, and prevents calling them on `const` Book objects."
+  ]
+}

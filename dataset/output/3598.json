@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Calculate the sum of all natural numbers up to a given positive integer `N` entered by the user. Use a `while` loop.",
+  "test_cases": [
+    { "input": "5", "expected": "Compilation Error" }
+  ],
+  "driver": "The user's `main` function is expected to read an integer from stdin and print the result to stdout.",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after std::cin >> N;"]
+}

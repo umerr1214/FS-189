@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Design a `Playlist` class that contains a dynamically allocated array of `Song` objects. The `Song` class has `title` and `artist`. `Playlist` should manage adding and removing songs (demonstrating composition with dynamic memory).",
+  "test_cases": [
+    {
+      "input": "add Song A;Artist X\nadd Song B;Artist Y\nprint\ncopy_test\nprint",
+      "expected": "Playlist:\n\"Song A\" by Artist X\n\"Song B\" by Artist Y\nCopied Playlist:\nPlaylist:\n\"Song A\" by Artist X\n\"Song B\" by Artist Y\nPlaylist:\n\"Song A\" by Artist X\n\"Song B\" by Artist Y\n"
+    },
+    {
+      "input": "add S1;A1\nadd S2;A2\ncopy_test\nremove S1;A1\nprint\n",
+      "expected": "Playlist:\n\"S1\" by A1\n\"S2\" by A2\nCopied Playlist:\nPlaylist:\n\"S1\" by A1\n\"S2\" by A2\nPlaylist:\n\"S2\" by A2\n"
+    }
+  ],
+  "driver": "std::string command, title, artist; Playlist myPlaylist; while (std::cin >> command) { if (command == \"add\") { std::cin.ignore(); std::getline(std::cin, title, ';'); std::getline(std::cin, artist); myPlaylist.addSong(Song(title, artist)); } else if (command == \"remove\") { std::cin.ignore(); std::getline(std::cin, title, ';'); std::getline(std::cin, artist); myPlaylist.removeSong(Song(title, artist)); } else if (command == \"print\") { myPlaylist.printPlaylist(); } else if (command == \"copy_test\") { Playlist copiedPlaylist = myPlaylist; std::cout << \"Copied Playlist:\\n\"; copiedPlaylist.printPlaylist(); } }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Playlist` class is missing a user-defined copy constructor and a copy assignment operator. Since `Playlist` manages a dynamically allocated array (`_songs`), the implicitly generated copy operations perform shallow copies. This means that when a `Playlist` object is copied, both the original and the copy point to the same underlying array. This leads to a double-free error or memory corruption when either the original or the copied object is destroyed, as both will attempt to `delete[]` the same memory. This violates the Rule of Three/Five for classes managing dynamic resources."
+  ]
+}

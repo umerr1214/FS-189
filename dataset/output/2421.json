@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Shape` with a public method `calculateArea()` that returns 0. Derive `Rectangle` and `Circle` classes, overriding `calculateArea()` to return their specific areas.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Rectangle (5x10) Area: 50.00\nCircle (radius 3) Area: 28.27\nRectangle (-2x5) Area: 0.00\nCircle (radius 1.5) Area: 7.07\nRectangle (0x10) Area: 0.00\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <cmath>\n#include <iomanip>\n#include <algorithm>\n\nclass Shape {\npublic:\n    virtual ~Shape() = default;\n    virtual double calculateArea() const {\n        return 0;\n    }\n};\n\nclass Rectangle : public Shape {\nprivate:\n    double m_width;\n    double m_height;\n\npublic:\n    Rectangle(double width, double height)\n        : m_width(std::max(0.0, width)), m_height(std::max(0.0, height)) {}\n\n    double calculateArea() const override {\n        return m_width * m_height;\n    }\n};\n\nclass Circle : public Shape {\nprivate:\n    double m_radius;\n\npublic:\n    Circle(double radius)\n        : m_radius(std::max(0.0, radius)) {}\n\n    double calculateArea() const override {\n        return M_PI * m_radius * m_radius;\n    }\n};\n\nint main() {\n    std::stringstream ss;\n    ss << std::fixed << std::setprecision(2);\n\n    Shape* rect1 = new Rectangle(5, 10);\n    Shape* circ1 = new Circle(3);\n    Shape* rect_neg_dim = new Rectangle(-2, 5); // Test with negative dimension, should become 0\n    Shape* circ2 = new Circle(1.5);\n    Shape* rect_zero_dim = new Rectangle(0, 10); // Test with zero dimension\n\n    ss << \"Rectangle (5x10) Area: \" << rect1->calculateArea() << std::endl;\n    ss << \"Circle (radius 3) Area: \" << circ1->calculateArea() << std::endl;\n    ss << \"Rectangle (-2x5) Area: \" << rect_neg_dim->calculateArea() << std::endl;\n    ss << \"Circle (radius 1.5) Area: \" << circ2->calculateArea() << std::endl;\n    ss << \"Rectangle (0x10) Area: \" << rect_zero_dim->calculateArea() << std::endl;\n\n    delete rect1;\n    delete circ1;\n    delete rect_neg_dim;\n    delete circ2;\n    delete rect_zero_dim;\n\n    std::cout << ss.str();\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

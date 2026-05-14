@@ -1,0 +1,34 @@
+{
+  "language": "c++",
+  "question": "Design a `Vehicle` base class with protected attributes `speed` and `fuelType`. Derive `Car` and `Motorcycle` classes, adding specific attributes like `numDoors` for `Car` and `hasSidecar` for `Motorcycle`.",
+  "test_cases": [
+    {
+      "input": "Car(-10, \"Gasoline\", -2)",
+      "expected": "Vehicle Type: Car\n  Speed: -10 km/h\n  Fuel Type: Gasoline\n  Number of Doors: -2\n"
+    },
+    {
+      "input": "Motorcycle(-50, \"Electric\", true)",
+      "expected": "Vehicle Type: Motorcycle\n  Speed: -50 km/h\n  Fuel Type: Electric\n  Has Sidecar: Yes\n"
+    },
+    {
+      "input": "Car(120, \"\", 4)",
+      "expected": "Vehicle Type: Car\n  Speed: 120 km/h\n  Fuel Type: \n  Number of Doors: 4\n"
+    },
+    {
+      "input": "Car(150, \"Gasoline\", 4)",
+      "expected": "Vehicle Type: Car\n  Speed: 150 km/h\n  Fuel Type: Gasoline\n  Number of Doors: 4\n"
+    },
+    {
+      "input": "Motorcycle(80, \"Petrol\", false)",
+      "expected": "Vehicle Type: Motorcycle\n  Speed: 80 km/h\n  Fuel Type: Petrol\n  Has Sidecar: No\n"
+    }
+  ],
+  "driver": "    std::cout << \"Demonstrating Robustness Issue: Lack of input validation\" << std::endl;\n    std::cout << \"--------------------------------------------------------\" << std::endl;\n\n    Car invalidCar(-10, \"Gasoline\", -2);\n    std::cout << \"\\nCreating a Car with invalid speed (-10) and doors (-2):\" << std::endl;\n    invalidCar.display();\n\n    Motorcycle invalidMotorcycle(-50, \"Electric\", true);\n    std::cout << \"\\nCreating a Motorcycle with invalid speed (-50):\" << std::endl;\n    invalidMotorcycle.display();\n\n    Car emptyFuelCar(120, \"\", 4);\n    std::cout << \"\\nCreating a Car with empty fuel type:\" << std::endl;\n    emptyFuelCar.display();\n\n    std::cout << \"\\nValid vehicles (for comparison):\" << std::endl;\n    Car normalCar(150, \"Gasoline\", 4);\n    normalCar.display();\n\n    Motorcycle normalMotorcycle(80, \"Petrol\", false);\n    normalMotorcycle.display();\n",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Constructors lack input validation for attributes like speed and numDoors, allowing invalid states (e.g., negative speed, negative doors).",
+    "No validation for fuelType, allowing empty strings."
+  ]
+}

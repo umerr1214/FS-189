@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function `initializeWithDefaults` that takes an integer array and its size via a pointer and sets all elements of the array to a default value of -1.",
+  "test_cases": [
+    { "input": "Array: [1, 2, 3, 4, 5], Size: 5", "expected": "Array: [-1, -1, -1, -1, -1]" },
+    { "input": "Array: [10, 20, 30], Size: 3", "expected": "Array: [-1, -1, -1]" },
+    { "input": "Array: [100], Size: 1", "expected": "Array: [-1]" },
+    { "input": "Array: [], Size: 0", "expected": "Array: []" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <numeric>\n#include <string>\n\n// The function under test will be placed here.\n// void initializeWithDefaults(int* arr, int size);\n\nvoid print_array_state(const std::string& name, const int* arr, int size) {\n    std::cout << name << \": [\";\n    for (int i = 0; i < size; ++i) {\n        std::cout << arr[i];\n        if (i < size - 1) {\n            std::cout << \", \";\n        }\n    }\n    std::cout << \"]\" << std::endl;\n}\n\nint main() {\n    // Test Case 1\n    int arr1[5];\n    std::iota(arr1, arr1 + 5, 1); // Initialize to {1, 2, 3, 4, 5}\n    initializeWithDefaults(arr1, 5);\n    print_array_state(\"arr1\", arr1, 5);\n\n    // Test Case 2\n    int arr2[3];\n    std::iota(arr2, arr2 + 3, 10); // Initialize to {10, 20, 30}\n    initializeWithDefaults(arr2, 3);\n    print_array_state(\"arr2\", arr2, 3);\n\n    // Test Case 3\n    int arr3[1];\n    std::iota(arr3, arr3 + 1, 100); // Initialize to {100}\n    initializeWithDefaults(arr3, 1);\n    print_array_state(\"arr3\", arr3, 1);\n\n    // Test Case 4 (empty array)\n    int arr4[0]; \n    initializeWithDefaults(arr4, 0);\n    print_array_state(\"arr4\", arr4, 0);\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'arr[i] = -1' statement, leading to a compilation error."
+  ]
+}

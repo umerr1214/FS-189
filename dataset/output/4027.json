@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Develop a program that takes an integer from the user and determines if it is positive, negative, or zero. Print an appropriate message for each case.",
+  "test_cases": [
+    { "input": "5", "expected": "Enter an integer: The number is positive.\n" },
+    { "input": "-3", "expected": "Enter an integer: The number is negative.\n" },
+    { "input": "0", "expected": "Enter an integer: The number is zero.\n" },
+    { "input": "abc", "expected": "Enter an integer: Invalid input. Please enter an integer.\n" },
+    { "input": "1.5", "expected": "Enter an integer: Invalid input. Please enter an integer.\n" }
+  ],
+  "driver": "std::stringstream input_stream(\"{{input}}\"); std::stringstream output_stream; \n std::streambuf* old_cin = std::cin.rdbuf(); std::cin.rdbuf(input_stream.rdbuf()); \n std::streambuf* old_cout = std::cout.rdbuf(); std::cout.rdbuf(output_stream.rdbuf()); \n main(); \n std::cin.rdbuf(old_cin); std::cout.rdbuf(old_cout); \n return output_stream.str();",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not handle non-integer input gracefully. If the user enters characters or floating-point numbers (e.g., 'abc', '1.5'), std::cin will enter a fail state. The program will then proceed with an uninitialized or partially read value, leading to incorrect output without informing the user about the invalid input. For '1.5', it will read '1' and incorrectly report 'The number is positive.' while ignoring the invalid '.5'."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Declare a `std::string` variable. Ask the user to input a sentence. Then, count and print the total number of characters in the sentence (including spaces).",
+  "test_cases": [
+    { "input": "Hello World", "expected": "Total characters: 5\n" },
+    { "input": "  Test string with leading and trailing spaces  ", "expected": "Total characters: 2\n" },
+    { "input": "OneTwoThree", "expected": "Total characters: 11\n" },
+    { "input": "A B C", "expected": "Total characters: 1\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\nint main() {\n    std::cout << \"Driver placeholder: The user's program will be compiled and executed with provided test inputs.\" << std::endl;\n    std::cout << \"Input will be fed to stdin, and stdout will be captured for comparison.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    {
+      "line": 10,
+      "column": 14,
+      "message": "Using `std::cin >> sentence;` for reading a sentence is semantically incorrect when the sentence is expected to contain spaces. The `>>` operator stops at the first whitespace, preventing the full sentence from being read into the `std::string` variable."
+    }
+  ]
+}

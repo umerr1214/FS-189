@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that declares and initializes a 3x3 integer matrix (2D array) with any values. Then, print the matrix in a formatted way (e.g., each row on a new line).",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "   1  22  63\n  31  82 153\n  61 142 243\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The code uses `goto` statements for loop control, which is generally considered poor practice and significantly reduces readability and maintainability.",
+    "Variable names like `twoDeeArray`, `k`, `row_idx`, `col_idx`, `c_idx` are not always descriptive or consistently used, impacting readability.",
+    "The initialization logic for the matrix is unnecessarily verbose and complex for a simple declaration and initialization task.",
+    "Using `printf` from `<cstdio>` instead of `std::cout` with iostream manipulators is less idiomatic C++ and can be less type-safe."
+  ]
+}

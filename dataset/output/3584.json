@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a program that checks if a user-entered integer is positive, negative, or zero using if-else if-else statements.",
+  "test_cases": [
+    { "input": "15", "expected": "The number is definitely positive." },
+    { "input": "-8", "expected": "The number is certainly negative." },
+    { "input": "0", "expected": "The number is exactly zero." }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// This function encapsulates the core logic of the program being tested.\n// It simulates the output that the main program would produce for a given integer input.\nstd::string run_program_logic(int num_input) {\n    std::stringstream ss_out;\n    std::string result_message;\n\n    // Mimics the three independent 'if' statements from the original code\n    if (num_input > 0) {\n        result_message = \"The number is definitely positive.\";\n    }\n    if (num_input < 0) {\n        result_message = \"The number is certainly negative.\";\n    }\n    if (num_input == 0) {\n        result_message = \"The number is exactly zero.\";\n    }\n    ss_out << result_message;\n    return ss_out.str();\n}\n\nint main() {\n    std::vector<std::pair<int, std::string>> test_cases_data = {\n        {15, \"The number is definitely positive.\"},\n        {-8, \"The number is certainly negative.\"},\n        {0, \"The number is exactly zero.\"}\n    };\n\n    for (const auto& tc : test_cases_data) {\n        std::string actual_output = run_program_logic(tc.first);\n        if (actual_output == tc.second) {\n            // Test passed\n        } else {\n            std::cerr << \"Test failed for input: \" << tc.first\n                      << \". Expected: \\\"\" << tc.second << \"\\\", Got: \\\"\" << actual_output << \"\\\"\" << std::endl;\n            return 1; // Indicate failure\n        }\n    }\n    return 0; // Indicate success\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["The program uses three independent 'if' statements instead of the requested 'if-else if-else' chain. While functionally correct for this specific case, it's less efficient as all conditions are checked, and less readable for mutually exclusive conditions. Output messages are also overly verbose."]
+}

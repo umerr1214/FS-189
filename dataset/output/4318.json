@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter their name (as a single word) and their age. Then, print a greeting message displaying both pieces of information.",
+  "test_cases": [
+    { "input": "Alice\n30", "expected": "" }
+  ],
+  "driver": "g++ -o 4318 4318.cpp && ./4318",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after std::cout statement on line 12."]
+}

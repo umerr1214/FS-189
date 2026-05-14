@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `Student` class with private members `name` (string), `studentId` (int), and `gpa` (double). Implement a public default constructor and a parameterized constructor. Include a public method `isEligibleForScholarship()` that returns true if `gpa` is 3.5 or higher.",
+  "test_cases": [
+    { "input": "Student s1(\"Alice Smith\", 1001, 3.8);", "expected": "Student Alice Smith (ID: 1001) is eligible: true" },
+    { "input": "Student s2(\"Bob Johnson\", 1002, -1.0);", "expected": "Student Bob Johnson (ID: 1002) is eligible: false" },
+    { "input": "Student s3(\"Charlie Brown\", 1003, 5.5);", "expected": "Student Charlie Brown (ID: 1003) is eligible: true" },
+    { "input": "Student s4(\"Diana Prince\", 1004, 3.4);", "expected": "Student Diana Prince (ID: 1004) is eligible: false" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Student {\nprivate:\n    std::string name;\n    int studentId;\n    double gpa;\n\npublic:\n    Student() : name(\"\"), studentId(0), gpa(0.0) {}\n    Student(std::string n, int id, double g) : name(n), studentId(id), gpa(g) {}\n    bool isEligibleForScholarship() const {\n        return gpa >= 3.5;\n    }\n    std::string getName() const { return name; }\n    int getStudentId() const { return studentId; }\n    double getGpa() const { return gpa; }\n};\n\nint main() {\n    Student s1(\"Alice Smith\", 1001, 3.8);\n    std::cout << \"Student \" << s1.getName() << \" (ID: \" << s1.getStudentId() << \") is eligible: \" << (s1.isEligibleForScholarship() ? \"true\" : \"false\") << std::endl;\n\n    Student s2(\"Bob Johnson\", 1002, -1.0);\n    std::cout << \"Student \" << s2.getName() << \" (ID: \" << s2.getStudentId() << \") is eligible: \" << (s2.isEligibleForScholarship() ? \"true\" : \"false\") << std::endl;\n\n    Student s3(\"Charlie Brown\", 1003, 5.5);\n    std::cout << \"Student \" << s3.getName() << \" (ID: \" << s3.getStudentId() << \") is eligible: \" << (s3.isEligibleForScholarship() ? \"true\" : \"false\") << std::endl;\n\n    Student s4(\"Diana Prince\", 1004, 3.4);\n    std::cout << \"Student \" << s4.getName() << \" (ID: \" << s4.getStudentId() << \") is eligible: \" << (s4.isEligibleForScholarship() ? \"true\" : \"false\") << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The parameterized constructor does not validate the input 'gpa', allowing nonsensical values (e.g., negative or excessively high) to be stored. While the program doesn't crash, it permits the creation of 'Student' objects in an internally inconsistent or invalid state according to real-world GPA rules, which can lead to misleading behavior or incorrect interpretations of eligibility."]
+}

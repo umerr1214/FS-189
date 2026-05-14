@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Define a C++ `struct Student` with members `std::string name`, `int id`, and `float score`. In `main`, declare a `Student` variable, prompt the user to input data for it, and then print the student's details.",
+  "test_cases": [
+    {
+      "input": "Alice Wonderland\n101\n92.5",
+      "expected": "Enter student name: Enter student ID (integer): Enter student score (float): \n--- Student Details ---\nName: Alice Wonderland\nID: 101\nScore: 92.5\n"
+    },
+    {
+      "input": "Bob Smith\nabc\n88.0",
+      "expected": "Enter student name: Enter student ID (integer): Invalid input for ID. Please enter an integer.\n"
+    },
+    {
+      "input": "Charlie Brown\n103\nxyz",
+      "expected": "Enter student name: Enter student ID (integer): Enter student score (float): Invalid input for score. Please enter a floating-point number.\n"
+    }
+  ],
+  "driver": "int main() {\n    // The program directly interacts with stdin/stdout, so no special driver needed.\n    // The test cases directly provide input and check output.\n    return 0;\n}",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

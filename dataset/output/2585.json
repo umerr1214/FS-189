@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `MyString` class that dynamically allocates memory for a character array (C-style string). Provide a constructor that takes a `const char*` to initialize the string. Crucially, implement a copy constructor to perform a deep copy, preventing issues like double-freeing or shared pointers when `MyString` objects are copied.",
+  "test_cases": [
+    {
+      "input": "MyString s1(\"Original String\"); MyString s2 = s1;",
+      "expected": "Program crashes due to double-free on exit. The copy constructor performs a shallow copy, causing multiple MyString objects to own and attempt to delete the same memory."
+    }
+  ],
+  "driver": "The `main` function demonstrates construction and copy construction, leading to a double-free crash.",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": []
+}

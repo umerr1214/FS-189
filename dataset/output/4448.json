@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Create a function `countWords` that takes an `std::string` sentence as input and returns the number of words in it (assuming words are separated by single spaces).",
+  "test_cases": [
+    { "input": "", "expected": "0" },
+    { "input": "hello", "expected": "1" },
+    { "input": "hello world", "expected": "2" },
+    { "input": "  hello world  ", "expected": "2" },
+    { "input": "hello   world", "expected": "2" },
+    { "input": "   ", "expected": "0" },
+    { "input": "one", "expected": "1" },
+    { "input": "multiple words test string", "expected": "4" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n#include <utility> // For std::pair\n\n// The countWords function definition is assumed to be provided by the user's code.\n// Its signature is: int countWords(const std::string& sentence);\n\nint main() {\n    std::vector<std::pair<std::string, int>> test_cases = {\n        {\"\", 0},\n        {\"hello\", 1},\n        {\"hello world\", 2},\n        {\"  hello world  \", 2},\n        {\"hello   world\", 2},\n        {\"   \", 0},\n        {\"one\", 1},\n        {\"multiple words test string\", 4}\n    };\n\n    bool all_passed = true;\n    for (size_t i = 0; i < test_cases.size(); ++i) {\n        const auto& tc = test_cases[i];\n        std::string input = tc.first;\n        int expected = tc.second;\n        int actual = countWords(input); // Call to the function under test\n\n        if (actual == expected) {\n            std::cout << \"Test \" << i + 1 << \" Passed: Input=\\\"\" << input << \"\\\", Expected=\" << expected << \", Got=\" << actual << std::endl;\n        } else {\n            std::cout << \"Test \" << i + 1 << \" FAILED: Input=\\\"\" << input << \"\\\", Expected=\" << expected << \", Got=\" << actual << std::endl;\n            all_passed = false;\n        }\n    }\n\n    if (all_passed) {\n        std::cout << \"All tests passed!\" << std::endl;\n        return 0;\n    } else {\n        std::cout << \"Some tests failed.\" << std::endl;\n        return 1;\n    }\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The implementation is overly verbose and performs multiple string manipulations (trimming, replacing multiple spaces) which involve several intermediate string copies.",
+    "Passing `std::string sentence` by value (instead of `const std::string&`) leads to an unnecessary copy of the input string.",
+    "A more efficient and readable approach (e.g., using `std::stringstream` or a single pass with a state flag) could achieve the same result with less overhead and clearer logic."
+  ]
+}

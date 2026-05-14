@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that includes an overloaded function `void printArea(double radius)` to calculate and print the area of a circle, and another `void printArea(double length, double width)` to calculate and print the area of a rectangle. Test both versions in `main`.",
+  "test_cases": [
+    { "input": "5.0", "expected": "Area of a circle with radius 5: 78.5398" },
+    { "input": "10.0", "expected": "Area of a circle with radius 10: 314.159" },
+    { "input": "0.0", "expected": "Area of a circle with radius 0: 0" },
+    { "input": "-3.0", "expected": "Error: Radius cannot be negative." },
+    { "input": "4.0 6.0", "expected": "Area of a rectangle with length 4 and width 6: 24" },
+    { "input": "7.5 2.0", "expected": "Area of a rectangle with length 7.5 and width 2: 15" },
+    { "input": "0.0 5.0", "expected": "Area of a rectangle with length 0 and width 5: 0" },
+    { "input": "5.0 0.0", "expected": "Area of a rectangle with length 5 and width 0: 0" },
+    { "input": "-5.0 4.0", "expected": "Error: Length and width cannot be negative." },
+    { "input": "3.0 -2.0", "expected": "Error: Length and width cannot be negative." }
+  ],
+  "driver": "int main() {\n    printArea(5.0);\n    printArea(10.0);\n    printArea(0.0);\n    printArea(-3.0);\n    printArea(4.0, 6.0);\n    printArea(7.5, 2.0);\n    printArea(0.0, 5.0);\n    printArea(5.0, 0.0);\n    printArea(-5.0, 4.0);\n    printArea(3.0, -2.0);\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

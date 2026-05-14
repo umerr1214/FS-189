@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create three classes: `Base`, `Derived` (inheriting `Base`), and `External`. In `Base`, declare `public`, `protected`, and `private` members. Demonstrate the accessibility of these members from `Derived` and `External` classes respectively.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation Error: 'protected_member_base' is protected within this context" }
+  ],
+  "driver": "int main() { Base baseObj; Derived derivedObj; External externalObj; baseObj.displayPublic(); derivedObj.accessBaseMembersFromDerived(); externalObj.accessBaseMembersFromExternal(baseObj); return 0; }",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The 'External' class attempts to directly access a 'protected' member of the 'Base' class ('obj.protected_member_base'), which is a violation of C++ access rules and leads to a compilation error."
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "language": "c++",
+  "question": "Develop a `Temperature` class with a private `double value` and a private `char unit` ('C' for Celsius or 'F' for Fahrenheit). Provide public setter methods `setValue(double val)` and `setUnit(char u)`. The `setValue` method should validate that the temperature is above absolute zero (-273.15 C or -459.67 F), and `setUnit` should only accept 'C' or 'F'.",
+  "test_cases": [
+    { "input": "25 C", "expected": "--- Test Case: Valid Celsius ---\nCurrent Temp: 25 C\n" },
+    { "input": "77 F", "expected": "--- Test Case: Valid Fahrenheit ---\nCurrent Temp: 77 F\n" },
+    { "input": "-273.15 C", "expected": "--- Test Case: Absolute Zero Celsius (boundary) ---\nCurrent Temp: -273.15 C\n" },
+    { "input": "-274 C", "expected": "--- Test Case: Invalid Celsius (below absolute zero) ---\nError: Celsius value -274 is below absolute zero (-273.15 C). Value not set.\nCurrent Temp: 0 C\n" },
+    { "input": "-460 F", "expected": "--- Test Case: Invalid Fahrenheit (below absolute zero) ---\nError: Fahrenheit value -460 is below absolute zero (-459.67 F). Value not set.\nCurrent Temp: 0 F\n" },
+    { "input": "10 K", "expected": "--- Test Case: Invalid Unit 'K' ---\nError: Invalid unit 'K'. Unit not set, retaining previous unit (C).\nCurrent Temp: 10 C\n" },
+    { "input": "-300 X", "expected": "--- Test Case: Invalid Value and Unit ---\nError: Invalid unit 'X'. Unit not set, retaining previous unit (C).\nError: Unknown unit. Assuming Celsius for validation. Value -300 is below absolute zero (-273.15 C). Value not set.\nCurrent Temp: 0 C\n" }
+  ],
+  "driver": "void run_test_case(const std::string& description, double val, char unit) {\n    std::cout << \"--- Test Case: \" << description << \" ---\\n\";\n    Temperature temp; // Defaults to 0 C\n    temp.setUnit(unit); // Set unit first\n    temp.setValue(val); // Then set value\n    temp.display();\n    std::cout << \"\\n\";\n}\n\nint main() {\n    run_test_case(\"Valid Celsius\", 25.0, 'C');\n    run_test_case(\"Valid Fahrenheit\", 77.0, 'F');\n    run_test_case(\"Absolute Zero Celsius (boundary)\", -273.15, 'C');\n    run_test_case(\"Invalid Celsius (below absolute zero)\", -274.0, 'C');\n    run_test_case(\"Invalid Fahrenheit (below absolute zero)\", -460.0, 'F');\n    run_test_case(\"Invalid Unit 'K'\", 10.0, 'K');\n    run_test_case(\"Invalid Value and Unit\", -300.0, 'X');\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses cryptic private variable names ('v', 'u') instead of descriptive ones like 'value', 'unit'.",
+    "Lacks constant definitions for magic numbers (absolute zero values) making them hard to understand and maintain.",
+    "Employs overly complex and nested conditional logic for unit validation in the `setUnit` method.",
+    "The `setValue` method contains an unnecessary fallback for an unknown unit, indicating potential redundancy or inefficiency.",
+    "Inconsistent formatting and lack of meaningful comments reduce overall code readability and maintainability."
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "language": "c++",
+  "question": "Create a `Point` class with private integer attributes `x` and `y`. Provide public methods `setCoordinates(int, int)` to modify them and `getDistanceToOrigin()` to calculate the Euclidean distance from (0,0).",
+  "test_cases": [
+    {
+      "input": "Point p; p.setCoordinates(3, 4);",
+      "expected": "Distance for (3, 4): 5.00"
+    },
+    {
+      "input": "Point p; p.setCoordinates(0, 0);",
+      "expected": "Distance for (0, 0): 0.00"
+    },
+    {
+      "input": "Point p; p.setCoordinates(-5, 12);",
+      "expected": "Distance for (-5, 12): 13.00"
+    },
+    {
+      "input": "Point p; p.setCoordinates(50000, 50000);",
+      "expected": "Distance for (50000, 50000): nan"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>   // For sqrt\n#include <iomanip> // For std::fixed, std::setprecision\n\nclass Point {\nprivate:\n    int x;\n    int y;\n\npublic:\n    // Constructor\n    Point(int _x = 0, int _y = 0) : x(_x), y(_y) {}\n\n    // Method to set coordinates\n    void setCoordinates(int newX, int newY) {\n        x = newX;\n        y = newY;\n    }\n\n    // Method to calculate Euclidean distance from (0,0)\n    // Robustness Issue: Intermediate calculation x*x + y*y might overflow 'int'\n    // before being cast to double, leading to incorrect results for large coordinates.\n    double getDistanceToOrigin() {\n        // If x and y are large enough (e.g., > 46340 for 32-bit int), x*x will overflow.\n        // The sum x*x + y*y will also overflow if individual terms do, or if their sum exceeds INT_MAX.\n        // The result of the overflowed int calculation is then cast to double.\n        return std::sqrt(static_cast<double>(x * x + y * y));\n    }\n};\n\nint main() {\n    // Set output precision for double values\n    std::cout << std::fixed << std::setprecision(2);\n\n    Point p1;\n    p1.setCoordinates(3, 4);\n    std::cout << \"Distance for (3, 4): \" << p1.getDistanceToOrigin() << std::endl;\n\n    Point p2;\n    p2.setCoordinates(0, 0);\n    std::cout << \"Distance for (0, 0): \" << p2.getDistanceToOrigin() << std::endl;\n\n    Point p3;\n    p3.setCoordinates(-5, 12);\n    std::cout << \"Distance for (-5, 12): \" << p3.getDistanceToOrigin() << std::endl;\n\n    // Test case demonstrating robustness issue: large coordinates causing int overflow\n    // For 32-bit signed int, INT_MAX is approx 2.147 billion.\n    // 50000 * 50000 = 2,500,000,000, which overflows int.\n    // x*x and y*y will become negative due to overflow, leading to sqrt of a negative number (NaN).\n    Point p4;\n    p4.setCoordinates(50000, 50000);\n    std::cout << \"Distance for (50000, 50000): \" << p4.getDistanceToOrigin() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `getDistanceToOrigin` method calculates `x*x + y*y` using `int` arithmetic, which can lead to integer overflow for large `x` or `y` values. This causes the intermediate sum to be incorrect (potentially negative) before being cast to `double` for `std::sqrt`, resulting in `NaN` or an incorrect distance.",
+    "The fix would be to cast `x` and `y` to `double` or `long long` *before* squaring, e.g., `std::sqrt(static_cast<double>(x) * x + static_cast<double>(y) * y)` or `std::hypot(static_cast<double>(x), static_cast<double>(y))`."
+  ]
+}

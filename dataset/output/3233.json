@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a `Product` class with `id`, `name`, and `price`. Create an array of `Product` objects, populate it with data, and then iterate through the array to display details of each product.",
+  "test_cases": [
+    { "input": "", "expected": "ID: 101, Name: Laptop, Price: $1200.00\nID: 102, Name: Mouse, Price: $25.50\nID: 103, Name: Keyboard, Price: $75.00\n" }
+  ],
+  "driver": "// The main function in the provided code directly implements the solution and displays output. No separate driver is needed.",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": []
+}

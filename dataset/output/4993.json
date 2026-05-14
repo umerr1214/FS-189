@@ -1,0 +1,30 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program to concatenate two one-dimensional integer arrays into a third array. The program should take the sizes and elements of the first two arrays from the user, then populate and print the concatenated array.",
+  "test_cases": [
+    {
+      "input": "3\n1 2 3\n2\n4 5\n",
+      "expected": "Concatenated array: 1 2 3 4 5\n"
+    },
+    {
+      "input": "0\n0\n",
+      "expected": "Concatenated array: \n"
+    },
+    {
+      "input": "2\n10 20\n1\n30\n",
+      "expected": "Concatenated array: 10 20 30\n"
+    },
+    {
+      "input": "2\n10 a\n1\n30\n",
+      "expected": "Concatenated array: 10 30\n"
+    }
+  ],
+  "driver": "g++ -o program program.cpp && ./program",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Input validation: The program does not check if the user enters non-integer values when integer input is expected (e.g., for array sizes or elements). If a non-integer is entered, `std::cin` enters a fail state, leading to unexpected behavior or infinite loops if not cleared.",
+    "Input validation: The program does not validate if the entered array sizes are positive. Entering a negative size (e.g., `-5`) for `new int[size]` results in undefined behavior, which can lead to crashes or memory corruption."
+  ]
+}

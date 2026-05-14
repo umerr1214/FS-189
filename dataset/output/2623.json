@@ -1,0 +1,25 @@
+{
+  "language": "c++",
+  "question": "Create a `Time` class with private integer members `hours`, `minutes`, and `seconds`. Overload the constructor to allow creating `Time` objects in three ways: 1) no arguments (default to 00:00:00), 2) with only `hours` (minutes and seconds default to 0), and 3) with `hours`, `minutes`, and `seconds`. Ensure values are within valid ranges (e.g., minutes 0-59).",
+  "test_cases": [
+    { "input": "Time t1;", "expected": "00:00:00" },
+    { "input": "Time t2(5);", "expected": "05:00:00" },
+    { "input": "Time t3(15, 30, 45);", "expected": "15:30:45" },
+    { "input": "Time t4(23, 59, 59);", "expected": "23:59:59" },
+    { "input": "Time t5(0, 0, 0);", "expected": "00:00:00" },
+    { "input": "Time t6(25, 65, 70);", "expected": "01:05:10" },
+    { "input": "Time t7(10, -5, 0);", "expected": "10:00:00" },
+    { "input": "Time t8(0, 0, -1);", "expected": "00:00:00" },
+    { "input": "Time t9(-2, 10, 20);", "expected": "00:10:20" },
+    { "input": "Time t10(24, 0, 0);", "expected": "00:00:00" },
+    { "input": "Time t11(0, 60, 0);", "expected": "00:00:00" },
+    { "input": "Time t12(0, 0, 60);", "expected": "00:00:00" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\nclass Time {\nprivate:\n    int hours;\n    int minutes;\n    int seconds;\n\n    void internal_set(int h, int m, int s) {\n        this->seconds = s % 60;\n        if (this->seconds < 0) this->seconds = 0;\n\n        this->minutes = m % 60;\n        if (this->minutes < 0) this->minutes = 0;\n\n        this->hours = h % 24;\n        if (this->hours < 0) this->hours = 0;\n    }\n\npublic:\n    Time() : hours(0), minutes(0), seconds(0) {}\n\n    Time(int h) {\n        this->hours = h % 24;\n        if (this->hours < 0) this->hours = 0;\n        this->minutes = 0;\n        this->seconds = 0;\n    }\n\n    Time(int h, int m, int s) {\n        internal_set(h, m, s);\n    }\n\n    void display() const {\n        std::cout << std::setfill('0') << std::setw(2) << hours << \":\"\n                  << std::setfill('0') << std::setw(2) << minutes << \":\"\n                  << std::setfill('0') << std::setw(2) << seconds << std::endl;\n    }\n};\n\nint main() {\n    Time t1;\n    Time t2(5);\n    Time t3(15, 30, 45);\n    Time t4(23, 59, 59);\n    Time t5(0, 0, 0);\n    Time t6(25, 65, 70);\n    Time t7(10, -5, 0);\n    Time t8(0, 0, -1);\n    Time t9(-2, 10, 20);\n    Time t10(24, 0, 0);\n    Time t11(0, 60, 0);\n    Time t12(0, 0, 60);\n\n    t1.display();\n    t2.display();\n    t3.display();\n    t4.display();\n    t5.display();\n    t6.display();\n    t7.display();\n    t8.display();\n    t9.display();\n    t10.display();\n    t11.display();\n    t12.display();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The constructors do not robustly handle negative input values for hours, minutes, or seconds. Instead of correctly calculating borrows (e.g., -5 minutes becoming 55 minutes and decrementing hours), they clamp negative values to 0, leading to loss of information and incorrect time representation for such edge cases. For example, Time(10, -5, 0) results in 10:00:00 instead of 09:55:00. This violates the 'ensure values are within valid ranges' requirement for all possible inputs, as it creates an invalid time representation (e.g. 00:00:00 for negative values) rather than a normalized one."
+  ]
+}

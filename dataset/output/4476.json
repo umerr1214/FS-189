@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that converts a temperature from Celsius to Fahrenheit. The program should ask the user for the temperature in Celsius and display the equivalent in Fahrenheit. (Formula: F = C * 9/5 + 32)",
+  "test_cases": [
+    { "input": "25", "expected": "Enter temperature in Celsius: Temperature in Fahrenheit: 77.00\n" },
+    { "input": "0", "expected": "Enter temperature in Celsius: Temperature in Fahrenheit: 32.00\n" },
+    { "input": "10", "expected": "Enter temperature in Celsius: Temperature in Fahrenheit: 50.00\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <streambuf>\n\n// The user's code will be inserted here.\nextern int main(); // Declare main from the user's code\n\nint run_test(const std::string& input, std::string& output) {\n    std::stringstream ss_input(input);\n    std::stringstream ss_output;\n\n    // Save original cin/cout buffers\n    std::streambuf* old_cin_buf = std::cin.rdbuf();\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n\n    // Redirect cin/cout\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n\n    // Run the user's main function\n    int return_code = -1; // Indicate not run or error\n    try {\n        return_code = main();\n    } catch (const std::exception& e) {\n        // Catch potential exceptions from main if it crashes\n        ss_output << \"Runtime Error: \" << e.what() << std::endl;\n    } catch (...) {\n        ss_output << \"Runtime Error: Unknown exception\" << std::endl;\n    }\n\n    // Restore original cin/cout buffers\n    std::cin.rdbuf(old_cin_buf);\n    std::cout.rdbuf(old_cout_buf);\n\n    output = ss_output.str();\n    return return_code;\n}\n\nint main() {\n    // This main is for the test harness itself, not the user's code.\n    // The actual test cases will be run by an external system calling run_test.\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The program calculates Fahrenheit using floating-point types (double) but then explicitly casts the result to an integer (int) before displaying it. This semantic error causes a loss of precision, as any decimal part of the Fahrenheit temperature is truncated, contrary to the typical expectation of displaying equivalent temperatures with appropriate precision (e.g., 77 instead of 77.00)."]
+}

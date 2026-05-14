@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Point` class with private integer members `x` and `y`. Provide public getter methods (`getX()`, `getY()`) to retrieve the coordinate values and public setter methods (`setX(int val)`, `setY(int val)`) to modify them. The setters should include basic validation, ensuring coordinates cannot be set to negative values.",
+  "test_cases": [
+    { "input": "", "expected": "Initial: (0, 0)\nSet (5,10): (5, 10)\nTried setting (-3,-7): (5, 10)\nValidation successful for negative inputs.\nSet (25,30): (25, 30)\n" }
+  ],
+  "driver": "int main() {\n    Point p;\n    std::cout << \"Initial: (\" << p.getX() << \", \" << p.getY() << \")\\n\";\n\n    p.setX(5);\n    p.setY(10);\n    std::cout << \"Set (5,10): (\" << p.getX() << \", \" << p.getY() << \")\\n\";\n\n    p.setX(-3);\n    p.setY(-7);\n    std::cout << \"Tried setting (-3,-7): (\" << p.getX() << \", \" << p.getY() << \")\\n\";\n\n    if (p.getX() == 5 && p.getY() == 10) {\n        std::cout << \"Validation successful for negative inputs.\\n\";\n    } else {\n        std::cout << \"Validation failed for negative inputs.\\n\";\n    }\n\n    p.setX(25);\n    p.setY(30);\n    std::cout << \"Set (25,30): (\" << p.getX() << \", \" << p.getY() << \")\\n\";\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The code exhibits poor readability due to inconsistent indentation and spacing within the class definition and constructor bodies.",
+    "Getter methods (`getX`, `getY`) are not declared as `const`, which is a common C++ best practice for methods that do not modify the object's state, impacting code quality and potential for compiler optimizations/safety.",
+    "Lack of comments to explain design choices or complex logic (though the logic is simple here, good practice dictates comments for public interfaces).",
+    "Inconsistent use of newline characters (`\\n` vs `std::endl`) in output statements further reduces readability."
+  ]
+}

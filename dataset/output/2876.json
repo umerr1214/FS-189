@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "For the `Complex` number class, overload the stream insertion operator `operator<<` to allow `Complex` objects to be printed directly to `std::cout` in the format `(real + imaginaryi)`.",
+  "test_cases": [
+    { "input": "Complex(3, 5)", "expected": "(3.000000000000000 + 5.000000000000000i)" },
+    { "input": "Complex(3, -5)", "expected": "(3.000000000000000 - 5.000000000000000i)" },
+    { "input": "Complex(3, 0)", "expected": "(3.000000000000000)" },
+    { "input": "Complex(0, 5)", "expected": "(5.000000000000000i)" },
+    { "input": "Complex(0, -5)", "expected": "(-5.000000000000000i)" },
+    { "input": "Complex(0, 0)", "expected": "(0.000000000000000)" },
+    { "input": "Complex(-3, 5)", "expected": "(-3.000000000000000 + 5.000000000000000i)" },
+    { "input": "Complex(-3, -5)", "expected": "(-3.000000000000000 - 5.000000000000000i)" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <cmath>\n#include <sstream>\n#include <iomanip>\n\nclass Complex {\npublic:\n    double real;\n    double imag;\n\n    Complex(double r = 0.0, double i = 0.0) : real(r), imag(i) {}\n\n    friend std::ostream& operator<<(std::ostream& os, const Complex& c);\n};\n\nstd::ostream& operator<<(std::ostream& os, const Complex& c) {\n    std::stringstream ss;\n    ss.precision(15);\n    ss << std::fixed;\n\n    ss << \"(\";\n    bool real_printed = false;\n\n    if (c.real != 0.0 || c.imag == 0.0) {\n        ss << c.real;\n        real_printed = true;\n    }\n\n    if (c.imag != 0.0) {\n        if (real_printed) {\n            if (c.imag > 0) {\n                ss << \" + \";\n            } else {\n                ss << \" - \";\n            }\n            ss << std::abs(c.imag) << \"i\";\n        } else {\n            ss << c.imag << \"i\";\n        }\n    } else if (!real_printed) {\n        ss << \"0\";\n    }\n\n    ss << \")\";\n    return os << ss.str();\n}\n\nint main() {\n    std::cout.precision(15);\n    std::cout << std::fixed;\n    Complex c1(3, 5);\n    Complex c2(3, -5);\n    Complex c3(3, 0);\n    Complex c4(0, 5);\n    Complex c5(0, -5);\n    Complex c6(0, 0);\n    Complex c7(-3, 5);\n    Complex c8(-3, -5);\n\n    std::cout << c1 << std::endl;\n    std::cout << c2 << std::endl;\n    std::cout << c3 << std::endl;\n    std::cout << c4 << std::endl;\n    std::cout << c5 << std::endl;\n    std::cout << c6 << std::endl;\n    std::cout << c7 << std::endl;\n    std::cout << c8 << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The implementation uses `std::stringstream` to build the output string, which involves unnecessary memory allocations and string copying, making it less efficient than directly writing to the `std::ostream`.",
+    "While the output is correct, the use of `std::stringstream` for simple formatting adds overhead and can be less readable than direct stream manipulation for this specific task."
+  ]
+}

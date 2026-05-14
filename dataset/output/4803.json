@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that defines two integer variables. Using pointers, modify the values of these two variables by incrementing each by 10. Print the original and modified values.",
+  "test_cases": [
+    { "input": "", "expected": "Original var1: 10, var2: 20\nModified var1: 20, var2: 30\n" }
+  ],
+  "driver": "g++ -std=c++11 -o 4803 4803.cpp && ./4803",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

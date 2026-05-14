@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Design a `Playlist` class that contains a dynamically allocated array of `Song` objects. The `Song` class has `title` and `artist`. `Playlist` should manage adding and removing songs (demonstrating composition with dynamic memory).",
+  "test_cases": [
+    {
+      "input": "add TitleA;ArtistA\nadd TitleB;ArtistB\nprint\nremove TitleA;ArtistA\nprint\nadd TitleC;ArtistC\nprint\nremove TitleX;ArtistY\nprint\nremove TitleB;ArtistB\nprint\nremove TitleC;ArtistC\nprint",
+      "expected": "Playlist:\n\"TitleA\" by ArtistA\n\"TitleB\" by ArtistB\nPlaylist:\n\"TitleB\" by ArtistB\nPlaylist:\n\"TitleB\" by ArtistB\n\"TitleC\" by ArtistC\nPlaylist:\n\"TitleB\" by ArtistB\n\"TitleC\" by ArtistC\nPlaylist:\n\"TitleC\" by ArtistC\nPlaylist:\n(empty)\n"
+    },
+    {
+      "input": "add First;One\nadd Second;Two\nadd Third;Three\nprint\nremove Second;Two\nprint\nadd Fourth;Four\nprint\ncopy_test\n",
+      "expected": "Playlist:\n\"First\" by One\n\"Second\" by Two\n\"Third\" by Three\nPlaylist:\n\"First\" by One\n\"Third\" by Three\nPlaylist:\n\"First\" by One\n\"Third\" by Three\n\"Fourth\" by Four\nCopied Playlist:\nPlaylist:\n\"First\" by One\n\"Third\" by Three\n\"Fourth\" by Four\nCopied Playlist (modified):\nPlaylist:\n\"First\" by One\n\"Third\" by Three\n\"Fourth\" by Four\n\"New Song\" by New Artist\nOriginal Playlist (after copy and modification of copy):\nPlaylist:\n\"First\" by One\n\"Third\" by Three\n\"Fourth\" by Four\n"
+    },
+    {
+      "input": "print\nremove Any;Song\nadd Only;One\nprint\nremove Only;One\nprint",
+      "expected": "Playlist:\n(empty)\nPlaylist:\n\"Only\" by One\nPlaylist:\n(empty)\n"
+    }
+  ],
+  "driver": "std::string command, title, artist; Playlist myPlaylist; while (std::cin >> command) { if (command == \"add\") { std::cin.ignore(); std::getline(std::cin, title, ';'); std::getline(std::cin, artist); myPlaylist.addSong(Song(title, artist)); } else if (command == \"remove\") { std::cin.ignore(); std::getline(std::cin, title, ';'); std::getline(std::cin, artist); myPlaylist.removeSong(Song(title, artist)); } else if (command == \"print\") { myPlaylist.printPlaylist(); } else if (command == \"copy_test\") { Playlist copiedPlaylist = myPlaylist; std::cout << \"Copied Playlist:\\n\"; copiedPlaylist.printPlaylist(); copiedPlaylist.addSong(Song(\"New Song\", \"New Artist\")); std::cout << \"Copied Playlist (modified):\\n\"; copiedPlaylist.printPlaylist(); std::cout << \"Original Playlist (after copy and modification of copy):\\n\"; myPlaylist.printPlaylist(); } }",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

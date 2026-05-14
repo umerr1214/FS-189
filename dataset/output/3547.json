@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that takes a `std::string` as input from the user and checks if it is a palindrome (reads the same forwards and backwards, ignoring case and spaces is NOT required for this problem, exact match). Print 'Palindrome' or 'Not a palindrome'.",
+  "test_cases": [
+    { "input": "madam", "expected": "Palindrome" },
+    { "input": "hello", "expected": "Not a palindrome" },
+    { "input": "level up", "expected": "Palindrome" },
+    { "input": "race car", "expected": "Not a palindrome" },
+    { "input": "", "expected": "Palindrome" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n\n// The actual user's solution `main` function would be run for each test case\n// with its standard input and output redirected.\n// This driver snippet demonstrates how input/output streams are prepared.\n// For instance, if the user's solution is compiled into an executable `solution.exe`:\n// system(\"echo \\\"input_string\\\" | solution.exe > output.txt\");\n// Then output.txt would be read and compared.\n// In a C++ test harness, the core logic of `main` would typically be refactored\n// into a testable function `void solve()` which reads from `std::cin` and writes to `std::cout`.\n// The driver would then call `solve()` within the I/O redirection setup.\n\n// Example of how a test case would be executed:\n/*\nvoid run_test(const std::string& input, const std::string& expected_output) {\n    std::istringstream iss(input);\n    std::ostringstream oss;\n\n    std::streambuf* old_cin = std::cin.rdbuf(iss.rdbuf());\n    std::streambuf* old_cout = std::cout.rdbuf(oss.rdbuf());\n\n    // Call the user's solution function here.\n    // For example, if the core logic is in `void solve()`:\n    // solve(); \n\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    // Compare oss.str() with expected_output\n}\n*/",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The program uses `std::cin >> inputString` which only reads up to the first whitespace, making it non-robust for multi-word string inputs. It will not process inputs like 'race car' as a single unit for palindrome checking, leading to incorrect results for such inputs when the problem implies reading the entire line."]
+}

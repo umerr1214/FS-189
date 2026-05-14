@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `doubleValue(int& num)` that takes an integer by reference and doubles its value. Demonstrate this function in `main` by passing an integer variable and observing its change.",
+  "test_cases": [
+    { "input": "5", "expected": "10" },
+    { "input": "0", "expected": "0" },
+    { "input": "-3", "expected": "-6" }
+  ],
+  "driver": "#include <iostream>\n\nvoid doubleValue(int& num) {\n    num = num * 2;\n}\n\nint main() {\n    int test_values[] = {5, 0, -3};\n    for (int i = 0; i < sizeof(test_values) / sizeof(test_values[0]); ++i) {\n        int num = test_values[i];\n        doubleValue(num);\n        std::cout << num << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `doubleValue` function adds 2 to the number instead of doubling it, leading to incorrect results."
+  ]
+}

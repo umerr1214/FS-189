@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter the radius of a sphere, then calculates and displays its volume. Use the formula V = (4/3) * PI * r^3. Assume PI = 3.14159.",
+  "test_cases": [
+    { "input": "5", "expected": "Enter the radius of the sphere: The volume of the sphere is: 523.60\n" },
+    { "input": "0", "expected": "Enter the radius of the sphere: The volume of the sphere is: 0.00\n" },
+    { "input": "-2", "expected": "Enter the radius of the sphere: The volume of the sphere is: -33.51\n" },
+    { "input": "abc", "expected": "Enter the radius of the sphere: The volume of the sphere is: 0.00\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <iomanip>\n\n// The actual student solution (a complete C++ program with main) would be compiled and executed separately.\n// This driver code demonstrates how test inputs are provided and outputs are expected.\n// In a real environment, the student's program would be run with input redirected from a string/file\n// and its output captured for comparison.\n\nint main() {\n    // The 'test_cases' array in the JSON provides the actual inputs and expected outputs.\n    // This driver structure shows how a testing framework might process them.\n    // For each test case, the system would:\n    // 1. Provide input (e.g., \"5\") to the student's program's stdin.\n    // 2. Execute the student's program.\n    // 3. Capture its stdout.\n    // 4. Compare the captured stdout with the expected output.\n    \n    std::cout << \"Driver is set up to execute the student's program with redirected I/O for each test case.\" << std::endl;\n    std::cout << \"Inputs and expected outputs are defined in the JSON 'test_cases' array.\" << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The program does not validate user input for the radius. If a non-numeric value is entered, the input stream fails, leading to radius defaulting to 0.0 and potentially an incorrect volume calculation. It also doesn't handle negative radius values, which result in a mathematically correct but physically nonsensical negative volume without user feedback."]
+}

@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter a single character and determines if it is a vowel (a, e, i, o, u, case-insensitive) or a consonant. If it's not an alphabet, display an appropriate message.",
+  "test_cases": [
+    { "input": "a", "expected": "Enter a character: The character is a vowel.\n" },
+    { "input": "B", "expected": "Enter a character: The character is a consonant.\n" },
+    { "input": "7", "expected": "Enter a character: The character is not an alphabet.\n" },
+    { "input": "E", "expected": "Enter a character: The character is a vowel.\n" },
+    { "input": "z", "expected": "Enter a character: The character is a consonant.\n" }
+  ],
+  "driver": "int main() {\n    char ch_input;\n    std::cin >> ch_input;\n    char ch_lower = std::tolower(ch_input);\n    if (std::isalpha(ch_input)) {\n        if (ch_lower == 'a' || ch_lower == 'e' || ch_lower == 'i' || ch_lower == 'o' || ch_lower == 'u') {\n            std::cout << \"The character is a vowel.\\n\";\n        } else {\n            std::cout << \"The character is a consonant.\\n\";\n        }\n    } else {\n        std::cout << \"The character is not an alphabet.\\n\";\n    }\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The program passes a `char` directly to `std::tolower` without casting to `unsigned char`. This is a semantic error as it leads to undefined behavior if `char` is signed and the character's value is negative and not `EOF`, which violates the C++ standard's requirements for character classification functions."
+  ]
+}

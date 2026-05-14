@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create an `Engine` class with `horsepower` (int) and `fuelType` (string). Then, design a `Car` class that demonstrates composition by containing an `Engine` object as a member.",
+  "test_cases": [
+    { "input": "", "expected": "Car Model: Sedan X\nEngine: 150 HP, Petrol\nCar Model: SUV Y\nEngine: 200 HP, Diesel\n" }
+  ],
+  "driver": "int main() {\n    Car myCar(\"Sedan X\", 150, \"Petrol\");\n    myCar.displayCarDetails();\n\n    Car anotherCar(\"SUV Y\", 200, \"Diesel\");\n    anotherCar.displayCarDetails();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'Car' class constructor incorrectly initializes its 'engine' member with fixed values (100 HP, 'Standard Fuel') instead of using the 'hp' and 'ft' parameters provided to the 'Car' constructor. This leads to the car displaying incorrect engine specifications."
+  ]
+}

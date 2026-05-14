@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ function `swapNumbers(int* ptr1, int* ptr2)` that takes two integer pointers as arguments and swaps the values they point to. Demonstrate its usage in `main` with two integer variables.",
+  "test_cases": [
+    { "input": "int a = 5; int b = 10; swapNumbers(&a, &b);", "expected": "a = 10, b = 5" },
+    { "input": "int x = 100; int y = 200; swapNumbers(&x, &y);", "expected": "x = 200, y = 100" }
+  ],
+  "driver": "#include <iostream>\n\nvoid swapNumbers(int* ptr1, int* ptr2);\n\nint main() {\n    int x_val = 5;\n    int y_val = 10;\n    std::cout << \"Before swap: x = \" << x_val << \", y = \" << y_val << std::endl;\n    swapNumbers(&x_val, &y_val);\n    std::cout << \"After swap: x = \" << x_val << \", y = \" << y_val << std::endl;\n\n    int p_val = 100;\n    int q_val = 200;\n    std::cout << \"Before swap: p = \" << p_val << \", q = \" << q_val << std::endl;\n    swapNumbers(&p_val, &q_val);\n    std::cout << \"After swap: p = \" << p_val << \", q = \" << q_val << std::endl;\n    return 0;\n}",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Typo in the return type of the `swapNumbers` function: 'vodi' instead of 'void'."]
+}

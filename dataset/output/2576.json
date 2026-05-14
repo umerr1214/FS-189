@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Create an `Employee` class with `name` and `employeeID`. Then create a `Department` class that uses aggregation to manage a collection of `Employee` objects (e.g., using a `std::vector`). Implement methods in `Department` to add an employee and to list all employees within that department.",
+  "test_cases": [
+    {
+      "input": "N/A (input handled by main function)",
+      "expected": "--- Adding Staff Members ---\nEmployee added: Grace Hopper (ID: 201)\nEmployee added: Alan Turing (ID: 202)\nEmployee added: Ada Lovelace (ID: 203)\n\n--- Listing Staff Members ---\nStaff in Operations:\n  ID: 201, Name: Grace Hopper\n  ID: 202, Name: Alan Turing\n  ID: 203, Name: Ada Lovelace\n\n"
+    }
+  ],
+  "driver": "int main() {\n    Department operationsDept(\"Operations\");\n\n    std::cout << \"--- Adding Staff Members ---\" << std::endl;\n    Employee e1(\"Grace Hopper\", 201);\n    operationsDept.addEmployee(e1);\n    operationsDept.addEmployee(Employee(\"Alan Turing\", 202));\n    Employee e3(\"Ada Lovelace\", 203);\n    operationsDept.addEmployee(e3);\n    std::cout << std::endl;\n\n    std::cout << \"--- Listing Staff Members ---\" << std::endl;\n    operationsDept.listAllStaff();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `addEmployee` method takes an `Employee` object by value (`Employee empObject`), which causes an unnecessary copy of the `Employee` object when it's passed. Passing by `const&` or `&&` would be more efficient.",
+    "The `Employee::showDetails` and `Department::listAllStaff` methods are not marked `const`, even though they do not modify the state of their respective objects. This violates `const` correctness.",
+    "Use of `using namespace std;` in the global scope can lead to name collisions and is generally discouraged in header files or large projects for readability and maintainability.",
+    "Variable names like `nameOfEmployee`, `employeeIdNumber`, `employeeCollection`, `deptName`, and `showDetails` are slightly more verbose than conventional C++ naming, impacting readability slightly. `listAllStaff` instead of `listAllEmployees` is also inconsistent with the problem description."
+  ]
+}

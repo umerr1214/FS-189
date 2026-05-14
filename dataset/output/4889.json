@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function `isPalindrome(const std::string& str)` that takes a `std::string` and returns `true` if it's a palindrome (reads the same forwards and backwards, ignoring case and spaces), and `false` otherwise. Demonstrate with user input.",
+  "test_cases": [
+    { "input": "Racecar", "expected": "\"Racecar\" is a palindrome." },
+    { "input": "A man a plan a canal Panama", "expected": "\"A man a plan a canal Panama\" is a palindrome." },
+    { "input": "hello", "expected": "\"hello\" is NOT a palindrome." },
+    { "input": "No lemon, no melon", "expected": "\"No lemon, no melon\" is a palindrome." }
+  ],
+  "driver": "std::string input; std::getline(std::cin, input); if (isPalindrome(input)) { std::cout << \"\\\"\" << input << \"\\\" is a palindrome.\" << std::endl; } else { std::cout << \"\\\"\" << input << \"\\\" is NOT a palindrome.\" << std::endl; }",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": ["The `cleanString` function fails to ignore spaces. It converts characters to lowercase but includes spaces in the cleaned string, causing multi-word palindromes to be incorrectly identified as non-palindromes."]
+}

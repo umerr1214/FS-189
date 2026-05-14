@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a function `swapNumbers` that takes two integer pointers as arguments and swaps the values they point to.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Test 1: Normal swap\nBefore: x1 = 5, y1 = 10\nAfter: x1 = 10, y1 = 5\n\nTest 2: Negative numbers\nBefore: x2 = -3, y2 = -7\nAfter: x2 = -7, y2 = -3\n\nTest 3: Pointers to same location\nBefore: x3 = 42\nAfter: x3 = 42\n\nTest 4: Demonstrating overflow issue (x = INT_MAX, y = 1)\nBefore: x4 = 2147483647, y4 = 1\nAfter: x4 = 1, y4 = -2147483648\n\nTest 5: Demonstrating underflow issue (x = INT_MIN, y = -1)\nBefore: x5 = -2147483648, y5 = -1\nAfter: x5 = -1, y5 = 2147483647\n\nTest 6: Handling one nullptr\nBefore: x6 = 99\nWarning: Null pointer passed to swapNumbers. No swap performed.\nAfter: x6 = 99\n\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <limits> \n\nvoid swapNumbers(int* a, int* b) {\n    if (!a || !b) {\n        std::cerr << \"Warning: Null pointer passed to swapNumbers. No swap performed.\" << std::endl;\n        return;\n    }\n\n    *a = *a + *b; \n    *b = *a - *b;\n    *a = *a - *b;\n}\n\nint main() {\n    int x1 = 5, y1 = 10;\n    std::cout << \"Test 1: Normal swap\" << std::endl;\n    std::cout << \"Before: x1 = \" << x1 << \", y1 = \" << y1 << std::endl;\n    swapNumbers(&x1, &y1);\n    std::cout << \"After: x1 = \" << x1 << \", y1 = \" << y1 << std::endl << std::endl;\n\n    int x2 = -3, y2 = -7;\n    std::cout << \"Test 2: Negative numbers\" << std::endl;\n    std::cout << \"Before: x2 = \" << x2 << \", y2 = \" << y2 << std::endl;\n    swapNumbers(&x2, &y2);\n    std::cout << \"After: x2 = \" << x2 << \", y2 = \" << y2 << std::endl << std::endl;\n\n    int x3 = 42;\n    std::cout << \"Test 3: Pointers to same location\" << std::endl;\n    std::cout << \"Before: x3 = \" << x3 << std::endl;\n    swapNumbers(&x3, &x3);\n    std::cout << \"After: x3 = \" << x3 << std::endl << std::endl;\n\n    int x4 = std::numeric_limits<int>::max(); \n    int y4 = 1;\n    std::cout << \"Test 4: Demonstrating overflow issue (x = INT_MAX, y = 1)\" << std::endl;\n    std::cout << \"Before: x4 = \" << x4 << \", y4 = \" << y4 << std::endl;\n    swapNumbers(&x4, &y4);\n    std::cout << \"After: x4 = \" << x4 << \", y4 = \" << y4 << std::endl << std::endl;\n\n    int x5 = std::numeric_limits<int>::min(); \n    int y5 = -1;\n    std::cout << \"Test 5: Demonstrating underflow issue (x = INT_MIN, y = -1)\" << std::endl;\n    std::cout << \"Before: x5 = \" << x5 << \", y5 = \" << y5 << std::endl;\n    swapNumbers(&x5, &y5);\n    std::cout << \"After: x5 = \" << x5 << \", y5 = \" << y5 << std::endl << std::endl;\n\n    int x6 = 99;\n    std::cout << \"Test 6: Handling one nullptr\" << std::endl;\n    std::cout << \"Before: x6 = \" << x6 << std::endl;\n    swapNumbers(&x6, nullptr);\n    std::cout << \"After: x6 = \" << x6 << std::endl << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The function uses an arithmetic swap (`+` and `-`) which is generally less readable than the standard temporary variable approach.",
+    "The arithmetic swap can lead to integer overflow or underflow for extreme integer values (e.g., `INT_MAX` + 1 or `INT_MIN` - 1), resulting in incorrect swap behavior for those cases. This makes the function less robust for all possible integer values."
+  ]
+}

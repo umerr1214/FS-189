@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that reads an integer from the user and checks whether it is positive, negative, or zero.",
+  "test_cases": [
+    { "input": "5\n", "expected": "The number is positive.\n" },
+    { "input": "-3\n", "expected": "The number is negative.\n" },
+    { "input": "0\n", "expected": "The number is zero.\n" }
+  ],
+  "driver": "```cpp\n#include <iostream>\n\nint main() {\n    // This driver is designed for a program that would compile and run.\n    // For a Semantic Error (like modifying a const variable), the user's program\n    // will typically fail to compile, similar to a syntax error.\n    // A real testing system would report a compilation error.\n    std::cout << \"Compilation failed due to a semantic error in the user's code.\" << std::endl;\n    return 1;\n}\n```",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The 'const' variable 'num' is not initialized, and attempting to read input into a 'const' variable via 'std::cin' is a semantic violation."]
+}

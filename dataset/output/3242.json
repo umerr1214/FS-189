@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Design a `Wallet` class with a private `balance`. Implement `deposit(amount)` and `withdraw(amount)` public methods. Ensure `deposit` only accepts positive amounts and `withdraw` only proceeds if sufficient funds are available.",
+  "test_cases": [
+    { "input": "Wallet object initialized with starting balance of zero.\nInitial balance reported: 0\nTransaction successful: 200 units were added. Current balance is now: 200\nDeposit operation concluded.\nTransaction successful: 50 units were added. Current balance is now: 250\nDeposit operation concluded.\nTransaction failed: The amount to add must be a positive number. Received: 0\nDeposit operation concluded.\nTransaction failed: The amount to add must be a positive number. Received: -10\nDeposit operation concluded.\nTransaction successful: 75 units were removed. Current balance is now: 175\nWithdrawal operation concluded.\nTransaction failed: Insufficient funds available for withdrawal of 1000 units. Only 175 units are present.\nWithdrawal operation concluded.\nTransaction failed: The amount to withdraw must be a positive number. Received: 0\nWithdrawal operation concluded.\nTransaction failed: The amount to withdraw must be a positive number. Received: -5\nWithdrawal operation concluded.\nFinal balance reported: 175", "expected": "Initial balance: 0\nDeposited 200. New balance: 200\nDeposited 50. New balance: 250\nError: Deposit amount must be positive. Received: 0\nError: Deposit amount must be positive. Received: -10\nWithdrew 75. New balance: 175\nInsufficient funds to withdraw 1000. Current balance: 175\nError: Withdraw amount must be positive. Received: 0\nError: Withdraw amount must be positive. Received: -5\nFinal balance: 175" }
+  ],
+  "driver": "int main() {\n    WalletClassForFinancialManagement my_personal_wallet_instance;\n\n    std::cout << \"Initial balance reported: \" << my_personal_wallet_instance.retrieve_current_balance_value() << std::endl;\n\n    my_personal_wallet_instance.process_incoming_funds_transaction(200);\n    my_personal_wallet_instance.process_incoming_funds_transaction(50);\n    my_personal_wallet_instance.process_incoming_funds_transaction(0);\n    my_personal_wallet_instance.process_incoming_funds_transaction(-10);\n\n    my_personal_wallet_instance.process_outgoing_funds_transaction(75);\n    my_personal_wallet_instance.process_outgoing_funds_transaction(1000);\n    my_personal_wallet_instance.process_outgoing_funds_transaction(0);\n    my_personal_wallet_instance.process_outgoing_funds_transaction(-5);\n\n    std::cout << \"Final balance reported: \" << my_personal_wallet_instance.retrieve_current_balance_value() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Overly verbose class name (`WalletClassForFinancialManagement`) and variable names (`the_current_account_balance_value`, `my_personal_wallet_instance`).",
+    "Method names are excessively long and descriptive (`process_incoming_funds_transaction`, `process_outgoing_funds_transaction`, `retrieve_current_balance_value`).",
+    "Methods return `void` and print success/failure messages, which makes programmatic error handling by the caller difficult and less efficient than returning a `bool`.",
+    "Unnecessary debug output (e.g., in constructor, and 'Deposit/Withdrawal operation concluded') pollutes the output and adds overhead.",
+    "Redundant intermediate boolean variable (`is_amount_positive_check_result`) and explicit comparison to `true` (`is_amount_positive_check_result == true`).",
+    "Frequent use of `std::endl` instead of `\\n` can lead to performance issues due to flushing the output buffer on each call.",
+    "Excessive use of `this->` keyword, which is often implicit and can clutter code."
+  ]
+}

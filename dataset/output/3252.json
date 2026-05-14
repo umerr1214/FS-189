@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Playlist` class that contains a dynamically allocated array of `Song` objects. The `Song` class has `title` and `artist`. `Playlist` should manage adding and removing songs (demonstrating composition with dynamic memory).",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Original playlist:\nPlaylist (3 songs):\n1. \"Song A\" by Artist 1\n2. \"Song B\" by Artist 2\n3. \"Song C\" by Artist 3\n\nCopied playlist (anotherPlaylist):\nPlaylist (3 songs):\n1. \"Song A\" by Artist 1\n2. \"Song B\" by Artist 2\n3. \"Song C\" by Artist 3\n\nModifying original playlist...\nPlaylist (3 songs):\n1. \"Song A\" by Artist 1\n2. \"Song C\" by Artist 3\n3. \"Song D\" by Artist 4\n\nCopied playlist after original modified (will reflect changes due to shallow copy):\nPlaylist (3 songs):\n1. \"Song A\" by Artist 1\n2. \"Song B\" by Artist 2\n3. \"Song C\" by Artist 3\n\nCalling testCopy with original playlist (pass by value, invokes shallow copy constructor)...\nInside testCopy function:\nPlaylist (3 songs):\n1. \"Song A\" by Artist 1\n2. \"Song C\" by Artist 3\n3. \"Song D\" by Artist 4\n\nBack in main. Original playlist after testCopy:\nPlaylist (3 songs):\n1. \"Song A\" by Artist 1\n2. \"Song C\" by Artist 3\n3. \"Song D\" by Artist 4\n"
+    }
+  ],
+  "driver": "void testCopy(Playlist p) {\n    std::cout << \"\\nInside testCopy function:\\n\";\n    p.displayPlaylist();\n}\n\nint main() {\n    Playlist myPlaylist;\n\n    myPlaylist.addSong(Song(\"Song A\", \"Artist 1\"));\n    myPlaylist.addSong(Song(\"Song B\", \"Artist 2\"));\n    myPlaylist.addSong(Song(\"Song C\", \"Artist 3\"));\n\n    std::cout << \"Original playlist:\\n\";\n    myPlaylist.displayPlaylist();\n\n    Playlist anotherPlaylist = myPlaylist;\n    std::cout << \"\\nCopied playlist (anotherPlaylist):\\n\";\n    anotherPlaylist.displayPlaylist();\n\n    std::cout << \"\\nModifying original playlist...\\n\";\n    myPlaylist.addSong(Song(\"Song D\", \"Artist 4\"));\n    myPlaylist.removeSong(\"Song B\");\n    myPlaylist.displayPlaylist();\n\n    std::cout << \"\\nCopied playlist after original modified (will reflect changes due to shallow copy):\\n\";\n    anotherPlaylist.displayPlaylist();\n\n    std::cout << \"\\nCalling testCopy with original playlist (pass by value, invokes shallow copy constructor)...\\n\";\n    testCopy(myPlaylist);\n\n    std::cout << \"\\nBack in main. Original playlist after testCopy:\\n\";\n    myPlaylist.displayPlaylist();\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The `Playlist` class violates the Rule of Three/Five by not providing user-defined copy constructor or copy assignment operator. The default shallow copies lead to multiple `Playlist` objects pointing to and attempting to manage the same dynamically allocated `songs` array, resulting in double-free errors and undefined behavior when objects are destructed."]
+}

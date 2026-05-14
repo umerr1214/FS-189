@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Define a `Shape` base class with a `color` (string) attribute. Create a `Circle` derived class that adds a `radius` (double). Implement a constructor for `Circle` that initializes both `color` and `radius` by calling the base class constructor.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "--- Creating Circle object ---\nShape constructor called for color: Red\nCircle constructor called for radius: 10.5\nThis is a Circle with color: Red and radius: 10.5\n--- Creating another Circle object ---\nShape constructor called for color: Green\nCircle constructor called for radius: 3\nThis is a Circle with color: Green and radius: 3\n--- End of program ---\nShape destructor called for color: Green\nCircle destructor called for radius: 3\nShape destructor called for color: Red\nCircle destructor called for radius: 10.5\n"
+    }
+  ],
+  "driver": "    std::cout << \"--- Creating Circle object ---\" << std::endl;\n    Circle myCircle(\"Red\", 10.5);\n    myCircle.printInfo();\n\n    std::cout << \"--- Creating another Circle object ---\" << std::endl;\n    Circle anotherCircle(\"Green\", 3.0);\n    anotherCircle.printInfo();\n\n    std::cout << \"--- End of program ---\" << std::endl;\n\n    return 0;",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Constructors for `Shape` and `Circle` take `std::string` parameters by value (`std::string c`). This causes unnecessary copying of the string object when the constructors are called, which is inefficient.",
+    "Member variables (`color` in `Shape`, `radius` in `Circle`) are assigned in the constructor body (`this->color = c;`, `this->radius = r;`) instead of being initialized directly in the member initializer list. For `std::string`, this means default construction followed by assignment, which is less efficient than direct initialization. For `double`, it's less of an efficiency hit but is not idiomatic C++ and reduces readability for complex initialization patterns."
+  ]
+}

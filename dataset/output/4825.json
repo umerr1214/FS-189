@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that initializes a 3x3 integer matrix (2D array) with values. Then, calculate and print the sum of elements in each row separately.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Sum of Row 0: 6\nSum of Row 1: 15\nSum of Row 2: 24\n"
+    }
+  ],
+  "driver": "",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The code hardcodes loop bounds (3) for iterating through the std::vector<std::vector<int>> matrix instead of using dynamic methods like matrix.size() and matrix[i].size(). This makes the code fragile and non-robust; if the matrix's dimensions were to change during runtime (e.g., through resizing), the hardcoded bounds would lead to incorrect behavior or out-of-bounds access."
+  ]
+}

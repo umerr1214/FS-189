@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function `calculateFactorial` that takes an integer `n` as input and returns its factorial. The main program should prompt the user for a number and display its factorial using this function. Handle negative inputs appropriately.",
+  "test_cases": [
+    { "input": "0", "expected": "1" },
+    { "input": "5", "expected": "120" },
+    { "input": "-3", "expected": "-1" },
+    { "input": "12", "expected": "479001600" },
+    { "input": "13", "expected": "-1241513984" }
+  ],
+  "driver": "int main() { std::string line; while (std::getline(std::cin, line)) { std::stringstream ss(line); int n; ss >> n; int result = calculateFactorial(n); std::cout << result << std::endl; } return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `calculateFactorial` function uses `int` as the return type and for intermediate calculations. This can lead to integer overflow for inputs greater than 12 (e.g., 13! is too large for a 32-bit signed integer), producing incorrect results without explicit error handling for overflow."
+  ]
+}

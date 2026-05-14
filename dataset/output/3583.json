@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a program that checks if a user-entered integer is positive, negative, or zero using if-else if-else statements.",
+  "test_cases": [
+    { "input": "10", "expected": "The number is positive." },
+    { "input": "-5", "expected": "The number is negative." },
+    { "input": "0", "expected": "The number is zero." }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// This function encapsulates the core logic of the program being tested.\n// It simulates the output that the main program would produce for a given integer input.\n// Note: This driver cannot simulate the infinite loop for bad input; it only tests valid integer inputs.\n// The robustness issue for invalid input is described in the 'errors' field.\nstd::string run_program_logic(int num_input) {\n    std::stringstream ss_out;\n    if (num_input > 0) {\n        ss_out << \"The number is positive.\";\n    } else if (num_input < 0) {\n        ss_out << \"The number is negative.\";\n    } else {\n        ss_out << \"The number is zero.\";\n    }\n    return ss_out.str();\n}\n\nint main() {\n    std::vector<std::pair<int, std::string>> test_cases_data = {\n        {10, \"The number is positive.\"},\n        {-5, \"The number is negative.\"},\n        {0, \"The number is zero.\"}\n    };\n\n    for (const auto& tc : test_cases_data) {\n        std::string actual_output = run_program_logic(tc.first);\n        if (actual_output == tc.second) {\n            // Test passed\n        } else {\n            std::cerr << \"Test failed for input: \" << tc.first\n                      << \". Expected: \\\"\" << tc.second << \"\\\", Got: \\\"\" << actual_output << \"\\\"\" << std::endl;\n            return 1; // Indicate failure\n        }\n    }\n    return 0; // Indicate success\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["Program enters an infinite loop if a non-integer is entered as input, due to not clearing the input stream's error state and buffer. This prevents further valid input and requires manual termination."]
+}

@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Implement a program that reads an integer score (0-100) from the user and prints 'Pass' if the score is 60 or above, otherwise prints 'Fail'.",
+  "test_cases": [
+    { "input": "75", "expected": "Pass" },
+    { "input": "50", "expected": "Fail" },
+    { "input": "60", "expected": "Pass" },
+    { "input": "59", "expected": "Fail" },
+    { "input": "100", "expected": "Pass" },
+    { "input": "0", "expected": "Fail" },
+    { "input": "105", "expected": "Pass" },
+    { "input": "-5", "expected": "Fail" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <streambuf>\n\nstd::string run_program_logic(const std::string& input_str) {\n    std::stringstream ss_input(input_str);\n    std::stringstream ss_output;\n    \n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::cin.rdbuf(ss_input.rdbuf());\n    std::cout.rdbuf(ss_output.rdbuf());\n    \n    int score;\n    // The original program prints \"Enter score: \", but for automated testing\n    // we just need to simulate the input reading.\n    std::cin >> score;\n\n    if (score >= 60) {\n        std::cout << \"Pass\" << std::endl;\n    } else {\n        std::cout << \"Fail\" << std::endl;\n    }\n    \n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n    \n    std::string output = ss_output.str();\n    if (!output.empty() && output.back() == '\\n') {\n        output.pop_back();\n    }\n    if (!output.empty() && output.back() == '\\r') {\n        output.pop_back();\n    }\n    return output;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Program does not validate if the input score is within the specified range (0-100). It processes out-of-range inputs without error, potentially giving misleading results."
+  ]
+}

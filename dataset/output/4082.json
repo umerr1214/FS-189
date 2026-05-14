@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Write a function `isPalindrome(int num)` that takes an integer as input and returns `true` if the number is a palindrome (reads the same forwards and backwards), and `false` otherwise. Demonstrate its usage by asking the user for a number and printing the result.",
+  "test_cases": [
+    { "input": "121", "expected": "121 is a palindrome." },
+    { "input": "123", "expected": "123 is not a palindrome." },
+    { "input": "0", "expected": "0 is a palindrome." },
+    { "input": "-121", "expected": "-121 is not a palindrome." },
+    { "input": "10", "expected": "10 is not a palindrome." },
+    { "input": "1001", "expected": "1001 is a palindrome." }
+  ],
+  "driver": "std::string get_output(int v) {\n    if (isPalindrome(v)) {\n        return std::to_string(v) + \" is a palindrome.\";\n    } else {\n        return std::to_string(v) + \" is not a palindrome.\";\n    }\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The function converts the integer to a string to check for palindrome property, which is less efficient than pure integer arithmetic for this problem.",
+    "Variable names ('n', 's', 'rs', 'v') are short and not descriptive, reducing code readability."
+  ]
+}

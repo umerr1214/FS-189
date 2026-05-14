@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a `Car` class that exhibits composition with an `Engine` class. The `Engine` should be created and destroyed along with the `Car` object. Demonstrate this lifetime management.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Compilation Error: 'pubic' is not a keyword or identifier."
+    }
+  ],
+  "driver": "int main() {\n    Car myCar;\n    return 0;\n}",
+  "code_quality": 2,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Typo in access specifier: 'pubic' instead of 'public' in Car class definition."
+  ]
+}

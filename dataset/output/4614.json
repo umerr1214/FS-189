@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function template `T findMin(T val1, T val2)` that accepts two values of any data type and returns the smaller of the two. Demonstrate its usage with at least two different data types (e.g., `int` and `double`) in `main`.",
+  "test_cases": [
+    { "input": "10 20 (int)", "expected": "10" },
+    { "input": "5.5 3.14 (double)", "expected": "3.14" },
+    { "input": "\"apple\" \"banana\" (const char*)", "expected": "The result is unpredictable as `const char*` comparison compares memory addresses, not string content." },
+    { "input": "\"zebra\" \"apple\" (const char*)", "expected": "The result is unpredictable as `const char*` comparison compares memory addresses, not string content." }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\n// The `findMin` template from the user's code is expected to be available here.\n\nint main() {\n    // Test with int\n    std::cout << findMin(10, 20) << std::endl;\n    std::cout << findMin(50, 30) << std::endl;\n\n    // Test with double\n    std::cout << findMin(5.5, 3.14) << std::endl;\n    std::cout << findMin(100.1, 100.2) << std::endl;\n\n    // Test with char*\n    // NOTE: This will compare memory addresses, not string content.\n    const char* s1 = \"apple\";\n    const char* s2 = \"banana\";\n    std::cout << findMin(s1, s2) << std::endl;\n\n    const char* s3 = \"zebra\";\n    const char* s4 = \"apple\";\n    std::cout << findMin(s3, s4) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The `findMin` template is correctly defined, but its usage with `const char*` (C-style string literals) in `main` demonstrates a semantic misunderstanding. The `operator<` for `const char*` compares the memory addresses of the string literals, not their lexicographical content. This means the output for string literals will be unexpected and incorrect if the intent was to compare strings based on their alphabetical order. To achieve lexicographical comparison, `std::string` should be used or `strcmp` for C-style strings."]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a function `doubleValue` that takes an integer by reference and modifies its value by multiplying it by 2.",
+  "test_cases": [
+    { "input": "5", "expected": "10" },
+    { "input": "-3", "expected": "-6" },
+    { "input": "0", "expected": "0" },
+    { "input": "1000000000", "expected": "2000000000" },
+    { "input": "1500000000", "expected": "-1294967296" },
+    { "input": "-1500000000", "expected": "1294967296" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <limits>\n\nvoid doubleValue(int& val);\n\nvoid run_test(int input_val, int expected_val, const std::string& description) {\n    int current_val = input_val;\n    doubleValue(current_val);\n    std::cout << \"Test Case: \" << description << \"\\n\";\n    std::cout << \"  Initial Value: \" << input_val << \"\\n\";\n    std::cout << \"  Expected Value: \" << expected_val << \"\\n\";\n    std::cout << \"  Actual Value after doubleValue: \" << current_val << \"\\n\";\n    if (current_val == expected_val) {\n        std::cout << \"  Result: PASSED\\n\\n\";\n    } else {\n        std::cout << \"  Result: FAILED (Robustness issue - potential overflow/underflow)\\n\\n\";\n    }\n}\n\nint main() {\n    run_test(5, 10, \"Positive value\");\n    run_test(-3, -6, \"Negative value\");\n    run_test(0, 0, \"Zero value\");\n    run_test(1000000000, 2000000000, \"Large positive value (no overflow)\");\n    run_test(1500000000, -1294967296, \"Value causing integer overflow (1.5 billion * 2)\");\n    run_test(-1500000000, 1294967296, \"Value causing integer underflow (-1.5 billion * 2)\");\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The function does not explicitly handle integer overflow or underflow. Multiplying an `int` by 2 that results in a value exceeding `INT_MAX` or falling below `INT_MIN` leads to undefined behavior according to the C++ standard. On most systems using two's complement, this results in a wrap-around, producing an incorrect value without warning. A robust solution would check for potential overflow/underflow or use a larger data type like `long long` before the operation."]
+}

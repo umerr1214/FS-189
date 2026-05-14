@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program that initializes a 3x3 integer matrix (2D array) with values. Then, calculate and print the sum of elements in each row separately.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Sum of Row 0: 6\nSum of Row 1: 15\nSum of Row 2: 24\n"
+    }
+  ],
+  "driver": "",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The code heavily relies on 'goto' statements for loop control, which significantly reduces readability, makes the control flow hard to follow, and is generally considered bad practice in modern C++. Variable names (m, r, c, s) are short and uninformative, hindering understanding. Using 'std::endl' inside the loop can be less efficient than using '\\n' due to forced buffer flushes, especially in performance-critical applications."
+  ]
+}

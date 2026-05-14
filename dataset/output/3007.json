@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a `Resource` class that simulates managing a dynamic integer array. The constructor should allocate memory for a specified size, and the destructor should deallocate it. Include methods to `fillArray()` and `displayArray()`. Demonstrate its lifecycle to ensure proper memory management.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "Starting program...\nResource created with size 5. Memory allocated at <address_r1>\nArray filled with sequence.\nArray contents (5 elements): [0, 1, 2, 3, 4]\n\n--- Demonstrating Robustness Issue (Shallow Copy) ---\nResource created with size 3. Memory allocated at <address_original>\nArray filled with sequence.\nArray contents (3 elements): [0, 1, 2]\nCreating a copy 'copied' from 'original'...\nArray contents (3 elements): [0, 1, 2]\nModifying 'copied' array...\nArray contents (3 elements): [99, 1, 2]\nArray contents (3 elements): [99, 1, 2]\nExiting demonstrateResourceCopy function scope.\nResource of size 3 at <address_copied> being destroyed. Memory deallocated.\nResource of size 3 at <address_original> being destroyed. Memory deallocated.\nProgram finished. Expecting potential crash due to double-free.\nResource of size 5 at <address_r1> being destroyed. Memory deallocated."
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"Starting program...\" << std::endl;\n\n    Resource r1(5);\n    r1.fillArray();\n    r1.displayArray();\n\n    demonstrateResourceCopy();\n\n    std::cout << \"Program finished. Expecting potential crash due to double-free.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Resource` class manages a raw pointer (`int* m_array`) but lacks a user-defined copy constructor and copy assignment operator. The compiler-generated default versions perform a shallow copy.",
+    "Shallow copying leads to multiple `Resource` objects owning and managing the same dynamically allocated memory. When these objects are destroyed, their destructors attempt to `delete[]` the same memory multiple times, resulting in a double-free error and undefined behavior (likely a crash)."
+  ]
+}

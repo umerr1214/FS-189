@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design an `Employee` class with `name` and `id`. Create a `Department` class which `contains` a collection of `Employee` objects (using aggregation, e.g., a `std::vector<Employee>`). Implement methods in `Department` to `addEmployee(Employee emp)` and `displayAllEmployees()`. Demonstrate adding multiple employees to a department and displaying their details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Department Employees:\nName: Alice, ID: 101\nName: Bob, ID: 102\nName: Charlie, ID: 103\nError: vector::_M_range_check: __n (3) >= this->size() (3) - Attempted to access employee at index 3\nProgram terminated due to unhandled exception: vector::_M_range_check: __n (3) >= this->size() (3)\n"
+    }
+  ],
+  "driver": "int main() {\n    Department hrDepartment;\n\n    Employee emp1(\"Alice\", 101);\n    Employee emp2(\"Bob\", 102);\n    Employee emp3(\"Charlie\", 103);\n\n    hrDepartment.addEmployee(emp1);\n    hrDepartment.addEmployee(emp2);\n    hrDepartment.addEmployee(emp3);\n\n    try {\n        hrDepartment.displayAllEmployees();\n    } catch (const std::out_of_range& e) {\n        std::cerr << \"Program terminated due to unhandled exception: \" << e.what() << std::endl;\n        return 1;\n    }\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Potential runtime crash due to out-of-bounds access in `displayAllEmployees()`. The loop condition `i <= employees.size()` attempts to access `employees.at(employees.size())`, which is an invalid index, leading to a `std::out_of_range` exception and program termination.",
+    "The `displayAllEmployees()` method does not gracefully handle the `std::out_of_range` exception for demonstration purposes, causing the program to crash, which is a robustness failure."
+  ]
+}

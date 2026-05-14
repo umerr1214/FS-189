@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Declare an array of 4 integers. Initialize it with some values. Then, use a pointer to the first element to iterate through the array and print each element using pointer arithmetic.",
+  "test_cases": [
+    { "input": "", "expected": "10\n20\n30\n40\n[Remaining output will be garbage values or program will crash due to undefined behavior from out-of-bounds memory access.]" }
+  ],
+  "driver": "",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The loop condition `i < sizeof(arr)` is semantically incorrect. `sizeof(arr)` returns the size of the array in bytes (e.g., 16 for 4 integers), not the number of elements. This causes the loop to iterate far beyond the array's bounds, leading to out-of-bounds memory access and undefined behavior."
+  ]
+}

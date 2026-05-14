@@ -1,0 +1,40 @@
+{
+  "language": "c++",
+  "question": "Create a simple calculator program that takes two numbers and an operator (+, -, *, /) as input from the user. Use a switch statement to perform the chosen operation and display the result. Handle division by zero.",
+  "test_cases": [
+    {
+      "input": "10\n+\n5\n",
+      "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 15\n"
+    },
+    {
+      "input": "20\n-\n7\n",
+      "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 13\n"
+    },
+    {
+      "input": "6\n*\n8\n",
+      "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 48\n"
+    },
+    {
+      "input": "100\n/\n4\n",
+      "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Result: 25\n"
+    },
+    {
+      "input": "5\n/\n0\n",
+      "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Error: Division by zero is not allowed.\n"
+    },
+    {
+      "input": "10\n^\n3\n",
+      "expected": "Enter first number: Enter operator (+, -, *, /): Enter second number: Error: Invalid operator.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <streambuf>\n\n// The main logic of the calculator program is expected to be in a function named 'run_calculator'\n// which takes an input stream and an output stream.\n// void run_calculator(std::istream& input_stream, std::ostream& output_stream);\n\n// This driver will call the run_calculator function with redirected streams for testing.\nstd::string run_test_case(const std::string& input_str) {\n    std::istringstream iss(input_str);\n    std::ostringstream oss;\n\n    // Save original cin/cout buffers\n    std::streambuf* old_cin_buf = std::cin.rdbuf();\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n\n    // Redirect cin to iss and cout to oss\n    std::cin.rdbuf(iss.rdbuf());\n    std::cout.rdbuf(oss.rdbuf());\n\n    // Call the calculator logic\n    run_calculator(std::cin, std::cout);\n\n    // Restore original cin/cout buffers\n    std::cin.rdbuf(old_cin_buf);\n    std::cout.rdbuf(old_cout_buf);\n\n    return oss.str();\n}\n",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses extremely short and non-descriptive variable names (n1, n2, op, r, v, i, o) which significantly reduce code readability.",
+    "Lacks consistent formatting and indentation, making the code difficult to follow.",
+    "No comments are provided to explain the logic, which could be helpful even for a simple program.",
+    "Although functionally correct, the code's poor presentation makes it harder to maintain and understand."
+  ]
+}

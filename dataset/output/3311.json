@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Reverse a given integer number and print the reversed number. For example, if the input is 12345, the output should be 54321.",
+  "test_cases": [
+    { "input": "12345", "expected": "54321" },
+    { "input": "987", "expected": "789" },
+    { "input": "100", "expected": "1" },
+    { "input": "0", "expected": "0" }
+  ],
+  "driver": "#include <iostream>\n\n// Assuming the student's solution provides a function like:\n// int reverseNumber(int n);\n\nextern int reverseNumber(int n);\n\nint main() {\n    int num;\n    while (std::cin >> num) {\n        std::cout << reverseNumber(num) << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The function 'reverseNumber' implements the logic to calculate the sum of digits of the input number, instead of reversing it.",
+    "For example, for input 12345, the function will return 15 (1+2+3+4+5) instead of the expected 54321."
+  ]
+}

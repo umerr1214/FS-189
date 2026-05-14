@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter a word (using `std::string`), then reverses the string and prints the reversed word.",
+  "test_cases": [
+    { "input": "example", "expected": "elpmaxe" },
+    { "input": "test", "expected": "tset" },
+    { "input": "racecar", "expected": "racecar" },
+    { "input": "a", "expected": "a" },
+    { "input": "", "expected": "" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <utility>\n\n// Assume getReversedString is provided by the user's code\nstd::string getReversedString(std::string input_word);\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> tests = {\n        {\"example\", \"elpmaxe\"},\n        {\"test\", \"tset\"},\n        {\"racecar\", \"racecar\"},\n        {\"a\", \"a\"},\n        {\"\", \"\"}\n    };\n\n    for (const auto& test : tests) {\n        std::string input = test.first;\n        std::string expected_output = test.second;\n        std::string actual_output = getReversedString(input);\n        \n        if (actual_output == expected_output) {\n            std::cout << \"Test passed for input \\\"\" << input << \"\\\"\" << std::endl;\n        } else {\n            std::cout << \"Test FAILED for input \\\"\" << input << \"\\\". Expected: \\\"\"\n                      << expected_output << \"\\\", Got: \\\"\" << actual_output << \"\\\"\" << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

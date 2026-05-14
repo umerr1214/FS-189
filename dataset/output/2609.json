@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Modify the `Shape` hierarchy (from previous questions) to make `Shape` an abstract base class. This means `Shape` should have a pure virtual function `calculateArea()`. Demonstrate that `Shape` objects cannot be instantiated directly and that any derived concrete class (`Circle`, `Rectangle`) must provide an implementation for `calculateArea()`.",
+  "test_cases": [
+    { "input": "Circle radius=5.0, Rectangle width=4.0, height=6.0", "expected": "--- Shape Areas ---\nArea: 78.5398\nArea: 24.0000\n" }
+  ],
+  "driver": "int main() {\n    Circle circle(5.0);\n    Rectangle rectangle(4.0, 6.0);\n\n    std::vector<Shape*> shapes;\n    shapes.push_back(&circle);\n    shapes.push_back(&rectangle);\n\n    std::cout << std::fixed << std::setprecision(4);\n    std::cout << \"--- Shape Areas ---\" << std::endl;\n    for (const auto& shape : shapes) {\n        std::cout << \"Area: \" << shape->calculateArea() << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The calculateArea() method for the Circle class incorrectly calculates the circumference (2 * pi * r) instead of the area (pi * r * r)."
+  ]
+}

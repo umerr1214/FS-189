@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a function `double calculate_average(const int arr[], int size)` that takes a 1D integer array and its size, then calculates and returns the average of its elements.",
+  "test_cases": [
+    { "input": "3\n10 20 30", "expected": "20.000000" },
+    { "input": "5\n1 2 3 4 5", "expected": "3.000000" },
+    { "input": "1\n100", "expected": "100.000000" },
+    { "input": "0\n", "expected": "0.000000" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream>\n#include <iomanip>\n#include <numeric>\n\n// The calculate_average function will be inserted here\n\nint main() {\n    std::string line;\n    std::getline(std::cin, line);\n    int size = std::stoi(line);\n\n    std::vector<int> arr_vec;\n    if (size > 0) {\n        std::getline(std::cin, line);\n        std::stringstream ss(line);\n        int val;\n        for (int i = 0; i < size; ++i) {\n            ss >> val;\n            arr_vec.push_back(val);\n        }\n    }\n\n    const int* arr_ptr = arr_vec.empty() ? nullptr : arr_vec.data();\n\n    double result = calculate_average(arr_ptr, size);\n\n    std::cout << std::fixed << std::setprecision(6) << result << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

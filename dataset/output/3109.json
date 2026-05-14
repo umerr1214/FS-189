@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a `DataStore` class with a private integer member `secretValue`. Provide a public `getSecretValue()` method to access it and a public `setSecretValue(int value)` method to modify it. Demonstrate that `secretValue` cannot be accessed directly from outside the class, enforcing encapsulation.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial secret value: 0\nSecret value after setting 50: 50\nSecret value after setting -10 (robustness issue): -10\nAttempting direct access to secretValue (this line would cause a compile error): Error: 'int DataStore::secretValue' is private\n"
+    }
+  ],
+  "driver": "int main() {\n    DataStore ds;\n    std::cout << \"Initial secret value: \" << ds.getSecretValue() << '\\n';\n    ds.setSecretValue(50);\n    std::cout << \"Secret value after setting 50: \" << ds.getSecretValue() << '\\n';\n    ds.setSecretValue(-10);\n    std::cout << \"Secret value after setting -10 (robustness issue): \" << ds.getSecretValue() << '\\n';\n    std::cout << \"Attempting direct access to secretValue (this line would cause a compile error): Error: 'int DataStore::secretValue' is private\" << '\\n';\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `setSecretValue` method lacks input validation. If `secretValue` has implicit constraints (e.g., non-negative, within a specific range), allowing arbitrary values makes the class less robust against incorrect usage and can lead to an inconsistent or undesirable internal state."
+  ]
+}

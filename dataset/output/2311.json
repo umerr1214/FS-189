@@ -1,0 +1,34 @@
+{
+  "language": "c++",
+  "question": "For a `Product` class with `id` (int), `name` (string), and `price` (double), implement three constructors: one that takes only `id`, one that takes `id` and `name`, and one that takes `id`, `name`, and `price`. Use constructor chaining where appropriate.",
+  "test_cases": [
+    {
+      "input": "Construct Product with ID 101.",
+      "expected": "ID: 101, Name: [N/A], Price: 0.00\n"
+    },
+    {
+      "input": "Construct Product with ID 102 and name 'Laptop'.",
+      "expected": "ID: 102, Name: Laptop, Price: 0.00\n"
+    },
+    {
+      "input": "Construct Product with ID 103, name 'Mouse', and price 25.50.",
+      "expected": "ID: 103, Name: Mouse, Price: 25.50\n"
+    },
+    {
+      "input": "Construct Product with negative ID -50, name 'Invalid Item', and negative price -10.00 (testing robustness).",
+      "expected": "ID: -50, Name: Invalid Item, Price: -10.00\n"
+    },
+    {
+      "input": "Modify an existing Product's name and price (ID 200).",
+      "expected": "ID: 200, Name: Custom Product, Price: 99.99\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <iomanip> // For setprecision\n\nclass Product {\npublic:\n    int id;\n    std::string name;\n    double price;\n\n    // Constructor 1: Takes only id\n    // Does not chain, explicitly initializes name and price.\n    // Lacks validation for id (e.g., negative id is allowed).\n    Product(int id_val) : id(id_val) {\n        this->name = \"\";\n        this->price = 0.0;\n    }\n\n    // Constructor 2: Takes id and name\n    // Does not chain, explicitly initializes price.\n    // Lacks validation for id.\n    Product(int id_val, std::string name_val) : id(id_val), name(name_val) {\n        this->price = 0.0;\n    }\n\n    // Constructor 3: Takes id, name, and price\n    // Lacks validation for id_val or price_val (e.g., negative price is allowed).\n    Product(int id_val, std::string name_val, double price_val)\n        : id(id_val), name(name_val), price(price_val) {\n        // No input validation for price or id, which can lead to illogical product data\n    }\n\n    void display() const {\n        std::cout << \"ID: \" << id\n                  << \", Name: \" << (name.empty() ? \"[N/A]\" : name)\n                  << \", Price: \" << std::fixed << std::setprecision(2) << price\n                  << std::endl;\n    }\n};\n\nint main() {\n    std::cout << \"Testing Product constructors and potential robustness issues:\\n\";\n\n    Product p1(101); // Only ID\n    std::cout << \"Product 1: \";\n    p1.display();\n\n    Product p2(102, \"Laptop\"); // ID and Name\n    std::cout << \"Product 2: \";\n    p2.display();\n\n    Product p3(103, \"Mouse\", 25.50); // ID, Name, and Price\n    std::cout << \"Product 3: \";\n    p3.display();\n\n    // Demonstrate robustness issue: Negative ID and Price are accepted without validation\n    Product p4_robust(-50, \"Invalid Item\", -10.00);\n    std::cout << \"Product 4 (Robustness Test - Negative Values): \";\n    p4_robust.display(); // Output shows negative ID and price, which might be an unintended state\n\n    Product p5_mod(200); // Only ID, then modify\n    p5_mod.name = \"Custom Product\";\n    p5_mod.price = 99.99;\n    std::cout << \"Product 5 (Modified): \";\n    p5_mod.display();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Missing input validation for 'id' and 'price' (e.g., negative values are accepted without checks, leading to potentially illogical product data).",
+    "Constructors do not consistently use chaining, leading to some redundant explicit initializations."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a `MyString` class that mimics `std::string` by managing a dynamically allocated C-style character array. Provide a deep copy constructor for `MyString`.",
+  "test_cases": [
+    { "input": "", "expected": "Original string (s1): Hello, World!\nCopied string (s2): Hello, World!\nEmpty string (s3): (empty)\n" }
+  ],
+  "driver": "int main() {\n    MyString s1(\"Hello, World!\");\n    MyString s2 = s1;\n\n    std::cout << \"Original string (s1): \";\n    s1.print();\n    std::cout << std::endl;\n\n    std::cout << \"Copied string (s2): \";\n    s2.print();\n    std::cout << std::endl;\n\n    MyString s3;\n    std::cout << \"Empty string (s3): \";\n    s3.print();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition for MyString."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create an `Employee` class with `name` and `id`. Design a `Team` class that manages an array of `Employee` pointers to represent team members. Demonstrate adding employees to the team without the team owning their memory.",
+  "test_cases": [
+    {
+      "input": "Employee emp1(\"Alice\", 101);\nEmployee emp2(\"Bob\", 102);\nEmployee emp3(\"Charlie\", 103);\n\nTeam devTeam(\"Development\");\ndevTeam.addEmployee(&emp1);\ndevTeam.addEmployee(&emp2);\ndevTeam.addEmployee(&emp3);\ndevTeam.displayTeam();",
+      "expected": "--- Development Team ---\nEmployee: Alice (ID: 101)\nEmployee: Bob (ID: 102)\nEmployee: Charlie (ID: 103)\n"
+    }
+  ],
+  "driver": "void run_test_cases() {\n    Employee emp1(\"Alice\", 101);\n    Employee emp2(\"Bob\", 102);\n    Employee emp3(\"Charlie\", 103);\n\n    Team devTeam(\"Development\");\n    devTeam.addEmployee(&emp1);\n    devTeam.addEmployee(&emp2);\n    devTeam.addEmployee(&emp3);\n    devTeam.addEmployee(&emp1);\n\n    std::cout << \"--- Development Team ---\\n\";\n    devTeam.displayTeam();\n    std::cout << \"\\n\";\n}\n\nint main() {\n    run_test_cases();\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after class definition for `Employee`.",
+    "Use of undeclared identifier `std::strin` (typo for `std::string`)."
+  ]
+}

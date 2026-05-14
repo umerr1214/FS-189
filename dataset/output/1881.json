@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `StudentGrade` class with private attributes `studentId` (int) and `score` (double). Use a constructor initialization list to initialize these members. Provide a public method `displayGrade()`.",
+  "test_cases": [
+    { "input": "No direct input, constructor parameters are used.", "expected": "Displaying student1's grade:\nStudent ID: 301\nScore: 85.5\n\nDisplaying student2's grade:\nStudent ID: 302\nScore: 90" }
+  ],
+  "driver": "StudentGrade student1(301, 85.5);\nstd::cout << \"Displaying student1's grade:\\n\";\nstudent1.displayGrade();\nstd::cout << '\\n';\nStudentGrade student2(302, 90.0);\nstd::cout << \"Displaying student2's grade:\\n\";\nstudent2.displayGrade();",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

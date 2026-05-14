@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Define a `struct Student` with members: an integer `id`, a `std::string name`, and a `double gpa`. Write a C++ program that declares a `Student` variable, prompts the user to enter its details, and then displays them.",
+  "test_cases": [
+    {
+      "input": "101\nAlice Smith\n3.85\n",
+      "expected": "Enter student ID: Enter student name (e.g., John Doe): Enter student GPA: (Input error for GPA detected. Setting GPA to 0.0)\n\n--- Student Details ---\nID: 101\nName: Alice\nGPA: 0.0\n"
+    }
+  ],
+  "driver": "g++ -o program program.cpp && ./program",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The program uses `std::cin >> student.name;` to read the student's name. This operator only reads a single word (token) from the input stream. If the user enters a multi-word name (e.g., 'Alice Smith'), only 'Alice' is stored in `student.name`. The remaining part (' Smith') is left in the input buffer. Subsequently, when `std::cin >> student.gpa;` is called, it attempts to read 'Smith' into a `double` variable, which causes an input failure (semantic misinterpretation of input stream behavior). The program then sets GPA to 0.0 due to error handling."
+  ]
+}

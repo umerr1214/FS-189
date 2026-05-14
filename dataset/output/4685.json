@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a function template `findMax` that can compare and return the larger of two values of any data type (e.g., int, double, char).",
+  "test_cases": [
+    { "input": "int a = 10, b = 20;", "expected": "20" },
+    { "input": "double x = 5.5, y = 15.3;", "expected": "15.3" },
+    { "input": "char c = 'a', d = 'z';", "expected": "z" },
+    { "input": "std::string s1 = \"apple\", s2 = \"banana\";", "expected": "banana" }
+  ],
+  "driver": "int i1 = 10, i2 = 20; double d1 = 5.5, d2 = 15.3; char c1 = 'a', c2 = 'z'; std::string s1 = \"apple\", s2 = \"banana\";\nstd::cout << findMax(i1, i2) << std::endl;\nstd::cout << findMax(d1, d2) << std::endl;\nstd::cout << findMax(c1, c2) << std::endl;\nstd::cout << findMax(s1, s2) << std::endl;",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `findMax` function template contains a logical error: it incorrectly returns the smaller of the two input values instead of the larger one, due to an inverted comparison logic."
+  ]
+}

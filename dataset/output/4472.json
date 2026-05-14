@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter the radius of a circle, then calculates and prints its area. Use a constant for Pi (e.g., 3.14159).",
+  "test_cases": [
+    { "input": "5\n", "expected": "Enter radius: Result: 78.54\n" },
+    { "input": "10.5\n", "expected": "Enter radius: Result: 346.36\n" },
+    { "input": "0\n", "expected": "Enter radius: Result: 0.00\n" }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses uninformative and abbreviated variable names (e.g., 'p' for PI, 'r' for radius, 'a' for area).",
+    "Lacks comments to explain purpose or logic.",
+    "The prompt message is abbreviated and less user-friendly.",
+    "Uses a magic number (2) for `std::setprecision` without clear context or a named constant, affecting readability and maintainability."
+  ]
+}

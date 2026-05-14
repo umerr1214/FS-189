@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that reads an integer from the user and checks whether it is positive, negative, or zero.",
+  "test_cases": [
+    { "input": "10", "expected": "Please enter an integer number: The number is definitely positive.\n" },
+    { "input": "-7", "expected": "Please enter an integer number: The number is definitely negative.\n" },
+    { "input": "0", "expected": "Please enter an integer number: The number is exactly zero.\n" },
+    { "input": "200", "expected": "Please enter an integer number: The number is definitely positive.\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n\n// Assume the user's main function is renamed to `user_main` for testing purposes.\nextern int user_main();\n\nstd::string run_test(const std::string& input) {\n    std::stringstream input_stream(input);\n    std::stringstream output_stream;\n\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::cin.rdbuf(input_stream.rdbuf());\n    std::cout.rdbuf(output_stream.rdbuf());\n\n    user_main();\n\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n\n    return output_stream.str();\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["The code uses an unnecessary boolean flag (is_classified) and overly nested if-else statements, making it less readable and slightly less efficient than a simple if-else-if chain. The check for 'inputNumber == 0' within the final else branch is redundant."]
+}

@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `Temperature` class with a private `celsius` (double) member. Provide a public `setCelsius()` method that validates input (e.g., must be >= absolute zero). Implement public `getFahrenheit()` and `getKelvin()` methods to convert and return the temperature.",
+  "test_cases": [
+    { "input": "Temperature t1;", "expected": "Default Temperature (uninitialized celsius):\n  Fahrenheit: <garbage_value>F\n  Kelvin: <garbage_value>K" },
+    { "input": "Temperature t2(25.0);", "expected": "Temperature set to 25.0C:\n  Fahrenheit: 77.00F (Expected: 77.0F)\n  Kelvin: 298.15K (Expected: 298.15K)" },
+    { "input": "Temperature t3(-300.0);", "expected": "Temperature set to -300.0C (invalid input):\n  Fahrenheit: -459.67F (Expected: -459.67F)\n  Kelvin: 0.00K (Expected: 0.0K)" }
+  ],
+  "driver": "#include <iostream>\n#include <iomanip>\n\n// Assuming Temperature class is defined with the semantic error\n\nint main() {\n    std::cout << std::fixed << std::setprecision(2);\n\n    Temperature t1;\n    std::cout << \"Default Temperature (uninitialized celsius):\\n\";\n    std::cout << \"  Fahrenheit: \" << t1.getFahrenheit() << \"F\\n\";\n    std::cout << \"  Kelvin: \" << t1.getKelvin() << \"K\\n\";\n\n    Temperature t2(25.0);\n    std::cout << \"\\nTemperature set to 25.0C:\\n\";\n    std::cout << \"  Fahrenheit: \" << t2.getFahrenheit() << \"F (Expected: 77.00F)\\n\";\n    std::cout << \"  Kelvin: \" << t2.getKelvin() << \"K (Expected: 298.15K)\\n\";\n\n    Temperature t3(-300.0);\n    std::cout << \"\\nTemperature set to -300.0C (invalid input):\\n\";\n    std::cout << \"  Fahrenheit: \" << t3.getFahrenheit() << \"F (Expected: -459.67F)\\n\";\n    std::cout << \"  Kelvin: \" << t3.getKelvin() << \"K (Expected: 0.00K)\\n\";\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The default constructor `Temperature()` fails to initialize the `celsius` member, leading to undefined behavior when `getFahrenheit()` or `getKelvin()` are called on objects created using this constructor. The `celsius` member will contain a garbage value."]
+}

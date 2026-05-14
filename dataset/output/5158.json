@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program using nested `for` loops to print a right-angled triangle pattern of asterisks (`*`). The height of the triangle should be specified by the user.",
+  "test_cases": [
+    { "input": "3", "expected": "*\n**\n***\n" },
+    { "input": "5", "expected": "*\n**\n***\n****\n*****\n" },
+    { "input": "1", "expected": "*\n" }
+  ],
+  "driver": "#include <iostream>\n\n// Assuming the user's solution provides a function like this:\n// void printTrianglePattern(int height);\n\nint main() {\n    int height;\n    std::cin >> height; // Read input for height\n    printTrianglePattern(height); // Call the user's function\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    {
+      "line": 10,
+      "column": 27,
+      "message": "error: expected ';' before '}' token"
+    }
+  ]
+}

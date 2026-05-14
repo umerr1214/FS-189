@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Design a `Student` class with `name` (string), `studentID` (int), and `gpa` (double). Include a static member `totalStudents` to keep track of the total number of `Student` objects created.",
+  "test_cases": [
+    { "input": "", "expected": "Total students count: 0\nStudent Name: Alice Smith\nStudent ID: 1001\nStudent GPA: 3.95\n--------------------\nTotal students count: 1\nStudent Name: Bob Johnson\nStudent ID: 1002\nStudent GPA: 3.4\n--------------------\nStudent Name: Charlie Brown\nStudent ID: 1003\nStudent GPA: 3.7\n--------------------\nTotal students count: 3\nTotal students count after block: 1\nStudent Name: Diana Prince\nStudent ID: 1004\nStudent GPA: 4\n--------------------\nTotal students count: 2\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nclass Student {\npublic:\n    std::string name;\n    int studentID;\n    double gpa;\n    static int totalStudents;\n\n    Student(std::string studentName, int studentId, double studentGpa) {\n        this->name = studentName;\n        this->studentID = studentId;\n        this->gpa = studentGpa;\n        Student::totalStudents++;\n    }\n\n    ~Student() {\n        Student::totalStudents--;\n    }\n\n    void displayStudent() const {\n        std::cout << \"Student Name: \" << this->name << std::endl;\n        std::cout << \"Student ID: \" << this->studentID << std::endl;\n        std::cout << \"Student GPA: \" << this->gpa << std::endl;\n        std::cout << \"--------------------\" << std::endl;\n    }\n};\n\nint Student::totalStudents = 0;\n\nint main() {\n    std::cout << \"Total students count: \" << Student::totalStudents << std::endl;\n\n    Student student1(\"Alice Smith\", 1001, 3.95);\n    student1.displayStudent();\n    std::cout << \"Total students count: \" << Student::totalStudents << std::endl;\n\n    {\n        Student student2(\"Bob Johnson\", 1002, 3.40);\n        student2.displayStudent();\n        Student student3(\"Charlie Brown\", 1003, 3.70);\n        student3.displayStudent();\n        std::cout << \"Total students count: \" << Student::totalStudents << std::endl;\n    }\n\n    std::cout << \"Total students count after block: \" << Student::totalStudents << std::endl;\n\n    Student student4(\"Diana Prince\", 1004, 4.00);\n    student4.displayStudent();\n    std::cout << \"Total students count: \" << Student::totalStudents << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The constructor uses assignment within the body instead of initializer lists. For `std::string` members, this leads to a less efficient default construction followed by an assignment, rather than direct initialization.",
+    "Excessive and unnecessary use of the `this->` pointer for accessing member variables, which can reduce readability without providing any functional benefit.",
+    "Member variables (`name`, `studentID`, `gpa`) are declared as public. This breaks encapsulation, making the class state directly modifiable from outside and less robust. It's generally better practice to make them private and provide public accessors (getters) if read access is needed."
+  ]
+}

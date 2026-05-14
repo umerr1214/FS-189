@@ -1,0 +1,25 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that continuously prompts the user to enter integers until a negative number is entered. After a negative number is input, display the sum of all the positive numbers that were entered. Use a do-while loop.",
+  "test_cases": [
+    {
+      "input": "10\n20\n-5\n",
+      "expected": "Enter integers. Enter a negative number to stop.\nEnter integer: Enter integer: Enter integer: Sum of positive numbers entered: 30\n"
+    },
+    {
+      "input": "5\nhello\n-1\n",
+      "expected": "Enter integers. Enter a negative number to stop.\nEnter integer: Enter integer: [Program will enter an infinite loop here due to 'hello' input and not clearing std::cin error flags/buffer, repeatedly printing 'Enter integer: ' without further progress or reaching the final sum output.]"
+    },
+    {
+      "input": "-10\n",
+      "expected": "Enter integers. Enter a negative number to stop.\nEnter integer: Sum of positive numbers entered: 0\n"
+    }
+  ],
+  "driver": "int main() {\n    // The C++ program will be compiled and executed directly.\n    // Input will be piped to stdin, and stdout will be captured.\n    // No special driver code is needed beyond basic execution.\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program fails to handle invalid (non-integer) input gracefully. If a user enters non-numeric characters, `std::cin` goes into a fail state, the input buffer is not cleared, and the program enters an infinite loop, repeatedly prompting for input without being able to process it or terminate correctly. This is a critical robustness flaw."
+  ]
+}

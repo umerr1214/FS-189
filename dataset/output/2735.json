@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a base class `Employee` with `name` (string) and `id` (int). Derive a `Manager` class and a `Worker` class. `Manager` should have an additional `department` (string) and `Worker` an `hourlyRate` (double). Each class should have a method to print its specific details.",
+  "test_cases": [
+    {
+      "input": "N/A (object creation and method call)",
+      "expected": "Manager Details:\nEmployee: Alice Smith, ID: 101, Department: Sales\n\nWorker Details:\nEmployee: Bob Johnson, ID: 202, Hourly Rate: 25.5"
+    }
+  ],
+  "driver": "Manager mgr(\"Alice Smith\", 101, \"Sales\");\nWorker wrk(\"Bob Johnson\", 202, 25.50);\n\nstd::cout << \"Manager Details:\\n\";\nmgr.printDetails();\nstd::cout << \"\\n\\n\";\n\nstd::cout << \"Worker Details:\\n\";\nwrk.printDetails();\nstd::cout << \"\\n\";",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["In the `Worker::printDetails` method, the `hourlyRate` is incorrectly printed as the `id` member. The line `std::cout << \", Hourly Rate (Incorrectly printed as ID): \" << id;` should be `std::cout << \", Hourly Rate: \" << hourlyRate;` to print the worker's specific detail correctly."]
+}

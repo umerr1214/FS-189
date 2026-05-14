@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter the length and width of a rectangle, then calculates and displays its area and perimeter.",
+  "test_cases": [
+    { "input": "10\n5", "expected": "Enter length: Enter width: Area: 50\nPerimeter: 30\n" },
+    { "input": "7.5\n3.2", "expected": "Enter length: Enter width: Area: 24\nPerimeter: 21.4\n" },
+    { "input": "1.23\n4.56", "expected": "Enter length: Enter width: Area: 5.6088\nPerimeter: 11.58\n" }
+  ],
+  "driver": "int main() {\n    float l, w;\n    std::cin >> l >> w;\n    float a = l * w;\n    float p = 2 * (l + w);\n    std::cout << \"Area: \" << a << \"\\nPerimeter: \" << p << \"\\n\";\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses single-letter variable names ('l', 'w', 'a', 'p') which significantly reduce code readability.",
+    "Uses `float` instead of `double` for calculations, potentially sacrificing precision for no significant performance gain in this context.",
+    "Prompts and output messages are brief and lack descriptive detail, making the user interface less friendly."
+  ]
+}

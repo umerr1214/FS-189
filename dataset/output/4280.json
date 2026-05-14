@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that reads a floating-point number from the user. Cast this floating-point number to an integer using explicit type casting and then print both the original number and the integer-converted number. Finally, calculate and print the difference between them.",
+  "test_cases": [
+    {
+      "input": "123.45",
+      "expected": "Enter a floating-point number: \nOriginal number: 123.45\nInteger converted number: 123\nDifference: 0.45\n"
+    },
+    {
+      "input": "-5.7",
+      "expected": "Enter a floating-point number: \nOriginal number: -5.7\nInteger converted number: -5\nDifference: -0.7\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <vector>\n#include <limits>\n\n// This function simulates running the user's main function\n// It assumes the user's main function is compiled into an executable\n// and this driver provides the input and captures the output.\nstd::string run_user_code(const std::string& input_str) {\n    std::stringstream ss_in(input_str);\n    std::stringstream ss_out;\n\n    // Save original cin/cout/cerr buffers\n    std::streambuf* old_cin = std::cin.rdbuf();\n    std::streambuf* old_cout = std::cout.rdbuf();\n    std::streambuf* old_cerr = std::cerr.rdbuf();\n\n    // Redirect cin/cout/cerr to stringstreams\n    std::cin.rdbuf(ss_in.rdbuf());\n    std::cout.rdbuf(ss_out.rdbuf());\n    std::cerr.rdbuf(ss_out.rdbuf()); \n\n    // Call the user's main function. \n    // This typically requires renaming the user's main to avoid conflicts,\n    // e.g., 'user_main_solution()', or running as a separate process.\n    // For this template, we assume the test harness executes the user's main\n    // after setting up the redirection.\n    // The actual execution of `main` is handled by the test infrastructure.\n\n    // Restore original cin/cout/cerr buffers (important for subsequent tests)\n    std::cin.rdbuf(old_cin);\n    std::cout.rdbuf(old_cout);\n    std::cerr.rdbuf(old_cerr);\n\n    return ss_out.str();\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Variable names (`f`, `i`, `d`) are too short and not descriptive, reducing code readability.",
+    "Uses C-style cast `(int)f` instead of `static_cast<int>(f)`. While functional, C-style casts are generally discouraged in C++ as they are less specific and can hide potential issues compared to C++-style casts.",
+    "Excessive use of `std::endl` which flushes the output buffer on each call. Using `\\n` instead would be more efficient when an immediate flush is not required, especially for simple console output."
+  ]
+}

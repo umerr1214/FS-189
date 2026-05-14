@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a program that asks the user to input a temperature in Celsius and converts it to Fahrenheit, then prints the result. The formula is F = C * 9/5 + 32.",
+  "test_cases": [
+    { "input": "25", "expected": "Enter temperature in Celsius: Temperature in Fahrenheit: 77.00\n" },
+    { "input": "0", "expected": "Enter temperature in Celsius: Temperature in Fahrenheit: 32.00\n" },
+    { "input": "-10", "expected": "Enter temperature in Celsius: Temperature in Fahrenheit: 14.00\n" },
+    { "input": "37.5", "expected": "Enter temperature in Celsius: Temperature in Fahrenheit: 99.50\n" },
+    { "input": "abc\n10", "expected": "Enter temperature in Celsius: Invalid input. Please enter a numeric value.\nEnter temperature in Celsius: Temperature in Fahrenheit: 50.00\n" },
+    { "input": "hello world\n-5.5", "expected": "Enter temperature in Celsius: Invalid input. Please enter a numeric value.\nEnter temperature in Celsius: Temperature in Fahrenheit: 22.10\n" }
+  ],
+  "driver": "g++ -o solution 4707.cpp && echo \"$input\" | ./solution",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

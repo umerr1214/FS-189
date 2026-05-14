@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `Student` class with private members `name` (string) and `id` (integer). Implement a parameterized constructor. Include a static member `totalStudents` to keep track of the total number of `Student` objects created. Increment this counter in the constructor and provide a static method `getTotalStudents()`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial total students: 0\nAfter s1: 1\nAfter s2, s3: 3\nStudent s_trunc created with ID 40000. Stored ID: -25536\nAfter s_trunc: 4\nAfter s4, s5: 6\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\nclass Student {\nprivate:\n    std::string name;\n    short id; \n\npublic:\n    static short totalStudents; \n\n    Student(std::string n, int i) : name(n) {\n        id = i;\n        totalStudents++;\n    }\n\n    static short getTotalStudents() {\n        return totalStudents;\n    }\n\n    short getId() const { return id; }\n};\n\nshort Student::totalStudents = 0;\n\nint main() {\n    std::cout << \"Initial total students: \" << Student::getTotalStudents() << '\\n';\n\n    Student s1(\"Alice\", 101);\n    std::cout << \"After s1: \" << Student::getTotalStudents() << '\\n';\n\n    Student s2(\"Bob\", 102);\n    Student s3(\"Charlie\", 103);\n    std::cout << \"After s2, s3: \" << Student::getTotalStudents() << '\\n';\n\n    Student s_trunc(\"TruncatedID\", 40000);\n    std::cout << \"Student s_trunc created with ID 40000. Stored ID: \" << s_trunc.getId() << '\\n';\n    std::cout << \"After s_trunc: \" << Student::getTotalStudents() << '\\n';\n\n    Student s4(\"David\", 104);\n    Student s5(\"Eve\", 105);\n    std::cout << \"After s4, s5: \" << Student::getTotalStudents() << '\\n';\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": []
+}

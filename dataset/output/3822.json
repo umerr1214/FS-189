@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that dynamically allocates memory for an array of 5 integers using `new`, prompts the user to enter values for these integers, prints the values, and then deallocates the memory using `delete[]`.",
+  "test_cases": [
+    { "input": "1\n2\n3\n4\n5\n", "expected": "Enter 5 integers:\nEnter value for element 0: Enter value for element 1: Enter value for element 2: Enter value for element 3: Enter value for element 4: \nThe entered values are:\nElement 0: 1\nElement 1: 2\nElement 2: 3\nElement 3: 4\nElement 4: 5\n" }
+  ],
+  "driver": "The program is interactive and prompts for input. It can be compiled and run directly.",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": ["The memory allocated with `new int[5]` is deallocated using `delete arr` instead of `delete[] arr`. This is undefined behavior according to C++ standard and can lead to memory leaks or heap corruption."]
+}

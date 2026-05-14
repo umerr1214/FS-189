@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function template `calculate_average` that accepts an array of any numeric type (e.g., `int`, `double`) and its size, then returns the average of all elements in the array. Ensure it works for different numeric types.",
+  "test_cases": [
+    { "input": "int intArray[] = {1, 2, 3, 4, 5}; int intArraySize = 5; calculate_average(intArray, intArraySize);", "expected": "3.0" },
+    { "input": "double doubleArray[] = {10.5, 20.5, 30.0}; int doubleArraySize = 3; calculate_average(doubleArray, doubleArraySize);", "expected": "20.333333333333332" },
+    { "input": "float floatArray[] = {1.1f, 2.2f, 3.3f}; int floatArraySize = 3; calculate_average(floatArray, floatArraySize);", "expected": "2.2" },
+    { "input": "int emptyArray[] = {}; int emptyArraySize = 0; calculate_average(emptyArray, emptyArraySize);", "expected": "0.0" },
+    { "input": "int singleElementArray[] = {42}; int singleElementArraySize = 1; calculate_average(singleElementArray, singleElementArraySize);", "expected": "42.0" },
+    { "input": "long long largeNumArray[] = {1000000000000000000LL, 2000000000000000000LL, 3000000000000000000LL}; int largeNumArraySize = 3; calculate_average(largeNumArray, largeNumArraySize);", "expected": "2.0e+18" }
+  ],
+  "driver": "#include <iostream>\n#include <numeric>\n#include <vector>\n\ntemplate <typename T>\ndouble calculate_average(const T arr[], int size) {\n    if (size <= 0) {\n        return 0.0;\n    }\n    double sum = std::accumulate(arr, arr + size, 0.0);\n    return sum / size;\n}\n\nint main() {\n    int intArray[] = {1, 2, 3, 4, 5};\n    int intArraySize = sizeof(intArray) / sizeof(intArray[0]);\n    std::cout << \"Average of intArray: \" << calculate_average(intArray, intArraySize) << std::endl;\n\n    double doubleArray[] = {10.5, 20.5, 30.0};\n    int doubleArraySize = sizeof(doubleArray) / sizeof(doubleArray[0]);\n    std::cout << \"Average of doubleArray: \" << calculate_average(doubleArray, doubleArraySize) << std::endl;\n\n    float floatArray[] = {1.1f, 2.2f, 3.3f};\n    int floatArraySize = sizeof(floatArray) / sizeof(floatArray[0]);\n    std::cout << \"Average of floatArray: \" << calculate_average(floatArray, floatArraySize) << std::endl;\n\n    int emptyArray[] = {};\n    int emptyArraySize = 0;\n    std::cout << \"Average of emptyArray: \" << calculate_average(emptyArray, emptyArraySize) << std::endl;\n\n    int singleElementArray[] = {42};\n    int singleElementArraySize = 1;\n    std::cout << \"Average of singleElementArray: \" << calculate_average(singleElementArray, singleElementArraySize) << std::endl;\n\n    long long largeNumArray[] = {1000000000000000000LL, 2000000000000000000LL, 3000000000000000000LL};\n    int largeNumArraySize = sizeof(largeNumArray) / sizeof(largeNumArray[0]);\n    std::cout << \"Average of largeNumArray: \" << calculate_average(largeNumArray, largeNumArraySize) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

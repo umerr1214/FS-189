@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that declares a 1D integer array and initializes it. Then, calculate and print the sum of all elements in the array using pointer arithmetic instead of array indexing.",
+  "test_cases": [
+    { "input": "No direct input; array is hardcoded.", "expected": "Compilation Error" }
+  ],
+  "driver": "g++ -std=c++17 -Wall -Wextra -o program 3508.cpp 2>&1",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after the 'int size = ...' declaration on line 7."]
+}

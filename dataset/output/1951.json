@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Write a `Calculator` class with overloaded `add` methods: one taking two integers, another taking two doubles, and a third taking three integers. Each method should return the sum.",
+  "test_cases": [
+    { "input": "calc.add(10, 20)", "expected": "30" },
+    { "input": "calc.add(10.5, 20.3)", "expected": "30.80" },
+    { "input": "calc.add(1, 2, 3)", "expected": "6" },
+    { "input": "calc.add(std::numeric_limits<int>::max() - 10, 20)", "expected": "-2147483639" },
+    { "input": "calc.add(std::numeric_limits<int>::min() + 10, -5, -10)", "expected": "2147483643" }
+  ],
+  "driver": "Calculator calc;\nstd::cout << calc.add(10, 20) << std::endl;\nstd::cout << std::fixed << std::setprecision(2);\nstd::cout << calc.add(10.5, 20.3) << std::endl;\nstd::cout << calc.add(1, 2, 3) << std::endl;\nstd::cout << calc.add(std::numeric_limits<int>::max() - 10, 20) << std::endl;\nstd::cout << calc.add(std::numeric_limits<int>::min() + 10, -5, -10) << std::endl;",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The integer `add` methods (two and three integers) perform calculations using `long long` but cast the result back to `int` without checking for potential overflow or underflow. This can lead to silent data truncation and incorrect results for sums that exceed the `int` type's maximum or minimum value, making the program behave unexpectedly under extreme inputs."
+  ]
+}

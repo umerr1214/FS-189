@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a function template `T get_absolute_value(T val)` that takes a value of any numeric type (e.g., `int`, `float`, `double`) and returns its absolute value. Demonstrate with at least two different data types.",
+  "test_cases": [
+    { "input": "-10 (int)", "expected": "10" },
+    { "input": "5 (int)", "expected": "5" },
+    { "input": "-10.5 (double)", "expected": "10.5" },
+    { "input": "7.25 (double)", "expected": "7.25" }
+  ],
+  "driver": "int main()\n{\n    int int_val1 = -10;\n    int int_val2 = 5;\n    std::cout << \"Absolute value of \" << int_val1 << \" (int): \" << get_absolute_value(int_val1) << std::endl;\n    std::cout << \"Absolute value of \" << int_val2 << \" (int): \" << get_absolute_value(int_val2) << std::endl;\n\n    double double_val1 = -10.5;\n    double double_val2 = 7.25;\n    std::cout << \"Absolute value of \" << double_val1 << \" (double): \" << get_absolute_value(double_val1) << std::endl;\n    std::cout << \"Absolute value of \" << double_val2 << \" (double): \" << get_absolute_value(double_val2) << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the 'return -val' statement in the 'get_absolute_value' function template, leading to a compilation error."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program to create a 3x4 integer matrix (2D array). Initialize it with some values, then calculate and print the sum of elements for each individual row.",
+  "test_cases": [
+    { "input": "", "expected": "Row 0 sum: 10\nRow 1 sum: 26\nRow 2 sum: 42\n" }
+  ],
+  "driver": "int main() {\n    // The provided code is already a complete main function.\n    // No external driver needed, just compile and run the file.\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The inner loop for iterating through columns has an incorrect upper bound. It iterates from `j = 0` to `j < 3`, meaning it processes elements at indices 0, 1, and 2. However, each row has 4 columns (indices 0, 1, 2, 3). This causes the last element of each row to be excluded from the sum, leading to incorrect row sums.",
+    "Expected Row 0 sum: 10, Actual: 6 (1+2+3)",
+    "Expected Row 1 sum: 26, Actual: 18 (5+6+7)",
+    "Expected Row 2 sum: 42, Actual: 30 (9+10+11)"
+  ]
+}

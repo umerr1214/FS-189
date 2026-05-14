@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Design a `BankAccount` class with private members `accountNumber` (int) and `balance` (double). Implement a constructor that initializes these members, ensuring the initial `balance` cannot be negative. Provide public `deposit` and `withdraw` methods, with `withdraw` checking for sufficient funds.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "Account 1001 successfully created with balance: 500.\n\nDeposit of 150 successful for account 1001. New balance: 650.\nWithdrawal of 200 successful for account 1001. Remaining balance: 450.\nCurrent balance for account 1001 is: 450.\n---------------------------------------\nInitial balance for account 1002 was negative. Set to 0.0.\nAccount 1002 successfully created with balance: 0.\n\nError: Deposit amount must be positive. Attempted to deposit 0.\nError: Withdrawal amount must be positive. Attempted to withdraw -50.\nWithdrawal failed for account 1002. Insufficient funds. Current balance: 0, attempted: 10.\nCurrent balance for account 1002 is: 0.\n---------------------------------------\nAccount 1003 successfully created with balance: 100.\n\nWithdrawal of 100 successful for account 1003. Remaining balance: 0.\nWithdrawal failed for account 1003. Insufficient funds. Current balance: 0, attempted: 1.\nCurrent balance for account 1003 is: 0.\n"
+    }
+  ],
+  "driver": "int main() {\n    BankAccount acc1(1001, 500.0);\n    acc1.deposit(150.0);\n    acc1.withdraw(200.0);\n    acc1.getBalance();\n\n    cout << \"---------------------------------------\" << endl;\n\n    BankAccount acc2(1002, -100.0);\n    acc2.deposit(0.0);\n    acc2.withdraw(-50.0);\n    acc2.withdraw(10.0);\n    acc2.getBalance();\n\n    cout << \"---------------------------------------\" << endl;\n\n    BankAccount acc3(1003, 100.0);\n    acc3.withdraw(100.0);\n    acc3.withdraw(1.0);\n    acc3.getBalance();\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Excessive use of `std::cout` for method feedback makes the class less reusable and harder to test programmatically, violating separation of concerns.",
+    "Using `using namespace std;` in a global scope is generally discouraged in production code, especially in headers, due to potential naming conflicts.",
+    "The `getBalance` method prints to `std::cout` instead of just returning the value, which is an unexpected side effect for a getter and reduces flexibility.",
+    "Frequent use of `std::endl` can be less efficient than `\\n` as it forces a flush of the output buffer on each call."
+  ]
+}

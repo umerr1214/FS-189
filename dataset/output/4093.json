@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Define a function `swapValues(int* ptr1, int* ptr2)` that takes two integer pointers as arguments and swaps the values they point to. Demonstrate this function by swapping two variables in your `main` function.",
+  "test_cases": [
+    { "input": "", "expected": "Before swap: val1 = 10, val2 = 20\nAfter swap: val1 = 20, val2 = 10\nBefore swap: val3 = -5, val4 = 0\nAfter swap: val3 = 0, val4 = -5\nAttempting to swap with a nullptr (this might crash the program):\n" }
+  ],
+  "driver": "/* The provided main function directly demonstrates the issue. The expected output reflects the behavior up to the point of a potential crash. */",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `swapValues` function does not handle null pointer inputs. Dereferencing `nullptr` for `ptr1` or `ptr2` leads to undefined behavior and likely a segmentation fault, making the function non-robust."
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Implement a simple menu-driven program for a basic task list (e.g., Add Task, View Tasks, Exit). Use a `do-while` loop to keep displaying the menu until the user chooses to exit.",
+  "test_cases": [
+    {
+      "input": "1\nBuy groceries\n1\nCall mom\n2\n3\n",
+      "expected": "\n--- Task List Menu ---\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: Enter task description: Task added.\n\n--- Task List Menu ---\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: Enter task description: Task added.\n\n--- Task List Menu ---\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: \n--- Your Tasks ---\n1. Buy groceries\n2. Call mom\n\n--- Task List Menu ---\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: Exiting program. Goodbye!\n"
+    },
+    {
+      "input": "1\nRead a book\nabc\n3\n",
+      "expected": "\n--- Task List Menu ---\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: Enter task description: Task added.\n\n--- Task List Menu ---\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: Invalid choice. Please try again.\n\n--- Task List Menu ---\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: Invalid choice. Please try again.\n\n--- Task List Menu ---\n1. Add Task\n2. View Tasks\n3. Exit\nEnter your choice: Invalid choice. Please try again.\n"
+    }
+  ],
+  "driver": "/*\nThis is a placeholder driver. In a real testing environment,\nthe test harness would redirect stdin/stdout for the student's program.\nFor this dataset generation, we assume the test harness\nwill execute the student's program with the provided input\nand compare its output with the expected output.\n*/\n#include <iostream>\nint main() {\n    // The actual program to be tested will be compiled and run separately,\n    // with its standard input and output streams redirected.\n    // This driver merely serves as a structural component for the JSON.\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The program suffers from an input handling robustness issue. If the user enters non-integer input for a menu choice, the input stream's error state is cleared but the bad input is not discarded using `std::cin.ignore()`. This leads to an infinite loop where the program repeatedly prints 'Invalid choice. Please try again.' without allowing further valid input or termination, as demonstrated by the 'abc' input test case."]
+}

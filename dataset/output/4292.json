@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Define a C++ struct named `Point` with two integer members, `x` and `y`, representing coordinates. Write a function `get_distance` that takes two `Point` structs as input and returns the Euclidean distance between them as a `double`.",
+  "test_cases": [
+    { "input": "Point p1={0,0}, p2={3,4}", "expected": "5.00000000" },
+    { "input": "Point p1={1,1}, p2={1,1}", "expected": "0.00000000" },
+    { "input": "Point p1={-1,-1}, p2={2,3}", "expected": "5.00000000" },
+    { "input": "Point p1={0,0}, p2={50000,50000}", "expected": "70710.67811865" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n#include <iomanip>\n\n// struct Point and get_distance function would be here\n\nint main() {\n    Point pt1 = {0, 0};\n    Point pt2 = {3, 4};\n    std::cout << \"Distance for test case A: \"\n              << std::fixed << std::setprecision(8) << get_distance(pt1, pt2) << std::endl;\n\n    Point pt3 = {1, 1};\n    Point pt4 = {1, 1};\n    std::cout << \"Distance for test case B: \"\n              << std::fixed << std::setprecision(8) << get_distance(pt3, pt4) << std::endl;\n\n    Point pt5 = {-1, -1};\n    Point pt6 = {2, 3};\n    std::cout << \"Distance for test case C: \"\n              << std::fixed << std::setprecision(8) << get_distance(pt5, pt6) << std::endl;\n\n    Point pt7 = {0, 0};\n    Point pt8 = {50000, 50000};\n    std::cout << \"Distance for test case D: \"\n              << std::fixed << std::setprecision(8) << get_distance(pt7, pt8) << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Efficiency: Using `std::pow(base, 2.0)` for squaring is less efficient than `base * base`. `std::pow` is a general-purpose function that involves floating-point operations and function call overhead, while direct multiplication is a simpler and often optimized operation.",
+    "Readability: Using `std::pow(base, 2.0)` for squaring is less idiomatic and potentially less readable than `base * base` for simple squaring.",
+    "Efficiency: Passing `Point` structs by value (`Point p1`, `Point p2`) incurs the cost of copying the entire struct. For larger structs or frequent calls, passing by `const` reference (`const Point& p1`, `const Point& p2`) would be more efficient as it avoids copying."
+  ]
+}

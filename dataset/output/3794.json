@@ -1,0 +1,26 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter a sentence (as `std::string`) and then counts and displays the number of occurrences of a specific character (also input by the user) within that sentence.",
+  "test_cases": [
+    {
+      "input": "Mississippi river\ni",
+      "expected": "The character 'i' appears 4 times in the sentence.\n"
+    },
+    {
+      "input": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\na",
+      "expected": "The character 'a' appears 100 times in the sentence.\n"
+    },
+    {
+      "input": "The quick brown fox jumps over the lazy dog\ne",
+      "expected": "The character 'e' appears 3 times in the sentence.\n"
+    }
+  ],
+  "driver": "g++ -o solution 3794.cpp && echo \"<input>\" | ./solution",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The variable names 's', 'c', and 'res' are not descriptive, reducing code readability.",
+    "The counting mechanism is highly inefficient. It creates a temporary copy of the string and repeatedly calls `find()` and `erase()` in a loop. `erase()` on a string can be an expensive operation as it may involve reallocating memory and shifting characters. A single linear pass (e.g., with a range-based for loop or `std::count`) would be significantly more efficient (O(N) vs. potentially O(N*M) or O(N^2) in worst case)."
+  ]
+}

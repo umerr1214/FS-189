@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Define a C++ class named `Book` with private member variables for `title` (string), `author` (string), and `isbn` (string). Implement public methods to `setTitle`, `setAuthor`, `setISBN` and `displayBookInfo` which prints all details.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "Title: The Hitchhiker's Guide to the Galaxy\nAuthor: Douglas Adams\nISBN: 978-0345391803\n"
+    }
+  ],
+  "driver": "Book myBook;\nmyBook.setTitle(\"The Hitchhiker's Guide to the Galaxy\");\nmyBook.setAuthor(\"Douglas Adams\");\nmyBook.setISBN(\"978-0345391803\");\nmyBook.displayBookInfo();",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": ["The `setTitle`, `setAuthor`, and `setISBN` methods have parameters with the same names as the class's member variables (e.g., `void setTitle(const std::string& title)`). This causes parameter shadowing, meaning the assignments like `title = title;` within the methods modify the local parameter variable itself instead of the class's member variable. Consequently, the member variables remain uninitialized or default-constructed, violating the semantic intent of the setters."]
+}

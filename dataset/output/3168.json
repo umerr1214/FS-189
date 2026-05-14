@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Extend the `Animal` and `Dog` classes. Make the `name` member in `Animal` `protected`. Demonstrate how `Dog` can access and modify `name` directly, while an outside function cannot.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Animal name: Buddy\nDog changed name to: Rex\nAnimal name: Rex\nOutside function modified name directly to: OutsideName\nAnimal name: OutsideName"
+    }
+  ],
+  "driver": "int main() { Dog myDog(\"Buddy\"); myDog.displayAnimalName(); myDog.changeName(\"Rex\"); myDog.displayAnimalName(); outsideFunction(myDog); myDog.displayAnimalName(); return 0; }",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The 'name' member in the 'Animal' class is declared with 'public' access specifier instead of 'protected'. This violates the problem requirement and semantically changes the access rules, allowing outside functions to directly access and modify 'name', which should not be possible."
+  ]
+}

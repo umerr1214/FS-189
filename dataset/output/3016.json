@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Create a `BankAccount` class with private members `accountNumber` (string), `ownerName` (string), and `balance` (double). Provide public methods `deposit(double amount)` and `withdraw(double amount)` to modify the balance, ensuring withdrawals do not result in a negative balance. Include a `getBalance()` method.",
+  "test_cases": [
+    { "input": "new BankAccount(\"123\", \"Alice\", 1000.0); deposit(200.0);", "expected": "Balance: 1200.0" },
+    { "input": "new BankAccount(\"456\", \"Bob\", 500.0); withdraw(100.0);", "expected": "Balance: 400.0" },
+    { "input": "new BankAccount(\"789\", \"Charlie\", 50.0); withdraw(100.0);", "expected": "Balance: 50.0" }
+  ],
+  "driver": "int main() {\n    BankAccount account1(\"123\", \"Alice\", 1000.0);\n    account1.deposit(200.0);\n    std::cout << \"Balance: \" << account1.getBalance() << std::endl;\n\n    BankAccount account2(\"456\", \"Bob\", 500.0);\n    account2.withdraw(100.0);\n    std::cout << \"Balance: \" << account2.getBalance() << std::endl;\n\n    BankAccount account3(\"789\", \"Charlie\", 50.0);\n    account3.withdraw(100.0);\n    std::cout << \"Balance: \" << account3.getBalance() << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after class definition 'BankAccount'."]
+}

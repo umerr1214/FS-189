@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Design a base class `Publication` with private attributes `title` (string) and `price` (double). Implement methods to set and display these. From `Publication`, derive `Book` (adds private attribute `author` - string) and `Magazine` (adds private attribute `issueNumber` - int). Demonstrate creating objects of `Book` and `Magazine` and displaying their complete details.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Book Details (Partial) ---\nPublication Info:\n  Title is: Programming in C++\n  Cost is: $55.99\n  Author is: Robert Lafore\n\n--- Magazine Details (Partial) ---\nPublication Info:\n  Title is: Linux Journal\n  Cost is: $8.75\n  Issue Number is: 305\n\n--- Demonstrating full display by calling separately ---\nBook:\nPublication Info:\n  Title is: Programming in C++\n  Cost is: $55.99\n  Author is: Robert Lafore\nMagazine:\nPublication Info:\n  Title is: Linux Journal\n  Cost is: $8.75\n  Issue Number is: 305\n"
+    }
+  ],
+  "driver": "int main_wrapper() {\n    return main();\n}\n\nint main() {\n    main_wrapper();\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Readability: Inconsistent and generic naming conventions for attributes (e.g., `title_val`, `writer_name`) and methods (e.g., `set_details_pub`, `show_book_info`).",
+    "Readability: Derived classes' display methods (`show_book_info`, `show_magazine_data`) do not call the base class's display method (`show_details_pub`). This forces the user to manually call multiple display methods to get complete details, making the code less intuitive and more error-prone.",
+    "Readability: Excessive and redundant use of `this->` keyword, which can clutter code without adding significant clarity.",
+    "Efficiency: String parameters in setter methods are passed by value (`std::string title`, `std::string author`) instead of by constant reference (`const std::string&`). This causes unnecessary string copying, which can be inefficient for large strings.",
+    "Readability: Lack of constructors means objects must be initialized via multiple setter calls, which can be less concise and readable than using a constructor for initial setup."
+  ]
+}

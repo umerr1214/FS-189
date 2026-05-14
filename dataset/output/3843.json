@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Define a C++ `struct` called `Product` with members `id` (int), `name` (std::string), and `price` (double). Write a program that creates an array of 2 `Product` structs, prompts the user to input data for each product, and then prints details for the product with the highest price.",
+  "test_cases": [
+    {
+      "input": "1\nLaptop\n1200.50\n2\nMouse\n25.99\n",
+      "expected": "Enter data for 2 products:\n\nProduct 1:\nEnter ID: Enter Name: Enter Price: \nProduct 2:\nEnter ID: Enter Name: Enter Price: \nProduct with highest price:\nID: 1\nName: Laptop\nPrice: 1200.50\n"
+    },
+    {
+      "input": "3\nKeyboard\n75.00\n4\nMonitor\n350.75\n",
+      "expected": "Enter data for 2 products:\n\nProduct 1:\nEnter ID: Enter Name: Enter Price: \nProduct 2:\nEnter ID: Enter Name: Enter Price: \nProduct with highest price:\nID: 4\nName: Monitor\nPrice: 350.75\n"
+    },
+    {
+      "input": "5\nChair\n150.00\n6\nDesk\n150.00\n",
+      "expected": "Enter data for 2 products:\n\nProduct 1:\nEnter ID: Enter Name: Enter Price: \nProduct 2:\nEnter ID: Enter Name: Enter Price: \nProduct with highest price:\nID: 5\nName: Chair\nPrice: 150.00\n"
+    }
+  ],
+  "driver": "int main() {\n    // The program expects interactive input, so a simple execution is sufficient.\n    // No special driver code needed beyond running the executable.\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

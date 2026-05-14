@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Create an `Employee` class with `name` and `id`. Design a `Team` class that manages an array of `Employee` pointers to represent team members. Demonstrate adding employees to the team without the team owning their memory.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Added employee Alice to team.\nAdded employee Bob to team.\nAdded employee Charlie to team.\nAdded employee David to team.\n\n--- Team Members ---\nEmployee ID: 101, Name: Alice\nEmployee ID: 102, Name: Bob\nEmployee ID: 103, Name: Charlie\nEmployee ID: 104, Name: David\n--------------------\n(Note: This output assumes the program doesn't crash immediately due to buffer overflow, but the issue is present. In a real scenario, adding David would write past the end of the `teamMembers` array, leading to undefined behavior or a crash.)"
+    }
+  ],
+  "driver": "int main() {\n    Employee emp1(\"Alice\", 101);\n    Employee emp2(\"Bob\", 102);\n    Employee emp3(\"Charlie\", 103);\n    Employee emp4(\"David\", 104);\n\n    Team devTeam;\n\n    devTeam.addEmployee(&emp1);\n    devTeam.addEmployee(&emp2);\n    devTeam.addEmployee(&emp3);\n    devTeam.addEmployee(&emp4);\n\n    devTeam.displayTeam();\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Team::addEmployee` method uses a fixed-size raw array (`teamMembers`) but fails to check if the array is full before attempting to add a new employee. This can lead to a buffer overflow if more than `MAX_TEAM_MEMBERS` employees are added, resulting in undefined behavior or a program crash.",
+    "The `Team` class uses a C-style raw array instead of `std::vector`, which is more prone to such buffer overflow errors and requires manual size management."
+  ]
+}

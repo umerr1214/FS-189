@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `isPrime` that takes an integer as input and returns `true` if the number is prime, otherwise `false`. Use this function in the main program to check if a user-provided number is prime.",
+  "test_cases": [
+    { "input": "1", "expected": "Enter a positive integer: 1 is not a prime number.\n" },
+    { "input": "2", "expected": "Enter a positive integer: 2 is a prime number.\n" },
+    { "input": "4", "expected": "Enter a positive integer: 4 is not a prime number.\n" },
+    { "input": "7", "expected": "Enter a positive integer: 7 is a prime number.\n" },
+    { "input": "9", "expected": "Enter a positive integer: 9 is not a prime number.\n" },
+    { "input": "17", "expected": "Enter a positive integer: 17 is a prime number.\n" },
+    { "input": "25", "expected": "Enter a positive integer: 25 is not a prime number.\n" }
+  ],
+  "driver": "The submitted C++ program is compiled and executed. The `input` string is provided to its `stdin`, and its `stdout` is captured for comparison with `expected`.",
+  "code_quality": 5,
+  "correctness": 0,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The 'isPrime' function is declared with a 'void' return type, but its return value is used in a boolean context within the 'main' function ('if (isPrime(num))'). This is a type mismatch, as a void function does not return a value that can be implicitly converted to a boolean."
+  ]
+}

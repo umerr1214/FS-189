@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Implement a `Calculator` class with three overloaded `add` methods: one that adds two integers, one that adds two doubles, and one that adds three integers.",
+  "test_cases": [
+    { "input": "25 75", "expected": "Result of 25 + 75 is: 100" },
+    { "input": "-10 30", "expected": "Result of -10 + 30 is: 20" },
+    { "input": "15.7 4.3", "expected": "Result of 15.7 + 4.3 is: 20.0" },
+    { "input": "-8.2 2.0", "expected": "Result of -8.2 + 2.0 is: -6.2" },
+    { "input": "5 10 15", "expected": "Result of 5 + 10 + 15 is: 30" },
+    { "input": "1 -1 100", "expected": "Result of 1 + -1 + 100 is: 100" }
+  ],
+  "driver": "Calculator my_calculator_instance;\nstd::cout << \"--- Integer Addition (Two) ---\" << std::endl;\nstd::cout << \"Result of 25 + 75 is: \" << my_calculator_instance.add(25, 75) << std::endl;\nstd::cout << \"Result of -10 + 30 is: \" << my_calculator_instance.add(-10, 30) << std::endl;\nstd::cout << \"\\n--- Double Addition ---\" << std::endl;\nstd::cout << std::fixed << std::setprecision(1);\nstd::cout << \"Result of 15.7 + 4.3 is: \" << my_calculator_instance.add(15.7, 4.3) << std::endl;\nstd::cout << \"Result of -8.2 + 2.0 is: \" << my_calculator_instance.add(-8.2, 2.0) << std::endl;\nstd::cout << \"\\n--- Integer Addition (Three) ---\" << std::endl;\nstd::cout << \"Result of 5 + 10 + 15 is: \" << my_calculator_instance.add(5, 10, 15) << std::endl;\nstd::cout << \"Result of 1 + -1 + 100 is: \" << my_calculator_instance.add(1, -1, 100) << std::endl;",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses overly verbose and unhelpful variable names (e.g., `first_integer_value`, `computed_sum_of_the_two_doubles`, `my_calculator_instance`), significantly reducing readability.",
+    "Introduces unnecessary intermediate variables (e.g., `result_of_two_ints_addition`, `computed_sum_of_the_two_doubles`) and breaks down simple additions into multiple steps, which slightly impacts conciseness and could be marginally less efficient if not optimized away by the compiler (e.g., `partial_sum_a_b`)."
+  ]
+}

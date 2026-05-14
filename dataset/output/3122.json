@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "Design a `Student` class with private member variables for `name`, `id`, and `grade`. Implement public `getter` and `setter` methods for all members.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Student 1:\nName: Alice\nID: 101\nGrade: 95.5\n\nUpdating Student 1 data:\nName: Alicia\nID: 102\nGrade: 97\n\nStudent 2:\nName: Bob\nID: 202\nGrade: 88\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n\nclass Student {\nprivate:\n    std::string m_studentName;\n    int studentId;\n    double studentGrade;\n\npublic:\n    Student() {\n        this->m_studentName = \"\";\n        this->studentId = 0;\n        this->studentGrade = 0.0;\n    }\n    Student(std::string name, int id, double grade)\n        : m_studentName(name), studentId(id), studentGrade(grade) {}\n\n    std::string getStudentName() const {\n        return this->m_studentName;\n    }\n    void setStudentName(std::string name) {\n        this->m_studentName = name;\n    }\n\n    int getStudentId() const {\n        return this->studentId;\n    }\n    void setStudentId(int id) {\n        this->studentId = id;\n    }\n\n    double getStudentGrade() const {\n        return this->studentGrade;\n    }\n    void setStudentGrade(double grade) {\n        this->studentGrade = grade;\n    }\n};\n\nint main() {\n    Student s;\n    s.setStudentName(\"Alice\");\n    s.setStudentId(101);\n    s.setStudentGrade(95.5);\n\n    std::cout << \"Student 1:\" << std::endl;\n    std::cout << \"Name: \" << s.getStudentName() << std::endl;\n    std::cout << \"ID: \" << s.getStudentId() << std::endl;\n    std::cout << \"Grade: \" << s.getStudentGrade() << std::endl;\n\n    std::cout << \"\\nUpdating Student 1 data:\" << std::endl;\n    s.setStudentName(\"Alicia\");\n    s.setStudentId(102);\n    s.setStudentGrade(97.0);\n\n    std::cout << \"Name: \" << s.getStudentName() << std::endl;\n    std::cout << \"ID: \" << s.getStudentId() << std::endl;\n    std::cout << \"Grade: \" << s.getStudentGrade() << std::endl;\n\n    Student s2(\"Bob\", 202, 88.0);\n    std::cout << \"\\nStudent 2:\" << std::endl;\n    std::cout << \"Name: \" << s2.getStudentName() << std::endl;\n    std::cout << \"ID: \" << s2.getStudentId() << std::endl;\n    std::cout << \"Grade: \" << s2.getStudentGrade() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Setter for `name` (`setStudentName`) takes `std::string` by value, causing an unnecessary copy when passing a string literal or an existing `std::string` object. It should take a `const std::string&`.",
+    "Member variable naming is inconsistent (`m_studentName`, `studentId`, `studentGrade`) which can reduce readability and maintainability.",
+    "Overly verbose use of `this->` in simple assignments and return statements adds clutter without significant benefit."
+  ]
+}

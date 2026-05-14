@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `int linearSearch(int arr[], int size, int target)` that performs a linear search on a 1D integer array. It should return the index of the `target` element if found, or -1 if not found. Test this function in `main` with a sample array and target values.",
+  "test_cases": [
+    { "input": "arr: [10, 20, 30, 40, 50], size: 5, target: 30", "expected": "2" },
+    { "input": "arr: [10, 20, 30, 40, 50], size: 5, target: 99", "expected": "-1" },
+    { "input": "arr: [], size: 0, target: 5", "expected": "-1" },
+    { "input": "arr: [7], size: 1, target: 7", "expected": "0" },
+    { "input": "arr: [7], size: 1, target: 10", "expected": "-1" },
+    { "input": "arr: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], size: 10, target: 1", "expected": "0" },
+    { "input": "arr: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], size: 10, target: 10", "expected": "9" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n\n// The linearSearch function would be included here\n\nvoid runTest(const std::string& description, int arr[], int size, int target, int expected) {\n    std::cout << \"Test Case: \" << description << std::endl;\n    std::cout << \"Array: { \";\n    for (int i = 0; i < size; ++i) {\n        std::cout << arr[i] << (i == size - 1 ? \"\" : \", \");\n    }\n    std::cout << \" }, Size: \" << size << \", Target: \" << target << std::endl;\n\n    int result = linearSearch(arr, size, target);\n    std::cout << \"Expected: \" << expected << \", Got: \" << result << std::endl;\n    if (result == expected) {\n        std::cout << \"Status: PASSED\" << std::endl;\n    } else {\n        std::cout << \"Status: FAILED\" << std::endl;\n    }\n    std::cout << std::endl;\n}\n\nint main() {\n    int arr1[] = {10, 20, 30, 40, 50};\n    runTest(\"Target in middle\", arr1, 5, 30, 2);\n\n    int arr2[] = {10, 20, 30, 40, 50};\n    runTest(\"Target not found\", arr2, 5, 99, -1);\n\n    int arr3[] = {}; \n    runTest(\"Empty array\", arr3, 0, 5, -1);\n\n    int arr4[] = {7};\n    runTest(\"Single element array - found\", arr4, 1, 7, 0);\n\n    int arr5[] = {7};\n    runTest(\"Single element array - not found\", arr5, 1, 10, -1);\n    \n    int arr6[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};\n    runTest(\"Target at start\", arr6, 10, 1, 0);\n\n    int arr7[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};\n    runTest(\"Target at end\", arr7, 10, 10, 9);\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The function uses less descriptive variable names (e.g., `arr_ptr`, `arr_len`, `search_val` instead of `arr`, `size`, `target`), reducing readability.",
+    "The implementation uses a `while` loop with manual index increment and a separate boolean flag (`found_flag`) to manage the search state. While functionally correct, this approach is less concise and idiomatic for this pattern compared to a standard `for` loop, which encapsulates initialization, condition, and increment in one line, improving readability and reducing potential for off-by-one errors.",
+    "The `break` statement inside the `while` loop, while improving efficiency by stopping early, makes the loop structure slightly less straightforward to read than a `for` loop designed for this specific search pattern."
+  ]
+}

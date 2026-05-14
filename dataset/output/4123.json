@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Declare an `int` variable, a `float` variable, and a `char` variable. Then declare a pointer for each of these data types. Assign the address of each variable to its corresponding pointer. Print the memory address stored in each pointer and the value pointed to by each pointer using the dereference operator.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Inside scope: temp_int_var value = 42, address = <memory_address>\nAddress of int_variable (dangling): <memory_address>\nValue pointed by int_pointer (dangling - undefined behavior): <value, potentially garbage or crash>\nAddress of float_variable: <memory_address>\nValue pointed by float_pointer: 3.14\nAddress of char_variable: <memory_address>\nValue pointed by char_pointer: C\n"
+    }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Creates a dangling pointer ('int_ptr') by assigning the address of a local variable ('temp_int_var') that goes out of scope. Subsequently dereferencing this dangling pointer leads to undefined behavior, which can result in crashes, incorrect values, or security vulnerabilities."
+  ]
+}

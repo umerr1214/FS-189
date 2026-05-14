@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Using the `Shape` hierarchy (from Q11), demonstrate runtime polymorphism. Create an array of `Shape` pointers, store instances of `Square` and `Circle` in it, and then iterate through the array to call `calculateArea()` for each object.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Calculating areas using runtime polymorphism:\nArea: 25\nArea: 28.27431\nArea: 56.25\nArea: 19.6349375\n"
+    }
+  ],
+  "driver": "int main() { /* The provided main function serves as the driver */ return 0; }",
+  "code_quality": 5,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    {
+      "line": 17,
+      "column": 9,
+      "message": "The `calculateArea()` method for `Square` incorrectly multiplies the area by 2. It should return `side * side`."
+    }
+  ]
+}

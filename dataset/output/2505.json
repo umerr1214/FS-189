@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Department` class that holds a collection of `Professor` objects (aggregation). Implement methods to `hireProfessor()`, `fireProfessor()`, and `displayProfessors()`.",
+  "test_cases": [
+    {
+      "input": "hire Alice Smith 101\nhire Bob Johnson 102\nhire Charlie Brown 103\nhire Alice Smith 101\ndisplay\nfire 102\nfire 105\ndisplay\nhire Frank White 104\ndisplay\nfire 101\nfire 103\nfire 104\ndisplay",
+      "expected": "Hired Professor Alice Smith (ID: 101) to Computer Science\nHired Professor Bob Johnson (ID: 102) to Computer Science\nHired Professor Charlie Brown (ID: 103) to Computer Science\nError: Professor with ID 101 is already in the department.\n\n--- Computer Science Department Professors (3) ---\n  ID: 101, Name: Alice Smith\n  ID: 102, Name: Bob Johnson\n  ID: 103, Name: Charlie Brown\n--------------------------------------\n\n--- Firing professors from Computer Science ---\nFired Professor with ID 102 from Computer Science\nError: Professor with ID 105 not found in Computer Science.\n\n--- Computer Science Department Professors (2) ---\n  ID: 101, Name: Alice Smith\n  ID: 103, Name: Charlie Brown\n--------------------------------------\nHired Professor Frank White (ID: 104) to Computer Science\n\n--- Computer Science Department Professors (3) ---\n  ID: 101, Name: Alice Smith\n  ID: 103, Name: Charlie Brown\n  ID: 104, Name: Frank White\n--------------------------------------\n\n--- Firing remaining professors ---\nFired Professor with ID 101 from Computer Science\nFired Professor with ID 103 from Computer Science\nFired Professor with ID 104 from Computer Science\n\n--- Computer Science Department Professors (0) ---\n  No professors currently in this department.\n--------------------------------------\n"
+    }
+  ],
+  "driver": "The `main` function serves as the driver. It creates a `Department` object and demonstrates all specified functionalities: hiring professors (including attempts to hire duplicates), displaying the current list of professors, and firing professors (both existing and non-existent ones) with clear feedback for each operation.",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

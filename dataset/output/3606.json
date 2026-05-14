@@ -1,0 +1,25 @@
+{
+  "language": "c++",
+  "question": "Create a simple menu-driven program (e.g., 'A' for Add, 'S' for Subtract, 'Q' for Quit) that continuously prompts the user for choices until 'Q' is entered. Use a `do-while` loop and a `switch` statement.",
+  "test_cases": [
+    {
+      "input": "A\n5\n3\nS\n10\n2\nQ\n",
+      "expected": "Menu:\nA - Add\nS - Subtract\nQ - Quit\nEnter your choice (A/S/Q): Enter two numbers to add: Result: 8\n\nMenu:\nA - Add\nS - Subtract\nQ - Quit\nEnter your choice (A/S/Q): Enter two numbers to subtract: Result: 8\n\nMenu:\nA - Add\nS - Subtract\nQ - Quit\nEnter your choice (A/S/Q): Exiting program. Goodbye!\n\n"
+    },
+    {
+      "input": "invalid_input\nQ\n",
+      "expected": "Menu:\nA - Add\nS - Subtract\nQ - Quit\nEnter your choice (A/S/Q): Invalid choice. Please try again.\n\nMenu:\nA - Add\nS - Subtract\nQ - Quit\nEnter your choice (A/S/Q): Invalid choice. Please try again.\n\n... (infinite loop of the above two lines)"
+    },
+    {
+      "input": "A\nnot_a_number\nQ\n",
+      "expected": "Menu:\nA - Add\nS - Subtract\nQ - Quit\nEnter your choice (A/S/Q): Enter two numbers to add: Result: 0\n\nMenu:\nA - Add\nS - Subtract\nQ - Quit\nEnter your choice (A/S/Q): Invalid choice. Please try again.\n\n... (infinite loop of the above two lines, if 'choice' was updated to 'A' then 'num1' input failed)"
+    }
+  ],
+  "driver": "The program can be executed by redirecting a file containing input sequences to stdin and capturing stdout. Special care is needed for test cases involving invalid input, as the program will enter an infinite loop without proper stream error handling (std::cin.clear(), std::cin.ignore()). For example, 'echo -e \"invalid_input\\nQ\\n\" | ./a.out' would demonstrate the infinite loop.",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The program lacks robust input validation and error handling for `std::cin`. If the user enters non-character input for the menu choice, or non-numeric input for the numbers, `std::cin` enters a fail state. Without clearing the error flags (`std::cin.clear()`) and ignoring the bad input (`std::cin.ignore()`), the program will fall into an infinite loop, repeatedly printing the menu without being able to process new input, as `std::cin` operations will continuously fail."
+  ]
+}

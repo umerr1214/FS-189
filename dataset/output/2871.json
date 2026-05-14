@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Design a `Complex` number class (with private `real` and `imaginary` double parts). Overload the binary `+` operator to enable addition of two `Complex` objects, returning a new `Complex` object.",
+  "test_cases": [
+    {
+      "input": "No direct input, uses hardcoded Complex objects.",
+      "expected": "c1: (1 + 2i)\nc2: (3.5 - 4i)\nc1 + c2: (4.5 - 2i)\nc3: (0 + 0i)\nc4: (-1 - 1i)\nc3 + c4: (-1 - 1i)\nc1 + c3: (1 + 2i)\n"
+    }
+  ],
+  "driver": "    Complex c1(1.0, 2.0);\n    Complex c2(3.5, -4.0);\n    Complex c3(0.0, 0.0);\n    Complex c4(-1.0, -1.0);\n\n    Complex sum1 = c1 + c2;\n    Complex sum2 = c3 + c4;\n    Complex sum3 = c1 + c3;\n\n    std::cout << \"c1: \" << c1 << std::endl;\n    std::cout << \"c2: \" << c2 << std::endl;\n    std::cout << \"c1 + c2: \" << sum1 << std::endl;\n    std::cout << \"c3: \" << c3 << std::endl;\n    std::cout << \"c4: \" << c4 << std::endl;\n    std::cout << \"c3 + c4: \" << sum2 << std::endl;\n    std::cout << \"c1 + c3: \" << sum3 << std::endl;",
+  "code_quality": 10,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

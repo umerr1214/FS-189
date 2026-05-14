@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a base class `Animal` with a virtual public method `makeSound()` that prints a generic sound. Derive `Dog` and `Cat` classes from `Animal`. Each derived class should override `makeSound()` to print its specific sound (e.g., \"Woof!\", \"Meow!\"). Demonstrate polymorphic behavior by calling `makeSound()` through a pointer to the base class `Animal`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Woof!\nMeow!\nAnimal makes a sound.\nAll animals have made their sounds and are now out of scope.\nAnimal base destructor called.\nCat destructor called.\nAnimal base destructor called.\nDog destructor called.\nAnimal base destructor called.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <memory> // For std::unique_ptr\n// Assuming Animal, Dog, Cat classes are defined in the solution code\n\nint main() {\n    // Using std::vector of std::unique_ptr for safe and efficient memory management\n    std::vector<std::unique_ptr<Animal>> animals;\n\n    animals.push_back(std::make_unique<Dog>());\n    animals.push_back(std::make_unique<Cat>());\n    animals.push_back(std::make_unique<Animal>()); // Also demonstrate base class sound\n\n    // Iterate and call makeSound polymorphically\n    for (const auto& animal : animals) {\n        animal->makeSound();\n    }\n    // Destructors (including derived ones) are called automatically\n    // when unique_ptr objects go out of scope, thanks to the virtual destructor in Animal.\n    std::cout << \"All animals have made their sounds and are now out of scope.\\n\";\n\n    return 0;\n}",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

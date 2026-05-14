@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Using the `Shape` hierarchy (from Q11), demonstrate runtime polymorphism. Create an array of `Shape` pointers, store instances of `Square` and `Circle` in it, and then iterate through the array to call `calculateArea()` for each object.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Demonstrating semantic error (no virtual function):\nActual Area (expected by question): 25 (This is NOT what the loop calls)\nCalling Shape's calculateArea (default/base behavior).\nPolymorphic Call Result: 0\nActual Area (expected by question): 28.27431 (This is NOT what the loop calls)\nCalling Shape's calculateArea (default/base behavior).\nPolymorphic Call Result: 0\nActual Area (expected by question): 56.25 (This is NOT what the loop calls)\nCalling Shape's calculateArea (default/base behavior).\nPolymorphic Call Result: 0\nActual Area (expected by question): 19.6349375 (This is NOT what the loop calls)\nCalling Shape's calculateArea (default/base behavior).\nPolymorphic Call Result: 0\n"
+    }
+  ],
+  "driver": "int main() { /* The provided main function serves as the driver */ return 0; }",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    {
+      "line": 9,
+      "column": 5,
+      "message": "The `calculateArea()` method in the base `Shape` class is not declared `virtual`. This prevents runtime polymorphism, causing the base class method to be called instead of the derived class methods when accessed via a `Shape` pointer."
+    }
+  ]
+}

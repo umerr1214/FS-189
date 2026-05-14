@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ function `swapNumbers(int* ptr1, int* ptr2)` that takes two integer pointers as arguments and swaps the values they point to. Demonstrate its usage in `main` with two integer variables.",
+  "test_cases": [
+    { "input": "5 10", "expected": "Initial: a = 5, b = 10\nSwapped: a = 10, b = 5\n" },
+    { "input": "-1 0", "expected": "Initial: a = -1, b = 0\nSwapped: a = 0, b = -1\n" },
+    { "input": "2000000000 1000000000", "expected": "Initial: a = 2000000000, b = 1000000000\nSwapped: a = 1000000000, b = 2000000000\n" }
+  ],
+  "driver": "#include <iostream>\n\n// The swapNumbers function implementation will be prepended by the test harness.\n// void swapNumbers(int* ptr1, int* ptr2);\n\nint main() {\n    int a, b;\n    if (!(std::cin >> a >> b)) {\n        return 1; // Error reading input\n    }\n    std::cout << \"Initial: a = \" << a << \", b = \" << b << std::endl;\n    swapNumbers(&a, &b);\n    std::cout << \"Swapped: a = \" << a << \", b = \" << b << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The swap function uses an arithmetic method which is generally less readable than a temporary variable swap. It also introduces a potential for integer overflow if the sum of the values exceeds the maximum representable value for an `int`."
+  ]
+}

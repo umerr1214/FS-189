@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Implement a `MyString` class that mimics `std::string` by managing a dynamically allocated C-style character array. Provide a deep copy constructor for `MyString`.",
+  "test_cases": [
+    { "input": "", "expected": "s1: Hello\ns2: Hello\ns3: World\ns4 (empty): (empty)\n" }
+  ],
+  "driver": "int main() {\n    MyString s1(\"Hello\");\n    MyString s2 = s1;\n\n    std::cout << \"s1: \";\n    s1.print();\n    std::cout << std::endl;\n\n    std::cout << \"s2: \";\n    s2.print();\n    std::cout << std::endl;\n\n    MyString s3(\"World\");\n    std::cout << \"s3: \";\n    s3.print();\n    std::cout << std::endl;\n\n    MyString s4;\n    std::cout << \"s4 (empty): \";\n    s4.print();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The constructors allocate 'length' bytes instead of 'length + 1' bytes for the C-style string, failing to reserve space for the null terminator. This leads to `strcpy` writing out of bounds, causing heap corruption and potentially crashes or incorrect output."
+  ]
+}

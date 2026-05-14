@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Implement a `BooleanFlag` class that encapsulates a single `bool` value. Overload the unary logical NOT operator (`operator!`) to invert the encapsulated boolean value and return the new value.",
+  "test_cases": [
+    { "input": "BooleanFlag flag(true); bool res = !flag; std::cout << res << flag.getValue();", "expected": "00" },
+    { "input": "BooleanFlag flag(false); bool res = !flag; std::cout << res << flag.getValue();", "expected": "11" }
+  ],
+  "driver": "int main() {\n    BooleanFlag flag(true);\n    bool res = !flag;\n    std::cout << res;\n    std::cout << flag.getValue();\n    std::cout << \"\\n\";\n\n    BooleanFlag flag2(false);\n    res = !flag2;\n    std::cout << res;\n    std::cout << flag2.getValue();\n    std::cout << \"\\n\";\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The class uses an `int` (`m_value_as_int`) to store a boolean value, which is less memory-efficient and requires conversions compared to using a `bool` directly. This is an efficiency issue.",
+    "The `operator!` implementation is overly verbose using an `if-else` statement to invert the value, instead of a more concise and idiomatic boolean negation (`m_value = !m_value;`). This impacts readability and introduces minor efficiency overhead."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Design a `Circle` class with a private `radius` member. Implement a `getArea()` method that is `const` (cannot modify object state) and another method `resize(double newRadius)` that modifies the radius. Demonstrate calling these methods on both `const Circle` objects and non-`const Circle` objects to illustrate const-correctness.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial Circle myCircle (non-const):\n  Radius: 5.0000, Area: 78.5398\nmyCircle after resize(10.0):\n  Radius: 10.0000, Area: 314.1593\n\nInitial Circle anotherCircle (const):\n  Radius: 7.0000, Area: 153.9380\nanotherCircle's area (called on const object): 153.9380\n"
+    }
+  ],
+  "driver": "valid C++ code to run test cases",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses a global non-const variable `GLOBAL_PI_VALUE` instead of `M_PI` from `<cmath>` or a `static const double` member, which is less idiomatic and potentially less precise/efficient.",
+    "The `getArea()` method uses unnecessary intermediate variables (`radiusSquared`, `calculatedArea`) which can be simplified.",
+    "Excessive and often redundant use of `this->` pointer for member access, which clutters the code and reduces readability.",
+    "The member variable `m_radius` uses a prefix (`m_`) that is not consistently applied to other parts of the code (e.g., parameter names) and might not align with project-specific naming conventions, leading to minor readability issues."
+  ]
+}

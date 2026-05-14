@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a function `power(double base, int exponent)` that calculates `base` raised to the power of `exponent` (assume `exponent` is non-negative) without using built-in power functions. Use a loop. The function should return a `double`.",
+  "test_cases": [
+    { "input": "base=2.0, exponent=3", "expected": "8.0" },
+    { "input": "base=5.0, exponent=0", "expected": "1.0" },
+    { "input": "base=10.0, exponent=1", "expected": "10.0" },
+    { "input": "base=0.0, exponent=5", "expected": "0.0" },
+    { "input": "base=1.5, exponent=2", "expected": "2.25" },
+    { "input": "base=0.5, exponent=4", "expected": "0.0625" },
+    { "input": "base=1.0, exponent=100", "expected": "1.0" }
+  ],
+  "driver": "#include <iostream>\n\ndouble power(double base, int exponent);\n\nint main() {\n    std::cout << \"2.0^3 = \" << power(2.0, 3) << std::endl;\n    std::cout << \"5.0^0 = \" << power(5.0, 0) << std::endl;\n    std::cout << \"10.0^1 = \" << power(10.0, 1) << std::endl;\n    std::cout << \"0.0^5 = \" << power(0.0, 5) << std::endl;\n    std::cout << \"1.5^2 = \" << power(1.5, 2) << std::endl;\n    std::cout << \"0.5^4 = \" << power(0.5, 4) << std::endl;\n    std::cout << \"1.0^100 = \" << power(1.0, 100) << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

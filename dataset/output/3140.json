@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a `FileManager` class that dynamically allocates a character array (e.g., for a file path) in its constructor. Implement a destructor to properly deallocate this memory.",
+  "test_cases": [
+    { "input": "", "expected": "Output will show FileManager objects being created with their paths displayed, followed by deallocation messages upon destruction. The program will run without runtime errors, but the internal string copying mechanism within the constructor is inefficient and less readable than standard alternatives." }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Readability / Efficiency Issue (3140) ---\\n\";\n\n    FileManager fm1(\"documents/report_final.txt\");\n    fm1.displayPath();\n\n    FileManager fm2(\"logs/system_events.log\");\n    fm2.displayPath();\n\n    FileManager fm3(nullptr); // Test with nullptr path\n    fm3.displayPath();\n\n    std::cout << \"\\nObjects will now go out of scope.\\n\";\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The constructor uses a manual character-by-character loop (`for (size_t i = 0; i <= pathLength; ++i) { filePath[i] = path[i]; }`) to copy the file path. This approach is less readable, more prone to off-by-one errors, and potentially less efficient than using standard library string functions (e.g., `std::strcpy`, `std::strncpy`, `std::memcpy`).",
+    "While functionally correct for this specific task, using raw `char*` for string management, especially with manual copying, is generally less safe and efficient compared to `std::string`, which handles memory management, resizing, and string operations automatically and robustly. This design choice impacts overall code readability and maintainability."
+  ]
+}

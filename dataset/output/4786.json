@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that declares an array of 10 integers. Populate the array with values entered by the user. Then, calculate and print the average of all elements in the array.",
+  "test_cases": [
+    { "input": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n", "expected": "Compilation Error: missing ';' before 'for' token" }
+  ],
+  "driver": "int main() { /* Compile and attempt to run the provided C++ code. */ return 0; }",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

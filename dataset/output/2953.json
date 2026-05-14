@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Implement a `Box` class with a constructor that takes `length` and `width` as arguments. Provide a default argument for `width` so that if only `length` is provided, `width` defaults to the same value as `length` (creating a square base).",
+  "test_cases": [
+    { "input": "Box(5.0, 3.0)", "expected": "Box 1 (5.0x3.0): Length=5, Width=3, Area=15\n" },
+    { "input": "Box(5.0)", "expected": "Box 2 (5.0x5.0): Length=5, Width=5, Area=25\n" },
+    { "input": "Box(-5.0, 3.0)", "expected": "Box 3 (-5.0x3.0): Length=-5, Width=3, Area=-15\n" },
+    { "input": "Box(5.0, -3.0)", "expected": "Box 4 (5.0x-3.0): Length=5, Width=-3, Area=-15\n" },
+    { "input": "Box(-5.0, -3.0)", "expected": "Box 5 (-5.0x-3.0): Length=-5, Width=-3, Area=15\n" },
+    { "input": "Box(0.0, 3.0)", "expected": "Box 6 (0.0x3.0): Length=0, Width=3, Area=0\n" },
+    { "input": "Box(5.0, 0.0)", "expected": "Box 7 (5.0x0.0): Length=5, Width=0, Area=0\n" },
+    { "input": "Box(0.0)", "expected": "Box 8 (0.0x0.0): Length=0, Width=0, Area=0\n" }
+  ],
+  "driver": "    Box box1(5.0, 3.0);      \n    Box box2(5.0);           \n    Box box3(-5.0, 3.0);     \n    Box box4(5.0, -3.0);     \n    Box box5(-5.0, -3.0);    \n    Box box6(0.0, 3.0);      \n    Box box7(5.0, 0.0);      \n    Box box8(0.0);           \n\n    std::cout << \"Box 1 (5.0x3.0): Length=\" << box1.getLength() << \", Width=\" << box1.getWidth() << \", Area=\" << box1.getArea() << std::endl;\n    std::cout << \"Box 2 (5.0x5.0): Length=\" << box2.getLength() << \", Width=\" << box2.getWidth() << \", Area=\" << box2.getArea() << std::endl;\n    std::cout << \"Box 3 (-5.0x3.0): Length=\" << box3.getLength() << \", Width=\" << box3.getWidth() << \", Area=\" << box3.getArea() << std::endl;\n    std::cout << \"Box 4 (5.0x-3.0): Length=\" << box4.getLength() << \", Width=\" << box4.getWidth() << \", Area=\" << box4.getArea() << std::endl;\n    std::cout << \"Box 5 (-5.0x-3.0): Length=\" << box5.getLength() << \", Width=\" << box5.getWidth() << \", Area=\" << box5.getArea() << std::endl;\n    std::cout << \"Box 6 (0.0x3.0): Length=\" << box6.getLength() << \", Width=\" << box6.getWidth() << \", Area=\" << box6.getArea() << std::endl;\n    std::cout << \"Box 7 (5.0x0.0): Length=\" << box7.getLength() << \", Width=\" << box7.getWidth() << \", Area=\" << box7.getArea() << std::endl;\n    std::cout << \"Box 8 (0.0x0.0): Length=\" << box8.getLength() << \", Width=\" << box8.getWidth() << \", Area=\" << box8.getArea() << std::endl;",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `Box` class constructor does not validate input dimensions, allowing negative or zero values. The `getArea()` method then calculates area directly using these potentially invalid dimensions, leading to nonsensical results (e.g., negative area). A robust solution would validate inputs, clamp values, or throw exceptions for invalid dimensions."
+  ]
+}

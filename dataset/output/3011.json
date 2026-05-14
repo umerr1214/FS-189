@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Implement a `Logger` class. Its constructor should print 'Logger initialized' and its destructor should print 'Logger destroyed'. Demonstrate how the constructor and destructor are automatically called when a `Logger` object enters and exits scope.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Entering main scope\nEntering inner scope\nLogger initialized\nExiting inner scope\nLogger destroyed\nExiting main scope\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"Entering main scope\" << std::endl;\n    {\n        std::cout << \"Entering inner scope\" << std::endl;\n        Logger myLogger;\n        std::cout << \"Exiting inner scope\" << std::endl;\n    }\n    std::cout << \"Exiting main scope\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": []
+}

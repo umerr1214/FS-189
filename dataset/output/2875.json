@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "For the `Complex` number class, overload the stream insertion operator `operator<<` to allow `Complex` objects to be printed directly to `std::cout` in the format `(real + imaginaryi)`.",
+  "test_cases": [
+    { "input": "Complex(3, 5)", "expected": "(3.000000000000000 + 5.000000000000000i)" },
+    { "input": "Complex(3, -5)", "expected": "(3.000000000000000 + -5.000000000000000i)" },
+    { "input": "Complex(3, 0)", "expected": "(3.000000000000000 + 0.000000000000000i)" },
+    { "input": "Complex(0, 5)", "expected": "(0.000000000000000 + 5.000000000000000i)" },
+    { "input": "Complex(0, -5)", "expected": "(0.000000000000000 + -5.000000000000000i)" },
+    { "input": "Complex(0, 0)", "expected": "(0.000000000000000 + 0.000000000000000i)" },
+    { "input": "Complex(-3, 5)", "expected": "(-3.000000000000000 + 5.000000000000000i)" },
+    { "input": "Complex(-3, -5)", "expected": "(-3.000000000000000 + -5.000000000000000i)" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <cmath>\n\nclass Complex {\npublic:\n    double real;\n    double imag;\n\n    Complex(double r = 0.0, double i = 0.0) : real(r), imag(i) {}\n\n    friend std::ostream& operator<<(std::ostream& os, const Complex& c);\n};\n\nstd::ostream& operator<<(std::ostream& os, const Complex& c) {\n    os << \"(\" << c.real << \" + \" << c.imag << \"i)\";\n    return os;\n}\n\nint main() {\n    std::cout.precision(15);\n    std::cout << std::fixed;\n    Complex c1(3, 5);\n    Complex c2(3, -5);\n    Complex c3(3, 0);\n    Complex c4(0, 5);\n    Complex c5(0, -5);\n    Complex c6(0, 0);\n    Complex c7(-3, 5);\n    Complex c8(-3, -5);\n\n    std::cout << c1 << std::endl;\n    std::cout << c2 << std::endl;\n    std::cout << c3 << std::endl;\n    std::cout << c4 << std::endl;\n    std::cout << c5 << std::endl;\n    std::cout << c6 << std::endl;\n    std::cout << c7 << std::endl;\n    std::cout << c8 << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The output format for negative imaginary parts (e.g., `(3 + -5i)`) is mathematically correct but visually clunky and not conventionally preferred (`(3 - 5i)`).",
+    "The output for zero imaginary parts (e.g., `(3 + 0i)`) is verbose; conventionally, `(3)` is preferred."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Generate and print all prime numbers within a specified range (e.g., from `start` to `end` provided by the user). Reuse the `isPrime` logic if you created it earlier.",
+  "test_cases": [
+    {
+      "input": "1 10",
+      "expected": "Compilation Error"
+    },
+    {
+      "input": "10 20",
+      "expected": "Compilation Error"
+    }
+  ],
+  "driver": "The user's `main` function is compiled and executed. Standard input is provided via `std::cin` for the range boundaries, and standard output is captured from `std::cout` for verification against expected results.",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'std::cout << \"Enter the end of the range: \"' statement on line 29."
+  ]
+}

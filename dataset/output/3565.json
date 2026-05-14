@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ function template `void printArray(const T arr[], int size)` that can print all elements of a 1D array of any data type `T`. Demonstrate its usage with an `int` array and a `char` array.",
+  "test_cases": [
+    {
+      "input": "int intArray[] = {10, 20, 30, 40, 50};\nint intArraySize = sizeof(intArray) / sizeof(intArray[0]);\nstd::cout << \"Testing int array:\\n\";\nprintArray(intArray, intArraySize);\n\nchar charArray[] = {'C', '+', '+', ' ', 'F', 'u', 'n'};\nint charArraySize = sizeof(charArray) / sizeof(charArray[0]);\nstd::cout << \"Testing char array:\\n\";\nprintArray(charArray, charArraySize);\n\nint emptyArray[] = {};\nint emptyArraySize = 0;\nstd::cout << \"Testing empty array:\\n\";\nprintArray(emptyArray, emptyArraySize);\n\nint smallArray[] = {1, 2};\nint negativeSize = -3;\nstd::cout << \"Testing array with negative size (\" << negativeSize << \"):\\n\";\nprintArray(smallArray, negativeSize);",
+      "expected": "Testing int array:\nArray elements: [10, 20, 30, 40, 50]\n\nTesting char array:\nArray elements: [C, +, +,  , F, u, n]\n\nTesting empty array:\nArray elements: []\n\nTesting array with negative size (-3):\nArray elements: []\n"
+    }
+  ],
+  "driver": "int main() {\n    int intArray[] = {10, 20, 30, 40, 50};\n    int intArraySize = sizeof(intArray) / sizeof(intArray[0]);\n    std::cout << \"Testing int array:\\n\";\n    printArray(intArray, intArraySize);\n\n    std::cout << \"\\n\";\n\n    char charArray[] = {'C', '+', '+', ' ', 'F', 'u', 'n'};\n    int charArraySize = sizeof(charArray) / sizeof(charArray[0]);\n    std::cout << \"Testing char array:\\n\";\n    printArray(charArray, charArraySize);\n\n    std::cout << \"\\n\";\n\n    int emptyArray[] = {};\n    int emptyArraySize = 0;\n    std::cout << \"Testing empty array:\\n\";\n    printArray(emptyArray, emptyArraySize);\n\n    std::cout << \"\\n\";\n\n    int smallArray[] = {1, 2};\n    int negativeSize = -3;\n    std::cout << \"Testing array with negative size (\" << negativeSize << \"):\\n\";\n    printArray(smallArray, negativeSize);\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The function implicitly treats negative array sizes as zero, printing an empty array. A robust implementation should explicitly handle invalid (negative) `size` values, perhaps by throwing an exception, returning an error, or logging a warning, instead of silently producing incorrect output.",
+    "For an empty array (size 0), it prints 'Array elements: []' which is technically correct but a more robust approach might print 'Empty array' or nothing more explicitly."
+  ]
+}

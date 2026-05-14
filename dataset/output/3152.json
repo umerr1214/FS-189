@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Design a `ComplexNumber` class with `real` and `imaginary` parts. Overload the binary `+` operator to enable addition of two `ComplexNumber` objects.",
+  "test_cases": [
+    { "input": "cnum1(2.5, 3.0), cnum2(1.0, -1.5)", "expected": "(2.50 + 3.00i) + (1.00 - 1.50i) = 3.50 + 1.50i" },
+    { "input": "cnum1(2.5, 3.0), cnum4(0.0, 0.0)", "expected": "(2.50 + 3.00i) + (0.00 + 0.00i) = 2.50 + 3.00i" },
+    { "input": "cnum6(-5.0, -2.0), cnum7(3.0, 4.0)", "expected": "(-5.00 - 2.00i) + (3.00 + 4.00i) = -2.00 + 2.00i" },
+    { "input": "cnum9(1.0, 1.0), cnum10(2.0, 2.0), cnum11(3.0, 3.0)", "expected": "(1.00 + 1.00i) + (2.00 + 2.00i) + (3.00 + 3.00i) = 6.00 + 6.00i" }
+  ],
+  "driver": "See main function in .cpp file.",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "**Readability Issues:**",
+    "- Member variables `r_val` and `i_val` use non-descriptive names. `real` and `imaginary` would be clearer and more conventional.",
+    "- Excessive and unnecessary use of the `this->` keyword throughout the class methods and constructor initializations. While harmless, it adds visual clutter.",
+    "- Lack of comments explaining the class purpose, method functionalities, or design choices.",
+    "- Overloading `operator+` as a member function, while technically correct, is often considered less idiomatic for binary arithmetic operators than a non-member function, especially for symmetry and potential future implicit conversions.",
+    "**Efficiency Issues:**",
+    "- The `operator+` implementation explicitly creates a `ComplexNumber temp_result;` object, then assigns to its members, and finally returns it. While compilers often optimize this with Return Value Optimization (RVO), a more direct construction like `return ComplexNumber(this->r_val + other.r_val, this->i_val + other.i_val);` is often more explicit about intent and can sometimes lead to fewer potential copies in scenarios where RVO might not apply."
+  ]
+}

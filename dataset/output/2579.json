@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Car` class that demonstrates composition by containing an `Engine` object. The `Engine` class should have attributes like `horsepower` and `fuelType`. Ensure that when a `Car` object is created, its `Engine` is also created, and when the `Car` object is destroyed, its `Engine` object is automatically destroyed with it.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Creating Car ---\nEngine constructed: 250hp, Diesel\nCar constructed.\nCar with 250hp engine started.\n--- Car goes out of scope ---\nCar destroyed.\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Creating Car ---\" << std::endl;\n    Car myCar(250, \"Diesel\");\n    myCar.start();\n    std::cout << \"--- Car goes out of scope ---\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `Car` class uses a raw pointer (`Engine*`) for its `Engine` member and allocates it using `new` in the constructor. However, it fails to `delete` the `Engine` object in the `Car`'s destructor, leading to a memory leak. This design choice also deviates from true composition for automatic destruction, as it requires manual memory management."
+  ]
+}

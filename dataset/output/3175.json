@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Design a `Shape` base class with a `virtual void draw()` method. Derive `Circle` and `Rectangle` classes, each providing their own implementation of `draw()`. Demonstrate polymorphism by calling `draw()` on an array of `Shape*`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Drawing a Circle.\nDrawing a Rectangle.\n"
+    }
+  ],
+  "driver": "run_demo();",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Memory leak: Dynamically allocated `Circle` and `Rectangle` objects are not deallocated using `delete`, leading to resource exhaustion over time.",
+    "Missing virtual destructor in `Shape` base class: While not the primary cause of the memory leak in this specific `main` (as `delete` is never called), it's a critical robustness flaw for polymorphic base classes, potentially leading to undefined behavior or partial deallocation if `delete` *were* called on a `Shape*`."
+  ]
+}

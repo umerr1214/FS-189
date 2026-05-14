@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Print the following pattern using nested 'for' loops, where 'N' is a user-specified number of rows:\n*\n**\n***\n****\n(For N=4)",
+  "test_cases": [
+    { "input": "4", "expected": "*\n**\n***\n****\n" },
+    { "input": "1", "expected": "*\n" },
+    { "input": "5", "expected": "*\n**\n***\n****\n*****\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nvoid printPattern(int N);\n\nint main() {\n    int N;\n    std::cin >> N;\n    printPattern(N);\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

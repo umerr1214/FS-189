@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Create a `Point2D` class with private integer member variables `x` and `y`. Include a parameterized constructor to initialize `x` and `y`. Add a public method `getDistanceToOrigin()` that calculates and returns the Euclidean distance from the point to (0,0).",
+  "test_cases": [
+    { "input": "Point2D p(3, 4); p.getDistanceToOrigin();", "expected": "5.0" },
+    { "input": "Point2D p(0, 0); p.getDistanceToOrigin();", "expected": "0.0" },
+    { "input": "Point2D p(-3, -4); p.getDistanceToOrigin();", "expected": "5.0" },
+    { "input": "Point2D p(5, 12); p.getDistanceToOrigin();", "expected": "13.0" },
+    { "input": "Point2D p(1, 0); p.getDistanceToOrigin();", "expected": "1.0" }
+  ],
+  "driver": "#include <iostream>\n#include <cmath>\n\nclass Point2D {\nprivate:\n    int x;\n    int y;\n\npublic:\n    Point2D(int valX, int valY) : x(valX), y(valY) {}\n\n    double getDistanceToOrigin() {\n        return sqrt(static_cast<double>(x) * x + static_cast<double>(y) * y);\n    }\n};\n\nint main() {\n    Point2D p1(3, 4);\n    std::cout << \"Distance for (3, 4): \" << p1.getDistanceToOrigin() << std::endl;\n\n    Point2D p2(0, 0);\n    std::cout << \"Distance for (0, 0): \" << p2.getDistanceToOrigin() << std::endl;\n\n    Point2D p3(-3, -4);\n    std::cout << \"Distance for (-3, -4): \" << p3.getDistanceToOrigin() << std::endl;\n\n    Point2D p4(5, 12);\n    std::cout << \"Distance for (5, 12): \" << p4.getDistanceToOrigin() << std::endl;\n\n    Point2D p5(1, 0);\n    std::cout << \"Distance for (1, 0): \" << p5.getDistanceToOrigin() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": []
+}

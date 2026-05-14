@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Design a `Shape` base class with a `virtual void draw()` method. Derive `Circle` and `Rectangle` classes, each providing their own implementation of `draw()`. Demonstrate polymorphism by calling `draw()` on an array of `Shape*`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Drawing a Circle. This is the Circle's specific drawing method.\nDrawing a Rectangle. This is the Rectangle's specific drawing method.\nCircle destructor called. Cleaning up.\nShape destructor called (verbose).\nRectangle destructor called. Cleaning up.\nShape destructor called (verbose).\nDemonstration complete.\n"
+    }
+  ],
+  "driver": "run_demo();",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Efficiency Issue: Excessive use of `std::endl` which flushes the output buffer, potentially slowing down I/O. Using `\\n` is generally more efficient.",
+    "Readability Issue: Overly verbose print statements in `draw` and destructor methods make the output noisy and less focused.",
+    "Readability Issue: Poor variable names like `shape_pointers_array`, `temp_circle_ptr`, `temp_rectangle_ptr` reduce code clarity.",
+    "Readability Issue: Using raw pointers and manual memory management (`new`/`delete`) directly, instead of modern C++ features like `std::unique_ptr` in a `std::vector`, makes the code more error-prone and less readable for memory ownership."
+  ]
+}

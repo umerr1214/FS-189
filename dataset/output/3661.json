@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Declare an integer variable, initialize it, then declare a pointer to that variable. Print both the value of the variable and the value accessed through the pointer, as well as the address of the variable and the pointer.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Value of variable: UNDEFINED_VALUE\nValue accessed through pointer: UNDEFINED_VALUE\nAddress of variable: 0x<HEX_ADDRESS>\nAddress stored in pointer: 0x<HEX_ADDRESS>\n"
+    }
+  ],
+  "driver": "// The provided C++ code is a complete program. An external test harness would compile and execute it, capturing stdout for validation.",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The integer variable 'myVar' is declared but not initialized, leading to undefined behavior when its value is read directly or through the pointer. The output for the values will be indeterminate.",
+    "This violates the 'initialize it' part of the question's requirements, demonstrating a common robustness flaw in C++ programs."
+  ]
+}

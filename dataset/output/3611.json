@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a function `bool isPrime(int num)` that returns `true` if `num` is prime and `false` otherwise. Use this function to print all prime numbers up to a user-specified limit.",
+  "test_cases": [
+    { "input": "10", "expected": "Enter a limit: Prime numbers up to 10:\n0 1 2 3 5 7 \n" },
+    { "input": "5", "expected": "Enter a limit: Prime numbers up to 5:\n0 1 2 3 5 \n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n\n// This driver simulates running the user's complete program.\n// It expects the user's program to read an integer from stdin and print to stdout.\n// The 'input' field in test_cases will be fed to stdin.\n// The 'expected' field is the exact string expected on stdout, including prompts.\n\nint main() {\n    std::cout << \"Driver for Logical Error: Expects full program execution.\" << std::endl;\n    std::cout << \"Input from test_cases will be fed to stdin.\" << std::endl;\n    std::cout << \"Stdout will be captured and compared to expected output.\" << std::endl;\n    std::cout << \"Test cases are designed to expose incorrect handling of 0 and 1 by isPrime.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `isPrime` function incorrectly returns `true` for `num = 0` and `num = 1` because it lacks the initial check `if (num < 2) return false;`. This leads to 0 and 1 being printed as prime numbers."
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "language": "c++",
+  "question": "Write a function `void find_max_min(const int* arr, int size, int* max_val, int* min_val)` that finds the maximum and minimum values in an array and returns them through pointer parameters.",
+  "test_cases": [
+    {
+      "input": "Array: {5, 2, 9, 1, 7}, Size: 5",
+      "expected": "Max: 9, Min: 1"
+    },
+    {
+      "input": "Array: {42}, Size: 1",
+      "expected": "Max: 42, Min: 42"
+    },
+    {
+      "input": "Empty Array, Size: 0",
+      "expected": "Program crash or segmentation fault"
+    },
+    {
+      "input": "Array: {-5, -2, -9, -1, -7}, Size: 5",
+      "expected": "Max: -1, Min: -9"
+    }
+  ],
+  "driver": "g++ -std=c++11 -o solution 3385.cpp && ./solution 1\n./solution 2\n./solution 3\n./solution 4",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `find_max_min` function does not perform checks for `size <= 0` or `arr == nullptr` before attempting to access `arr[0]`. This leads to undefined behavior or a program crash (e.g., segmentation fault) when an empty array or null pointer is passed, which is a critical robustness flaw."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Write a function `initializeWithDefaults` that takes an integer array and its size via a pointer and sets all elements of the array to a default value of -1.",
+  "test_cases": [
+    { "input": "[1,2,3,4,5], size=5", "expected": "[-1,-1,-1,-1,-1]" },
+    { "input": "[], size=0", "expected": "[]" },
+    { "input": "[10], size=1", "expected": "[-1]" },
+    { "input": "nullptr, size=3", "expected": "Crash / Undefined Behavior" }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n\nvoid initializeWithDefaults(int* arr, int size);\n\nvoid printArray(const int* arr, int size) {\n    std::cout << \"[\";\n    for (int i = 0; i < size; ++i) {\n        std::cout << arr[i] << (i == size - 1 ? \"\" : \",\");\n    }\n    std::cout << \"]\";\n}\n\nint main() {\n    // Test Case 1: Normal array\n    {\n        int size = 5;\n        int* arr = new int[size];\n        for (int i = 0; i < size; ++i) arr[i] = i + 1; \n        std::cout << \"Test Case 1: Input array: \";\n        printArray(arr, size);\n        std::cout << \", size=\" << size << std::endl;\n        initializeWithDefaults(arr, size);\n        std::cout << \"Expected: [-1,-1,-1,-1,-1], Actual: \";\n        printArray(arr, size);\n        std::cout << std::endl << std::endl;\n        delete[] arr;\n    }\n\n    // Test Case 2: Empty array\n    {\n        int size = 0;\n        int* arr = new int[size]; \n        std::cout << \"Test Case 2: Input array: \";\n        printArray(arr, size);\n        std::cout << \", size=\" << size << std::endl;\n        initializeWithDefaults(arr, size);\n        std::cout << \"Expected: [], Actual: \";\n        printArray(arr, size);\n        std::cout << std::endl << std::endl;\n        delete[] arr;\n    }\n\n    // Test Case 3: Single element array\n    {\n        int size = 1;\n        int* arr = new int[size];\n        arr[0] = 100;\n        std::cout << \"Test Case 3: Input array: \";\n        printArray(arr, size);\n        std::cout << \", size=\" << size << std::endl;\n        initializeWithDefaults(arr, size);\n        std::cout << \"Expected: [-1], Actual: \";\n        printArray(arr, size);\n        std::cout << std::endl << std::endl;\n        delete[] arr;\n    }\n\n    // Note: A test case with `nullptr` input is not run directly in the driver\n    // to prevent the driver itself from crashing. The robustness issue is noted\n    // in the 'errors' and 'test_cases' fields.\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The function does not handle a `nullptr` input for the array pointer. If `arr` is `nullptr` and `size` is greater than 0, dereferencing `arr[i]` will lead to a segmentation fault or undefined behavior."]
+}

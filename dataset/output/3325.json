@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Implement a program that continuously asks the user to enter positive integers until they enter '0'. After '0' is entered, print the sum of all the non-zero numbers entered.",
+  "test_cases": [
+    { "input": "5\n10\n0\n", "expected": "15\n" },
+    { "input": "1\n2\n3\n4\n5\n0\n", "expected": "15\n" },
+    { "input": "0\n", "expected": "0\n" },
+    { "input": "100\n200\n300\n0\n", "expected": "600\n" },
+    { "input": "7\n3\n-5\n0\n", "expected": "5\n" },
+    { "input": "1\n-1\n10\n-10\n0\n", "expected": "0\n" },
+    { "input": "2147483647\n1\n0\n", "expected": "2147483648\n" },
+    { "input": "abc\n5\n0\n", "expected": "5\n" },
+    { "input": "hello\nworld\n1\n2\n0\n", "expected": "3\n" }
+  ],
+  "driver": "g++ -o solution {filename} && ./solution",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "Potential integer overflow for large sums due to using 'int' for the accumulator.",
+    "Lack of input validation and error handling for non-integer input, which can lead to an infinite loop or incorrect program behavior."
+  ]
+}

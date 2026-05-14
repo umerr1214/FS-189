@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Employee` with private members `name` and `employeeId`. Derive two classes, `Manager` and `Engineer`. `Manager` should add a `department` member, and `Engineer` should add a `specialization` member. Implement a `displayInfo()` method in each class.",
+  "test_cases": [
+    { "input": "N/A", "expected": "Employee Name: Alice, ID: 101\nManager Name: Bob, ID: 201, Department: Sales\nEngineer Name: Charlie, ID: 301, Specialization: Software Development\n\n--- Polymorphic Display Info ---\nEmployee Name: Alice, ID: 101\nManager Name: Bob, ID: 201, Department: Sales\nEngineer Name: Charlie, ID: 301, Specialization: Software Development" }
+  ],
+  "driver": "int main() {\n    Employee emp(\"Alice\", 101);\n    Manager mgr(\"Bob\", 201, \"Sales\");\n    Engineer eng(\"Charlie\", 301, \"Software Development\");\n\n    std::cout << \"--- Employee Info ---\" << std::endl;\n    emp.displayInfo();\n    mgr.displayInfo();\n    eng.displayInfo();\n\n    std::vector<Employee*> employees;\n    employees.push_back(&emp);\n    employees.push_back(&mgr);\n    employees.push_back(&eng);\n\n    std::cout << \"\\n--- Polymorphic Display Info ---\" << std::endl;\n    for (Employee* e : employees) {\n        e->displayInfo();\n    }\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The base class `Employee` declares its members `name` and `employeeId` as `protected` instead of `private`, directly violating the explicit requirement in the question. While functional, this changes the intended access control semantics."
+  ]
+}

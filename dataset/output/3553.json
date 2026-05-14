@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `int incrementPointerValue(int* ptr)` that takes an integer pointer, increments the value it points to by 5, and then returns the new value. Demonstrate its usage in `main`.",
+  "test_cases": [
+    { "input": "int value = 10; incrementPointerValue(&value);", "expected": "Original value: 10\nValue after increment (valid ptr): 15\nReturned new value (valid ptr): 15" },
+    { "input": "int* nullPtr = nullptr; incrementPointerValue(nullPtr);", "expected": "Program termination due to segmentation fault or unhandled exception (dereferencing nullptr)." }
+  ],
+  "driver": "#include <iostream>\n\n// The function to be tested\nint incrementPointerValue(int* ptr) {\n    *ptr += 5;\n    return *ptr;\n}\n\nint main() {\n    std::cout << \"Running test cases for Robustness Issue...\\n\";\n\n    // Test Case 1: Valid pointer\n    int value1 = 10;\n    std::cout << \"Original value: \" << value1 << std::endl;\n    int result1 = incrementPointerValue(&value1);\n    std::cout << \"Value after increment (valid ptr): \" << value1 << std::endl;\n    std::cout << \"Returned new value (valid ptr): \" << result1 << std::endl;\n\n    std::cout << \"\\nTest Case 2: Null pointer (EXPECTED CRASH)\\n\";\n    int* nullPtr = nullptr;\n    // This call is expected to cause a segmentation fault\n    int result2 = incrementPointerValue(nullPtr); \n    std::cout << \"If you see this line, the program did not crash as expected for nullptr. Result: \" << result2 << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The function `incrementPointerValue` does not handle `nullptr` input for `ptr`. Dereferencing a `nullptr` results in undefined behavior, typically a segmentation fault or program crash, making the function non-robust for all possible valid inputs (including `nullptr` which a caller might legitimately pass if not properly documented)."
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "language": "c++",
+  "question": "Create a C++ program for a simple number guessing game. Generate a random secret number between 1 and 100. The user gets 5 attempts to guess the number. Use a while loop for the guessing process and provide hints (higher/lower).",
+  "test_cases": [
+    {
+      "input": "50\n70\n90\n84\n",
+      "expected": "Welcome to the Number Guessing Game!\nI have selected a number between 1 and 100.\nYou have 5 attempts to guess it.\n\nAttempt 1 of 5. Guess a number (1-100): 50\nToo low!\nAttempt 2 of 5. Guess a number (1-100): 70\nToo low!\nAttempt 3 of 5. Guess a number (1-100): 90\nToo high!\nAttempt 4 of 5. Guess a number (1-100): 84\nCongratulations! You guessed the number 84 in 4 attempts.\n"
+    },
+    {
+      "input": "abc\n50\n84\n",
+      "expected": "Welcome to the Number Guessing Game!\nI have selected a number between 1 and 100.\nYou have 5 attempts to guess it.\n\nAttempt 1 of 5. Guess a number (1-100): abc\nInvalid input! Please enter a number.\nAttempt 1 of 5. Guess a number (1-100): 50\nToo low!\nAttempt 2 of 5. Guess a number (1-100): 84\nCongratulations! You guessed the number 84 in 2 attempts.\n"
+    },
+    {
+      "input": "101\n0\n50\n84\n",
+      "expected": "Welcome to the Number Guessing Game!\nI have selected a number between 1 and 100.\nYou have 5 attempts to guess it.\n\nAttempt 1 of 5. Guess a number (1-100): 101\nToo high!\nAttempt 2 of 5. Guess a number (1-100): 0\nToo low!\nAttempt 3 of 5. Guess a number (1-100): 50\nToo low!\nAttempt 4 of 5. Guess a number (1-100): 84\nCongratulations! You guessed the number 84 in 4 attempts.\n"
+    }
+  ],
+  "driver": "The program is run with input provided via stdin. The stdout is captured and compared against the expected output. For reproducible testing, the random number generator in the target program is seeded with a fixed value (e.g., `srand(1)`) so the secret number is deterministic (e.g., 84).",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Uses short, non-descriptive variable names (e.g., `s_num`, `u_guess`, `i`) which reduces code readability.",
+    "Relies on magic numbers (e.g., `5`, `100`, `1`) directly in the code instead of using named constants, making the code harder to understand and maintain.",
+    "The input handling for invalid numbers (non-integer or out-of-range) is functional but could be structured more clearly for better readability and user experience."
+  ]
+}

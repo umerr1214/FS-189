@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a C++ program that initializes a 1D integer array with 10 elements. Then, calculate and display the sum of all even numbers and the product of all odd numbers in that array.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Array elements: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10\nSum of even numbers: 30\nProduct of odd numbers: 0\n"
+    }
+  ],
+  "driver": "int main() { /* The solution is expected to be a complete program with its own main function. */ return 0; }",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The 'oddProduct' variable is initialized to 0 instead of 1, causing the product of all odd numbers to always be 0."
+  ]
+}

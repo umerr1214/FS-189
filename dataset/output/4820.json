@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Write a C++ function `swapValues(int& a, int& b)` that takes two integer references and swaps their values. Demonstrate its usage in a `main` function by swapping two user-defined integers.",
+  "test_cases": [
+    {
+      "input": "7\n-3\n",
+      "expected": "Please input the first integer: Please input the second integer: Original values: firstNum = 7, secondNum = -3\nSwapped values: firstNum = -3, secondNum = 7\n"
+    },
+    {
+      "input": "0\n0\n",
+      "expected": "Please input the first integer: Please input the second integer: Original values: firstNum = 0, secondNum = 0\nSwapped values: firstNum = 0, secondNum = 0\n"
+    }
+  ],
+  "driver": "#include <iostream>\n\n// Assuming user's main is renamed to user_main\nextern int user_main();\n\nint main() {\n    return user_main();\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `swapValues` function uses the XOR swap algorithm, which can be less readable and harder to understand for developers unfamiliar with bitwise operations compared to the standard temporary variable approach.",
+    "While XOR swap avoids a temporary variable, its performance benefit is often negligible for modern CPUs and can sometimes be less efficient due to instruction dependencies. The temporary variable approach is generally preferred for clarity and often optimized well by compilers."
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "language": "c++",
+  "question": "Create a `Calculator` class. Implement three overloaded `add` member functions: one that takes two integers, one that takes two doubles, and one that takes three integers.",
+  "test_cases": [
+    { "input": "calc.add(5, 3)", "expected": "8" },
+    { "input": "calc.add(-10, 7)", "expected": "-3" },
+    { "input": "calc.add(std::numeric_limits<int>::max(), 1)", "expected": "-2147483648" },
+    { "input": "calc.add(std::numeric_limits<int>::min(), -1)", "expected": "2147483647" },
+    { "input": "calc.add(5.5, 3.2)", "expected": "8.7" },
+    { "input": "calc.add(-10.1, 7.5)", "expected": "-2.6" },
+    { "input": "calc.add(123456789.123, 987654321.987)", "expected": "1111111111.11" },
+    { "input": "calc.add(1, 2, 3)", "expected": "6" },
+    { "input": "calc.add(-1, -2, -3)", "expected": "-6" },
+    { "input": "calc.add(std::numeric_limits<int>::max() - 1, 1, 1)", "expected": "-2147483648" }
+  ],
+  "driver": "#include <iostream>\n#include <limits>\n#include <string>\n\nclass Calculator {\npublic:\n    int add(int a, int b) { return a + b; }\n    double add(double a, double b) { return a + b; }\n    int add(int a, int b, int c) { return a + b + c; }\n};\n\nint main() {\n    Calculator calc;\n    std::cout << calc.add(5, 3) << std::endl;\n    std::cout << calc.add(-10, 7) << std::endl;\n    std::cout << calc.add(std::numeric_limits<int>::max(), 1) << std::endl;\n    std::cout << calc.add(std::numeric_limits<int>::min(), -1) << std::endl;\n    std::cout << calc.add(5.5, 3.2) << std::endl;\n    std::cout << calc.add(-10.1, 7.5) << std::endl;\n    std::cout << calc.add(123456789.123, 987654321.987) << std::endl;\n    std::cout << calc.add(1, 2, 3) << std::endl;\n    std::cout << calc.add(-1, -2, -3) << std::endl;\n    std::cout << calc.add(std::numeric_limits<int>::max() - 1, 1, 1) << std::endl;\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The `add(int, int)` and `add(int, int, int)` member functions do not handle potential integer overflow/underflow. For extremely large or small input values, the sum can exceed the range of `int`, leading to incorrect (wrapped-around) results instead of an error or a wider type calculation."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement matrix addition for two 3x3 integer matrices. Populate the matrices with example data and print the resulting sum matrix.",
+  "test_cases": [
+    {
+      "input": "N/A (matrices populated internally)",
+      "expected": "Sum Matrix:\n10 10 10\n10 10 10\n10 10 10\n"
+    }
+  ],
+  "driver": "g++ 3649.cpp -o 3649 && ./3649",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The output formatting includes an unnecessary trailing space after the last element of each row, which can lead to parsing issues or untidy output.",
+    "Matrix B initialization uses an implicit formula (`9 - (i * SIZE + j)`) which, while correct for the current 3x3 size, is less robust and harder to maintain or adapt if the matrix dimensions or desired pattern were to change."
+  ]
+}

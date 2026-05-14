@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Explain the purpose and usage of `public`, `private`, and `protected` access specifiers using a simple example with a base class `MyClass` and a derived class `DerivedClass`.",
+  "test_cases": [
+    { "input": "", "expected": "Compilation error: 'private_var' is private within this context." }
+  ],
+  "driver": "// No driver needed for semantic error, as it won't compile.",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "Attempting to access 'private_var', a private member of 'MyClass', directly from the 'main' function. Private members are only accessible from within the class they are declared in."
+  ]
+}

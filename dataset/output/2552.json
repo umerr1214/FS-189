@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Building upon the `Shape` hierarchy (with `Circle` and `Rectangle`), make `calculateArea()` a virtual function in the `Shape` base class. Demonstrate runtime polymorphism by creating an array or vector of `Shape` pointers, populating it with `Circle` and `Rectangle` objects, and then iterating through it to call `calculateArea()` on each object.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Shape 1 Area: 78.54\nShape 2 Area: 24.00\nShape 3 Area: 19.63\nShape 4 Area: 20.00\n"
+    }
+  ],
+  "driver": "int main() { std::cout << run_test_cases(); return 0; }",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The code uses raw pointers (`Shape*`) in `std::vector<Shape*>`, requiring verbose and error-prone manual memory management (`new` and `delete`). This is less readable and less efficient than using smart pointers like `std::unique_ptr`.",
+    "The `calculateArea()` methods in `Shape`, `Circle`, and `Rectangle` are not declared `const`. Since these methods do not modify the object's state, they should be `const` to allow them to be called on `const` objects and improve type safety.",
+    "Variable names like `radius_val`, `width_val`, `height_val` are less descriptive than `radius_`, `width_`, `height_` or simply `radius` etc., reducing readability.",
+    "Using a C-style `for` loop (`for (int i = 0; i < myShapesCollection.size(); ++i)`) for iterating through the vector is less modern and less readable than a range-based `for` loop.",
+    "The use of a `#define` for `MY_PI` is less type-safe and precise than `M_PI` from `<cmath>` or `std::numbers::pi` from `<numbers>` (C++20)."
+  ]
+}

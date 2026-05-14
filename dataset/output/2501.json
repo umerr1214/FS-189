@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Department` class that holds a collection of `Professor` objects (aggregation). Implement methods to `hireProfessor()`, `fireProfessor()`, and `displayProfessors()`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Hired Professor: Alice Smith (ID: 101)\nHired Professor: Bob Johnson (ID: 102)\nHired Professor: Charlie Brown (ID: 103)\n\n--- Current Professors ---\nDepartment: Computer Science\n  Professor ID: 101, Name: Alice Smith\n  Professor ID: 102, Name: Bob Johnson\n  Professor ID: 103, Name: Charlie Brown\n\n--- Firing Professor 102 (Bob) ---\nAttempting to fire Professor with ID: 102\nFired a professor (incorrectly, always the last one, which was Charlie Brown ID: 103).\n\n--- Professors After Firing ---\nDepartment: Computer Science\n  Professor ID: 101, Name: Alice Smith\n  Professor ID: 102, Name: Bob Johnson\n\n--- Trying to fire non-existent Professor 999 ---\nAttempting to fire Professor with ID: 999\nFired a professor (incorrectly, always the last one, which was Bob Johnson ID: 102).\n\n--- Final Professors ---\nDepartment: Computer Science\n  Professor ID: 101, Name: Alice Smith\n"
+    }
+  ],
+  "driver": "int main() {\n    Department csDept(\"Computer Science\");\n\n    Professor p1(\"Alice Smith\", 101);\n    Professor p2(\"Bob Johnson\", 102);\n    Professor p3(\"Charlie Brown\", 103);\n\n    csDept.hireProfessor(p1);\n    csDept.hireProfessor(p2);\n    csDept.hireProfessor(p3);\n\n    std::cout << \"\\n--- Current Professors ---\" << std::endl;\n    csDept.displayProfessors();\n\n    std::cout << \"\\n--- Firing Professor 102 (Bob) ---\" << std::endl;\n    csDept.fireProfessor(102);\n\n    std::cout << \"\\n--- Professors After Firing ---\" << std::endl;\n    csDept.displayProfessors();\n\n    std::cout << \"\\n--- Trying to fire non-existent Professor 999 ---\" << std::endl;\n    csDept.fireProfessor(999);\n\n    std::cout << \"\\n--- Final Professors ---\" << std::endl;\n    csDept.displayProfessors();\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": [
+    "The `fireProfessor` method incorrectly removes the last professor from the collection using `pop_back()` instead of finding and removing the professor with the specified ID. This leads to incorrect state management as the wrong professor is removed."
+  ]
+}

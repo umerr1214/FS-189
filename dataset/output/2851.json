@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Building on the `Shape` and `Rectangle` example, add a `virtual void display()` method to the `Shape` base class that prints generic shape information. Override this method in the `Rectangle` class to display its specific dimensions and area.",
+  "test_cases": [
+    {
+      "input": "Implicit: Creates a Shape, a Rectangle(10.0, 5.0), a Rectangle(-8.0, 4.0), and a Rectangle(6.0, -3.0).",
+      "expected": "--- Displaying Shape 1 ---\nThis is a generic shape.\n\n--- Displaying Shape 2 ---\nThis is a generic shape.\nRectangle dimensions: Width = 10.00, Height = 5.00.\nArea: 50.00.\n\n--- Displaying Shape 3 ---\nThis is a generic shape.\nRectangle dimensions: Width = -8.00, Height = 4.00.\nArea: -32.00.\n\n--- Displaying Shape 4 ---\nThis is a generic shape.\nRectangle dimensions: Width = 6.00, Height = -3.00.\nArea: -18.00.\n\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <vector>\n#include <memory>\n#include <iomanip>\n\n// Shape and Rectangle definitions will go here\n\nint main() {\n    std::vector<std::unique_ptr<Shape>> shapes;\n\n    std::cout << std::fixed << std::setprecision(2);\n\n    shapes.push_back(std::make_unique<Shape>());\n    shapes.push_back(std::make_unique<Rectangle>(10.0, 5.0));\n    shapes.push_back(std::make_unique<Rectangle>(-8.0, 4.0));\n    shapes.push_back(std::make_unique<Rectangle>(6.0, -3.0));\n\n    for (size_t i = 0; i < shapes.size(); ++i) {\n        std::cout << \"--- Displaying Shape \" << i + 1 << \" ---\\n\";\n        shapes[i]->display();\n        std::cout << \"\\n\";\n    }\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The Rectangle class constructor does not validate input dimensions, allowing negative width/height. This leads to a geometrically incorrect negative area calculation when display() is called, which is an unexpected behavior for a shape."
+  ]
+}

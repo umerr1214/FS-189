@@ -1,0 +1,26 @@
+{
+  "language": "c++",
+  "question": "Create a function `isPrime` that takes an integer as input and returns `true` if it's a prime number, `false` otherwise.",
+  "test_cases": [
+    { "input": "0", "expected": "false" },
+    { "input": "1", "expected": "false" },
+    { "input": "2", "expected": "true" },
+    { "input": "3", "expected": "true" },
+    { "input": "4", "expected": "false" },
+    { "input": "5", "expected": "true" },
+    { "input": "6", "expected": "false" },
+    { "input": "7", "expected": "true" },
+    { "input": "13", "expected": "true" },
+    { "input": "25", "expected": "false" },
+    { "input": "97", "expected": "true" },
+    { "input": "100", "expected": "false" },
+    { "input": "-5", "expected": "false" },
+    { "input": "1000003", "expected": "true" },
+    { "input": "999999", "expected": "false" }
+  ],
+  "driver": "#include <iostream>\n\nbool isPrime(int val);\n\nint main() {\n    std::cout << (isPrime(0) ? \"true\" : \"false\") << std::endl;\n    std::cout << (isPrime(1) ? \"true\" : \"false\") << std::endl;\n    std::cout << (isPrime(2) ? \"true\" : \"false\") << std::endl;\n    std::cout << (isPrime(3) ? \"true\" : \"false\") << std::endl;\n    std::cout << (isPrime(4) ? \"true\" : \"false\") << std::endl;\n    std::cout << (isPrime(5) ? \"true\" : \"false\") << std::endl;\n    std::cout << (isPrime(6) ? \"true\" : \"false\") << std::endl;\n    std::cout << (isPrime(7) ? \"true\" : \"false\") << std::endl;\n    std::cout << (isPrime(13) ? \"true\" : \"false\") << std::endl;\n    std::cout << (isPrime(25) ? \"true\" : \"false\") << std::endl;\n    std::cout << (isPrime(97) ? \"true\" : \"false\") << \"\\n\";\n    std::cout << (isPrime(100) ? \"true\" : \"false\") << std::endl;\n    std::cout << (isPrime(-5) ? \"true\" : \"false\") << std::endl;\n    std::cout << (isPrime(1000003) ? \"true\" : \"false\") << std::endl;\n    std::cout << (isPrime(999999) ? \"true\" : \"false\") << std::endl;\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": ["Inefficient algorithm: checks divisibility up to `n-1` instead of `sqrt(n)` and doesn't optimize for even numbers.", "Poor variable naming (`val`, `j`) reduces readability."]
+}

@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Generate and print the first 'n' terms of the Fibonacci sequence, where 'n' is a positive integer provided by the user.",
+  "test_cases": [
+    { "input": "1", "expected": "0\n" },
+    { "input": "5", "expected": "0 1 1 2 3\n" },
+    { "input": "10", "expected": "0 1 1 2 3 5 8 13 21 34\n" },
+    { "input": "2", "expected": "0 1\n" },
+    { "input": "0", "expected": "\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <cstdio>\n\nstd::string run_command(const std::string& cmd, const std::string& input_str) {\n    std::string result = \"\";\n    std::string input_filename = \"temp_input.txt\";\n    FILE* input_file = fopen(input_filename.c_str(), \"w\");\n    if (input_file) {\n        fprintf(input_file, \"%s\", input_str.c_str());\n        fclose(input_file);\n    } else {\n        return \"ERROR: Could not create input file.\";\n    }\n\n    std::string full_cmd = cmd + \" < \" + input_filename + \" 2>&1\";\n    FILE* pipe = popen(full_cmd.c_str(), \"r\");\n    if (!pipe) {\n        remove(input_filename.c_str());\n        return \"ERROR: popen failed.\";\n    }\n    char buffer[128];\n    while (!feof(pipe)) {\n        if (fgets(buffer, 128, pipe) != NULL)\n            result += buffer;\n    }\n    pclose(pipe);\n    remove(input_filename.c_str());\n    return result;\n}\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> test_cases = {\n        { \"1\", \"0\\n\" },\n        { \"5\", \"0 1 1 2 3\\n\" },\n        { \"10\", \"0 1 1 2 3 5 8 13 21 34\\n\" },\n        { \"2\", \"0 1\\n\" },\n        { \"0\", \"\\n\" }\n    };\n\n    std::string executable_name = \"./a.out\"; // Assuming the compiled program is a.out\n\n    for (size_t i = 0; i < test_cases.size(); ++i) {\n        const auto& tc = test_cases[i];\n        std::string input = tc.first;\n        std::string expected_output = tc.second;\n        \n        std::string actual_output = run_command(executable_name, input);\n\n        if (actual_output == expected_output) {\n            std::cout << \"Test \" << i + 1 << \" Passed (Input: \\\"\" << input << \"\\\")\" << std::endl;\n        } else {\n            std::cout << \"Test \" << i + 1 << \" Failed (Input: \\\"\" << input << \"\\\")\" << std::endl;\n            std::cout << \"  Expected: \\\"\" << expected_output << \"\\\"\" << std::endl;\n            std::cout << \"  Actual:   \\\"\" << actual_output << \"\\\"\" << std::endl;\n        }\n    }\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The program uses a naive recursive approach to calculate Fibonacci numbers, leading to an exponential time complexity (O(2^n)). This causes significant performance degradation for larger values of 'n' due to repeated computations of the same subproblems. An iterative solution or memoized recursion would be far more efficient (O(n))."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a `Student` class with private member variables for `name`, `id`, and `grade`. Implement public `getter` and `setter` methods for all members.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "Initial State:\nName: \nID: 0\nGrade: 0.1\n\nSetting values...\nCurrent State (after setGrade(70.0)):\nName: Charlie\nID: 303\nGrade: 70.1\nGrade (again): 70.2\nGrade (yet again): 70.3\n\nChecking final grade:\nFinal Grade: 70.4\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n\nint main() {\n    Student s;\n    std::cout << \"Initial State:\" << std::endl;\n    std::cout << \"Name: \" << s.getName() << std::endl;\n    std::cout << \"ID: \" << s.getId() << std::endl;\n    std::cout << \"Grade: \" << s.getGrade() << std::endl;\n\n    std::cout << \"\\nSetting values...\" << std::endl;\n    s.setName(\"Charlie\");\n    s.setId(303);\n    s.setGrade(70.0);\n\n    std::cout << \"Current State (after setGrade(70.0)):\\n\";\n    std::cout << \"Name: \" << s.getName() << std::endl;\n    std::cout << \"ID: \" << s.getId() << std::endl;\n    std::cout << \"Grade: \" << s.getGrade() << std::endl;\n    std::cout << \"Grade (again): \" << s.getGrade() << std::endl;\n    std::cout << \"Grade (yet again): \" << s.getGrade() << std::endl;\n\n    std::cout << \"\\nChecking final grade:\" << std::endl;\n    std::cout << \"Final Grade: \" << s.getGrade() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `getGrade` method contains a semantic error. It is implemented as a getter, which should typically be a read-only operation and not modify the object's state. However, this method increments the `grade` member variable (`grade += 0.1;`) every time it is called. Additionally, the method is not declared `const`, which would enforce its read-only nature and prevent such modifications, violating common C++ class design principles for accessor methods."
+  ]
+}

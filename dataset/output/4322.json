@@ -1,0 +1,21 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter their name (as a single word) and their age. Then, print a greeting message displaying both pieces of information.",
+  "test_cases": [
+    {
+      "input": "Charlie\n25\n",
+      "expected": "Enter your name: Enter your age: Hello, Charlie! You are 25 years old.\n"
+    },
+    {
+      "input": "Diana\n42\n",
+      "expected": "Enter your name: Enter your age: Hello, Diana! You are 42 years old.\n"
+    }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <sstream>\n#include <streambuf>\n\nextern void solve();\n\nstd::string run_test_case(const std::string& input_str) {\n    std::stringstream ss_in(input_str);\n    std::stringstream ss_out;\n\n    std::streambuf* old_cin_buf = std::cin.rdbuf();\n    std::streambuf* old_cout_buf = std::cout.rdbuf();\n\n    std::cin.rdbuf(ss_in.rdbuf());\n    std::cout.rdbuf(ss_out.rdbuf());\n\n    solve();\n\n    std::cin.rdbuf(old_cin_buf);\n    std::cout.rdbuf(old_cout_buf);\n\n    return ss_out.str();\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The program uses C-style I/O functions (`printf`, `scanf`) which are generally less type-safe and idiomatic in modern C++ compared to `std::cout` and `std::cin`. Variable names (`n`, `a`) are cryptic and lack descriptive meaning, reducing readability and maintainability."
+  ]
+}

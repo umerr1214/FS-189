@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a `MathOperations` class with overloaded `add` methods: one taking two integers, another taking two doubles, and a third taking three integers.",
+  "test_cases": [
+    { "input": "ops.add(5, 10)", "expected": "15" },
+    { "input": "ops.add(5.5, 10.5)", "expected": "16.0" },
+    { "input": "ops.add(1, 2, 3)", "expected": "6" },
+    { "input": "ops.add(1, 2, 3, 4)", "expected": "Compilation Error: No matching function" }
+  ],
+  "driver": "MathOperations ops;\nstd::cout << \"Sum of 5 and 10 (int): \" << ops.add(5, 10) << std::endl;\nstd::cout << std::fixed << std::setprecision(1);\nstd::cout << \"Sum of 5.5 and 10.5 (double): \" << ops.add(5.5, 10.5) << std::endl;\nstd::cout << \"Sum of 1, 2, and 3 (int): \" << ops.add(1, 2, 3) << std::endl;\nstd::cout << \"Sum of 1, 2, 3, and 4 (int): \" << ops.add(1, 2, 3, 4) << std::endl;",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "No matching function for call to `MathOperations::add(int, int, int, int)`. The `MathOperations` class does not have an `add` method that accepts four integer arguments, leading to a compilation error."
+  ]
+}

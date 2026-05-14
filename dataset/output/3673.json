@@ -1,0 +1,24 @@
+{
+  "language": "c++",
+  "question": "Accept a sentence from the user using `std::getline` and count the total number of words in it (assume words are separated by single spaces).",
+  "test_cases": [
+    { "input": "", "expected": "0\n" },
+    { "input": "hello", "expected": "1\n" },
+    { "input": "hello world", "expected": "2\n" },
+    { "input": "  hello world  ", "expected": "2\n" },
+    { "input": "hello   world", "expected": "2\n" },
+    { "input": "one two three", "expected": "3\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <sstream>\n#include <streambuf>\n\n// The solution code is expected to be in a main function that reads from std::cin and writes to std::cout.\n// This driver redirects std::cin and std::cout to stringstreams for testing.\n\n// Define a function pointer for the solution's main function to allow calling it.\n// This typically involves renaming the student's main to 'solution_main' or similar\n// and linking it. For this example, we assume an external test runner will handle\n// redirecting streams and executing the compiled solution's main function.\n// The following `run_solution` function is a placeholder for demonstration.\nvoid run_solution(); // This would be the compiled student's main function\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> test_cases = {\n        { \"\", \"0\\n\" },\n        { \"hello\", \"1\\n\" },\n        { \"hello world\", \"2\\n\" },\n        { \"  hello world  \", \"2\\n\" },\n        { \"hello   world\", \"2\\n\" },\n        { \"one two three\", \"3\\n\" }\n    };\n\n    int passed_tests = 0;\n    for (size_t i = 0; i < test_cases.size(); ++i) {\n        const auto& tc = test_cases[i];\n        std::stringstream ss_input(tc.first);\n        std::stringstream ss_output;\n\n        // Redirect std::cin and std::cout\n        std::streambuf* old_cin = std::cin.rdbuf();\n        std::streambuf* old_cout = std::cout.rdbuf();\n\n        std::cin.rdbuf(ss_input.rdbuf());\n        std::cout.rdbuf(ss_output.rdbuf());\n\n        // Call the solution's main function (simulated)\n        // In a real environment, the student's compiled executable would be run\n        // with its stdin redirected from ss_input and stdout captured into ss_output.\n        // For this C++ driver, we'll simulate by calling the main logic if it were in a function.\n        // For simplicity, we'll just indicate where the actual execution and comparison happens.\n        \n        // Placeholder for actual execution of the student's `main`\n        // For example, if the student's code were in `void solution_main()`, you'd call `solution_main();`\n        // Since it's a `main` function, an external system would compile and run it.\n\n        // Restore std::cin and std::cout\n        std::cin.rdbuf(old_cin);\n        std::cout.rdbuf(old_cout);\n\n        std::cout << \"Test Case \" << i + 1 << \":\\n\";\n        std::cout << \"Input: \\\"\" << tc.first << \"\\\"\\n\";\n        std::cout << \"Expected: \\\"\" << tc.second << \"\\\"\\n\";\n        // The actual output from the student's program would be captured here by the test runner.\n        // For this example, we'll just show the comparison based on the expected behavior of the *provided* C++ solution.\n        // NOTE: The C++ solution provided for this JSON is intended to have a robustness issue.\n        // The driver itself doesn't contain the faulty logic, it just sets up comparison.\n        // The actual comparison logic would be part of the external test harness.\n        \n        // Since we cannot directly call `main` from `main` easily, this driver focuses on setup.\n        // An external script would run `./a.out < input.txt > output.txt` and compare `output.txt`.\n        std::cout << \"(External execution and comparison would happen here)\" << std::endl;\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The word counting logic is not robust against various input patterns.",
+    "It miscounts words when the sentence is empty, containing only spaces, or has leading/trailing spaces.",
+    "It also miscounts when there are multiple spaces between words, treating each space as a separator for a new word.",
+    "For an empty string \"\", it incorrectly outputs 1.",
+    "For \"  hello world  \", it outputs 4 instead of the correct 2.",
+    "For \"hello   world\", it outputs 3 instead of the correct 2."
+  ]
+}

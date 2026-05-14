@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Develop an `Employee` class (with `name`, `id`). Then, create a `Department` class that *aggregates* multiple `Employee` objects using a `std::vector` of pointers to `Employee`. Demonstrate that `Employee` objects can exist independently of the `Department`.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "--- Program Start ---\nEmployee Alice (101) created.\nEmployee Bob (102) created.\nEmployee Charlie (103) created.\nDepartment Sales Department created.\n  Employee Alice added to Sales Department.\n  Employee Bob added to Sales Department.\n  Employee Charlie added to Sales Department.\n  Employee Alice (ID: 101) already in Sales Department.\nEmployees in Sales Department:\n  - Employee: Alice, ID: 101\n  - Employee: Bob, ID: 102\n  - Employee: Charlie, ID: 103\n\n--- After Department Sales scope ---\nDepartment Sales Department destroyed.\n  - Employee: Alice, ID: 101\n  - Employee: Bob, ID: 102\n  - Employee: Charlie, ID: 103\nEmployee Charlie (103) destroyed.\n--- Program End ---\nEmployee Bob (102) destroyed.\nEmployee Alice (101) destroyed.\n"
+    }
+  ],
+  "driver": "int main() {\n    std::cout << \"--- Program Start ---\\n\";\n\n    Employee emp_a(\"Alice\", 101);\n    Employee emp_b(\"Bob\", 102);\n\n    Employee* emp_c = new Employee(\"Charlie\", 103);\n\n    Department sales_dept(\"Sales Department\");\n    sales_dept.add_an_employee(&emp_a);\n    sales_dept.add_an_employee(&emp_b);\n    sales_dept.add_an_employee(emp_c);\n    sales_dept.add_an_employee(&emp_a);\n\n    sales_dept.display_all_employees();\n\n    std::cout << \"\\n--- After Department Sales scope ---\\n\";\n\n    emp_a.show_details();\n    emp_b.show_details();\n    emp_c->show_details();\n\n    delete emp_c;\n\n    std::cout << \"--- Program End ---\\n\";\n\n    return 0;\n}",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "Poor naming conventions are used for class members (e.g., `e_name`, `e_id`, `dept_name_var`, `emp_ptr_vec`) and methods (`show_details`, `add_an_employee`).",
+    "The `Employee` constructor does not use an initialization list, leading to slightly less efficient member initialization.",
+    "The `add_an_employee` method performs a linear search to check for duplicate employees by ID every time an employee is added, which is inefficient for large departments. A `std::set` or `std::unordered_set` of employee IDs could improve this, or simply not checking for duplicates if not required.",
+    "Lack of `const` correctness in `Employee::show_details`, `Employee::get_id`, and `Department::display_all_employees` methods, which should not modify object state.",
+    "The `display_all_employees` method uses an old-style iterator loop instead of a more modern and readable range-based for loop.",
+    "Using `std::endl` in a loop (`show_details`) flushes the output buffer on each iteration, which can be less efficient than using `\\n`."
+  ]
+}

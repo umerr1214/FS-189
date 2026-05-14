@@ -1,0 +1,14 @@
+{
+  "language": "c++",
+  "question": "Write a function `void incrementValue(int* ptr)` that takes an integer pointer as an argument and increments the value it points to by one. Demonstrate its use with an integer variable from `main`.",
+  "test_cases": [
+    { "input": "", "expected": "Original value: 10\nIncremented value: 11\n" }
+  ],
+  "driver": "int main() {\n    int value = 10;\n    std::cout << \"Original value: \" << value << std::endl;\n    incrementValue(&value);\n    std::cout << \"Incremented value: \" << value << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing return type for function 'incrementValue'."
+  ]
+}

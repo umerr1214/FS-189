@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Create a `Counter` class that keeps track of the total number of `Counter` objects currently alive. Use a static member variable for the count, incremented in constructors and decremented in the destructor. Implement a static method to retrieve the current count.",
+  "test_cases": [
+    { "input": "", "expected": "Initial count: 0\nCounter object created. Current count: 1\nAfter c1 creation: 1\nCounter object created. Current count: 2\nCounter object created. Current count: 3\nInside block, count: 3\nCounter object destroyed. Current count: 2\nCounter object destroyed. Current count: 1\nAfter block, count: 1\nCounter object created. Current count: 2\nAfter c4 (new) creation: 2\nCounter object destroyed. Current count: 1\nAfter c4 (new) destruction: 1\n" }
+  ],
+  "driver": "#include <iostream>\n\nclass Counter {\nprivate:\n    static int count;\n\npublic:\n    Counter() {\n        count++;\n        std::cout << \"Counter object created. Current count: \" << count << std::endl;\n    }\n\n    ~Counter() {\n        count--;\n        std::cout << \"Counter object destroyed. Current count: \" << count << std::endl;\n    }\n\n    static int getCount() {\n        return count;\n    }\n};\n\nint Counter::count = 0;\n\nint main() {\n    std::cout << \"Initial count: \" << Counter::getCount() << std::endl;\n\n    Counter c1;\n    std::cout << \"After c1 creation: \" << Counter::getCount() << std::endl;\n\n    {\n        Counter c2;\n        Counter c3;\n        std::cout << \"Inside block, count: \" << Counter::getCount() << std::endl;\n    }\n    std::cout << \"After block, count: \" << Counter::getCount() << std::endl;\n\n    Counter* c4 = new Counter();\n    std::cout << \"After c4 (new) creation: \" << Counter::getCount() << std::endl;\n\n    delete c4;\n    std::cout << \"After c4 (new) destruction: \" << Counter::getCount() << std::endl;\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 4,
+  "error_type": "Logical Error",
+  "errors": ["The destructor `~Counter()` does not decrement the static member `count`, leading to an incorrect total number of alive `Counter` objects as objects are destroyed."]
+}

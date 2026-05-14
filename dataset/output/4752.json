@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Implement a function `printFibonacci` that takes an integer 'n' and prints the first 'n' numbers of the Fibonacci sequence using an iterative approach (loops, not recursion).",
+  "test_cases": [
+    { "input": "0", "expected": "" },
+    { "input": "1", "expected": "0\n" },
+    { "input": "5", "expected": "0 1 1 2 3\n" },
+    { "input": "10", "expected": "0 1 1 2 3 5 8 13 21 34\n" }
+  ],
+  "driver": "#include <iostream>\n#include <sstream>\n#include <string>\n\n// The printFibonacci function will be inserted here by the evaluation system.\n\nstd::string captureOutput(int n) {\n    std::stringstream ss;\n    std::streambuf* oldCout = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n\n    printFibonacci(n);\n\n    std::cout.rdbuf(oldCout);\n    return ss.str();\n}\n\nint main() {\n    // Test cases are run externally using the captureOutput function.\n    // For example:\n    // if (captureOutput(5) == \"0 1 1 2 3\\n\") {\n    //     std::cout << \"Test Passed for n=5\\n\";\n    // } else {\n    //     std::cout << \"Test Failed for n=5\\n\";\n    // }\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The function semantically misinterprets the requirement for 'n' numbers when n is 0. According to the problem, for n=0, no numbers should be printed (resulting in an empty output string). However, the code explicitly prints '0\\n' for n <= 0, which violates the semantic meaning of 'first n numbers' for n=0."
+  ]
+}

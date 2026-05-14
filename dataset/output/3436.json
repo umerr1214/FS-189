@@ -1,0 +1,15 @@
+{
+  "language": "c++",
+  "question": "Create a C++ function `power(int base, int exp)` that calculates `base` raised to the power of `exp` (e.g., 2^3 = 8) using a loop. The function should return an integer, and parameters should be passed by value. Integrate this function into a program that takes base and exponent from the user and prints the result.",
+  "test_cases": [
+    { "input": "2\n3", "expected": "Result: 8\n" },
+    { "input": "5\n2", "expected": "Result: 25\n" }
+  ],
+  "driver": "int main() {\n    int base_val, exp_val;\n    std::cin >> base_val;\n    std::cin >> exp_val;\n    std::cout << \"Result: \" << power(base_val, exp_val) << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after 'std::endl' in main function."
+  ]
+}

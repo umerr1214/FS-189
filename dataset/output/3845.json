@@ -1,0 +1,20 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that repeatedly prompts the user to enter an integer between 1 and 10 (inclusive) until a valid input is provided. Use a `do-while` loop for input validation.",
+  "test_cases": [
+    { "input": "5\n10\n0\n", "expected": "Enter an integer between 1 and 10 (inclusive): Enter an integer between 1 and 10 (inclusive): Enter an integer between 1 and 10 (inclusive): Input out of range. Please enter a number between 1 and 10.\nYou entered: 0. Valid input!\n" },
+    { "input": "1\n2\n11\n", "expected": "Enter an integer between 1 and 10 (inclusive): Enter an integer between 1 and 10 (inclusive): Enter an integer between 1 and 10 (inclusive): Input out of range. Please enter a number between 1 and 10.\nYou entered: 11. Valid input!\n" },
+    { "input": "abc\n5\n0\n", "expected": "Enter an integer between 1 and 10 (inclusive): Invalid input. Please enter an integer.\nEnter an integer between 1 and 10 (inclusive): Enter an integer between 1 and 10 (inclusive): Input out of range. Please enter a number between 1 and 10.\nYou entered: 0. Valid input!\n" }
+  ],
+  "driver": "int main() { return 0; }",
+  "code_quality": 4,
+  "correctness": 3,
+  "error_type": "Logical Error",
+  "errors": [
+    {
+      "line": 18,
+      "column": 13,
+      "message": "The do-while loop condition is inverted. It continues while input is valid (num >= 1 && num <= 10) instead of continuing while input is invalid. This causes the program to loop for valid inputs and exit only when an invalid input is provided, incorrectly printing the invalid input as if it were valid."
+    }
+  ]
+}

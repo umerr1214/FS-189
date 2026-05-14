@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "Given a 2D integer array (matrix) of size 4x3, find the sum of all elements in a specified row (e.g., the second row).",
+  "test_cases": [
+    { "input": "1", "expected": "15" },
+    { "input": "0", "expected": "6" },
+    { "input": "3", "expected": "33" },
+    { "input": "4", "expected": "Row index out of acceptable range." },
+    { "input": "-1", "expected": "Row index out of acceptable range." }
+  ],
+  "driver": "#include <iostream>\n\nint mx[4][3] = {\n    {1, 2, 3},\n    {4, 5, 6},\n    {7, 8, 9},\n    {10, 11, 12}\n};\n\nint main() {\n    int r_idx;\n    if (!(std::cin >> r_idx)) {\n        std::cerr << \"Input fail.\" << std::endl;\n        return 1;\n    }\n\n    int t_sum = 0;\n    \n    if (r_idx >= 0 && r_idx < 4) {\n        for (int c_itr = 0; c_itr < 3; ++c_itr) {\n            t_sum += mx[r_idx][c_itr];\n        }\n        std::cout << t_sum << std::endl;\n    } else {\n        std::cerr << \"Row index out of acceptable range.\" << std::endl;\n        return 1;\n    }\n\n    return 0;\n}",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": []
+}

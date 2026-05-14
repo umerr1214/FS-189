@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that takes a temperature in Celsius as input from the user and converts it to Fahrenheit, displaying the result. Use the formula: F = C * 9/5 + 32. Ensure the calculation handles decimal values correctly.",
+  "test_cases": [
+    { "input": "0.0", "expected": "32.00" },
+    { "input": "100.0", "expected": "212.00" },
+    { "input": "25.5", "expected": "77.90" },
+    { "input": "-10.7", "expected": "12.74" }
+  ],
+  "driver": "int main() {\n    // This driver would typically compile the user's code and execute it,\n    // feeding it inputs from test_cases and capturing its output.\n    // For example, using system calls or process management libraries.\n    // Given the nature of a syntax error, this program would fail to compile.\n    // Example: system(\"g++ -o user_program user_program.cpp\");\n    // system(\"./user_program < input.txt > output.txt\");\n    std::cout << \"Driver would attempt to compile and run the user's code.\" << std::endl;\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the calculation of 'fahrenheit', leading to a compilation error."
+  ]
+}

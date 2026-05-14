@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Define a base class `Person` with `protected` members `firstName` and `lastName` (both strings). Create a derived class `Teacher` that has an additional `subject` (string) member. The `Teacher` constructor should correctly initialize `firstName` and `lastName` by calling the `Person` base class constructor, and then initialize its own `subject` member. Implement a method in `Teacher` to display the teacher's full name and subject.",
+  "test_cases": [
+    { "input": "", "expected": "Teacher: Alice Smith, Subject: Physics\nTeacher: Bob Johnson, Subject: Chemistry\n" }
+  ],
+  "driver": "int main_driver() {\n    std::stringstream ss;\n    std::streambuf* oldCout = std::cout.rdbuf();\n    std::cout.rdbuf(ss.rdbuf());\n\n    Teacher teacher1(\"Alice\", \"Smith\", \"Physics\");\n    teacher1.displayTeacherInfo();\n\n    Teacher teacher2(\"Bob\", \"Johnson\", \"Chemistry\");\n    teacher2.displayTeacherInfo();\n\n    std::cout.rdbuf(oldCout);\n    std::cout << ss.str();\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": ["Missing semicolon after class definition for 'Person'."]
+}

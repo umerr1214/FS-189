@@ -1,0 +1,19 @@
+{
+  "language": "c++",
+  "question": "In a C++ program, declare an integer variable and initialize it. Then, declare a pointer and make it point to this integer variable. Using only the pointer, modify the value of the integer variable. Finally, print both the new value of the integer variable and its memory address.",
+  "test_cases": [
+    {
+      "input": "",
+      "expected": "^The new value of the integer variable is: 20\\nThe memory address of the integer variable is: (0x[0-9a-fA-F]+)\\n$"
+    }
+  ],
+  "driver": "// The provided C++ code is a complete program. It should be compiled and executed directly.\n// Standard output should be captured for validation against the expected output.",
+  "code_quality": 3,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The code uses excessively verbose and obvious comments that clutter the code without adding real value, hindering readability.",
+    "Variable names ('x', 'p') are not descriptive, making it harder to understand the purpose of each variable at a glance.",
+    "The overall formatting and comment style could be improved for better visual clarity and conciseness."
+  ]
+}

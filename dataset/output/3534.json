@@ -1,0 +1,18 @@
+{
+  "language": "c++",
+  "question": "Implement a recursive C++ function `int fibonacci(int n)` that calculates the Nth Fibonacci number (where F(0)=0, F(1)=1, F(n)=F(n-1)+F(n-2)). In `main`, ask the user for an integer `N` and print the `N`th Fibonacci number.",
+  "test_cases": [
+    { "input": "0", "expected": "The 0th Fibonacci number is: 0" },
+    { "input": "1", "expected": "The 1st Fibonacci number is: 1" },
+    { "input": "5", "expected": "The 5th Fibonacci number is: 5" },
+    { "input": "10", "expected": "The 10th Fibonacci number is: 55" },
+    { "input": "47", "expected": "The 47th Fibonacci number is: 2971215073" }
+  ],
+  "driver": "// The test system will execute the submitted C++ code's main function directly.\n// Input for 'N' will be provided via stdin, and stdout will be captured for comparison.\n// No special C++ driver code is needed beyond the user's main function.",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The `int` return type for `fibonacci` and the `int` variable `result` in `main` are insufficient for larger Fibonacci numbers (e.g., N >= 47), leading to integer overflow and incorrect results. A larger data type like `long long` should be used."
+  ]
+}

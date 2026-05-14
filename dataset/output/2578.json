@@ -1,0 +1,12 @@
+{
+  "language": "c++",
+  "question": "Design a `Car` class that demonstrates composition by containing an `Engine` object. The `Engine` class should have attributes like `horsepower` and `fuelType`. Ensure that when a `Car` object is created, its `Engine` is also created, and when the `Car` object is destroyed, its `Engine` object is automatically destroyed with it.",
+  "test_cases": [],
+  "driver": "int main() {\n    // This code will not compile due to the syntax error.\n    // If it were to compile, it would create a Car and start it.\n    // Car myCar(200, \"Gasoline\");\n    // myCar.start();\n    return 0;\n}",
+  "code_quality": 1,
+  "correctness": 0,
+  "error_type": "Syntax Error",
+  "errors": [
+    "Missing semicolon after the 'Engine' class definition, leading to a compilation error."
+  ]
+}

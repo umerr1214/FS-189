@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Write a function `findMinPointer(const int* arr, int size)` that takes a constant pointer to the beginning of an integer array and its size. The function should return a pointer to the element with the minimum value in the array. Demonstrate by finding and printing the minimum value of a user-defined array.",
+  "test_cases": [
+    { "input": "{10, 4, 8, 2, 6}", "expected": "2" },
+    { "input": "{}", "expected": "Error: Function crashes or exhibits undefined behavior for an empty array." }
+  ],
+  "driver": "#include <iostream>\n\nconst int* findMinPointer(const int* arr, int size);\n\nint main() {\n    // Test Case 1\n    int arr1[] = {10, 4, 8, 2, 6};\n    int size1 = sizeof(arr1) / sizeof(arr1[0]);\n    const int* minPtr1 = findMinPointer(arr1, size1);\n    if (minPtr1 != nullptr) {\n        std::cout << *minPtr1 << std::endl;\n    } else {\n        std::cout << \"Error: Returned nullptr for non-empty array.\" << std::endl;\n    }\n\n    // Test Case 2 (empty array to trigger robustness issue)\n    int arr2[] = {};\n    int size2 = 0;\n    // The function is expected to crash or have undefined behavior here.\n    // The test runner will detect the crash.\n    const int* minPtr2 = findMinPointer(arr2, size2);\n    if (minPtr2 != nullptr) {\n        std::cout << \"Unexpected: \" << *minPtr2 << std::endl;\n    } else {\n        std::cout << \"Unexpected: Returned nullptr (should crash earlier).\" << std::endl;\n    }\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": ["The function `findMinPointer` does not handle an empty array (size = 0) gracefully. It attempts to access `arr[0]` without checking if `size` is greater than 0, leading to undefined behavior or a crash."]
+}

@@ -1,0 +1,13 @@
+{
+  "language": "c++",
+  "question": "Develop a C++ program that prompts the user to enter their first name (as a string), age (as an integer), and height in meters (as a double). After receiving all inputs, print a formatted sentence summarizing this information (e.g., 'Hello [Name], you are [Age] years old and [Height] meters tall.').",
+  "test_cases": [
+    { "input": "Frank\n50\n1.85", "expected": "Enter your first name: Enter your age: Enter your height in meters: Hello Frank, you are 50 years old and 1.85 meters tall.\n" },
+    { "input": "Grace\n35\n1.60", "expected": "Enter your first name: Enter your age: Enter your height in meters: Hello Grace, you are 35 years old and 1.60 meters tall.\n" }
+  ],
+  "driver": "g++ -o solution 5103.cpp && ./solution",
+  "code_quality": 9,
+  "correctness": 10,
+  "error_type": "Correct Version",
+  "errors": []
+}

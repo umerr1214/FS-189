@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that prompts the user to enter a word (using `std::string`), then reverses the string and prints the reversed word.",
+  "test_cases": [
+    { "input": "hello", "expected": "olleh" },
+    { "input": "world", "expected": "dlrow" },
+    { "input": "a", "expected": "a" },
+    { "input": "", "expected": "" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <vector>\n#include <utility>\n\n// Assume getReversedString is provided by the user's code\nstd::string getReversedString(std::string input_word);\n\nint main() {\n    std::vector<std::pair<std::string, std::string>> tests = {\n        {\"hello\", \"olleh\"},\n        {\"world\", \"dlrow\"},\n        {\"a\", \"a\"},\n        {\"(empty_input)\", \"\"} // (empty_input) simulates EOF for std::cin >> word\n    };\n\n    for (const auto& test : tests) {\n        std::string input_for_func = test.first;\n        if (input_for_func == \"(empty_input)\") {\n            input_for_func = \"\"; // When std::cin fails, word becomes empty.\n        }\n        \n        std::string expected_output = test.second;\n        std::string actual_output = getReversedString(input_for_func);\n        \n        if (actual_output == expected_output) {\n            std::cout << \"Test passed for input \\\"\" << test.first << \"\\\"\" << std::endl;\n        } else {\n            std::cout << \"Test FAILED for input \\\"\" << test.first << \"\\\". Expected: \\\"\"\n                      << expected_output << \"\\\", Got: \\\"\" << actual_output << \"\\\"\" << std::endl;\n        }\n    }\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The program does not check for input stream failure after reading the word. If `std::cin >> word` fails (e.g., due to EOF or invalid input), the program will proceed with an empty or default-constructed string without informing the user or handling the error gracefully, which is a robustness concern."
+  ]
+}

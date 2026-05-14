@@ -1,0 +1,17 @@
+{
+  "language": "c++",
+  "question": "Design a base class `Publication` with private attributes `title` (string) and `price` (double). Implement methods to set and display these. From `Publication`, derive `Book` (adds private attribute `author` - string) and `Magazine` (adds private attribute `issueNumber` - int). Demonstrate creating objects of `Book` and `Magazine` and displaying their complete details.",
+  "test_cases": [
+    {
+      "input": "N/A",
+      "expected": "Compilation Error: Attempt to access private member 'title' of 'Publication' from derived class 'Book'. 'std::string Publication::title' is private within this context."
+    }
+  ],
+  "driver": "int main() {\n    // Create Book object\n    Book myBook(\"The C++ Programming Language\", 59.99, \"Bjarne Stroustrup\");\n    std::cout << \"--- Book Details ---\" << std::endl;\n    myBook.display();\n    std::cout << std::endl;\n\n    // Create Magazine object\n    Magazine myMagazine(\"C++ Magazine\", 9.50, 123);\n    std::cout << \"--- Magazine Details ---\" << std::endl;\n    myMagazine.display();\n    std::cout << std::endl;\n\n    // Demonstrate setters\n    Book anotherBook;\n    anotherBook.setTitle(\"Effective C++\");\n    anotherBook.setPrice(45.00);\n    anotherBook.setAuthor(\"Scott Meyers\");\n    std::cout << \"--- Another Book Details (using setters) ---\" << std::endl;\n    anotherBook.display();\n    std::cout << std::endl;\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 5,
+  "error_type": "Semantic Error",
+  "errors": [
+    "The derived class 'Book' attempts to directly access the 'title' attribute, which is a private member of its base class 'Publication'. Private members are not directly accessible from derived classes; public or protected methods (like Publication::display()) must be used to interact with them."
+  ]
+}

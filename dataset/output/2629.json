@@ -1,0 +1,16 @@
+{
+  "language": "c++",
+  "question": "For the `ComplexNumber` class, overload the stream insertion operator (`<<`) as a non-member friend function. This should allow you to print `ComplexNumber` objects directly using `std::cout`, in a user-friendly format like \"(3 + 4i)\" or \"(5 - 2i)\".",
+  "test_cases": [
+    { "input": "ComplexNumber c1(3, 4);\nComplexNumber c2(5, -2);\nComplexNumber c3(0, 7);\nComplexNumber c4(-1, 0);\nComplexNumber c5(0, 0);\nComplexNumber c6(2, 1);\nComplexNumber c7(-3, -1);\nstd::cout << c1 << std::endl;\nstd::cout << c2 << std::endl;\nstd::cout << c3 << std::endl;\nstd::cout << c4 << std::endl;\nstd::cout << c5 << std::endl;\nstd::cout << c6 << std::endl;\nstd::cout << c7 << std::endl;", "expected": "(3 + 4i)\n(5 + -2i)\n(0 + 7i)\n(-1 + 0i)\n(0 + 0i)\n(2 + 1i)\n(-3 + -1i)\n" }
+  ],
+  "driver": "#include <iostream>\n#include <string>\n#include <cmath>\n\nclass ComplexNumber {\nprivate:\n    double real;\n    double imaginary;\n\npublic:\n    ComplexNumber(double r = 0.0, double i = 0.0) : real(r), imaginary(i) {}\n\n    friend std::ostream& operator<<(std::ostream& os, const ComplexNumber& c);\n\n    double getReal() const { return real; }\n    double getImaginary() const { return imaginary; }\n};\n\nstd::ostream& operator<<(std::ostream& os, const ComplexNumber& c) {\n    os << \"(\" << c.real;\n    os << \" + \" << c.imaginary << \"i\";\n    os << \")\";\n    return os;\n}\n\nint main() {\n    ComplexNumber c1(3, 4);\n    ComplexNumber c2(5, -2);\n    ComplexNumber c3(0, 7);\n    ComplexNumber c4(-1, 0);\n    ComplexNumber c5(0, 0);\n    ComplexNumber c6(2, 1);\n    ComplexNumber c7(-3, -1);\n\n    std::cout << c1 << std::endl;\n    std::cout << c2 << std::endl;\n    std::cout << c3 << std::endl;\n    std::cout << c4 << std::endl;\n    std::cout << c5 << std::endl;\n    std::cout << c6 << std::endl;\n    std::cout << c7 << std::endl;\n\n    return 0;\n}",
+  "code_quality": 6,
+  "correctness": 7,
+  "error_type": "Robustness Issue",
+  "errors": [
+    "The stream insertion operator does not handle negative imaginary parts in a user-friendly way, printing `+ -imaginary` instead of `- imaginary`.",
+    "The operator prints `+ 0i` for zero imaginary parts, which is redundant and not user-friendly (e.g., `(3 + 0i)` instead of `(3)`).",
+    "It prints `(0 + imaginaryi)` when the real part is zero, instead of just `(imaginaryi)` or `(i)`."
+  ]
+}

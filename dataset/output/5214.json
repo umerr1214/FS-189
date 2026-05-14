@@ -1,0 +1,29 @@
+{
+  "language": "c++",
+  "question": "Write a C++ program that defines a class `Matrix` to represent a 2D matrix. Implement a constructor to initialize the matrix, a method to input values, and a method to add two matrices. Overload the `+` operator to perform matrix addition. Demonstrate the functionality in `main` by adding two matrices and displaying the result.",
+  "test_cases": [
+    {
+      "input": "2 2 1 2 3 4 2 2 5 6 7 8",
+      "expected": "6 8\n10 12\n"
+    },
+    {
+      "input": "3 3 1 2 3 4 5 6 7 8 9 2 2 1 1 1 1",
+      "expected": "Matrices cannot be added due to dimension mismatch.\n"
+    },
+    {
+      "input": "2 2 1 2 3 4 3 3 5 6 7 8 9 10 11 12 13",
+      "expected": "Matrices cannot be added due to dimension mismatch.\n"
+    }
+  ],
+  "driver": "int main() {\n    int r1, c1, r2, c2;\n\n    std::cin >> r1 >> c1;\n    Matrix m1(r1, c1);\n    m1.inputValues();\n\n    std::cin >> r2 >> c2;\n    Matrix m2(r2, c2);\n    m2.inputValues();\n\n    // In a robust program, dimensions would be checked here or within the operator.\n    // For this semantic error case, the operator+ proceeds without checking.\n    if (m1.getRows() != m2.getRows() || m1.getCols() != m2.getCols()) {\n        std::cout << \"Matrices cannot be added due to dimension mismatch.\" << std::endl;\n    } else {\n        Matrix m3 = m1 + m2;\n        m3.display();\n    }\n\n    return 0;\n}",
+  "code_quality": 5,
+  "correctness": 4,
+  "error_type": "Semantic Error",
+  "errors": [
+    {
+      "line": 52,
+      "column": 17,
+      "message": "The `operator+` performs addition without checking if the dimensions of the 'other' matrix match, leading to potential out-of-bounds access (undefined behavior) if 'other' has smaller dimensions."
+    }
+  ]
+}

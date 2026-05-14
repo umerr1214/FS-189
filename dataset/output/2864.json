@@ -1,0 +1,22 @@
+{
+  "language": "c++",
+  "question": "Implement a `Calculator` class with overloaded `add` methods. One `add` method should take two `int` arguments, another should take two `double` arguments, and a third should concatenate two `std::string` arguments.",
+  "test_cases": [
+    { "input": "calc.add(5, 3)", "expected": "8" },
+    { "input": "calc.add(-10, 20)", "expected": "10" },
+    { "input": "calc.add(2.5, 3.7)", "expected": "6.2" },
+    { "input": "calc.add(-1.1, 0.5)", "expected": "-0.6" },
+    { "input": "calc.add(\"Hello\", \"World\")", "expected": "HelloWorld" },
+    { "input": "calc.add(\"C++\", \"Programming\")", "expected": "C++Programming" },
+    { "input": "calc.add(\"\", \"Empty\")", "expected": "Empty" }
+  ],
+  "driver": "    Calculator calc;\n\n    std::cout << calc.add(5, 3) << std::endl;\n    std::cout << calc.add(-10, 20) << std::endl;\n    std::cout << calc.add(2.5, 3.7) << std::endl;\n    std::cout << calc.add(-1.1, 0.5) << std::endl;\n    std::cout << calc.add(\"Hello\", \"World\") << std::endl;\n    std::cout << calc.add(\"C++\", \"Programming\") << std::endl;\n    std::cout << calc.add(\"\", \"Empty\") << std::endl;",
+  "code_quality": 4,
+  "correctness": 9,
+  "error_type": "Readability / Efficiency Issue",
+  "errors": [
+    "The `add(int, int)` method uses a bitwise algorithm for addition. While functionally correct, it is significantly less readable and less idiomatic than simply using the `+` operator for standard integer addition.",
+    "The `add(double, double)` method uses `std::accumulate` with a temporary `std::vector` for summing just two numbers. This is unnecessarily verbose and less efficient than a direct `a + b` operation.",
+    "The `add(const std::string&, const std::string&)` method concatenates strings character by character using `result += c`. This can lead to multiple memory reallocations and is less efficient than using `std::string::operator+` or `std::string::append` directly."
+  ]
+}
