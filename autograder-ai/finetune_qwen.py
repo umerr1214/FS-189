@@ -14,18 +14,17 @@ Run from autograder-ai/:
 
 import os
 import json
-import torch
 
 from pathlib import Path
 from datasets import load_dataset
+import torch
 from transformers import (
     AutoModelForCausalLM,
     AutoTokenizer,
     BitsAndBytesConfig,
-    TrainingArguments,
 )
 from peft import LoraConfig, get_peft_model, TaskType
-from trl import SFTTrainer
+from trl import SFTConfig, SFTTrainer
 
 # ── Config (edit these before running) ─────────────────────────────────────────
 MODEL_NAME       = "Qwen/Qwen2.5-Coder-7B-Instruct"
@@ -117,7 +116,7 @@ print("=" * 60)
 bnb_config = BitsAndBytesConfig(
     load_in_4bit=True,
     bnb_4bit_quant_type="nf4",
-    bnb_4bit_compute_dtype=torch.float16,
+    bnb_4bit_compute_dtype=torch.bfloat16,
     bnb_4bit_use_double_quant=True,
 )
 
@@ -150,22 +149,28 @@ print_trainable_params(model)
 
 
 # ── Step 6: Training arguments ────────────────────────────────────────────────
-training_args = TrainingArguments(
+training_args = SFTConfig(
     output_dir=OUTPUT_DIR,
     num_train_epochs=NUM_EPOCHS,
     per_device_train_batch_size=BATCH_SIZE,
+    per_device_eval_batch_size=1,
     gradient_accumulation_steps=GRAD_ACCUM,
     learning_rate=LEARNING_RATE,
     warmup_ratio=WARMUP_RATIO,
+    dataset_text_field="text",
+    max_length=MAX_SEQ_LENGTH,
     eval_strategy="epoch",
     save_strategy="epoch",
     load_best_model_at_end=True,
     metric_for_best_model="eval_loss",
     greater_is_better=False,
-    fp16=True,
+    bf16=True,
+    fp16=False,
     logging_steps=LOGGING_STEPS,
     report_to="none",           # disable wandb / tensorboard
     gradient_checkpointing=True,
+    eval_accumulation_steps=1,
+    torch_empty_cache_steps=1,
     dataloader_num_workers=0,   # avoid multiprocessing issues on Windows
 )
 
@@ -181,11 +186,9 @@ print("=" * 60 + "\n")
 
 trainer = SFTTrainer(
     model=model,
-    tokenizer=tokenizer,
+    processing_class=tokenizer,
     train_dataset=train_ds,
     eval_dataset=val_ds,
-    dataset_text_field="text",
-    max_seq_length=MAX_SEQ_LENGTH,
     args=training_args,
 )
 

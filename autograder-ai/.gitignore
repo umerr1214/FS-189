@@ -45,3 +45,6 @@ htmlcov/
 .mypy_cache/
 .pyre/
 .pytype/
+
+# Fine-tuning checkpoints; keep final adapter files only.
+fine_tuned_adapter/checkpoint-*/
