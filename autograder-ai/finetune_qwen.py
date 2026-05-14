@@ -42,7 +42,7 @@ TARGET_MODULES   = [
 ]
 
 # Training
-NUM_EPOCHS       = 3
+NUM_EPOCHS       = 5
 LEARNING_RATE    = 2e-4
 BATCH_SIZE       = 2       # per device; increase if VRAM allows
 GRAD_ACCUM       = 8       # effective batch = BATCH_SIZE * GRAD_ACCUM = 16
@@ -161,6 +161,7 @@ training_args = SFTConfig(
     max_length=MAX_SEQ_LENGTH,
     eval_strategy="epoch",
     save_strategy="epoch",
+    save_total_limit=2,
     load_best_model_at_end=True,
     metric_for_best_model="eval_loss",
     greater_is_better=False,
