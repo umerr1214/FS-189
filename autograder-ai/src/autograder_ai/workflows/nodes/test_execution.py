@@ -11,11 +11,11 @@ from ..prompts import TEST_EXECUTION_PROMPT
 from ...utils import parse_agent_response
 
 
-def _format_input_for_stdin(input_params: Dict[str, Any]) -> str:
-
+def _format_input_for_stdin(input_params) -> str:
+    if isinstance(input_params, str):
+        return input_params
     if len(input_params) == 1:
         return str(list(input_params.values())[0])
-
     return " ".join(str(v) for v in input_params.values())
 
 

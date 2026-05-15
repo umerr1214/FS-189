@@ -42,8 +42,8 @@ def is_valid_test_case(case: Any) -> bool:
     if "input" not in case or "expected_output" not in case:
         return False
 
-    # Validate input is a dict
-    if not isinstance(case["input"], dict):
+    # Validate input is a dict or a plain string (fine-tuned model outputs strings)
+    if not isinstance(case["input"], (dict, str)):
         return False
 
     # Description is optional but must be string if present
@@ -184,8 +184,8 @@ def validate_tests_node(state: TestGenerationState) -> TestGenerationState:
                 print(f"  x Test case {index} missing 'input' field. Skipping.")
             elif "expected_output" not in case:
                 print(f"  x Test case {index} missing 'expected_output' field. Skipping.")
-            elif not isinstance(case["input"], dict):
-                print(f"  x Test case {index} 'input' is not a dict. Skipping.")
+            elif not isinstance(case["input"], (dict, str)):
+                print(f"  x Test case {index} 'input' is not a dict or string. Skipping.")
             elif "description" in case and not isinstance(case["description"], str):
                 print(f"  x Test case {index} 'description' is not a string. Skipping.")
 
