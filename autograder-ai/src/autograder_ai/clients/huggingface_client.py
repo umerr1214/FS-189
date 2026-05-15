@@ -53,29 +53,41 @@ class HuggingFaceLLMWrapper:
 
 class HuggingFaceClient:
 
-    def __init__(self, model_name: str = None, quantization_bits: int = 8, max_new_tokens: int = 500) -> None:
+    def __init__(self, model_name: str = None, quantization_bits: int = 8, max_new_tokens: int = 500, adapter_path: str = None) -> None:
         self.model_name = model_name or os.getenv("HF_MODEL_NAME", "meta-llama/Llama-3.2-3B-Instruct")
         self._quantization_bits = quantization_bits
         self._max_new_tokens = max_new_tokens
+        self.adapter_path = adapter_path
         self._model = None
         self._tokenizer = None
         self.llm = None
 
     def _load_model(self):
+        import torch
         from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 
         bits = self._quantization_bits
-        print(f"[HuggingFaceClient] Loading {self.model_name} ({bits}-bit quantized)...")
+        suffix = f" + adapter from {self.adapter_path}" if self.adapter_path else ""
+        print(f"[HuggingFaceClient] Loading {self.model_name} ({bits}-bit){suffix}...")
         if bits == 4:
-            quantization_config = BitsAndBytesConfig(load_in_4bit=True)
+            quantization_config = BitsAndBytesConfig(
+                load_in_4bit=True,
+                bnb_4bit_quant_type="nf4",
+                bnb_4bit_compute_dtype=torch.bfloat16,
+                bnb_4bit_use_double_quant=True,
+            )
         else:
             quantization_config = BitsAndBytesConfig(load_in_8bit=True)
-        self._tokenizer = AutoTokenizer.from_pretrained(self.model_name)
+        tokenizer_source = self.adapter_path if self.adapter_path else self.model_name
+        self._tokenizer = AutoTokenizer.from_pretrained(tokenizer_source)
         self._model = AutoModelForCausalLM.from_pretrained(
             self.model_name,
             device_map="auto",
             quantization_config=quantization_config,
         )
+        if self.adapter_path:
+            from peft import PeftModel
+            self._model = PeftModel.from_pretrained(self._model, self.adapter_path)
         self.llm = HuggingFaceLLMWrapper(
             self._model, self._tokenizer,
             model_name=self.model_name,

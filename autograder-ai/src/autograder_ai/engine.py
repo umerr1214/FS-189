@@ -34,10 +34,12 @@ class EvaluationEngine:
 
         qwen_model = os.getenv("QWEN_MODEL_NAME", "Qwen/Qwen2.5-Coder-7B-Instruct")
         qwen_max_new_tokens = _get_int_env("QWEN_MAX_NEW_TOKENS", 2048)
+        qwen_adapter = os.getenv("QWEN_ADAPTER_PATH")
         qwen_client = HuggingFaceClient(
             model_name=qwen_model,
-            quantization_bits=8,
+            quantization_bits=4,
             max_new_tokens=qwen_max_new_tokens,
+            adapter_path=qwen_adapter,
         )
         self.test_gen_llm = qwen_client.get_llm()
 
