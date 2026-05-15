@@ -28,6 +28,9 @@ python main.py --assignment path/to/assignment.pdf --submission path/to/submissi
 # Run tests
 python -m unittest discover -s tests
 
+# Fine-tune Qwen (run from autograder-ai/)
+python finetune_qwen.py
+
 # Docker
 docker-compose build
 docker-compose up               # reads ./input/, writes to ./output/
@@ -128,9 +131,20 @@ Test execution runs student code via stdin: `echo "{input}" | python {code_file}
 
 ## Dataset
 
-`dataset/` holds a fine-tuning dataset for Qwen (~1,200 C++ problems, growing):
-- `dataset/input/` — buggy C++ student submissions (numbered e.g. `601.cpp`, `1000.cpp`, …)
-- `dataset/output/` — corresponding JSON with fields: `language`, `question`, `test_cases` (array of `{input, expected}` pairs), `driver` (C++ harness that `#include`s the submission), `code_quality` (int), `correctness` (int), `error_type` (e.g. `"Syntax Error"`, `"Logical Error"`), `errors` (array of strings)
+`dataset/` holds a fine-tuning dataset for Qwen (~1,200 C++ problems):
+- `dataset/input/` — buggy C++ student submissions (numbered e.g. `601.cpp`, `1000.cpp`, …). Files are grouped in sets of 6 consecutive numbers; each group represents one question with 6 variants, where index 5 (0-based) is the correct version.
+- `dataset/output/` — corresponding JSON per file with fields: `language`, `question`, `test_cases` (array of `{input, expected}` pairs), `driver` (C++ harness that `#include`s the submission), `code_quality` (int), `correctness` (int), `error_type` (e.g. `"Syntax Error"`, `"Logical Error"`), `errors` (array of strings)
+- `dataset/prepare_dataset.py` — preprocessing script; groups files by 6, pools test cases from all variants, and writes a 90/10 train/val split. Run from repo root: `python dataset/prepare_dataset.py`
+- `dataset/train.jsonl` / `dataset/val.jsonl` — Qwen chat-format JSONL produced by the above script (`messages`: system + user(question+code) + assistant(JSON test cases))
+
+### Fine-tuned adapter
+
+`autograder-ai/fine_tuned_adapter/` contains a QLoRA adapter trained on the EvalBright dataset:
+- Base model: `Qwen/Qwen2.5-Coder-7B-Instruct`
+- Config: rank=16, alpha=32, dropout=0.05, 5 epochs, all projection layers targeted
+- Trained with `peft` + `trl` (SFTTrainer); adapter weights stored via Git LFS
+- **Not yet integrated into the main pipeline** — `EvaluationEngine` still loads the base Qwen model by default. To use the adapter, load it with `peft.PeftModel.from_pretrained(base_model, "fine_tuned_adapter/")`.
+- Fine-tuning script: `autograder-ai/finetune_qwen.py` (requires `peft`, `trl`, `datasets` — all declared in `pyproject.toml`)
 
 ## Useful Context Docs
 
