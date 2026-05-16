@@ -4,6 +4,7 @@ from typing import Any, Dict
 from ..states import TestGenerationState, TestCase
 from ..prompts import TEST_GENERATION_PROMPT
 from ...utils import extract_json
+from ...utils.language import execution_context_for_test_generation
 
 
 def analyze_question_node(state: TestGenerationState) -> TestGenerationState:
@@ -39,9 +40,11 @@ def is_valid_test_case(case: Any) -> bool:
 
 def generate_test_cases_node(llm):
     def node(state):
+        lang = state.get("language") or "python"
         prompt = TEST_GENERATION_PROMPT.format(
             question=state["question"],
-            code=state["code"]
+            code=state["code"],
+            execution_context=execution_context_for_test_generation(lang),
         )
 
         response = llm.invoke(prompt)

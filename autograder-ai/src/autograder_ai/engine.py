@@ -2,6 +2,7 @@ from pathlib import Path
 from typing import Dict, Any
 
 from .core.pre_processors.assignment import AssignmentPreProcessor
+from .utils.language import infer_submission_language
 from .core.pre_processors.submission import SubmissionPreProcessor
 from .workflows.builders.test_generation import TestGenerationBuilder
 from .workflows.builders.test_execution import TestExecutionBuilder
@@ -41,11 +42,13 @@ class EvaluationEngine:
 
             print(f"\nProcessing {question_id}...")
 
+            language = infer_submission_language(submission_file)
             state = {
                 "question_id": question_id,
                 "question": questions[question_id],
                 "code": submissions[submission_file],
-                "test_cases": []
+                "language": language,
+                "test_cases": [],
             }
 
             result = workflow.invoke(state)
@@ -75,6 +78,7 @@ class EvaluationEngine:
                 "question_id": question_id,
                 "code": gen_result["code"],
                 "code_file_path": "",
+                "language": gen_result.get("language", "python"),
                 "test_cases": test_cases,
                 "current_test_index": 0,
                 "test_results": [],

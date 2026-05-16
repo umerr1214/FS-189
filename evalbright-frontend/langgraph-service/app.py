@@ -89,9 +89,14 @@ def _build_submission_path(req: EvaluateRequest) -> Path:
         if not p.exists():
             raise HTTPException(status_code=400, detail=f"Submission file not found: {p}")
 
-    # Engine supports file OR directory. For multi-file, stage into a temp dir.
+    # SubmissionPreProcessor requires a directory. Stage files into a temp dir when needed.
     if len(paths) == 1:
-        return paths[0]
+        p = paths[0]
+        if p.is_dir():
+            return p
+        tmp_dir = Path(tempfile.mkdtemp(prefix=f"submission_{req.submission_id}_"))
+        shutil.copy2(p, tmp_dir / p.name)
+        return tmp_dir
 
     tmp_dir = Path(tempfile.mkdtemp(prefix=f"submission_{req.submission_id}_"))
     for p in paths:

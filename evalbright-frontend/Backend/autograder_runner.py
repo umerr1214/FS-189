@@ -36,6 +36,13 @@ def _compute_language_label(filename: str) -> str:
     }.get(suffix, "Code")
 
 
+def _lang_label_from_submission_dir(submission_dir: Path) -> str:
+    for f in submission_dir.iterdir():
+        if f.is_file() and f.name.lower().startswith("q_"):
+            return _compute_language_label(f.name)
+    return "Code"
+
+
 def main():
     parser = argparse.ArgumentParser(description="Run autograder-ai evaluation and return JSON.")
     parser.add_argument("--assignment-path", required=True, type=str)
@@ -212,7 +219,11 @@ def main():
     if not correctness_feedback or "LLM failure" in correctness_feedback:
         correctness_feedback = overall_feedback
 
-    lang_label = _compute_language_label(submission_file.name) if submission_file else "Code"
+    lang_label = (
+        _compute_language_label(submission_file.name)
+        if submission_file
+        else _lang_label_from_submission_dir(submission_dir)
+    )
 
     categories = [
         {

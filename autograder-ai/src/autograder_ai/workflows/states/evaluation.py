@@ -1,6 +1,6 @@
 from enum import Enum
 from typing import List, Dict, Any, Optional
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 
 class EvaluationStatus(Enum):
@@ -26,10 +26,13 @@ class TestExecutionState(TypedDict):
     question_id: str
     code: str
     code_file_path: str
+    language: str
     test_cases: List[Dict[str, Any]]
     current_test_index: int
     test_results: List[TestResult]
     status: EvaluationStatus
+    executable_path: NotRequired[str]
+    compilation_error: NotRequired[Optional[str]]
 
 
 class EvaluationState(TypedDict):

@@ -79,6 +79,11 @@ SUBMITTED CODE
 {code}
 
 -----------------------------
+HOW SUBMISSIONS ARE RUN (ALIGN TEST INPUTS WITH THIS)
+
+{execution_context}
+
+-----------------------------
 REQUIREMENTS FOR THE TEST CASES
 
 1. Produce **ONLY** a JSON list of dictionaries.

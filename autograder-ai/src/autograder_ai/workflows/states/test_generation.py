@@ -14,5 +14,6 @@ class TestGenerationState(TypedDict):
     question_id: str
     question: str
     code: str
+    language: str
     test_cases: List[TestCase]
 
