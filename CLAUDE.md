@@ -43,6 +43,7 @@ OPENAI_MODEL_NAME=gpt-4o-mini
 HF_MODEL_NAME=meta-llama/Llama-3.2-3B-Instruct
 QWEN_MODEL_NAME=Qwen/Qwen2.5-Coder-7B-Instruct
 QWEN_MAX_NEW_TOKENS=2048
+QWEN_ADAPTER_PATH=./fine_tuned_adapter   # omit or leave blank to use base model only
 ```
 
 ### Backend (Express.js)
@@ -92,7 +93,7 @@ The Vite dev server proxies `/api` → `http://localhost:3001`.
 
 | Workflow | File | LLM | Output |
 |---|---|---|---|
-| Test generation | `workflows/builders/test_generation.py` | Qwen 2.5-Coder 7B (local, 8-bit) | 8–15 test cases per question; malformed JSON is recovered via object salvage then a repair prompt |
+| Test generation | `workflows/builders/test_generation.py` | Qwen 2.5-Coder 7B (local, 4-bit) + optional QLoRA adapter | 8–15 test cases per question; malformed JSON is recovered via object salvage then a repair prompt |
 | Test execution | `workflows/builders/test_execution.py` | GPT-4o-mini (OpenAI, ReAct agent with ShellTool) | pass/fail + actual output per test |
 | Evaluation | `workflows/builders/evaluation.py` | LLaMA 3.2 3B (local, 4-bit) | correctness, quality scores, feedback |
 
@@ -126,7 +127,8 @@ Test execution runs student code via stdin: `echo "{input}" | python {code_file}
 - **Assignment PDFs** must label questions as `Q1:`, `Q2:`, etc. for the regex extractor to find them (`core/pre_processors/assignment.py`).
 - **Student submission files** must match the glob `q_*.py` (`core/pre_processors/submission.py`).
 - The folder `core/file_hanlders/` has a deliberate typo — do not rename it.
-- HuggingFace models require a CUDA-capable GPU and are loaded via `bitsandbytes` through `HuggingFaceClient` (`clients/huggingface_client.py`). Qwen uses 8-bit quantization (`max_new_tokens=2048`); LLaMA uses 4-bit quantization (`max_new_tokens=500`). Both models load eagerly on `EvaluationEngine` startup (~10–11 GB VRAM combined).
+- HuggingFace models require a CUDA-capable GPU and are loaded via `bitsandbytes` through `HuggingFaceClient` (`clients/huggingface_client.py`). Both Qwen and LLaMA use 4-bit quantization (`max_new_tokens=2048` and `500` respectively). Both models load eagerly on `EvaluationEngine` startup (~10–11 GB VRAM combined).
+- The fine-tuned Qwen adapter may produce test case `input` fields as plain strings instead of dicts; `_format_input_for_stdin` and `is_valid_test_case` both accept `str | dict` to handle this.
 - The backend and frontend have no automated test suite. `autograder-ai` has unit tests in `autograder-ai/tests/` covering `json_helpers` and `generate_test_cases_node` (run with `python -m unittest discover -s tests` from inside `autograder-ai/`).
 
 ## Dataset
@@ -143,7 +145,7 @@ Test execution runs student code via stdin: `echo "{input}" | python {code_file}
 - Base model: `Qwen/Qwen2.5-Coder-7B-Instruct`
 - Config: rank=16, alpha=32, dropout=0.05, 5 epochs, all projection layers targeted
 - Trained with `peft` + `trl` (SFTTrainer); adapter weights stored via Git LFS
-- **Not yet integrated into the main pipeline** — `EvaluationEngine` still loads the base Qwen model by default. To use the adapter, load it with `peft.PeftModel.from_pretrained(base_model, "fine_tuned_adapter/")`.
+- **Integrated into the main pipeline** — `EvaluationEngine` reads `QWEN_ADAPTER_PATH` from the environment and passes it to `HuggingFaceClient`, which calls `peft.PeftModel.from_pretrained(base_model, adapter_path)` after loading the base model. Set `QWEN_ADAPTER_PATH=./fine_tuned_adapter` (default in `.env.example`) to enable it; leave the variable unset or empty to use the base model only.
 - Fine-tuning script: `autograder-ai/finetune_qwen.py` (requires `peft`, `trl`, `datasets` — all declared in `pyproject.toml`)
 
 ## Useful Context Docs
